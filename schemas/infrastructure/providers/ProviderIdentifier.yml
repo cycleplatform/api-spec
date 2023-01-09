@@ -1,0 +1,7 @@
+title: NativeProviderIdentifier
+type: string
+description: An identifier for the native provider
+enum:
+  - aws
+  - equinix-metal
+  - vultr

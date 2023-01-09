@@ -1,0 +1,13 @@
+title: PaymentResult
+type: object
+description: A billing payment result.
+required:
+  - success
+  - error
+properties:
+  success:
+    type: boolean
+    description: A boolean where true represents the success of the payment.
+  error:
+    type: string
+    description: A description of the error that took place.

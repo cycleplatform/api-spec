@@ -1,0 +1,39 @@
+title: PublicAccount
+type: object
+description: An object representing information about a public account.
+required:
+  - id
+  - name
+  - email
+  - events
+properties:
+  id:
+    "$ref": "../ID.yml"
+  name:
+    type: string
+    description: The name on the account.
+  email:
+    type: string
+    description: The email associated with the account.
+  events:
+    title: PublicAccountEvents
+    type: object
+    description: A collection of timestamps for each event in the account's lifetime.
+    required:
+      - created
+      - updated
+      - deleted
+      - last_login
+    properties:
+      created:
+        description: The timestamp of when the image was created.
+        "$ref": "../DateTime.yml"
+      updated:
+        description: The timestamp of when the image was updated.
+        "$ref": "../DateTime.yml"
+      deleted:
+        description: The timestamp of when the image was deleted.
+        "$ref": "../DateTime.yml"
+      last_login:
+        description: The timestamp of when the account was last accessed.
+        "$ref": "../DateTime.yml"

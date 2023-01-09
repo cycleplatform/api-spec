@@ -1,0 +1,35 @@
+title: ItemPlan
+type: object
+description: Information for an item's plan.
+properties:
+  support:
+    type: object
+    description: Information about the support component of the billing item.
+    required:
+      - id
+      - name
+      - price
+    properties:
+      id:
+        "$ref": "../ID.yml"
+      name:
+        type: string
+        description: The support contract name.
+      price:
+        type: integer
+        description: The price of the support contract (monthly).
+  tier:
+    type: object
+    description: Information about the tier component of the billing item.
+    required:
+      - id
+      - name
+      - price
+    properties:
+      id:
+        "$ref": "../ID.yml"
+      name:
+        type: string
+        description: The support contract name.
+      price:
+        "$ref": "./BillingAmount.yml"

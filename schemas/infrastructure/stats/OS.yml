@@ -1,0 +1,13 @@
+title: ServerStatsOS
+type: object
+description: Statistics about the operating system installed on the server (CycleOS).
+properties:
+  release:
+    type: string
+    description: The currently installed release version of the OS.
+  kernel:
+    type: string
+    description: The currently installed kernel version.
+  hostname:
+    type: string
+    description: The hostname as set by the given server's OS.

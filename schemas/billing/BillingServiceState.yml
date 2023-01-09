@@ -1,0 +1,11 @@
+title: BillingServiceState
+allOf:
+  - required:
+      - current
+    properties:
+      current:
+        description: The current state of the billing service.
+        type: string
+        enum:
+          - active
+  - "$ref": "../State.yml"

@@ -1,0 +1,22 @@
+title: ContainerNetwork
+type: object
+description: Network configuration for a container.
+required:
+  - public
+  - hostname
+properties:
+  public:
+    type: string
+    description: The public network settings for the given container
+    enum:
+      - enable
+      - egress-only
+      - disable
+  hostname:
+    type: string
+    description: The hostname for the given container.
+  ports:
+    type: array
+    items:
+      type: string
+    description: An array of port mappings for the container.

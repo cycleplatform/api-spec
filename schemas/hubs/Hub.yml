@@ -1,0 +1,74 @@
+title: Hub
+description: A hub resource.
+type: object
+required:
+  - id
+  - name
+  - creator
+  - events
+  - state
+  - integrations
+  - webhooks
+  - billing
+properties:
+  id:
+    "$ref": "../ID.yml"
+  name:
+    type: string
+    description: A name for the hub.
+  creator:
+    "$ref": "../Creator.yml"
+  events:
+    title: HubEvents
+    type: object
+    description: A collection of timestamps for each event in the hub's lifetime.
+    required:
+      - created
+      - updated
+      - deleted
+    properties:
+      created:
+        description: The timestamp of when the hub was created.
+        "$ref": "../DateTime.yml"
+      updated:
+        description: The timestamp of when the hub was updated.
+        "$ref": "../DateTime.yml"
+      deleted:
+        description: The timestamp of when the hub was deleted.
+        "$ref": "../DateTime.yml"
+      converted:
+        description: The timestamp of when the hub had the first converted
+        "$ref": "../DateTime.yml"
+      first_provider:
+        description: The timestamp of when the hub had the first provider added.
+        "$ref": "../DateTime.yml"
+      first_server:
+        description: The timestamp of when the hub had the first_server deployed.
+        "$ref": "../DateTime.yml"
+      first_environment:
+        description: The timestamp of when the hub had the first environment deployed.
+        "$ref": "../DateTime.yml"
+      first_image:
+        description: The timestamp of when the hub had the first image deployed.
+        "$ref": "../DateTime.yml"
+      first_container:
+        description: The timestamp of when the hub had the first container deployed.
+        "$ref": "../DateTime.yml"
+  state:
+    "$ref": "./HubState.yml"
+  integrations:
+    "$ref": "./HubIntegrations.yml"
+  webhooks:
+    type: object
+    description: All hub webhooks for the given hub.
+    required:
+      - server_deployed
+    properties:
+      server_deployed:
+        nullable: true
+        type: string
+        description: A webhook to report information to each time a server is deployed on the given hub.
+  billing:
+    "$ref": "./BillingProfile.yml"
+  meta:
+    "$ref": "./HubMeta.yml"

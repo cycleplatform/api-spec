@@ -1,0 +1,27 @@
+title: GPUServerSpec
+type: object
+description: Information about a given servers GPU resources.
+required:
+  - count
+  - type
+properties:
+  count:
+    type: integer
+    description: The number of GPUs.
+  cores:
+    type: integer
+    description: The number of cores.
+  vram_gb:
+    type: integer
+    description: The amount of virtaul RAM for the GPU.
+  type:
+    type: string
+    description: The type of the GPU.
+  shared:
+    type: boolean
+    description: A boolean where true represents the GPU is shared.
+  extra:
+    type: object
+    description: Extra information about the GPU if there is any.
+    additionalProperties:
+      type: string

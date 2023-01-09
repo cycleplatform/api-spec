@@ -1,0 +1,174 @@
+get:
+  operationId: "getSource"
+  tags:
+    - ImageSources
+  parameters:
+    - name: sourceId
+      in: path
+      required: true
+      description: The ID of the image source.
+      schema:
+        type: string
+    - name: meta
+      in: query
+      required: false
+      description:
+        A comma separated list of meta values. Meta values will show up under a resource's
+        `meta` field. In the case of applying a meta to a collection of resources, each
+        resource will have it's own relevant meta data. In some rare cases, meta may not
+        apply to individual resources, and may appear in the root document. These will be
+        clearly labeled.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - images_count
+    - name: include
+      in: query
+      required: false
+      description:
+        A comma separated list of include values. Included resources will show
+        up under the root document's `include` field, with the key being the id of the included
+        resource. In the case of applying an include to a collection of resources, if two
+        resources share the same include, it will only appear once in the return.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - creators
+  summary: Fetch Source
+  description: Requires the `images-view` capability.
+  responses:
+    "200":
+      description: Returns a single image source.
+      content:
+        application/json:
+          schema:
+            title: "ImageSourceFetchResponse"
+            type: object
+            properties:
+              data:
+                "$ref": "../../../../schemas/images/sources/ImageSource.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+patch:
+  operationId: "updateImageSource"
+  tags:
+    - ImageSources
+  parameters:
+    - name: sourceId
+      in: path
+      required: true
+      description: The ID of the image source.
+      schema:
+        type: string
+  summary: Update Source
+  description: Requires the `images-import` capability.
+  requestBody:
+    "$ref": "../../../../schemas/images/sources/requestBodies/SourceUpdateRequest.yml"
+  responses:
+    "200":
+      description: Returns an image source resource.
+      content:
+        application/json:
+          schema:
+            title: "ImageSourceCreateResponse"
+            type: object
+            properties:
+              data:
+                "$ref": "../../../../schemas/images/sources/ImageSource.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+delete:
+  operationId: "deleteImageSource"
+  tags:
+    - Images
+  parameters:
+    - name: sourceId
+      in: path
+      required: true
+      description: The ID of the image source.
+      schema:
+        type: string
+  summary: Delete a given image source
+  description: Requires the `images-import` capability.
+  responses:
+    "200":
+      description: Returns a task descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                "$ref": "../../../../schemas/jobs/TaskDescriptor.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"

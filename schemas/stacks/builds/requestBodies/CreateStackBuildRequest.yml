@@ -1,0 +1,41 @@
+description: Parameters for creating a new stack build.
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        about:
+          type: object
+          description: Information about the stack build.
+          required:
+            - version
+            - description
+          properties:
+            version:
+              type: string
+              description: A user defined version of the build.
+            description:
+              type: string
+              description: A user defined description for the build.
+            git_commit:
+              "$ref": "../StackGitCommit.yml"
+        instructions:
+          type: object
+          description: Git information on where to pull stack resources from.
+          properties:
+            git:
+              type: object
+              description: Git information specifics.
+              required:
+                - type
+                - value
+              properties:
+                type:
+                  type: string
+                  description: The type of information the user is passing.
+                  enum:
+                    - hash
+                    - tag
+                value:
+                  type: string
+                  description: The actual value to be passed.

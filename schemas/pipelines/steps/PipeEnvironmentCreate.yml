@@ -1,0 +1,5 @@
+title: PipelineEnvironmentCreate
+allOf: 
+  - "$ref": "../ResourceLocation.yml"
+    # cannot use request bodies as a type of model!
+  # - "$ref": "../../environments/requestBodies/CreateEnvironmentBody.yml" 

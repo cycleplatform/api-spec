@@ -1,0 +1,9 @@
+title: URLScopedVariableSource
+type: object
+description: The `URL` type of scoped variable `value`, referred to as a source. This means the value of this variable is the result of calling the given URL. It is dynamic, in that Cycle will refetch the contents on every start.
+required:
+  - url
+properties:
+  url:
+    type: string
+    description: The URL to call to produce the value.

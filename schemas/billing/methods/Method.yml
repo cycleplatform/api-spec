@@ -1,0 +1,58 @@
+title: BillingMethod
+type: object
+description: Information about a billing method, usable to pay invoices.
+required:
+  - id
+  - name
+  - primary
+  - address
+  - creator
+  - credit_card
+  - state
+  - events
+properties:
+  id:
+    "$ref": "../../ID.yml"
+  name:
+    type: string
+    description: A name for the billing method.
+  primary:
+    type: boolean
+    description: A boolean where true represents this billing method is set to primary for a given hub.
+  address:
+    "$ref": "./Address.yml"
+  creator:
+    "$ref": "../../Creator.yml"
+  credit_card:
+    "$ref": "./CreditCard.yml"
+  state:
+    allOf:
+      - required:
+          - current
+        properties:
+          current:
+            description: The current state of the method.
+            type: string
+            enum:
+              - live
+              - deleting
+              - deleted
+      - "$ref": "../../State.yml"
+  events:
+    title: CreditCardEvents
+    type: object
+    description: A collection of timestamps for each event in the credit card's lifetime.
+    required:
+      - created
+      - updated
+      - deleted
+    properties:
+      created:
+        description: The timestamp of when the credit card was created.
+        "$ref": "../../DateTime.yml"
+      updated:
+        description: The timestamp of when the credit card was updated.
+        "$ref": "../../DateTime.yml"
+      deleted:
+        description: The timestamp of when the credit card was deleted.
+        "$ref": "../../DateTime.yml"

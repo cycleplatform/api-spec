@@ -1,0 +1,11 @@
+description: Parameters for updating a stack. 
+content: 
+  application/json: 
+    schema: 
+      type: object 
+      properties: 
+        name: 
+          type: string 
+          description: A name for the stack. 
+        source: 
+          "$ref": "../StackSource.yml"  

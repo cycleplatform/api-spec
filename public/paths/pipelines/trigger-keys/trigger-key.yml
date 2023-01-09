@@ -1,0 +1,107 @@
+get:
+  operationId: "getPipelineTriggerKey"
+  tags:
+    - Pipelines
+  parameters:
+    - name: pipelineId
+      in: path
+      required: true
+      description: The ID of the pipeline.
+      schema:
+        type: string
+    - name: triggerKeyId
+      in: path
+      required: true
+      description: The ID of the trigger key.
+      schema:
+        type: string
+  summary: Fetch Trigger Key
+  description: Requires the `pipelines-manage` capability.
+  responses:
+    "200":
+      description: Returns a trigger key resource.
+      content:
+        application/json:
+          schema:
+            title: "FetchPipelineTriggerKeyResponse"
+            type: object
+            properties:
+              data:
+                "$ref": "../../../../schemas/pipelines/trigger-keys/TriggerKey.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+patch:
+  operationId: "updatePipelineTriggerKey"
+  tags:
+    - Pipelines
+  parameters:
+    - name: pipelineId
+      in: path
+      required: true
+      description: The ID of the pipeline.
+      schema:
+        type: string
+    - name: triggerKeyId
+      in: path
+      required: true
+      description: The ID of the trigger key.
+      schema:
+        type: string
+  summary: Update Trigger Key
+  description: Requires the `pipelines-manage` capability.
+  responses:
+    "200":
+      description: Returns a task descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                "$ref": "../../../../schemas/jobs/TaskDescriptor.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"

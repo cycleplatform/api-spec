@@ -1,0 +1,42 @@
+get:
+  operationId: "getHub"
+  tags:
+    - Hubs
+  parameters: []
+  summary: Fetch Hub
+  description: Doesn't require a specific capability.
+  responses:
+    "200":
+      description: Returns a Hub resource.
+      content:
+        application/json:
+          schema:
+            title: FetchHubReturn
+            type: object
+            properties:
+              data:
+                "$ref": "../../../schemas/hubs/Hub.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"

@@ -1,0 +1,55 @@
+title: TriggerKey
+type: object 
+description: A pipeline trigger key resource. 
+required: 
+  - id 
+  - name 
+  - secret 
+  - creator 
+  - hub_id 
+  - pipeline_id 
+  - state 
+  - events 
+  - ips 
+properties: 
+  id: 
+    "$ref": "../../ID.yml" 
+  name: 
+    type: string 
+    description: The name of the trigger key. 
+  secret: 
+    type: string 
+    description: The secret used when calling the trigger key programmatically. 
+  creator: 
+    "$ref": "../../Creator.yml" 
+  hub_id: 
+    "$ref": "../../HubID.yml" 
+  pipeline_id: 
+    type: string
+    description: The ID for the pipeline related to this trigger key. 
+  state: 
+    "$ref": "./TriggerKeyState.yml" 
+  events:
+    title: TriggerKeyEvents
+    type: object
+    description: A collection of timestamps for each event in the trigger key's lifetime.
+    required:
+      - created
+      - updated
+      - deleted
+    properties:
+      created:
+        description: The timestamp of when the trigger key was created.
+        "$ref": "../../DateTime.yml"
+      updated:
+        description: The timestamp of when the trigger key was updated.
+        "$ref": "../../DateTime.yml"
+      deleted:
+        description: The timestamp of when the trigger key was deleted.
+        "$ref": "../../DateTime.yml"
+  ips: 
+    description: An array of ips this trigger key is usable from. 
+    type: array 
+    items: 
+      type: string 
+      

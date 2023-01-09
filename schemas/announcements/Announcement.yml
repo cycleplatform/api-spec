@@ -1,0 +1,73 @@
+title: Announcement
+type: object
+description: An announcement from the Cycle team that has something to do with the current or future state of the platform.
+required:
+  - id
+  - title
+  - description
+  - updates
+  - priority
+  - events
+  - creator
+  - state
+properties:
+  id:
+    "$ref": "../ID.yml"
+  title:
+    type: string
+    description: A description of the event being announced.
+  description:
+    type: string
+    description: A description of the announcement
+  updates:
+    type: array
+    items:
+      "$ref": "./Update.yml"
+  affected_providers:
+    type: array
+    items:
+      "$ref": "../infrastructure/providers/NativeProviderIdentifier.yml"
+  state:
+    allOf:
+      - required:
+          - current
+        properties:
+          current:
+            description: The current state of the method.
+            type: string
+            enum:
+              - live
+              - deleting
+              - deleted
+      - "$ref": "../State.yml"
+  priority:
+    type: string
+    description: The priority or severity of the announcement.
+    enum:
+      - notice
+      - low
+      - medium
+      - high
+      - severe
+  events:
+    title: AnnouncementEvents
+    type: object
+    description: A collection of timestamps for each event in the announcement's lifetime.
+    required:
+      - created
+      - updated
+      - deleted
+      - resolved
+    properties:
+      created:
+        description: The timestamp of when the announcement was created.
+        "$ref": "../DateTime.yml"
+      updated:
+        description: The timestamp of when the announcement was updated.
+        "$ref": "../DateTime.yml"
+      deleted:
+        description: The timestamp of when the announcement was deleted.
+        "$ref": "../DateTime.yml"
+      resolved:
+        description: The timestamp of when the announcement was resolved.
+        "$ref": "../DateTime.yml"

@@ -1,0 +1,9 @@
+title: HubNotificationPipelineAuthResponse
+description: A token resource.
+type: object
+required:
+  - token
+properties:
+  token:
+    type: string
+    description: A token used for connecting to the hub notification pipeline websocket API.

@@ -1,0 +1,28 @@
+title: VPNLogins
+type: object
+description: A VPN login event record.
+required:
+  - id
+  - username
+  - environment_id
+  - ip
+  - time
+  - success
+properties:
+  id:
+    "$ref": "../../ID.yml"
+  username:
+    type: string
+    description: The username used when logging in.
+  environment_id:
+    type: string
+    description: The ID of the environment the VPN service is in.
+  ip:
+    type: string
+    description: The IP address of the machine the user has logged in from.
+  time:
+    description: The timestamp for when the login occured.
+    "$ref": "../../DateTime.yml"
+  success:
+    type: boolean
+    description: A boolean where true means the login attempt was successful.

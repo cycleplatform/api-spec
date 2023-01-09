@@ -1,0 +1,15 @@
+title: MembershipState
+allOf:
+  - required:
+      - current
+    properties:
+      current:
+        description: The current state of the membership.
+        type: string
+        enum:
+          - pending
+          - accepted
+          - declined
+          - revoked
+          - deleted
+  - "$ref": "../State.yml"

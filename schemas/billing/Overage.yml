@@ -1,0 +1,22 @@
+title: BillingOverage
+type: object
+description: Information about billing overage.
+required:
+  - term
+  - ram
+properties:
+  term:
+    "$ref": "./Term.yml"
+  ram:
+    type: object
+    description: Used for gen 1 pricing.
+    required:
+      - gb_hours
+      - cost
+    properties:
+      gb_hours:
+        type: integer
+        description: The number of hours of overage.
+      cost:
+        type: integer
+        description: The cost of the overage.

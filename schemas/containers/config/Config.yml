@@ -1,0 +1,17 @@
+title: ContainerConfig
+description: A container configuration.
+type: object
+required:
+  - network
+  - deploy
+properties:
+  network:
+    "$ref": "../config/ContainerNetwork.yml"
+  deploy:
+    "$ref": "../config/_deploy.yml"
+  runtime:
+    "$ref": "../config/Runtime.yml"
+  resources:
+    "$ref": "../config/Resources.yml"
+  integrations:
+    "$ref": "../config/ContainerIntegrations.yml"

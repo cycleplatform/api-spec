@@ -1,0 +1,15 @@
+---
+title: IPNet
+type: object
+required:
+- ip
+- cidr
+properties:
+  ip:
+    type: string
+    description: The IP address.
+    example: fd00::21:0:0:0
+  cidr:
+    type: string
+    description: The CIDR notation, describing the range of IP addresses.
+    example: fd00::21:0:0:0/96

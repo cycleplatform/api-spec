@@ -1,0 +1,5 @@
+title: ImageIncludes
+description: A resource associated with an image.
+type: object
+additionalProperties:
+  "$ref": "../images/Image.yml"

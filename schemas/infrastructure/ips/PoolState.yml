@@ -1,0 +1,13 @@
+title: PoolState
+allOf:
+  - required:
+      - current
+    properties:
+      current:
+        description: the current state of the Pool.
+        type: string
+        enum:
+          - live 
+          - releasing 
+          - released
+  - "$ref": "../../State.yml"

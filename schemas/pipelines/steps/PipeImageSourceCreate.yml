@@ -1,0 +1,52 @@
+title: PipelineImageSourceCreate
+allOf:
+  - required:
+      - name
+      - origin
+      - type
+    properties:
+      name:
+        type: string
+        description: The image source name.
+      about:
+        type: object
+        description: Information about the image source resource.
+        required:
+          - description
+        properties:
+          description:
+            type: string
+            description: Some information about the image source resource.
+      origin:
+        type: object
+        description: The origin of the given image source.
+        oneOf:
+          - "$ref": "../../images/sources/DockerHubSource.yml"
+          - "$ref": "../../images/sources/DockerfileRepoSource.yml"
+          - "$ref": "../../images/sources/DockerfileTarSource.yml"
+          - "$ref": "../../images/sources/DockerRegistrySource.yml"
+      type:
+        type: string
+        description: The type of image source.
+        enum:
+          - direct
+  - "$ref": "../ResourceLocation.yml"
+###############
+# - "$ref": "../../images/sources/requestBodies/SourceCreateRequest.yml"
+# title: ContainerState
+# allOf:
+#   - required:
+#       - current
+#     properties:
+#       current:
+#         description: The current state of the container.
+#         type: string
+#         enum:
+#           - new
+#           - starting
+#           - running
+#           - stopping
+#           - stopped
+#           - deleting
+#           - deleted
+#   - "$ref": "../State.yml"

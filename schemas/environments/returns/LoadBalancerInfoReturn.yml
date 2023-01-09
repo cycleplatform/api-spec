@@ -1,0 +1,100 @@
+title: LoadBalancerInfoReturn
+type: object
+description: Information about an environments load balancer configuration, state, and availability settings.
+required:
+  - default_config
+  - service
+properties:
+  default_config:
+    type: object
+    description: The default configuration of the load balancer.
+    properties:
+      haproxy:
+        type: object
+        description:
+          Describes settings that are passed to HAProxy within the load
+          balancer.
+        nullable: true
+        required:
+          - default
+          - ports
+          - ipv4
+          - ipv6
+        properties:
+          default:
+            allOf:
+              - description:
+                  Settings that are applied to any port that is not overridden
+                  in the following ports section.
+              - "$ref": "../config/HAProxyConfig.yml"
+          ports:
+            allOf:
+              - description:
+                  An object that defines how HAProxy will act on a specific
+                  port. The key is a custom port, and the value is the same settings
+                  object found under `default` above.
+              - "$ref": "../config/HAProxyConfig.yml"
+      ipv4:
+        type: boolean
+        nullable: true
+        description: Allow / disallow traffic to be routed via IPv4.
+      ipv6:
+        type: boolean
+        nullable: true
+        description: Allow / disallow traffic to be routed via IPv6.
+  service:
+    type: object
+    description: Contains information about the status of the load balancer, as well as configuration overrides.
+    required:
+      - enable
+      - container_id
+      - high_availability
+    properties:
+      enable:
+        type: boolean
+        description: Whether or not the loadbalancer service is enabled.
+      container_id:
+        type: string
+        description: The ID of the loadbalancer service container
+      high_availability:
+        type: boolean
+        description:
+          A boolean representing if this service container is set to high availability
+          mode or not.
+      config:
+        type: object
+        description: Contains custom configuration overrides for the load balancer. If null, the default config will be used.
+        properties:
+          haproxy:
+            type: object
+            description:
+              Describes settings that are passed to HAProxy within the load
+              balancer.
+            nullable: true
+            required:
+              - default
+              - ports
+              - ipv4
+              - ipv6
+            properties:
+              default:
+                allOf:
+                  - description:
+                      Settings that are applied to any port that is not overridden
+                      in the following ports section.
+                  - "$ref": "../config/HAProxyConfig.yml"
+              ports:
+                allOf:
+                  - description:
+                      An object that defines how HAProxy will act on a specific
+                      port. The key is a custom port, and the value is the same settings
+                      object found under `default` above.
+                  - "$ref": "../config/HAProxyConfig.yml"
+              ipv4:
+                type: boolean
+                nullable: true
+                description: Allow / disallow traffic to be routed via IPv4.
+              ipv6:
+                type: boolean
+                nullable: true
+                description: Allow / disallow traffic to be routed via IPv6.

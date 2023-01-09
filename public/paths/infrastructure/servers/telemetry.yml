@@ -1,0 +1,53 @@
+get:
+  operationId: "getServerTelemetery"
+  tags:
+    - Servers
+  parameters:
+    - name: serverId
+      description: The ID for the given server.
+      in: path
+      required: true
+      schema:
+        type: string
+    - $ref: "../../../parameters/SortParam.yml"
+    - $ref: "../../../parameters/FilterParam.yml"
+    - $ref: "../../../parameters/PageParam.yml"
+  summary: List Sever Telemetry
+  description: Requires the `servers-view` capability. This call requires the filter query be used.
+  responses:
+    "200":
+      description: A list of telemetry points.
+      content:
+        application/json:
+          schema:
+            title: "ServerTelemetryReturn"
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  "$ref": "../../../../schemas/infrastructure/stats/Telemetry.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"

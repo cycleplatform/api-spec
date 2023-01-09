@@ -1,0 +1,17 @@
+title: BillingAmount
+type: object
+description: An object holding information about term and amount that relates to a specific billing component.
+required:
+  - mills
+  - term
+properties:
+  mills:
+    type: integer
+    description: 1/10th of a cent.
+  term:
+    type: string
+    description: The length of the term.
+    enum:
+      - once
+      - monthly
+      - yearly

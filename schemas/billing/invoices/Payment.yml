@@ -1,0 +1,39 @@
+title: BillingPayment
+type: object
+description: A billing payment.
+required:
+  - id
+  - time
+  - description
+  - amount
+  - amount_refunded
+  - refunds
+  - method_id
+  - result
+  - gateway
+properties:
+  id:
+    "$ref": "../../ID.yml"
+  time:
+    description: A timestamp for the payment.
+    "$ref": "../../DateTime.yml"
+  description:
+    type: string
+    description: Some information about the payment.
+  amount:
+    type: integer
+    description: 1/10th of a cent.
+  amount_refunded:
+    type: integer
+    description: 1/10th of a cent.
+  refunds:
+    type: array
+    items:
+      "$ref": "./Refund.yml"
+  method_id:
+    type: string
+    description: The ID associated with the billing method used.
+  result:
+    "$ref": "./PaymentResult.yml"
+  gateway:
+    "$ref": "./PaymentGateway.yml"

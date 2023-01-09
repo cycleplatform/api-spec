@@ -1,0 +1,48 @@
+get:
+  operationId: "getPipelineRuns"
+  tags:
+    - Pipelines
+  parameters:
+    - name: pipelineId
+      in: path
+      required: true
+      description: The ID of the pipeline.
+      schema:
+        type: string
+  summary: List Pipeline Runs
+  description: Requires the `pieplines-view` capability.
+  responses:
+    "200":
+      description: Returns a list of pipeline run resources.
+      content:
+        application/json:
+          schema:
+            title: "ListPipelineRunsResponse"
+            type: object
+            properties:
+              data:
+                "$ref": "../../../schemas/pipelines/runs/Run.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"

@@ -1,0 +1,33 @@
+title: BillingInvoiceCredit
+type: object
+description: A billing credit for a specific invoice.
+required:
+  - id
+  - associated_credit
+  - time
+  - description
+  - amount
+properties:
+  id:
+    "$ref": "../../ID.yml"
+  associated_credit:
+    type: object
+    description: Credit associated with an invoice.
+    required:
+      - id
+      - amount
+    properties:
+      id:
+        "$ref": "../../ID.yml"
+      amount:
+        type: integer
+        description: The amount of the credit.
+  time:
+    description: A timestamp for when the invoice credit was created.
+    "$ref": "../../DateTime.yml"
+  description:
+    type: string
+    description: A description of the invoice credit.
+  amount:
+    type: integer
+    description: The amount of credit for the invoice.

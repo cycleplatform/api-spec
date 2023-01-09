@@ -1,0 +1,122 @@
+get:
+  operationId: "getStacks"
+  tags:
+    - Stacks
+  summary: List Stacks
+  description: Requires the `stacks-view` permission.
+  parameters:
+    - name: meta
+      in: query
+      required: false
+      description:
+        A comma separated list of meta values. Meta values will show up under a resource's
+        `meta` field. In the case of applying a meta to a collection of resources, each
+        resource will have it's own relevant meta data. In some rare cases, meta may not
+        apply to individual resources, and may appear in the root document. These will be
+        clearly labeled.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - containers_count
+    - name: include
+      in: query
+      required: false
+      description:
+        A comma separated list of include values. Included resources will show
+        up under the root document's `include` field, with the key being the id of the included
+        resource. In the case of applying an include to a collection of resources, if two
+        resources share the same include, it will only appear once in the return.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - creators
+    - $ref: "../../parameters/SortParam.yml"
+    - $ref: "../../parameters/FilterParam.yml"
+    - $ref: "../../parameters/PageParam.yml"
+  responses:
+    "200":
+      description: A collection of stack resources.
+      content:
+        application/json:
+          schema:
+            title: "ListStacksResponse"
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  "$ref": "../../../schemas/stacks/Stack.yml"
+              includes:
+                "$ref": "../../../schemas/stacks/StackInclude.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+post:
+  operationId: "createStack"
+  tags:
+    - Stacks
+  parameters: []
+  summary: Create Stack
+  description: Requires the `stacks-manage` capability.
+  requestBody:
+    "$ref": "../../../schemas/stacks/requestBodies/CreateStackRequest.yml"
+  responses:
+    "201":
+      description: Returns a stack resource.
+      content:
+        application/json:
+          schema:
+            title: "StackCreateResponse"
+            type: object
+            properties:
+              data:
+                "$ref": "../../../schemas/stacks/Stack.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"

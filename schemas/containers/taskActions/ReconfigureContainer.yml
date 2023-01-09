@@ -1,0 +1,13 @@
+title: ReconfigureContainer 
+type: object
+required:
+  - action
+  - contents
+properties:
+  action:
+    type: string
+    enum:
+      - reconfigure
+    description: The action to take.
+  contents:
+    "$ref": "../config/Config.yml"

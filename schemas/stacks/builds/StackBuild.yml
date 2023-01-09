@@ -1,0 +1,79 @@
+title: StackBuild
+type: object
+description: A stack build resource.
+required:
+  - id
+  - hub_id
+  - stack_id
+  - spec
+  - about
+  - instructions
+  - events
+  - state
+properties:
+  id:
+    "$ref": "../../ID.yml"
+  hub_id:
+    "$ref": "../../HubID.yml"
+  stack_id:
+    type: string
+    description: An identifier for the stack related to this build.
+  spec:
+    "$ref": "../spec/StackSpec.yml"
+  about:
+    type: object
+    description: Information about the stack build.
+    required:
+      - version
+      - description
+    properties:
+      version:
+        type: string
+        description: Information about the version of the stack.
+      description:
+        type: string
+        description: Information describing the stack
+      git_commit:
+        "$ref": "./StackGitCommit.yml" 
+  instructions:
+    type: object
+    description: Git information on where to pull stack resources from.
+    properties:
+      git:
+        type: object
+        description: Git information specifics.
+        required:
+          - type
+          - value
+        properties:
+          type:
+            type: string
+            description: The type of information the user is passing.
+            enum:
+              - hash
+              - tag
+          value:
+            type: string
+            description: The actual value to be passed.
+  events:
+    title: StackBuildEvents
+    type: object
+    description: A collection of timestamps for each event in the stack build's lifetime.
+    required:
+      - created
+      - updated
+      - deleted
+    properties:
+      created:
+        description: The timestamp of when the stack build was created.
+        "$ref": "../../DateTime.yml"
+      updated:
+        description: The timestamp of when the stack build was updated.
+        "$ref": "../../DateTime.yml"
+      deleted:
+        description: The timestamp of when the stack build was deleted.
+        "$ref": "../../DateTime.yml"
+  state:
+    "$ref": "./StackBuildState.yml"
+  meta:
+    "$ref": "./StackBuildMeta.yml"

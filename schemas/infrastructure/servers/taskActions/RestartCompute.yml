@@ -1,0 +1,11 @@
+title: RestartComputeServiceAction
+type: object
+description: A job that restarts compute service on a given server.
+required:
+  - action
+properties:
+  action:
+    type: string
+    description: The action to take.
+    enum:
+      - restart

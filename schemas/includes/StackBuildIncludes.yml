@@ -1,0 +1,5 @@
+title: StackBuildInclude
+description: A resource thats associated with a stack build.
+type: object
+additionalProperties:
+  "$ref": "../stacks/builds/StackBuild.yml"

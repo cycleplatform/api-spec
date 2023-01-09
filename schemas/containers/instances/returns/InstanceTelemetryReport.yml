@@ -1,0 +1,14 @@
+title: InstanceResouceTelemetryReport
+type: object
+description: An instance resource telemetry report resource.
+required:
+  - request
+  - snapshots
+properties:
+  request:
+    "$ref": "../snapshots/TelemetryReportRequest.yml"
+  snapshots:
+    description: An array of telemetry snapshots.
+    type: array
+    items:
+      "$ref": "../snapshots/ResourceSnapshot.yml"

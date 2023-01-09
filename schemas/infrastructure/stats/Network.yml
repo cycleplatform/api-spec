@@ -1,0 +1,37 @@
+title: ServerStatsNetwork
+type: object
+description: Statistics about the networks on a given server.
+required:
+  - external_ipv4
+  - external_ipv6
+properties:
+  interfaces:
+    type: object
+    description: Network interfaces for a given server.
+    additionalProperties:
+      type: object
+      description: Network interface.
+      properties:
+        interface:
+          type: string
+          description: The interface name.
+        flags:
+          type: string
+          description: Flags for the given interface.
+        mtu:
+          type: integer
+          description: The maximum transmission unit for the interface.
+        mac_addr:
+          type: string
+          description: The mac address for the interface.
+        addrs:
+          description: An array of IP addresses associated with the interface.
+          type: array
+          items:
+            type: string
+  external_ipv4:
+    type: string
+    description: The public IPv4 address used to connect to this server.
+  external_ipv6:
+    type: string
+    description: The public IPv6 address used to connect to this server.

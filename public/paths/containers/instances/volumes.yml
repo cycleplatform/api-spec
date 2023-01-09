@@ -1,0 +1,59 @@
+get:
+  operationId: "getContainerInstanceVolumes"
+  tags:
+    - Instances
+  parameters:
+    - name: containerId
+      description: The ID of the requested container.
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: instanceId
+      description: The ID for the container instance.
+      in: path
+      required: true
+      schema:
+        type: string
+    - $ref: "../../../parameters/SortParam.yml"
+    - $ref: "../../../parameters/FilterParam.yml"
+    - $ref: "../../../parameters/PageParam.yml"
+  summary: Fetch Instance Volume(s)
+  description: Requires the `containers-view` capability.
+  responses:
+    "200":
+      description: Returns an array of container instance volume resources.
+      content:
+        application/json:
+          schema:
+            title: ContainerInstanceVolumeResponse
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  "$ref": "../../../../schemas/containers/instances/InstanceVolume.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"

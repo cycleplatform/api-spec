@@ -1,0 +1,56 @@
+get:
+  operationId: "lookupDnsCertificate"
+  tags:
+    - DNS
+  parameters:
+    - name: domain
+      in: query
+      style: form
+      required: true
+      description: "The domain to lookup."
+      schema:
+        type: string
+    - name: wildcard
+      in: query
+      style: form
+      required: false
+      description: "Whether or not to lookup a *. wildcard certificate that would be applicable for this domain. For example, if you are looking for a certificate for x.test.com, setting this to true will identify a *.test.com certificate that would also be applicable."
+      schema:
+        type: boolean
+  summary: Fetch Domain TLS Certificate
+  description: Requires the `dns-view` capability.
+  responses:
+    "200":
+      description: Returns a TLS certificate bundle resource.
+      content:
+        application/json:
+          schema:
+            title: "DNSZoneCertificateLookupResponse"
+            type: object
+            properties:
+              data:
+                $ref: "../../../../schemas/dns/tls/DnsTlsCertificate.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"

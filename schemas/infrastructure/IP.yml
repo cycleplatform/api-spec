@@ -1,0 +1,53 @@
+title: IP
+type: object
+description: An IP resource.
+required:
+  - id
+  - hub_id
+  - kind
+  - assingment
+  - pool_id
+  - address
+  - gateway
+  - cidr
+  - state
+properties:
+  id:
+    "$ref": "../ID.yml"
+  hub_id:
+    "$ref": "../HubID.yml"
+  kind:
+    type: string
+    description: The type of IP protocol this IP is.
+    enum:
+      - ipv4
+      - ipv6
+  assignment:
+    type: object
+    description: Information about the assignment of this IP.
+    nullable: true
+    required:
+      - container_id
+      - instance_id
+      - environment_id
+    properties:
+      container_id:
+        type: string
+      instance_id:
+        type: string
+      environment_id:
+        type: string
+  pool_id:
+    type: string
+    description: A unique identifier that associates the IP with an IP pool.
+  address:
+    type: string
+    description: The IP address.
+  gateway:
+    type: string
+    description: The IP gateway.
+  cidr:
+    type: string
+    description: The CIDR for the IP.
+  state:
+    "$ref": "./IPState.yml"

@@ -1,0 +1,39 @@
+title: Certificate 
+type: object 
+description: A DNS TLS certificate. 
+required: 
+  - id 
+  - hub_id 
+  - domains 
+  - events 
+  - bundle 
+properties: 
+  id: 
+    "$ref": "../../ID.yml" 
+  hub_id: 
+    "$ref": "../../HubID.yml" 
+  domains: 
+    description: A list of domains associated with the certificate. 
+    type: array 
+    items: 
+      type: string 
+  events: 
+    title: CertificateEvents
+    type: object
+    description: A collection of timestamps for each event in the certificate's lifetime.
+    properties:
+      created:
+        description: "[unused]"
+        "$ref": "../../DateTime.yml" 
+      updated:
+        description: "[unused]"
+        "$ref": "../../DateTime.yml" 
+      deleted:
+        description: "[unused]"
+        "$ref": "../../DateTime.yml" 
+      generated:
+        description: "When the certificate was generated; useful for calculating expiration (+90 days)"
+        "$ref": "../../DateTime.yml" 
+  bundle: 
+    description: The certificate bundle
+    type: string 

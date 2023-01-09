@@ -1,0 +1,61 @@
+post:
+  tags:
+    - Instances
+  operationId: "createContainerInstanceJob"
+  parameters:
+    - name: containerId
+      description: The ID of the requested container.
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: instanceId
+      description: The ID for the container instance.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Create Instance Task
+  description: Used to perform different actions on a given container instance, requries `containers-instance-migrate` capability.
+  requestBody:
+    description: Parameters for creating a new container instance job.
+    content:
+      application/json:
+        schema:
+          oneOf:
+            - "$ref": "../../../../schemas/containers/instances/taskActions/RevertMigration.yml"
+            - "$ref": "../../../../schemas/containers/instances/taskActions/Migrate.yml"
+  responses:
+    "200":
+      description: Returns a task descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                "$ref": "../../../../schemas/jobs/TaskDescriptor.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"

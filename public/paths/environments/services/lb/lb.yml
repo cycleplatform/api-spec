@@ -1,0 +1,48 @@
+get:
+  operationId: "getLoadBalancerInfo"
+  tags:
+    - Environments
+  parameters:
+    - name: environmentId
+      description: The environmentId where the load balancer resides.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Fetch LB Info
+  description: Requires the `environments-view` capability.
+  responses:
+    "200":
+      description: Returns a load balancer info resource.
+      content:
+        application/json:
+          schema:
+            title: "LoadBalancerEnvironmentService"
+            type: object
+            properties:
+              data:
+                "$ref": "../../../../../schemas/environments/returns/LoadBalancerInfoReturn.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../../schemas/error/ErrorResponse.yml"

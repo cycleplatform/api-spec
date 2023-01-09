@@ -1,0 +1,9 @@
+title: ServerTags 
+description: Tags for a given server. 
+type: object 
+properties: 
+  data: 
+    type: array 
+    description: An array of server tags. 
+    items: 
+      type: string 

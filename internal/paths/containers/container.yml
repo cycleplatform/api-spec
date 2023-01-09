@@ -1,0 +1,62 @@
+get:
+  operationId: "getContainer"
+  tags:
+    - Containers
+  parameters:
+    - name: meta
+      in: query
+      required: false
+      description:
+        A comma separated list of meta values. Meta values will show up under a resource's
+        `meta` field. In the case of applying a meta to a collection of resources, each
+        resource will have it's own relevant meta data. In some rare cases, meta may not
+        apply to individual resources, and may appear in the root document. These will be
+        clearly labeled.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - instances_count
+            - domain
+            - domains
+            - ips
+  summary: Fetch Container
+  description: Internal API, no capabilities needed.
+  responses:
+    "200":
+      description: Returns an container resource.
+      content:
+        application/json:
+          schema:
+            title: "ContainerResponse"
+            type: object
+            properties:
+              data:
+                "$ref": "../../../schemas/containers/Container.yml"
+              includes:
+                "$ref": "../../../schemas/containers/instances/InstanceIncludes.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"

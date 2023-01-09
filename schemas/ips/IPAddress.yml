@@ -1,0 +1,71 @@
+title: EnvironmentIPAddress
+type: object
+description: IP address information for a given environment.
+required:
+  - id
+  - hub_id
+  - kind
+  - assignment
+  - pool_id
+  - host_nat_ip
+  - address
+  - gateway
+  - cidr
+  - state
+properties:
+  id:
+    "$ref": "../ID.yml"
+  hub_id:
+    "$ref": "../HubID.yml"
+  kind:
+    type: string
+    description: The type of IP pool.
+    enum:
+      - ipv4
+      - ipv6
+  assignment:
+    description: IDs of instance/container/environment that this IP address is assigned to.
+    type: array
+    items:
+      type: object
+      properties:
+        container_id:
+          type: string
+          description: An ID for a container this IP is associated with.
+        instance_id:
+          type: string
+          description: An ID for a instance this IP is associated with.
+        environment_id:
+          type: string
+          description: An ID for the environment this IP is associated with.
+  pool_id:
+    type: string
+    description: The ID of the IP pool associated with this IP.
+  host_nat_ip:
+    type: string
+    description: The IP address on the host where NAT translations are done (if any).
+    nullable: true
+  address:
+    type: string
+    description: The IP address.
+  gateway:
+    type: string
+    description: The network gateway.
+  cidr:
+    type: string
+    description: The CIDR for the IP block.
+    nullable: true
+  state:
+    allOf:
+      - required:
+          - current
+        properties:
+          current:
+            description: the current state of the IP.
+            type: string
+            enum:
+              - assigning
+              - assigned
+              - releasing
+              - available
+      - "$ref": "../State.yml"

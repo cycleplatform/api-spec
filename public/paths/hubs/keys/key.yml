@@ -1,0 +1,98 @@
+get:
+  operationId: "getAPIKey"
+  tags:
+    - APIKeys
+  parameters:
+    - name: apikeyId
+      description: The ID of the API Key.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Fetch API Key
+  description: Requries the `api-keys-manage` capability.
+  responses:
+    "200":
+      description: Returns an API Key resource.
+      content:
+        application/json:
+          schema:
+            title: "FetchAPIKeyResponse"
+            type: object
+            properties:
+              data:
+                "$ref": "../../../../schemas/hubs/APIKey.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+patch:
+  operationId: "updateAPIKey"
+  tags:
+    - APIKeys
+  parameters:
+    - name: apikeyId
+      description: The ID of the API Key.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Update API Key
+  description: Requires the `api-keys-manage` capability.
+  requestBody:
+    "$ref": "../../../../schemas/hubs/requestBodies/UpdateAPIKeyRequest.yml"
+  responses:
+    "200":
+      description: Returns and API Key resource.
+      content:
+        application/json:
+          schema:
+            title: "UpdateAPIKeyReturn"
+            type: object
+            properties:
+              data:
+                "$ref": "../../../../schemas/hubs/APIKey.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"

@@ -1,0 +1,50 @@
+title: InfrastructureProviderLocation
+type: object
+description: Location information for a given provider.
+required:
+  - id
+  - name
+  - geographic
+  - provider
+  - compatible
+  - features
+  - abbreviation
+  - annotations
+properties:
+  id:
+    "$ref": "../../ID.yml"
+  name:
+    type: string
+    description: A name for the location.
+  geographic:
+    "$ref": "./Geographic.yml"
+  provider:
+    "$ref": "./LocationProvider.yml"
+  compatible:
+    type: boolean
+    description: A boolean where true means the locaiton is supported by the platform.
+  features:
+    type: object
+    description: Additional information about available and supported features of the provider location.
+    required:
+      - available
+      - supported
+    properties:
+      available:
+        description: Available features for the provider location.
+        type: array
+        items:
+          type: string
+      supported:
+        description: Supported features for the provider location.
+        type: array
+        items:
+          type: string
+  abbreviation:
+    type: string
+    description: An abbreviation for the given provider locaiton.
+  annotations:
+    type: object
+    description: Additional information about the given provider locaiton.
+    additionalProperties:
+      type: string

@@ -1,0 +1,17 @@
+---
+title: AccountState
+allOf:
+  - required:
+      - current
+    properties:
+      current:
+        description: The current state of the account.
+        type: string
+        enum:
+          - new
+          - live
+          - suspending
+          - purging
+          - deleting
+          - deleted
+  - "$ref": "../State.yml"

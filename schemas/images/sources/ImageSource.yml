@@ -1,0 +1,69 @@
+title: ImageSource
+type: object
+description: An image source is a set of resources that direct the platform on where it can find the resources needed to build an image resource.
+required:
+  - id
+  - name
+  - origin
+  - hub_id
+  - state
+  - events
+  - creator
+  - requires
+properties:
+  id:
+    "$ref": "../../ID.yml"
+  hub_id:
+    "$ref": "../../HubID.yml"
+  name:
+    type: string
+    description: A name for the image source resource.
+  about:
+    type: object
+    description: Information about the image source resource.
+    required:
+      - description
+    properties:
+      description:
+        type: string
+        description: Some information about the image source resource.
+  origin:
+    type: object
+    description: The origin of the given image source.
+    oneOf:
+      - "$ref": "./DockerHubSource.yml"
+      - "$ref": "./DockerfileRepoSource.yml"
+      - "$ref": "./DockerfileTarSource.yml"
+      - "$ref": "./DockerRegistrySource.yml"
+  creator:
+    "$ref": "../../Creator.yml"
+  state:
+    "$ref": "./ImageSourceState.yml"
+  events:
+    title: ImageSourceEvents
+    type: object
+    description: A collection of timestamps for each event in the iamge source's lifetime.
+    required:
+      - created
+      - updated
+      - deleted
+    properties:
+      created:
+        description: The timestamp of when the iamge source was created.
+        "$ref": "../../DateTime.yml"
+      updated:
+        description: The timestamp of when the iamge source was updated.
+        "$ref": "../../DateTime.yml"
+      deleted:
+        description: The timestamp of when the iamge source was deleted.
+        "$ref": "../../DateTime.yml"
+  requires:
+    type: object
+    description: Information about a server resource this image requires to function properly.
+    required:
+      - nvidia_gpu
+    properties:
+      nvidia_gpu:
+        type: boolean
+        description: A boolean where true represents this image requies an Nvidia GPU to run properly.
+        nullable: true

@@ -1,0 +1,12 @@
+title: BillingOrder
+type: object
+description: Information about a billing order.
+required:
+  - id
+  - item_id
+properties:
+  id:
+    "$ref": "../ID.yml"
+  item_id:
+    type: string
+    description: The ID of the billing item.

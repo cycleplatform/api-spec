@@ -1,0 +1,10 @@
+description: Parameters for creating a new image. 
+content: 
+  application/json: 
+    schema: 
+      type: object 
+      properties: 
+        name: 
+          type: string 
+          description: A name for the image. 
+     

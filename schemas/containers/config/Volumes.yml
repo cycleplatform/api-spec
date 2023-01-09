@@ -1,0 +1,53 @@
+title: ContainerVolumes
+type: object
+description: Configuration settings for container volumes.
+required:
+  - read_only
+  - destination
+properties:
+  read_only:
+    type: boolean
+    description: A boolean where true marks the volume as read only.
+  local:
+    type: object
+    description: Configuration for settings local to the container filesystem.
+    required:
+      - max_size
+    properties:
+      max_size:
+        type: string
+        description: The maximum size the volume can grow to. A number followed by a size. `10G` would be 10 gigabytes.
+        example: "10G"
+      storage_pool:
+        type: boolean
+        description: A boolean where true signifies using the largest drive over 2TB for the target server.
+  destination:
+    type: string
+    description: The mountpoint path for the container.
+  reomte_access:
+    type: object
+    description: Configuration settings for remotely accessing the container volume.
+    required:
+      - enable
+      - password
+    properties:
+      enable:
+        type: boolean
+        description: A boolean where true represents this container volume being open to remote access connections over SFTP.
+      password:
+        type: object
+        description: Password configuration settings for the remote access of the container volume.
+        required:
+          - algorithm
+          - data
+        properties:
+          algorithm:
+            type: string
+            description: The hashing algorithm used to has the password.
+            enum:
+              - raw
+              - sha512
+              - md5
+          data:
+            type: string
+            description: The raw or hashed password.

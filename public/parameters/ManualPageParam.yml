@@ -1,0 +1,16 @@
+---
+name: page
+in: query
+required: false
+description: "In a list return, the data associated with the page number and size returned."
+style: form
+explode: true
+schema:
+  type: object
+  properties:
+    number:
+      type: number
+      description: The page to jump to
+    size:
+      type: number
+      description: The number of resources returned per page.

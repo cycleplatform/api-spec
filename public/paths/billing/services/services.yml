@@ -1,0 +1,47 @@
+get:
+  operationId: "getBillingServices"
+  tags:
+    - Billing
+  parameters:
+    - $ref: "../../../parameters/SortParam.yml"
+    - $ref: "../../../parameters/FilterParam.yml"
+    - $ref: "../../../parameters/PageParam.yml"
+  summary: List Billing Services
+  description: Requries the `billing-services-view` capability.
+  responses:
+    "200":
+      description: Returns a collection of billing service resources.
+      content:
+        application/json:
+          schema:
+            title: "ListBillingServicesResponse"
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  "$ref": "../../../../schemas/billing/Service.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"

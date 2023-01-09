@@ -1,0 +1,39 @@
+description: Parameters for creating a provider.
+content:
+  application/json:
+    schema:
+      type: object
+      required:
+        - integration
+      properties:
+        integration:
+          type: object
+          description: An integration object defining the provider integration assets and endpoints.
+          properties:
+            native:
+              type: object
+              description: Nativly supported IAL provider integration.
+              required:
+                - identifier
+                - auth
+              properties:
+                identifier:
+                  type: string
+                  description: An identifier for the provider.
+                auth:
+                  "$ref": "../IALAuth.yml"
+            abstraction:
+              type: object
+              description: Custom provider information.
+              required:
+                - name
+                - base_url
+              properties:
+                name:
+                  type: string
+                  description: A name for the custom provider abstraction.
+                base_url:
+                  type: string
+                  description: The url to use when making calls to the abstraction for provision events.
+                auth:
+                  "$ref": "../IALAuth.yml"

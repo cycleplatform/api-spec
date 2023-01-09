@@ -1,0 +1,6 @@
+title: BillingOrderIncludes
+description: All includeable resources linkable to the given billing order.
+type: object
+properties:
+  promo_codes:
+    "$ref": "../../includes/PromoCodeInclude.yml"

@@ -1,0 +1,10 @@
+title: PruneStackBuilds
+type: object 
+required: 
+  - action 
+properties: 
+  action: 
+    type: string 
+    description: The job to do. 
+    enum: 
+      - prune 

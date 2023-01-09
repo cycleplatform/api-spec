@@ -1,0 +1,5 @@
+title: ProviderServers.Server
+description: A resources that assocaited with a provider server.
+type: object
+additionalProperties:
+  "$ref": "../infrastructure/providers/ProviderServer.yml"

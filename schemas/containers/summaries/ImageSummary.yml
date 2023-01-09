@@ -1,0 +1,14 @@
+title: ContainerImageSummary
+description: A summary of the image this container was created from.
+type: object
+properties:
+  id:
+    "$ref": "../../ID.yml"
+  service:
+    type: string
+    nullable: true
+    description: If a service container, the identifier specifying which service it is.
+    enum:
+      - "loadbalancer"
+      - "discovery"
+      - "vpn"

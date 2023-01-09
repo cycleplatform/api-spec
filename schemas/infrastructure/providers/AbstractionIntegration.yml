@@ -1,0 +1,15 @@
+title: AbstractionIntegration
+description: Information about an infrastructure provider abstraction.
+type: object
+required:
+  - name
+  - base_url
+properties:
+  name:
+    type: string
+    description: A name for a given infrastructure abstraction.
+  base_url:
+    type: string
+    description: The base url, where the abstraction endpoints are located.
+  auth:
+    "$ref": "./IALAuth.yml"

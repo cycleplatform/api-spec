@@ -1,0 +1,14 @@
+title: DNSRecordState
+allOf:
+  - required:
+      - current
+    properties:
+      current:
+        description: The current state of the record.
+        type: string
+        enum:
+          - pending
+          - live
+          - deleting
+          - deleted
+  - "$ref": "../../State.yml"

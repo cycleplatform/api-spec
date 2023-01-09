@@ -1,0 +1,78 @@
+post:
+  tags:
+    - Backups
+  operationId: "restoreBackupJob"
+  parameters:
+    - name: containerId
+      description: The ID of the requested container.
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: backupId
+      description: The ID of the backup.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Create Backup Job
+  description: Used to restore a backup for a given container instance. Requires the `containers-backups-manage` capability.
+  requestBody:
+    description: Parameters for creating a new backup job.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - action
+            - contents
+          properties:
+            action:
+              type: string
+              enum:
+                - restore
+              description: The action to take.
+            contents:
+              type: object
+              description: Additional information the platform needs to create this job.
+              required:
+                - instance_id
+              properties:
+                instance_id:
+                  type: string
+                  description: The ID of the instance this backup is being restored to.
+  responses:
+    "200":
+      description: Returns a task descriptor.
+      content:
+        application/json:
+          schema:
+            title: "TaskResponse"
+            type: object
+            properties:
+              data:
+                "$ref": "../../../../schemas/jobs/TaskDescriptor.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"

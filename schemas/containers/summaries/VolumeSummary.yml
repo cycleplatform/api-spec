@@ -1,0 +1,15 @@
+title: VolumeSummary
+type: object
+description: A summary of relevant volume information.
+required:
+  - id
+  - hash
+  - config
+properties:
+  id:
+    "$ref": "../../ID.yml"
+  hash:
+    type: string
+    description: A unique hash for the given volume.
+  config:
+    "$ref": "../config/Volumes.yml"

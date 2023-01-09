@@ -1,0 +1,29 @@
+title: NodeMetaStatsStats
+type: object
+description: Statistics that pertain to a specific node.
+required:
+  - network
+  - uptime
+  - cpu
+  - load
+  - ram
+  - storage
+  - os
+  - versions
+properties:
+  network:
+    "$ref": "./Network.yml"
+  uptime:
+    "$ref": "./Uptime.yml"
+  cpu:
+    "$ref": "./CPU.yml"
+  load:
+    "$ref": "./Load.yml"
+  ram:
+    "$ref": "./RAM.yml"
+  storage:
+    "$ref": "./Storage.yml"
+  os:
+    "$ref": "./OS.yml"
+  versions:
+    "$ref": "./Versions.yml"

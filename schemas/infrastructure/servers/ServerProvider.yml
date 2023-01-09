@@ -1,0 +1,30 @@
+title: ServerProvider
+type: object
+description: A resource regarding the provider a given server is deployed from.
+required:
+  - identifier
+  - model
+  - location
+  - server
+properties:
+  identifier:
+    type: string
+    description: An identifier for the provider this server is deployed from.
+    # TODO might add the enum might not
+  model:
+    type: string
+    description: The model of the server that is deployed.
+  location:
+    type: string
+    description: A location where the server is deployed.
+  server:
+    type: string
+    description: A provider specific identifier for the server.
+  init_ips:
+    description: The IP's assigned to this server during provisioning.
+    type: array
+    items:
+      type: string
+  mac_addr:
+    type: string
+    description: The mac address for the server.

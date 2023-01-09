@@ -1,0 +1,20 @@
+---
+title: EnvironmentServiceContainerSummary
+type: object
+description: An object containing information about a service container associated with this environment.
+required:
+- enable
+- container_id
+- state
+- high_availability
+properties:
+  enable:
+    type: boolean
+    description: Whether or not the service is enabled.
+  container_id:
+    $ref: "../../ID.yml"
+  state:
+    $ref: "../../containers/ContainerState.yml"
+  high_availability:
+    type: boolean
+    description: Whether or not the service is deployed in high availability

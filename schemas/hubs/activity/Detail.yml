@@ -1,0 +1,12 @@
+title: ActivityDetail
+type: object
+description: Details about a given event that is part of an activity.
+properties:
+  id:
+    "$ref": "../../ID.yml"
+  number:
+    type: integer
+    description: A number describing the amount of the resource that exists.
+  string:
+    type: string
+    description: Additional information.

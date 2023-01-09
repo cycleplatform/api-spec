@@ -1,0 +1,6 @@
+---
+title: Events
+description: Cycle resources usually contain an events field, the event being the key and a formatted time string being the value.
+type: object
+additionalProperties:
+  $ref: "./DateTime.yml"

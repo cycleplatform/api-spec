@@ -1,0 +1,59 @@
+title: BillingService
+type: object
+description: Information about billing service.
+required:
+  - id
+  - creator
+  - hub_id
+  - title
+  - order
+  - item
+  - events
+  - discount
+  - price
+  - term
+  - state
+properties:
+  id:
+    "$ref": "../ID.yml"
+  hub_id:
+    "$ref": "../HubID.yml"
+  creator:
+    "$ref": "../Creator.yml"
+  title:
+    type: string
+    description: Billing service title.
+  order:
+    "$ref": "./orders/Order.yml"
+  item:
+    "$ref": "./ServiceItem.yml"
+  discount:
+    "$ref": "./Discount.yml"
+  price:
+    "$ref": "./BillingAmount.yml"
+  term:
+    "$ref": "./Term.yml"
+  events:
+    title: BillingServiceEvents
+    type: object
+    description: A collection of timestamps for each event in the billing service's lifetime.
+    required:
+      - created
+      - updated
+      - deleted
+      - last_billed
+    properties:
+      created:
+        description: The timestamp of when the billing service was created.
+        "$ref": "../DateTime.yml"
+      updated:
+        description: The timestamp of when the billing service was updated.
+        "$ref": "../DateTime.yml"
+      deleted:
+        description: The timestamp of when the billing service was deleted.
+        "$ref": "../DateTime.yml"
+      last_billed:
+        description: The timestamp of when the billing service was last billed.
+        "$ref": "../DateTime.yml"
+  state:
+    "$ref": "./BillingServiceState.yml"

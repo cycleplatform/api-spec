@@ -1,0 +1,14 @@
+---
+title: EnvironmentMeta
+type: object
+description: A list of meta fields that can be applied to this environment.
+# No required properties
+properties:
+  containers_count:
+    $ref: "../StateCountSummary.yml"
+  instances_count:
+    $ref: "../StateCountSummary.yml"
+  containers:
+    type: array
+    items:
+      $ref: "../containers/summaries/ContainerSummary.yml"

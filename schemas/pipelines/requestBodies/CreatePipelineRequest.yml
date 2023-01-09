@@ -1,0 +1,20 @@
+description: Parameters for creating a new pipeline. 
+content: 
+  application/json:
+    schema: 
+      type: object 
+      required: 
+        - name 
+      properties: 
+        name: 
+          type: string 
+          description: A name for the pipeline.
+        stages: 
+          description: An array of stages. 
+          type: array 
+          items: 
+            "$ref": "../PipelineStage.yml" 
+        disable: 
+          type: boolean 
+          description: A boolean where true signifies the pipeline is disabled. 
+        

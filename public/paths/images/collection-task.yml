@@ -1,0 +1,67 @@
+post:
+  tags:
+    - Images
+  operationId: "createImageCollectionJob"
+  parameters: []
+  summary: Images Prune
+  description: Used to perform different actions on a given image. Requires the `images-delete` capability.
+  requestBody:
+    description: Parameters for creating a new images collection job.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - action
+            - contents
+          properties:
+            action:
+              type: string
+              description: The action is the job type to create.
+              enum:
+                - prune
+            contents:
+              type: object
+              description: Additional contents needed by the platform to create the job.
+              required:
+                - source_ids
+              properties:
+                source_ids:
+                  description: A list of source_ids to be pruned.
+                  type: array
+                  items:
+                    type: string
+  responses:
+    "200":
+      description: Returns a task descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                "$ref": "../../../schemas/jobs/TaskDescriptor.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"

@@ -1,0 +1,16 @@
+title: ReconfigureVolumeTask 
+type: object
+required:
+  - action
+  - contents
+properties:
+  action:
+    type: string
+    enum:
+      - reconfigure_volumes
+    description: The action to take.
+  contents:
+    description: An array of volume objects to be reconfigured.
+    type: array
+    items:
+      "$ref": "../summaries/VolumeSummary.yml"

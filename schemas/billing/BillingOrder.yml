@@ -1,0 +1,73 @@
+title: BillingOrder
+type: object
+description: Information about an order.
+required:
+  - id
+  - hub_id
+  - creator
+  - promo_code_id
+  - term
+  - approved
+  - items
+  - total_price
+  - events
+  - state
+properties:
+  id:
+    "$ref": "../ID.yml"
+  hub_id:
+    "$ref": "../HubID.yml"
+  creator:
+    "$ref": "../Creator.yml"
+  promo_code_id:
+    type: string
+    nullable: true
+    description: An ID associated with a promo code used with the order.
+  term:
+    "$ref": "./Term.yml"
+  approved:
+    type: boolean
+    description: A boolean where true represents the order is approved to be paid by the user.
+  items:
+    type: array
+    items:
+      "$ref": "./ServiceItem.yml"
+  total_price:
+    type: integer
+    description: 1/10th of a cent.
+  events:
+    title: BillingOrderEvents
+    type: object
+    description: A collection of timestamps for each event in the billing order's lifetime.
+    required:
+      - created
+      - updated
+      - deleted
+      - expires
+    properties:
+      created:
+        description: The timestamp of when the billing order was created.
+        "$ref": "../DateTime.yml"
+      updated:
+        description: The timestamp of when the billing order was updated.
+        "$ref": "../DateTime.yml"
+      deleted:
+        description: The timestamp of when the billing order was deleted.
+        "$ref": "../DateTime.yml"
+      expires:
+        description: The timestamp of when the billing order expires.
+        "$ref": "../DateTime.yml"
+  state:
+    allOf:
+      - required:
+          - current
+        properties:
+          current:
+            description: The current state of the order.
+            type: string
+            enum:
+              - new
+              - processed
+              - deleting
+              - deleted
+      - "$ref": "../State.yml"

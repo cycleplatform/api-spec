@@ -1,0 +1,31 @@
+title: InstanceTelemetryResourceSnapshot
+description: A resource snapshot that shows instance telemetry.
+type: object
+required:
+  - time
+  - cpu
+  - memory
+  - processes
+properties:
+  time:
+    description: A timestamp of the time this snapshot was captured at.
+    "$ref": "../../../DateTime.yml"
+  hub_id:
+    "$ref": "../../../HubID.yml"
+  container_id:
+    type: string
+    description: An ID for an associated container.
+  instance_id:
+    type: string
+    description: An ID for an associated instance.
+  environment_id:
+    type: string
+    description: An ID for an associated environment.
+  cpu:
+    "$ref": "../snapshots/CPUSnapshot.yml"
+  memory:
+    "$ref": "../snapshots/MemorySnapshot.yml"
+  processes:
+    "$ref": "../snapshots/ProcessesSnapshot.yml"
+  hugetlb:
+    "$ref": "HugeTLB.yml"

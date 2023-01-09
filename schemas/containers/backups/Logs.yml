@@ -1,0 +1,45 @@
+title: BackupLogs
+type: object 
+description: Backup logs for a given container. 
+required: 
+  - id 
+  - backup_id 
+  - hub_id 
+  - type 
+  - log 
+  - events 
+properties: 
+  id: 
+    "$ref": "../../ID.yml" 
+  backup_id: 
+    type: string 
+    description: An identifier for the backup. 
+  hub_id: 
+    "$ref": "../../HubID.yml" 
+  type: 
+    type: string 
+    description: The type of the backup log. 
+    enum: 
+      - restore 
+      - backup 
+  log: 
+    type: string 
+    description: The log. 
+  events:
+    title: BackupLogEvents
+    type: object
+    description: A collection of timestamps for each event in the backup log's lifetime.
+    required:
+      - created
+      - updated
+      - deleted
+    properties:
+      created:
+        description: The timestamp of when the backup log was created.
+        "$ref": "../../DateTime.yml"
+      updated:
+        description: The timestamp of when the backup log was updated.
+        "$ref": "../../DateTime.yml"
+      deleted:
+        description: The timestamp of when the backup log was deleted.
+        "$ref": "../../DateTime.yml"

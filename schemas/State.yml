@@ -1,0 +1,19 @@
+---
+title: State
+description: Information regarding the current state of the resource.
+type: object
+required:
+  - changed
+properties:
+  changed:
+    "$ref": "./DateTime.yml"
+  error:
+    type: object
+    description: An error, if any, that has occurred for this resource.
+    properties:
+      message:
+        type: string
+        description: Details about the error that has occurred.
+      time:
+        description: The timestamp of when the error was encountered.
+        "$ref": "./DateTime.yml"

@@ -1,0 +1,87 @@
+title: Container
+type: object
+description: Containers are a way to package together your application along with it's dependencies, and run in a resource isolated process. They provide consistency across different hosts, efficiency over traditional hosting methods, and facilitate a micro-service based approach, where each logical piece of your application is split into multiple, easily testable parts (such as API, Backend, Frontend, etc).
+required:
+  - id
+  - name
+  - identifier
+  - creator
+  - environment
+  - hub_id
+  - image
+  - config
+  - instances
+  - annotations
+  - stateful
+  - state
+  - events
+properties:
+  id:
+    "$ref": "../ID.yml"
+  name:
+    type: string
+    description: A user defined name for the container resource.
+  identifier:
+    type: string
+    description: A human readable slugged identifier for this container. Usually used as a key in a stack file.
+  creator:
+    "$ref": "../Creator.yml"
+  environment:
+    "$ref": "./summaries/ContainerEnvironmentSummary.yml"
+  hub_id:
+    "$ref": "../HubID.yml"
+  image:
+    "$ref": "./summaries/ImageSummary.yml"
+  stack:
+    "$ref": "./summaries/StackSummary.yml"
+  config:
+    "$ref": "./config/Config.yml"
+  instances:
+    type: integer
+    description: The number of instances for a given container.
+  volumes:
+    "$ref": "./summaries/VolumeSummary.yml"
+  annotations:
+    type: object
+    description: Custom meta data for a given container
+    nullable: true
+    additionalProperties:
+      type: string
+  role:
+    type: string
+    description: The role of a given container if it has one.
+    enum:
+      - orchestrator
+    nullable: true
+  stateful:
+    type: boolean
+    description: A boolean where true signifies the container is stateful.
+  deprecate:
+    type: boolean
+    description: A boolean where true signifies the container is marked as deprecated.
+  state:
+    "$ref": "./ContainerState.yml"
+  events:
+    title: ContainerEvents
+    type: object
+    description: A collection of timestamps for each event in the container's lifetime.
+    required:
+      - created
+      - updated
+      - deleted
+      - started
+    properties:
+      created:
+        description: The timestamp of when the container was created.
+        "$ref": "../DateTime.yml"
+      updated:
+        description: The timestamp of when the container was updated.
+        "$ref": "../DateTime.yml"
+      deleted:
+        description: The timestamp of when the container was deleted.
+        "$ref": "../DateTime.yml"
+      started:
+        description: The timestamp of when the container was started.
+        "$ref": "../DateTime.yml"
+  meta:
+    "$ref": "./ContainersMeta.yml"

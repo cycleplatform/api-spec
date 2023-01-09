@@ -1,0 +1,17 @@
+title: DNSZoneState 
+allOf: 
+  - required: 
+      - current 
+    properties: 
+      current: 
+        description: The current state of the zone. 
+        type: string 
+        enum: 
+          - new 
+          - pending
+          - verifying 
+          - live 
+          - disabled 
+          - deleting 
+          - deleted 
+  - "$ref": "../State.yml" 

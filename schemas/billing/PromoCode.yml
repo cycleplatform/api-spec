@@ -1,0 +1,36 @@
+title: PromoCode
+type: object
+description: A billing promo code.
+required:
+  - code
+  - credit
+  - expires
+  - state
+properties:
+  code:
+    type: string
+    description: The promo "code".
+  credit:
+    type: object
+    nullable: true
+    description: The amount of credit the promo code offers.
+    additionalProperties:
+      type: object
+      properties:
+        amount:
+          "$ref": "./BillingAmount.yml"
+        expires:
+          "$ref": "../DateTime.yml"
+  state:
+    title: PromoCodeState
+    allOf:
+      - required:
+          - current
+        properties:
+          current:
+            description: The current state of the promo code.
+            type: string
+            enum:
+              - live
+              - deleted
+      - "$ref": "../State.yml"

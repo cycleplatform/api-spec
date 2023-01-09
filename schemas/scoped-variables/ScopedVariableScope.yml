@@ -1,0 +1,44 @@
+title: ScopedVariableScope
+type: object
+description: Information about the assignment of the scoped variable and how it is invoked.
+required:
+  - access
+  - containers
+properties:
+  access:
+    type: object
+    description: The type or way the scoped variable is accessed.
+    required:
+      - env_variable
+      - internal_api
+    properties:
+      env_variable:
+        type: boolean
+        description: A boolean, where true represents this scoped variable is accessed like a normal environment variable.
+      internal_api:
+        type: boolean
+        description: A boolean, where true represents this scoped variable is accessed through Cycle's internal API.
+      file:
+        type: boolean
+        description: A boolean, where true represents this scoped variables is accessed as a file located at `/var/run/cycle/variables/<identifier>`
+  containers:
+    type: object
+    description: Information about the assignment of the scoped variable to different containers in the environment.
+    required:
+      - global
+      - ids
+      - identifiers
+    properties:
+      global:
+        type: boolean
+        description: A boolean where true represents the scoped variables is globally assigned to all current and future containers in the environment.
+      ids:
+        type: array
+        description: An array of container IDs, where each container identified will have access to the scoped variable.
+        items:
+          type: string
+      identifiers:
+        type: array
+        description: An array of container identifiers, where each container identfied will have access to the scoped variable.
+        items:
+          type: string

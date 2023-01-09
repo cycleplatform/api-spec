@@ -1,0 +1,67 @@
+post:
+  operationId: "DNSRecordTask"
+  tags:
+    - DNS
+  parameters:
+    - name: zoneId
+      description: The ID of the zone.
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: recordId
+      description: The ID of the record.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Create a DNS record Job
+  description: Used to perform different actionson a given DNS record, requires the `dns-manage` capability.
+  requestBody:
+    description: Parameters for creating a new DNS zone job.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - action
+          properties:
+            action:
+              type: string
+              description: The action that the job will take.
+              enum:
+                - generateCert
+  responses:
+    "200":
+      description: Returns a task descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                "$ref": "../../../../schemas/jobs/TaskDescriptor.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"

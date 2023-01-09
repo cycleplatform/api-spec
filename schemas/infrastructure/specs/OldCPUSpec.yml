@@ -1,0 +1,18 @@
+title: CPUsServerSpec
+type: object
+description: Information about the processing resources for a given server.
+required:
+  - count
+  - type
+properties:
+  count:
+    type: integer
+    description: The number of processor's.
+  type:
+    type: string
+    description: The model of processor.
+  extra:
+    type: object
+    description: Extra info about the processor.
+    additionalProperties:
+      type: string

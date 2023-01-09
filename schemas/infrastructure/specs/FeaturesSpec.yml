@@ -1,0 +1,24 @@
+title: FeaturesServerSpec 
+type: object
+required: 
+  - raid 
+description: The spec for server features.
+properties:
+  raid: 
+    type: string 
+    description: The type of raid supported, if any. 
+    nullable: true 
+  aws: 
+    type: object 
+    description: Features specific to AWS. 
+    required:   
+      - ena_support 
+      - ebs_optimized 
+    properties: 
+      ena_support: 
+        type: boolean 
+        description: A boolean where true indicates this is a machine that can support a much higher networking throughput. 
+      ebs_optimized: 
+        type: boolean 
+        description: A boolean where true indicates this is a machine that can support higher storage throughput. 
+  

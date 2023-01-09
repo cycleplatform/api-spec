@@ -1,0 +1,32 @@
+title: IALAuth
+type: object
+description: Infrastructure abstraction layer authentication information.
+properties:
+  namespace:
+    type: string
+    description: A namespace for the IAL entry.
+    # TODO check what these value def's should actually be
+  region:
+    type: string
+    description: Information about the region being used.
+  api_key:
+    type: string
+    description: The API key used to make a request against the given provider.
+  secret:
+    type: string
+    description: A secret.
+  config:
+    type: string
+    description: A config string.
+  cycle:
+    type: object
+    description: Information about the Cycle properties making the request.
+    required:
+      - hub_name
+      - hub_id
+    properties:
+      hub_name:
+        type: string
+        description: The name of the hub.
+      hub_id:
+        "$ref": "../../HubID.yml"

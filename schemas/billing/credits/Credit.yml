@@ -1,0 +1,70 @@
+title: BillingCredit.yml
+type: object
+description: Information about a billing credit.
+required:
+  - id
+  - hub_id
+  - description
+  - creator
+  - account_id
+  - amount
+  - amount_remaining
+  - expires
+  - events
+  - state
+properties:
+  id:
+    "$ref": "../../ID.yml"
+  hub_id:
+    "$ref": "../../HubID.yml"
+  description:
+    type: string
+    description: Some extra information about the billing credit.
+  account_id:
+    type: string
+    description: The account the credit was issued to.
+  amount:
+    type: integer
+    description: The amount of credit.
+  amount_remaining:
+    type: integer
+    description: The amount of the credit that remains after being applied to invoices.
+  expires:
+    nullable: true
+    type: object
+    description: Information on when the billing credit expires.
+    properties:
+      date:
+        description: A timestamp of when the billing credit expires.
+        "$ref": "../../DateTime.yml"
+  events:
+    title: BillingCreditEvents
+    type: object
+    description: A collection of timestamps for each event in the billing order's lifetime.
+    required:
+      - created
+      - updated
+      - deleted
+    properties:
+      created:
+        description: The timestamp of when the billing order was created.
+        "$ref": "../../DateTime.yml"
+      updated:
+        description: The timestamp of when the billing order was updated.
+        "$ref": "../../DateTime.yml"
+      deleted:
+        description: The timestamp of when the billing order was deleted.
+        "$ref": "../../DateTime.yml"
+  state:
+    allOf:
+      - required:
+          - current
+        properties:
+          current:
+            description: The current state of the credit.
+            type: string
+            enum:
+              - new
+              - live
+              - expired
+      - "$ref": "../../State.yml"

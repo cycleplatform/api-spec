@@ -1,0 +1,61 @@
+---
+title: Environment
+type: object
+description:
+  Environments are groups of containers with a private network built between
+  them. For more information on environments, see the [main docs](https://docs.cycle.io/environments/overview/).
+required:
+  - id
+  - name
+  - cluster
+  - about
+  - creator
+  - hub_id
+  - state
+  - events
+  - features
+  - services
+  - private_network
+properties:
+  id:
+    "$ref": "../ID.yml"
+  name:
+    type: string
+    description: A user defined name for the environment resource.
+  cluster:
+    type: string
+    description: The cluster this environment is associated with.
+  about:
+    "$ref": "./EnvironmentAbout.yml"
+  creator:
+    "$ref": "../Creator.yml"
+  hub_id:
+    "$ref": "../HubID.yml"
+  state:
+    "$ref": "./EnvironmentState.yml"
+  events:
+    title: EnvironmentEvents
+    type: object
+    description: A collection of timestamps for each event in the environment's lifetime.
+    required:
+      - created
+      - updated
+      - deleted
+    properties:
+      created:
+        description: The timestamp of when the environment was created.
+        "$ref": "../DateTime.yml"
+      updated:
+        description: The timestamp of when the environment was updated.
+        "$ref": "../DateTime.yml"
+      deleted:
+        description: The timestamp of when the environment was deleted.
+        "$ref": "../DateTime.yml"
+  features:
+    "$ref": "./Features.yml"
+  services:
+    "$ref": "./EnvironmentServices.yml"
+  private_network:
+    "$ref": "./PrivateNetwork.yml"
+  meta:
+    $ref: "./EnvironmentMeta.yml"

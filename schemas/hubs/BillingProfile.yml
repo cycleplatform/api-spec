@@ -1,0 +1,28 @@
+title: HubBillingProfile 
+type: object 
+description: A billing profile for a given hub. 
+required: 
+  - term 
+  - plans 
+properties: 
+  term: 
+    "$ref": "../billing/Term.yml" 
+  allow_prepaid: 
+    type: boolean 
+    description: A boolean where true represents this account being approved to use a prepaid card for billing transactions. 
+  disable: 
+    type: boolean 
+    description: A boolean where true means this billing profile is disabled. 
+  plans: 
+    type: object 
+    description: Information about the plan associated with this profile. 
+    required: 
+      - tier_id 
+      - support_id 
+    properties: 
+      tier_id: 
+        type: string 
+        description: An ID that maps to a type of hub tier. 
+      support_id: 
+        type: string 
+        description: An ID that maps to the type of support for a given billing profile. 

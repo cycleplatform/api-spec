@@ -1,0 +1,17 @@
+title: InstanceTelemetryReportRequest
+type: object
+description: A summary of report requests and when they occured.
+required:
+  - instance_id
+  - start
+  - end
+properties:
+  instance_id:
+    type: string
+    description: The ID of the instance this telemetry reporting pertains to.
+  start:
+    description: A timestamp of when the snapshot began.
+    "$ref": "../../../DateTime.yml"
+  end:
+    description: A timestamp of when the snapshot ended.
+    "$ref": "../../../DateTime.yml"

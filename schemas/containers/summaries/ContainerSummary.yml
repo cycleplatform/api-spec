@@ -1,0 +1,23 @@
+---
+title: ContainerSummary
+type: object
+description: Contains useful and relevant data/statistics for a container that would otherwise be several separate API calls.
+required:
+  - id
+  - name
+  - state
+  - image
+  - environment
+properties:
+  id:
+    "$ref": "../../ID.yml"
+  name:
+    type: string
+    description: A user defined name for the container resource.
+  state:
+    $ref: "../ContainerState.yml"
+  image:
+    $ref: "./ContainerImageSummary.yml"
+  environment:
+    $ref: "./ContainerEnvironmentSummary.yml"
+  

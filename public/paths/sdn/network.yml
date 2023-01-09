@@ -1,0 +1,145 @@
+get:
+  operationId: "getNetwork"
+  tags:
+    - SDN
+  parameters:
+    - name: networkId
+      in: path
+      required: true
+      description: The ID of the network.
+      schema:
+        type: string
+  summary: Fetch SDN
+  description: Requires the `sdn-networks-view` capability.
+  responses:
+    "200":
+      description: Returns a single network resource.
+      content:
+        application/json:
+          schema:
+            title: "SDNFetchResponse"
+            type: object
+            properties:
+              data:
+                "$ref": "../../../schemas/sdn/SDNNetwork.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+patch:
+  operationId: "updateSDNNetwork"
+  tags:
+    - SDN
+  parameters:
+    - name: networkId
+      in: path
+      required: true
+      description: The ID of the network.
+      schema:
+        type: string
+  summary: Update SDN
+  description: Requires the `sdn-networks-manage` capability.
+  requestBody:
+    "$ref": "../../../schemas/sdn/requestBodies/UpdateSDNRequest.yml"
+  responses:
+    "200":
+      description: Returns a network resource.
+      content:
+        application/json:
+          schema:
+            title: "SDNUpdateResponse"
+            type: object
+            properties:
+              data:
+                "$ref": "../../../schemas/sdn/SDNNetwork.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+delete:
+  operationId: "deleteSDNNetwork"
+  tags:
+    - SDN
+  parameters:
+    - name: networkId
+      in: path
+      required: true
+      description: The ID of the network.
+      schema:
+        type: string
+  summary: Delete SDN
+  description: Requires the `sdn-networks-manage` capability.
+  responses:
+    "200":
+      description: Returns a task descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                "$ref": "../../../schemas/jobs/TaskDescriptor.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"

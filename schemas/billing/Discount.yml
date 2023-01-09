@@ -1,0 +1,15 @@
+title: BillingDiscount
+type: object
+description: Billing discount information.
+required:
+  - id
+  - amount
+  - expires
+properties:
+  id:
+    "$ref": "../ID.yml"
+  amount:
+    "$ref": "./BillingAmount.yml"
+  expires:
+    description: A timestamp of when the discount expires.
+    "$ref": "../DateTime.yml"

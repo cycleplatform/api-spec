@@ -1,0 +1,13 @@
+title: NativeProviderIdentifier
+type: string
+description: An identifier for the provider
+enum:
+  - equinix-metal
+  - coreweave
+  - psychz-networks
+  - vultr
+  - hivelocity
+  - aws
+  - azure
+  - gcp
+  - digitalocean

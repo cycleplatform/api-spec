@@ -1,0 +1,22 @@
+title: StackSource 
+type: object 
+description: A source for a stack to be created from. 
+required: 
+  - type 
+  - details 
+properties: 
+  type: 
+    type: string 
+    description: A type of stack source. 
+    enum: 
+      - raw 
+      - git-repo 
+  details: 
+    nullable: true
+    type: object 
+    description: A details object based on the `type` defined in `type`. 
+    oneOf: 
+      - "$ref": "./spec/RepoSpec.yml" 
+      - "$ref": "./spec/StackSpec.yml" 
+       
+    

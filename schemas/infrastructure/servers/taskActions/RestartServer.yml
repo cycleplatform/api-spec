@@ -1,0 +1,12 @@
+title: RestartServerAction
+type: object 
+description: A job that restarts the server.
+required: 
+  - action 
+properties: 
+  action: 
+    type: string 
+    description: The action to take. 
+    enum: 
+      - restart 
+    

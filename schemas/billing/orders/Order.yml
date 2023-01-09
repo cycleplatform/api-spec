@@ -1,0 +1,44 @@
+---
+title: Order
+type: object
+description: An order is a resource that describes a billing order
+required:
+  - hub_id
+  - creator
+  - promo_code_id
+  - term
+  - approved
+  - items
+  - total_price
+  - events
+  - state
+properties:
+  hub_id:
+    type: string
+  creator:
+    "$ref": "../../common/UserScope.yml"
+  promo_code_id:
+    type: string
+    nullable: true
+  term:
+    "$ref": "../Term.yml"
+  approved:
+    type: boolean
+  items:
+    type: array
+    items:
+      "$ref": "./OrderItem.yml"
+  total_price:
+    type: number
+  events:
+    title: OrderEvents
+    type: object
+    description: A collection of timestamps for each event in the orders lifetime.
+    required:
+      - expires
+    properties:
+      expires:
+        description: The timestamp of when the order expires.
+        "$ref": "../../DateTime.yml"
+  state:
+    "$ref": "./OrderState.yml"

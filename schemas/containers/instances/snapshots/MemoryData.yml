@@ -1,0 +1,15 @@
+title: MemoryData 
+type: object 
+properties: 
+  usage: 
+    type: number 
+    description: The number in bytes of memory being used by the instance at the time of the snapshot. 
+  max_usage: 
+    type: number 
+    description: The highest amoun tof memory usage since the last restart. 
+  fail_count: 
+    type: number 
+    description: The number of times the memory liimit was exceeded for the instance. 
+  limit: 
+    type: number 
+    description: The maximum number of bytes of memory this instance has acess to. 

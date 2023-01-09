@@ -1,0 +1,16 @@
+---
+name: page
+in: query
+required: false
+description: "In a list return, the data associated with the page number and size returned. 20 results per page, page 2 would be `page[size]=20&page[number]=2`"
+explode: true
+style: deepObject
+schema:
+  type: object
+  properties:
+    number:
+      type: number
+      description: The page to jump to
+    size:
+      type: number
+      description: The number of resources returned per page.

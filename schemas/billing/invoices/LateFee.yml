@@ -1,0 +1,20 @@
+title: LateFee
+type: object
+description: A late fee, applied to an invoice.
+required:
+  - id
+  - time
+  - description
+  - amount
+properties:
+  id:
+    "$ref": "../../ID.yml"
+  time:
+    description: A timestamp of when the late fee was created.
+    "$ref": "../../DateTime.yml"
+  description:
+    type: string
+    description: A description of the late fee.
+  amount:
+    type: integer
+    description: 1/10th of a cent.

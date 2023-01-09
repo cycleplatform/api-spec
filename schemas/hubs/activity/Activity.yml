@@ -1,0 +1,224 @@
+title: Activity
+type: object
+description: An resource representing information about activity taking place on a given hub.
+required:
+  - id
+  - hub_id
+  - user
+  - verbosity
+  - context
+  # - session
+  - changes
+  - annotations
+  - error
+  - component
+  - status
+  - event
+  - time
+properties:
+  id:
+    "$ref": "../../ID.yml"
+  hub_id:
+    "$ref": "../../HubID.yml"
+  user:
+    type: object
+    description: Userscope
+    required:
+      - type
+      - id
+    properties:
+      type:
+        type: string
+        description: The type of user.
+        enum:
+          - "account"
+          - "environment"
+          - "platform"
+          - "platform-pipeline"
+          - "employee"
+          - "api-key"
+          - "visitor"
+      id:
+        type: string
+        description: The given users ID.
+  verbosity:
+    type: integer
+    description: A number representing how verbose the acitivty reporting is for a given hub.
+  context:
+    "$ref": "./Context.yml"
+  session:
+    "$ref": "./Session.yml"
+  changes:
+    type: array
+    description: An array of changes.
+    items:
+      "$ref": "./Change.yml"
+  annotations:
+    type: object
+    description: A record of additional annotations for the activity.
+    additionalProperties:
+      type: string
+  error:
+    type: object
+    description: An object describing a given activity error.
+    nullable: true
+    required:
+      - message
+    properties:
+      message:
+        type: string
+        description: The error message.
+  component:
+    type: object
+    description: An object holding information about a component.
+    nullable: true
+    required:
+      - id
+      - type
+    properties:
+      id:
+        "$ref": "../../ID.yml"
+      type:
+        type: string
+        description: The type of component.
+  status:
+    type: string
+    description: A status for the given activity.
+    enum:
+      - info
+      - warning
+      - request
+      - success
+      - error
+  event:
+    type: string
+    description: The activity event.
+    enum:
+      - "hub.task.delete"
+      - "hub.update"
+      - "hub.create"
+      - "hub.images.prune"
+      - "hub.task.images.prune"
+      - "environment.initialize"
+      - "environment.start"
+      - "environment.stop"
+      - "environment.task.start"
+      - "environment.task.stop"
+      - "environment.task.initialize"
+      - "environment.delete"
+      - "environment.task.delete"
+      - "environment.update"
+      - "environment.create"
+      - "environment.services.discovery.task.reconfigure"
+      - "environment.services.lb.task.reconfigure"
+      - "environment.services.vpn.task.reconfigure"
+      - "image.import"
+      - "image.task.import"
+      - "image.update"
+      - "image.create"
+      - "image.delete"
+      - "image.task.delete"
+      - "image.source.create"
+      - "image.source.update"
+      - "image.source.task.delete"
+      - "container.create"
+      - "container.update"
+      - "container.initialize"
+      - "container.start"
+      - "container.task.start"
+      - "container.stop"
+      - "container.task.stop"
+      - "container.reconfigure"
+      - "container.task.reconfigure"
+      - "container.reconfigure.volumes"
+      - "container.task.reconfigure.volumes"
+      - "container.reimage"
+      - "container.task.reimage"
+      - "container.scale"
+      - "container.task.scale"
+      - "container.delete"
+      - "container.task.delete"
+      - "container.instance.error"
+      - "container.instance.sftp.login"
+      - "container.instance.migration.start"
+      - "container.instance.migration.revert"
+      - "container.instance.delete"
+      - "container.instances.delete"
+      - "container.instances.create"
+      - "container.instance.healthcheck.restarted"
+      - "container.backup.create"
+      - "container.backup.restore"
+      - "container.backup.task.restore"
+      - "container.backup.delete"
+      - "container.backup.task.delete"
+      - "dns.zone.task.verify"
+      - "dns.zone.task.delete"
+      - "dns.zone.update"
+      - "dns.zone.create"
+      - "dns.zone.verify"
+      - "dns.zone.delete"
+      - "dns.zone.record.cert.generate.auto"
+      - "dns.zone.record.cert.generate"
+      - "dns.zone.record.delete"
+      - "dns.zone.record.update"
+      - "dns.zone.record.create"
+      - "dns.zone.record.task.delete"
+      - "dns.zone.record.task.cert.generate"
+      - "stack.task.delete"
+      - "stack.update"
+      - "stack.create"
+      - "stack.task.prune"
+      - "stack.build.create"
+      - "stack.build.generate"
+      - "stack.build.deploy"
+      - "stack.build.delete"
+      - "stack.build.task.generate"
+      - "stack.build.task.delete"
+      - "infrastructure.server.task.delete"
+      - "infrastructure.server.task.restart"
+      - "infrastructure.server.task.provision"
+      - "infrastructure.server.update"
+      - "infrastructure.server.delete"
+      - "infrastructure.server.restart"
+      - "infrastructure.server.compute.restart"
+      - "infrastructure.server.provision"
+      - "infrastructure.server.live"
+      - "infrastructure.server.services.sftp.lockdown.auto"
+      - "infrastructure.server.reconfigure.features"
+      - "infrastructure.server.task.reconfigure.features"
+      - "infrastructure.provider.create"
+      - "infrastructure.provider.update"
+      - "infrastructure.provider.delete"
+      - "sdn.network.task.delete"
+      - "sdn.network.update"
+      - "sdn.network.create"
+      - "sdn.network.task.reconfigure"
+      - "infrastructure.ips.pool.task.delete"
+      - "billing.order.task.confirm"
+      - "billing.order.confirm"
+      - "billing.invoice.task.void"
+      - "billing.invoice.task.credit"
+      - "billing.invoice.task.refund"
+      - "billing.invoice.task.pay"
+      - "billing.invoice.pay"
+      - "billing.method.update"
+      - "billing.method.create"
+      - "billing.method.delete"
+      - "billing.method.task.delete"
+      - "hub.apikey.create"
+      - "hub.apikey.update"
+      - "hub.apikey.delete"
+      - "hub.membership.create"
+      - "hub.membership.delete"
+      - "pipeline.update"
+      - "pipeline.task.delete"
+      - "pipeline.delete"
+      - "pipeline.create"
+      - "pipeline.task.trigger"
+      - "pipeline.trigger"
+      - "pipeline.key.update"
+      - "pipeline.key.delete"
+      - "pipeline.key.create"
+  time:
+    description: A timestamp for when the activity took place.
+    "$ref": "../../DateTime.yml"

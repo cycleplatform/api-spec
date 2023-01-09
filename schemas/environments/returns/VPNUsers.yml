@@ -1,0 +1,45 @@
+title: VPNUser
+type: object
+description: A VPN user for a given VPN.
+required:
+  - id
+  - username
+  - creator
+  - last_login
+  - hub_id
+  - environment_id
+  - events
+properties:
+  id:
+    "$ref": "../../ID.yml"
+  username:
+    type: string
+    description: The username for the login.
+  creator:
+    "$ref": "../../Creator.yml"
+  last_login:
+    description: A timestamp of the last time the user logged into the VPN.
+    "$ref": "../../DateTime.yml"
+  hub_id:
+    "$ref": "../../HubID.yml"
+  environment_id:
+    type: string
+    description: An identifier for the environment the VPN service is associated with.
+  events:
+    title: VPNUserEvents
+    type: object
+    description: A collection of timestamps for each event in the VPN user's lifetime.
+    required:
+      - created
+      - updated
+      - deleted
+    properties:
+      created:
+        description: The timestamp of when the VPN user was created.
+        "$ref": "../../DateTime.yml"
+      updated:
+        description: The timestamp of when the VPN user was updated.
+        "$ref": "../../DateTime.yml"
+      deleted:
+        description: The timestamp of when the VPN user was deleted.
+        "$ref": "../../DateTime.yml"

@@ -1,0 +1,13 @@
+title: ScopedVariableState
+allOf:
+  - required:
+      - current
+    properties:
+      current:
+        description: The current state of the scoped variable.
+        type: string
+        enum:
+          - live
+          - deleting
+          - deleted
+  - "$ref": "../State.yml"

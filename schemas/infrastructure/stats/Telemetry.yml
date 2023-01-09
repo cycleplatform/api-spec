@@ -1,0 +1,52 @@
+title: ServerStatsTelemetery
+type: object
+description: Statistics about a given servers telemetery data.
+required:
+  - time
+  - load
+  - ram
+  - storage_base
+  - storage_pool
+properties:
+  time:
+    description: The timestamp for when the telemetery data was collected.
+    "$ref": "../../DateTime.yml"
+  load:
+    "$ref": "./Load.yml"
+  ram:
+    "$ref": "./RAM.yml"
+  storage_base:
+    type: object
+    description: Telemetry data for the base volume of a given server.
+    required:
+      - used
+      - free
+      - total
+    properties:
+      used:
+        type: integer
+        description: The amount of storage currently used in the base volume.
+      free:
+        type: integer
+        description: The amount of free space on the base volume.
+      total:
+        type: integer
+        description: The total amount of space on the base volume.
+        # TODO find out if this is bytes, KB, or MB
+  storage_pool:
+    type: object
+    description: User data storage across all devices.
+    required:
+      - data_percent
+      - meta_percent
+      - total
+    properties:
+      data_percent:
+        type: number
+        description: The percentage of storage used by user data.
+      meta_percent:
+        type: number
+        description: The percentage of storage used by the file allocation stables, etc.
+      total:
+        type: number
+        description: The total amount of storage available.

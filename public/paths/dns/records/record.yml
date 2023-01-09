@@ -1,0 +1,109 @@
+patch:
+  operationId: "updateDNSRecord"
+  tags:
+    - DNS
+  parameters:
+    - name: zoneId
+      description: The ID of the zone.
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: recordId
+      description: The ID of the record.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Update DNS Record
+  description: Requires the `dns-manage` capability.
+  requestBody:
+    "$ref": "../../../../schemas/dns/requestBodies/UpdateDNSRecordRequest.yml"
+  responses:
+    "200":
+      description: Returns a DNS record resource.
+      content:
+        application/json:
+          schema:
+            title: "DNSRecordUpdateResponse"
+            type: object
+            properties:
+              data:
+                "$ref": "../../../../schemas/dns/records/Record.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+delete:
+  operationId: "removeDNSRecord"
+  tags:
+    - DNS
+  parameters:
+    - name: zoneId
+      description: The ID of the zone.
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: recordId
+      description: The ID of the record.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Delete Record
+  description: Requires the `dns-manage` capability.
+  responses:
+    "200":
+      description: Returns a task descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                "$ref": "../../../../schemas/jobs/TaskDescriptor.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"

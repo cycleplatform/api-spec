@@ -1,0 +1,12 @@
+title: ImageIncludes
+description: All includable resources linkable to the given image.
+type: object
+properties:
+  creators:
+    "$ref": "../includes/CreatorInclude.yml"
+  stack_builds:
+    "$ref": "../includes/StackBuildIncludes.yml"
+  stacks:
+    "$ref": "../includes/StackIncludes.yml"
+  sources:
+    "$ref": "../includes/ImageSourceIncludes.yml"

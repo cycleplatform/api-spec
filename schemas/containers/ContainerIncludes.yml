@@ -1,0 +1,14 @@
+title: ContainerIncludes
+description: All includable resources linkable to the given container.
+type: object
+properties:
+  creators:
+    "$ref": "../includes/CreatorInclude.yml"
+  images:
+    "$ref": "../includes/ImagesIncludes.yml"
+  stack_builds:
+    "$ref": "../includes/StackBuildIncludes.yml"
+  stacks:
+    "$ref": "../includes/StackIncludes.yml"
+  environments:
+    "$ref": "../includes/EnvironmentIncludes.yml"

@@ -1,0 +1,50 @@
+---
+title: PublicAccount
+description: Publicly available information about an account
+type: object
+required:
+  - name
+  - email
+  - id
+properties:
+  name:
+    title: AccountName
+    description: The first and last name of an account owner
+    type: object
+    required:
+      - first
+      - last
+    properties:
+      first:
+        type: string
+        description: The first name of the account owner
+      last:
+        type: string
+        description: The last name of the account owner
+  email:
+    title: AccountEmail
+    description: Email information for an account
+    type: object
+    required:
+      - address
+      - verified
+      - added
+    properties:
+      address:
+        type: string
+        description: The email address
+      verified:
+        type: boolean
+        description: A boolean representing if the email has been verified
+      added:
+        $ref: "../DateTime.yml"
+  id:
+    title: AccountId
+    description: Id information for an account
+    type: string
+  events:
+    allOf:
+      - $ref: "../Events.yml"
+      - properties:
+          last_login:
+            $ref: "../DateTime.yml"

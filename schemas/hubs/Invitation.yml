@@ -1,0 +1,53 @@
+title: HubMembershipInvitation 
+type: object 
+description: Information about a hub membership invitation. 
+required: 
+  - sender 
+  - recipient 
+  - events 
+properties: 
+  sender: 
+    type: object 
+    description: Information about the origin account of the invitation. 
+    required: 
+      - id 
+      - type 
+    properties: 
+      id: 
+        "$ref": "../ID.yml" 
+      type: 
+        type: string 
+        description: The account type. 
+  recipient: 
+    type: string 
+    description: The email address for the invitations recipient. 
+  events:
+    title: InvitationEvents
+    type: object
+    description: A collection of timestamps for each event in the invitation's lifetime.
+    required:
+      - created
+      - updated
+      - deleted
+      - accepted
+      - declined 
+      - revoked 
+    properties:
+      created:
+        description: The timestamp of when the invitation was created.
+        "$ref": "../DateTime.yml"
+      updated:
+        description: The timestamp of when the invitation was updated.
+        "$ref": "../DateTime.yml"
+      deleted:
+        description: The timestamp of when the invitation was deleted.
+        "$ref": "../DateTime.yml"
+      accepted:
+        description: The timestamp of when the invitation was accepted.
+        "$ref": "../DateTime.yml"
+      declined:
+        description: The timestamp of when the invitation was declined.
+        "$ref": "../DateTime.yml"
+      revoked:
+        description: The timestamp of when the invitation was revoked.
+        "$ref": "../DateTime.yml"

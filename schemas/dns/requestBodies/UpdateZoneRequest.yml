@@ -1,0 +1,11 @@
+description: Parameters for updating a DNS Zone. 
+content: 
+  application/json: 
+    schema: 
+      type: object 
+      required: 
+        - hosted 
+      properties: 
+        hosted: 
+          type: boolean 
+          description: A boolean where true represents the desire for the origin to be of the type `hosted`. 

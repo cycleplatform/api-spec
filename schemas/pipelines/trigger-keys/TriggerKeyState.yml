@@ -1,0 +1,13 @@
+title: TriggerKeyState
+allOf:
+  - required:
+      - current
+    properties:
+      current:
+        description: The current state of the trigger key.
+        type: string
+        enum:
+          - live 
+          - deleting 
+          - deleted
+  - "$ref": "../../State.yml"

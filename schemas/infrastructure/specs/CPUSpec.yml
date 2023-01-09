@@ -1,0 +1,27 @@
+title: CPUServerSpec
+type: object
+description: Information about the CPU for a given server.
+required:
+  - count
+  - type
+properties:
+  count:
+    type: integer
+    description: The number of CPUs.
+  cores:
+    type: integer
+    description: The number of cores.
+  threads:
+    type: integer
+    description: The number of threads.
+  type:
+    type: string
+    description: The type of the CPU.
+  shared:
+    type: boolean
+    description: A boolean where true represents the CPU is shared.
+  extra:
+    type: object
+    description: Extra information about the CPU if there is any.
+    additionalProperties:
+      type: string

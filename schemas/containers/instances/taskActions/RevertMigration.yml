@@ -1,0 +1,10 @@
+title: RevertMigrationAction
+type: object 
+required: 
+  - action 
+properties: 
+  action: 
+    type: string 
+    enum: 
+      - migrate_revert 
+    description: The name of the action to perform. 

@@ -1,0 +1,106 @@
+title: ContainerIntegrations
+type: object
+description: Configuration settings for integrations with a given container.
+properties:
+  webhooks:
+    type: object
+    description: Webhooks that can be set for specific event reporting and advanced container configurations.
+    properties:
+      events:
+        type: object
+        description: Container events that can be configured to report to a webhook.
+        properties:
+          deploy:
+            type: string
+            description: A webhook to hit when a container deploy event happens.
+          start:
+            type: string
+            description: A webhook to hit when a container start event happens.
+          stop:
+            type: string
+            description: A webhook to hit when a container stop event happens.
+      config:
+        type: string
+        description: An endpoint that the platform will react out to with a get request.  This endpoint serves a partial container config which can modify `runtime`, `resources`, and `integrations` configurations.
+  files:
+    type: array
+    description: Inject remotely hosted files into container instances at runtime.
+    items:
+      type: object
+      description: These objects are sources and destinations for the given files.
+      required:
+        - source
+        - destination
+      properties:
+        source:
+          type: string
+          description: The http endpoint that is hosting the files to be used.
+        destination:
+          type: string
+          description: The path in the container for these files to be injected.
+  lets_encrypt:
+    type: object
+    description: Configuration settings to embed a TLS certificate in the container.
+    required:
+      - enable
+    properties:
+      enable:
+        type: boolean
+        description: A boolean where true represents the desire for a container to have its corresponding TLS certificate(s) injected into the configured path(s).
+      certificate_path:
+        type: string
+        description: Path where the `certificate.cert` will be saved.
+      chain_path:
+        type: string
+        description: Path where the `certificate.chain` will be saved.
+      key_path:
+        type: string
+        description: Path where the `certificate.key` will be saved.
+      bundle_path:
+        type: string
+        description: Path where the `certificate.bundle` will be saved.
+      additional_certs_path:
+        type: string
+        description: File path where any remaining certificate files will be stored.
+  backups:
+    type: object
+    description: Automated backups configuration for the given container.
+    required:
+      - destination
+      - backup
+      - restore
+    properties:
+      destination:
+        type: string
+        description: The storage provider to use for backups.
+        enum:
+          - "backblaze-b2"
+      backup:
+        type: object
+        description: Configuration settings for each backup.
+        required:
+          - command
+        properties:
+          command:
+            type: string
+            description: The command to run for the backup.
+          timeout:
+            type: integer
+            description: The time in seconds for the backup to attempt to run before timing out.
+            nullable: true
+          cron_string:
+            type: string
+            description: A cron string that configures how often the backup will run.
+      restore:
+        type: object
+        description: Configuration settings for restoring from a backup.
+        required:
+          - command
+        properties:
+          command:
+            type: string
+            description: The command to run for restoring from a backup.
+          timeout:
+            type: integer
+            nullable: true
+            description: The time in seconds for the restore to appempt to complete before timing out.

@@ -1,0 +1,12 @@
+title: AccountInfo
+type: object
+description: Information about a given account.
+required:
+  - id
+  - ip
+properties:
+  id:
+    "$ref": "../ID.yml"
+  ip:
+    type: string
+    description: The IP of the computer used during login.

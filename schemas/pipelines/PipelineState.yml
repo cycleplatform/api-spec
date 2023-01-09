@@ -1,0 +1,13 @@
+title: PipelineState
+allOf:
+  - required:
+      - current
+    properties:
+      current:
+        description: The current state of the pipeline.
+        type: string
+        enum:
+          - new
+          - deleting
+          - deleted
+  - "$ref": "../State.yml"

@@ -1,0 +1,14 @@
+title: HugeTLB 
+type: object 
+description: HugeTLB data. 
+properties: 
+  usage: 
+    type: integer 
+    description: The number of bytes being consumed by huge pages of all sizes. 
+  max: 
+    type: integer 
+    description: The maximum number of bytes allowed to be used for huge pages for this instance. 
+  fail_count: 
+    type: integer 
+    description: The number of times the hugeTLB memory limit has been exceeded by this instance. 
+  

@@ -1,0 +1,39 @@
+title: ProviderServer
+type: object
+description: A server from a provider.
+required:
+  - id
+  - name
+  - description
+  - specs
+  - provider
+  - price
+  - compatible
+  - low_resource
+  - location_ids
+properties:
+  id:
+    "$ref": "../../ID.yml"
+  name:
+    type: string
+    description: A name for the server.
+  description:
+    type: string
+    description: A description of the server.
+  specs:
+    "$ref": "./ServerSpecs.yml"
+  provider:
+    "$ref": "./ProviderServerSpec.yml"
+  price:
+    "$ref": "../../billing/BillingAmount.yml"
+  compatible:
+    type: boolean
+    description: A boolean where true signifies this server is compatible with the platform.
+  low_resource:
+    type: boolean
+    description: A boolean where true signifies the server has a limited amount of resources and should only be used for very lightweight workloads.
+  location_ids:
+    description: An array of location IDs where this server type is available.
+    type: array
+    items:
+      type: string

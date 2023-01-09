@@ -1,0 +1,107 @@
+get:
+  operationId: "getStackBuild"
+  tags:
+    - Stacks
+  parameters:
+    - name: stackId
+      in: path
+      required: true
+      description: The ID of the stack.
+      schema:
+        type: string
+    - name: buildId
+      in: path
+      required: true
+      description: The ID of the build.
+      schema:
+        type: string
+  summary: Fetch Stack Build
+  description: Requires the `stacks-view` capability.
+  responses:
+    "200":
+      description: Returns a stack build resource.
+      content:
+        application/json:
+          schema:
+            title: "FetchStackBuildResponse"
+            type: object
+            properties:
+              data:
+                "$ref": "../../../../schemas/stacks/builds/StackBuild.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+delete:
+  operationId: "deleteStackBuild"
+  tags:
+    - Stacks
+  parameters:
+    - name: stackId
+      in: path
+      required: true
+      description: The ID of the stack.
+      schema:
+        type: string
+    - name: buildId
+      in: path
+      required: true
+      description: The ID of the build.
+      schema:
+        type: string
+  summary: Delete Stack Build
+  description: Requires the `stacks-manage` capability.
+  responses:
+    "200":
+      description: Returns a task descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                "$ref": "../../../../schemas/jobs/TaskDescriptor.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"

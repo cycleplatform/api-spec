@@ -1,0 +1,31 @@
+title: PrivateNetwork 
+type: object
+description: Private network information for a Cycle SDN. 
+required: 
+  - vxlan_tag 
+  - subnet 
+  - mac_addr_suffix 
+  - ipv6 
+properties: 
+  vxlan_tag: 
+    type: integer 
+    description: A tag used to ensure proper routing. 
+  subnet: 
+    type: string 
+    description: The subnet of the private network.
+  mac_addr_suffix: 
+    type: integer 
+    description: A number used to ensure a MAC address exists for each network. 
+  ipv6: 
+    type: object 
+    description: IPv6 infromation for the network.
+    required: 
+      - ip 
+      - cidr 
+    properties: 
+      ip: 
+        type: string 
+        description: The networks IPv6 base.
+      cidr: 
+        type: string 
+        description: The private network CIDR. 

@@ -1,0 +1,14 @@
+description: Parameters for creating a new pipeline trigger key.
+content: 
+  application/json: 
+    schema: 
+      type: object 
+      properties: 
+        name: 
+          type: string 
+          description: A name for the trigger key. 
+        ips: 
+          description: An array of ips this trigger key is usable from. 
+          type: array 
+          items: 
+            type: string 

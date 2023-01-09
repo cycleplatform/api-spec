@@ -1,0 +1,121 @@
+title: Instance
+type: object
+description: A container instance resource.
+required:
+  - id
+  - hub_id
+  - container_id
+  - location_id
+  - creator
+  - environment
+  - stateful
+  - provider
+  - server_id
+  - ready_state
+  - hostname
+  - migration
+  - service
+  - state
+  - events
+properties:
+  id:
+    "$ref": "../../ID.yml"
+  hub_id:
+    "$ref": "../../HubID.yml"
+  container_id:
+    type: string
+    description: A container identifier for the container that is associated with this instance.
+  location_id:
+    type: string
+    description: A location identifier that's associated with the server this instance is deployed to.
+  environment:
+    "$ref": "../../environments/summaries/EnvironmentSummary.yml"
+  stateful:
+    type: object
+    description: Additional information about the instance relating to its setting as being stateful.
+    nullable: true
+    required:
+      - id
+      - base_hostname
+    properties:
+      id:
+        "$ref": "../../ID.yml"
+      base_hostname:
+        type: string
+        description: The base hostname for the given instance.
+  provider:
+    "$ref": "../summaries/ProviderSummary.yml"
+  server_id:
+    type: string
+    description: An identifier for the server this instance is deployed to.
+  ready_state:
+    type: string
+    description: The state as it relates to the following.
+      * `active` - instance can be started or stopped.
+      * `purge` - instance should be deleted.
+      * `hibernate` - instance is active but not allowed to run.
+    enum:
+      - active
+      - purge
+      - hibernate
+  hostname:
+    type: string
+    description: The hostname of the instance.
+  migration:
+    type: object
+    description: If this instance is scheduled to be migrated or has been migrated in the past, there will be information populating this field with the server that the instance came from or the server that the instance was moved to and the instance ID.
+    nullable: true
+    required:
+      - key
+      - copy_volumes
+    properties:
+      to:
+        "$ref": "./MigrationInstance.yml"
+      from:
+        "$ref": "./MigrationInstance.yml"
+      started:
+        description: A timestamp of when the migration was started.
+        "$ref": "../../DateTime.yml"
+      completed:
+        description: A timestamp of when the migration was completed.
+        "$ref": "../../DateTime.yml"
+      key:
+        type: string
+        description: A key used by the platform to verify the migration.
+      copy_volumes:
+        type: boolean
+        description: A boolean where true represents the volumes for the instance should be copied to the new server as well.
+  purge_time:
+    description: If the instance was purged, the timestamp of when that happened.
+    "$ref": "../../DateTime.yml"
+  service:
+    type: string
+    description: If the instance is an instance of a service container that will be denoted here.
+    nullable: true
+    enum:
+      - discovery
+      - vpn
+      - loadbalancer
+  state:
+    "$ref": "./InstanceState.yml"
+  events:
+    title: InstanceEvents
+    description: A collection of timestamps for each event in the instnaces lifetime.
+    required:
+      - created
+      - updated
+      - deleted
+      - first_started
+    properties:
+      created:
+        description: The timestamp of when the instance was created.
+        "$ref": "../../DateTime.yml"
+      updated:
+        description: The timestamp of when the instance was updated.
+        "$ref": "../../DateTime.yml"
+      deleted:
+        description: The timestamp of when the instance was deleted.
+        "$ref": "../../DateTime.yml"
+      first_started:
+        description: The timestamp of when the instance was started.
+        "$ref": "../../DateTime.yml"

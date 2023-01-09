@@ -1,0 +1,19 @@
+title: StackBuildState
+allOf:
+  - required:
+      - current
+    properties:
+      current:
+        description: The current state of the stack build.
+        type: string
+        enum:
+          - new
+          - importing
+          - building
+          - verifying
+          - saving
+          - live
+          - deploying
+          - deleting
+          - deleted
+  - "$ref": "../../State.yml"

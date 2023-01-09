@@ -1,0 +1,29 @@
+title: LocationGeographic
+type: object
+description: Geographic information about a provider location.
+required:
+  - latitude
+  - longitude
+  - city
+  - state
+  - country
+  - region
+properties:
+  latitude:
+    type: integer
+    description: The latitude of the given provider datacenter.
+  longitude:
+    type: integer
+    description: The longitude of the given provider datacenter.
+  city:
+    type: string
+    description: The city the datacenter resides in.
+  state:
+    type: string
+    description: The state the datacenter resides in.
+  country:
+    type: string
+    description: The country the datacenter resides in.
+  region:
+    type: string
+    description: The region the datacenter resides in.

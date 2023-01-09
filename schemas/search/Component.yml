@@ -1,0 +1,52 @@
+title: IndexComponent
+type: object
+description: Generic component format for describing resources for the search index
+required:
+  - id
+  - name
+  - state
+  - events
+  - context_blobs
+  - associations
+properties:
+  id:
+    description: ID of the component
+    type: string
+  name:
+    description: Name of the component
+    type: string
+  state:
+    description: State of the component
+    type: string
+  events:
+    "$ref": "../Events.yml"
+  context_blobs:
+    description: related strings for fuzzy search
+    type: array
+    items:
+      type: string
+  associations:
+    type: object
+    description: Component associations
+    properties:
+      container:
+        description: Associated container Id
+        type: string
+      environment:
+        description: Associated environment Id
+        type: string
+      image-source:
+        description: Associated image source Id
+        type: string
+      image:
+        description: Associated image Id
+        type: string
+      stack:
+        description: Associated stack Id
+        type: string
+      server:
+        description: Associated server Id
+        type: string
+      provider-location:
+        description: Associated provider location Id
+        type: string

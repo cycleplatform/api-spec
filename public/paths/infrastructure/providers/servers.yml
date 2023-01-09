@@ -1,0 +1,53 @@
+get:
+  operationId: "getProviderServers"
+  tags:
+    - Providers
+  parameters:
+    - name: providerId
+      description: The ID for the given provider.
+      in: path
+      required: true
+      schema:
+        type: string
+    - $ref: "../../../parameters/SortParam.yml"
+    - $ref: "../../../parameters/FilterParam.yml"
+    - $ref: "../../../parameters/PageParam.yml"
+  summary: List Provider Servers
+  description: Requires the `infrastructure-providers-view` capability.
+  responses:
+    "200":
+      description: A list of currently provisioned servers from a provider.
+      content:
+        application/json:
+          schema:
+            title: "ListProviderServersReturn"
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  "$ref": "../../../../schemas/infrastructure/providers/ProviderServer.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"

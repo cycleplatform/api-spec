@@ -1,0 +1,146 @@
+get:
+  operationId: "getBillingMethod"
+  tags:
+    - Billing
+  parameters:
+    - name: methodId
+      description: The ID of the billing method.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Fetch Billing Method
+  description: Requires the `billing-methods-manage` capability.
+  responses:
+    "200":
+      description: Returns a billing method resource.
+      content:
+        application/json:
+          schema:
+            title: FetchBillingMethodReturn
+            type: object
+            properties:
+              data:
+                "$ref": "../../../../schemas/billing/methods/Method.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+patch:
+  operationId: "updateBillingMethod"
+  tags:
+    - Billing
+  parameters:
+    - name: methodId
+      description: The ID of the billing method.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Update Billing Invoice
+  description: Requires the `billing-methods-manage` capability.
+  requestBody:
+    "$ref": "../../../../schemas/billing/methods/requestBodies/UpdateBillingMethodRequest.yml"
+  responses:
+    "200":
+      description: Returns a billing method resource.
+      content:
+        application/json:
+          schema:
+            title: UpdateBillingMethodReturn
+            type: object
+            properties:
+              data:
+                "$ref": "../../../../schemas/billing/methods/Method.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+delete:
+  operationId: "deleteBillingMethod"
+  tags:
+    - Billing
+  parameters:
+    - name: methodId
+      description: The ID of the billing method.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Delete Biilling Method
+  description: Requires the `billing-methods-manage` capability.
+  responses:
+    "200":
+      description: Returns a task descriptor.
+      content:
+        application/json:
+          schema:
+            title: "TaskResponse"
+            type: object
+            properties:
+              data:
+                "$ref": "../../../../schemas/jobs/TaskDescriptor.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"

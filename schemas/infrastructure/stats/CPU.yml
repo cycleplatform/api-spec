@@ -1,0 +1,21 @@
+title: ServerStatsCPU
+type: object
+description: Statistics about the CPU resources on a server.
+properties:
+  cores:
+    type: integer
+    description: The number of CPU's or vCPU's for a given server.
+  processors:
+    description: An array of processor information objects.
+    type: array
+    items:
+      type: object
+      description: Processor information.
+      properties:
+        model:
+          type: string
+          description: The model of the processor.
+        speed:
+          type: integer
+          description: The speed of the processor.
+ 

@@ -1,0 +1,36 @@
+title: ServerMeta
+type: object
+description: A list of meta fields that can be applied to a server.
+properties:
+  node:
+    # NodeMetaStats
+    type: object
+    description: Infrormation about the status of the server.
+    required:
+      - last_checkin
+      - drivers
+      - state
+      - stats
+      - healthy
+      - online
+    properties:
+      last_checkin:
+        description: The last time this server checked in with the platform.
+        "$ref": "../../DateTime.yml"
+      drivers:
+        description: An array a drivers associated with the given server.
+        type: array
+        items:
+          type: string
+      state:
+        "$ref": "./ServerState.yml"
+      stats:
+        "$ref": "../stats/Stats.yml"
+      healthy:
+        type: boolean
+        description: A boolean where true means the platform is reporting the server as healthy.
+      online:
+        type: boolean
+        description: A boolean where true means the server is online and reachable by the platform.
+  instances_count:
+    "$ref": "../../StateCountSummary.yml"

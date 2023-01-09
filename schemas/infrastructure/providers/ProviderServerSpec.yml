@@ -1,0 +1,30 @@
+title: ProviderServerSpec
+type: object 
+description: Higher level information about a providers server. 
+required: 
+  - identifier 
+  - category 
+  - model 
+  - locations 
+properties: 
+  identifier: 
+    type: string 
+    description: A provider identifier 
+  category: 
+    type: string 
+    description: A category for the server. 
+  class: 
+    type: string 
+    description: A class for the server. 
+  model: 
+    type: string 
+    description: The model of the server. 
+  plan_identifier: 
+    type: string 
+    description: A plan identifier, if there is one. 
+  locaitons: 
+    description: A list of location ID's this server is available. 
+    type: array 
+    items: 
+      type: string 
+      

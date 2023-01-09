@@ -1,0 +1,54 @@
+title: PipelineStackBuildCreate
+type: object
+description: Settings for the create stack build step for a pipeline.
+required:
+  - stack
+  - type
+  - instructions
+properties:
+  stack:
+    "$ref": "../ResourceLocation.yml"
+  type:
+    type: string
+    description: The type of stack build.
+    enum:
+      - direct
+  instructions:
+    # TODO Make this a file and then ref it
+    type: object
+    description: Git information on where to pull stack resources from.
+    properties:
+      git:
+        type: object
+        description: Git information specifics.
+        required:
+          - type
+          - value
+        properties:
+          type:
+            type: string
+            description: The type of information the user is passing.
+            enum:
+              - hash
+              - tag
+          value:
+            type: string
+            description: The actual value to be passed.
+  about:
+    type: object
+    description: Information about the stack build.
+    required:
+      - version
+      - description
+    properties:
+      version:
+        type: string
+        description: Information about the version of the stack.
+      description:
+        type: string
+        description: Information describing the stack
+      git_commit:
+        "$ref": "../../stacks/builds/StackGitCommit.yml"
+# allOf:
+#   - "$ref": "../ResourceLocation.yml"
+#   - "$ref": "../../stacks/builds/requestBodies/CreateStackBuildRequest.yml"

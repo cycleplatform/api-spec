@@ -1,0 +1,26 @@
+title: EnvironmentInstanceTelemetryPoint
+description: Telemetry points collection for instances in a given environment.
+required:
+  - time
+  - instances
+type: object
+properties:
+  time:
+    description: A timestamp for when the data was collected.
+    "$ref": "../../DateTime.yml"
+  instances:
+    description: Records for instance state and number of instances in that state.
+    enum:
+      - new
+      - starting
+      - reimaging
+      - migrating
+      - running
+      - stopping
+      - stopped
+      - failed
+      - deleting
+      - deleted
+    type: object
+    additionalProperties:
+      type: integer

@@ -1,0 +1,385 @@
+---
+openapi: 3.0.0
+servers:
+  - description: Cycle Public API
+    url: https://api.cycle.io
+info:
+  description: |
+    The Cycle API is a [REST-based](http://en.wikipedia.org/wiki/Representational_state_transfer), resource-oriented API
+    designed to be easy to use and understand. Using this API, you are able to fully interact with the Cycle Platform. 
+
+    All API responses return JSON, including errors. There is also support for cross-origin resource sharing, so this API can be used
+    in a client-side web application as well.
+
+    ## Auth Basics 
+    Every API request much have an accompanying API key in the Authorization header. For more informaiton on generating an API key head over to the [Portal Docs](https://docs.cycle.io/docs/hubs/API-access/api-key-generate). 
+
+    Your API key should never be made publicly available, published to a public repository, or used on a client side
+    web app. If you would like to use the API from a web app, you should create a thin-client service that acts as a passthrough for
+    your API requests.
+
+    ## The Root Document
+    Every response follows the same structure, known as the root document. The main data structure, known as a
+    resource, is nested under a data field. If you request a collection of resources, the
+    data field will be an array of those resources. If you request a single resource, the data field will be
+    equal to that resource.
+
+    If there is an error, the error field will be present, and the data field will be present and null.
+
+    The root resource. If fetching a collection, this will be an array of resource objects.
+
+    Includes fields - the key will be the name of the included item passed. All values of include fields
+    will be a full resource structure. (i.e. including environments will embed full environment objects by ID)
+
+    Meta Fields - the key will be equal to the name of the meta field provided. Values of meta
+    fields will vary based on the resource. These values are injected into the data object(s).
+
+    ## Scope
+    In order to fetch resources that are part of a hub (containers, environments, etc.), you will need to pass an
+    X-Hub-ID header. When fetching collections of resources, this will limit the response to contain only resources from
+    the specified hub. Most requests require this header.
+
+    ## Queries
+    When trying to gather more complete or specific data you can use query paramaters to supplement the normal return (metas,
+    includes) and you can also add specificity to the format and the order (sort, filter). It's worth understanding that
+    sort && filter should only be used on collections.
+
+    **Sort** - An array of sort values. To sort descending, put a `-`n front of the value, i.e. `-id`.
+
+    **Include** - An array of include values. Included resources will show up under the root document's `include` field, with the key being the id
+    of the included resource. In the case of applying an include to a collection of resources, if two resources share the same
+    include, it will only appear once in the return.
+
+    **Meta** - An array of meta values. Meta values will show up under a resource's `meta` field. In the case of applying a meta to a
+    collection of resources, each resource will have it's own relevant meta data. In some rare cases, meta may not apply to
+    individual resources, and may appear in the root document. These will be clearly labeled.
+
+    **Filter** - The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
+
+  version: 1.0.0
+  title: Cycle API
+  contact:
+    email: support@cycle.io
+tags:
+  - name: Environments
+    description: "Environments are logical groupings of containers. All containers deployed inside an environment automatically have a private network built between them, enabling seamless communication."
+  - name: Containers
+    description: "Containers are a way to package together your application along with it's dependencies, and run in a resource isolated process. They provide consistency across different hosts, efficiency over traditional hosting methods, and facilitate a micro-service based approach, where each logical piece of your application is split into multiple, easily testable parts (such as API, Backend, Frontend, etc)."
+  - name: Images
+    description: "Container images are atomic copies of a filesystem that are built from a file (ex: Dockerfile)."
+  - name: Stacks
+    description: "Stacks offer a powerful way to declarative manage multiple containers, and their deployments to the Cycle platform. Using stacks, you are able to configure every aspect of your applications ahead of time, save it to your version controlled repo, and have Cycle automate the deployment any time you make a push."
+  - name: Pipelines
+    description: "From simple tasks like importing an image, to complex sequences that affect entire clusters, Deployment Pipelines make it easy to automate nearly any task within Cycle."
+  - name: DNS
+    description: "Cycle provides a full suite of DNS tooling.  Set up everything from a DNS Zone, record, certificate, and more."
+  - name: Infrastructure
+    description: "Cycle creates a paradigm shift when it comes to dealing with your infrastructure. The primary focus when using the platform is your containers, while the servers underneath appear as a giant pool of distributed resources."
+  - name: Providers
+    description: "A subgroup of infrastructure, provider calls deal specifically with infrastructure providers used through the Cycle platform. "
+  - name: Servers
+    description: "A subgroup of infrastructure, servers call deal specificially with server resources."
+  - name: SDN
+    description: "Software defined networks that can be created when a user needs to create a new private network spanning multiple environments."
+  - name: WebsocketAuth
+    description: "A collection of calls used to create resources necessary to connect to a websocket based resource. "
+  - name: Backups
+    description: "A subgroup of containers, backups refers to calls that have to do with automated backups managed through a Cycle integration."
+  - name: Instances
+    description: "A subgroup of containers, instances refers to calls that work with container instance resources. "
+  - name: APIKeys
+    description: "A subgroup of Hubs, APIKeys refers to calls that have to do with creating and managing API key resources."
+  - name: ImageSources
+    description: "A subgroup of images, ImageSources refers to calls that have to do with creating and managing image source resources. "
+  - name: InfrastructureIPs
+    description: "A subgroup of infrastructure which refers to calls that have to do with managing IPs for infrastructure providers."
+  - name: Jobs
+    description: "Jobs are calls which refer to managing job resources. "
+
+security:
+  - bearerAuth: []
+    hubAuth: []
+paths:
+  # {changelog, channels, audit, announcements, surveys}
+  # Accounts {checked}
+  "/v1/account":
+    "$ref": "./paths/accounts/account.yml"
+  "/v1/account/invites":
+    "$ref": "./paths/accounts/invites.yml"
+  "/v1/account/invites/{inviteId}":
+    "$ref": "./paths/accounts/invite.yml"
+  "/v1/account/memberships":
+    "$ref": "./paths/accounts/memberships.yml"
+  "/v1/account/logins":
+    "$ref": "./paths/accounts/logins.yml"
+  # Billing {checked}
+  "/v1/billing/orders":
+    "$ref": "./paths/billing/orders/orders.yml"
+  "/v1/billing/orders/{orderId}":
+    "$ref": "./paths/billing/orders/order.yml"
+  "/v1/billing/orders/{orderId}/tasks":
+    "$ref": "./paths/billing/orders/tasks.yml"
+  "/v1/billing/plans/support":
+    "$ref": "./paths/billing/plans/support.yml"
+  "/v1/billing/plans/tiers":
+    "$ref": "./paths/billing/plans/tiers.yml"
+  "/v1/billing/methods":
+    "$ref": "./paths/billing/methods/methods.yml"
+  "/v1/billing/methods/{methodId}":
+    "$ref": "./paths/billing/methods/method.yml"
+  "/v1/billing/invoices":
+    "$ref": "./paths/billing/invoices/invoices.yml"
+  "/v1/billing/invoices/{invoiceId}":
+    "$ref": "./paths/billing/invoices/invoice.yml"
+  "/v1/billing/invoices/{invoiceId}/tasks":
+    "$ref": "./paths/billing/invoices/tasks.yml"
+  "/v1/billing/services":
+    "$ref": "./paths/billing/services/services.yml"
+  "/v1/billing/services/{servicesId}":
+    "$ref": "./paths/billing/services/service.yml"
+  "/v1/billing/services/overages":
+    "$ref": "./paths/billing/services/overages.yml"
+  "/v1/billing/credits":
+    "$ref": "./paths/billing/credits/credits.yml"
+  "/v1/billing/credits/{creditsId}":
+    "$ref": "./paths/billing/credits/credit.yml"
+  # Environments {events, scoped variables {collection, single }}
+  "/v1/environments":
+    "$ref": "./paths/environments/environments.yml"
+  "/v1/environments/{environmentId}":
+    "$ref": "./paths/environments/environment.yml"
+  "/v1/environments/{environmentId}/tasks":
+    "$ref": "./paths/environments/tasks.yml"
+  "/v1/environments/{environmentId}/summary":
+    "$ref": "./paths/environments/summary.yml"
+  "/v1/environments/{environmentId}/services/lb":
+    "$ref": "./paths/environments/services/lb/lb.yml"
+  "/v1/environments/{environmentId}/services/lb/tasks":
+    "$ref": "./paths/environments/services/lb/tasks.yml"
+  "/v1/environments/{environmentId}/services/discovery/tasks":
+    "$ref": "./paths/environments/services/discovery/tasks.yml"
+  "/v1/environments/{environmentId}/services/vpn":
+    "$ref": "./paths/environments/services/vpn/vpnInfo.yml"
+  "/v1/environments/{environmentId}/services/vpn/logins":
+    "$ref": "./paths/environments/services/vpn/logins.yml"
+  "/v1/environments/{environmentId}/services/vpn/users":
+    "$ref": "./paths/environments/services/vpn/users.yml"
+  "/v1/environments/{environmentId}/services/vpn/users/{userId}":
+    "$ref": "./paths/environments/services/vpn/deleteUser.yml"
+  "/v1/environments/{environmentId}/services/vpn/tasks":
+    "$ref": "./paths/environments/services/vpn/tasks.yml"
+  "/v1/environments/{environmentId}/telemetry/instances":
+    "$ref": "./paths/environments/telemetry.yml"
+  "/v1/environments/{environmentId}/scoped-variables":
+    "$ref": "./paths/environments/scoped-variables.yml"
+  "/v1/environments/{environmentId}/scoped-variables/{scopedVariableId}":
+    "$ref": "./paths/environments/scoped-variable.yml"
+  # containers {telemetry /containers/id/telemetry/instances, events  }
+  "/v1/containers":
+    "$ref": "./paths/containers/containers.yml"
+  "/v1/containers/{containerId}":
+    "$ref": "./paths/containers/container.yml"
+  "/v1/containers/{containerId}/summary":
+    "$ref": "./paths/containers/summary.yml"
+  "/v1/containers/{containerId}/tasks":
+    "$ref": "./paths/containers/tasks.yml"
+  "/v1/containers/{containerId}/instances":
+    "$ref": "./paths/containers/instances/instances.yml"
+  "/v1/containers/{containerId}/instances/{instanceId}":
+    "$ref": "./paths/containers/instances/instance.yml"
+  "/v1/containers/{containerId}/instances/{instanceId}/ssh":
+    "$ref": "./paths/containers/instances/ssh.yml"
+  "/v1/containers/{containerId}/instances/{instanceId}/tasks":
+    "$ref": "./paths/containers/instances/tasks.yml"
+  "/v1/containers/{containerId}/instances/{instanceId}/volumes":
+    "$ref": "./paths/containers/instances/volumes.yml"
+  "/v1/containers/{containerId}/instances/{instanceId}/telemetery/resources/report":
+    "$ref": "./paths/containers/instances/instancetelemetry.yml"
+  "/v1/containers/{containerId}/servers":
+    "$ref": "./paths/containers/listServers.yml"
+  "/v1/containers/{containerId}/servers/usable":
+    "$ref": "./paths/containers/usableServers.yml"
+  "/v1/containers/{containerId}/compatible-images":
+    "$ref": "./paths/containers/compatibleImages.yml"
+  "/v1/containers/{containerId}/backups":
+    "$ref": "./paths/containers/backups/backups.yml"
+  "/v1/containers/{containerId}/backups/{backupId}":
+    "$ref": "./paths/containers/backups/backup.yml"
+  "/v1/containers/{containerId}/backups/{backupId}/tasks":
+    "$ref": "./paths/containers/backups/tasks.yml"
+  "/v1/containers/{containerId}/backups/{backupId}/logs":
+    "$ref": "./paths/containers/backups/backupLogs.yml"
+  # DNS {domains, tls attempts}
+  "/v1/dns/zones":
+    "$ref": "./paths/dns/zones.yml"
+  "/v1/dns/{zoneId}":
+    "$ref": "./paths/dns/zone.yml"
+  "/v1/dns/{zoneId}/tasks":
+    "$ref": "./paths/dns/tasks.yml"
+  "/v1/dns/{zoneId}/records":
+    "$ref": "./paths/dns/records/records.yml"
+  "/v1/dns/{zoneId}/records/{recordId}":
+    "$ref": "./paths/dns/records/record.yml"
+  "/v1/dns/{zoneId}/records/{recordId}/tasks":
+    "$ref": "./paths/dns/records/tasks.yml"
+  "/v1/dns/tls/attempts":
+    "$ref": "./paths/dns/tls/attempts.yml"
+  "/v1/dns/tls/certificates/lookup":
+    "$ref": "./paths/dns/tls/certificates.yml"
+  # Hub
+  "/v1/hubs":
+    "$ref": "./paths/hubs/hubs.yml"
+  # "/v1/hub/{hubId}":
+  #   "$ref": "./paths/hubs/hub.yml"
+  "/v1/hubs/current":
+    "$ref": "./paths/hubs/hub.yml"
+  # "/v1/hubs/current/tasks":
+  #   "$ref": "./paths/hubs/tasks.yml"
+  "/v1/hubs/current/activity":
+    "$ref": "./paths/hubs/activity.yml"
+  "/v1/hubs/capabilities":
+    "$ref": "./paths/hubs/capabilities.yml"
+  "/v1/hubs/current/usage":
+    "$ref": "./paths/hubs/usage.yml"
+  "/v1/hubs/current/tier":
+    "$ref": "./paths/hubs/tier.yml"
+  "/v1/hubs/current/invites/{inviteId}":
+    "$ref": "./paths/hubs/invites/invite.yml"
+  "/v1/hubs/current/invites":
+    "$ref": "./paths/hubs/invites/invites.yml"
+  "/v1/hubs/current/members":
+    "$ref": "./paths/hubs/members/members.yml"
+  "/v1/hubs/current/membership":
+    "$ref": "./paths/hubs/members/membership.yml"
+  "/v1/hubs/current/members/{memberId}":
+    "$ref": "./paths/hubs/members/member.yml"
+  "/v1/hubs/current/members/account/{accountId}":
+    "$ref": "./paths/hubs/members/account.yml"
+  "/v1/hubs/current/api-keys":
+    "$ref": "./paths/hubs/keys/keys.yml"
+  "/v1/hubs/current/api-keys/{apikeyId}":
+    "$ref": "./paths/hubs/keys/key.yml"
+  # Index
+  "/v1/search/index":
+    "$ref": "./paths/search/index.yml"
+  # Images {checked}
+  "/v1/images":
+    "$ref": "./paths/images/images.yml"
+  "/v1/images/{imageId}":
+    "$ref": "./paths/images/image.yml"
+  "/v1/images/{imageId}/containers":
+    "$ref": "./paths/images/containers.yml"
+  "/v1/images/{imageId}/build-log":
+    "$ref": "./paths/images/build-log.yml"
+  "/v1/images/tasks":
+    "$ref": "./paths/images/collection-task.yml"
+  "/v1/images/{imageId}/tasks":
+    "$ref": "./paths/images/tasks.yml"
+  "/v1/images/sources":
+    "$ref": "./paths/images/sources/sources.yml"
+  "/v1/images/sources/{sourceId}":
+    "$ref": "./paths/images/sources/source.yml"
+  # "/v1/images/sources/{sourceId}/tasks":
+  #   "$ref": "./paths/images/sources/tasks.yml"
+  # Infrastructure {checked}
+  "/v1/infrastructure/summary":
+    "$ref": "./paths/infrastructure/summary.yml"
+  # Providers {checked}
+  "/v1/infrastructure/providers/native":
+    "$ref": "./paths/infrastructure/providers/native.yml"
+  "/v1/infrastructure/providers/{providerId}/servers":
+    "$ref": "./paths/infrastructure/providers/servers.yml"
+  "/v1/infrastructure/providers/{providerId}/locations":
+    "$ref": "./paths/infrastructure/providers/locations.yml"
+  "/v1/infrastructure/providers":
+    "$ref": "./paths/infrastructure/providers/providers.yml"
+  "/v1/infrastructure/providers/{providerId}":
+    "$ref": "./paths/infrastructure/providers/provider.yml"
+  "/v1/infrastructure/providers/{providerId}/tasks":
+    "$ref": "./paths/infrastructure/providers/tasks.yml"
+  # Servers {console{not implemented yet}, }
+  "/v1/infrastructure/servers":
+    "$ref": "./paths/infrastructure/servers/servers.yml"
+  "/v1/infrastructure/servers/{serverId}":
+    "$ref": "./paths/infrastructure/servers/server.yml"
+  "/v1/infrastructure/servers/{serverId}/telemetry":
+    "$ref": "./paths/infrastructure/servers/telemetry.yml"
+  "/v1/infrastructure/servers/{serverId}/instances":
+    "$ref": "./paths/infrastructure/servers/instances.yml"
+  "/v1/infrastructure/servers/{serverId}/tasks":
+    "$ref": "./paths/infrastructure/servers/tasks.yml"
+  "/v1/infrastructure/servers/{serverId}/tags":
+    "$ref": "./paths/infrastructure/servers/tags.yml"
+  "/v1/infrastructure/servers/clusters":
+    "$ref": "./paths/infrastructure/servers/clusters.yml"
+  "/v1/infrastructure/servers/{serverId}/usage":
+    "$ref": "./paths/infrastructure/servers/usage.yml"
+  # IPS {checked}
+  "/v1/infrastructure/ips/pools":
+    "$ref": "./paths/infrastructure/ips/pools.yml"
+  "/v1/infrastructure/ips/pools/{poolId}":
+    "$ref": "./paths/infrastructure/ips/pool.yml"
+  "/v1/infrastructure/ips/pools/{poolId}/ips":
+    "$ref": "./paths/infrastructure/ips/ips.yml"
+  "/v1/infrastructure/deployment-strategies":
+    "$ref": "./paths/infrastructure/deployment-strategies.yml"
+  # jobs {checked }
+  "/v1/jobs":
+    "$ref": "./paths/jobs/jobs.yml"
+  "/v1/jobs/{jobId}":
+    "$ref": "./paths/jobs/job.yml"
+  "/v1/jobs/latest":
+    "$ref": "./paths/jobs/latest.yml"
+  # Stacks {checked}
+  "/v1/stacks":
+    "$ref": "./paths/stacks/stacks.yml"
+  "/v1/stacks/{stackId}":
+    "$ref": "./paths/stacks/stack.yml"
+  "/v1/stacks/{stackId}/tasks":
+    "$ref": "./paths/stacks/tasks.yml"
+  "/v1/stacks/builds/{buildId}":
+    "$ref": "./paths/stacks/buildLookup.yml"
+  "/v1/stacks/{stackId}/builds":
+    "$ref": "./paths/stacks/builds/builds.yml"
+  "/v1/stacks/{stackId}/builds/{buildId}":
+    "$ref": "./paths/stacks/builds/stackbuild.yml"
+  "/v1/stacks/{stackId}/builds/{buildId}/tasks":
+    "$ref": "./paths/stacks/builds/tasks.yml"
+  # SDN {checked}
+  "/v1/sdn/networks":
+    "$ref": "./paths/sdn/networks.yml"
+  "/v1/sdn/networks/{networkId}":
+    "$ref": "./paths/sdn/network.yml"
+  "/v1/sdn/networks/{networkId}/tasks":
+    "$ref": "./paths/sdn/tasks.yml"
+  # Pipelines {trigger < not implemented its a task}
+  "/v1/pipelines":
+    "$ref": "./paths/pipelines/pipelines.yml"
+  "/v1/pipelines/{pipelineId}":
+    "$ref": "./paths/pipelines/pipeline.yml"
+  "/v1/pipelines/{pipelineId}/runs":
+    "$ref": "./paths/pipelines/runs.yml"
+  "/v1/pipelines/{pipelineId}/tasks":
+    "$ref": "./paths/pipelines/tasks.yml"
+  "/v1/pipelines/{pipelineId}/keys":
+    "$ref": "./paths/pipelines/trigger-keys/trigger-keys.yml"
+  "/v1/pipelines/{pipelineId}/keys/{triggerKeyId}":
+    "$ref": "./paths/pipelines/trigger-keys/trigger-key.yml"
+  # NOTIFICATION ENDPOINTS
+  "/v1/hubs/current/notifications":
+    "$ref": "./paths/channels/hub.yml"
+  "/v1/containers/{containerId}/instances/{instanceId}/console":
+    "$ref": "./paths/channels/instance-console.yml"
+  "/v1/containers/{containerId}/instances/{instanceId}/telemetry/resources/stream":
+    "$ref": "./paths/channels/instance-telemetry.yml"
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    hubAuth:
+      name: X-Hub-Id
+      in: header
+      type: apiKey
+      description: Defines the scope of the request to a specific Hub.

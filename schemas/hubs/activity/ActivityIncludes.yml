@@ -1,0 +1,8 @@
+title: ActivityIncludes
+description: All includable resources linkable to the given records.
+type: object
+properties:
+  creators:
+    "$ref": "../../includes/CreatorInclude.yml"
+  components:
+    "$ref": "../../includes/ComponentsIncludes.yml"

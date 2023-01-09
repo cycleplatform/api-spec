@@ -1,0 +1,38 @@
+title: ImageBuildLog
+description: A build log for a given image. 
+type: object 
+required:   
+  - id 
+  - image_id 
+  - hub_id 
+  - log 
+  - events 
+properties: 
+  id: 
+    "$ref": "../ID.yml" 
+  hub_id: 
+    "$ref": "../HubID.yml" 
+  image_id: 
+    type: string 
+    description: The ID of the image the build log pertains to. 
+  log:  
+    type: string 
+    description: The log itself. 
+  events:
+    title: BuildLogEvents
+    type: object
+    description: A collection of timestamps for each event in the build log's lifetime.
+    required:
+      - created
+      - updated
+      - deleted
+    properties:
+      created:
+        description: The timestamp of when the build log was created.
+        "$ref": "../DateTime.yml"
+      updated:
+        description: The timestamp of when the build log was updated.
+        "$ref": "../DateTime.yml"
+      deleted:
+        description: The timestamp of when the build log was deleted.
+        "$ref": "../DateTime.yml"

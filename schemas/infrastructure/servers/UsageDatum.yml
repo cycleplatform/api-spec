@@ -1,0 +1,19 @@
+title: ServerUsageDatum 
+type: object 
+description: Server usage data. 
+required: 
+  - time 
+  - nodes 
+  - memory_gb 
+properties: 
+  time: 
+    description: A timestamp for when the usage data was collected. 
+    "$ref": "../../DateTime.yml" 
+  nodes: 
+    type: integer 
+    description: The number of nodes the data is pulled from. 
+  memory_gb: 
+    type: integer 
+    description: A number in GB representing memory. 
+
+    

@@ -1,0 +1,105 @@
+get:
+  operationId: "listScopedVariables"
+  tags:
+    - Environments
+  parameters:
+    - name: environmentId
+      description: The ID of the requested environment.
+      in: path
+      required: true
+      schema:
+        type: string
+    - $ref: "../../parameters/SortParam.yml"
+    - $ref: "../../parameters/FilterParam.yml"
+    - $ref: "../../parameters/PageParam.yml"
+  summary: List Scoped Variables
+  description: Requires the `scoped-variables-view` capability.
+  responses:
+    "200":
+      description: Returns a collection of scoped variable resources.
+      content:
+        application/json:
+          schema:
+            title: "ListScopedVariablesResponse"
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  "$ref": "../../../schemas/scoped-variables/ScopedVariable.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+post:
+  operationId: "createScopedVariable"
+  tags:
+    - Environments
+  parameters:
+    - name: environmentId
+      description: The ID of the requested environment.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Create Scoped Variable
+  description: Requires the `scoped-variables-manage` capability.
+  requestBody:
+    "$ref": "../../../schemas/scoped-variables/requestBodies/CreateScopedVariableRequest.yml"
+  responses:
+    "201":
+      description: Returns a scoped variable resource.
+      content:
+        application/json:
+          schema:
+            title: "CreateScopedVariableResponse"
+            type: object
+            properties:
+              data:
+                "$ref": "../../../schemas/scoped-variables/ScopedVariable.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"

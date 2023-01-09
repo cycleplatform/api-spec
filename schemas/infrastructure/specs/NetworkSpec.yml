@@ -1,0 +1,25 @@
+title: NetworkServerSpec
+type: object
+description: Information about the network resources for a given server.
+required:
+  - count
+  - scope
+  - throughput
+  - type
+properties:
+  count:
+    type: integer
+    description: The number of network resources for a given server.
+  scope:
+    type: string
+    description: The scope of the interfaces.
+    enum:
+      - public
+      - private
+      - shared
+  throughput:
+    type: integer
+    description: The network throughput in MB(per second).
+  type:
+    type: string
+    description: The type of the NIC.

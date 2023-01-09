@@ -1,0 +1,23 @@
+title: InvoiceState
+allOf:
+  - required:
+      - current
+    properties:
+      current:
+        description: The current state of the container.
+        type: string
+        enum:
+          - "new"
+          - "billing"
+          - "billed"
+          - "processing"
+          - "partially-paid"
+          - "paid"
+          - "refunding"
+          - "refunded"
+          - "crediting"
+          - "credited"
+          - "voiding"
+          - "voided"
+          - "uncollectible"
+  - "$ref": "../../State.yml"

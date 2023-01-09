@@ -1,0 +1,63 @@
+patch:
+  operationId: "updateAccountInvite"
+  security:
+    - bearerAuth: []
+  tags:
+    - Accounts
+  parameters:
+    - name: inviteId
+      description: The ID of the given invite.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Update Account Invite
+  description: Update a given invite.
+  requestBody:
+    description: Req body for updating account invite
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            accept:
+              type: boolean
+              description: Set accept to true to accept
+            decline:
+              type: boolean
+              description: Set decline to true to decline
+  responses:
+    "200":
+      description: Returns an membership resource.
+      content:
+        application/json:
+          schema:
+            title: "UpdateAccountInviteResponse"
+            type: object
+            properties:
+              data:
+                "$ref": "../../../schemas/hubs/HubMembership.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"

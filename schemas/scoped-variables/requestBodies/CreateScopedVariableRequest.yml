@@ -1,0 +1,34 @@
+description: Parameters for creating a scoped variable.
+content:
+  application/json:
+    schema:
+      type: object
+      required:
+        - identifier
+        - scope
+        - source
+      properties:
+        identifier:
+          type: string
+          description: An identifier, similar to a key in an environment variable.  Its used when envoking the scoped variable.
+        secret:
+          nullable: true
+          type: object
+          description: An object with information about the encryption of the scoped variable.
+          required:
+            - encrypted
+          properties:
+            encrypted:
+              type: boolean
+              description: A boolean where true means the scoped variables value is encrypted.
+            hint:
+              type: string
+              description: A hint for the decryption password.
+        scope:
+          "$ref": "../ScopedVariableScope.yml"
+        source:
+          type: object
+          description: The source or value of the scope variable.  Can be `raw` or `url`.
+          oneOf:
+            - "$ref": "../URLSource.yml"
+            - "$ref": "../RawSource.yml"

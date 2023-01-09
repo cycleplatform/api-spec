@@ -1,0 +1,44 @@
+get:
+  operationId: "getEnvironmentInstances"
+  tags:
+    - Environments
+  parameters: []
+  summary: List Environment Instances
+  description: Doesn't require a specific capability.
+  responses:
+    "200":
+      description: Returns a collection of container instance resources.
+      content:
+        application/json:
+          schema:
+            title: ListEnvironmentInstancesReturn
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  "$ref": "../../../schemas/containers/instances/Instance.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"

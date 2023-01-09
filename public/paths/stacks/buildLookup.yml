@@ -1,0 +1,48 @@
+get:
+  operationId: "getStackBuildLookup"
+  tags:
+    - Stacks
+  parameters:
+    - name: buildId
+      in: path
+      required: true
+      description: The ID of the build.
+      schema:
+        type: string
+  summary: Fetch Stack Build
+  description: Requires the `stacks-view` capability.
+  responses:
+    "200":
+      description: Returns a stack build resource.
+      content:
+        application/json:
+          schema:
+            title: "StackBuildLookupResponse"
+            type: object
+            properties:
+              data:
+                "$ref": "../../../schemas/stacks/builds/StackBuild.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"

@@ -1,0 +1,82 @@
+title: ServerStatsStorage
+type: object
+description: Statistics about storage for a given server.
+required:
+  - volume_groups
+  - mounts
+properties:
+  volume_groups:
+    description: An array of volume group objects.
+    type: array
+    items:
+      type: object
+      description: Volume group
+      required:
+        - name
+        - size
+        - volumes
+      properties:
+        name:
+          type: string
+          description: A name for the volume group.
+        size:
+          type: integer
+          description: A number representing the aggregate group volume size in megabytes.
+        volumes:
+          description: The actual volumes.
+          type: array
+          items:
+            type: object
+            required:
+              - name
+              - size
+              - data_percent
+              - meta_percent
+              - pool
+            properties:
+              name:
+                type: string
+                description: The name of the volume.
+              size:
+                type: integer
+                description: The size in megabytes of the volume.
+              data_percent:
+                type: integer
+                description: The percent of the volumes size being used by data.
+              meta_percent:
+                type: integer
+                description: The percent of the volumes size being used by meta data.
+              pool:
+                type: string
+                description: The name of the volume pool this volume is associated with.
+  mounts:
+    type: object
+    description: Records that show information about mounted filesystems where the key is the path to the mount.
+    additionalProperties:
+      title: MountedFS
+      type: object
+      description: Mounted filesystem information.
+      required:
+        - type
+        - total
+        - free
+        - used
+      properties:
+        device:
+          type: string
+          description: The device assocaited with the mount.
+        type:
+          type: string
+          description: The type of filesystem in use by the mount.
+        mountpoint:
+          type: string
+          description: The path the mount is associated with.
+        total:
+          type: integer
+          description: The total amount of storage in KB available at this mount.
+        free:
+          type: integer
+          description: The amount of uninitialized storage in KB.
+        used:
+          type: integer
+          description: The amount of storage being used in KB.

@@ -1,0 +1,23 @@
+title: InstanceIncludes
+description: A resource associated with an instance.
+type: object
+required:
+  - creator
+  - servers
+  - locations
+  - providers
+  - containers
+  - environments
+properties:
+  creator:
+    "$ref": "../../includes/CreatorInclude.yml"
+  server:
+    "$ref": "../../includes/ServersIncludes.yml"
+  locations:
+    "$ref": "../../includes/LocationsIncludes.yml"
+  providers:
+    "$ref": "../../includes/ProvidersIncludes.yml"
+  containers:
+    "$ref": "../../includes/ContainersIncludes.yml"
+  environments:
+    "$ref": "../../includes/EnvironmentIncludes.yml"

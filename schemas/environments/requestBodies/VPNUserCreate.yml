@@ -1,0 +1,10 @@
+description: Parameters for creating a new VPN user.
+content:
+  application/json:
+    schema:
+      type: object
+      required:
+        - value
+      properties:
+        value:
+          "$ref": "../returns/VPNUsers.yml"

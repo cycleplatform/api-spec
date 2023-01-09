@@ -1,0 +1,13 @@
+title: BillingMethodAddress
+description: Address information for a given billing method.
+type: object
+required:
+  - country
+  - zip
+properties:
+  country:
+    type: string
+    description: The country this billing method is associated with.
+  zip:
+    type: string
+    description: The zip code this billing method is associated with.

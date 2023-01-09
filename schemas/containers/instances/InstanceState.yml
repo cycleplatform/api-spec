@@ -1,0 +1,34 @@
+---
+title: InstanceState
+allOf:
+  - required:
+      - current
+    properties:
+      current:
+        description: The current state of the instance.
+        type: string
+        enum:
+          - new
+          - starting
+          - reimaging
+          - migrating
+          - running
+          - stopping
+          - stopped
+          - failed
+          - deleting
+          - deleted
+      health:
+        type: object
+        description: information about the health of the instance.
+        required:
+          - healthy
+          - updated
+        properties:
+          healthy:
+            type: boolean
+            description: A boolean where true represents the instance being healthy.
+          updated:
+            description: A timestamp of the last time the instance health was updated.
+            "$ref": "../../DateTime.yml"
+  - "$ref": "../../State.yml"

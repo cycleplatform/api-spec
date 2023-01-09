@@ -1,0 +1,5 @@
+title: HubIncludes
+type: object
+description: A resource thats associated with a hub.
+additionalProperties:
+  "$ref": "../hubs/Hub.yml"

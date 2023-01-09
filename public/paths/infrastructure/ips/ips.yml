@@ -1,0 +1,50 @@
+get:
+  operationId: "getPoolsIPs"
+  tags:
+    - InfrastructureIPs
+  parameters:
+    - name: poolId
+      description: The ID for the given pool.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: List Pool IP's
+  description: Requires the `infrastructure-ips-manage` capability.
+  responses:
+    "200":
+      description: A collection of IPs.
+      content:
+        application/json:
+          schema:
+            title: "GetPoolsIPReturn"
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  "$ref": "../../../../schemas/infrastructure/IP.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"

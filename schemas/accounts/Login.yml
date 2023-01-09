@@ -1,0 +1,26 @@
+title: BaseLogin
+type: object
+description: A login event resource.
+required:
+  - id
+  - account
+  - time
+  - type
+  - success
+properties:
+  id:
+    "$ref": "../ID.yml"
+  account:
+    "$ref": "./AccountInfo.yml"
+  time:
+    description: A timestamp of the time the login occurred.
+    "$ref": "../DateTime.yml"
+  type:
+    type: string
+    description: The type of login mechanism used.
+    enum:
+      - password
+      - employee
+  success:
+    type: boolean
+    description: A boolean where true reflects that the login was successful.

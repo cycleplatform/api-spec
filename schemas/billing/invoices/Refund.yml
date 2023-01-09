@@ -1,0 +1,23 @@
+title: BillingRefund
+type: object
+description: A billing refund.
+required:
+  - id
+  - time
+  - description
+  - amount
+  - gateway
+properties:
+  id:
+    "$ref": "../../ID.yml"
+  time:
+    description: A timestamp for the payment.
+    "$ref": "../../DateTime.yml"
+  description:
+    type: string
+    description: Some information about the payment refund.
+  amount:
+    type: integer
+    description: 1/10th of a cent.
+  gateway:
+    "$ref": "./PaymentGateway.yml"

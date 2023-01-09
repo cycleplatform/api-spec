@@ -1,0 +1,12 @@
+title: VPNInfo
+type: object
+description: A summary of a VPN service for a given environment.
+required:
+  - url
+  - service
+properties:
+  url:
+    type: string
+    description: A url associated with the VPN service.
+  service:
+    "$ref": "../config/VpnEnvironmentService.yml"

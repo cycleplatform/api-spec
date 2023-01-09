@@ -1,0 +1,11 @@
+title: InstanceTelemetryProcessesSnapshot 
+type: object 
+description: Process information for a given snapshot. 
+properties: 
+  current:
+    type: number 
+    description: The current number of running processes in the instance. 
+  limit: 
+    type: number 
+    description: The maximum number of running processes for the instance. 
+    

@@ -1,0 +1,13 @@
+# Unable to override schema for specific values until spec is updated. See: https://github.com/OAI/OpenAPI-Specification/issues/2026
+# Copying and pasting this inline with the proper enum for schema values for now.
+---
+name: include
+in: query
+style: form
+required: false
+description: A comma separated list of include values. Included resources will show
+  up under the root document's `include` field, with the key being the id of the included
+  resource. In the case of applying an include to a collection of resources, if two
+  resources share the same  include, it will only appear once in the return.
+schema:
+  type: array

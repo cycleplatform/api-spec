@@ -1,0 +1,16 @@
+title: HubState 
+allOf: 
+  - required: 
+      - current 
+    properties: 
+      current: 
+        description: The current state of the hub. 
+        type: string 
+        enum: 
+          - new 
+          - configuring 
+          - live 
+          - inactive 
+          - deleting 
+          - deleted 
+  - "$ref": "../State.yml" 

@@ -1,0 +1,13 @@
+title: ServerFeatures
+type: object
+description: A set of features a given server can have and their information.
+required:
+  - sftp
+  - base_volume_ gb
+properties:
+  sftp:
+    type: boolean
+    description: A boolean where true means the server accepts incoming SFTP connections through the remote volume integration.
+  base_volume_gb:
+    type: integer
+    description: The size of the base volume (where Cycle stores container images on this server).

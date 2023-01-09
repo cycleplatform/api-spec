@@ -1,0 +1,14 @@
+---
+title: EnvironmentAbout
+type: object
+description: Contains details regarding the environment.
+required:
+- description
+- favorite
+properties:
+  description:
+    type: string
+    description: A custom description for this environment.
+  favorite:
+    type: boolean
+    description: If true, this environment has been marked as a favorite.

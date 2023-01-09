@@ -1,0 +1,8 @@
+title: InfrastructureProviderIntegration
+type: object
+description: Information about a provider and how it integrates with the platform.
+properties:
+  native:
+    "$ref": "./NativeIntegration.yml"
+  abstraction:
+    "$ref": "./AbstractionIntegration.yml"

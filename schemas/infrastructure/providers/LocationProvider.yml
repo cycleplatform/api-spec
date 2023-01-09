@@ -1,0 +1,18 @@
+title: LocationProvider
+type: object
+description: Information about the locaiton of the provider.
+required:
+  - identifier
+  - location
+  - code
+properties:
+  identifier:
+    type: string
+    description: An identifier for the given provider
+    # TODO - might add the enum with possible entries although this might not matter as much here given it might change.
+  location:
+    type: string
+    description: A location name returned from the provider.
+  code:
+    type: string
+    description: A location code returned from the provider.

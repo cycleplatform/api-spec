@@ -1,0 +1,81 @@
+title: Server
+type: object
+description: The server resource, referring to servers that have been deployed to a Cycle hub.
+required:
+  - id
+  - hub_id
+  - location_id
+  - model_id
+  - node_id
+  - hostname
+  - creator
+  - provider
+  - cluster
+  - features
+  - constraints
+  - state
+  - events
+properties:
+  id:
+    "$ref": "../../ID.yml"
+  hub_id:
+    "$ref": "../../HubID.yml"
+  location_id:
+    type: string
+    description: An identifier for the location this server is deployed to.
+  model_id:
+    type: string
+    description: An identifier for the model of server that is deployed.
+  node_id:
+    type: string
+    description: An identifier for the node.
+  hostname:
+    type: string
+    description: The server hostname.
+  creator:
+    "$ref": "../../Creator.yml"
+  provider:
+    "$ref": "./ServerProvider.yml"
+  cluster:
+    type: string
+    description: The cluster the given server is deployed to.
+  features:
+    "$ref": "./ServerFeatures.yml"
+  constraints:
+    "$ref": "./ServerConstraints.yml"
+  state:
+    "$ref": "./ServerState.yml"
+  events:
+    title: ServerEvents
+    type: object
+    description: A collection of timestamps for each event in the server's lifetime.
+    required:
+      - created
+      - updated
+      - deleted
+      - provisioning
+    properties:
+      created:
+        description: The timestamp of when the server was created.
+        "$ref": "../../DateTime.yml"
+      updated:
+        description: The timestamp of when the server was updated.
+        "$ref": "../../DateTime.yml"
+      deleted:
+        description: The timestamp of when the server was deleted.
+        "$ref": "../../DateTime.yml"
+      provisioning:
+        type: object
+        description: Information about the provisioning of the server.
+        required:
+          - started
+          - completed
+        properties:
+          started:
+            description: A timestamp of when the server started provisioning.
+            "$ref": "../../DateTime.yml"
+          completed:
+            description: A timestamp of when the server completed provisioning.
+            "$ref": "../../DateTime.yml"
+  meta:
+    "$ref": "./ServerMeta.yml"

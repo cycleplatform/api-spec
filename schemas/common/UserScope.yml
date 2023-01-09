@@ -1,0 +1,20 @@
+title: UserScope
+description: A type of creator and a matching identifier.
+type: object
+required:
+  - type
+  - id
+properties:
+  type: 
+    type: string
+    description: The type of user that created the resource.
+    enum:
+      - account
+      - environment
+      - platform
+      - platform-pipeline
+      - employee
+      - api-key
+      - visitor
+  id:
+    "$ref": "../ID.yml"

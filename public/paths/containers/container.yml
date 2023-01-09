@@ -1,0 +1,183 @@
+get:
+  operationId: "getContainerById"
+  tags:
+    - Containers
+  parameters:
+    - name: containerId
+      description: The ID of the requested container.
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: meta
+      in: query
+      required: false
+      description:
+        A comma separated list of meta values. Meta values will show up under a resource's
+        `meta` field. In the case of applying a meta to a collection of resources, each
+        resource will have it's own relevant meta data. In some rare cases, meta may not
+        apply to individual resources, and may appear in the root document. These will be
+        clearly labeled.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - instances_count
+            - domain
+            - domains
+            - ips
+    - name: include
+      in: query
+      required: false
+      description:
+        A comma separated list of include values. Included resources will show
+        up under the root document's `include` field, with the key being the id of the included
+        resource. In the case of applying an include to a collection of resources, if two
+        resources share the same include, it will only appear once in the return.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - creators
+            - images
+            - stack_builds
+            - stacks
+            - environments
+  summary: Fetch Container
+  description: Requires the `containers-view` capability.
+  responses:
+    "200":
+      description: Returns an container resource.
+      content:
+        application/json:
+          schema:
+            title: "ContainerResponse"
+            type: object
+            properties:
+              data:
+                "$ref": "../../../schemas/containers/Container.yml"
+              includes:
+                "$ref": "../../../schemas/containers/instances/InstanceIncludes.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+patch:
+  operationId: "updateContainer"
+  tags:
+    - Containers
+  parameters:
+    - name: containerId
+      description: The ID of the container.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Update Container
+  description: Updates the specified container, setting the values of the parameters passed.  If any parameters are omitted, they will be left unchanged. Requires the `contianers-update` capability.
+  requestBody:
+    "$ref": "../../../schemas/containers/requestBodies/UpdateContainer.yml"
+  responses:
+    "200":
+      description: Returns the updated container resource.
+      content:
+        application/json:
+          schema:
+            title: "ContainerUpdateResponse"
+            type: object
+            properties:
+              data:
+                "$ref": "../../../schemas/containers/Container.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+delete:
+  operationId: "removeContainer"
+  tags:
+    - Containers
+  parameters:
+    - name: containerId
+      description: The ID of the requested container.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Delete Container
+  description: Requires the `contianers-update` capability.
+  responses:
+    "200":
+      description: Returns a task descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                "$ref": "../../../schemas/jobs/TaskDescriptor.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"

@@ -1,0 +1,18 @@
+title: ProviderSummary
+description: A summary of the provider a given resource is deployed to.
+type: object
+required:
+  - identifier
+  - location
+properties:
+  identifier:
+    type: string
+    description: An identifier for the provider. Custom IAL providers will be listed as `abstraction-<ID>` where the ID is a MongoDB ID.
+    enum:
+      - equinix-metal
+      - vultr
+      - aws
+      - abstraction-<MongoID>
+  location:
+    type: string
+    description: A location identifier associated with the provider.

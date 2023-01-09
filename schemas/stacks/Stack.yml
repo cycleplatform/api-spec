@@ -1,0 +1,47 @@
+title: Stack
+type: object
+description: Stacks are a way to orchestrate multiple containers atomically and automatically.
+required:
+  - id
+  - name
+  - hub_id
+  - creator
+  - source
+  - state
+  - events
+properties:
+  id:
+    "$ref": "../ID.yml"
+  name:
+    type: string
+    description: A user defined name for the stack resource.
+  hub_id:
+    "$ref": "../HubID.yml"
+  creator:
+    "$ref": "../common/UserScope.yml"
+  source:
+    "$ref": "./StackSource.yml"
+  state:
+    "$ref": "./StackState.yml"
+  events:
+    title: StackEvents
+    type: object
+    description: A collection of timestamps for each event in the Stacks lifetime.
+    required:
+      - created
+      - updated
+      - deleted
+      - last_build
+    properties:
+      created:
+        description: The timestamp of when the stack was created.
+        "$ref": "../DateTime.yml"
+      updated:
+        description: The timestamp of when the stack was updated.
+        "$ref": "../DateTime.yml"
+      deleted:
+        description: The timestamp of when the stack was deleted.
+        "$ref": "../DateTime.yml"
+      last_build:
+        description: The timestamp for the last build of the stack.
+        "$ref": "../DateTime.yml"

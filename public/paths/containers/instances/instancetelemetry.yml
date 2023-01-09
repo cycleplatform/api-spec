@@ -1,0 +1,54 @@
+get:
+  operationId: "getInstanceResourcesTelemetryReport"
+  tags:
+    - Instances
+  parameters:
+    - name: containerId
+      description: The ID of the requested container.
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: instanceId
+      description: The ID for the container instance.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Fetch Instance Telemetry Report
+  description: Requires the `containers-view` capability.
+  responses:
+    "200":
+      description: Returns an instance telemetry report.
+      content:
+        application/json:
+          schema:
+            title: InstaceTelemetryReportReturn
+            type: object
+            properties:
+              data:
+                "$ref": "../../../../schemas/containers/instances/returns/InstanceTelemetryReport.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"

@@ -1,0 +1,18 @@
+title: HubMembershipsIncludes
+type: object
+description: A resource thats associated with a hub membershp.
+properties:
+  senders:
+    type: object
+    description: A record with an ID mapped to a public account for the account that sent this memberships initial invite.
+    properties:
+      accounts:
+        type: object
+        description: A record with an ID mapped to a public account.
+        additionalProperties:
+          "$ref": "../creators/PublicAccount.yml"
+  hubs:
+    type: object
+    description: A record with an ID mapped to a hub resource.
+    additionalProperties:
+      "$ref": "./Hub.yml"

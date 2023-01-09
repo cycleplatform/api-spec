@@ -1,0 +1,5 @@
+title: PipelineStackBuildGenerate 
+allOf: 
+  - "$ref": "../ResourceLocation.yml"
+  - "$ref": "../../stacks/builds/taskActions/GenerateStackBuildAction.yml"
+  

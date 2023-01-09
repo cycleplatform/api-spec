@@ -1,0 +1,24 @@
+title: StorageServerSpec
+type: object 
+description: Information about the storage resources for a given server. 
+required: 
+  - count 
+  - size_gb 
+  - type 
+  - extra 
+properties: 
+  count: 
+    type: integer 
+    description: The number of storage devices for a given server. 
+  size_gb: 
+    type: integer 
+    description: The total amount of storage on a given server, in GB. 
+  type: 
+    type: string 
+    description: The type of the storage device(s). 
+  extra: 
+    type: object 
+    description: Extra information about the storage resources for a given server. 
+    additionalProperties: 
+      type: string 
+      

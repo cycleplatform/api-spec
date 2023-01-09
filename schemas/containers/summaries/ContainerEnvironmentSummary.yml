@@ -1,0 +1,25 @@
+---
+title: ContainerEnvironmentSummary
+description: A summary of supplemental environment and network information specific to a container.
+type: object
+required:
+  - id
+  - cluster
+  - container_subnet
+  - ipv6
+  - legacy
+properties:
+  id:
+    $ref: "../../ID.yml"
+  cluster:
+    type: string
+    description: The cluster this environment is associated with.
+  container_subnet: 
+    type: string
+    description: The private network subnet ID for this container and its instances.
+  ipv6:
+    allOf:
+    - description: The IPv6 interface.
+    - "$ref": "../../environments/IPNet.yml"
+  legacy:
+    $ref: "../../environments/LegacyNetwork.yml"

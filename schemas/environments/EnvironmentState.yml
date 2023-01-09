@@ -1,0 +1,16 @@
+---
+title: EnvironmentState
+allOf:
+  - required:
+      - current
+    properties:
+      current:
+        description: The current state of the environment.
+        type: string
+        enum:
+          - new
+          - live
+          - cloning
+          - deleting
+          - deleted
+  - "$ref": "../State.yml"

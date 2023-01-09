@@ -1,0 +1,13 @@
+title: BillingMethodExpiration
+description: Expiration information for a billing method
+type: object
+required:
+  - month
+  - year
+properties:
+  month:
+    type: integer
+    description: The month the billing method expires.
+  year:
+    type: integer
+    description: The year the billing method expires.

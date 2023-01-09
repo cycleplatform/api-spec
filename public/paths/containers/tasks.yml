@@ -1,0 +1,58 @@
+post:
+  tags:
+    - Containers
+  operationId: "createContainerJob"
+  parameters:
+    - name: containerId
+      description: The ID of the requested container.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Create Container Job
+  description: Used to perform different actions on a given container. Requires the `containers-state`, `containers-update`, or `containers-volumes-manage` capability (respectively).
+  requestBody:
+    description: Parameters for creating a new container job.
+    content:
+      application/json:
+        schema:
+          oneOf:
+            - "$ref": "../../../schemas/containers/taskActions/ContainerAction.yml"
+            - "$ref": "../../../schemas/containers/taskActions/ReconfigureContainer.yml"
+            - "$ref": "../../../schemas/containers/taskActions/ReconfigureVolumes.yml"
+            - "$ref": "../../../schemas/containers/taskActions/Reimage.yml"
+            - "$ref": "../../../schemas/containers/taskActions/Scale.yml"
+  responses:
+    "200":
+      description: Returns a task descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                "$ref": "../../../schemas/jobs/TaskDescriptor.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"

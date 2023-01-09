@@ -1,0 +1,170 @@
+get:
+  operationId: "getInstances"
+  tags:
+    - Instances
+  parameters:
+    - name: containerId
+      description: The ID of the container this instance is created from.
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: include
+      in: query
+      required: false
+      description:
+        A comma separated list of include values. Included resources will show
+        up under the root document's `include` field, with the key being the id of the included
+        resource. In the case of applying an include to a collection of resources, if two
+        resources share the same include, it will only appear once in the return.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - creators
+            - servers
+            - locations
+            - providers
+            - containers
+            - environments
+    - $ref: "../../../parameters/SortParam.yml"
+    - $ref: "../../../parameters/FilterParam.yml"
+    - $ref: "../../../parameters/PageParam.yml"
+  summary: List Instances
+  description: Requires the `containers-view` capability.
+  responses:
+    "200":
+      description: Returns a collection of contianer instance resources.
+      content:
+        application/json:
+          schema:
+            title: ContainerInstanceListResponse
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  "$ref": "../../../../schemas/containers/instances/Instance.yml"
+              includes:
+                "$ref": "../../../../schemas/containers/instances/InstanceIncludes.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+post:
+  operationId: "createContainerInstance"
+  tags:
+    - Containers
+  parameters:
+    - name: containerId
+      description: The ID of the container this instance is created from.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Create Instance(s)
+  description: Requires the `containers-update` capability.
+  requestBody:
+    "$ref": "../../../../schemas/containers/instances/requestBodies/InstanceCreate.yml"
+  responses:
+    "200":
+      description: Returns a task descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                "$ref": "../../../../schemas/jobs/TaskDescriptor.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+delete:
+  operationId: "removeMultipleContainerInstances"
+  tags:
+    - Instances
+  parameters:
+    - name: containerId
+      description: The ID of the container the instance(s) were created from.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Delete Instance(s)
+  description: Requires the `containers-update` capability.
+  responses:
+    "200":
+      description: Returns a task descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                "$ref": "../../../../schemas/jobs/TaskDescriptor.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"

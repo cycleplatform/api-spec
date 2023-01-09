@@ -1,0 +1,19 @@
+title: ActivitySession
+type: object
+description: Session info about the activity entry.
+nullable: true
+required:
+  - url
+  - ip
+  - api_key
+properties:
+  url:
+    type: string
+    description: URL endpoint assocaited with the activity context - does not include domain.
+  ip:
+    type: string
+    description: The IP of the account associated with the session.
+  api_key:
+    type: string
+    description: The API key ID.
+    nullable: true

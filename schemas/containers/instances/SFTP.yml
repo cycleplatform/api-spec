@@ -1,0 +1,35 @@
+title: InstanceVolumeSFTP
+type: object 
+description: Information about connecting to a instance volume over SFTP. 
+required: 
+  - host 
+  - port 
+  - username 
+  - password 
+properties: 
+  host: 
+    type: string 
+    description: The hostname for connecting to the volume over SFTP. 
+  port: 
+    type: number 
+    description: The port number to use when connecting. 
+  username: 
+    type: string 
+    description: The username to use when connecting. 
+  password:
+    type: object
+    description: Password configuration settings for the remote access of the container volume.
+    required:
+      - algorithm
+      - data
+    properties:
+      algorithm:
+        type: string
+        description: The hashing algorithm used to has the password.
+        enum:
+          - raw
+          - sha512
+          - md5
+      data:
+        type: string
+        description: The raw or hashed password. 

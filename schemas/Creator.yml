@@ -1,0 +1,18 @@
+---
+title: Creator
+description: A creator object. Describes who created the resource.
+type: object
+properties:
+  id:
+    "$ref": "./ID.yml"
+  type:
+    type: string
+    description: The type of creator.
+    enum:
+    - account
+    - employee
+    - api-key
+    - visitor
+    - environments
+    # Some legacy stuff has an empty type for creator.
+    - ""

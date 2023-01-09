@@ -1,0 +1,44 @@
+title: Backup 
+type: object 
+description: A container backup resource. 
+required: 
+  - id 
+  - hub_id
+  - container_id 
+  - instance_id 
+  - target 
+  - state 
+  - events 
+properties: 
+  id: 
+    "$ref": "../../ID.yml" 
+  hub_id: 
+    "$ref": "../../HubID.yml" 
+  container_id: 
+    type: string 
+    description: The ID of the given container.
+  instance_id: 
+    type: string 
+    description: The ID of the instance the backup belongs to. 
+  target: 
+    "$ref": "./Target.yml" 
+  state: 
+    "$ref": "./BackupState.yml" 
+  events:
+    title: BackupEvents
+    type: object
+    description: A collection of timestamps for each event in the backup's lifetime.
+    required:
+      - created
+      - updated
+      - deleted
+    properties:
+      created:
+        description: The timestamp of when the backup was created.
+        "$ref": "../../DateTime.yml"
+      updated:
+        description: The timestamp of when the backup was updated.
+        "$ref": "../../DateTime.yml"
+      deleted:
+        description: The timestamp of when the backup was deleted.
+        "$ref": "../../DateTime.yml"

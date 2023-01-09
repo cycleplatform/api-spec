@@ -1,0 +1,80 @@
+title: Account
+type: object
+description: An object representing information about the currently logged-in user.
+required:
+  - id
+  - name
+  - email
+  - allow_support_logins
+  - state
+  - events
+properties:
+  id:
+    "$ref": "../ID.yml"
+  name:
+    type: object
+    description: The first and last name associated with the account.
+    required:
+      - first
+      - last
+    properties:
+      first:
+        type: string
+        description: The first name of the account owner.
+      last:
+        type: string
+        description: The last name of the account owner.
+  email:
+    type: object
+    description: Information about the email address associated with the account.
+    required:
+      - address
+      - verified
+      - added
+    properties:
+      address:
+        type: string
+        description: The email address.
+      verified:
+        type: boolean
+        description: If true, the email has been verified and the account is active.
+      added:
+        description: The date the email was added to the account
+        "$ref": "../DateTime.yml"
+  two_factor_auth:
+    type: object
+    nullable: true
+    description: Two factor auth verification information.
+    required:
+      - verified
+    properties:
+      verified:
+        type: boolean
+        description: A boolean representing if the account has verified with TwoFA.
+  allow_support_login:
+    description: Indicates whether or not Cycle employees have authorization to log in to this account in a support capacity.
+    type: boolean
+  state:
+    "$ref": "./AccountState.yml"
+  events:
+    title: AccountEvents
+    type: object
+    description: A collection of timestamps for each event in the account's lifetime.
+    required:
+      - created
+      - updated
+      - deleted
+      - last_login
+    properties:
+      created:
+        description: The timestamp of when the image was created.
+        "$ref": "../DateTime.yml"
+      updated:
+        description: The timestamp of when the image was updated.
+        "$ref": "../DateTime.yml"
+      deleted:
+        description: The timestamp of when the image was deleted.
+        "$ref": "../DateTime.yml"
+      last_login:
+        description: The timestamp of when the account was last accessed.
+        "$ref": "../DateTime.yml"

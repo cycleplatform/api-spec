@@ -1,0 +1,29 @@
+title: IPPoolProvider
+type: object 
+description: A IP Pool provider. 
+required: 
+  - identifier 
+  - location 
+  - reservation 
+  - server 
+  - server_assignment 
+properties: 
+  identifier: 
+    type: string 
+    description: An identifier for a native provider. 
+    enum: 
+      - equinix-metal 
+      - vultr 
+      - aws 
+  location:   
+    type: string 
+    description: Information about the location of the provider this pool is associated with. 
+  reservation: 
+    type: string 
+    description: A reservation identifier associated with the pool reservation. 
+  server: 
+    type: string 
+    description: A server identifier associated with the pool. 
+  server_assignment: 
+    type: string 
+    description: An identifier linked to the server assingment of the IP pool. 

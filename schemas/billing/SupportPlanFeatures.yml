@@ -1,0 +1,18 @@
+title: SupportPlanFeatures
+type: object
+description: Information about billing support plan features.
+required:
+  - engineering_support
+  - uptime_sla
+  - guaranteed_response_time
+properties:
+  engineering_support:
+    type: boolean
+    description: A boolean where true indicates the contract includes support for engineering.
+  uptime_sla:
+    type: boolean
+    description: A boolean where true represents the contract has an uptime SLA agreement.
+  guaranteed_response_time:
+    nullable: true
+    type: string
+    description: The time in which this support contract guarantees response time.

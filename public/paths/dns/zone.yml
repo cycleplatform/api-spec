@@ -1,0 +1,161 @@
+get:
+  operationId: "getDNSZone"
+  tags:
+    - DNS
+  parameters:
+    - name: zoneId
+      description: The ID of the zone.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Fetch DNS Zone
+  description: Requires the `dns-view` capability.
+  responses:
+    "200":
+      description: Returns a DNS zone resource.
+      content:
+        application/json:
+          schema:
+            title: SingleDNSZoneReturn
+            type: object
+            properties:
+              data:
+                "$ref": "../../../schemas/dns/Zone.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+patch:
+  operationId: "updateDNSZone"
+  tags:
+    - DNS
+  parameters:
+    - name: zoneId
+      description: The ID of the zone.
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: include
+      in: query
+      required: false
+      description:
+        A comma separated list of include values. Included resources will show
+        up under the root document's `include` field, with the key being the id of the included
+        resource. In the case of applying an include to a collection of resources, if two
+        resources share the same include, it will only appear once in the return.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - creators
+  summary: Update DNS Zone
+  description: Requires the `dns-manage` capability.
+  requestBody:
+    "$ref": "../../../schemas/dns/requestBodies/UpdateZoneRequest.yml"
+  responses:
+    "200":
+      description: Returns a DNS zone resource.
+      content:
+        application/json:
+          schema:
+            title: "DNSZoneUpdateResponse"
+            type: object
+            properties:
+              data:
+                "$ref": "../../../schemas/dns/Zone.yml"
+              includes:
+                "$ref": "../../../schemas/dns/ZoneIncludes.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+delete:
+  operationId: "deleteDNSZone"
+  tags:
+    - DNS
+  parameters:
+    - name: zoneId
+      description: The ID of the zone.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Delete DNS Zone
+  description: Requires the `dns-manage` capability.
+  responses:
+    "200":
+      description: Returns a task descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                "$ref": "../../../schemas/jobs/TaskDescriptor.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"

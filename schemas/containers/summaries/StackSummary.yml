@@ -1,0 +1,18 @@
+title: ContainerStackSummary
+description: A summary of the stack this container was created format.
+type: object
+properties:
+  id:
+    "$ref": "../../ID.yml"
+  image:
+    type: object
+    properties:
+      id:
+        type: string
+        description: "The ID of the image used for this container."
+  build_id:
+    type: string
+    description: The ID of the stack build this container is associated with.
+  identifier:
+    type: string
+    description: The container identifier, usually the key to the container section of a stack file.

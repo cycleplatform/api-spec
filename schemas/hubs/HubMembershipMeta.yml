@@ -1,0 +1,8 @@
+title: HubMembershipMeta
+type: object
+description: A list of meta fields that can be applied to a membership.
+properties:
+  capabilities:
+    type: array
+    items:
+      "$ref": "../common/Capabilities.yml"

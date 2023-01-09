@@ -1,0 +1,30 @@
+---
+title: ContainerState
+allOf:
+  - required:
+      - current
+    properties:
+      current:
+        description: The current state of the container.
+        type: string
+        enum:
+          - new
+          - starting
+          - running
+          - stopping
+          - stopped
+          - deleting
+          - deleted
+      desired:
+        description: The desired state of the container.
+        type: string
+        enum:
+          - new
+          - starting
+          - running
+          - stopping
+          - stopped
+          - deleting
+          - deleted
+
+  - "$ref": "../State.yml"

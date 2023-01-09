@@ -1,0 +1,17 @@
+title: ServerStatsRAM
+type: object
+description: Statistics about the RAM on a given server.
+required:
+  - available
+  - free
+  - total
+properties:
+  available:
+    type: integer
+    description: The available RAM on the server.
+  free:
+    type: integer
+    description: The free RAM on the server.
+  total:
+    type: integer
+    description: The total RAM on the server.

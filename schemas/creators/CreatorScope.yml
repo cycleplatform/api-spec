@@ -1,0 +1,20 @@
+---
+title: CreatorScope
+description: The creator scope is embedded in resource objects to describe who created them
+type: object
+required:
+  - id
+  - type
+properties:
+  id:
+    $ref: "../ID.yml"
+  type:
+    type: string
+    enum:
+      - account
+      - environment
+      - platform
+      - platform-pipeline
+      - employee
+      - api-key
+      - visitor

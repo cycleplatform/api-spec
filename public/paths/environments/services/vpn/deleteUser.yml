@@ -1,0 +1,55 @@
+delete:
+  operationId: "deleteVPNUser"
+  tags:
+    - Environments
+  parameters:
+    - name: environmentId
+      description: The environmentId where the VPN service the given user belongs to resides.
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: userId
+      description: The userId of the user to be deleted.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Delete VPN user
+  description: Requires the `environments-vpn-manage` capability.
+  responses:
+    "200":
+      description: Returns a null data object.
+      content:
+        application/json:
+          schema:
+            title: "VPNUserDeleteReturn"
+            type: object
+            properties:
+              data:
+                # TODO - this should be null
+                type: string
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../../schemas/error/ErrorResponse.yml"

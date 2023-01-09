@@ -1,0 +1,33 @@
+title: OrderItem
+type: object
+description: Describes a billing item
+required:
+  - id
+  - service
+  - description
+  - price
+  - net_price
+properties:
+  id:
+    type: string
+  service:
+    "$ref": "../ServiceItem.yml"
+  description:
+    type: string
+  price:
+    "$ref": "../BillingAmount.yml"
+  discount:
+    type: object
+    required:
+      - id
+      - amount
+      - expires
+    properties:
+      id:
+        type: string
+      amount:
+        "$ref": "../BillingAmount.yml"
+      expires:
+        "$ref": "../../DateTime.yml"
+  net_price:
+    type: number

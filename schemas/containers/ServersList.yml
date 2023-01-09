@@ -1,0 +1,47 @@
+title: ServerInstances 
+type: object 
+description: Information about the instances on a server. 
+required: 
+  - id 
+  - instances 
+  - hostname 
+properties: 
+  id: 
+    "$ref": "../ID.yml" 
+  instances: 
+    type: object
+    description: A summary of resources by state
+    required:
+    - state
+    - total
+    - available
+    properties:
+      state:
+        title: CountsByState
+        type: object
+        description: A count of this resource, grouped by state.
+        additionalProperties:
+          type: integer
+      total:
+        type: integer
+        description: The total number of this resource
+      available:
+        type: integer
+        description: The total number of this resource available, less any deleted ones.
+    example:
+      state:
+        new: 0
+        starting: 0
+        reimaging: 1
+        migrating: 1
+        running: 5
+        stopping: 0
+        failed: 0
+        deleting: 0
+        deleted: 0
+      total: 7
+      available: 5
+  hostname: 
+    type: string 
+    description: The server hostname. 
+

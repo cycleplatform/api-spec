@@ -1,0 +1,172 @@
+title: Image
+type: object
+description: An Image Resource, which is a point in time build on a given image source.
+required:
+  - id
+  - hub_id
+  - name
+  - stack
+  - size
+  - backend
+  - tags
+  - config
+  - state
+  - events
+properties:
+  id:
+    "$ref": "../ID.yml"
+  hub_id:
+    "$ref": "../HubID.yml"
+  name:
+    type: string
+    description: A user defined name for the image.
+  stack:
+    type: object
+    description: If the image is part of a stack, that information will be available here.
+    required:
+      - id
+      - build_id
+      - containers
+    properties:
+      id:
+        "$ref": "../ID.yml"
+      build_id:
+        type: string
+        description: A unique identifier for the build the image is assocaited with.
+      containers:
+        description: If this image is being used for any containers their identifiers are listed here.
+        type: array
+        items:
+          type: string
+  size:
+    type: integer
+    description: The image size in bytes.
+  about:
+    type: object
+    description: An object that holds information about the image.
+    required:
+      - description
+    properties:
+      description:
+        type: string
+        nullable: true
+        description: A description of the image.
+  backend:
+    type: object
+    description: Describes where the image is hosted.
+    required:
+      - provider
+      - size
+      - file_name
+      - file_id
+    properties:
+      provider:
+        type: string
+        description: The provider where this image is hosted.
+      size:
+        type: string
+        description: The size of the image in bytes.
+      file_name:
+        type: string
+        description: A file name for the image, used by the platform.
+      file_id:
+        type: string
+        description: A file id for the image, used by the platform.
+  tags:
+    description: Tags that describe the version, package, or data about the image.
+    type: array
+    items:
+      type: string
+  config:
+    type: object
+    description: Configuration settings for the image.
+    required:
+      - user
+      - ports
+      - env
+      - labels
+      - command
+      - onbuild
+      - entrypoint
+      - volumes
+      - workdir
+      - signal_stop
+    properties:
+      user:
+        type: string
+        description: The linux user this image runs its processes as.
+      ports:
+        description: The port settings for the image.
+        type: array
+        items:
+          type: string
+      env:
+        type: object
+        description: Image defined environment variables for the image.
+        additionalProperties:
+          type: string
+      labels:
+        type: string
+        description: Image labels.
+      command:
+        description: The CMD array used to start the container.
+        type: array
+        items:
+          type: string
+      onbuild:
+        description: Additional commands to run at build time.
+        type: array
+        items:
+          type: string
+      entrypoint:
+        description: An entrypoint command.
+        type: array
+        items:
+          type: string
+      volumes:
+        description: Volumes information for the given image.
+        type: array
+        items:
+          type: object
+          properties:
+            path:
+              type: string
+              description: The path where the volume is mounted.
+            mode:
+              type: string
+              description: Permission settings for the volume.
+              enum:
+                - ro
+                - rw
+      workdir:
+        type: string
+        description: The working directory for the image.
+      signal_stop:
+        type: string
+        description: A set command to be run if a signal is called.
+  source:
+    "$ref": "./sources/ImageSource.yml"
+  creator:
+    "$ref": "../Creator.yml"
+  state:
+    "$ref": "./ImageState.yml"
+  events:
+    title: ImageEvents
+    type: object
+    description: A collection of timestamps for each event in the image's lifetime.
+    required:
+      - created
+      - updated
+      - deleted
+    properties:
+      created:
+        description: The timestamp of when the image was created.
+        "$ref": "../DateTime.yml"
+      updated:
+        description: The timestamp of when the image was updated.
+        "$ref": "../DateTime.yml"
+      deleted:
+        description: The timestamp of when the image was deleted.
+        "$ref": "../DateTime.yml"
+  meta:
+    "$ref": "./ImageMeta.yml"

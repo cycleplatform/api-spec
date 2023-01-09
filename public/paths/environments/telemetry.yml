@@ -1,0 +1,51 @@
+get:
+  operationId: "getInstancesTelemetry"
+  tags:
+    - Environments
+  parameters:
+    - name: environmentId
+      description: The environmentId where the instances being reported on reside.
+      in: path
+      required: true
+      schema:
+        type: string
+    - $ref: "../../parameters/FilterParam.yml"
+  summary: List Telemetry Data
+  description: Requires the `environments-view` capability.
+  responses:
+    "200":
+      description: Returns a collection of telemetry data points.
+      content:
+        application/json:
+          schema:
+            title: "EnvironmentInstanceTelemetry"
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  "$ref": "../../../schemas/environments/returns/InstanceTelemetry.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"

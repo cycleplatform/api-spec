@@ -1,0 +1,23 @@
+title: PipelineStage
+type: object
+description: A stage for a given pipeline.
+required:
+  - identifier
+  - steps
+properties:
+  identifier:
+    type: string
+    description: A stage identifier.
+    # TODO - show the regex here.
+  steps:
+    type: array
+    description: An array of steps for the stage.
+    items:
+      "$ref": "./PipelineSteps.yml"
+  options:
+    type: object
+    description: Additonal options for the stage.
+    properties:
+      skip:
+        type: boolean
+        description: A boolean where true indicates the given stage should be skipped when the pipeline is run.

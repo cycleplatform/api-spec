@@ -1,0 +1,49 @@
+---
+get:
+  tags:
+    - Environments
+  operationId: "getEnvironmentSummary"
+  parameters:
+    - name: environmentId
+      description: The ID of the requested environment.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Fetch Environment Summary
+  description: Fetches a single summary object for a specific environment. Contains useful and relevant data/statistics that would otherwise be several separate API calls.  Requires the `environments-view` capability.
+  responses:
+    "200":
+      description: Returns an environment summary object.
+      content:
+        application/json:
+          schema:
+            title: "EnvironmentSummaryResponse"
+            type: object
+            properties:
+              data:
+                "$ref": "../../../schemas/environments/summaries/EnvironmentSummary.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"

@@ -1,0 +1,54 @@
+---
+title: TierPlan
+type: object
+description: A TierPlan object describes the attributes of a subscription tier
+required:
+  - id
+  - name
+  - code
+  - generation
+  - usable
+  - price
+  # - servers
+  # - members
+  - max_nodes
+  - max_members
+  # - advanced_features
+  - max_daily_api_requests
+  # - ram
+  # - image_storage
+  # - builds
+  - hidden
+  - description
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  code:
+    type: string
+  generation:
+    type: number
+  usable:
+    type: boolean
+  price:
+    "$ref": "../BillingAmount.yml"
+  # servers: #TODO
+  # members: #TODO
+  max_nodes:
+    type: number
+    nullable: true
+  max_members:
+    type: number
+    nullable: true
+  # advanced_features: #TODO
+  max_daily_api_requests:
+    type: number
+    nullable: true
+  # ram: #TODO
+  # image_storage: #TODO
+  # builds: #TODO
+  hidden:
+    type: boolean
+  description:
+    type: string

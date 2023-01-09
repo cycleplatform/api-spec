@@ -1,0 +1,88 @@
+title: BillingInvoice
+type: object
+description: Information about a billing invoice.
+required:
+  - id
+  - hub_id
+  - approved
+  - services
+  - payments
+  - credits
+  - late_fees
+  - charges
+  - due
+  - overdue
+  - events
+  - state
+properties:
+  id:
+    "$ref": "../../ID.yml"
+  hub_id:
+    "$ref": "../../HubID.yml"
+  approved:
+    type: boolean
+    description: A boolean where true represents the invoice is approved for collection.
+  services:
+    type: array
+    items:
+      "$ref": "../BillingSummary.yml"
+  payments:
+    type: array
+    items:
+      "$ref": "./Payment.yml"
+  credits:
+    type: array
+    items:
+      "$ref": "./InvoiceCredit.yml"
+  late_fees:
+    "$ref": "./LateFee.yml"
+  charges:
+    type: integer
+    description: The amount in charges generated through the licesnse agreement + overages for the billing period covered by the invoice.
+  due:
+    description: A timestamp of when the invoice is due to be paid.
+    "$ref": "../../DateTime.yml"
+  overdue:
+    description: A timestamp of when the invoice is overdue.
+    "$ref": "../../DateTime.yml"
+  events:
+    title: BillingOrderEvents
+    type: object
+    description: A collection of timestamps for each event in the billing order's lifetime.
+    required:
+      - created
+      - updated
+      - deleted
+      - billed
+      - paid
+      - credited
+      - voided
+    properties:
+      created:
+        description: The timestamp of when the billing order was created.
+        "$ref": "../../DateTime.yml"
+      updated:
+        description: The timestamp of when the billing order was updated.
+        "$ref": "../../DateTime.yml"
+      deleted:
+        description: The timestamp of when the billing order was deleted.
+        "$ref": "../../DateTime.yml"
+      billed:
+        description: The timestamp of when the billing order billed.
+        "$ref": "../../DateTime.yml"
+      paid:
+        description: The timestamp of when the billing order paid.
+        "$ref": "../../DateTime.yml"
+      payment_attempt:
+        description: The timestamp of when the billing order payment was attempted.
+        "$ref": "../../DateTime.yml"
+      credited:
+        description: The timestamp of when the billing order credited.
+        "$ref": "../../DateTime.yml"
+      voided:
+        description: The timestamp of when the billing order voided.
+        "$ref": "../../DateTime.yml"
+  state:
+    "$ref": "./InvoiceState.yml"
+  meta:
+    "$ref": "./InvoiceMeta.yml"

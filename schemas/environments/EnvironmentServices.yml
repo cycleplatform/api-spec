@@ -1,0 +1,13 @@
+---
+title: EnvironmentServices
+type: object
+description: Service containers run by this environment and their configurations.
+required:
+- loadbalancer
+properties:
+  loadbalancer:
+    "$ref": "./config/LoadBalancerEnvironmentService.yml"
+  discovery:
+    "$ref": "./config/DiscoveryEnvironmentService.yml"
+  vpn:
+    "$ref": "./config/VpnEnvironmentService.yml"

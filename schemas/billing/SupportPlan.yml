@@ -1,0 +1,27 @@
+title: SupportPlan
+type: object
+description: Information about a billing support plan.
+required:
+  - name
+  - price
+  - description
+  - features
+  - contract
+  - default
+properties:
+  name:
+    type: string
+    description: The name of the support plan.
+  price:
+    "$ref": "./BillingAmount.yml"
+  description:
+    type: string
+    description: Information about the billing support plan that describes the plan.
+  features:
+    "$ref": "./SupportPlanFeatures.yml"
+  contract:
+    type: boolean
+    description: A boolean where true represents the plan is a long term contract, not just month to month.
+  default:
+    type: boolean
+    description: This returns true if it shows up.

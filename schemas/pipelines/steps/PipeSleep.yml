@@ -1,0 +1,9 @@
+title: PipelineSleep
+type: object 
+description: Settings for the sleep step for a pipeline. 
+required: 
+  - seconds 
+properties: 
+  seconds: 
+    type: integer 
+    description: Total duration (seconds) to run this step for, before moving on to the next step. 

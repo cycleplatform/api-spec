@@ -1,0 +1,8 @@
+description: Parameters for deleting a collection of container instances. 
+content: 
+  application/json: 
+    schema: 
+      description: An array of container instance id's - the ones to be deleted. 
+      type: array
+      items: 
+        type: string 

@@ -1,0 +1,25 @@
+---
+title: DiscoveryEnvironmentService
+type: object
+nullable: true
+description: Information about the environments discovery service(s).
+required:
+- enable
+- container_id
+- high_availability
+- config
+properties:
+  enable:
+    type: boolean
+    description: Whether or not the discovery service is enabled.
+  container_id:
+    type: string
+    description: The ID of the discovery service container
+  high_availability:
+    type: boolean
+    description: A boolean representing if this service container is set to high availability
+      mode or not.
+  config:
+    type: object
+    description: The config object for the discovery service.
+    properties: {}

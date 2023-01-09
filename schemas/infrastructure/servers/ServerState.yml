@@ -1,0 +1,16 @@
+title: ServerState
+allOf:
+  - required:
+      - current
+    properties:
+      current:
+        description: the current state of the server.
+        type: string
+        enum:
+          - new
+          - live
+          - provisioning
+          - offline
+          - deleting
+          - deleted
+  - "$ref": "../../State.yml"

@@ -1,0 +1,46 @@
+title: PipelineRun
+type: object 
+description: A pipeline run resource. 
+required: 
+  - id 
+  - creator 
+  - hub_id 
+  - pipeline_id 
+  - stages 
+  - state 
+  - events 
+properties: 
+  id: 
+    "$ref": "../../ID.yml" 
+  creator: 
+    "$ref": "../../Creator.yml" 
+  hub_id: 
+    "$ref": "../../HubID.yml" 
+  pipeline_id: 
+    type: string 
+    description: The ID for the pipeline this run belongs to.
+  stages: 
+    type: array
+    description: An array of pipeline stages. 
+    items: 
+      "$ref": "../PipelineStage.yml"
+  state: 
+    "$ref": "./RunState.yml" 
+  events:
+    title: PipelineRunEvents
+    type: object
+    description: A collection of timestamps for each event in the pipeline run's lifetime.
+    required:
+      - started
+      - queued
+      - finished
+    properties:
+      started:
+        description: The timestamp of when the pipeline run was started.
+        "$ref": "../../DateTime.yml"
+      queued:
+        description: The timestamp of when the pipeline run was queued.
+        "$ref": "../../DateTime.yml"
+      finished:
+        description: The timestamp of when the pipeline run was finished.
+        "$ref": "../../DateTime.yml"

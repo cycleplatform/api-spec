@@ -1,0 +1,26 @@
+title: PipelineImageCreate
+allOf:
+  - properties:
+      name:
+        type: string
+        description: A name for the image.
+  - "$ref": "../ResourceLocation.yml"
+  # - "$ref": "../../images/requestBodies/ImageCreateRequest.yml"
+
+  # title: ContainerState
+# allOf:
+#   - required:
+#       - current
+#     properties:
+#       current:
+#         description: The current state of the container.
+#         type: string
+#         enum:
+#           - new
+#           - starting
+#           - running
+#           - stopping
+#           - stopped
+#           - deleting
+#           - deleted
+#   - "$ref": "../State.yml"

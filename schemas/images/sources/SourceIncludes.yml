@@ -1,0 +1,6 @@
+title: SourceIncludes 
+description: A resource associate with an image source. 
+type: object 
+properties: 
+  creators: 
+    "$ref": "../../includes/CreatorInclude.yml" 

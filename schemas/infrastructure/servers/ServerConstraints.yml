@@ -1,0 +1,29 @@
+title: ServerConstraints
+type: object
+description: Constraints to apply to the server.
+required:
+  - tags
+  - allow
+properties:
+  tags:
+    description: A list of server tags to put on the given server.
+    type: array
+    items: 
+      type: string
+  allow:
+    type: object
+    description: Settings for the server, things that are or are not allowed.
+    required:
+      - pool
+      - services
+      - overcommit
+    properties:
+      pool:
+        type: boolean
+        description: A boolean where true means - allow containers with no tags specified to be deployed to this server.
+      services:
+        type: boolean
+        description: A boolean where true means - allow service containers to be deployed to this container.
+      overcommit:
+        type: boolean
+        description: A boolean where true means - allow twice the normal amount of CPU shares to be allocated to containers deployed to this server.

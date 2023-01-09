@@ -1,0 +1,72 @@
+title: InfrastructureIPPool 
+type: object 
+description: An IP Pool resource 
+required: 
+  - id 
+  - hub_id 
+  - kind 
+  - provider 
+  - server_id 
+  - floating 
+  - location_id 
+  - ips 
+  - block 
+  - state 
+properties: 
+  id: 
+    "$ref": "../../ID.yml" 
+  hub_id: 
+    "$ref": "../../HubID.yml" 
+  server_id: 
+    type: string 
+    description: An ID associated with a server resource. 
+  location_id: 
+    type: string 
+    description: An ID associated with a location resource. 
+  kind: 
+    type: string 
+    description: The type of IP pool. 
+    enum: 
+      - ipv4 
+      - ipv6 
+  provider: 
+    "$ref": "./PoolProvider.yml" 
+  floating: 
+    type: boolean 
+    description: A boolean where true represents the pool as a floating IP pool. 
+  ips: 
+    type: object 
+    description: Data about IPs in the pool.
+    required: 
+      - total 
+      - available 
+    properties: 
+      total: 
+        type: integer 
+        description: The total number of IPs in the pool. 
+      available: 
+        type: integer
+        description: Of the total number of IP's how many are available to be assigned. 
+  block: 
+    type: object 
+    description: Network information about the pool. 
+    required: 
+      - cidr 
+      - gateway 
+      - netmask 
+      - network 
+    properties: 
+      cidr: 
+        type: string 
+        description: A cidr for the pool. 
+      gateway: 
+        type: string 
+        description: A gateway for the pool.
+      netmask: 
+        type: string 
+        description: A netmask for the pool. 
+      network: 
+        type: string 
+        description: A network for the pool. 
+  state: 
+    "$ref": "./PoolState.yml" 

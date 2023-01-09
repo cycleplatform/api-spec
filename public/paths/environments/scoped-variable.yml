@@ -1,0 +1,163 @@
+get:
+  operationId: "fetchScopedVariable"
+  tags:
+    - Environments
+  parameters:
+    - name: environmentId
+      description: The ID of the requested environment.
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: scopedVariableId
+      description: The ID of the requested scoped variable.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Fetch Scoped Variable
+  description: Requires the `scoped-variables-view` capability.
+  responses:
+    "200":
+      description: Returns a scoped variable resource.
+      content:
+        application/json:
+          schema:
+            title: "ScopedVariableResponse"
+            type: object
+            properties:
+              data:
+                "$ref": "../../../schemas/scoped-variables/ScopedVariable.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+patch:
+  operationId: "updateScopedVariable"
+  tags:
+    - Environments
+  parameters:
+    - name: environmentId
+      description: The ID of the requested environment.
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: scopedVariableId
+      description: The ID of the requested scoped variable.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Update Scoped Variable
+  description: Requires the `scoped-variables-manage` capability.
+  requestBody:
+    "$ref": "../../../schemas/scoped-variables/requestBodies/UpdateScopedVariableRequest.yml"
+  responses:
+    "200":
+      description: Returns a scoped variable resource.
+      content:
+        application/json:
+          schema:
+            title: "UpdateScopedVariableResponse"
+            type: object
+            properties:
+              data:
+                "$ref": "../../../schemas/scoped-variables/ScopedVariable.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+delete:
+  operationId: "removeScopedVariableById"
+  tags:
+    - Environments
+  parameters:
+    - name: environmentId
+      description: The ID of the requested environment.
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: scopedVariableId
+      description: The ID of the requested scoped variable.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Remove Scoped Variable
+  description: Requires the `scoped-variables-manage` capability.
+  responses:
+    "200":
+      description: Returns a task descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                "$ref": "../../../schemas/jobs/TaskDescriptor.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"

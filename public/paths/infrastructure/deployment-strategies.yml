@@ -1,0 +1,42 @@
+get:
+  operationId: "getDeploymentStrategies"
+  tags:
+    - Infrastructure
+  parameters: []
+  summary: Fetch Deployment Strategies
+  description: This endpoint returns available container deployment strategies.
+  responses:
+    "200":
+      description: Deployment strategies.
+      content:
+        application/json:
+          schema:
+            title: "DeploymentStrategiesReturn"
+            type: object
+            properties:
+              data:
+                "$ref": "../../../schemas/infrastructure/DeploymentStrat.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"

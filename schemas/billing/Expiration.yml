@@ -1,0 +1,18 @@
+title: BillingExpiration
+type: object
+description: Information about a expiration, used for billing.
+requied:
+  - interval
+  - number
+properties:
+  interval:
+    type: string
+    description: An interval of some length.
+    enum:
+      - days
+      - weeks
+      - months
+      - years
+  number:
+    type: integer
+    description: A number associated with the interval.

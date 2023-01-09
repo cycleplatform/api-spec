@@ -1,0 +1,11 @@
+title: ServerStatsUptime
+type: object
+description: Statistics describing the uptime of a given server.
+properties:
+  seconds:
+    type: number
+    description: The amount in seconds the server has been up (resets on restart).
+  cpu_idle:
+    type: number
+    # TODO find out what this is measured in
+    description: CPU idle time.

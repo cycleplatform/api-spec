@@ -1,0 +1,50 @@
+post:
+  operationId: "reconfigureDiscovery"
+  tags:
+    - Environments
+  parameters:
+    - name: environmentId
+      description: The ID of the environment where this discovery service resides.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Reconfigure Discovery
+  description: Creates a task that will update the discovery service's configuration.
+  requestBody:
+    "$ref": "../../../../../schemas/environments/requestBodies/DiscoveryReconfigure.yml"
+  responses:
+    "200":
+      description: Returns a task descriptor.
+      content:
+        application/json:
+          schema:
+            title: "TaskResponse"
+            type: object
+            properties:
+              data:
+                "$ref": "../../../../../schemas/jobs/TaskDescriptor.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../../schemas/error/ErrorResponse.yml"

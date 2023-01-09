@@ -1,0 +1,7 @@
+title: InvoiceMeta
+type: object
+description: A list of meta fields that can be applied to a invoice.
+properties:
+  due:
+    type: integer
+    description: The amount due for a given invoice.

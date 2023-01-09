@@ -1,0 +1,145 @@
+get:
+  operationId: "getStack"
+  tags:
+    - Stacks
+  summary: Fetch Stack
+  description: Requires the `stacks-view` capability.
+  parameters:
+    - name: stackId
+      in: path
+      required: true
+      description: The ID of the stack
+      schema:
+        type: string
+  responses:
+    "200":
+      description: Returns a stack resource.
+      content:
+        application/json:
+          schema:
+            title: "StackFetchResponse"
+            type: object
+            properties:
+              data:
+                "$ref": "../../../schemas/stacks/Stack.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+patch:
+  operationId: "updateStack"
+  tags:
+    - Stacks
+  parameters:
+    - name: stackId
+      in: path
+      required: true
+      description: The ID of the stack
+      schema:
+        type: string
+  summary: Update Stack
+  description: Requires the `stacks-manage` capability.
+  requestBody:
+    "$ref": "../../../schemas/stacks/requestBodies/UpdateStackRequest.yml"
+  responses:
+    "200":
+      description: Returns an updated stack resource.
+      content:
+        application/json:
+          schema:
+            title: "UpdateStackResponse"
+            type: object
+            properties:
+              data:
+                "$ref": "../../../schemas/stacks/Stack.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+delete:
+  operationId: "deleteStack"
+  tags:
+    - Stacks
+  parameters:
+    - name: stackId
+      in: path
+      required: true
+      description: The ID of the stack
+      schema:
+        type: string
+  summary: Delete Stack
+  description: Requires the `stacks-manage` capability.
+  responses:
+    "200":
+      description: Returns a task descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                "$ref": "../../../schemas/jobs/TaskDescriptor.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"

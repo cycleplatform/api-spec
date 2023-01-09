@@ -1,0 +1,98 @@
+get:
+  operationId: "getBillingOrder"
+  tags:
+    - Billing
+  parameters:
+    - name: orderId
+      description: The ID of the billing order.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Fetch Billing Order
+  description: Requires the `billing-orders-manage` capability.
+  responses:
+    "200":
+      description: Returns a billing order resource
+      content:
+        application/json:
+          schema:
+            title: "FetchBillingOrderResponse"
+            type: object
+            properties:
+              data:
+                "$ref": "../../../../schemas/billing/orders/Order.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+patch:
+  operationId: "updateBillingOrder"
+  tags:
+    - Billing
+  parameters:
+    - name: orderId
+      description: The ID of the billing order.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Update Billing Order
+  description: Requires the `billing-orders-manage` capability.
+  requestBody:
+    "$ref": "../../../../schemas/billing/orders/requestBodies/UpdateBillingOrderRequest.yml"
+  responses:
+    "200":
+      description: Returns a billing order resource.
+      content:
+        application/json:
+          schema:
+            title: "BillingOrderUpdateResponse"
+            type: object
+            properties:
+              data:
+                "$ref": "../../../../schemas/billing/orders/Order.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"

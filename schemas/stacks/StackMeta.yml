@@ -1,0 +1,8 @@
+title: StackMeta
+type: object
+description: A list of meta fields that can be applied to this stack.
+properties:
+  containers_count:
+    "$ref": "../StateCountSummary.yml"
+  builds_count:
+    "$ref": "../StateCountSummary.yml"

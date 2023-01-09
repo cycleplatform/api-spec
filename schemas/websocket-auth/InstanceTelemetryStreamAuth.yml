@@ -1,0 +1,13 @@
+title: InstanceTelemetryStreamAuth
+description: Resources needed to connect to the instance telemetery stream.
+type: object
+required:
+  - token
+  - address
+properties:
+  token:
+    type: string
+    description: A token used for connecting to the instnace telemetry stream through the websocket API.
+  address:
+    type: string
+    description: The protocol and url for connecting to the stream.

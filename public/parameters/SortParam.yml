@@ -1,0 +1,10 @@
+---
+name: sort
+in: query
+style: form
+required: false
+description: "An array of sort values. To sort descending, put a `-` in front of the value, e.g. `-id`."
+schema:
+  type: array
+  items:
+    type: string

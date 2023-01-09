@@ -1,0 +1,31 @@
+title: BillingSummary
+type: object
+description: A billing summary.
+required:
+  - service_id
+  - title
+  - type
+  - term
+  - price
+  - discount
+properties:
+  service_id:
+    type: string
+    description: The ID of the billing service, the summary pertains to.
+  title:
+    type: string
+    description: The billing summary title.
+  type:
+    type: string
+    description: The plan type.
+    enum:
+      - tier
+      - support
+  term:
+    "$ref": "./Term.yml"
+  price:
+    type: string
+    description: 1/10th of a cent.
+  discount:
+    type: string
+    description: 1/10th of a cent.

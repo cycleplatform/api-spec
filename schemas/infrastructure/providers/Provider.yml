@@ -1,0 +1,43 @@
+title: Provider
+type: object
+description: A provider resource.
+required:
+  - id
+  - hub_id
+  - integrations
+  - events
+  - creator
+  - state
+properties:
+  id:
+    "$ref": "../../ID.yml"
+  hub_id:
+    "$ref": "../../HubID.yml"
+  integration:
+    "$ref": "./Integration.yml"
+  events:
+    title: ProviderEvents
+    type: object
+    description: A collection of timestamps for each event in the provider's lifetime.
+    required:
+      - created
+      - updated
+      - deleted
+      - last_provision
+    properties:
+      created:
+        description: The timestamp of when the provider was created.
+        "$ref": "../../DateTime.yml"
+      updated:
+        description: The timestamp of when the provider was updated.
+        "$ref": "../../DateTime.yml"
+      deleted:
+        description: The timestamp of when the provider was deleted.
+        "$ref": "../../DateTime.yml"
+      last_provision:
+        description: The timestamp of when the provider was last used to provision a server.
+        "$ref": "../../DateTime.yml"
+  creator:
+    "$ref": "../../Creator.yml"
+  state:
+    "$ref": "./ProviderState.yml"

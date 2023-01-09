@@ -1,0 +1,14 @@
+title: OrderState
+allOf:
+  - required:
+      - current
+    properties:
+      current:
+        description: The current state of the zone.
+        type: string
+        enum:
+          - new
+          - processed
+          - deleting
+          - deleted
+  - "$ref": "../../State.yml"

@@ -1,0 +1,95 @@
+get:
+  operationId: "getInfrastructureIPPool"
+  tags:
+    - InfrastructureIPs
+  parameters:
+    - name: poolId
+      description: The ID for the given pool.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Fetch Pool IP
+  description: Requires the `infrastructure-ips-manage` capability.
+  responses:
+    "200":
+      description: A single pool resource.
+      content:
+        application/json:
+          schema:
+            title: "IPPoolReturn"
+            type: object
+            properties:
+              data:
+                "$ref": "../../../../schemas/infrastructure/ips/Pool.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+delete:
+  operationId: "deleteIPPool"
+  tags:
+    - InfrastructureIPs
+  parameters:
+    - name: poolId
+      description: The ID for the given pool.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Delete Pool IP
+  description: Requires the `infrastructure-ips-manage` capability.
+  responses:
+    "200":
+      description: Returns a task descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                "$ref": "../../../../schemas/jobs/TaskDescriptor.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"

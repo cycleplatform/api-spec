@@ -1,0 +1,56 @@
+post:
+  tags:
+    - Servers
+  operationId: "createServerJob"
+  parameters:
+    - name: serverId
+      description: The ID for the given server.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Create Server Job
+  description: Used to perform different actions on a given server. Requires the `servers-state` capability.
+  requestBody:
+    description: Parameters for creating the new server job.
+    content:
+      application/json:
+        schema:
+          oneOf:
+            - "$ref": "../../../../schemas/infrastructure/servers/taskActions/ReconfigureServer.yml"
+            - "$ref": "../../../../schemas/infrastructure/servers/taskActions/RestartServer.yml"
+            - "$ref": "../../../../schemas/infrastructure/servers/taskActions/RestartCompute.yml"
+  responses:
+    "200":
+      description: Returns a task descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                "$ref": "../../../../schemas/jobs/TaskDescriptor.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../../schemas/error/ErrorResponse.yml"

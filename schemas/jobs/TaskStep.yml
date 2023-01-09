@@ -1,0 +1,22 @@
+title: TaskStep 
+type: object 
+description: A step for a given job task. 
+required: 
+  - caption
+  - description
+  - started 
+  - completed 
+properties: 
+  caption: 
+    type: string 
+    description: A short description of the step. 
+  description: 
+    type: string 
+    description: A more verbose description. 
+  started: 
+    description: A timestamp for when the step started. 
+    "$ref": "../DateTime.yml"
+  completed: 
+    description: A timestamp for when the step completed. 
+    "$ref": "../DateTime.yml"
+  

@@ -1,0 +1,16 @@
+description: Parameters for updating a billing method.
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        name:
+          type: string
+          description: A name for the billing method.
+        primary:
+          type: boolean
+          description: A boolean where true represents a billing method being primary.
+        address:
+          "$ref": "../Address.yml"
+        credit_card:
+          "$ref": "../CreditCard.yml"

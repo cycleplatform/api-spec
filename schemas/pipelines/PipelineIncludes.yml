@@ -1,0 +1,20 @@
+title: PipelineIncludes 
+description: All includable resources linkable to the given pipeline. 
+type: object 
+properties: 
+  creators: 
+    "$ref": "../includes/CreatorInclude.yml" 
+  name: 
+    type: string 
+    description: A name value. 
+    # TODO - what is this name value
+  components: 
+    type: object 
+    description: A record of resources that can be associated with the pipeline. 
+    additionalProperties:
+      anyOf: 
+        - "$ref": "../containers/Container.yml" 
+        - "$ref": "../environments/Environment.yml" 
+        - "$ref": "../stacks/Stack.yml" 
+        - "$ref": "../stacks/builds/StackBuild.yml" 
+        - "$ref": "../images/Image.yml" 

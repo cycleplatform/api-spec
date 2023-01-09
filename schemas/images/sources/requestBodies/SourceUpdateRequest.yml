@@ -1,0 +1,27 @@
+description: Parameters for updating an image source. 
+content: 
+  application/json: 
+    schema: 
+      type: object 
+      properties: 
+        name: 
+          type: string 
+          description: A name for the image source. 
+        origin:
+          type: object
+          description: The origin of the given image source.
+          oneOf:
+            - "$ref": "../DockerHubSource.yml"
+            - "$ref": "../DockerfileRepoSource.yml"
+            - "$ref": "../DockerfileTarSource.yml"
+            - "$ref": "../DockerRegistrySource.yml"
+        about: 
+          type: object 
+          description: User defined information about the image source. 
+          required:
+            - description
+          properties: 
+            description: 
+              type: string 
+              nullable: true 
+              description: A description of the image source. 

@@ -1,0 +1,12 @@
+title: AnnouncementState
+allOf:
+  - required:
+      - current
+    properties:
+      current:
+        description: The current state of the announcement.
+        type: string
+        enum:
+          - live
+          - deleted
+  - "$ref": "../State.yml"

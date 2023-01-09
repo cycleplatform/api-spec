@@ -1,0 +1,4 @@
+title: PipelineContainerTask
+allOf: 
+  - "$ref": "../ResourceLocation.yml"
+  - "$ref": "../../containers/taskActions/ContainerAction.yml"

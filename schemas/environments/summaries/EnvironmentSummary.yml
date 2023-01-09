@@ -1,0 +1,45 @@
+---
+title: EnvironmentSummary
+type: object
+description:
+  Contains useful and relevant data/statistics for an environment that would otherwise be several separate API calls.
+required:
+  - id
+  - state
+  - services
+  - stats
+properties:
+  id:
+    "$ref": "../../ID.yml"
+  state:
+    "$ref": "../EnvironmentState.yml"
+  services:
+    title: EnvironmentServiceSummary
+    type: object
+    description: An object containing information about the service containers associated with this container. Each key is the name of a service, one of `discovery`, `vpn`, or `loadbalancer`.
+    required:
+    - loadbalancer
+    - discovery
+    - vpn
+    properties:
+      loadbalancer:
+        "$ref": "./EnvironmentServiceContainerSummary.yml"
+      discovery:
+        "$ref": "./EnvironmentServiceContainerSummary.yml"
+      vpn:
+        "$ref": "./EnvironmentServiceContainerSummary.yml"
+  stats:
+    title: EnvironmentSummaryStats
+    type: object
+    description: Statistics about the containers and instances associated with this environment.
+    required:
+      - containers
+      - instances
+    properties: 
+      containers:
+        $ref: "../../StateCountSummary.yml"
+        # You could add an example here using allOf 
+        # for specific container states, but the regular example should be fine.
+      instances:
+        $ref: "../../StateCountSummary.yml"
+

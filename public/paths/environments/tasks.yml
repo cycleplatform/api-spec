@@ -1,0 +1,65 @@
+---
+post:
+  tags:
+    - Environments
+  operationId: "createEnvironmentJob"
+  parameters:
+    - name: environmentId
+      description: The ID of the requested environment.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Create Environment Job
+  description: Used to `start`, `stop`, or `delete` an environment. Requires the `environments-state` capability.
+  requestBody:
+    description: Parameters for creating a new environment job.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - action
+          properties:
+            action:
+              type: string
+              enum:
+                - start
+                - stop
+                - initialize
+              description: The name of the action to perform.
+  responses:
+    "200":
+      description: Returns a task descriptor.
+      content:
+        application/json:
+          schema:
+            title: "TaskResponse"
+            type: object
+            properties:
+              data:
+                "$ref": "../../../schemas/jobs/TaskDescriptor.yml"
+    "400":
+      description: This usually means the data sent was in an invalid format.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "401":
+      description: OAuth token is invalid.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "404":
+      description: The requested resource doesn't exist.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"
+    "500":
+      description: Indicates an issue with Cycle. Rare.
+      content:
+        application/json:
+          schema:
+            "$ref": "../../../schemas/error/ErrorResponse.yml"

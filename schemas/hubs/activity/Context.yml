@@ -1,0 +1,22 @@
+title: ActivityContext
+type: object
+description: ID context for resources associated with an activity.
+properties:
+  environment_id:
+    type: string
+    description: An ID for the given resource.
+  container_id:
+    type: string
+    description: An ID for the given resource.
+  instance_id:
+    type: string
+    description: An ID for the given resource.
+  server_id:
+    type: string
+    description: An ID for the given resource.
+  stack_id:
+    type: string
+    description: An ID for the given resource.
+  dns_zone_id:
+    type: string
+    description: An ID for the given resource.

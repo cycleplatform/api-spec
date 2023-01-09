@@ -1,0 +1,20 @@
+title: MemoryServerSpec 
+type: object 
+description: Information about the memory resources of a given server. 
+required: 
+  - size_gb 
+  - type
+  - extra 
+properties: 
+  size_gb: 
+    type: integer 
+    description: A number that represents the memory resources in GB. 
+  type: 
+    type: string 
+    description: The type of the memory resources. 
+  extra: 
+    type: object 
+    description: Extra inforamtion about the memory resources. 
+    additionalProperties:
+      type: string 
+      
