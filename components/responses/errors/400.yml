@@ -2,4 +2,4 @@ description: This usually means the data sent was in an invalid format.
 content:
   application/json:
     schema:
-      "$ref": "./ErrorResponseNEW.yml"
+      $ref: ../../schemas/errors/ErrorEnvelope.yml

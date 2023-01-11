@@ -1,0 +1,5 @@
+description: Authorization is invalid.
+content:
+  application/json:
+    schema:
+      $ref: ../../schemas/errors/ErrorEnvelope.yml
