@@ -18,7 +18,16 @@ patch:
   summary: Update DNS Record
   description: Requires the `dns-manage` capability.
   requestBody:
-    "$ref": "../../../../components/schemas/dns/requestBodies/UpdateDNSRecordRequest.yml"
+    description: Parameters for updateing a DNS record. The name value cannot be updated and is ommitted from the properties.  
+    content: 
+      application/json: 
+        schema: 
+          type: object 
+          required:   
+            - type
+          properties: 
+            type: 
+              $ref: ../../../../components/schemas/dns/records/RecordTypes.yml
   responses:
     "200":
       description: Returns a DNS record resource.
@@ -29,7 +38,7 @@ patch:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/dns/records/Record.yml"
+                $ref: ../../../../components/schemas/dns/records/Record.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:

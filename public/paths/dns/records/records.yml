@@ -75,7 +75,20 @@ post:
   summary: Create Record
   description: Requires the `dns-manage` capability.
   requestBody:
-    "$ref": "../../../../components/schemas/dns/requestBodies/CreateRecordRequest.yml"
+    description: Parameters for creating a new DNS record. 
+    content: 
+      application/json: 
+        schema: 
+          type: object 
+          required: 
+            - type 
+            - name 
+          properties: 
+            type: 
+              $ref: ../../../../components/schemas/dns/records/RecordTypes.yml
+            name: 
+              type: string 
+              description: A name for the given record where `@` represents the desire to use the root of the origin. 
   responses:
     "201":
       description: Returns the DNS zone resource.
@@ -86,7 +99,7 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/dns/records/Record.yml"
+                $ref: ../../../../components/schemas/dns/records/Record.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:
