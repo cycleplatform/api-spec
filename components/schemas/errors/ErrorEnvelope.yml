@@ -3,7 +3,7 @@ type: object
 description: An error response.
 properties:
   error:
-    $ref: ../../schemas/errors/Error2.yml
+    $ref: Error.yml
   data:
     description: Data will always be `null` here.
     nullable: true
