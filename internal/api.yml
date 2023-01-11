@@ -1,0 +1,63 @@
+---
+openapi: 3.0.0
+servers:
+  - description: Cycle Public API
+    # https://github.com/whatwg/url/issues/577
+    # https://github.com/OAI/OpenAPI-Specification/issues/3011
+    url: "/var/run/cycle/api/api.sock"
+    # unix://var/run/cycle/api/api.sock
+    #  TODO This is probably wrong
+info:
+  license: 
+    name: CC-BY-3.0
+    url: https://creativecommons.org/licenses/by/3.0/
+  title: Cycle Internal API
+  description:
+    Inside every container running on Cycle, there is a Unix socket mounted at /var/run/cycle/api/api.sock. You can send HTTP requests over this socket to access information about the local environment, access secrets, and much more.
+    The way this internal API functions is very similar to how Cycle's main API works, though the purpose is different. The internal API is primarily used by instances to learn about their environment, and dynamically update as deployments change. In the future, we expect you'll be able to use the internal API to register service containers and much more.
+    The internal API returns identical JSON responses to the main API. There is also a websocket based API that you can tune into for streaming platform updates.
+  version: 1.0.0
+  contact:
+    email: support@cycle.io
+tags:
+  - name: Environments
+    description: ""
+security:
+  - bearerAuth: []
+paths:
+  "/v1/environment":
+    "$ref": "./paths/environments/environment.yml"
+  "/v1/environment/containers":
+    "$ref": "./paths/environments/containers.yml"
+  "/v1/environment/instances":
+    "$ref": "./paths/environments/instances.yml"
+  "/v1/environment/ips":
+    "$ref": "./paths/environments/ips.yml"
+  # "/v1/environment/services":
+  #   "$ref": "./paths/environments/services.yml"
+  # HUB
+  "/v1/hub":
+    "$ref": "./paths/hubs/hub.yml"
+  # Server
+  "/v1/server":
+    "$ref": "./paths/servers/server.yml"
+  "/v1/server/containers":
+    "$ref": "./paths/servers/containers.yml"
+  "/v1/server/instances":
+    "$ref": "./paths/servers/instances.yml"
+  # Container
+  "/v1/container":
+    "$ref": "./paths/containers/container.yml"
+  "/v1/container/instances":
+    "$ref": "./paths/containers/instances.yml"
+  "/v1/containers/certificates":
+    "$ref": "./paths/containers/certificates.yml"
+  "/v1/notifications":
+    "$ref": "./paths/notifications/notifications.yml"
+components:
+  securitySchemes:
+    bearerAuth:
+      name: X-Cycle-Token
+      in: header
+      type: apiKey
+      description: Defines the scope of the request to a specific Container / Environment.

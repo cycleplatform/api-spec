@@ -1,0 +1,10 @@
+---
+title: ErrorResponse
+type: object
+description: An error response.
+properties:
+  error:
+    "$ref": "./ErrorNEW.yml"
+  data:
+    nullable: true
+    type: object

@@ -1,4 +1,0 @@
-title: PipelineStackBuildDeploy
-allOf: 
-  - "$ref": "../ResourceLocation.yml"
-  - "$ref": "../../stacks/builds/taskActions/DeployStackBuildAction.yml"

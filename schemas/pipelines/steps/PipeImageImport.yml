@@ -1,4 +1,0 @@
-title: PipelineImageImport
-allOf: 
-  - "$ref": "../ResourceLocation.yml"
-  - "$ref": "../../images/taskActions/ImportImage.yml"

@@ -34,33 +34,33 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../schemas/dns/Zone.yml"
+                  "$ref": "../../../components/dns/Zone.yml"
               includes:
-                "$ref": "../../../schemas/dns/ZoneIncludes.yml"
+                "$ref": "../../../components/dns/ZoneIncludes.yml"
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../components/error/ErrorResponse.yml"
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../components/error/ErrorResponse.yml"
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../components/error/ErrorResponse.yml"
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../components/error/ErrorResponse.yml"
 post:
   operationId: "createDNSZone"
   tags:
@@ -69,7 +69,7 @@ post:
   summary: Create DNS Zone
   description: Requires the `dns-manage` capability.
   requestBody:
-    "$ref": "../../../schemas/dns/requestBodies/CreateZoneRequest.yml"
+    "$ref": "../../../components/dns/requestBodies/CreateZoneRequest.yml"
   responses:
     "201":
       description: Returns the DNS zone resource.
@@ -80,28 +80,28 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../schemas/dns/Zone.yml"
+                "$ref": "../../../components/dns/Zone.yml"
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../components/error/ErrorResponse.yml"
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../components/error/ErrorResponse.yml"
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../components/error/ErrorResponse.yml"
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../components/error/ErrorResponse.yml"

@@ -1,0 +1,13 @@
+title: IpState
+allOf:
+  - required:
+      - current
+    properties:
+      current:
+        description: The current state of the IP.
+        type: string
+        enum:
+          - assigning
+          - assigned
+          - releasing
+          - available

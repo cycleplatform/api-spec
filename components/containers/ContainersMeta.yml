@@ -1,0 +1,28 @@
+title: ContainersMeta
+type: object
+description: A list of meta fields that can be applied to a container.
+properties:
+  instances_count:
+    "$ref": "../StateCountSummary.yml"
+  domain:
+    type: string
+    description: The FQDN for this container, if there is one.
+  domains:
+    type: array
+    items:
+      type: object
+      description: Holds domain name and record mappings.
+      required:
+        - fqdn
+        - record
+      properties:
+        fqdn:
+          type: string
+          description: The fully qualified domain name.
+        record:
+          "$ref": "../dns/records/Record.yml"
+  ips:
+    description: An array of IP resources.
+    type: array
+    items:
+      "$ref": "../infrastructure/ips/Ip.yml"

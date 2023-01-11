@@ -1,0 +1,14 @@
+title: EnvironmentStopStep
+type: object
+description: Settings for stopping an environment in a pipeline.
+required:
+  - action
+  - details
+properties:
+  action:
+    type: string
+    description: The action that the step takes.
+    enum:
+      - environment.stop
+  details:
+    $ref: "../ResourceLocation.yml"

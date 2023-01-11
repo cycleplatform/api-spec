@@ -1,5 +1,0 @@
-title: PipelineWebhook
-allOf: 
-  - "$ref": "../ResourceLocation.yml"
-  - "$ref": "../WebHookPost.yml"
-  

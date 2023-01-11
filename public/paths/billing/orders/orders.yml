@@ -49,33 +49,33 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../../schemas/billing/orders/Order.yml"
+                  "$ref": "../../../../components/billing/orders/Order.yml"
               includes:
-                "$ref": "../../../../schemas/billing/orders/OrderIncludes.yml"
+                "$ref": "../../../../components/billing/orders/OrderIncludes.yml"
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../../components/error/ErrorResponse.yml"
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../../components/error/ErrorResponse.yml"
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../../components/error/ErrorResponse.yml"
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../../components/error/ErrorResponse.yml"
 post:
   operationId: "createOrder"
   tags:
@@ -84,7 +84,7 @@ post:
   summary: Create order
   description: Requires TODO capability.
   requestBody:
-    "$ref": "../../../../schemas/billing/orders/requestBodies/CreateOrderBody.yml"
+    "$ref": "../../../../components/billing/orders/requestBodies/CreateOrderBody.yml"
   responses:
     "201":
       description: Returns an order resource.
@@ -95,28 +95,28 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../../schemas/billing/BillingOrder.yml"
+                "$ref": "../../../../components/billing/BillingOrder.yml"
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../../components/error/ErrorResponse.yml"
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../../components/error/ErrorResponse.yml"
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../../components/error/ErrorResponse.yml"
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../../components/error/ErrorResponse.yml"

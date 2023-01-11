@@ -1,0 +1,39 @@
+title: ContainerCreateStep
+type: object
+description: Settings for the create container step for a pipeline.
+required:
+  - action
+  - details
+properties:
+  action:
+    type: string
+    description: The action that the step takes.
+    enum:
+      - container.create
+  details:
+    allOf:
+      - $ref: "../ResourceLocation.yml"
+      - type: object
+        required:
+          - name
+          - environment
+          - image
+          - stateful
+          - config
+          - volumes
+          - annotations
+        properties:
+          name:
+            type: string
+          environment:
+            $ref: "../ResourceLocation.yml"
+          image:
+            $ref: "../ResourceLocation.yml"
+          stateful:
+            type: boolean
+          annotations:
+            type: object
+          config:
+            $ref: "../../containers/config/Config.yml"
+          volumes:
+            $ref: "../../containers/config/Volumes.yml"

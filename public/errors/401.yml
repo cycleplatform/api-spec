@@ -1,0 +1,5 @@
+description: OAuth token is invalid.
+content:
+  application/json:
+    schema:
+      "$ref": "./ErrorResponseNEW.yml"

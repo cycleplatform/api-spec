@@ -1,0 +1,14 @@
+title: ImageImportStep
+type: object
+description: Settings for the image import step for a pipeline.
+required:
+  - action
+  - details
+properties:
+  action:
+    type: string
+    description: The action that the step takes.
+    enum:
+      - image.import
+  details:
+    $ref: "../ResourceLocation.yml"

@@ -52,33 +52,33 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../schemas/images/Image.yml"
+                  "$ref": "../../../components/images/Image.yml"
               includes:
-                "$ref": "../../../schemas/images/ImageIncludes.yml"
+                "$ref": "../../../components/images/ImageIncludes.yml"
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../components/error/ErrorResponse.yml"
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../components/error/ErrorResponse.yml"
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../components/error/ErrorResponse.yml"
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../components/error/ErrorResponse.yml"
 post:
   operationId: "createImages"
   tags:
@@ -87,7 +87,7 @@ post:
   summary: Create Image
   description: Requires the `images-import` capability.
   requestBody:
-    "$ref": "../../../schemas/images/requestBodies/ImageCreateRequest.yml"
+    "$ref": "../../../components/images/requestBodies/ImageCreateRequest.yml"
   responses:
     "201":
       description: Returns an image resource.
@@ -98,28 +98,28 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../schemas/images/Image.yml"
+                "$ref": "../../../components/images/Image.yml"
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../components/error/ErrorResponse.yml"
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../components/error/ErrorResponse.yml"
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../components/error/ErrorResponse.yml"
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../components/error/ErrorResponse.yml"

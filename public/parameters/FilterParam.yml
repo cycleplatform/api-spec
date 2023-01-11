@@ -14,5 +14,5 @@ schema:
           type: string
       - type: object
         additionalProperties:
-            type: string
+          type: string
 style: deepObject

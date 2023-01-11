@@ -1,0 +1,24 @@
+title: StackBuildCreateStep
+type: object
+description: Settings for creating a stack build in a pipeline.
+required:
+  - action
+  - details
+properties:
+  action:
+    type: string
+    description: The action that the step takes.
+    enum:
+      - stack.build.create
+  details:
+    type: object
+    required:
+      - stack
+    properties:
+      stack:
+        $ref: "../ResourceLocation.yml"
+      instructions:
+        $ref: "../../stacks/builds/StackBuildInstructions.yml"
+      about:
+        $ref: "../../stacks/builds/StackBuildAbout.yml"
+

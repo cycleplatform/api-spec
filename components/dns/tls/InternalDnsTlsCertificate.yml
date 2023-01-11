@@ -1,0 +1,33 @@
+title: InternalDnsTlsCertificate
+description: A certificate resource accessible from inside a container.
+type: object
+required:
+  - id
+  - domains
+  - private_key
+  - bundle
+  - csr
+  - issuer_certificate
+  - hub_id
+properties:
+  id:
+    "$ref": "../../../components/ID.yml"
+  domains:
+    type: array
+    description: An array of domains associated with the certificate.
+    items:
+      type: string
+  private_key:
+    type: string
+    description: The certificates private key.
+  bundle:
+    type: string
+    description: A bundle of certificates that are used to verify authenticity.
+  csr:
+    type: string
+    description: A CSR or Certificate Signing request is a block of encoded text that is given to a Certificate Authority when applying for an SSL Certificate.
+  issuer_certificate:
+    type: string
+    description: The issuer's certificate.
+  hub_id:
+    "$ref": "../../../components/HubID.yml"

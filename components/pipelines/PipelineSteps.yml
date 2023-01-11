@@ -1,0 +1,42 @@
+title: PipelineStep
+type: object
+description: A step for a pipeline stage.
+required:
+  - action
+  - details
+discriminator:
+  propertyName: action
+oneOf:
+  # image steps
+  - $ref: "./steps/ImageSourceCreateStep.yml"
+  - $ref: "./steps/ImageCreateStep.yml"
+  - $ref: "./steps/ImageImportStep.yml"
+  - $ref: "./steps/ImagesPruneStep.yml"
+
+  # container steps 
+  - $ref: "./steps/ContainerCreateStep.yml"
+  - $ref: "./steps/ContainerStartStep.yml"
+  - $ref: "./steps/ContainerStopStep.yml"
+  - $ref: "./steps/ContainerDeleteStep.yml"
+  - $ref: "./steps/ContainerReimageStep.yml"
+  - $ref: "./steps/ContainerRestartStep.yml"
+
+  # environment steps
+  - $ref: "./steps/EnvironmentCreateStep.yml"
+  - $ref: "./steps/EnvironmentStartStep.yml"
+  - $ref: "./steps/EnvironmentStopStep.yml"
+  - $ref: "./steps/EnvironmentDeleteStep.yml"
+
+  # stack steps
+  - $ref: "./steps/StackBuildCreateStep.yml"
+  - $ref: "./steps/StackBuildGenerateStep.yml"
+  - $ref: "./steps/StackBuildDeployStep.yml"
+
+  # other steps 
+  - $ref: "./steps/SleepStep.yml"
+  - $ref: "./steps/WebhookPostStep.yml"
+properties:
+  identifier:
+    type: string
+    description: An identifier for the step.
+    

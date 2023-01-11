@@ -1,0 +1,11 @@
+title: StackBuildContainerUpdate
+type: object
+description: Optional update object used to specify specific params to update from the stack build. 
+required: 
+  - containers 
+properties: 
+  containers: 
+    type: object 
+    description: A map of the container names to update within the environment.  
+    additionalProperties: 
+      "$ref": "../StackDeployContainersObject.yml"

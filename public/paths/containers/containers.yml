@@ -56,33 +56,17 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../schemas/containers/Container.yml"
+                  "$ref": "../../../components/containers/Container.yml"
               includes:
-                "$ref": "../../../schemas/containers/ContainerIncludes.yml"
+                "$ref": "../../../components/containers/ContainerIncludes.yml"
     "400":
-      description: This usually means the data sent was in an invalid format.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+      $ref: "../../errors/400.yml"
     "401":
-      description: OAuth token is invalid.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+      $ref: "../../errors/401.yml"
     "404":
-      description: The requested resource doesn't exist.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+      $ref: "../../errors/404.yml"
     "500":
-      description: Indicates an issue with Cycle. Rare.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+      $ref: "../../errors/500.yml"
 post:
   operationId: "createContainer"
   tags:
@@ -91,10 +75,14 @@ post:
   summary: Create Container
   description: Requires the `containers-deploy` capability.
   requestBody:
-    "$ref": "../../../schemas/containers/requestBodies/CreateContainer.yml"
+    description: Parameters for creating a new container.
+    content:
+      application/json:
+        schema:
+          $ref: "../../../components/containers/requestBodies/ContainerCreateInput.yml"
   responses:
     "201":
-      description: Returns an container resource.
+      description: Returns a container resource.
       content:
         application/json:
           schema:
@@ -102,28 +90,12 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../schemas/containers/Container.yml"
+                "$ref": "../../../components/containers/Container.yml"
     "400":
-      description: This usually means the data sent was in an invalid format.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+      $ref: "../../errors/400.yml"
     "401":
-      description: OAuth token is invalid.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+      $ref: "../../errors/401.yml"
     "404":
-      description: The requested resource doesn't exist.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+      $ref: "../../errors/404.yml"
     "500":
-      description: Indicates an issue with Cycle. Rare.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+      $ref: "../../errors/500.yml"

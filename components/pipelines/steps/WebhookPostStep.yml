@@ -1,0 +1,19 @@
+title: WebhookPostStep
+description: An action describing a webhook post.
+type: object
+properties:
+  action:
+    type: string
+    description: The action that the step takes.
+    enum:
+      - webhook.post
+  details:
+    allOf:
+      - "$ref": "../ResourceLocation.yml"
+      - type: object
+        required:
+          - url
+        properties:
+          url:
+            type: string
+            description: The url to post to.

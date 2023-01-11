@@ -55,36 +55,36 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../schemas/environments/Environment.yml"
+                  "$ref": "../../../components/environments/Environment.yml"
               includes:
                 type: object
                 properties:
                   creators:
-                    $ref: "../../../schemas/includes/CreatorInclude.yml"
+                    $ref: "../../../components/includes/CreatorInclude.yml"
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../components/error/ErrorResponse.yml"
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../components/error/ErrorResponse.yml"
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../components/error/ErrorResponse.yml"
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../components/error/ErrorResponse.yml"
 post:
   operationId: "createEnvironment"
   tags:
@@ -93,7 +93,10 @@ post:
   summary: Create Environment
   description: Requires the `environments-create` capability.
   requestBody:
-    "$ref": "../../../schemas/environments/requestBodies/CreateEnvironmentBody.yml"
+    content:
+      application/json:
+        schema:
+          "$ref": "../../../components/environments/requestBodies/CreateEnvironmentBody.yml"
   responses:
     "201":
       description: Returns an environment resource.
@@ -104,28 +107,12 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../schemas/environments/Environment.yml"
+                "$ref": "../../../components/environments/Environment.yml"
     "400":
-      description: This usually means the data sent was in an invalid format.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+      $ref: "../../errors/400.yml"
     "401":
-      description: OAuth token is invalid.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+      $ref: "../../errors/401.yml"
     "404":
-      description: The requested resource doesn't exist.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+      $ref: "../../errors/404.yml"
     "500":
-      description: Indicates an issue with Cycle. Rare.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+      $ref: "../../errors/500.yml"

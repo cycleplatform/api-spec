@@ -49,33 +49,33 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../schemas/stacks/Stack.yml"
+                  "$ref": "../../../components/stacks/Stack.yml"
               includes:
-                "$ref": "../../../schemas/stacks/StackInclude.yml"
+                "$ref": "../../../components/stacks/StackInclude.yml"
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../components/error/ErrorResponse.yml"
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../components/error/ErrorResponse.yml"
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../components/error/ErrorResponse.yml"
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../components/error/ErrorResponse.yml"
 post:
   operationId: "createStack"
   tags:
@@ -84,7 +84,7 @@ post:
   summary: Create Stack
   description: Requires the `stacks-manage` capability.
   requestBody:
-    "$ref": "../../../schemas/stacks/requestBodies/CreateStackRequest.yml"
+    "$ref": "../../../components/stacks/requestBodies/CreateStackRequest.yml"
   responses:
     "201":
       description: Returns a stack resource.
@@ -95,28 +95,28 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../schemas/stacks/Stack.yml"
+                "$ref": "../../../components/stacks/Stack.yml"
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../components/error/ErrorResponse.yml"
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../components/error/ErrorResponse.yml"
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../components/error/ErrorResponse.yml"
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../components/error/ErrorResponse.yml"

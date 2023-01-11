@@ -1,5 +1,0 @@
-FROM redocly/redoc
-
-COPY ./dist/out.yml /usr/share/nginx/html/swagger/out.yml 
-
-ENV SPEC_URL=swagger/out.yml 

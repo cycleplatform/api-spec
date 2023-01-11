@@ -1,4 +1,0 @@
-title: PipelineEnvironmentTasks
-allOf: 
-  - "$ref": "../ResourceLocation.yml"
-  - "$ref": "../../environments/taskActions/EnvironmentTasks.yml"

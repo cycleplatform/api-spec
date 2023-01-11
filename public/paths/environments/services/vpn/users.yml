@@ -23,31 +23,31 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../../../schemas/environments/returns/VPNUsers.yml"
+                  "$ref": "../../../../../components/environments/returns/VPNUsers.yml"
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../../../components/error/ErrorResponse.yml"
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../../../components/error/ErrorResponse.yml"
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../../../components/error/ErrorResponse.yml"
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../../../components/error/ErrorResponse.yml"
 post:
   operationId: "createVPNUser"
   tags:
@@ -62,7 +62,7 @@ post:
   summary: Create VPN User
   description: Requires the `environments-vpn-manage` capability.
   requestBody:
-    "$ref": "../../../../../schemas/environments/requestBodies/VPNUserCreate.yml"
+    "$ref": "../../../../../components/environments/requestBodies/VPNUserCreate.yml"
   responses:
     "201":
       description: Returns a VPN user resource.
@@ -73,28 +73,28 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../../../schemas/environments/returns/VPNUsers.yml"
+                "$ref": "../../../../../components/environments/returns/VPNUsers.yml"
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../../../components/error/ErrorResponse.yml"
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../../../components/error/ErrorResponse.yml"
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../../../components/error/ErrorResponse.yml"
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../../../components/error/ErrorResponse.yml"

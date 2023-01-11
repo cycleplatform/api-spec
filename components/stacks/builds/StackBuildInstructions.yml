@@ -1,0 +1,20 @@
+title: StackBuildInstructions
+type: object
+description: Git information on where to pull stack resources from.
+properties:
+  git:
+    type: object
+    description: Git information specifics.
+    required:
+      - type
+      - value
+    properties:
+      type:
+        type: string
+        description: The type of information the user is passing.
+        enum:
+          - hash
+          - tag
+      value:
+        type: string
+        description: The actual value to be passed.

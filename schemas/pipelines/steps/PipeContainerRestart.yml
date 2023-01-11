@@ -1,4 +1,0 @@
-title: PipelineContainerCreate
-allOf: 
-  - "$ref": "../ResourceLocation.yml"
-  - "$ref": "../../containers/taskActions/Reimage.yml"

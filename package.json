@@ -4,15 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npm run build:schema:public",
-    "build:schema:public": "npx openapi-merger -i public/public-api.yml -o dist/public-api.yml",
-    "build:schema:internal": "npx openapi-merger -i internal/internal-api.yml -o dist/internal-api.yml",
+    "lint": "npm run lint:public && npm run lint:internal",
+    "lint:public": "npx @redocly/cli lint ./public/api.yml",
+    "lint:internal": "npx @redocly/cli lint ./internal/api.yml",
+    "build": "npm run build:public && npm run build:internal && npm run build:admin",
+    "build:public": "npx redocly bundle public/api.yml --output dist/public-api.yml",
+    "build:internal": "npx redocly bundle internal/api.yml --output dist/internal-api.yml",
     "build:ts-models": "npx @openapitools/openapi-generator-cli generate --skip-validate-spec --global-property models -i dist/public-api.yml -g typescript-fetch -o ./dist/models/typescript",
     "build:ts-client": "npx @openapitools/openapi-generator-cli generate --skip-validate-spec -i dist/public-api.yml -g typescript-fetch -o ./dist/clients/typescript",
     "build:go-client": "npx @openapitools/openapi-generator-cli generate --skip-validate-spec -i dist/public-api.yml -g go -o ./dist/clients/go",
     "build:rust-client": "npx @openapitools/openapi-generator-cli generate --skip-validate-spec -i dist/public-api.yml -g rust -o ./dist/clients/rust",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "internal:build:schema": "npx openapi-merger -i internal/api.yml -o dist/internal-api.yml"
+    "preview:public": "npm run build:public && npx @redocly/cli preview-docs dist/public-api.yml",
+    "preview:internal": "npm run build:internal && npx @redocly/cli preview-docs dist/internal-api.yml"
   },
   "author": "",
   "license": "ISC",

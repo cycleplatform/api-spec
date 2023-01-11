@@ -1,0 +1,13 @@
+title: StackDeployContainersObject
+type: object 
+description: Options to control how a container behaves when a stack build is deployed.
+required: 
+  - reimage 
+  - reconfigure 
+properties: 
+  reimage: 
+    type: boolean 
+    description: A boolean where true represents the container is to be reimaged. 
+  reconfigure: 
+    type: boolean 
+    description: A boolean where true represents the container is to be reconfigured. 

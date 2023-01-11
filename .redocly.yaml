@@ -1,0 +1,27 @@
+# See https://redocly.com/docs/cli/configuration/
+apis:
+  cycle-public-api@1.0.0:
+    root: ./public/api.yaml
+  cycle-internal-api@1.0.0:
+    root: ./internal/api.yaml
+
+extends:
+  - recommended
+  
+# rules:
+  # A sample custom rule. Read more about rules: https://redocly.com/docs/cli/rules/
+  # assert/operation-description:
+  #   subject: 
+  #     type: Operation
+  #     property: description
+  #   assertions:
+  #     defined: true
+  #     minLength: 30
+  #     pattern: ^[A-Z].+(\.|\.)$
+
+# features.openapi:
+#   generateCodeSamples:
+#     languages:
+#       - lang: curl
+#       - lang: Node.js
+#       - lang: Python

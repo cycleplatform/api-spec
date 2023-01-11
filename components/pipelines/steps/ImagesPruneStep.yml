@@ -1,0 +1,21 @@
+title: ImagePruneStep
+type: object
+description: Settings for the images prune step for a pipeline.
+required:
+  - action
+  - details
+properties:
+  action:
+    type: string
+    description: The action that the step takes.
+    enum:
+      - images.prune
+  details:
+    type: object
+    required:
+      - source_ids
+    properties:
+      source_ids:
+        type: array
+        items:
+          $ref: "../../ID.yml" 

@@ -23,8 +23,8 @@ post:
       application/json:
         schema:
           oneOf:
-            - "$ref": "../../../../schemas/stacks/builds/taskActions/GenerateStackBuildAction.yml"
-            - "$ref": "../../../../schemas/stacks/builds/taskActions/DeployStackBuildAction.yml"
+            - "$ref": "../../../../components/stacks/builds/taskActions/GenerateStackBuildAction.yml"
+            - "$ref": "../../../../components/stacks/builds/taskActions/DeployStackBuildAction.yml"
   responses:
     "200":
       description: Returns a task descriptor.
@@ -34,28 +34,28 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../../schemas/jobs/TaskDescriptor.yml"
+                "$ref": "../../../../components/jobs/TaskDescriptor.yml"
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../../components/error/ErrorResponse.yml"
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../../components/error/ErrorResponse.yml"
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../../components/error/ErrorResponse.yml"
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../../components/error/ErrorResponse.yml"

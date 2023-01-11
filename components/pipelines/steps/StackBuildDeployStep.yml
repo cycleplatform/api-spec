@@ -1,0 +1,24 @@
+title: StackBuildDeployStep
+type: object
+description: Settings for deploying a stack build in a pipeline.
+required:
+  - action
+  - details
+properties:
+  action:
+    type: string
+    description: The action that the step takes.
+    enum:
+      - stack.build.deploy
+  details:
+    allOf:
+      - $ref: "../ResourceLocation.yml"
+      - type: object
+        required:
+          - environment
+        properties:
+          environment:
+            $ref: "../ResourceLocation.yml"
+          update:
+            $ref: "../../stacks/builds/StackBuildContainerUpdate.yml"
+

@@ -1,0 +1,27 @@
+title: ServerStatsVersions
+type: object
+description: Information about the versions of Cycle services on a given server.
+required:
+  - services
+properties:
+  services:
+    description: A list of records about Cycle services.
+    type: object
+    additionalProperties:
+      type: string
+      enum:
+        - factory
+        - compute
+        - compute-spawner
+        - compute-proxy
+        - public-api
+        - admin-api
+        - admin-portal
+        - oauth
+        - portal
+        - console
+        - manager
+        - dns
+        - agent
+        - agent-spawner
+        - nexus

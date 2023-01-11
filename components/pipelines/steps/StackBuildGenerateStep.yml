@@ -1,0 +1,14 @@
+title: StackBuildGenerateStep
+type: object
+description: Settings for the stack build generate step for a pipeline.
+required:
+  - action
+  - details
+properties:
+  action:
+    type: string
+    description: The action that the step takes.
+    enum:
+      - stack.build.generate
+  details:
+    $ref: "../ResourceLocation.yml"

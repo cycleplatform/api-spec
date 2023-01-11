@@ -1,0 +1,14 @@
+title: EnvironmentStartStep
+type: object
+description: Settings for starting an environment in a pipeline.
+required:
+  - action
+  - details
+properties:
+  action:
+    type: string
+    description: The action that the step takes.
+    enum:
+      - environment.start
+  details:
+    $ref: "../ResourceLocation.yml"

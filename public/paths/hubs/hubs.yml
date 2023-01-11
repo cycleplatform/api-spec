@@ -18,31 +18,31 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../schemas/hubs/Hub.yml"
+                  "$ref": "../../../components/hubs/Hub.yml"
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../components/error/ErrorResponse.yml"
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../components/error/ErrorResponse.yml"
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../components/error/ErrorResponse.yml"
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../components/error/ErrorResponse.yml"
 post:
   operationId: "createHub"
   tags:
@@ -53,7 +53,7 @@ post:
   summary: Create Hub
   description: Create a hub resource.
   requestBody:
-    "$ref": "../../../schemas/hubs/requestBodies/CreateHubRequest.yml"
+    "$ref": "../../../components/hubs/requestBodies/CreateHubRequest.yml"
   responses:
     "200":
       description: Returns a hub resource.
@@ -64,28 +64,28 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../schemas/hubs/Hub.yml"
+                "$ref": "../../../components/hubs/Hub.yml"
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../components/error/ErrorResponse.yml"
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../components/error/ErrorResponse.yml"
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../components/error/ErrorResponse.yml"
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../components/error/ErrorResponse.yml"

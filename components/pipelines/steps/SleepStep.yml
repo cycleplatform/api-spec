@@ -1,0 +1,18 @@
+title: SleepStep
+type: object
+description: Settings for the sleep step for a pipeline.
+required:
+  - action
+  - details
+properties:
+  action:
+    type: string
+    description: The action that the step takes.
+    enum: 
+      - sleep
+  details:
+    type: object
+    properties:
+      seconds:
+        type: integer
+        description: Total duration (seconds) to run this step for, before moving on to the next step.

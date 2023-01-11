@@ -1,8 +1,0 @@
-# title: PipelineImageImport
-# allOf: 
-#   - "$ref": "../ResourceLocation.yml"
-#   - "$ref": "../../images/taskActions/ImportImage.yml"
-
-
-# TODO need to look at the struct for this I think it is diff from images prune 
-

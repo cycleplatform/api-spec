@@ -53,33 +53,33 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../../schemas/hubs/HubMembership.yml"
+                  "$ref": "../../../../components/hubs/HubMembership.yml"
               includes:
-                "$ref": "../../../../schemas/hubs/HubMembershipIncludes.yml"
+                "$ref": "../../../../components/hubs/HubMembershipIncludes.yml"
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../../components/error/ErrorResponse.yml"
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../../components/error/ErrorResponse.yml"
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../../components/error/ErrorResponse.yml"
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../../components/error/ErrorResponse.yml"
 post:
   operationId: "createHubInvite"
   tags:
@@ -88,7 +88,7 @@ post:
   summary: Create Hub Invite
   description: Requires the `hubs-invites-send` capability.
   requestBody:
-    "$ref": "../../../../schemas/hubs/requestBodies/CreateHubInviteRequest.yml"
+    "$ref": "../../../../components/hubs/requestBodies/CreateHubInviteRequest.yml"
   responses:
     "201":
       description: Returns a hub membership resource.
@@ -99,28 +99,28 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../../schemas/hubs/HubMembership.yml"
+                "$ref": "../../../../components/hubs/HubMembership.yml"
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../../components/error/ErrorResponse.yml"
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../../components/error/ErrorResponse.yml"
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../../components/error/ErrorResponse.yml"
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../../schemas/error/ErrorResponse.yml"
+            "$ref": "../../../../components/error/ErrorResponse.yml"
