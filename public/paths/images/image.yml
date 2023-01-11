@@ -28,9 +28,9 @@ get:
             - stack_builds
             - stacks
             - sources
-    - $ref: "../../parameters/SortParam.yml"
-    - $ref: "../../parameters/FilterParam.yml"
-    - $ref: "../../parameters/PageParam.yml"
+    - $ref: "../../../components/parameters/SortParam.yml"
+    - $ref: "../../../components/parameters/FilterParam.yml"
+    - $ref: "../../../components/parameters/PageParam.yml"
   responses:
     "200":
       description: Returns a image resource.
@@ -41,33 +41,33 @@ get:
             type: object
             properties:
               data:
-                "$ref": "../../../components/images/Image.yml"
+                "$ref": "../../../components/schemas/images/Image.yml"
               includes:
-                "$ref": "../../../components/images/ImageIncludes.yml"
+                "$ref": "../../../components/schemas/images/ImageIncludes.yml"
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
 patch:
   operationId: "updateImage"
   tags:
@@ -82,7 +82,7 @@ patch:
   summary: Update Image
   description: Requires the `images-updae` capability.
   requestBody:
-    "$ref": "../../../components/images/requestBodies/ImageUpdateRequest.yml"
+    "$ref": "../../../components/schemas/images/requestBodies/ImageUpdateRequest.yml"
   responses:
     "200":
       description: Returns an image resource.
@@ -93,31 +93,31 @@ patch:
             type: object
             properties:
               data:
-                "$ref": "../../../components/images/Image.yml"
+                "$ref": "../../../components/schemas/images/Image.yml"
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
 delete:
   operationId: "removeImage"
   tags:
@@ -140,28 +140,28 @@ delete:
             type: object
             properties:
               data:
-                "$ref": "../../../components/jobs/TaskDescriptor.yml"
+                "$ref": "../../../components/schemas/jobs/TaskDescriptor.yml"
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../components/schemas/error/ErrorResponse.yml"

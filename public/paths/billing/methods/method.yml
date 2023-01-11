@@ -21,31 +21,31 @@ get:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/billing/methods/Method.yml"
+                "$ref": "../../../../components/schemas/billing/methods/Method.yml"
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
 patch:
   operationId: "updateBillingMethod"
   tags:
@@ -60,7 +60,7 @@ patch:
   summary: Update Billing Invoice
   description: Requires the `billing-methods-manage` capability.
   requestBody:
-    "$ref": "../../../../components/billing/methods/requestBodies/UpdateBillingMethodRequest.yml"
+    "$ref": "../../../../components/schemas/billing/methods/requestBodies/UpdateBillingMethodRequest.yml"
   responses:
     "200":
       description: Returns a billing method resource.
@@ -71,31 +71,31 @@ patch:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/billing/methods/Method.yml"
+                "$ref": "../../../../components/schemas/billing/methods/Method.yml"
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
 delete:
   operationId: "deleteBillingMethod"
   tags:
@@ -119,28 +119,28 @@ delete:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/jobs/TaskDescriptor.yml"
+                "$ref": "../../../../components/schemas/jobs/TaskDescriptor.yml"
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"

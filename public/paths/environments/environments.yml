@@ -36,9 +36,9 @@ get:
           enum:
             - creators
             - stacks
-    - $ref: "../../parameters/SortParam.yml"
-    - $ref: "../../parameters/FilterParam.yml"
-    - $ref: "../../parameters/PageParam.yml"
+    - $ref: "../../../components/parameters/SortParam.yml"
+    - $ref: "../../../components/parameters/FilterParam.yml"
+    - $ref: "../../../components/parameters/PageParam.yml"
   summary: List Environments
   description: Requires the `environments-view` capability.
   responses:
@@ -55,36 +55,36 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../components/environments/Environment.yml"
+                  "$ref": "../../../components/schemas/environments/Environment.yml"
               includes:
                 type: object
                 properties:
                   creators:
-                    $ref: "../../../components/includes/CreatorInclude.yml"
+                    $ref: "../../../components/schemas/includes/CreatorInclude.yml"
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
 post:
   operationId: "createEnvironment"
   tags:
@@ -96,7 +96,7 @@ post:
     content:
       application/json:
         schema:
-          "$ref": "../../../components/environments/requestBodies/CreateEnvironmentBody.yml"
+          "$ref": "../../../components/schemas/environments/requestBodies/CreateEnvironmentBody.yml"
   responses:
     "201":
       description: Returns an environment resource.
@@ -107,12 +107,12 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../components/environments/Environment.yml"
+                "$ref": "../../../components/schemas/environments/Environment.yml"
     "400":
-      $ref: "../../errors/400.yml"
+      $ref: "../../../components/schemas/errors/400.yml"
     "401":
-      $ref: "../../errors/401.yml"
+      $ref: "../../../components/schemas/errors/401.yml"
     "404":
-      $ref: "../../errors/404.yml"
+      $ref: "../../../components/schemas/errors/404.yml"
     "500":
-      $ref: "../../errors/500.yml"
+      $ref: "../../../components/schemas/errors/500.yml"

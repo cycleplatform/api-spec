@@ -11,7 +11,7 @@ required:
   - hub_id
 properties:
   id:
-    "$ref": "../../../components/ID.yml"
+    $ref: ../../ID.yml
   domains:
     type: array
     description: An array of domains associated with the certificate.
@@ -30,4 +30,4 @@ properties:
     type: string
     description: The issuer's certificate.
   hub_id:
-    "$ref": "../../../components/HubID.yml"
+    $ref: ../../HubID.yml

@@ -41,9 +41,9 @@ get:
             - stack_builds
             - stacks
             - environments
-    - $ref: "../../parameters/SortParam.yml"
-    - $ref: "../../parameters/FilterParam.yml"
-    - $ref: "../../parameters/PageParam.yml"
+    - $ref: "../../../components/parameters/SortParam.yml"
+    - $ref: "../../../components/parameters/FilterParam.yml"
+    - $ref: "../../../components/parameters/PageParam.yml"
   responses:
     "200":
       description: Returns a collection of container resources.
@@ -56,17 +56,17 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../components/containers/Container.yml"
+                  "$ref": "../../../components/schemas/containers/Container.yml"
               includes:
-                "$ref": "../../../components/containers/ContainerIncludes.yml"
+                "$ref": "../../../components/schemas/containers/ContainerIncludes.yml"
     "400":
-      $ref: "../../errors/400.yml"
+      $ref: "../../../components/schemas/errors/400.yml"
     "401":
-      $ref: "../../errors/401.yml"
+      $ref: "../../../components/schemas/errors/401.yml"
     "404":
-      $ref: "../../errors/404.yml"
+      $ref: "../../../components/schemas/errors/404.yml"
     "500":
-      $ref: "../../errors/500.yml"
+      $ref: "../../../components/schemas/errors/500.yml"
 post:
   operationId: "createContainer"
   tags:
@@ -79,7 +79,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: "../../../components/containers/requestBodies/ContainerCreateInput.yml"
+          $ref: "../../../components/schemas/containers/requestBodies/ContainerCreateInput.yml"
   responses:
     "201":
       description: Returns a container resource.
@@ -90,12 +90,12 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../components/containers/Container.yml"
+                "$ref": "../../../components/schemas/containers/Container.yml"
     "400":
-      $ref: "../../errors/400.yml"
+      $ref: "../../../components/schemas/errors/400.yml"
     "401":
-      $ref: "../../errors/401.yml"
+      $ref: "../../../components/schemas/errors/401.yml"
     "404":
-      $ref: "../../errors/404.yml"
+      $ref: "../../../components/schemas/errors/404.yml"
     "500":
-      $ref: "../../errors/500.yml"
+      $ref: "../../../components/schemas/errors/500.yml"

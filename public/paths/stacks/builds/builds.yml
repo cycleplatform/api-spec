@@ -43,9 +43,9 @@ get:
             - instructions
             - events
             - state
-    - $ref: "../../../parameters/SortParam.yml"
-    - $ref: "../../../parameters/FilterParam.yml"
-    - $ref: "../../../parameters/PageParam.yml"
+    - $ref: "../../../../components/parameters/SortParam.yml"
+    - $ref: "../../../../components/parameters/FilterParam.yml"
+    - $ref: "../../../../components/parameters/PageParam.yml"
   summary: List Builds
   description: Requires the `stacks-view` capability.
   responses:
@@ -60,33 +60,33 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../../components/stacks/builds/StackBuild.yml"
+                  "$ref": "../../../../components/schemas/stacks/builds/StackBuild.yml"
               includes:
-                "$ref": "../../../../components/stacks/builds/StackBuildInclude.yml"
+                "$ref": "../../../../components/schemas/stacks/builds/StackBuildInclude.yml"
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
 post:
   operationId: "createStackBuild"
   tags:
@@ -101,7 +101,7 @@ post:
   summary: Create Stack Build
   description: Requires the `stacks-manage` capability.
   requestBody:
-    "$ref": "../../../../components/stacks/builds/requestBodies/CreateStackBuildRequest.yml"
+    "$ref": "../../../../components/schemas/stacks/builds/requestBodies/CreateStackBuildRequest.yml"
   responses:
     "201":
       description: Returns a stack build resource.
@@ -112,28 +112,28 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/stacks/builds/StackBuild.yml"
+                "$ref": "../../../../components/schemas/stacks/builds/StackBuild.yml"
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"

@@ -9,9 +9,9 @@ get:
       description: The ID of the pipeline.
       schema:
         type: string
-    - $ref: "../../../parameters/SortParam.yml"
-    - $ref: "../../../parameters/FilterParam.yml"
-    - $ref: "../../../parameters/PageParam.yml"
+    - $ref: "../../../../components/parameters/SortParam.yml"
+    - $ref: "../../../../components/parameters/FilterParam.yml"
+    - $ref: "../../../../components/parameters/PageParam.yml"
   summary: List Trigger Keys
   description: Requires the `pipelines-manage` capability.
   responses:
@@ -26,31 +26,31 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../../components/pipelines/trigger-keys/TriggerKey.yml"
+                  "$ref": "../../../../components/schemas/pipelines/trigger-keys/TriggerKey.yml"
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
 post:
   operationId: "createPipelineTriggerKey"
   tags:
@@ -65,7 +65,7 @@ post:
   summary: Create Trigger Key
   description: Requires the `pipelines-manage` capability.
   requestBody:
-    "$ref": "../../../../components/pipelines/trigger-keys/requestBodies/CreateTriggerKeyRequest.yml"
+    "$ref": "../../../../components/schemas/pipelines/trigger-keys/requestBodies/CreateTriggerKeyRequest.yml"
   responses:
     "201":
       description: Returns a trigger key resource.
@@ -76,28 +76,28 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/pipelines/trigger-keys/TriggerKey.yml"
+                "$ref": "../../../../components/schemas/pipelines/trigger-keys/TriggerKey.yml"
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"

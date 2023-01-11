@@ -18,9 +18,9 @@ get:
           enum:
             - creators
             - environemnts
-    - $ref: "../../parameters/SortParam.yml"
-    - $ref: "../../parameters/FilterParam.yml"
-    - $ref: "../../parameters/PageParam.yml"
+    - $ref: "../../../components/parameters/SortParam.yml"
+    - $ref: "../../../components/parameters/FilterParam.yml"
+    - $ref: "../../../components/parameters/PageParam.yml"
   summary: List SDNs
   description: Requires the `sdn-networks-view` capability.
   responses:
@@ -35,33 +35,33 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../components/sdn/SDNNetwork.yml"
+                  "$ref": "../../../components/schemas/sdn/SDNNetwork.yml"
               includes:
-                "$ref": "../../../components/sdn/NetworkIncludes.yml"
+                "$ref": "../../../components/schemas/sdn/NetworkIncludes.yml"
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
 post:
   operationId: "createSDNNetwork"
   tags:
@@ -70,7 +70,7 @@ post:
   summary: Create SDN
   description: Requires the `sdn-networks-manage` capability.
   requestBody:
-    "$ref": "../../../components/sdn/requestBodies/CreateSDNRequest.yml"
+    "$ref": "../../../components/schemas/sdn/requestBodies/CreateSDNRequest.yml"
   responses:
     "201":
       description: Returns a network resource.
@@ -81,28 +81,28 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../components/sdn/SDNNetwork.yml"
+                "$ref": "../../../components/schemas/sdn/SDNNetwork.yml"
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../components/schemas/error/ErrorResponse.yml"

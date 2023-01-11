@@ -26,9 +26,9 @@ get:
           type: string
           enum:
             - primary_ip
-    - $ref: "../../parameters/SortParam.yml"
-    - $ref: "../../parameters/FilterParam.yml"
-    - $ref: "../../parameters/PageParam.yml"
+    - $ref: "../../../components/parameters/SortParam.yml"
+    - $ref: "../../../components/parameters/FilterParam.yml"
+    - $ref: "../../../components/parameters/PageParam.yml"
   responses:
     "200":
       description: Returns a list of server instance resources.
@@ -39,28 +39,28 @@ get:
             type: object
             properties:
               data:
-                "$ref": "../../../components/containers/ServersList.yml"
+                "$ref": "../../../components/schemas/containers/ServersList.yml"
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../components/schemas/error/ErrorResponse.yml"

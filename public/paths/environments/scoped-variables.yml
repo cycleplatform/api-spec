@@ -9,9 +9,9 @@ get:
       required: true
       schema:
         type: string
-    - $ref: "../../parameters/SortParam.yml"
-    - $ref: "../../parameters/FilterParam.yml"
-    - $ref: "../../parameters/PageParam.yml"
+    - $ref: "../../../components/parameters/SortParam.yml"
+    - $ref: "../../../components/parameters/FilterParam.yml"
+    - $ref: "../../../components/parameters/PageParam.yml"
   summary: List Scoped Variables
   description: Requires the `scoped-variables-view` capability.
   responses:
@@ -28,31 +28,31 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../components/scoped-variables/ScopedVariable.yml"
+                  "$ref": "../../../components/schemas/scoped-variables/ScopedVariable.yml"
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
 post:
   operationId: "createScopedVariable"
   tags:
@@ -67,7 +67,7 @@ post:
   summary: Create Scoped Variable
   description: Requires the `scoped-variables-manage` capability.
   requestBody:
-    "$ref": "../../../components/scoped-variables/requestBodies/CreateScopedVariableRequest.yml"
+    "$ref": "../../../components/schemas/scoped-variables/requestBodies/CreateScopedVariableRequest.yml"
   responses:
     "201":
       description: Returns a scoped variable resource.
@@ -78,28 +78,28 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../components/scoped-variables/ScopedVariable.yml"
+                "$ref": "../../../components/schemas/scoped-variables/ScopedVariable.yml"
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../components/schemas/error/ErrorResponse.yml"

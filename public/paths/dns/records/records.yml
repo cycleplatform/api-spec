@@ -23,9 +23,9 @@ get:
           type: string
           enum:
             - creators
-    - $ref: "../../../parameters/SortParam.yml"
-    - $ref: "../../../parameters/FilterParam.yml"
-    - $ref: "../../../parameters/PageParam.yml"
+    - $ref: "../../../../components/parameters/SortParam.yml"
+    - $ref: "../../../../components/parameters/FilterParam.yml"
+    - $ref: "../../../../components/parameters/PageParam.yml"
   summary: List Records
   description: Requires the `dns-view` capability.
   responses:
@@ -40,33 +40,33 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../../components/dns/records/Record.yml"
+                  "$ref": "../../../../components/schemas/dns/records/Record.yml"
               includes:
-                "$ref": "../../../../components/dns/records/RecordIncludes.yml"
+                "$ref": "../../../../components/schemas/dns/records/RecordIncludes.yml"
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
 post:
   operationId: "createDNSRecord"
   tags:
@@ -81,7 +81,7 @@ post:
   summary: Create Record
   description: Requires the `dns-manage` capability.
   requestBody:
-    "$ref": "../../../../components/dns/requestBodies/CreateRecordRequest.yml"
+    "$ref": "../../../../components/schemas/dns/requestBodies/CreateRecordRequest.yml"
   responses:
     "201":
       description: Returns the DNS zone resource.
@@ -92,28 +92,28 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/dns/records/Record.yml"
+                "$ref": "../../../../components/schemas/dns/records/Record.yml"
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/error/ErrorResponse.yml"
+            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
