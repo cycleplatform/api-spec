@@ -2,4 +2,4 @@ description: The requested resource doesn't exist.
 content:
   application/json:
     schema:
-      "$ref": "./ErrorResponseNEW.yml"
+      $ref: ../../schemas/errors/ErrorEnvelope.yml

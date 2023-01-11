@@ -1,11 +1,10 @@
-title: ErrorResult
+title: ErrorEnvelope
 type: object
 description: An error response.
 properties:
   error:
-    "$ref": "./ErrorNEW.yml"
+    $ref: ../../schemas/errors/Error2.yml
   data:
     description: Data will always be `null` here.
     nullable: true
     type: object
-    

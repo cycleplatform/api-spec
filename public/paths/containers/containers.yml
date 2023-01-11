@@ -45,7 +45,7 @@ get:
     - $ref: "../../../components/parameters/FilterParam.yml"
     - $ref: "../../../components/parameters/PageParam.yml"
   responses:
-    "200":
+    200:
       description: Returns a collection of container resources.
       content:
         application/json:
@@ -59,14 +59,24 @@ get:
                   "$ref": "../../../components/schemas/containers/Container.yml"
               includes:
                 "$ref": "../../../components/schemas/containers/ContainerIncludes.yml"
-    "400":
-      $ref: "../../../components/schemas/errors/400.yml"
-    "401":
-      $ref: "../../../components/schemas/errors/401.yml"
-    "404":
-      $ref: "../../../components/schemas/errors/404.yml"
-    "500":
-      $ref: "../../../components/schemas/errors/500.yml"
+    400:
+      $ref: ../../../components/responses/errors/400.yml
+    401:
+      $ref: ../../../components/responses/errors/401.yml
+    403:
+      $ref: ../../../components/responses/errors/403.yml
+    404:
+      $ref: ../../../components/responses/errors/404.yml
+    409:
+      $ref: ../../../components/responses/errors/409.yml
+    415:
+      $ref: ../../../components/responses/errors/415.yml
+    422:
+      $ref: ../../../components/responses/errors/422.yml
+    500:
+      $ref: ../../../components/responses/errors/500.yml
+    503:
+      $ref: ../../../components/responses/errors/503.yml
 post:
   operationId: "createContainer"
   tags:
@@ -81,7 +91,7 @@ post:
         schema:
           $ref: "../../../components/schemas/containers/requestBodies/ContainerCreateInput.yml"
   responses:
-    "201":
+    201:
       description: Returns a container resource.
       content:
         application/json:
@@ -91,11 +101,21 @@ post:
             properties:
               data:
                 "$ref": "../../../components/schemas/containers/Container.yml"
-    "400":
-      $ref: "../../../components/schemas/errors/400.yml"
-    "401":
-      $ref: "../../../components/schemas/errors/401.yml"
-    "404":
-      $ref: "../../../components/schemas/errors/404.yml"
-    "500":
-      $ref: "../../../components/schemas/errors/500.yml"
+    400:
+      $ref: ../../../components/responses/errors/400.yml
+    401:
+      $ref: ../../../components/responses/errors/401.yml
+    403:
+      $ref: ../../../components/responses/errors/403.yml
+    404:
+      $ref: ../../../components/responses/errors/404.yml
+    409:
+      $ref: ../../../components/responses/errors/409.yml
+    415:
+      $ref: ../../../components/responses/errors/415.yml
+    422:
+      $ref: ../../../components/responses/errors/422.yml
+    500:
+      $ref: ../../../components/responses/errors/500.yml
+    503:
+      $ref: ../../../components/responses/errors/503.yml
