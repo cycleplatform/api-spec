@@ -13,7 +13,7 @@ additionalProperties:
     - "$ref": "../stacks/builds/StackBuild.yml"
     - "$ref": "../dns/Zone.yml"
     - "$ref": "../dns/records/Record.yml"
-    - "$ref": "../hubs/APIKey.yml"
+    - "$ref": "../hubs/ApiKey.yml"
     - "$ref": "../infrastructure/providers/Provider.yml"
     - "$ref": "../sdn/SDNNetwork.yml"
     - "$ref": "../hubs/HubMembership.yml"
