@@ -60,7 +60,23 @@ patch:
   summary: Create Pipeline
   description: Requires the `pipelines-manage` capability.
   requestBody:
-    "$ref": "../../../components/schemas/pipelines/requestBodies/UpdatePipelineRequest.yml"
+    description: Parameters for updating a pipeline.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: A name for the pipeline.
+            stages:
+              description: An array of stages.
+              type: array
+              items:
+                $ref: ../../../components/schemas/pipelines/PipelineStage.yml
+            disable:
+              type: boolean
+              description: A boolean where true signifies the pipeline is disabled.
   responses:
     "200":
       description: Returns a pipeline resource.

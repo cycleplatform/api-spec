@@ -32,31 +32,31 @@ get:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/hubs/Hub.yml"
+                $ref: ../../../components/schemas/hubs/Hub.yml
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
+            $ref: ../../../components/schemas/error/ErrorResponse.yml
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
+            $ref: ../../../components/schemas/error/ErrorResponse.yml
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
+            $ref: ../../../components/schemas/error/ErrorResponse.yml
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
+            $ref: ../../../components/schemas/error/ErrorResponse.yml
 patch:
   operationId: "updateHub"
   tags:
@@ -65,7 +65,27 @@ patch:
   summary: Update Hub
   description: Updates the specified hub, setting the values of the parameters passed.
   requestBody:
-    "$ref": "../../../components/schemas/hubs/requestBodies/UpdateHubRequest.yml"
+    description: Parameters for updating a hub.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: A name for the hub.
+            integrations:
+              $ref: ../../../components/schemas/hubs/HubIntegrations.yml
+            webhooks:
+              type: object
+              description: All hub webhooks for the given hub.
+              required:
+                - server_deployed
+              properties:
+                server_deployed:
+                  nullable: true
+                  type: string
+                  description: A webahook to report information to each time a server is deployed on the given hub.
   responses:
     "200":
       description: Returns the updated Hub resource.
@@ -76,31 +96,31 @@ patch:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/hubs/Hub.yml"
+                $ref: ../../../components/schemas/hubs/Hub.yml
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
+            $ref: ../../../components/schemas/error/ErrorResponse.yml
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
+            $ref: ../../../components/schemas/error/ErrorResponse.yml
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
+            $ref: ../../../components/schemas/error/ErrorResponse.yml
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
+            $ref: ../../../components/schemas/error/ErrorResponse.yml
 delete:
   operationId: "deleteHub"
   tags:
@@ -119,28 +139,28 @@ delete:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/jobs/TaskDescriptor.yml"
+                $ref: ../../../components/schemas/jobs/TaskDescriptor.yml
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
+            $ref: ../../../components/schemas/error/ErrorResponse.yml
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
+            $ref: ../../../components/schemas/error/ErrorResponse.yml
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
+            $ref: ../../../components/schemas/error/ErrorResponse.yml
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
+            $ref: ../../../components/schemas/error/ErrorResponse.yml

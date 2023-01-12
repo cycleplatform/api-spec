@@ -88,7 +88,23 @@ post:
   summary: Create Hub Invite
   description: Requires the `hubs-invites-send` capability.
   requestBody:
-    "$ref": "../../../../components/schemas/hubs/requestBodies/CreateHubInviteRequest.yml"
+    description: Parameters for creating a hub invite.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            recipient:
+              type: string
+              description: The email address of the invitee.
+            role:
+              type: string
+              description: The account role.
+              enum:
+                - owner
+                - admin
+                - developer
+                - analyst
   responses:
     "201":
       description: Returns a hub membership resource.

@@ -86,7 +86,24 @@ post:
   summary: Create Instance(s)
   description: Requires the `containers-update` capability.
   requestBody:
-    "$ref": "../../../../components/schemas/containers/instances/requestBodies/InstanceCreate.yml"
+    description: Parameters for creating a container instance.
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            type: object
+            required:
+              - server_id
+              - new_instances
+            properties:
+              server_id:
+                type: string
+                description: The ID of the server the new instance(s) should be deployed to.
+              new_instances:
+                type: integer
+                description: The number of new instances to be created on the given server.
+
   responses:
     "200":
       description: Returns a task descriptor.

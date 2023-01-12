@@ -20,31 +20,31 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../../components/schemas/hubs/APIKey.yml"
+                  $ref: ../../../../components/schemas/hubs/APIKey.yml
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
+            $ref: ../../../../components/schemas/error/ErrorResponse.yml
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
+            $ref: ../../../../components/schemas/error/ErrorResponse.yml
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
+            $ref: ../../../../components/schemas/error/ErrorResponse.yml
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
+            $ref: ../../../../components/schemas/error/ErrorResponse.yml
 post:
   operationId: "createAPIKey"
   tags:
@@ -53,7 +53,38 @@ post:
   summary: Create API Key
   description: Requires the `api-keys-manage` capability.
   requestBody:
-    "$ref": "../../../../components/schemas/hubs/requestBodies/CreateAPIKeyRequest.yml"
+    description: Parameters for creating an API Key.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: A name given to the API Key.
+            permissions:
+              $ref: ../../../../components/schemas/creators/Permissions.yml
+            capabilities:
+              type: object
+              description: An object defining the capabilities of the given API key.
+              required:
+                - all
+                - specific
+              properties:
+                all:
+                  type: boolean
+                  description: A boolean where true is giving the key all grantable capabilities.
+                specific:
+                  type: array
+                  description: An array of capabilites.
+                  items:
+                    $ref: ../../../../components/schemas/common/Capabilities.yml
+            ips:
+              type: array
+              nullable: true
+              description: An array of approved IPs from which this API Key can be used.
+              items:
+                type: string
   responses:
     "201":
       description: Returns an API Key resource.
@@ -64,28 +95,28 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/hubs/APIKey.yml"
+                $ref: ../../../../components/schemas/hubs/APIKey.yml
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
+            $ref: ../../../../components/schemas/error/ErrorResponse.yml
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
+            $ref: ../../../../components/schemas/error/ErrorResponse.yml
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
+            $ref: ../../../../components/schemas/error/ErrorResponse.yml
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
+            $ref: ../../../../components/schemas/error/ErrorResponse.yml

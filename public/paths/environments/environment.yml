@@ -54,36 +54,36 @@ get:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/environments/Environment.yml"
+                $ref: ../../../components/schemas/environments/Environment.yml
               includes:
                 type: object
                 properties:
                   creators:
-                    "$ref": "../../../components/schemas/includes/CreatorInclude.yml"
+                    $ref: ../../../components/schemas/includes/CreatorInclude.yml
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
+            $ref: ../../../components/schemas/error/ErrorResponse.yml
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
+            $ref: ../../../components/schemas/error/ErrorResponse.yml
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
+            $ref: ../../../components/schemas/error/ErrorResponse.yml
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
+            $ref: ../../../components/schemas/error/ErrorResponse.yml
 patch:
   operationId: "updateEnvironment"
   tags:
@@ -98,7 +98,16 @@ patch:
   summary: Update Environment
   description: Updates the specificed environment, setting the values of the parameters passed. If any parameters are omitted, they will be left unchanged. Requires the `environments-update` capability.
   requestBody:
-    "$ref": "../../../components/schemas/environments/requestBodies/UpdateEnvironmentBody.yml"
+    description: Parameters for updating an environment.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+            about:
+              $ref: ../../../components/schemas/environments/EnvironmentAbout.yml
   responses:
     "200":
       description: Returns an environment resource.
@@ -109,31 +118,31 @@ patch:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/environments/Environment.yml"
+                $ref: ../../../components/schemas/environments/Environment.yml
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
+            $ref: ../../../components/schemas/error/ErrorResponse.yml
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
+            $ref: ../../../components/schemas/error/ErrorResponse.yml
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
+            $ref: ../../../components/schemas/error/ErrorResponse.yml
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
+            $ref: ../../../components/schemas/error/ErrorResponse.yml
 delete:
   operationId: "removeEnvironment"
   tags:
@@ -156,28 +165,28 @@ delete:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/jobs/TaskDescriptor.yml"
+                $ref: ../../../components/schemas/jobs/TaskDescriptor.yml
     "400":
       description: This usually means the data sent was in an invalid format.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
+            $ref: ../../../components/schemas/error/ErrorResponse.yml
     "401":
       description: OAuth token is invalid.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
+            $ref: ../../../components/schemas/error/ErrorResponse.yml
     "404":
       description: The requested resource doesn't exist.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
+            $ref: ../../../components/schemas/error/ErrorResponse.yml
     "500":
       description: Indicates an issue with Cycle. Rare.
       content:
         application/json:
           schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
+            $ref: ../../../components/schemas/error/ErrorResponse.yml

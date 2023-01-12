@@ -84,7 +84,20 @@ post:
   summary: Create Stack
   description: Requires the `stacks-manage` capability.
   requestBody:
-    "$ref": "../../../components/schemas/stacks/requestBodies/CreateStackRequest.yml"
+    description: Parameters for creating a new stack.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - name
+            - source
+          properties:
+            name:
+              type: string
+              description: A name for the stack.
+            source:
+              $ref: ../../../components/schemas/stacks/StackSource.yml
   responses:
     "201":
       description: Returns a stack resource.

@@ -65,7 +65,20 @@ post:
   summary: Create Trigger Key
   description: Requires the `pipelines-manage` capability.
   requestBody:
-    "$ref": "../../../../components/schemas/pipelines/trigger-keys/requestBodies/CreateTriggerKeyRequest.yml"
+    description: Parameters for creating a new pipeline trigger key.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: A name for the trigger key.
+            ips:
+              description: An array of ips this trigger key is usable from.
+              type: array
+              items:
+                type: string
   responses:
     "201":
       description: Returns a trigger key resource.

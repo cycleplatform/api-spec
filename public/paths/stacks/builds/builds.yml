@@ -101,7 +101,16 @@ post:
   summary: Create Stack Build
   description: Requires the `stacks-manage` capability.
   requestBody:
-    "$ref": "../../../../components/schemas/stacks/builds/requestBodies/CreateStackBuildRequest.yml"
+    description: Parameters for creating a new stack build.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            about:
+              $ref: ../../../../components/schemas/stacks/builds/StackBuildAbout.yml
+            instructions:
+              $ref: ../../../../components/schemas/stacks/builds/StackBuildInstructions.yml
   responses:
     "201":
       description: Returns a stack build resource.

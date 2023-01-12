@@ -16,7 +16,16 @@ post:
     content:
       application/json:
         schema:
-          "$ref": "../../../components/schemas/stacks/taskActions/PruneStackBuildsAction.yml"
+          title: PruneStackBuilds
+          type: object
+          required:
+            - action
+          properties:
+            action:
+              type: string
+              description: The job to do.
+              enum:
+                - prune
   responses:
     "200":
       description: Returns a task descriptor.

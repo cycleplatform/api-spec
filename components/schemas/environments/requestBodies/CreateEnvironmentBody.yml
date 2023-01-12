@@ -1,10 +1,10 @@
 type: object
 required:
-- name
-- cluster
-- about
-- features
-- stack
+  - name
+  - cluster
+  - about
+  - features
+  - stack
 properties:
   name:
     type: string
@@ -16,7 +16,7 @@ properties:
     type: object
     description: Contains details regarding the environment.
     required:
-    - description
+      - description
     properties:
       description:
         type: string
@@ -28,8 +28,8 @@ properties:
     nullable: true
     description: An object representing the associated stack.
     required:
-    - id
-    - build_id
+      - id
+      - build_id
     properties:
       id:
         "$ref": "../../ID.yml"

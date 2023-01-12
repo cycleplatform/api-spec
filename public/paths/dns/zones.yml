@@ -69,7 +69,21 @@ post:
   summary: Create DNS Zone
   description: Requires the `dns-manage` capability.
   requestBody:
-    "$ref": "../../../components/schemas/dns/requestBodies/CreateZoneRequest.yml"
+    description: Parameters for creating a new DNS zone.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - hosted
+            - origin
+          properties:
+            hosted:
+              type: boolean
+              description: A boolean where true represents the desire for the origin to be of the type `hosted`.
+            origin:
+              type: string
+              description: The origin that will be created.
   responses:
     "201":
       description: Returns the DNS zone resource.
