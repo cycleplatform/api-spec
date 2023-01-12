@@ -64,10 +64,10 @@ post:
             primary:
               type: boolean
               description: A boolean where true represents a billing method being primary.
-              address:
-                $ref: ../../../../components/schemas/billing/methods/Address.yml
-              credit_card:
-                $ref: ../../../../components/schemas/billing/methods/CreditCard.yml
+            address:
+              $ref: ../../../../components/schemas/billing/methods/Address.yml
+            credit_card:
+              $ref: ../../../../components/schemas/billing/methods/CreditCard.yml
   responses:
     "200":
       description: Returns a billing method resource.

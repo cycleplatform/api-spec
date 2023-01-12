@@ -76,21 +76,21 @@ patch:
         type: string
   requestBody:
     description: Parameters for updating a hub membership.
-content:
-  application/json:
-    schema:
-      type: object
-      properties:
-        role:
-          type: string
-          description: The account role.
-          enum:
-            - owner
-            - admin
-            - developer
-            - analyst
-        permissions:
-          $ref: ../../../../components/schemas/creators/Permissions.yml
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            role:
+              type: string
+              description: The account role.
+              enum:
+                - owner
+                - admin
+                - developer
+                - analyst
+            permissions:
+              $ref: ../../../../components/schemas/creators/Permissions.yml
   responses:
     "200":
       description: Returns a hub membership resource.
