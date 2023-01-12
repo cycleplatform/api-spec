@@ -1,5 +1,5 @@
 ---
-title: APIKeyCreator
+title: ApiKeyCreator
 description: An extended resource that has information on a Cycle hub API key
 type: object
 required:

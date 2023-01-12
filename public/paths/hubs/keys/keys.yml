@@ -1,7 +1,7 @@
 get:
-  operationId: "getAPIKeys"
+  operationId: "getApiKeys"
   tags:
-    - APIKeys
+    - ApiKeys
   parameters:
     - $ref: "../../../../components/parameters/SortParam.yml"
     - $ref: "../../../../components/parameters/FilterParam.yml"
@@ -14,13 +14,13 @@ get:
       content:
         application/json:
           schema:
-            title: "ListAPIKeysResponse"
+            title: "ListApiKeysResponse"
             type: object
             properties:
               data:
                 type: array
                 items:
-                  "$ref": "../../../../components/schemas/hubs/APIKey.yml"
+                  "$ref": "../../../../components/schemas/hubs/ApiKey.yml"
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:
@@ -40,25 +40,25 @@ get:
     503:
       $ref: ../../../../components/responses/errors/503.yml
 post:
-  operationId: "createAPIKey"
+  operationId: "createApiKey"
   tags:
-    - APIKeys
+    - ApiKeys
   parameters: []
   summary: Create API Key
   description: Requires the `api-keys-manage` capability.
   requestBody:
-    "$ref": "../../../../components/schemas/hubs/requestBodies/CreateAPIKeyRequest.yml"
+    "$ref": "../../../../components/schemas/hubs/requestBodies/CreateApiKeyRequest.yml"
   responses:
     "201":
       description: Returns an API Key resource.
       content:
         application/json:
           schema:
-            title: "CreateAPIKeyResponse"
+            title: "CreateApiKeyResponse"
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/hubs/APIKey.yml"
+                "$ref": "../../../../components/schemas/hubs/ApiKey.yml"
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:

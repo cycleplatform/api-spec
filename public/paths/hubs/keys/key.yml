@@ -1,7 +1,7 @@
 get:
-  operationId: "getAPIKey"
+  operationId: "getApiKey"
   tags:
-    - APIKeys
+    - ApiKey
   parameters:
     - name: apikeyId
       description: The ID of the API Key.
@@ -17,11 +17,11 @@ get:
       content:
         application/json:
           schema:
-            title: "FetchAPIKeyResponse"
+            title: "FetchApiKeyResponse"
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/hubs/APIKey.yml"
+                "$ref": "../../../../components/schemas/hubs/ApiKey.yml"
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:
@@ -41,9 +41,9 @@ get:
     503:
       $ref: ../../../../components/responses/errors/503.yml
 patch:
-  operationId: "updateAPIKey"
+  operationId: "updateApiKey"
   tags:
-    - APIKeys
+    - ApiKeys
   parameters:
     - name: apikeyId
       description: The ID of the API Key.
@@ -54,18 +54,18 @@ patch:
   summary: Update API Key
   description: Requires the `api-keys-manage` capability.
   requestBody:
-    "$ref": "../../../../components/schemas/hubs/requestBodies/UpdateAPIKeyRequest.yml"
+    "$ref": "../../../../components/schemas/hubs/requestBodies/UpdateApiKeyRequest.yml"
   responses:
     "200":
       description: Returns and API Key resource.
       content:
         application/json:
           schema:
-            title: "UpdateAPIKeyReturn"
+            title: "UpdateApiKeyReturn"
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/hubs/APIKey.yml"
+                "$ref": "../../../../components/schemas/hubs/ApiKey.yml"
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:
