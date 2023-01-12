@@ -90,8 +90,8 @@ tags:
     description: "A subgroup of containers, backups refers to calls that have to do with automated backups managed through a Cycle integration."
   - name: Instances
     description: "A subgroup of containers, instances refers to calls that work with container instance resources. "
-  - name: APIKeys
-    description: "A subgroup of Hubs, APIKeys refers to calls that have to do with creating and managing API key resources."
+  - name: ApiKeys
+    description: "A subgroup of Hubs, ApiKeys refers to calls that have to do with creating and managing API key resources."
   - name: ImageSources
     description: "A subgroup of images, ImageSources refers to calls that have to do with creating and managing image source resources. "
   - name: InfrastructureIPs

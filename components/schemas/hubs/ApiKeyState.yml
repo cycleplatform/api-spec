@@ -1,4 +1,4 @@
-title: APIKeyState 
+title: ApiKeyState 
 allOf: 
   - required: 
       - current 

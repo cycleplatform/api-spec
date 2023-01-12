@@ -1,0 +1,5 @@
+description: Indicates an issue with Cycle. [RARE]
+content:
+  application/json:
+    schema:
+      $ref: ../../schemas/errors/ErrorEnvelope.yml
