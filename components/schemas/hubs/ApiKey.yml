@@ -1,4 +1,4 @@
-title: APIKey 
+title: ApiKey 
 description: An API key resource 
 type: object 
 required: 
@@ -72,7 +72,7 @@ properties:
       type: string 
     nullable: true 
   state: 
-    "$ref": "./APIKeyState.yml" 
+    "$ref": "./ApiKeyState.yml" 
   events:
     title: HubEvents
     type: object
