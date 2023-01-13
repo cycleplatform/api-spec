@@ -12,7 +12,7 @@ get:
   summary: Fetch Billing Method
   description: Requires the `billing-methods-manage` capability.
   responses:
-    "200":
+    200:
       description: Returns a billing method resource.
       content:
         application/json:
@@ -21,7 +21,7 @@ get:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/billing/methods/Method.yml"
+                $ref: ../../../../components/schemas/billing/methods/Method.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:
@@ -71,7 +71,7 @@ patch:
             credit_card:
               $ref: ../../../../components/schemas/billing/methods/CreditCard.yml
   responses:
-    "200":
+    200:
       description: Returns a billing method resource.
       content:
         application/json:
@@ -80,7 +80,7 @@ patch:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/billing/methods/Method.yml"
+                $ref: ../../../../components/schemas/billing/methods/Method.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:
@@ -113,7 +113,7 @@ delete:
   summary: Delete Biilling Method
   description: Requires the `billing-methods-manage` capability.
   responses:
-    "200":
+    200:
       description: Returns a task descriptor.
       content:
         application/json:
@@ -122,7 +122,7 @@ delete:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/jobs/TaskDescriptor.yml"
+                $ref: ../../../../components/schemas/jobs/TaskDescriptor.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:

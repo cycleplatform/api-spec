@@ -29,11 +29,11 @@ get:
             - stack_builds
             - stacks
             - environments
-    - $ref: "../../../components/parameters/SortParam.yml"
-    - $ref: "../../../components/parameters/FilterParam.yml"
-    - $ref: "../../../components/parameters/PageParam.yml"
+    - $ref: ../../../components/parameters/SortParam.yml
+    - $ref: ../../../components/parameters/FilterParam.yml
+    - $ref: ../../../components/parameters/PageParam.yml
   responses:
-    "200":
+    200:
       description: returns a list of container resources
       content:
         application/json:
@@ -44,9 +44,9 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../components/schemas/containers/Container.yml"
+                  $ref: ../../../components/schemas/containers/Container.yml
               includes:
-                "$ref": "../../../components/schemas/containers/ContainerIncludes.yml"
+                $ref: ../../../components/schemas/containers/ContainerIncludes.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:

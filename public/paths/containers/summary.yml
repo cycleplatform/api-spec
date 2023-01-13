@@ -13,7 +13,7 @@ get:
   summary: Fetch Container Summary
   description: Requires the `containers-view` capability.
   responses:
-    "200":
+    200:
       description: Returns an container summary resource.
       content:
         application/json:
@@ -21,7 +21,7 @@ get:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/containers/summaries/ContainerSummary.yml"
+                $ref: ../../../components/schemas/containers/summaries/ContainerSummary.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:

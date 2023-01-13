@@ -41,7 +41,7 @@ get:
   summary: Fetch Source
   description: Requires the `images-view` capability.
   responses:
-    "200":
+    200:
       description: Returns a single image source.
       content:
         application/json:
@@ -50,7 +50,7 @@ get:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/images/sources/ImageSource.yml"
+                $ref: ../../../../components/schemas/images/sources/ImageSource.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:
@@ -111,7 +111,7 @@ patch:
                   nullable: true
                   description: A description of the image source.
   responses:
-    "200":
+    200:
       description: Returns an image source resource.
       content:
         application/json:
@@ -120,7 +120,7 @@ patch:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/images/sources/ImageSource.yml"
+                $ref: ../../../../components/schemas/images/sources/ImageSource.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:
@@ -153,7 +153,7 @@ delete:
   summary: Delete a given image source
   description: Requires the `images-import` capability.
   responses:
-    "200":
+    200:
       description: Returns a task descriptor.
       content:
         application/json:
@@ -161,7 +161,7 @@ delete:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/jobs/TaskDescriptor.yml"
+                $ref: ../../../../components/schemas/jobs/TaskDescriptor.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:

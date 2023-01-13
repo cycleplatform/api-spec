@@ -37,7 +37,7 @@ get:
   summary: Fetch Instance
   description: Requires the `containers-view` capability.
   responses:
-    "200":
+    200:
       description: Returns a container instance resource.
       content:
         application/json:
@@ -46,9 +46,9 @@ get:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/containers/instances/Instance.yml"
+                $ref: ../../../../components/schemas/containers/instances/Instance.yml
               includes:
-                "$ref": "../../../../components/schemas/containers/instances/InstanceIncludes.yml"
+                $ref: ../../../../components/schemas/containers/instances/InstanceIncludes.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:
@@ -87,7 +87,7 @@ delete:
   summary: Delete Instance
   description: Requires the `containers-update` capability.
   responses:
-    "200":
+    200:
       description: Returns a task descriptor
       content:
         application/json:
@@ -95,7 +95,7 @@ delete:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/jobs/TaskDescriptor.yml"
+                $ref: ../../../../components/schemas/jobs/TaskDescriptor.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:

@@ -18,7 +18,7 @@ delete:
   summary: Delete VPN user
   description: Requires the `environments-vpn-manage` capability.
   responses:
-    "200":
+    200:
       description: Returns a null data object.
       content:
         application/json:

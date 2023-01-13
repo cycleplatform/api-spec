@@ -20,7 +20,7 @@ get:
   summary: Fetch Domain TLS Certificate
   description: Requires the `dns-view` capability.
   responses:
-    "200":
+    200:
       description: Returns a TLS certificate bundle resource.
       content:
         application/json:
@@ -29,7 +29,7 @@ get:
             type: object
             properties:
               data:
-                $ref: "../../../../components/schemas/dns/tls/DnsTlsCertificate.yml"
+                $ref: ../../../../components/schemas/dns/tls/DnsTlsCertificate.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:

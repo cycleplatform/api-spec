@@ -13,7 +13,7 @@ get:
   summary: List Telemetry Data
   description: Requires the `environments-view` capability.
   responses:
-    "200":
+    200:
       description: Returns a collection of telemetry data points.
       content:
         application/json:
@@ -24,7 +24,7 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../components/schemas/environments/returns/InstanceTelemetry.yml"
+                  $ref: ../../../components/schemas/environments/returns/InstanceTelemetry.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:

@@ -43,13 +43,13 @@ get:
             - instructions
             - events
             - state
-    - $ref: "../../../../components/parameters/SortParam.yml"
-    - $ref: "../../../../components/parameters/FilterParam.yml"
-    - $ref: "../../../../components/parameters/PageParam.yml"
+    - $ref: ../../../../components/parameters/SortParam.yml
+    - $ref: ../../../../components/parameters/FilterParam.yml
+    - $ref: ../../../../components/parameters/PageParam.yml
   summary: List Builds
   description: Requires the `stacks-view` capability.
   responses:
-    "200":
+    200:
       description: Returns a collection of stack builds.
       content:
         application/json:
@@ -60,9 +60,9 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../../components/schemas/stacks/builds/StackBuild.yml"
+                  $ref: ../../../../components/schemas/stacks/builds/StackBuild.yml
               includes:
-                "$ref": "../../../../components/schemas/stacks/builds/StackBuildInclude.yml"
+                $ref: ../../../../components/schemas/stacks/builds/StackBuildInclude.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:
@@ -106,7 +106,7 @@ post:
             instructions:
               $ref: ../../../../components/schemas/stacks/builds/StackBuildInstructions.yml
   responses:
-    "201":
+    201:
       description: Returns a stack build resource.
       content:
         application/json:
@@ -115,7 +115,7 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/stacks/builds/StackBuild.yml"
+                $ref: ../../../../components/schemas/stacks/builds/StackBuild.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:

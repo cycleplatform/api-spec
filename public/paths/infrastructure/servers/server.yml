@@ -44,7 +44,7 @@ get:
   summary: Fetch Server
   description: Requires the `servers-view` capability.
   responses:
-    "200":
+    200:
       description: A single server resource.
       content:
         application/json:
@@ -53,9 +53,9 @@ get:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/infrastructure/servers/Server.yml"
+                $ref: ../../../../components/schemas/infrastructure/servers/Server.yml
               includes:
-                "$ref": "../../../../components/schemas/infrastructure/servers/ServerIncludes.yml"
+                $ref: ../../../../components/schemas/infrastructure/servers/ServerIncludes.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:
@@ -123,7 +123,7 @@ patch:
                       type: boolean
                       description: A boolean where true represents the desire for the server to allow the overcommitting of shares.
   responses:
-    "200":
+    200:
       description: A server resource.
       content:
         application/json:
@@ -132,7 +132,7 @@ patch:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/infrastructure/servers/Server.yml"
+                $ref: ../../../../components/schemas/infrastructure/servers/Server.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:
@@ -163,9 +163,9 @@ delete:
       required: true
       schema:
         type: string
-    - $ref: "../../../../components/parameters/OptionParam.yml"
+    - $ref: ../../../../components/parameters/OptionParam.yml
   responses:
-    "200":
+    200:
       description: Returns a task descriptor.
       content:
         application/json:
@@ -173,7 +173,7 @@ delete:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/jobs/TaskDescriptor.yml"
+                $ref: ../../../../components/schemas/jobs/TaskDescriptor.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:

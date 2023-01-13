@@ -3,13 +3,13 @@ get:
   tags:
     - Billing
   parameters:
-    - $ref: "../../../../components/parameters/SortParam.yml"
-    - $ref: "../../../../components/parameters/FilterParam.yml"
-    - $ref: "../../../../components/parameters/PageParam.yml"
+    - $ref: ../../../../components/parameters/SortParam.yml
+    - $ref: ../../../../components/parameters/FilterParam.yml
+    - $ref: ../../../../components/parameters/PageParam.yml
   summary: List Billing Services
   description: Requries the `billing-services-view` capability.
   responses:
-    "200":
+    200:
       description: Returns a collection of billing service resources.
       content:
         application/json:
@@ -20,7 +20,7 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../../components/schemas/billing/Service.yml"
+                  $ref: ../../../../components/schemas/billing/Service.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:

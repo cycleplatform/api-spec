@@ -12,7 +12,7 @@ get:
       schema:
         type: string
   responses:
-    "200":
+    200:
       description: Returns a build log resource.
       content:
         application/json:
@@ -21,7 +21,7 @@ get:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/images/BuildLog.yml"
+                $ref: ../../../components/schemas/images/BuildLog.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:

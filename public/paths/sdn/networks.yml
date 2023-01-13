@@ -18,13 +18,13 @@ get:
           enum:
             - creators
             - environemnts
-    - $ref: "../../../components/parameters/SortParam.yml"
-    - $ref: "../../../components/parameters/FilterParam.yml"
-    - $ref: "../../../components/parameters/PageParam.yml"
+    - $ref: ../../../components/parameters/SortParam.yml
+    - $ref: ../../../components/parameters/FilterParam.yml
+    - $ref: ../../../components/parameters/PageParam.yml
   summary: List SDNs
   description: Requires the `sdn-networks-view` capability.
   responses:
-    "200":
+    200:
       description: Returns a collection of network resources.
       content:
         application/json:
@@ -35,9 +35,9 @@ get:
               data:
                 type: array
                 items:
-                  $ref: "../../../components/schemas/sdn/SDNNetwork.yml"
+                  $ref: ../../../components/schemas/sdn/SDNNetwork.yml
               includes:
-                "$ref": "../../../components/schemas/sdn/NetworkIncludes.yml"
+                $ref: ../../../components/schemas/sdn/NetworkIncludes.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:
@@ -94,12 +94,12 @@ post:
                   - added
                 properties:
                   id:
-                    $ref: "../../../components/schemas/ID.yml"
+                    $ref: ../../../components/schemas/ID.yml
                   added:
                     description: A timestamp of when the environment was added.
-                    $ref: "../../../components/schemas/DateTime.yml"
+                    $ref: ../../../components/schemas/DateTime.yml
   responses:
-    "201":
+    201:
       description: Returns a network resource.
       content:
         application/json:
@@ -108,7 +108,7 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/sdn/SDNNetwork.yml"
+                $ref: ../../../components/schemas/sdn/SDNNetwork.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:

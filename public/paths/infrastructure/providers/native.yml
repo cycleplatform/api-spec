@@ -18,13 +18,13 @@ get:
           type: string
           enum:
             - locations
-    - $ref: "../../../../components/parameters/SortParam.yml"
-    - $ref: "../../../../components/parameters/FilterParam.yml"
-    - $ref: "../../../../components/parameters/PageParam.yml"
+    - $ref: ../../../../components/parameters/SortParam.yml
+    - $ref: ../../../../components/parameters/FilterParam.yml
+    - $ref: ../../../../components/parameters/PageParam.yml
   summary: List Native Providers
   description: No capability required, public information.
   responses:
-    "200":
+    200:
       description: Returns a list of natively supported providers.
       content:
         application/json:
@@ -35,7 +35,7 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../../components/schemas/infrastructure/providers/NativeProvider.yml"
+                  $ref: ../../../../components/schemas/infrastructure/providers/NativeProvider.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:

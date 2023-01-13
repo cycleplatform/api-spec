@@ -17,11 +17,11 @@ post:
       application/json:
         schema:
           oneOf:
-            - "$ref": "../../../../components/schemas/infrastructure/servers/taskActions/ReconfigureServer.yml"
-            - "$ref": "../../../../components/schemas/infrastructure/servers/taskActions/RestartServer.yml"
-            - "$ref": "../../../../components/schemas/infrastructure/servers/taskActions/RestartCompute.yml"
+            - $ref: ../../../../components/schemas/infrastructure/servers/taskActions/ReconfigureServer.yml
+            - $ref: ../../../../components/schemas/infrastructure/servers/taskActions/RestartServer.yml
+            - $ref: ../../../../components/schemas/infrastructure/servers/taskActions/RestartCompute.yml
   responses:
-    "200":
+    200:
       description: Returns a task descriptor.
       content:
         application/json:
@@ -29,7 +29,7 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/jobs/TaskDescriptor.yml"
+                $ref: ../../../../components/schemas/jobs/TaskDescriptor.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:

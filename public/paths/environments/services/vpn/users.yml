@@ -12,7 +12,7 @@ get:
   summary: List VPN Users
   description: Requires the `environments-vpn-manage` capability.
   responses:
-    "200":
+    200:
       description: Returns a list of VPN users for the given VPN.
       content:
         application/json:
@@ -23,7 +23,7 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../../../components/schemas/environments/returns/VPNUsers.yml"
+                  $ref: ../../../../../components/schemas/environments/returns/VPNUsers.yml
     400:
       $ref: ../../../../../components/responses/errors/400.yml
     401:
@@ -65,9 +65,9 @@ post:
             - value
           properties:
             value:
-              "$ref": "../../../../../components/schemas/environments/returns/VPNUsers.yml"
+              $ref: ../../../../../components/schemas/environments/returns/VPNUsers.yml
   responses:
-    "201":
+    201:
       description: Returns a VPN user resource.
       content:
         application/json:
@@ -76,7 +76,7 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../../../components/schemas/environments/returns/VPNUsers.yml"
+                $ref: ../../../../../components/schemas/environments/returns/VPNUsers.yml
     400:
       $ref: ../../../../../components/responses/errors/400.yml
     401:
