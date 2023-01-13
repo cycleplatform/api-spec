@@ -12,7 +12,38 @@ post:
   summary: Reconfigure LB
   description: Creates a task that will update the load balancer's configuration.
   requestBody:
-    "$ref": "../../../../../components/schemas/environments/requestBodies/LoadBalancerReconfigure.yml"
+    description: Parameters for reconfiguring a load balancer.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - action
+            - contents
+          properties:
+            action:
+              type: string
+              enum:
+                - reconfigure
+              description: The name of the action to perform.
+            contents:
+              type: object
+              properties:
+                config:
+                  type: object
+                  description: An optional load balancer configuration.
+                  properties:
+                    haproxy:
+                      $ref: ../../../../../components/schemas/environments/config/HAProxyConfig.yml
+                    ipv4:
+                      type: boolean
+                      description: A boolean where `true` represents the desire for a IPv4 address(s) to be assigned to the environment load balancer(s).
+                    ipv6:
+                      type: boolean
+                      description: A boolean where `true` represents the desire for a IPv6 address(s) to be assigned to the environment load balancer(s).
+                high_availability:
+                  type: boolean
+                  description: A boolean where `true` represents the desire to run the environment load balancer service in high availability mode.
   responses:
     "200":
       description: Returns a task descriptor.

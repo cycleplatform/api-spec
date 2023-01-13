@@ -56,7 +56,16 @@ post:
   summary: Create VPN User
   description: Requires the `environments-vpn-manage` capability.
   requestBody:
-    "$ref": "../../../../../components/schemas/environments/requestBodies/VPNUserCreate.yml"
+    description: Parameters for creating a new VPN user.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - value
+          properties:
+            value:
+              "$ref": "../../../../../components/schemas/environments/returns/VPNUsers.yml"
   responses:
     "201":
       description: Returns a VPN user resource.

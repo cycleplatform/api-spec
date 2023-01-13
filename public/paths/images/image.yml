@@ -76,7 +76,15 @@ patch:
   summary: Update Image
   description: Requires the `images-updae` capability.
   requestBody:
-    "$ref": "../../../components/schemas/images/requestBodies/ImageUpdateRequest.yml"
+    description: Parameters for creating a new image.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: A name for the image.
   responses:
     "200":
       description: Returns an image resource.

@@ -54,7 +54,25 @@ patch:
   summary: Update API Key
   description: Requires the `api-keys-manage` capability.
   requestBody:
-    "$ref": "../../../../components/schemas/hubs/requestBodies/UpdateApiKeyRequest.yml"
+    description: Parameters for updating an API Key.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: A name given to the API Key.
+            permissions:
+              "$ref": "../../../../components/schemas/creators/Permissions.yml"
+            capabilities:
+              "$ref": "../../../../components/schemas/common/Capabilities.yml"
+            ips:
+              type: array
+              nullable: true
+              description: An array of approved IPs from which this API Key can be used.
+              items:
+                type: string
   responses:
     "200":
       description: Returns and API Key resource.

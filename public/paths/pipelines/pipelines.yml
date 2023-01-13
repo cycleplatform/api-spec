@@ -36,7 +36,7 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../components/schemas/pipelines/Pipeline.yml"
+                  $ref: ../../../components/schemas/pipelines/Pipeline.yml
               includes:
                 "$ref": "../../../components/schemas/pipelines/PipelineIncludes.yml"
     400:
@@ -65,7 +65,25 @@ post:
   summary: Create Pipeline
   description: Requires the `pipelines-manage` capability.
   requestBody:
-    "$ref": "../../../components/schemas/pipelines/requestBodies/CreatePipelineRequest.yml"
+    description: Parameters for creating a new pipeline.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - name
+          properties:
+            name:
+              type: string
+              description: A name for the pipeline.
+            stages:
+              description: An array of stages.
+              type: array
+              items:
+                $ref: ../../../components/schemas/pipelines/PipelineStage.yml
+            disable:
+              type: boolean
+              description: A boolean where true signifies the pipeline is disabled.
   responses:
     "201":
       description: Returns a pipeline resource.

@@ -39,7 +39,7 @@ get:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/hubs/HubMembership.yml"
+                $ref: ../../../../components/schemas/hubs/HubMembership.yml
               includes:
                 "$ref": "../../../../components/schemas/hubs/HubMembershipIncludes.yml"
     400:
@@ -75,7 +75,22 @@ patch:
       schema:
         type: string
   requestBody:
-    "$ref": "../../../../components/schemas/hubs/requestBodies/UpdateHubMemberRequest.yml"
+    description: Parameters for updating a hub membership.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            role:
+              type: string
+              description: The account role.
+              enum:
+                - owner
+                - admin
+                - developer
+                - analyst
+            permissions:
+              $ref: ../../../../components/schemas/creators/Permissions.yml
   responses:
     "200":
       description: Returns a hub membership resource.

@@ -83,7 +83,33 @@ patch:
   summary: Update Source
   description: Requires the `images-import` capability.
   requestBody:
-    "$ref": "../../../../components/schemas/images/sources/requestBodies/SourceUpdateRequest.yml"
+    description: Parameters for updating an image source.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: A name for the image source.
+            origin:
+              type: object
+              description: The origin of the given image source.
+              oneOf:
+                - $ref: ../../../../components/schemas/images/sources/DockerHubSource.yml
+                - $ref: ../../../../components/schemas/images/sources/DockerfileRepoSource.yml
+                - $ref: ../../../../components/schemas/images/sources/DockerfileTarSource.yml
+                - $ref: ../../../../components/schemas/images/sources/DockerRegistrySource.yml
+            about:
+              type: object
+              description: User defined information about the image source.
+              required:
+                - description
+              properties:
+                description:
+                  type: string
+                  nullable: true
+                  description: A description of the image source.
   responses:
     "200":
       description: Returns an image source resource.

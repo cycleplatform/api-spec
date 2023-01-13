@@ -32,9 +32,9 @@ get:
           type: string
           enum:
             - creators
-    - $ref: "../../../../components/parameters/SortParam.yml"
-    - $ref: "../../../../components/parameters/FilterParam.yml"
-    - $ref: "../../../../components/parameters/PageParam.yml"
+    - $ref: ../../../../components/parameters/SortParam.yml
+    - $ref: ../../../../components/parameters/FilterParam.yml
+    - $ref: ../../../../components/parameters/PageParam.yml
   summary: List Sources
   description: Requires the `images-view` capability.
   responses:
@@ -49,7 +49,7 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../../components/schemas/images/sources/ImageSource.yml"
+                  $ref: ../../../../components/schemas/images/sources/ImageSource.yml
               includes:
                 "$ref": "../../../../components/schemas/images/sources/SourceIncludes.yml"
     400:
@@ -78,7 +78,42 @@ post:
   summary: Create Source
   description: requires the `images-import` capability.
   requestBody:
-    "$ref": "../../../../components/schemas/images/sources/requestBodies/SourceCreateRequest.yml"
+    description: Parameters for creating an image source.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - type
+            - origin
+          properties:
+            name:
+              type: string
+              description: A name for the image source.
+            type:
+              type: string
+              description: A value identifiying the type of image.
+              enum:
+                - stack_build
+                - direct
+            origin:
+              type: object
+              description: The origin of the given image source.
+              oneOf:
+                - $ref: ../../../../components/schemas/images/sources/DockerHubSource.yml
+                - $ref: ../../../../components/schemas/images/sources/DockerfileRepoSource.yml
+                - $ref: ../../../../components/schemas/images/sources/DockerfileTarSource.yml
+                - $ref: ../../../../components/schemas/images/sources/DockerRegistrySource.yml
+            about:
+              type: object
+              description: User defined information about the image source.
+              required:
+                - description
+              properties:
+                description:
+                  type: string
+                  nullable: true
+                  description: A description of the image source.
   responses:
     "201":
       description: Returns an image source resource.

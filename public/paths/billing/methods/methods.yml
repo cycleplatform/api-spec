@@ -47,7 +47,27 @@ post:
   summary: Create Billing Method
   description: Requires the `billing-methods-manage` capability.
   requestBody:
-    "$ref": "../../../../components/schemas/billing/methods/requestBodies/CreateBillingMethodRequest.yml"
+    description: Parameters for creating a new billing method.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - name
+            - primary
+            - address
+            - credit_card
+          properties:
+            name:
+              type: string
+              description: A name for the billing method.
+            primary:
+              type: boolean
+              description: A boolean where true represents a billing method being primary.
+            address:
+              $ref: ../../../../components/schemas/billing/methods/Address.yml
+            credit_card:
+              $ref: ../../../../components/schemas/billing/methods/CreditCard.yml
   responses:
     "200":
       description: Returns a billing method resource.

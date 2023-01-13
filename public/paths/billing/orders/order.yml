@@ -54,7 +54,28 @@ patch:
   summary: Update Billing Order
   description: Requires the `billing-orders-manage` capability.
   requestBody:
-    "$ref": "../../../../components/schemas/billing/orders/requestBodies/UpdateBillingOrderRequest.yml"
+    description: Parameters for creating a new order
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            tier_plan_id:
+              type: string
+              description: Id associated with the tier plan
+            support_plan_id:
+              type: string
+              description: Id associated with the support plan
+            term_length:
+              type: string
+              description: String that defines term length
+              enum:
+                - once
+                - monthly
+                - yearly
+            promo_code:
+              type: string
+              description: String that defines a promo code
   responses:
     "200":
       description: Returns a billing order resource.

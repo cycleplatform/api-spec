@@ -54,7 +54,7 @@ get:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/environments/Environment.yml"
+                $ref: ../../../components/schemas/environments/Environment.yml
               includes:
                 type: object
                 properties:
@@ -92,7 +92,16 @@ patch:
   summary: Update Environment
   description: Updates the specificed environment, setting the values of the parameters passed. If any parameters are omitted, they will be left unchanged. Requires the `environments-update` capability.
   requestBody:
-    "$ref": "../../../components/schemas/environments/requestBodies/UpdateEnvironmentBody.yml"
+    description: Parameters for updating an environment.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+            about:
+              $ref: ../../../components/schemas/environments/EnvironmentAbout.yml
   responses:
     "200":
       description: Returns an environment resource.

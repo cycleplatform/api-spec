@@ -54,7 +54,22 @@ patch:
   summary: Update Billing Invoice
   description: Requires the `billing-methods-manage` capability.
   requestBody:
-    "$ref": "../../../../components/schemas/billing/methods/requestBodies/UpdateBillingMethodRequest.yml"
+    description: Parameters for updating a billing method.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: A name for the billing method.
+            primary:
+              type: boolean
+              description: A boolean where true represents a billing method being primary.
+            address:
+              $ref: ../../../../components/schemas/billing/methods/Address.yml
+            credit_card:
+              $ref: ../../../../components/schemas/billing/methods/CreditCard.yml
   responses:
     "200":
       description: Returns a billing method resource.

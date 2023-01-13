@@ -66,7 +66,36 @@ patch:
   summary: Update Scoped Variable
   description: Requires the `scoped-variables-manage` capability.
   requestBody:
-    "$ref": "../../../components/schemas/scoped-variables/requestBodies/UpdateScopedVariableRequest.yml"
+    description: Parameters for updating a scoped variable.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            identifier:
+              type: string
+              description: An identifier, similar to a key in an environment variable.  Its used when envoking the scoped variable.
+            secret:
+              nullable: true
+              type: object
+              description: An object with information about the encryption of the scoped variable.
+              required:
+                - encrypted
+              properties:
+                encrypted:
+                  type: boolean
+                  description: A boolean where true means the scoped variables value is encrypted.
+                hint:
+                  type: string
+                  description: A hint for the decryption password.
+            scope:
+              $ref: ../../../components/schemas/scoped-variables/ScopedVariableScope.yml
+            source:
+              type: object
+              description: The source or value of the scope variable.  Can be `raw` or `url`.
+              oneOf:
+                - $ref: ../../../components/schemas/scoped-variables/URLSource.yml
+                - $ref: ../../../components/schemas/scoped-variables/RawSource.yml
   responses:
     "200":
       description: Returns a scoped variable resource.

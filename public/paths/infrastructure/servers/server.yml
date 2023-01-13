@@ -88,7 +88,40 @@ patch:
   summary: Update Server
   description: Requires the `servers-update` capability.
   requestBody:
-    "$ref": "../../../../components/schemas/infrastructure/servers/requestBodies/UpdateServerRequest.yml"
+    description: Parameters for updating a server.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - constraints
+          properties:
+            constraints:
+              type: object
+              description: Server constriants.
+              properties:
+                tags:
+                  description: A list of server tags.
+                  type: array
+                  items:
+                    type: string
+                allow:
+                  type: object
+                  description: Server constraints for the given server.
+                  required:
+                    - pool
+                    - services
+                    - overcommit
+                  properties:
+                    pool:
+                      type: boolean
+                      description: A boolean where true represents the server can accept containers with no tags set.
+                    services:
+                      type: boolean
+                      description: A boolean where true represents the server being a target for service containers.
+                    overcommit:
+                      type: boolean
+                      description: A boolean where true represents the desire for the server to allow the overcommitting of shares.
   responses:
     "200":
       description: A server resource.

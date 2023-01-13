@@ -35,7 +35,7 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../components/schemas/sdn/SDNNetwork.yml"
+                  $ref: "../../../components/schemas/sdn/SDNNetwork.yml"
               includes:
                 "$ref": "../../../components/schemas/sdn/NetworkIncludes.yml"
     400:
@@ -64,7 +64,40 @@ post:
   summary: Create SDN
   description: Requires the `sdn-networks-manage` capability.
   requestBody:
-    "$ref": "../../../components/schemas/sdn/requestBodies/CreateSDNRequest.yml"
+    description: Parameters for creating a new network.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - name
+            - identifier
+            - cluster
+            - environments
+          properties:
+            name:
+              type: string
+              description: The name of the network.
+            identifier:
+              type: string
+              description: A network identifier used to construct http calls that specifically use this network over another.
+            cluster:
+              type: string
+              description: The infrastructure cluster the environments belonging to this network belong to.
+            environments:
+              description: An array of environments and timestamps.
+              type: array
+              items:
+                type: object
+                required:
+                  - id
+                  - added
+                properties:
+                  id:
+                    $ref: "../../../components/schemas/ID.yml"
+                  added:
+                    description: A timestamp of when the environment was added.
+                    $ref: "../../../components/schemas/DateTime.yml"
   responses:
     "201":
       description: Returns a network resource.

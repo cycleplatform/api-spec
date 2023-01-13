@@ -81,7 +81,29 @@ post:
   summary: Create Image
   description: Requires the `images-import` capability.
   requestBody:
-    "$ref": "../../../components/schemas/images/requestBodies/ImageCreateRequest.yml"
+    description: Parameters for creating a new image.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - source_id
+          properties:
+            name:
+              type: string
+              description: A name for the image.
+            source_id:
+              type: string
+              description: The ID for the image source to be used.
+            override:
+              type: object
+              description: An override object to be used for a single image create request.
+              required:
+                - target
+              properties:
+                target:
+                  type: string
+                  description: A target to be used for overridding the default target.
   responses:
     "201":
       description: Returns an image resource.
