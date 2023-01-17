@@ -6,6 +6,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Install
-        run: yarn
+        run: yarn add
       - name: Run OpenAPI Linter
         run: yarn lint
