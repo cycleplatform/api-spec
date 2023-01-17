@@ -1,7 +1,5 @@
 name: Run lint on merge main
-
 on: [push, pull_request]
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -11,5 +9,3 @@ jobs:
         run: yarn
       - name: Run OpenAPI Linter
         run: yarn lint
-
-
