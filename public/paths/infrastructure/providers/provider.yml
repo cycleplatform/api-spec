@@ -12,7 +12,7 @@ get:
   summary: Fetch Provider
   description: Requires the `infrastructure-providers-view` capability.
   responses:
-    "200":
+    200:
       description: A single provider resource.
       content:
         application/json:
@@ -21,7 +21,7 @@ get:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/infrastructure/providers/Provider.yml"
+                $ref: ../../../../components/schemas/infrastructure/providers/Provider.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:
@@ -94,7 +94,7 @@ patch:
                     auth:
                       $ref: ../../../../components/schemas/infrastructure/providers/IALAuth.yml
   responses:
-    "200":
+    200:
       description: Returns a provider resource.
       content:
         application/json:
@@ -103,7 +103,7 @@ patch:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/infrastructure/providers/Provider.yml"
+                $ref: ../../../../components/schemas/infrastructure/providers/Provider.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:
@@ -136,7 +136,7 @@ delete:
   summary: Remove Provider
   description: Requires the `infrastructure-providers-manage` capability.
   responses:
-    "200":
+    200:
       description: Returns a task descriptor.
       content:
         application/json:
@@ -144,7 +144,7 @@ delete:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/jobs/TaskDescriptor.yml"
+                $ref: ../../../../components/schemas/jobs/TaskDescriptor.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:

@@ -7,7 +7,7 @@ get:
   summary: Get Search Index
   description: Requires the view capability for each returned segment
   responses:
-    "200":
+    200:
       description: Returns the index resources.
       content:
         application/json:
@@ -18,7 +18,7 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../components/schemas/search/Index.yml"
+                  $ref: ../../../components/schemas/search/Index.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:

@@ -12,7 +12,7 @@ get:
   summary: List Pool IP's
   description: Requires the `infrastructure-ips-manage` capability.
   responses:
-    "200":
+    200:
       description: A collection of IPs.
       content:
         application/json:
@@ -23,7 +23,7 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../../components/schemas/infrastructure/ips/Ip.yml"
+                  $ref: ../../../../components/schemas/infrastructure/ips/Ip.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:

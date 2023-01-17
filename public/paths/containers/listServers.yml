@@ -26,11 +26,11 @@ get:
           type: string
           enum:
             - primary_ip
-    - $ref: "../../../components/parameters/SortParam.yml"
-    - $ref: "../../../components/parameters/FilterParam.yml"
-    - $ref: "../../../components/parameters/PageParam.yml"
+    - $ref: ../../../components/parameters/SortParam.yml
+    - $ref: ../../../components/parameters/FilterParam.yml
+    - $ref: ../../../components/parameters/PageParam.yml
   responses:
-    "200":
+    200:
       description: Returns a list of server instance resources.
       content:
         application/json:
@@ -39,7 +39,7 @@ get:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/containers/ServersList.yml"
+                $ref: ../../../components/schemas/containers/ServersList.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:

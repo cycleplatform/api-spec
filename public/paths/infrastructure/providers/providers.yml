@@ -19,13 +19,13 @@ get:
           enum:
             - node
             - instances_count
-    - $ref: "../../../../components/parameters/SortParam.yml"
-    - $ref: "../../../../components/parameters/FilterParam.yml"
-    - $ref: "../../../../components/parameters/PageParam.yml"
+    - $ref: ../../../../components/parameters/SortParam.yml
+    - $ref: ../../../../components/parameters/FilterParam.yml
+    - $ref: ../../../../components/parameters/PageParam.yml
   summary: List Providers
   description: Requires the `infrastructure-providers-view` capability.
   responses:
-    "200":
+    200:
       description: A collection of providers.
       content:
         application/json:
@@ -36,7 +36,7 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../../components/schemas/infrastructure/providers/Provider.yml"
+                  $ref: ../../../../components/schemas/infrastructure/providers/Provider.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:
@@ -103,7 +103,7 @@ post:
                     auth:
                       $ref: ../../../../components/schemas/infrastructure/providers/IALAuth.yml
   responses:
-    "201":
+    201:
       description: Returns a provider resource.
       content:
         application/json:
@@ -112,7 +112,7 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/infrastructure/providers/Provider.yml"
+                $ref: ../../../../components/schemas/infrastructure/providers/Provider.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:

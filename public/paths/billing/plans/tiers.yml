@@ -6,7 +6,7 @@ get:
   description: Returns list of availiable tiers
   parameters: []
   responses:
-    "200":
+    200:
       description: Returns a collection of tier resources.
       content:
         application/json:
@@ -17,7 +17,7 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../../components/schemas/billing/plans/TierPlan.yml"
+                  $ref: ../../../../components/schemas/billing/plans/TierPlan.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:

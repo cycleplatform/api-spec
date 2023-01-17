@@ -12,7 +12,7 @@ get:
   summary: Fetch Billing Order
   description: Requires the `billing-orders-manage` capability.
   responses:
-    "200":
+    200:
       description: Returns a billing order resource
       content:
         application/json:
@@ -21,7 +21,7 @@ get:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/billing/orders/Order.yml"
+                $ref: ../../../../components/schemas/billing/orders/Order.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:
@@ -77,7 +77,7 @@ patch:
               type: string
               description: String that defines a promo code
   responses:
-    "200":
+    200:
       description: Returns a billing order resource.
       content:
         application/json:
@@ -86,7 +86,7 @@ patch:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/billing/orders/Order.yml"
+                $ref: ../../../../components/schemas/billing/orders/Order.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:

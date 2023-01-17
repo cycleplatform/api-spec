@@ -7,7 +7,7 @@ get:
   summary: List Account Logins
   description: Lists logins associated with a given account.
   responses:
-    "200":
+    200:
       description: Returns a collection of logins.
       content:
         application/json:
@@ -19,8 +19,8 @@ get:
                 type: array
                 items:
                   oneOf:
-                    - "$ref": "../../../components/schemas/accounts/EmployeeLogin.yml"
-                    - "$ref": "../../../components/schemas/accounts/PasswordLogin.yml"
+                    - $ref: ../../../components/schemas/accounts/EmployeeLogin.yml
+                    - $ref: ../../../components/schemas/accounts/PasswordLogin.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:

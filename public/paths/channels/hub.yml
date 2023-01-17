@@ -6,7 +6,7 @@ get:
   summary: Hub Notification Pipeline Auth
   description: Requires the `hubs-notifications-listen` capability.
   responses:
-    "200":
+    200:
       description: Returns a token.
       content:
         application/json:
@@ -15,7 +15,7 @@ get:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/websocket-auth/HubNotificationToken.yml"
+                $ref: ../../../components/schemas/websocket-auth/HubNotificationToken.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:

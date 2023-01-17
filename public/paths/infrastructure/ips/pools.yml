@@ -24,7 +24,7 @@ get:
   summary: List Pools
   description: Requires the `infrastructure-ips-manage` capability.
   responses:
-    "200":
+    200:
       description: A collection of pool resources.
       content:
         application/json:
@@ -35,8 +35,8 @@ get:
               data:
                 type: array
                 items:
-                  "$ref":
-                    "../../../../components/schemas/infrastructure/ips/Pool.yml"
+                  $ref:
+                    ../../../../components/schemas/infrastructure/ips/Pool.yml
                     # TODO Pool Includes
     400:
       $ref: ../../../../components/responses/errors/400.yml

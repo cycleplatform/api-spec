@@ -12,7 +12,7 @@ get:
   summary: Fetch SDN
   description: Requires the `sdn-networks-view` capability.
   responses:
-    "200":
+    200:
       description: Returns a single network resource.
       content:
         application/json:
@@ -21,7 +21,7 @@ get:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/sdn/SDNNetwork.yml"
+                $ref: ../../../components/schemas/sdn/SDNNetwork.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:
@@ -67,7 +67,7 @@ patch:
               type: string
               description: A network identifier used to construct http calls that specifically use this network over another.
   responses:
-    "200":
+    200:
       description: Returns a network resource.
       content:
         application/json:
@@ -76,7 +76,7 @@ patch:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/sdn/SDNNetwork.yml"
+                $ref: ../../../components/schemas/sdn/SDNNetwork.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:
@@ -109,7 +109,7 @@ delete:
   summary: Delete SDN
   description: Requires the `sdn-networks-manage` capability.
   responses:
-    "200":
+    200:
       description: Returns a task descriptor.
       content:
         application/json:
@@ -117,7 +117,7 @@ delete:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/jobs/TaskDescriptor.yml"
+                $ref: ../../../components/schemas/jobs/TaskDescriptor.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:

@@ -45,7 +45,7 @@ get:
   summary: Fetch Environment
   description: Requires the `environments-view` capability.
   responses:
-    "200":
+    200:
       description: Returns an environment resource.
       content:
         application/json:
@@ -59,7 +59,7 @@ get:
                 type: object
                 properties:
                   creators:
-                    "$ref": "../../../components/schemas/includes/CreatorInclude.yml"
+                    $ref: ../../../components/schemas/includes/CreatorInclude.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:
@@ -103,7 +103,7 @@ patch:
             about:
               $ref: ../../../components/schemas/environments/EnvironmentAbout.yml
   responses:
-    "200":
+    200:
       description: Returns an environment resource.
       content:
         application/json:
@@ -112,7 +112,7 @@ patch:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/environments/Environment.yml"
+                $ref: ../../../components/schemas/environments/Environment.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:
@@ -145,7 +145,7 @@ delete:
   summary: Remove Environment
   description: Requires the `environments-update` capability.
   responses:
-    "200":
+    200:
       description: Returns a task descriptor.
       content:
         application/json:
@@ -153,7 +153,7 @@ delete:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/jobs/TaskDescriptor.yml"
+                $ref: ../../../components/schemas/jobs/TaskDescriptor.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:

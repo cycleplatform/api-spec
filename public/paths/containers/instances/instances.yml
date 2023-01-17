@@ -28,13 +28,13 @@ get:
             - providers
             - containers
             - environments
-    - $ref: "../../../../components/parameters/SortParam.yml"
-    - $ref: "../../../../components/parameters/FilterParam.yml"
-    - $ref: "../../../../components/parameters/PageParam.yml"
+    - $ref: ../../../../components/parameters/SortParam.yml
+    - $ref: ../../../../components/parameters/FilterParam.yml
+    - $ref: ../../../../components/parameters/PageParam.yml
   summary: List Instances
   description: Requires the `containers-view` capability.
   responses:
-    "200":
+    200:
       description: Returns a collection of contianer instance resources.
       content:
         application/json:
@@ -45,9 +45,9 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../../components/schemas/containers/instances/Instance.yml"
+                  $ref: ../../../../components/schemas/containers/instances/Instance.yml
               includes:
-                "$ref": "../../../../components/schemas/containers/instances/InstanceIncludes.yml"
+                $ref: ../../../../components/schemas/containers/instances/InstanceIncludes.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:
@@ -99,7 +99,7 @@ post:
                 description: The number of new instances to be created on the given server.
 
   responses:
-    "200":
+    200:
       description: Returns a task descriptor.
       content:
         application/json:
@@ -107,7 +107,7 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/jobs/TaskDescriptor.yml"
+                $ref: ../../../../components/schemas/jobs/TaskDescriptor.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:
@@ -140,7 +140,7 @@ delete:
   summary: Delete Instance(s)
   description: Requires the `containers-update` capability.
   responses:
-    "200":
+    200:
       description: Returns a task descriptor.
       content:
         application/json:
@@ -148,7 +148,7 @@ delete:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/jobs/TaskDescriptor.yml"
+                $ref: ../../../../components/schemas/jobs/TaskDescriptor.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:

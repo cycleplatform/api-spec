@@ -3,9 +3,9 @@ get:
   tags:
     - Billing
   parameters:
-    - $ref: "../../../../components/parameters/SortParam.yml"
-    - $ref: "../../../../components/parameters/FilterParam.yml"
-    - $ref: "../../../../components/parameters/PageParam.yml"
+    - $ref: ../../../../components/parameters/SortParam.yml
+    - $ref: ../../../../components/parameters/FilterParam.yml
+    - $ref: ../../../../components/parameters/PageParam.yml
     - name: meta
       in: query
       required: false
@@ -38,7 +38,7 @@ get:
   summary: List Billing Orders
   description: Requires the `billing-orders-manage` capability.
   responses:
-    "200":
+    200:
       description: Returns a collection of billing order resources.
       content:
         application/json:
@@ -49,9 +49,9 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../../components/schemas/billing/orders/Order.yml"
+                  $ref: ../../../../components/schemas/billing/orders/Order.yml
               includes:
-                "$ref": "../../../../components/schemas/billing/orders/OrderIncludes.yml"
+                $ref: ../../../../components/schemas/billing/orders/OrderIncludes.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:
@@ -101,7 +101,7 @@ post:
               type: string
               description: String that defines a promo code
   responses:
-    "201":
+    201:
       description: Returns an order resource.
       content:
         application/json:
@@ -110,7 +110,7 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/billing/BillingOrder.yml"
+                $ref: ../../../../components/schemas/billing/BillingOrder.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:

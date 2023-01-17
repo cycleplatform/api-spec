@@ -27,7 +27,7 @@ patch:
               type: boolean
               description: Set decline to true to decline
   responses:
-    "200":
+    200:
       description: Returns an membership resource.
       content:
         application/json:
@@ -36,7 +36,7 @@ patch:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/hubs/HubMembership.yml"
+                $ref: ../../../components/schemas/hubs/HubMembership.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:

@@ -12,7 +12,7 @@ get:
   summary: Fetch Job
   description: Requires the `jobs-view` permission.
   responses:
-    "200":
+    200:
       description: A job resources.
       content:
         application/json:
@@ -21,7 +21,7 @@ get:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/jobs/Job.yml"
+                $ref: ../../../components/schemas/jobs/Job.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:

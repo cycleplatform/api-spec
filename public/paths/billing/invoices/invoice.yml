@@ -12,7 +12,7 @@ get:
   summary: Fetch Billing Invoice
   description: Requires the `billing-invoices-view` capability.
   responses:
-    "200":
+    200:
       description: Returns an invoice resource.
       content:
         application/json:
@@ -21,7 +21,7 @@ get:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/billing/invoices/Invoice.yml"
+                $ref: ../../../../components/schemas/billing/invoices/Invoice.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:

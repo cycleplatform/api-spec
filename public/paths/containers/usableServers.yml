@@ -43,11 +43,11 @@ get:
             - location
             - models
             - providers
-    - $ref: "../../../components/parameters/SortParam.yml"
-    - $ref: "../../../components/parameters/FilterParam.yml"
-    - $ref: "../../../components/parameters/PageParam.yml"
+    - $ref: ../../../components/parameters/SortParam.yml
+    - $ref: ../../../components/parameters/FilterParam.yml
+    - $ref: ../../../components/parameters/PageParam.yml
   responses:
-    "200":
+    200:
       description: Returns a list of server resources.
       content:
         application/json:
@@ -55,9 +55,9 @@ get:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/infrastructure/servers/Server.yml"
+                $ref: ../../../components/schemas/infrastructure/servers/Server.yml
               includes:
-                "$ref": "../../../components/schemas/infrastructure/servers/ServerIncludes.yml"
+                $ref: ../../../components/schemas/infrastructure/servers/ServerIncludes.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:

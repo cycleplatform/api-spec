@@ -9,13 +9,13 @@ get:
       required: true
       schema:
         type: string
-    - $ref: "../../../../components/parameters/SortParam.yml"
-    - $ref: "../../../../components/parameters/FilterParam.yml"
-    - $ref: "../../../../components/parameters/PageParam.yml"
+    - $ref: ../../../../components/parameters/SortParam.yml
+    - $ref: ../../../../components/parameters/FilterParam.yml
+    - $ref: ../../../../components/parameters/PageParam.yml
   summary: List Provider Locations
   description: No capability required, public information (datacenter locations).
   responses:
-    "200":
+    200:
       description: Returns a list of provider locations.
       content:
         application/json:
@@ -26,7 +26,7 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../../components/schemas/infrastructure/providers/Location.yml"
+                  $ref: ../../../../components/schemas/infrastructure/providers/Location.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:

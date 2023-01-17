@@ -3,13 +3,13 @@ get:
   tags:
     - Billing
   parameters:
-    - $ref: "../../../../components/parameters/SortParam.yml"
-    - $ref: "../../../../components/parameters/FilterParam.yml"
-    - $ref: "../../../../components/parameters/PageParam.yml"
+    - $ref: ../../../../components/parameters/SortParam.yml
+    - $ref: ../../../../components/parameters/FilterParam.yml
+    - $ref: ../../../../components/parameters/PageParam.yml
   summary: List Billing Methods
   description: Requires the `billing-methods-manage` capability.
   responses:
-    "200":
+    200:
       description: returns a collection of billing methods.
       content:
         application/json:
@@ -20,7 +20,7 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../../components/schemas/billing/methods/Method.yml"
+                  $ref: ../../../../components/schemas/billing/methods/Method.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:
@@ -69,7 +69,7 @@ post:
             credit_card:
               $ref: ../../../../components/schemas/billing/methods/CreditCard.yml
   responses:
-    "200":
+    200:
       description: Returns a billing method resource.
       content:
         application/json:
@@ -78,7 +78,7 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/billing/methods/Method.yml"
+                $ref: ../../../../components/schemas/billing/methods/Method.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:

@@ -7,7 +7,7 @@ get:
   summary: List Hub Capabilities
   description: Does not require a capability.
   responses:
-    "200":
+    200:
       description: Returns a list of capabilities.
       content:
         application/json:
@@ -18,7 +18,7 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../components/schemas/common/Capabilities.yml"
+                  $ref: ../../../components/schemas/common/Capabilities.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:
