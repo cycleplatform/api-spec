@@ -37,11 +37,11 @@ get:
             - stack_builds
             - stacks
             - sources
-    - $ref: "../../../components/parameters/SortParam.yml"
-    - $ref: "../../../components/parameters/FilterParam.yml"
-    - $ref: "../../../components/parameters/PageParam.yml"
+    - $ref: ../../../components/parameters/SortParam.yml
+    - $ref: ../../../components/parameters/FilterParam.yml
+    - $ref: ../../../components/parameters/PageParam.yml
   responses:
-    "200":
+    200:
       description: Returns a collection of image resources.
       content:
         application/json:
@@ -52,9 +52,9 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../components/schemas/images/Image.yml"
+                  $ref: ../../../components/schemas/images/Image.yml
               includes:
-                "$ref": "../../../components/schemas/images/ImageIncludes.yml"
+                $ref: ../../../components/schemas/images/ImageIncludes.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:
@@ -105,7 +105,7 @@ post:
                   type: string
                   description: A target to be used for overridding the default target.
   responses:
-    "201":
+    201:
       description: Returns an image resource.
       content:
         application/json:
@@ -114,7 +114,7 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/images/Image.yml"
+                $ref: ../../../components/schemas/images/Image.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:

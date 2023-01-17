@@ -13,7 +13,7 @@ get:
   summary: Fetch Environment Summary
   description: Fetches a single summary object for a specific environment. Contains useful and relevant data/statistics that would otherwise be several separate API calls.  Requires the `environments-view` capability.
   responses:
-    "200":
+    200:
       description: Returns an environment summary object.
       content:
         application/json:
@@ -22,7 +22,7 @@ get:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/environments/summaries/EnvironmentSummary.yml"
+                $ref: ../../../components/schemas/environments/summaries/EnvironmentSummary.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:

@@ -12,7 +12,7 @@ get:
   summary: Fetch VPN Info
   description: Requires the `environments-vpn` capability.
   responses:
-    "200":
+    200:
       description: Returns a VPNInfo resource.
       content:
         application/json:
@@ -21,7 +21,7 @@ get:
             type: object
             properties:
               data:
-                "$ref": "../../../../../components/schemas/environments/returns/VPNInfoReturn.yml"
+                $ref: ../../../../../components/schemas/environments/returns/VPNInfoReturn.yml
     400:
       $ref: ../../../../../components/responses/errors/400.yml
     401:

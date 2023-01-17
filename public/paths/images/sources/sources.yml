@@ -38,7 +38,7 @@ get:
   summary: List Sources
   description: Requires the `images-view` capability.
   responses:
-    "200":
+    200:
       description: Returns a collection of image source resources.
       content:
         application/json:
@@ -51,7 +51,7 @@ get:
                 items:
                   $ref: ../../../../components/schemas/images/sources/ImageSource.yml
               includes:
-                "$ref": "../../../../components/schemas/images/sources/SourceIncludes.yml"
+                $ref: ../../../../components/schemas/images/sources/SourceIncludes.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:
@@ -115,7 +115,7 @@ post:
                   nullable: true
                   description: A description of the image source.
   responses:
-    "201":
+    201:
       description: Returns an image source resource.
       content:
         application/json:
@@ -124,7 +124,7 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/images/sources/ImageSource.yml"
+                $ref: ../../../../components/schemas/images/sources/ImageSource.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:

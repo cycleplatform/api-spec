@@ -12,7 +12,7 @@ get:
   summary: Fetch Billing Service
   description: Requries the `billing-services-view` capability.
   responses:
-    "200":
+    200:
       description: Returns a billing service resources.
       content:
         application/json:
@@ -21,7 +21,7 @@ get:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/billing/Service.yml"
+                $ref: ../../../../components/schemas/billing/Service.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:

@@ -8,7 +8,7 @@ servers:
     # unix://var/run/cycle/api/api.sock
     #  TODO This is probably wrong
 info:
-  license: 
+  license:
     name: CC-BY-3.0
     url: https://creativecommons.org/licenses/by/3.0/
   title: Cycle Internal API
@@ -21,7 +21,7 @@ info:
     email: support@cycle.io
 tags:
   - name: Environments
-    description: ""
+    description: "env tag"
 security:
   - bearerAuth: []
 paths:

@@ -14,7 +14,7 @@ delete:
   summary: Delete Hub Invite
   description: Requires the `hub-invites-manage` capability.
   responses:
-    "200":
+    200:
       description: Returns a hub membership resource.
       content:
         application/json:
@@ -23,7 +23,7 @@ delete:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/hubs/HubMembership.yml"
+                $ref: ../../../../components/schemas/hubs/HubMembership.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:

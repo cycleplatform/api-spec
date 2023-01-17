@@ -30,7 +30,7 @@ get:
   summary: Fetch Hub Member
   description: Requires the `hubs-members-view` capability.
   responses:
-    "200":
+    200:
       description: Returns a membership resource.
       content:
         application/json:
@@ -41,7 +41,7 @@ get:
               data:
                 $ref: ../../../../components/schemas/hubs/HubMembership.yml
               includes:
-                "$ref": "../../../../components/schemas/hubs/HubMembershipIncludes.yml"
+                $ref: ../../../../components/schemas/hubs/HubMembershipIncludes.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:
@@ -92,7 +92,7 @@ patch:
             permissions:
               $ref: ../../../../components/schemas/creators/Permissions.yml
   responses:
-    "200":
+    200:
       description: Returns a hub membership resource.
       content:
         application/json:
@@ -101,7 +101,7 @@ patch:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/hubs/HubMembership.yml"
+                $ref: ../../../../components/schemas/hubs/HubMembership.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:
@@ -136,7 +136,7 @@ delete:
   summary: Remove Hub Member
   description: Requires the `hubs-members-manage` capability.
   responses:
-    "200":
+    200:
       description: Returns a task descriptor.
       content:
         application/json:
@@ -144,7 +144,7 @@ delete:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/jobs/TaskDescriptor.yml"
+                $ref: ../../../../components/schemas/jobs/TaskDescriptor.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:

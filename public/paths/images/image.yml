@@ -28,11 +28,11 @@ get:
             - stack_builds
             - stacks
             - sources
-    - $ref: "../../../components/parameters/SortParam.yml"
-    - $ref: "../../../components/parameters/FilterParam.yml"
-    - $ref: "../../../components/parameters/PageParam.yml"
+    - $ref: ../../../components/parameters/SortParam.yml
+    - $ref: ../../../components/parameters/FilterParam.yml
+    - $ref: ../../../components/parameters/PageParam.yml
   responses:
-    "200":
+    200:
       description: Returns a image resource.
       content:
         application/json:
@@ -41,9 +41,9 @@ get:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/images/Image.yml"
+                $ref: ../../../components/schemas/images/Image.yml
               includes:
-                "$ref": "../../../components/schemas/images/ImageIncludes.yml"
+                $ref: ../../../components/schemas/images/ImageIncludes.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:
@@ -86,7 +86,7 @@ patch:
               type: string
               description: A name for the image.
   responses:
-    "200":
+    200:
       description: Returns an image resource.
       content:
         application/json:
@@ -95,7 +95,7 @@ patch:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/images/Image.yml"
+                $ref: ../../../components/schemas/images/Image.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:
@@ -128,7 +128,7 @@ delete:
   summary: Delete Image
   description: Requires the `images-updae` capability.
   responses:
-    "200":
+    200:
       description: Returns a task descriptor.
       content:
         application/json:
@@ -136,7 +136,7 @@ delete:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/jobs/TaskDescriptor.yml"
+                $ref: ../../../components/schemas/jobs/TaskDescriptor.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:

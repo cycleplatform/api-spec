@@ -12,7 +12,7 @@ get:
   summary: Fetch DNS Zone
   description: Requires the `dns-view` capability.
   responses:
-    "200":
+    200:
       description: Returns a DNS zone resource.
       content:
         application/json:
@@ -21,7 +21,7 @@ get:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/dns/Zone.yml"
+                $ref: ../../../components/schemas/dns/Zone.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:
@@ -80,7 +80,7 @@ patch:
               type: boolean
               description: A boolean where true represents the desire for the origin to be of the type `hosted`.
   responses:
-    "200":
+    200:
       description: Returns a DNS zone resource.
       content:
         application/json:
@@ -91,7 +91,7 @@ patch:
               data:
                 $ref: ../../../components/schemas/dns/Zone.yml
               includes:
-                "$ref": "../../../components/schemas/dns/ZoneIncludes.yml"
+                $ref: ../../../components/schemas/dns/ZoneIncludes.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:
@@ -124,7 +124,7 @@ delete:
   summary: Delete DNS Zone
   description: Requires the `dns-manage` capability.
   responses:
-    "200":
+    200:
       description: Returns a task descriptor.
       content:
         application/json:
@@ -132,7 +132,7 @@ delete:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/jobs/TaskDescriptor.yml"
+                $ref: ../../../components/schemas/jobs/TaskDescriptor.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:

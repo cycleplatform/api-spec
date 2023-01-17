@@ -34,9 +34,9 @@ get:
           type: string
           enum:
             - creators
-    - $ref: "../../../components/parameters/SortParam.yml"
-    - $ref: "../../../components/parameters/FilterParam.yml"
-    - $ref: "../../../components/parameters/PageParam.yml"
+    - $ref: ../../../components/parameters/SortParam.yml
+    - $ref: ../../../components/parameters/FilterParam.yml
+    - $ref: ../../../components/parameters/PageParam.yml
   responses:
     "200":
       description: A collection of stack resources.
@@ -49,9 +49,9 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../components/schemas/stacks/Stack.yml"
+                  $ref: ../../../components/schemas/stacks/Stack.yml
               includes:
-                "$ref": "../../../components/schemas/stacks/StackInclude.yml"
+                $ref: ../../../components/schemas/stacks/StackInclude.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:
@@ -93,7 +93,7 @@ post:
             source:
               $ref: ../../../components/schemas/stacks/StackSource.yml
   responses:
-    "201":
+    201:
       description: Returns a stack resource.
       content:
         application/json:
@@ -102,7 +102,7 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/stacks/Stack.yml"
+                $ref: ../../../components/schemas/stacks/Stack.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:

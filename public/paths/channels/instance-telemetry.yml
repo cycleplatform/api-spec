@@ -18,7 +18,7 @@ get:
   summary: Instance Telemetry Auth
   description: Requires the `containers-view` capability.
   responses:
-    "200":
+    200:
       description: Returns a token and an address.
       content:
         application/json:
@@ -26,7 +26,7 @@ get:
             title: "InstanceTelemeteryStreamAuthResponse"
             properties:
               data:
-                "$ref": "../../../components/schemas/websocket-auth/InstanceTelemetryStreamAuth.yml"
+                $ref: ../../../components/schemas/websocket-auth/InstanceTelemetryStreamAuth.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:

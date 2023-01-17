@@ -12,7 +12,7 @@ get:
   summary: Fetch Billing Credit
   description: Requires the `billing-credits-view` capability.
   responses:
-    "200":
+    200:
       description: Returns a credit resource.
       content:
         application/json:
@@ -21,7 +21,7 @@ get:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/billing/credits/Credit.yml"
+                $ref: ../../../../components/schemas/billing/credits/Credit.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:

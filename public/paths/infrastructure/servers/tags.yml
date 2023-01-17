@@ -12,12 +12,12 @@ get:
   summary: List Server Tags
   description: Requires the `servers-view` capability.
   responses:
-    "200":
+    200:
       description: Returns a list of server tags.
       content:
         application/json:
           schema:
-            "$ref": "../../../../components/schemas/infrastructure/servers/ServerTags.yml"
+            $ref: ../../../../components/schemas/infrastructure/servers/ServerTags.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:

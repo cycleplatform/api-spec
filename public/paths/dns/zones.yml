@@ -17,13 +17,13 @@ get:
           type: string
           enum:
             - creators
-    - $ref: "../../../components/parameters/SortParam.yml"
-    - $ref: "../../../components/parameters/FilterParam.yml"
-    - $ref: "../../../components/parameters/PageParam.yml"
+    - $ref: ../../../components/parameters/SortParam.yml
+    - $ref: ../../../components/parameters/FilterParam.yml
+    - $ref: ../../../components/parameters/PageParam.yml
   summary: List DNS Zones
   description: Requires the `dns-view` capability.
   responses:
-    "200":
+    200:
       description: Returns a collection of DNS zone resources.
       content:
         application/json:
@@ -34,9 +34,9 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../components/schemas/dns/Zone.yml"
+                  $ref: ../../../components/schemas/dns/Zone.yml
               includes:
-                "$ref": "../../../components/schemas/dns/ZoneIncludes.yml"
+                $ref: ../../../components/schemas/dns/ZoneIncludes.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:
@@ -80,7 +80,7 @@ post:
               description: The origin that will be created.
 
   responses:
-    "201":
+    201:
       description: Returns the DNS zone resource.
       content:
         application/json:
@@ -89,7 +89,7 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/dns/Zone.yml"
+                $ref: ../../../components/schemas/dns/Zone.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:

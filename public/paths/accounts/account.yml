@@ -7,7 +7,7 @@ get:
   summary: Fetch Account
   description: Gets the account associated with the authenticated user token.
   responses:
-    "200":
+    200:
       description: Returns an account.
       content:
         application/json:
@@ -16,7 +16,7 @@ get:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/accounts/Account.yml"
+                $ref: ../../../components/schemas/accounts/Account.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:

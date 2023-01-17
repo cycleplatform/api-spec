@@ -6,7 +6,7 @@ get:
   summary: List Latest Jobs
   description: Requires the `jobs-view` permission.
   responses:
-    "200":
+    200:
       description: A collection of job resources.
       content:
         application/json:
@@ -17,7 +17,7 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../components/schemas/jobs/Job.yml"
+                  $ref: ../../../components/schemas/jobs/Job.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:

@@ -9,13 +9,13 @@ get:
       required: true
       schema:
         type: string
-    - $ref: "../../../components/parameters/SortParam.yml"
-    - $ref: "../../../components/parameters/FilterParam.yml"
-    - $ref: "../../../components/parameters/PageParam.yml"
+    - $ref: ../../../components/parameters/SortParam.yml
+    - $ref: ../../../components/parameters/FilterParam.yml
+    - $ref: ../../../components/parameters/PageParam.yml
   summary: List Scoped Variables
   description: Requires the `scoped-variables-view` capability.
   responses:
-    "200":
+    200:
       description: Returns a collection of scoped variable resources.
       content:
         application/json:
@@ -28,7 +28,7 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../components/schemas/scoped-variables/ScopedVariable.yml"
+                  $ref: ../../../components/schemas/scoped-variables/ScopedVariable.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:
@@ -96,7 +96,7 @@ post:
                 - $ref: ../../../components/schemas/scoped-variables/URLSource.yml
                 - $ref: ../../../components/schemas/scoped-variables/RawSource.yml
   responses:
-    "201":
+    201:
       description: Returns a scoped variable resource.
       content:
         application/json:
@@ -105,7 +105,7 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/scoped-variables/ScopedVariable.yml"
+                $ref: ../../../components/schemas/scoped-variables/ScopedVariable.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:

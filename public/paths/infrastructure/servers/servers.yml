@@ -41,7 +41,7 @@ get:
   summary: List Servers
   description: Requires the `servers-view` capability.
   responses:
-    "200":
+    200:
       description: A collection of server resources.
       content:
         application/json:
@@ -52,9 +52,9 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../../components/schemas/infrastructure/servers/Server.yml"
+                  $ref: ../../../../components/schemas/infrastructure/servers/Server.yml
               includes:
-                "$ref": "../../../../components/schemas/infrastructure/servers/ServerIncludes.yml"
+                $ref: ../../../../components/schemas/infrastructure/servers/ServerIncludes.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:
@@ -122,7 +122,7 @@ post:
                     items:
                       type: string
   responses:
-    "201":
+    201:
       description: Returns a single server resource.
       content:
         application/json:
@@ -131,7 +131,7 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/infrastructure/servers/Server.yml"
+                $ref: ../../../../components/schemas/infrastructure/servers/Server.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:

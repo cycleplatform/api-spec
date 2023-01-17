@@ -7,7 +7,7 @@ get:
   summary: List Hubs
   description: Lists all associated hubs.
   responses:
-    "200":
+    200:
       description: Returns a list of hub resources.
       content:
         application/json:
@@ -18,7 +18,7 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../components/schemas/hubs/Hub.yml"
+                  $ref: ../../../components/schemas/hubs/Hub.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:
@@ -70,7 +70,7 @@ post:
                   description: A webhook to report information to each time a server is deployed on the given hub.
 
   responses:
-    "200":
+    200:
       description: Returns a hub resource.
       content:
         application/json:
@@ -79,7 +79,7 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/hubs/Hub.yml"
+                $ref: ../../../components/schemas/hubs/Hub.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:

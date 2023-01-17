@@ -18,7 +18,7 @@ get:
   summary: Fetch Instance Telemetry Report
   description: Requires the `containers-view` capability.
   responses:
-    "200":
+    200:
       description: Returns an instance telemetry report.
       content:
         application/json:
@@ -27,7 +27,7 @@ get:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/containers/instances/returns/InstanceTelemetryReport.yml"
+                $ref: ../../../../components/schemas/containers/instances/returns/InstanceTelemetryReport.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:

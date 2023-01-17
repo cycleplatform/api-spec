@@ -18,7 +18,7 @@ get:
   summary: Fetch Scoped Variable
   description: Requires the `scoped-variables-view` capability.
   responses:
-    "200":
+    200:
       description: Returns a scoped variable resource.
       content:
         application/json:
@@ -27,7 +27,7 @@ get:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/scoped-variables/ScopedVariable.yml"
+                $ref: ../../../components/schemas/scoped-variables/ScopedVariable.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:
@@ -97,7 +97,7 @@ patch:
                 - $ref: ../../../components/schemas/scoped-variables/URLSource.yml
                 - $ref: ../../../components/schemas/scoped-variables/RawSource.yml
   responses:
-    "200":
+    200:
       description: Returns a scoped variable resource.
       content:
         application/json:
@@ -106,7 +106,7 @@ patch:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/scoped-variables/ScopedVariable.yml"
+                $ref: ../../../components/schemas/scoped-variables/ScopedVariable.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:
@@ -145,7 +145,7 @@ delete:
   summary: Remove Scoped Variable
   description: Requires the `scoped-variables-manage` capability.
   responses:
-    "200":
+    200:
       description: Returns a task descriptor.
       content:
         application/json:
@@ -153,7 +153,7 @@ delete:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/jobs/TaskDescriptor.yml"
+                $ref: ../../../components/schemas/jobs/TaskDescriptor.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:

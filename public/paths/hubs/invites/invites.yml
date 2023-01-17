@@ -36,13 +36,13 @@ get:
             - senders
             - hubs
             - accounts
-    - $ref: "../../../../components/parameters/SortParam.yml"
-    - $ref: "../../../../components/parameters/FilterParam.yml"
-    - $ref: "../../../../components/parameters/PageParam.yml"
+    - $ref: ../../../../components/parameters/SortParam.yml
+    - $ref: ../../../../components/parameters/FilterParam.yml
+    - $ref: ../../../../components/parameters/PageParam.yml
   summary: List Hub Invites
   description: Requires the `hubs-invites-manage` capability.
   responses:
-    "200":
+    200:
       description: Returns a list of membership resources.
       content:
         application/json:
@@ -53,9 +53,9 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../../components/schemas/hubs/HubMembership.yml"
+                  $ref: ../../../../components/schemas/hubs/HubMembership.yml
               includes:
-                "$ref": "../../../../components/schemas/hubs/HubMembershipIncludes.yml"
+                $ref: ../../../../components/schemas/hubs/HubMembershipIncludes.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:
@@ -100,7 +100,7 @@ post:
                 - developer
                 - analyst
   responses:
-    "201":
+    201:
       description: Returns a hub membership resource.
       content:
         application/json:
@@ -109,7 +109,7 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/hubs/HubMembership.yml"
+                $ref: ../../../../components/schemas/hubs/HubMembership.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:

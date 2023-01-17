@@ -12,7 +12,7 @@ get:
       schema:
         type: string
   responses:
-    "200":
+    200:
       description: Returns a stack resource.
       content:
         application/json:
@@ -21,7 +21,7 @@ get:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/stacks/Stack.yml"
+                $ref: ../../../components/schemas/stacks/Stack.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:
@@ -66,7 +66,7 @@ patch:
             source:
               $ref: ../../../components/schemas/stacks/StackSource.yml
   responses:
-    "200":
+    200:
       description: Returns an updated stack resource.
       content:
         application/json:
@@ -75,7 +75,7 @@ patch:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/stacks/Stack.yml"
+                $ref: ../../../components/schemas/stacks/Stack.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:
@@ -108,7 +108,7 @@ delete:
   summary: Delete Stack
   description: Requires the `stacks-manage` capability.
   responses:
-    "200":
+    200:
       description: Returns a task descriptor.
       content:
         application/json:
@@ -116,7 +116,7 @@ delete:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/jobs/TaskDescriptor.yml"
+                $ref: ../../../components/schemas/jobs/TaskDescriptor.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:

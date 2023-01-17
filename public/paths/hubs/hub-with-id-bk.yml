@@ -27,7 +27,7 @@ get:
   summary: Fetch Hub
   description: Requires the `hubs-view` capability.
   responses:
-    "200":
+    200:
       description: Returns an hub resource.
       content:
         application/json:
@@ -36,7 +36,7 @@ get:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/hubs/Hub.yml"
+                $ref: ../../../components/schemas/hubs/Hub.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:
@@ -92,7 +92,7 @@ patch:
                   description: A webahook to report information to each time a server is deployed on the given hub.
 
   responses:
-    "200":
+    200:
       description: Returns the updated Hub resource.
       content:
         application/json:
@@ -101,7 +101,7 @@ patch:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/hubs/Hub.yml"
+                $ref: ../../../components/schemas/hubs/Hub.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:

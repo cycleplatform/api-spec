@@ -41,9 +41,9 @@ get:
             - stack_builds
             - stacks
             - environments
-    - $ref: "../../../components/parameters/SortParam.yml"
-    - $ref: "../../../components/parameters/FilterParam.yml"
-    - $ref: "../../../components/parameters/PageParam.yml"
+    - $ref: ../../../components/parameters/SortParam.yml
+    - $ref: ../../../components/parameters/FilterParam.yml
+    - $ref: ../../../components/parameters/PageParam.yml
   responses:
     200:
       description: Returns a collection of container resources.
@@ -56,9 +56,9 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../components/schemas/containers/Container.yml"
+                  $ref: ../../../components/schemas/containers/Container.yml
               includes:
-                "$ref": "../../../components/schemas/containers/ContainerIncludes.yml"
+                $ref: ../../../components/schemas/containers/ContainerIncludes.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:
@@ -129,7 +129,7 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/containers/Container.yml"
+                $ref: ../../../components/schemas/containers/Container.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:

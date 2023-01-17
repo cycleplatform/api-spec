@@ -3,13 +3,13 @@ get:
   tags:
     - Billing
   parameters:
-    - $ref: "../../../../components/parameters/SortParam.yml"
-    - $ref: "../../../../components/parameters/FilterParam.yml"
-    - $ref: "../../../../components/parameters/PageParam.yml"
+    - $ref: ../../../../components/parameters/SortParam.yml
+    - $ref: ../../../../components/parameters/FilterParam.yml
+    - $ref: ../../../../components/parameters/PageParam.yml
   summary: List Billing Overages
   description: Doesn't require a specific capability.
   responses:
-    "200":
+    200:
       description: Returns a billing overage resource.
       content:
         application/json:
@@ -20,7 +20,7 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../../components/schemas/billing/Overage.yml"
+                  $ref: ../../../../components/schemas/billing/Overage.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:
