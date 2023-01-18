@@ -1,9 +1,9 @@
 # See https://redocly.com/docs/cli/configuration/
 apis:
   cycle-public-api@1.0.0:
-    root: ./public/api.yaml
+    root: ./public/api.yml
   cycle-internal-api@1.0.0:
-    root: ./internal/api.yaml
+    root: ./internal/api.yml
 
 extends:
   - recommended
