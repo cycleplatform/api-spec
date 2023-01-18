@@ -1,0 +1,9 @@
+name: Lint OpenAPI Spec
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run OpenAPI Linter
+        run: npm run lint
