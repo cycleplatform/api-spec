@@ -3,13 +3,13 @@ get:
   tags:
     - Billing
   parameters:
-    - $ref: "../../../../components/parameters/SortParam.yml"
-    - $ref: "../../../../components/parameters/FilterParam.yml"
-    - $ref: "../../../../components/parameters/PageParam.yml"
+    - $ref: ../../../../components/parameters/SortParam.yml
+    - $ref: ../../../../components/parameters/FilterParam.yml
+    - $ref: ../../../../components/parameters/PageParam.yml
   summary: List Billing Methods
   description: Requires the `billing-methods-manage` capability.
   responses:
-    "200":
+    200:
       description: returns a collection of billing methods.
       content:
         application/json:
@@ -20,31 +20,25 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../../components/schemas/billing/methods/Method.yml"
-    "400":
-      description: This usually means the data sent was in an invalid format.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
-    "401":
-      description: OAuth token is invalid.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
-    "404":
-      description: The requested resource doesn't exist.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
-    "500":
-      description: Indicates an issue with Cycle. Rare.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
+                  $ref: ../../../../components/schemas/billing/methods/Method.yml
+    400:
+      $ref: ../../../../components/responses/errors/400.yml
+    401:
+      $ref: ../../../../components/responses/errors/401.yml
+    403:
+      $ref: ../../../../components/responses/errors/403.yml
+    404:
+      $ref: ../../../../components/responses/errors/404.yml
+    409:
+      $ref: ../../../../components/responses/errors/409.yml
+    415:
+      $ref: ../../../../components/responses/errors/415.yml
+    422:
+      $ref: ../../../../components/responses/errors/422.yml
+    500:
+      $ref: ../../../../components/responses/errors/500.yml
+    503:
+      $ref: ../../../../components/responses/errors/503.yml
 post:
   operationId: "createBillingMethod"
   tags:
@@ -53,9 +47,29 @@ post:
   summary: Create Billing Method
   description: Requires the `billing-methods-manage` capability.
   requestBody:
-    "$ref": "../../../../components/schemas/billing/methods/requestBodies/CreateBillingMethodRequest.yml"
+    description: Parameters for creating a new billing method.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - name
+            - primary
+            - address
+            - credit_card
+          properties:
+            name:
+              type: string
+              description: A name for the billing method.
+            primary:
+              type: boolean
+              description: A boolean where true represents a billing method being primary.
+            address:
+              $ref: ../../../../components/schemas/billing/methods/Address.yml
+            credit_card:
+              $ref: ../../../../components/schemas/billing/methods/CreditCard.yml
   responses:
-    "200":
+    200:
       description: Returns a billing method resource.
       content:
         application/json:
@@ -64,28 +78,22 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/billing/methods/Method.yml"
-    "400":
-      description: This usually means the data sent was in an invalid format.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
-    "401":
-      description: OAuth token is invalid.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
-    "404":
-      description: The requested resource doesn't exist.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
-    "500":
-      description: Indicates an issue with Cycle. Rare.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
+                $ref: ../../../../components/schemas/billing/methods/Method.yml
+    400:
+      $ref: ../../../../components/responses/errors/400.yml
+    401:
+      $ref: ../../../../components/responses/errors/401.yml
+    403:
+      $ref: ../../../../components/responses/errors/403.yml
+    404:
+      $ref: ../../../../components/responses/errors/404.yml
+    409:
+      $ref: ../../../../components/responses/errors/409.yml
+    415:
+      $ref: ../../../../components/responses/errors/415.yml
+    422:
+      $ref: ../../../../components/responses/errors/422.yml
+    500:
+      $ref: ../../../../components/responses/errors/500.yml
+    503:
+      $ref: ../../../../components/responses/errors/503.yml

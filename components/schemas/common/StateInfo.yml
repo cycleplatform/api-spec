@@ -16,4 +16,4 @@ properties:
   changed:
     "$ref": "../DateTime.yml"
   error:
-    "$ref": "../error/Error.yml"
+    "$ref": "../errors/Error.yml"

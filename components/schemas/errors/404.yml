@@ -1,5 +1,0 @@
-description: The requested resource doesn't exist.
-content:
-  application/json:
-    schema:
-      "$ref": "./ErrorResponseNEW.yml"

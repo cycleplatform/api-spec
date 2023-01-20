@@ -1,5 +1,0 @@
-description: Indicates an issue with Cycle. Rare.
-content:
-  application/json:
-    schema:
-      "$ref": "./ErrorResponseNEW.yml"

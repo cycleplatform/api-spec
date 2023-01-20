@@ -1,0 +1,5 @@
+description: The request body is invalid for this endpoint.
+content:
+  application/json:
+    schema:
+      $ref: ../../schemas/errors/ErrorEnvelope.yml

@@ -9,13 +9,13 @@ get:
       required: true
       schema:
         type: string
-    - $ref: "../../../components/parameters/SortParam.yml"
-    - $ref: "../../../components/parameters/FilterParam.yml"
-    - $ref: "../../../components/parameters/PageParam.yml"
+    - $ref: ../../../components/parameters/SortParam.yml
+    - $ref: ../../../components/parameters/FilterParam.yml
+    - $ref: ../../../components/parameters/PageParam.yml
   summary: List Scoped Variables
   description: Requires the `scoped-variables-view` capability.
   responses:
-    "200":
+    200:
       description: Returns a collection of scoped variable resources.
       content:
         application/json:
@@ -28,31 +28,25 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../components/schemas/scoped-variables/ScopedVariable.yml"
-    "400":
-      description: This usually means the data sent was in an invalid format.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
-    "401":
-      description: OAuth token is invalid.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
-    "404":
-      description: The requested resource doesn't exist.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
-    "500":
-      description: Indicates an issue with Cycle. Rare.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
+                  $ref: ../../../components/schemas/scoped-variables/ScopedVariable.yml
+    400:
+      $ref: ../../../components/responses/errors/400.yml
+    401:
+      $ref: ../../../components/responses/errors/401.yml
+    403:
+      $ref: ../../../components/responses/errors/403.yml
+    404:
+      $ref: ../../../components/responses/errors/404.yml
+    409:
+      $ref: ../../../components/responses/errors/409.yml
+    415:
+      $ref: ../../../components/responses/errors/415.yml
+    422:
+      $ref: ../../../components/responses/errors/422.yml
+    500:
+      $ref: ../../../components/responses/errors/500.yml
+    503:
+      $ref: ../../../components/responses/errors/503.yml
 post:
   operationId: "createScopedVariable"
   tags:
@@ -67,9 +61,42 @@ post:
   summary: Create Scoped Variable
   description: Requires the `scoped-variables-manage` capability.
   requestBody:
-    "$ref": "../../../components/schemas/scoped-variables/requestBodies/CreateScopedVariableRequest.yml"
+    description: Parameters for creating a scoped variable.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - identifier
+            - scope
+            - source
+          properties:
+            identifier:
+              type: string
+              description: An identifier, similar to a key in an environment variable.  Its used when envoking the scoped variable.
+            secret:
+              nullable: true
+              type: object
+              description: An object with information about the encryption of the scoped variable.
+              required:
+                - encrypted
+              properties:
+                encrypted:
+                  type: boolean
+                  description: A boolean where true means the scoped variables value is encrypted.
+                hint:
+                  type: string
+                  description: A hint for the decryption password.
+            scope:
+              $ref: ../../../components/schemas/scoped-variables/ScopedVariableScope.yml
+            source:
+              type: object
+              description: The source or value of the scope variable.  Can be `raw` or `url`.
+              oneOf:
+                - $ref: ../../../components/schemas/scoped-variables/URLSource.yml
+                - $ref: ../../../components/schemas/scoped-variables/RawSource.yml
   responses:
-    "201":
+    201:
       description: Returns a scoped variable resource.
       content:
         application/json:
@@ -78,28 +105,22 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/scoped-variables/ScopedVariable.yml"
-    "400":
-      description: This usually means the data sent was in an invalid format.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
-    "401":
-      description: OAuth token is invalid.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
-    "404":
-      description: The requested resource doesn't exist.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
-    "500":
-      description: Indicates an issue with Cycle. Rare.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
+                $ref: ../../../components/schemas/scoped-variables/ScopedVariable.yml
+    400:
+      $ref: ../../../components/responses/errors/400.yml
+    401:
+      $ref: ../../../components/responses/errors/401.yml
+    403:
+      $ref: ../../../components/responses/errors/403.yml
+    404:
+      $ref: ../../../components/responses/errors/404.yml
+    409:
+      $ref: ../../../components/responses/errors/409.yml
+    415:
+      $ref: ../../../components/responses/errors/415.yml
+    422:
+      $ref: ../../../components/responses/errors/422.yml
+    500:
+      $ref: ../../../components/responses/errors/500.yml
+    503:
+      $ref: ../../../components/responses/errors/503.yml

@@ -1,0 +1,5 @@
+description: This IP Address has been rate limited.
+content:
+  application/json:
+    schema:
+      $ref: ../../schemas/errors/ErrorEnvelope.yml

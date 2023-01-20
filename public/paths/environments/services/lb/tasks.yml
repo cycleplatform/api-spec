@@ -12,9 +12,40 @@ post:
   summary: Reconfigure LB
   description: Creates a task that will update the load balancer's configuration.
   requestBody:
-    "$ref": "../../../../../components/schemas/environments/requestBodies/LoadBalancerReconfigure.yml"
+    description: Parameters for reconfiguring a load balancer.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - action
+            - contents
+          properties:
+            action:
+              type: string
+              enum:
+                - reconfigure
+              description: The name of the action to perform.
+            contents:
+              type: object
+              properties:
+                config:
+                  type: object
+                  description: An optional load balancer configuration.
+                  properties:
+                    haproxy:
+                      $ref: ../../../../../components/schemas/environments/config/HAProxyConfig.yml
+                    ipv4:
+                      type: boolean
+                      description: A boolean where `true` represents the desire for a IPv4 address(s) to be assigned to the environment load balancer(s).
+                    ipv6:
+                      type: boolean
+                      description: A boolean where `true` represents the desire for a IPv6 address(s) to be assigned to the environment load balancer(s).
+                high_availability:
+                  type: boolean
+                  description: A boolean where `true` represents the desire to run the environment load balancer service in high availability mode.
   responses:
-    "200":
+    200:
       description: Returns a task descriptor.
       content:
         application/json:
@@ -23,28 +54,22 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../../../components/schemas/jobs/TaskDescriptor.yml"
-    "400":
-      description: This usually means the data sent was in an invalid format.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../../components/schemas/error/ErrorResponse.yml"
-    "401":
-      description: OAuth token is invalid.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../../components/schemas/error/ErrorResponse.yml"
-    "404":
-      description: The requested resource doesn't exist.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../../components/schemas/error/ErrorResponse.yml"
-    "500":
-      description: Indicates an issue with Cycle. Rare.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../../components/schemas/error/ErrorResponse.yml"
+                $ref: ../../../../../components/schemas/jobs/TaskDescriptor.yml
+    400:
+      $ref: ../../../../../components/responses/errors/400.yml
+    401:
+      $ref: ../../../../../components/responses/errors/401.yml
+    403:
+      $ref: ../../../../../components/responses/errors/403.yml
+    404:
+      $ref: ../../../../../components/responses/errors/404.yml
+    409:
+      $ref: ../../../../../components/responses/errors/409.yml
+    415:
+      $ref: ../../../../../components/responses/errors/415.yml
+    422:
+      $ref: ../../../../../components/responses/errors/422.yml
+    500:
+      $ref: ../../../../../components/responses/errors/500.yml
+    503:
+      $ref: ../../../../../components/responses/errors/503.yml

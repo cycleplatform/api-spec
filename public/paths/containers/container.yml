@@ -48,7 +48,7 @@ get:
   summary: Fetch Container
   description: Requires the `containers-view` capability.
   responses:
-    "200":
+    200:
       description: Returns an container resource.
       content:
         application/json:
@@ -57,33 +57,27 @@ get:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/containers/Container.yml"
+                $ref: ../../../components/schemas/containers/Container.yml
               includes:
-                "$ref": "../../../components/schemas/containers/instances/InstanceIncludes.yml"
-    "400":
-      description: This usually means the data sent was in an invalid format.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
-    "401":
-      description: OAuth token is invalid.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
-    "404":
-      description: The requested resource doesn't exist.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
-    "500":
-      description: Indicates an issue with Cycle. Rare.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
+                $ref: ../../../components/schemas/containers/instances/InstanceIncludes.yml
+    400:
+      $ref: ../../../components/responses/errors/400.yml
+    401:
+      $ref: ../../../components/responses/errors/401.yml
+    403:
+      $ref: ../../../components/responses/errors/403.yml
+    404:
+      $ref: ../../../components/responses/errors/404.yml
+    409:
+      $ref: ../../../components/responses/errors/409.yml
+    415:
+      $ref: ../../../components/responses/errors/415.yml
+    422:
+      $ref: ../../../components/responses/errors/422.yml
+    500:
+      $ref: ../../../components/responses/errors/500.yml
+    503:
+      $ref: ../../../components/responses/errors/503.yml
 patch:
   operationId: "updateContainer"
   tags:
@@ -102,9 +96,19 @@ patch:
     content:
       application/json:
         schema:
-          "$ref": "../../../components/schemas/containers/requestBodies/ContainerUpdateInput.yml"
+          description: Parameters for updating a container.
+          type: object
+          properties:
+            name:
+              type: string
+              description: The name for the container.
+            annotation:
+              type: object
+              description: User meta data for the container.
+              additionalProperties:
+                type: string
   responses:
-    "200":
+    200:
       description: Returns the updated container resource.
       content:
         application/json:
@@ -113,31 +117,25 @@ patch:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/containers/Container.yml"
-    "400":
-      description: This usually means the data sent was in an invalid format.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
-    "401":
-      description: OAuth token is invalid.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
-    "404":
-      description: The requested resource doesn't exist.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
-    "500":
-      description: Indicates an issue with Cycle. Rare.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
+                $ref: ../../../components/schemas/containers/Container.yml
+    400:
+      $ref: ../../../components/responses/errors/400.yml
+    401:
+      $ref: ../../../components/responses/errors/401.yml
+    403:
+      $ref: ../../../components/responses/errors/403.yml
+    404:
+      $ref: ../../../components/responses/errors/404.yml
+    409:
+      $ref: ../../../components/responses/errors/409.yml
+    415:
+      $ref: ../../../components/responses/errors/415.yml
+    422:
+      $ref: ../../../components/responses/errors/422.yml
+    500:
+      $ref: ../../../components/responses/errors/500.yml
+    503:
+      $ref: ../../../components/responses/errors/503.yml
 delete:
   operationId: "removeContainer"
   tags:
@@ -152,7 +150,7 @@ delete:
   summary: Delete Container
   description: Requires the `contianers-update` capability.
   responses:
-    "200":
+    200:
       description: Returns a task descriptor.
       content:
         application/json:
@@ -160,28 +158,22 @@ delete:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/jobs/TaskDescriptor.yml"
-    "400":
-      description: This usually means the data sent was in an invalid format.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
-    "401":
-      description: OAuth token is invalid.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
-    "404":
-      description: The requested resource doesn't exist.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
-    "500":
-      description: Indicates an issue with Cycle. Rare.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
+                $ref: ../../../components/schemas/jobs/TaskDescriptor.yml
+    400:
+      $ref: ../../../components/responses/errors/400.yml
+    401:
+      $ref: ../../../components/responses/errors/401.yml
+    403:
+      $ref: ../../../components/responses/errors/403.yml
+    404:
+      $ref: ../../../components/responses/errors/404.yml
+    409:
+      $ref: ../../../components/responses/errors/409.yml
+    415:
+      $ref: ../../../components/responses/errors/415.yml
+    422:
+      $ref: ../../../components/responses/errors/422.yml
+    500:
+      $ref: ../../../components/responses/errors/500.yml
+    503:
+      $ref: ../../../components/responses/errors/503.yml

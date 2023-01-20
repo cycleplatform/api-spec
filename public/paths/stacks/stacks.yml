@@ -34,9 +34,9 @@ get:
           type: string
           enum:
             - creators
-    - $ref: "../../../components/parameters/SortParam.yml"
-    - $ref: "../../../components/parameters/FilterParam.yml"
-    - $ref: "../../../components/parameters/PageParam.yml"
+    - $ref: ../../../components/parameters/SortParam.yml
+    - $ref: ../../../components/parameters/FilterParam.yml
+    - $ref: ../../../components/parameters/PageParam.yml
   responses:
     "200":
       description: A collection of stack resources.
@@ -49,33 +49,27 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../components/schemas/stacks/Stack.yml"
+                  $ref: ../../../components/schemas/stacks/Stack.yml
               includes:
-                "$ref": "../../../components/schemas/stacks/StackInclude.yml"
-    "400":
-      description: This usually means the data sent was in an invalid format.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
-    "401":
-      description: OAuth token is invalid.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
-    "404":
-      description: The requested resource doesn't exist.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
-    "500":
-      description: Indicates an issue with Cycle. Rare.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
+                $ref: ../../../components/schemas/stacks/StackInclude.yml
+    400:
+      $ref: ../../../components/responses/errors/400.yml
+    401:
+      $ref: ../../../components/responses/errors/401.yml
+    403:
+      $ref: ../../../components/responses/errors/403.yml
+    404:
+      $ref: ../../../components/responses/errors/404.yml
+    409:
+      $ref: ../../../components/responses/errors/409.yml
+    415:
+      $ref: ../../../components/responses/errors/415.yml
+    422:
+      $ref: ../../../components/responses/errors/422.yml
+    500:
+      $ref: ../../../components/responses/errors/500.yml
+    503:
+      $ref: ../../../components/responses/errors/503.yml
 post:
   operationId: "createStack"
   tags:
@@ -84,9 +78,22 @@ post:
   summary: Create Stack
   description: Requires the `stacks-manage` capability.
   requestBody:
-    "$ref": "../../../components/schemas/stacks/requestBodies/CreateStackRequest.yml"
+    description: Parameters for creating a new stack.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - name
+            - source
+          properties:
+            name:
+              type: string
+              description: A name for the stack.
+            source:
+              $ref: ../../../components/schemas/stacks/StackSource.yml
   responses:
-    "201":
+    201:
       description: Returns a stack resource.
       content:
         application/json:
@@ -95,28 +102,22 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../components/schemas/stacks/Stack.yml"
-    "400":
-      description: This usually means the data sent was in an invalid format.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
-    "401":
-      description: OAuth token is invalid.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
-    "404":
-      description: The requested resource doesn't exist.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
-    "500":
-      description: Indicates an issue with Cycle. Rare.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../components/schemas/error/ErrorResponse.yml"
+                $ref: ../../../components/schemas/stacks/Stack.yml
+    400:
+      $ref: ../../../components/responses/errors/400.yml
+    401:
+      $ref: ../../../components/responses/errors/401.yml
+    403:
+      $ref: ../../../components/responses/errors/403.yml
+    404:
+      $ref: ../../../components/responses/errors/404.yml
+    409:
+      $ref: ../../../components/responses/errors/409.yml
+    415:
+      $ref: ../../../components/responses/errors/415.yml
+    422:
+      $ref: ../../../components/responses/errors/422.yml
+    500:
+      $ref: ../../../components/responses/errors/500.yml
+    503:
+      $ref: ../../../components/responses/errors/503.yml

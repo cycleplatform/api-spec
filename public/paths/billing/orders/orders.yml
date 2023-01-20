@@ -3,9 +3,9 @@ get:
   tags:
     - Billing
   parameters:
-    - $ref: "../../../../components/parameters/SortParam.yml"
-    - $ref: "../../../../components/parameters/FilterParam.yml"
-    - $ref: "../../../../components/parameters/PageParam.yml"
+    - $ref: ../../../../components/parameters/SortParam.yml
+    - $ref: ../../../../components/parameters/FilterParam.yml
+    - $ref: ../../../../components/parameters/PageParam.yml
     - name: meta
       in: query
       required: false
@@ -38,7 +38,7 @@ get:
   summary: List Billing Orders
   description: Requires the `billing-orders-manage` capability.
   responses:
-    "200":
+    200:
       description: Returns a collection of billing order resources.
       content:
         application/json:
@@ -49,33 +49,27 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../../components/schemas/billing/orders/Order.yml"
+                  $ref: ../../../../components/schemas/billing/orders/Order.yml
               includes:
-                "$ref": "../../../../components/schemas/billing/orders/OrderIncludes.yml"
-    "400":
-      description: This usually means the data sent was in an invalid format.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
-    "401":
-      description: OAuth token is invalid.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
-    "404":
-      description: The requested resource doesn't exist.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
-    "500":
-      description: Indicates an issue with Cycle. Rare.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
+                $ref: ../../../../components/schemas/billing/orders/OrderIncludes.yml
+    400:
+      $ref: ../../../../components/responses/errors/400.yml
+    401:
+      $ref: ../../../../components/responses/errors/401.yml
+    403:
+      $ref: ../../../../components/responses/errors/403.yml
+    404:
+      $ref: ../../../../components/responses/errors/404.yml
+    409:
+      $ref: ../../../../components/responses/errors/409.yml
+    415:
+      $ref: ../../../../components/responses/errors/415.yml
+    422:
+      $ref: ../../../../components/responses/errors/422.yml
+    500:
+      $ref: ../../../../components/responses/errors/500.yml
+    503:
+      $ref: ../../../../components/responses/errors/503.yml
 post:
   operationId: "createOrder"
   tags:
@@ -84,9 +78,30 @@ post:
   summary: Create order
   description: Requires TODO capability.
   requestBody:
-    "$ref": "../../../../components/schemas/billing/orders/requestBodies/CreateOrderBody.yml"
+    description: Parameters for creating a new order
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            tier_plan_id:
+              type: string
+              description: Id associated with the tier plan
+            support_plan_id:
+              type: string
+              description: Id associated with the support plan
+            term_length:
+              type: string
+              description: String that defines term length
+              enum:
+                - once
+                - monthly
+                - yearly
+            promo_code:
+              type: string
+              description: String that defines a promo code
   responses:
-    "201":
+    201:
       description: Returns an order resource.
       content:
         application/json:
@@ -95,28 +110,22 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/billing/BillingOrder.yml"
-    "400":
-      description: This usually means the data sent was in an invalid format.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
-    "401":
-      description: OAuth token is invalid.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
-    "404":
-      description: The requested resource doesn't exist.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
-    "500":
-      description: Indicates an issue with Cycle. Rare.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
+                $ref: ../../../../components/schemas/billing/BillingOrder.yml
+    400:
+      $ref: ../../../../components/responses/errors/400.yml
+    401:
+      $ref: ../../../../components/responses/errors/401.yml
+    403:
+      $ref: ../../../../components/responses/errors/403.yml
+    404:
+      $ref: ../../../../components/responses/errors/404.yml
+    409:
+      $ref: ../../../../components/responses/errors/409.yml
+    415:
+      $ref: ../../../../components/responses/errors/415.yml
+    422:
+      $ref: ../../../../components/responses/errors/422.yml
+    500:
+      $ref: ../../../../components/responses/errors/500.yml
+    503:
+      $ref: ../../../../components/responses/errors/503.yml

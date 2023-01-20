@@ -19,13 +19,13 @@ get:
           enum:
             - node
             - instances_count
-    - $ref: "../../../../components/parameters/SortParam.yml"
-    - $ref: "../../../../components/parameters/FilterParam.yml"
-    - $ref: "../../../../components/parameters/PageParam.yml"
+    - $ref: ../../../../components/parameters/SortParam.yml
+    - $ref: ../../../../components/parameters/FilterParam.yml
+    - $ref: ../../../../components/parameters/PageParam.yml
   summary: List Providers
   description: Requires the `infrastructure-providers-view` capability.
   responses:
-    "200":
+    200:
       description: A collection of providers.
       content:
         application/json:
@@ -36,31 +36,25 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../../components/schemas/infrastructure/providers/Provider.yml"
-    "400":
-      description: This usually means the data sent was in an invalid format.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
-    "401":
-      description: OAuth token is invalid.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
-    "404":
-      description: The requested resource doesn't exist.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
-    "500":
-      description: Indicates an issue with Cycle. Rare.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
+                  $ref: ../../../../components/schemas/infrastructure/providers/Provider.yml
+    400:
+      $ref: ../../../../components/responses/errors/400.yml
+    401:
+      $ref: ../../../../components/responses/errors/401.yml
+    403:
+      $ref: ../../../../components/responses/errors/403.yml
+    404:
+      $ref: ../../../../components/responses/errors/404.yml
+    409:
+      $ref: ../../../../components/responses/errors/409.yml
+    415:
+      $ref: ../../../../components/responses/errors/415.yml
+    422:
+      $ref: ../../../../components/responses/errors/422.yml
+    500:
+      $ref: ../../../../components/responses/errors/500.yml
+    503:
+      $ref: ../../../../components/responses/errors/503.yml
 post:
   operationId: "createProvider"
   tags:
@@ -69,9 +63,47 @@ post:
   summary: Create Provider
   description: Requires the `infrastructure-providers-manage` capability.
   requestBody:
-    "$ref": "../../../../components/schemas/infrastructure/providers/requestBodies/CreateProviderRequest.yml"
+    description: Parameters for creating a provider.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - integration
+          properties:
+            integration:
+              type: object
+              description: An integration object defining the provider integration assets and endpoints.
+              properties:
+                native:
+                  type: object
+                  description: Nativly supported IAL provider integration.
+                  required:
+                    - identifier
+                    - auth
+                  properties:
+                    identifier:
+                      type: string
+                      description: An identifier for the provider.
+                    auth:
+                      $ref: ../../../../components/schemas/infrastructure/providers/IALAuth.yml
+                abstraction:
+                  type: object
+                  description: Custom provider information.
+                  required:
+                    - name
+                    - base_url
+                  properties:
+                    name:
+                      type: string
+                      description: A name for the custom provider abstraction.
+                    base_url:
+                      type: string
+                      description: The url to use when making calls to the abstraction for provision events.
+                    auth:
+                      $ref: ../../../../components/schemas/infrastructure/providers/IALAuth.yml
   responses:
-    "201":
+    201:
       description: Returns a provider resource.
       content:
         application/json:
@@ -80,28 +112,22 @@ post:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/infrastructure/providers/Provider.yml"
-    "400":
-      description: This usually means the data sent was in an invalid format.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
-    "401":
-      description: OAuth token is invalid.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
-    "404":
-      description: The requested resource doesn't exist.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
-    "500":
-      description: Indicates an issue with Cycle. Rare.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
+                $ref: ../../../../components/schemas/infrastructure/providers/Provider.yml
+    400:
+      $ref: ../../../../components/responses/errors/400.yml
+    401:
+      $ref: ../../../../components/responses/errors/401.yml
+    403:
+      $ref: ../../../../components/responses/errors/403.yml
+    404:
+      $ref: ../../../../components/responses/errors/404.yml
+    409:
+      $ref: ../../../../components/responses/errors/409.yml
+    415:
+      $ref: ../../../../components/responses/errors/415.yml
+    422:
+      $ref: ../../../../components/responses/errors/422.yml
+    500:
+      $ref: ../../../../components/responses/errors/500.yml
+    503:
+      $ref: ../../../../components/responses/errors/503.yml

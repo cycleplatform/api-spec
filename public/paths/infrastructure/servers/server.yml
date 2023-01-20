@@ -44,7 +44,7 @@ get:
   summary: Fetch Server
   description: Requires the `servers-view` capability.
   responses:
-    "200":
+    200:
       description: A single server resource.
       content:
         application/json:
@@ -53,33 +53,27 @@ get:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/infrastructure/servers/Server.yml"
+                $ref: ../../../../components/schemas/infrastructure/servers/Server.yml
               includes:
-                "$ref": "../../../../components/schemas/infrastructure/servers/ServerIncludes.yml"
-    "400":
-      description: This usually means the data sent was in an invalid format.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
-    "401":
-      description: OAuth token is invalid.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
-    "404":
-      description: The requested resource doesn't exist.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
-    "500":
-      description: Indicates an issue with Cycle. Rare.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
+                $ref: ../../../../components/schemas/infrastructure/servers/ServerIncludes.yml
+    400:
+      $ref: ../../../../components/responses/errors/400.yml
+    401:
+      $ref: ../../../../components/responses/errors/401.yml
+    403:
+      $ref: ../../../../components/responses/errors/403.yml
+    404:
+      $ref: ../../../../components/responses/errors/404.yml
+    409:
+      $ref: ../../../../components/responses/errors/409.yml
+    415:
+      $ref: ../../../../components/responses/errors/415.yml
+    422:
+      $ref: ../../../../components/responses/errors/422.yml
+    500:
+      $ref: ../../../../components/responses/errors/500.yml
+    503:
+      $ref: ../../../../components/responses/errors/503.yml
 patch:
   operationId: "updateServer"
   tags:
@@ -94,9 +88,42 @@ patch:
   summary: Update Server
   description: Requires the `servers-update` capability.
   requestBody:
-    "$ref": "../../../../components/schemas/infrastructure/servers/requestBodies/UpdateServerRequest.yml"
+    description: Parameters for updating a server.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - constraints
+          properties:
+            constraints:
+              type: object
+              description: Server constriants.
+              properties:
+                tags:
+                  description: A list of server tags.
+                  type: array
+                  items:
+                    type: string
+                allow:
+                  type: object
+                  description: Server constraints for the given server.
+                  required:
+                    - pool
+                    - services
+                    - overcommit
+                  properties:
+                    pool:
+                      type: boolean
+                      description: A boolean where true represents the server can accept containers with no tags set.
+                    services:
+                      type: boolean
+                      description: A boolean where true represents the server being a target for service containers.
+                    overcommit:
+                      type: boolean
+                      description: A boolean where true represents the desire for the server to allow the overcommitting of shares.
   responses:
-    "200":
+    200:
       description: A server resource.
       content:
         application/json:
@@ -105,31 +132,25 @@ patch:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/infrastructure/servers/Server.yml"
-    "400":
-      description: This usually means the data sent was in an invalid format.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
-    "401":
-      description: OAuth token is invalid.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
-    "404":
-      description: The requested resource doesn't exist.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
-    "500":
-      description: Indicates an issue with Cycle. Rare.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
+                $ref: ../../../../components/schemas/infrastructure/servers/Server.yml
+    400:
+      $ref: ../../../../components/responses/errors/400.yml
+    401:
+      $ref: ../../../../components/responses/errors/401.yml
+    403:
+      $ref: ../../../../components/responses/errors/403.yml
+    404:
+      $ref: ../../../../components/responses/errors/404.yml
+    409:
+      $ref: ../../../../components/responses/errors/409.yml
+    415:
+      $ref: ../../../../components/responses/errors/415.yml
+    422:
+      $ref: ../../../../components/responses/errors/422.yml
+    500:
+      $ref: ../../../../components/responses/errors/500.yml
+    503:
+      $ref: ../../../../components/responses/errors/503.yml
 delete:
   summary: Remove a Server
   operationId: "removeServer"
@@ -142,9 +163,9 @@ delete:
       required: true
       schema:
         type: string
-    - $ref: "../../../../components/parameters/OptionParam.yml"
+    - $ref: ../../../../components/parameters/OptionParam.yml
   responses:
-    "200":
+    200:
       description: Returns a task descriptor.
       content:
         application/json:
@@ -152,28 +173,22 @@ delete:
             type: object
             properties:
               data:
-                "$ref": "../../../../components/schemas/jobs/TaskDescriptor.yml"
-    "400":
-      description: This usually means the data sent was in an invalid format.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
-    "401":
-      description: OAuth token is invalid.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
-    "404":
-      description: The requested resource doesn't exist.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
-    "500":
-      description: Indicates an issue with Cycle. Rare.
-      content:
-        application/json:
-          schema:
-            "$ref": "../../../../components/schemas/error/ErrorResponse.yml"
+                $ref: ../../../../components/schemas/jobs/TaskDescriptor.yml
+    400:
+      $ref: ../../../../components/responses/errors/400.yml
+    401:
+      $ref: ../../../../components/responses/errors/401.yml
+    403:
+      $ref: ../../../../components/responses/errors/403.yml
+    404:
+      $ref: ../../../../components/responses/errors/404.yml
+    409:
+      $ref: ../../../../components/responses/errors/409.yml
+    415:
+      $ref: ../../../../components/responses/errors/415.yml
+    422:
+      $ref: ../../../../components/responses/errors/422.yml
+    500:
+      $ref: ../../../../components/responses/errors/500.yml
+    503:
+      $ref: ../../../../components/responses/errors/503.yml

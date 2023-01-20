@@ -12,7 +12,7 @@
     "build:internal": "npx @redocly/cli bundle internal/api.yml --output dist/internal-api.yml",
     "build:ts-models": "npx @openapitools/openapi-generator-cli generate --skip-validate-spec --global-property models -i dist/public-api.yml -g typescript-fetch -o ./dist/models/typescript",
     "build:ts-client": "npx @openapitools/openapi-generator-cli generate --skip-validate-spec -i dist/public-api.yml -g typescript-fetch -o ./dist/clients/typescript",
-    "build:go-client": "npx @openapitools/openapi-generator-cli generate --skip-validate-spec -i dist/public-api.yml -g go -o ./dist/clients/go",
+    "build:go-client": "npx @openapitools/openapi-generator-cli generate --skip-validate-spec -i dist/public-api.yml -g go -o ./dist/clients/go --git-user-id=cycleplatform --git-repo-id=cycle-api-go --additional-properties=packageName=cycleapi",
     "build:rust-client": "npx @openapitools/openapi-generator-cli generate --skip-validate-spec -i dist/public-api.yml -g rust -o ./dist/clients/rust",
     "build:python-client": "npx @openapitools/openapi-generator-cli generate --skip-validate-spec -i dist/public-api.yml -g python -o ./dist/clients/python",
     "preview:public": "npm run build:public && npx @redocly/cli preview-docs dist/public-api.yml",
