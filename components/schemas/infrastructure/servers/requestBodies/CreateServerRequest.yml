@@ -33,8 +33,24 @@ content:
               quantity:
                 type: integer
                 description: The number of this server at this location to deploy.
-              hostnames:
-                description: An array of hostnames for the given servers.
+              advanced:
                 type: array
                 items:
-                  type: string
+                  type: object
+                  description: Advanced server options.
+                  properties:
+                    features:
+                      "$ref": "../ServerFeatures.yml"
+                    provision_options:
+                      type: object
+                      description: Advanced options to apply to the provisioning of a server.
+                      properties:
+                        attached_stroage_size:
+                          type: integer
+                          description: For providers that support setting this value dynamically; A number representing the GB size of the volume to be attached to the server.
+                        reservation_id:
+                          type: string
+                          description: A reservation ID to be used to provision a server that has been reserved at the provider.
+                    zone:
+                      type: string
+                      description: A zone identifier, used for granular control over the data center location the server is being provisioned from.
