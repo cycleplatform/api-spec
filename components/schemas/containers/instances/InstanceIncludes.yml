@@ -9,9 +9,9 @@ required:
   - containers
   - environments
 properties:
-  creator:
+  creators:
     "$ref": "../../includes/CreatorInclude.yml"
-  server:
+  servers:
     "$ref": "../../includes/ServersIncludes.yml"
   locations:
     "$ref": "../../includes/LocationsIncludes.yml"
