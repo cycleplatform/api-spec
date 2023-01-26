@@ -95,18 +95,9 @@ patch:
               description: The source or value of the scoped variable.
               discriminator:
                 propertyName: type
-              properties:
-                type:
-                  type: string
-                  description: The type of source value, can be either `raw` or `url`.
-                  enum:
-                    - raw
-                    - url
-                details:
-                  oneOf:
-                    - $ref: ../../../components/schemas/scoped-variables/URLSource.yml
-                    - $ref: ../../../components/schemas/scoped-variables/RawSource.yml
-
+              anyOf:
+                - $ref: ../../../components/schemas/scoped-variables/RawSource.yml
+                - $ref: ../../../components/schemas/scoped-variables/URLSource.yml
   responses:
     200:
       description: Returns a scoped variable resource.

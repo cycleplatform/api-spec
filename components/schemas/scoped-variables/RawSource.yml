@@ -2,12 +2,23 @@ title: RawScopedVariableSource
 type: object
 description: The `raw` type of scoped variable `value`, referred to as a source.  This means that the value is static, not the result of a call to an external or internal URL.
 required:
-  - string
-  - blob
+  - type
+  - details
 properties:
-  string:
+  type:
     type: string
-    description: The value of the source.
-  blob:
-    type: boolean
-    description: A boolean where true represents the text the user is entering will be multi line.
+    description: The type of source value, can be either `raw` or `url`.
+    enum:
+      - raw
+  details:
+    type: object
+    required:
+      - string
+      - blob
+    properties:
+      string:
+        type: string
+        description: The value of the source.
+      blob:
+        type: boolean
+        description: A boolean where true represents the text the user is entering will be multi line.
