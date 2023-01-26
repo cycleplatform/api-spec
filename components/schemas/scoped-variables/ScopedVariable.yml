@@ -41,22 +41,6 @@ properties:
         description: A hint for the decryption password.
   scope:
     "$ref": "./ScopedVariableScope.yml"
-  # source:
-  #   type: object
-  #   description: The source or value of the scoped variable.
-  #   discriminator:
-  #     propertyName: type
-  #   properties:
-  #     type:
-  #       type: string
-  #       description: The type of source value, can be either `raw` or `url`.
-  #       enum:
-  #         - raw
-  #         - url
-  #     details:
-  #       oneOf:
-  #         - "$ref": "./URLSource.yml"
-  #         - "$ref": "./RawSource.yml"
   source:
     type: object
     description: The source or value of the scoped variable.
