@@ -29,21 +29,48 @@ post:
             contents:
               type: object
               properties:
-                config:
-                  type: object
-                  description: An optional load balancer configuration.
-                  properties:
-                    haproxy:
-                      $ref: ../../../../../components/schemas/environments/config/HAProxyConfig.yml
-                    ipv4:
-                      type: boolean
-                      description: A boolean where `true` represents the desire for a IPv4 address(s) to be assigned to the environment load balancer(s).
-                    ipv6:
-                      type: boolean
-                      description: A boolean where `true` represents the desire for a IPv6 address(s) to be assigned to the environment load balancer(s).
+                customize:
+                  type: boolean
+                  description: Boolean that sets custom vs default VPN configuration
                 high_availability:
                   type: boolean
                   description: A boolean where `true` represents the desire to run the environment load balancer service in high availability mode.
+                config:
+                  type: object
+                  description: The config object for the loadbalancer service.
+                  nullable: true
+                  required:
+                    - haproxy
+                  properties:
+                    version:
+                      type: string
+                    ipv4:
+                      type: boolean
+                      nullable: true
+                      description: Allow / disallow traffic to be routed via IPv4.
+                    ipv6:
+                      type: boolean
+                      nullable: true
+                      description: Allow / disallow traffic to be routed via IPv6.
+                    haproxy:
+                      type: object
+                      description:
+                        Describes settings that are passed to HAProxy within the load
+                        balancer.
+                      nullable: true
+                      required:
+                        - default
+                        - ports
+                      properties:
+                        default:
+                          $ref: ../../../../../components/schemas/environments/config/HAProxyConfig.yml
+                        ports:
+                          type: object
+                          additionalProperties:
+                            type: string
+                            oneOf:
+                              - $ref: ../../../../../components/schemas/environments/config/HAProxyConfig.yml
+
   responses:
     200:
       description: Returns a task descriptor.

@@ -92,10 +92,12 @@ patch:
               $ref: ../../../components/schemas/scoped-variables/ScopedVariableScope.yml
             source:
               type: object
-              description: The source or value of the scope variable.  Can be `raw` or `url`.
-              oneOf:
-                - $ref: ../../../components/schemas/scoped-variables/URLSource.yml
+              description: The source or value of the scoped variable.
+              discriminator:
+                propertyName: type
+              anyOf:
                 - $ref: ../../../components/schemas/scoped-variables/RawSource.yml
+                - $ref: ../../../components/schemas/scoped-variables/URLSource.yml
   responses:
     200:
       description: Returns a scoped variable resource.

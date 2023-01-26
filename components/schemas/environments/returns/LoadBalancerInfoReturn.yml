@@ -90,11 +90,11 @@ properties:
                       port. The key is a custom port, and the value is the same settings
                       object found under `default` above.
                   - "$ref": "../config/HAProxyConfig.yml"
-              ipv4:
-                type: boolean
-                nullable: true
-                description: Allow / disallow traffic to be routed via IPv4.
-              ipv6:
-                type: boolean
-                nullable: true
-                description: Allow / disallow traffic to be routed via IPv6.
+          ipv4:
+            type: boolean
+            nullable: true
+            description: Allow / disallow traffic to be routed via IPv4.
+          ipv6:
+            type: boolean
+            nullable: true
+            description: Allow / disallow traffic to be routed via IPv6.
