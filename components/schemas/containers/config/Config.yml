@@ -6,12 +6,12 @@ required:
   - deploy
 properties:
   network:
-    "$ref": "../config/ContainerNetwork.yml"
+    $ref: ContainerNetwork.yml
   deploy:
-    "$ref": "../config/_deploy.yml"
+    $ref: ContainerDeploy.yml
   runtime:
-    "$ref": "../config/Runtime.yml"
+    $ref: ContainerRuntime.yml
   resources:
-    "$ref": "../config/Resources.yml"
+    $ref: ContainerResources.yml
   integrations:
-    "$ref": "../config/ContainerIntegrations.yml"
+    $ref: ContainerIntegrations.yml
