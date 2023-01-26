@@ -3,6 +3,7 @@ type: object
 description: Runtime configurations for a given container.
 required:
   - privileged
+  - seccomp
 properties:
   command:
     type: object
@@ -36,11 +37,50 @@ properties:
       type: string
   privileged:
     type: boolean
-    description: A boolean where true will configure the given container to run in privileged mode.
+    description: Selecting this option will give this container full permissions on the server. This is not recommended and increases the likelihood of your server being compromised.
   capabilities:
     type: array
     items:
       type: string
+      enum:
+        - CAP_CHOWN
+        - CAP_FSETID
+        - CAP_DAC_OVERRIDE
+        - CAP_FOWNER
+        - CAP_SETFCAP
+        - CAP_SETGID
+        - CAP_SETUID
+        - CAP_KILL
+        - CAP_MKNOD
+        - CAP_NET_BIND_SERVICE
+        - CAP_NET_RAW
+        - CAP_AUDIT_WRITE
+        - CAP_SYS_CHROOT
+        - CAP_SETPCAP
+        - CAP_DAC_READ_SEARCH
+        - CAP_NET_ADMIN
+        - CAP_NET_BROADCAST
+        - CAP_SYS_ADMIN
+        - CAP_SYS_MODULE
+        - CAP_SYS_NICE
+        - CAP_SYS_PACCT
+        - CAP_SYS_PTRACE
+        - CAP_SYS_RAWIO
+        - CAP_SYS_RESOURCE
+        - CAP_SYS_BOOT
+        - CAP_SYS_TIME
+        - CAP_SYS_TTY_CONFIG
+        - CAP_SYSLOG
+        - CAP_AUDIT_CONTROL
+        - CAP_AUDIT_READ
+        - CAP_IPC_LOCK
+        - CAP_IPC_OWNER
+        - CAP_LINUX_IMMUTABLE
+        - CAP_MAC_ADMIN
+        - CAP_MAC_OVERRIDE
+        - CAP_BLOCK_SUSPEND
+        - CAP_LEASE
+        - CAP_WAKE_ALARM
     description: A list of linux kernel capabilites for the given container.
   workdir:
     type: string
@@ -62,3 +102,19 @@ properties:
         soft:
           type: integer
           description: The soft limit for the rlimit.
+  seccomp:
+    nullable: true
+    type: object
+    properties:
+      disable:
+        type: boolean
+      rules:
+        type: array
+        items:
+          $ref: seccomp/SeccompRule.yml
+  rootfs:
+    type: object
+    properties:
+      readonly:
+        description: Enabling this option will set the containers filesystem to readonly. Volumes associated with the container will not be affected by this.
+        type: boolean

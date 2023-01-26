@@ -1,0 +1,44 @@
+---
+title: SeccompRule
+description: Rules for controlling Linux seccomp inside a container.
+type: object
+properties:
+  capabilities:
+    type: object
+    properties:
+      includes:
+        type: string
+      excludes:
+        type: string
+  syscall:
+    type: object
+    description: LinuxSyscall is used to match a syscall in Seccomp
+    required:
+      - names
+      - action
+    properties:
+      names:
+        type: array
+        items: 
+          type: string
+      action: 
+        type: string
+      errnoRet:
+        type: integer
+      args:
+        type: array
+        items:
+          type: object
+          required:
+            - index
+            - value
+            - op
+          properties:
+            index:
+              type: integer
+            value:
+              type: integer
+            valueTwo:
+              type: integer
+            op: 
+              type: string
