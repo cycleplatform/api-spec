@@ -153,7 +153,7 @@ patch:
       $ref: ../../../../components/responses/errors/503.yml
 delete:
   summary: Remove a Server
-  operationId: "removeServer"
+  operationId: "Remove Server"
   tags:
     - Servers
   parameters:
