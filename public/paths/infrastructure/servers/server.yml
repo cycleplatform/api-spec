@@ -152,8 +152,9 @@ patch:
     503:
       $ref: ../../../../components/responses/errors/503.yml
 delete:
-  summary: Remove a Server
-  operationId: "Remove Server"
+  summary: Remove Server
+  description: Requires the `servers-update` capability.
+  operationId: "removeServer"
   tags:
     - Servers
   parameters:
