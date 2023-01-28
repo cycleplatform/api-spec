@@ -15,7 +15,7 @@ properties:
       email: 
         type: string 
         description: An email address to assocaite with Lets Encrypt certificates generated for DNS records on this hub. 
-  backbalze_b2: 
+  backblaze_b2: 
     type: object 
     description: Information about the Backblaze account and bucket assocaited with the given hub. 
     required: 
