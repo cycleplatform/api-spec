@@ -40,7 +40,9 @@ properties:
     type: integer
     description: The number of instances for a given container.
   volumes:
-    "$ref": "./summaries/VolumeSummary.yml"
+    type: array
+    items:
+      $ref: ./summaries/VolumeSummary.yml
   annotations:
     type: object
     description: Custom meta data for a given container

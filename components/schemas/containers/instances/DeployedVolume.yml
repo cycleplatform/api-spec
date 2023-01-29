@@ -37,9 +37,9 @@ properties:
       - total 
     properties: 
       used: 
-        type: string 
+        type: integer 
         description: The amount of volume storage used, in MB's
       total: 
-        type: string 
+        type: integer 
         description: The total amount of volume storage available, in MB's. 
         
