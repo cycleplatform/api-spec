@@ -153,23 +153,29 @@ properties:
       type:
         type: string
       details:
-        id:
-          type: string
-        origin:
-          type: object
-          required:
-            - type
-            - details
-          properties:
-            type:
-              type: string
-            details:
-              required:
-                - type
-                - target
-              type: object
-              properties:
-                target: string
+        type: object
+        required:
+          - id
+          - origin
+        properties:
+          id:
+            type: string
+          origin:
+            type: object
+            required:
+              - type
+              - details
+            properties:
+              type:
+                type: string
+              details:
+                required:
+                  - type
+                  - target
+                type: object
+                properties:
+                  target:
+                    type: string
   creator:
     "$ref": "../Creator.yml"
   state:
