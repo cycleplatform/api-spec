@@ -45,7 +45,7 @@ info:
     ## Queries
     When trying to gather more complete or specific data you can use query paramaters to supplement the normal return (metas,
     includes) and you can also add specificity to the format and the order (sort, filter). It's worth understanding that
-    sort && filter should only be used on collections.
+    sort & filter should only be used on collections.
 
     **Sort** - An array of sort values. To sort descending, put a `-`n front of the value, i.e. `-id`.
 
@@ -311,7 +311,7 @@ paths:
     "$ref": "./paths/infrastructure/servers/instances.yml"
   "/v1/infrastructure/servers/{serverId}/tasks":
     "$ref": "./paths/infrastructure/servers/tasks.yml"
-  "/v1/infrastructure/servers/{serverId}/tags":
+  "/v1/infrastructure/servers/tags":
     "$ref": "./paths/infrastructure/servers/tags.yml"
   "/v1/infrastructure/servers/clusters":
     "$ref": "./paths/infrastructure/servers/clusters.yml"
