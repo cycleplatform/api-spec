@@ -145,7 +145,31 @@ properties:
         type: string
         description: A set command to be run if a signal is called.
   source:
-    "$ref": "./sources/ImageSource.yml"
+    type: object
+    required:
+      - type
+      - details
+    properties:
+      type:
+        type: string
+      details:
+        id:
+          type: string
+        origin:
+          type: object
+          required:
+            - type
+            - details
+          properties:
+            type:
+              type: string
+            details:
+              required:
+                - type
+                - target
+              type: object
+              properties:
+                target: string
   creator:
     "$ref": "../Creator.yml"
   state:

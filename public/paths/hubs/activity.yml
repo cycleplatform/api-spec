@@ -16,6 +16,8 @@ get:
         items:
           type: string
           enum:
+            - users
+            - components
             - creators
             - images
             - stack_builds

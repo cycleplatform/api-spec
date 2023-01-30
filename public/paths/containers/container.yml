@@ -102,6 +102,12 @@ patch:
             name:
               type: string
               description: The name for the container.
+            identifier:
+              type: string
+              description: The name for the identifier.
+            deprecate:
+              type: boolean
+              description: Sets whether container should be deprecated.
             annotation:
               type: object
               description: User meta data for the container.
