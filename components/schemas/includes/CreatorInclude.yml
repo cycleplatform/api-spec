@@ -37,4 +37,3 @@ properties:
     additionalProperties:
       # Set the whole public account schema for each key-value.
       $ref: "../creators/ApiKeyCreator.yml"
-    

@@ -2,7 +2,8 @@ title: ActivityIncludes
 description: All includable resources linkable to the given records.
 type: object
 properties:
-  creators:
+  users:
+    # TODO - I think this should be User Include in this case.  Just need to check cross deps
     "$ref": "../../includes/CreatorInclude.yml"
   components:
     "$ref": "../../includes/ComponentsIncludes.yml"
