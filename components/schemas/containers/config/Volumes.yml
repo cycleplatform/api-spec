@@ -24,7 +24,7 @@ properties:
   destination:
     type: string
     description: The mountpoint path for the container.
-  reomte_access:
+  remote_access:
     type: object
     description: Configuration settings for remotely accessing the container volume.
     required:
