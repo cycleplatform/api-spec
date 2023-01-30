@@ -1,6 +1,6 @@
-title: InstanceResouceTelemetryReport
+title: InstanceTelemetryReport
 type: object
-description: An instance resource telemetry report resource.
+description: An instance telemetry report.
 required:
   - request
   - snapshots
