@@ -1,15 +1,21 @@
 title: DockerHubSource
-type: object
-description: An image source origin that pulls from DockerHub.
-required:
-  - target
 properties:
-  target:
+  type:
     type: string
-    description: The DockerHub target string. ex - `mysql:5.7`
-  username:
-    type: string
-    description: For authentication, a username.
-  token:
-    type: string
-    description: For authentication, a token.
+    enum:
+      - docker-hub
+  details:
+    type: object
+    description: An image source origin that pulls from DockerHub.
+    required:
+      - target
+    properties:
+      target:
+        type: string
+        description: The DockerHub target string. ex - `mysql:5.7`
+      username:
+        type: string
+        description: For authentication, a username.
+      token:
+        type: string
+        description: For authentication, a token.
