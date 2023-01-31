@@ -55,7 +55,9 @@ get:
             type: object
             properties:
               data:
-                $ref: ../../../components/schemas/infrastructure/servers/Server.yml
+                type: array
+                items:
+                  $ref: ../../../components/schemas/infrastructure/servers/Server.yml
               includes:
                 $ref: ../../../components/schemas/infrastructure/servers/ServerIncludes.yml
     400:

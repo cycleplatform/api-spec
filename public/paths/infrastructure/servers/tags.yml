@@ -1,14 +1,10 @@
 get:
-  operationId: "getServersTags"
+  operationId: "getServerTags"
   tags:
     - Servers
   parameters:
-    - name: serverId
-      description: The ID for the given server.
-      in: path
-      required: true
-      schema:
-        type: string
+    - $ref: ../../../../components/parameters/FilterParam.yml
+      
   summary: List Server Tags
   description: Requires the `servers-view` capability.
   responses:
