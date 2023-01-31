@@ -1,49 +1,45 @@
 title: RepoSourceType
-type: object 
-description: A repo source type. 
-properties: 
-  repo:
+type: object
+description: Information about the repostiory.
+required:
+  - url
+properties:
+  url:
+    type: string
+    description: The URL of the repository.
+  branch:
+    type: string
+    description: An optional branch arguement.  Default value is `master`.
+  auth:
     type: object
-    description: Information about the repostiory.
+    description: Authentication information for the repository.
     required:
-      - url
+      - type
+      - credentials
     properties:
-      url:
+      # TODO can I use type here?
+      type:
         type: string
-        description: The URL of the repository.
-      branch:
+        description: The `type` of authentication being used.
+      credentials:
+        type: object
+        description: Authentication credentials for the given type.
+        oneOf:
+          - "$ref": "./CredentialsHTTP.yml"
+          - "$ref": "./CredentialsSSH.yml"
+  ref:
+    type: object
+    description: Repository reference information.
+    required:
+      - type
+      - value
+    properties:
+      type:
         type: string
-        description: An optional branch arguement.  Default value is `master`.
-      auth:
-        type: object
-        description: Authentication information for the repository.
-        required:
-          - type
-          - credentials
-        properties:
-          # TODO can I use type here?
-          type:
-            type: string
-            description: The `type` of authentication being used.
-          credentials:
-            type: object
-            description: Authentication credentials for the given type.
-            oneOf:
-              - "$ref": "./CredentialsHTTP.yml"
-              - "$ref": "./CredentialsSSH.yml"
-      ref:
-        type: object
-        description: Repository reference information.
-        required:
-          - type
-          - value
-        properties:
-          type:
-            type: string
-            description: The type of reference being used.
-            enum:
-              - hash
-              - tag
-          value:
-            type: string
-            description: The value for the given reference type.
+        description: The type of reference being used.
+        enum:
+          - hash
+          - tag
+      value:
+        type: string
+        description: The value for the given reference type.

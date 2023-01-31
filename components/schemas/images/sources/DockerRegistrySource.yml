@@ -1,19 +1,25 @@
 title: DockerRegistrySource
-type: object
-description: An image source origin that pulls from a private Docker registry.
-required:
-  - target
-  - url
 properties:
-  target:
+  type:
     type: string
-    description: The image name on the registry.
-  url:
-    type: string
-    description: The url of the remote registry.
-  username:
-    type: string
-    description: For authentication, a username.
-  password:
-    type: string
-    description: For authentication, a password.
+    enum:
+      - docker-registry
+  details:
+    type: object
+    description: An image source origin that pulls from a private Docker registry.
+    required:
+      - target
+      - url
+    properties:
+      target:
+        type: string
+        description: The image name on the registry.
+      url:
+        type: string
+        description: The url of the remote registry.
+      username:
+        type: string
+        description: For authentication, a username.
+      password:
+        type: string
+        description: For authentication, a password.
