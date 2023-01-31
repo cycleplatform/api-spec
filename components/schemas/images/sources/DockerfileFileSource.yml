@@ -8,6 +8,7 @@ properties:
     type: object
     description: An image source origin that creates an image from a Dockerfile that's listed in a repository.
     properties:
+      # TODO toggle between repo / tarball
       repo:
         "$ref": "./RepoType.yml"
       targz_url:

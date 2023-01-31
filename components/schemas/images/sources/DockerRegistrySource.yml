@@ -20,6 +20,9 @@ properties:
       username:
         type: string
         description: For authentication, a username.
+      token:
+        type: string
+        description: For authentication, a token.
       password:
         type: string
         description: For authentication, a password.
