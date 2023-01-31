@@ -24,7 +24,9 @@ get:
             type: object
             properties:
               data:
-                $ref: ../../../../components/schemas/containers/backups/Backup.yml
+                type: array
+                items:
+                  $ref: ../../../../components/schemas/containers/backups/Backup.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:
