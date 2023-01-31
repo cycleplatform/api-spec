@@ -34,8 +34,16 @@ properties:
       enable:
         type: boolean
         description: A boolean where true represents this container volume being open to remote access connections over SFTP.
+      ips:
+        type: array
+        items: 
+          type: string
+      web_hook:
+        type: string
+        description: Call out to a webhook to authenticate usernames/passwords if an organization manages their own accounts
       password:
         type: object
+        nullable: true
         description: Password configuration settings for the remote access of the container volume.
         required:
           - algorithm
