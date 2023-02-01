@@ -161,6 +161,7 @@ properties:
     required:
       - type
       - details
+    # TODO update with discrimantor based on selected type
     properties:
       type:
         type: string
@@ -168,9 +169,12 @@ properties:
         type: object
         required:
           - id
+          - stack_id
           - origin
         properties:
           id:
+            type: string
+          stack_id:
             type: string
           origin:
             $ref: ../../schemas/images/sources/ImageSourceOrigin.yml

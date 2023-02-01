@@ -112,7 +112,9 @@ post:
             config:
               "$ref": "../../../components/schemas/containers/config/Config.yml"
             volumes:
-              "$ref": "../../../components/schemas/containers/config/Volumes.yml"
+              type: array
+              items:
+                $ref: ../../../components/schemas/containers/config/Volumes.yml
             annotations:
               type: object
               description: User defined meta data for the container.
