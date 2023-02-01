@@ -99,7 +99,19 @@ properties:
         description: The port settings for the image.
         type: array
         items:
-          type: string
+          type: object
+          required:
+            - host
+            - container
+            - type
+          properties:
+            host:
+              description: Host Port
+              type: number
+            container:
+              type: number
+            type:
+              type: string
       env:
         type: object
         description: Image defined environment variables for the image.
@@ -161,21 +173,7 @@ properties:
           id:
             type: string
           origin:
-            type: object
-            required:
-              - type
-              - details
-            properties:
-              type:
-                type: string
-              details:
-                required:
-                  - type
-                  - target
-                type: object
-                properties:
-                  target:
-                    type: string
+            $ref: ../../schemas/images/sources/ImageSourceOrigin.yml
   creator:
     "$ref": "../Creator.yml"
   state:

@@ -15,6 +15,9 @@ properties:
     "$ref": "../../HubID.yml"
   integration:
     "$ref": "./Integration.yml"
+  name:
+    type: string
+    description: A string describing the name of a provider
   events:
     title: ProviderEvents
     type: object
