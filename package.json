@@ -7,7 +7,7 @@
     "lint": "npm run lint:public && npm run lint:internal",
     "lint:public": "npx @redocly/cli lint ./public/api.yml",
     "lint:internal": "npx @redocly/cli lint ./internal/api.yml",
-    "build": "npm run build:public && npm run build:internal && npm run build:admin",
+    "build": "npm run build:public && npm run build:internal",
     "build:public": "npx @redocly/cli bundle public/api.yml --output dist/public-api.yml",
     "build:internal": "npx @redocly/cli bundle internal/api.yml --output dist/internal-api.yml",
     "build:ts-models": "npx @openapitools/openapi-generator-cli generate --skip-validate-spec --global-property models -i dist/public-api.yml -g typescript-fetch -o ./dist/models/typescript",
