@@ -17,7 +17,7 @@ get:
           type: string
           enum:
             - creators
-            - environemnts
+            - environments
     - $ref: ../../../components/parameters/SortParam.yml
     - $ref: ../../../components/parameters/FilterParam.yml
     - $ref: ../../../components/parameters/PageParam.yml

@@ -51,6 +51,8 @@ get:
             properties:
               data:
                 $ref: ../../../../components/schemas/images/sources/ImageSource.yml
+              includes:
+                $ref: ../../../../components/schemas/images/sources/SourceIncludes.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:

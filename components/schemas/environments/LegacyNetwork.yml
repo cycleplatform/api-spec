@@ -4,13 +4,13 @@ type: object
 nullable: true
 description: Legacy network information for an environment.
 required:
-- subnet
-- ipv4
+  - subnet
+  - ipv4
 properties:
   subnet:
     type: integer
     description: The IPv4 subnet Id.
   ipv4:
     allOf:
-    - description: IPv4 information available from environemnts using legacy networking.
-    - "$ref": "./IPNet.yml"
+      - description: IPv4 information available from environments using legacy networking.
+      - $ref: ./IPNet.yml
