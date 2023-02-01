@@ -97,13 +97,7 @@ post:
                 - stack_build
                 - direct
             origin:
-              type: object
-              description: The origin of the given image source.
-              oneOf:
-                - $ref: ../../../../components/schemas/images/sources/DockerHubSource.yml
-                - $ref: ../../../../components/schemas/images/sources/DockerfileRepoSource.yml
-                - $ref: ../../../../components/schemas/images/sources/DockerfileTarSource.yml
-                - $ref: ../../../../components/schemas/images/sources/DockerRegistrySource.yml
+              $ref: "../../../../components/schemas/images/sources/ImageSourceOrigin.yml"
             about:
               type: object
               description: User defined information about the image source.
