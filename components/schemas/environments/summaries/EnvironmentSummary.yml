@@ -1,8 +1,7 @@
 ---
 title: EnvironmentSummary
 type: object
-description:
-  Contains useful and relevant data/statistics for an environment that would otherwise be several separate API calls.
+description: Contains useful and relevant data/statistics for an environment that would otherwise be several separate API calls.
 required:
   - id
   - state
@@ -10,24 +9,27 @@ required:
   - stats
 properties:
   id:
-    "$ref": "../../ID.yml"
+    $ref: "../../ID.yml"
   state:
-    "$ref": "../EnvironmentState.yml"
+    $ref: "../EnvironmentState.yml"
   services:
     title: EnvironmentServiceSummary
     type: object
     description: An object containing information about the service containers associated with this container. Each key is the name of a service, one of `discovery`, `vpn`, or `loadbalancer`.
     required:
-    - loadbalancer
-    - discovery
-    - vpn
+      - loadbalancer
+      - discovery
+      - vpn
     properties:
       loadbalancer:
-        "$ref": "./EnvironmentServiceContainerSummary.yml"
+        nullable: true
+        $ref: "./EnvironmentServiceContainerSummary.yml"
       discovery:
-        "$ref": "./EnvironmentServiceContainerSummary.yml"
+        nullable: true
+        $ref: "./EnvironmentServiceContainerSummary.yml"
       vpn:
-        "$ref": "./EnvironmentServiceContainerSummary.yml"
+        nullable: true
+        $ref: "./EnvironmentServiceContainerSummary.yml"
   stats:
     title: EnvironmentSummaryStats
     type: object
@@ -35,11 +37,10 @@ properties:
     required:
       - containers
       - instances
-    properties: 
+    properties:
       containers:
         $ref: "../../StateCountSummary.yml"
-        # You could add an example here using allOf 
+        # You could add an example here using allOf
         # for specific container states, but the regular example should be fine.
       instances:
         $ref: "../../StateCountSummary.yml"
-
