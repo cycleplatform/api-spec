@@ -4,7 +4,7 @@ servers:
   - description: Cycle Public API
     url: https://api.cycle.io
 info:
-  license: 
+  license:
     name: CC-BY-3.0
     url: https://creativecommons.org/licenses/by/3.0/
   description: |
@@ -215,15 +215,15 @@ paths:
   # DNS {domains, tls attempts}
   "/v1/dns/zones":
     "$ref": "./paths/dns/zones.yml"
-  "/v1/dns/{zoneId}":
+  "/v1/dns/zones/{zoneId}":
     "$ref": "./paths/dns/zone.yml"
-  "/v1/dns/{zoneId}/tasks":
+  "/v1/dns/zones/{zoneId}/tasks":
     "$ref": "./paths/dns/tasks.yml"
-  "/v1/dns/{zoneId}/records":
+  "/v1/dns/zones/{zoneId}/records":
     "$ref": "./paths/dns/records/records.yml"
-  "/v1/dns/{zoneId}/records/{recordId}":
+  "/v1/dns/zones/{zoneId}/records/{recordId}":
     "$ref": "./paths/dns/records/record.yml"
-  "/v1/dns/{zoneId}/records/{recordId}/tasks":
+  "/v1/dns/zones/{zoneId}/records/{recordId}/tasks":
     "$ref": "./paths/dns/records/tasks.yml"
   "/v1/dns/tls/attempts":
     "$ref": "./paths/dns/tls/attempts.yml"
