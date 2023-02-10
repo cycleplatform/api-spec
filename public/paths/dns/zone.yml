@@ -111,7 +111,7 @@ patch:
     503:
       $ref: ../../../components/responses/errors/503.yml
 delete:
-  operationId: "deleteDNSZone"
+  operationId: "removeDNSZone"
   tags:
     - DNS
   parameters:
@@ -121,7 +121,7 @@ delete:
       required: true
       schema:
         type: string
-  summary: Delete DNS Zone
+  summary: Remove DNS Zone
   description: Requires the `dns-manage` capability.
   responses:
     200:

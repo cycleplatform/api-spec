@@ -95,7 +95,7 @@ patch:
     503:
       $ref: ../../../components/responses/errors/503.yml
 delete:
-  operationId: "deleteStack"
+  operationId: "removeStack"
   tags:
     - Stacks
   parameters:
@@ -105,7 +105,7 @@ delete:
       description: The ID of the stack
       schema:
         type: string
-  summary: Delete Stack
+  summary: Remove Stack
   description: Requires the `stacks-manage` capability.
   responses:
     200:

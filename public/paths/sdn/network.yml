@@ -96,7 +96,7 @@ patch:
     503:
       $ref: ../../../components/responses/errors/503.yml
 delete:
-  operationId: "deleteSDNNetwork"
+  operationId: "removeSDNNetwork"
   tags:
     - SDN
   parameters:
@@ -106,7 +106,7 @@ delete:
       description: The ID of the network.
       schema:
         type: string
-  summary: Delete SDN
+  summary: Remove SDN
   description: Requires the `sdn-networks-manage` capability.
   responses:
     200:

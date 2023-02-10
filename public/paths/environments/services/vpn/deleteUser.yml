@@ -1,5 +1,5 @@
 delete:
-  operationId: "deleteVPNUser"
+  operationId: "removeVPNUser"
   tags:
     - Environments
   parameters:
@@ -15,7 +15,7 @@ delete:
       required: true
       schema:
         type: string
-  summary: Delete VPN user
+  summary: Remove VPN user
   description: Requires the `environments-vpn-manage` capability.
   responses:
     200:

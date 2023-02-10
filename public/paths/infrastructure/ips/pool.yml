@@ -41,7 +41,7 @@ get:
     503:
       $ref: ../../../../components/responses/errors/503.yml
 delete:
-  operationId: "deleteIPPool"
+  operationId: "removeIpPool"
   tags:
     - InfrastructureIPs
   parameters:
@@ -51,7 +51,7 @@ delete:
       required: true
       schema:
         type: string
-  summary: Delete Pool IP
+  summary: Remove Pool IP
   description: Requires the `infrastructure-ips-manage` capability.
   responses:
     200:
