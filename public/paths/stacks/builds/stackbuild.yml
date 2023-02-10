@@ -47,7 +47,7 @@ get:
     503:
       $ref: ../../../../components/responses/errors/503.yml
 delete:
-  operationId: "deleteStackBuild"
+  operationId: "removeStackBuild"
   tags:
     - Stacks
   parameters:
@@ -63,7 +63,7 @@ delete:
       description: The ID of the build.
       schema:
         type: string
-  summary: Delete Stack Build
+  summary: Remove Stack Build
   description: Requires the `stacks-manage` capability.
   responses:
     200:

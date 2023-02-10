@@ -136,7 +136,7 @@ patch:
     503:
       $ref: ../../../../components/responses/errors/503.yml
 delete:
-  operationId: "deleteImageSource"
+  operationId: "removeImageSource"
   tags:
     - Images
   parameters:
@@ -146,7 +146,7 @@ delete:
       description: The ID of the image source.
       schema:
         type: string
-  summary: Delete a given image source
+  summary: Remove a given image source
   description: Requires the `images-import` capability.
   responses:
     200:

@@ -23,6 +23,7 @@ get:
           type: string
           enum:
             - creators
+            - containers
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/FilterParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml

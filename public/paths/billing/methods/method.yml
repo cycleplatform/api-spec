@@ -100,7 +100,7 @@ patch:
     503:
       $ref: ../../../../components/responses/errors/503.yml
 delete:
-  operationId: "deleteBillingMethod"
+  operationId: "removeBillingMethod"
   tags:
     - Billing
   parameters:

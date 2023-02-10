@@ -101,7 +101,7 @@ patch:
     503:
       $ref: ../../../components/responses/errors/503.yml
 delete:
-  operationId: "deletePipeline"
+  operationId: "removePipeline"
   tags:
     - Pipelines
   parameters:
@@ -111,7 +111,7 @@ delete:
       description: The ID of the pipeline.
       schema:
         type: string
-  summary: Delete Pipeline
+  summary: Remove Pipeline
   description: Requires the `pipelines-manage` capability.
   responses:
     200:

@@ -110,13 +110,13 @@ patch:
     503:
       $ref: ../../../components/responses/errors/503.yml
 delete:
-  operationId: "deleteHub"
+  operationId: "removeHub"
   tags:
     - Hubs
   security:
     - bearerAuth: []
   parameters: []
-  summary: Delete Hub
+  summary: Remove Hub
   description: Requires the `hubs-delete` capability. This can only be aquired by being the hub owner.
   responses:
     200:

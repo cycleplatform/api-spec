@@ -1,5 +1,5 @@
 delete:
-  operationId: "deleteHubInvite"
+  operationId: "removeHubInvite"
   tags:
     - Hubs
   security:
@@ -11,7 +11,7 @@ delete:
       required: true
       schema:
         type: string
-  summary: Delete Hub Invite
+  summary: Remove Hub Invite
   description: Requires the `hub-invites-manage` capability.
   responses:
     200:
@@ -19,7 +19,7 @@ delete:
       content:
         application/json:
           schema:
-            title: "DeleteHubInviteReturn"
+            title: "RemoveHubInviteReturn"
             type: object
             properties:
               data:

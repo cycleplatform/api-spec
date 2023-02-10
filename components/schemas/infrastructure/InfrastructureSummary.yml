@@ -6,9 +6,13 @@ required:
   - images
   - clusters
   - updated
+  - servers
 properties:
   hub_id:
     "$ref": "../HubID.yml"
+  servers:
+    type: number
+    description: The number of servers on the cluster
   images:
     type: object
     description: Statistics about image usage.

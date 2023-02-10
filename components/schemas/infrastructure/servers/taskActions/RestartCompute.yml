@@ -8,4 +8,4 @@ properties:
     type: string
     description: The action to take.
     enum:
-      - restart
+      - compute.restart
