@@ -1,5 +1,5 @@
-title: EnvironmentInstanceTelemetryPoint
-description: Telemetry points collection for instances in a given environment.
+title: InstanceTelemetryPoint
+description: A point-in-time snapshot of a count of instances by state.
 required:
   - time
   - instances
