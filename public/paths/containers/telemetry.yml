@@ -1,24 +1,24 @@
 get:
-  operationId: "getEnvironmentInstancesTelemetry"
+  operationId: "getContainerInstancesTelemetry"
   tags:
-    - Environments
+    - Containers
   parameters:
-    - name: environmentId
-      description: The ID of the desired environment
+    - name: containerId
+      description: The ID of the desired container
       in: path
       required: true
       schema:
         type: string
     - $ref: "../../../components/parameters/FilterParam.yml"
   summary: List Telemetry Data
-  description: Requires the `environments-view` capability.
+  description: Requires the `containers-view` capability.
   responses:
     200:
       description: Returns a collection of telemetry data points.
       content:
         application/json:
           schema:
-            title: "EnvironmentInstanceTelemetry"
+            title: "ContainerInstancesTelemetry"
             type: object
             properties:
               data:

@@ -177,7 +177,7 @@ paths:
     "$ref": "./paths/environments/scoped-variables.yml"
   "/v1/environments/{environmentId}/scoped-variables/{scopedVariableId}":
     "$ref": "./paths/environments/scoped-variable.yml"
-  # containers {telemetry /containers/id/telemetry/instances, events  }
+  # containers
   "/v1/containers":
     "$ref": "./paths/containers/containers.yml"
   "/v1/containers/{containerId}":
@@ -212,6 +212,8 @@ paths:
     "$ref": "./paths/containers/backups/tasks.yml"
   "/v1/containers/{containerId}/backups/{backupId}/logs":
     "$ref": "./paths/containers/backups/backupLogs.yml"
+  "/v1/containers/{containerId}/telemetry/instances":
+    $ref: paths/containers/telemetry.yml
   # DNS {domains, tls attempts}
   "/v1/dns/zones":
     "$ref": "./paths/dns/zones.yml"
