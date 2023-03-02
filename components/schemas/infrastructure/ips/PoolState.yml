@@ -4,10 +4,10 @@ allOf:
       - current
     properties:
       current:
-        description: the current state of the Pool.
+        description: The current state of the pool.
         type: string
         enum:
-          - live 
-          - releasing 
+          - live
+          - releasing
           - released
   - "$ref": "../../State.yml"

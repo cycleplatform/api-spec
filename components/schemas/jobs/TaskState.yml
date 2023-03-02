@@ -4,11 +4,11 @@ allOf:
       - current
     properties:
       current:
-        description: the current state of the task.
+        description: The current state of the task.
         type: string
         enum:
-          - pending 
-          - error 
-          - running 
-          - completed 
+          - pending
+          - error
+          - running
+          - completed
   - "$ref": "../State.yml"
