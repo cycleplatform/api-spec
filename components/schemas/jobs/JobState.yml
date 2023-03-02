@@ -4,14 +4,14 @@ allOf:
       - current
     properties:
       current:
-        description: the current state of the job.
+        description: The current state of the job.
         type: string
         enum:
           - new
-          - queued 
-          - error 
-          - scheduled 
-          - expired 
-          - running 
-          - completed  
+          - queued
+          - error
+          - scheduled
+          - expired
+          - running
+          - completed
   - "$ref": "../State.yml"
