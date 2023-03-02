@@ -8,9 +8,9 @@ allOf:
         type: string
         enum:
           - new
-          - live
           - provisioning
-          - offline
+          - configuring
+          - live
           - deleting
           - deleted
   - "$ref": "../../State.yml"

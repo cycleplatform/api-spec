@@ -23,7 +23,7 @@ properties:
         items:
           type: string
       state:
-        "$ref": "./ServerState.yml"
+        "$ref": "./NodeState.yml"
       stats:
         "$ref": "../stats/Stats.yml"
       healthy:

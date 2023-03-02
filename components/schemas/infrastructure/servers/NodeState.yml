@@ -1,1 +1,16 @@
 # Implement node state
+title: NodeState
+allOf:
+  - required:
+      - current
+    properties:
+      current:
+        description: the current state of the Node.
+        type: string
+        enum:
+          - new
+          - offline
+          - authorizing
+          - online
+          - decommissioned
+  - "$ref": "../../State.yml"
