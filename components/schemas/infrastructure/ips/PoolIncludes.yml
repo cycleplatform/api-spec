@@ -1,6 +1,6 @@
 title: PoolIncludes
 type: object
-description: A resource associated with an IP Pool.
+description: Resources associated with an IP Pool.
 required:
   - creators
   - servers
