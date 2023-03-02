@@ -5,7 +5,7 @@ allOf:
       - current
     properties:
       current:
-        description: The current state of the Node.
+        description: The current state of the node.
         type: string
         enum:
           - new
