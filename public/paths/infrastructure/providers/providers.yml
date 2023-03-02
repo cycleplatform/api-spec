@@ -19,6 +19,7 @@ get:
           enum:
             - node
             - instances_count
+            - locations
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/FilterParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml

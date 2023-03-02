@@ -4,7 +4,7 @@ description: A provider resource.
 required:
   - id
   - hub_id
-  - integrations
+  - integration
   - events
   - creator
   - state
@@ -44,3 +44,5 @@ properties:
     "$ref": "../../Creator.yml"
   state:
     "$ref": "./ProviderState.yml"
+  meta:
+    "$ref": "./ProviderMeta.yml"
