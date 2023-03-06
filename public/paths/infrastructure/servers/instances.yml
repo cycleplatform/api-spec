@@ -9,6 +9,7 @@ get:
       required: true
       schema:
         type: string
+    - $ref: "../../../../components/parameters/PageParam.yml"
     - name: include
       in: query
       required: false
