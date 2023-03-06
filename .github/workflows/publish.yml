@@ -1,7 +1,6 @@
 name: Publish API Spec
 on:
   workflow_dispatch:
-  push:
   release:
     types: [published]
 jobs:
