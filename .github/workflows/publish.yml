@@ -1,0 +1,28 @@
+name: Publish API Spec
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+jobs:
+  Publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install Dependencies
+        run: sudo apt-get update -y && sudo apt-get install openssh-server -y && sudo apt-get install sshpass -y && npm i
+      - name: Build Docs
+        run: npm run build
+      - name: Upload to SFTP server
+        env:
+          sftp_password: ${{secrets.SFTP_PASSWORD}}
+        run: |
+          sshpass -p "$sftp_password" sftp -oStrictHostKeyChecking=no -P 2022 \
+          6361f607716e770edcf653b7.60120f91b180486dfd1b6a59@zzwyt-aws-us-east-2.s.5a6b6f3df231a50001c2317c.cycle.io  -y <<EOF
+          cd api-spec
+          put ./dist/public-api.yml
+          put ./dist/internal-api.yml
+          bye
+          EOF
