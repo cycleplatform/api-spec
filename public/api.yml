@@ -103,7 +103,7 @@ security:
   - bearerAuth: []
     hubAuth: []
 paths:
-  # {changelog, channels, audit, announcements, surveys}
+  # {changelog, channels, audit, surveys}
   # Accounts {checked}
   "/v1/account":
     "$ref": "./paths/accounts/account.yml"
@@ -115,6 +115,9 @@ paths:
     "$ref": "./paths/accounts/memberships.yml"
   "/v1/account/logins":
     "$ref": "./paths/accounts/logins.yml"
+  # Announcements
+  "/v1/announcements":
+    $ref: "./paths/announcements/announcements.yml"
   # Billing {checked}
   "/v1/billing/orders":
     "$ref": "./paths/billing/orders/orders.yml"
