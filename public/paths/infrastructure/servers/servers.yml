@@ -35,8 +35,40 @@ get:
             - locations
             - models
             - providers
+    - name: filter
+      in: query
+      required: false
+      description: |
+        ## Filter Field 
+        The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
+
+        ## Possible Values
+        ### State
+        `filter[state][current]=value` state filtering will allow you to filter by the providers's current state.
+
+        ### Tags
+        `filter[tags]=tagone,tagtwo,tagthree` filtering by server tag.  Enter one or more tags (comma separated) and the return will include servers that match any tags in the list.
+
+        ### Clusters
+        `filter[clusters]=clusterone,clustertwo` filtering by cluster.  Enter one or more clusters (commas separated) and the return will include servers that match any clusters in the list.
+
+        ### Providers
+        `filter[providers]=providerone,providertwo` filtering by provider.  Enter one or more providers (commas separated) and the return will include servers that match any providers in the list.
+
+      schema:
+        type: object
+        additionalProperties:
+          type: string
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                type: string
+            - type: object
+              additionalProperties:
+                type: string
     - $ref: "../../../../components/parameters/SortParam.yml"
-    - $ref: "../../../../components/parameters/FilterParam.yml"
+    # - $ref: "../../../../components/parameters/FilterParam.yml"
     - $ref: "../../../../components/parameters/PageParam.yml"
   summary: List Servers
   description: Requires the `servers-view` capability.

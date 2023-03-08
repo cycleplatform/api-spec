@@ -44,7 +44,7 @@ get:
             - stacks
             - sources
     - $ref: ../../../components/parameters/SortParam.yml
-    - $ref: ../../../components/parameters/FilterParam.yml
+    # - $ref: ../../../components/parameters/FilterParam.yml shouldnt be on a single resource type
     - $ref: ../../../components/parameters/PageParam.yml
   responses:
     200:
