@@ -1,36 +1,36 @@
-title: Pipeline 
-type: object 
-description: A pipeline resource. 
-required: 
-  - id 
-  - hub_id 
-  - name 
-  - creator 
-  - disable 
-  - events 
-  - state 
+title: Pipeline
+type: object
+description: A pipeline resource.
+required:
+  - id
+  - hub_id
+  - name
+  - creator
+  - disable
+  - events
+  - state
 properties:
-  id: 
-    "$ref": "../ID.yml" 
-  name: 
-    type: string 
-    description: A name for the pipeline. 
-  creator: 
-    "$ref": "../Creator.yml" 
-  hub_id: 
-    "$ref": "../HubID.yml" 
-  disable: 
-    type: boolean 
-    description: A boolean where true signifies the pipeline is disabled. 
-  stages: 
-    description: An array of stages. 
-    type: array 
-    items: 
-      "$ref": "./PipelineStage.yml" 
+  id:
+    "$ref": "../ID.yml"
+  name:
+    type: string
+    description: A name for the pipeline.
+  creator:
+    "$ref": "../Creator.yml"
+  hub_id:
+    "$ref": "../HubID.yml"
+  disable:
+    type: boolean
+    description: A boolean where true signifies the pipeline is disabled.
+  stages:
+    description: An array of stages.
+    type: array
+    items:
+      "$ref": "./PipelineStage.yml"
   events:
     title: PipelineEvents
     type: object
-    description: A collection of timestamps for each event in the pipelines's lifetime.
+    description: A collection of timestamps for each event in the pipeline's lifetime.
     required:
       - created
       - updated
@@ -45,8 +45,5 @@ properties:
       deleted:
         description: The timestamp of when the pipeline was deleted.
         "$ref": "../DateTime.yml"
-  state: 
-    "$ref": "./PipelineState.yml" 
-
-
-  
+  state:
+    "$ref": "./PipelineState.yml"

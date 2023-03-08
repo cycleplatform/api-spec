@@ -21,7 +21,7 @@ get:
         `filter[search]=value` search for a value associated with a field on the given scoped variable(s).
 
         ### State
-        `filter[state][current]=value` state filtering will allow you to filter by the scoped variables's current state.
+        `filter[state]=value1,value2` state filtering will allow you to filter by the scoped variable's current state.
 
       schema:
         type: object
