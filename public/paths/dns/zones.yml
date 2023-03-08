@@ -26,7 +26,7 @@ get:
 
         ## Possible Values
         ### State
-        `filter[state]=value` state filtering will allow you to filter by the DNS zone's current state.
+        `filter[state]=value1,value2` state filtering will allow you to filter by the DNS zone's current state.
       schema:
         type: object
         additionalProperties:

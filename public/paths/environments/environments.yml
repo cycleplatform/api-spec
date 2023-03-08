@@ -48,7 +48,7 @@ get:
         `filter[search]=value` search for a value associated with a field on the given environment(s).
 
         ### State
-        `filter[state]=value` state filtering will allow you to filter by the environment's current state.
+        `filter[state]=value1,value2` state filtering will allow you to filter by the environment's current state.
 
         ### Stack Build
         `filter[stack_build]=ID` stack build filtering by ID.  Submit the ID of the stack build you wish to filter for and the return sill be any environments that have the stack build deployed to them.

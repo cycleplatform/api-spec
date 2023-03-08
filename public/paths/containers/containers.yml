@@ -53,7 +53,7 @@ get:
         `filter[search]=value` search containers for a value associated with a field on the given container(s).
 
         ### State
-        `filter[state]=value` state filtering will allow you to filter by the containers current state.
+        `filter[state]=value1,value2` state filtering will allow you to filter by the container's current state.
 
         ### Service
         `filter[service]=value` service filtering will allow you to filter by service type: `loadbalancer`, `discovery`, `vpn`.

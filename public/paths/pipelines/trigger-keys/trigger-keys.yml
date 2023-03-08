@@ -21,7 +21,7 @@ get:
         `filter[search]=value` search trigger keys for a value associated with a field on the given trigger key(s).
 
         ### State
-        `filter[state]=value` state filtering will allow you to filter by the trigger keys current state.
+        `filter[state]=value1,value2` state filtering will allow you to filter by the trigger key's current state.
 
       schema:
         type: object
