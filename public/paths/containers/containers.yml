@@ -41,8 +41,54 @@ get:
             - stack_builds
             - stacks
             - environments
+    - name: filter
+      in: query
+      required: false
+      description: |
+        ## Filter Field
+        The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
+
+        ## Possible Values
+        ### Search
+        `filter[search]=value` search containers for a value associated with a field on the given container(s).
+
+        ### State
+        `filter[state][current]=value` state filtering will allow you to filter by the containers current state.
+
+        ### Service
+        `filter[service]=value` service filtering will allow you to filter by service type: `loadbalancer`, `discovery`, `vpn`.
+
+        ### Public Network
+        `filter[public_network]=value` public network filtering will allow you to filter by the containers network settings: `enabled`, `disabled`, `egress-only`.
+
+        ### Image 
+        `filter[image]=ID` image filtering by ID.  Submit the ID of the image you wish to filter for and the return will be any containers currently using the image.
+
+        ### Environment
+        `filter[environment]=ID` environment filtering by ID.  Submit the ID of the environment you wish to filter for and the return will be any containers in that environment.
+
+        ### Tags
+        `filter[tags]=tagone,tagtwo,tagthree` container filtering using server tags. If the container has the tags you submit it will be part of the return. 
+
+        ### Stacks
+        `filter[stack]=ID` stack filtering by ID.  Submit the ID of the stack you wish to filter for and the return will be any containers deployed associated with 'containers' from the stack.
+
+      schema:
+        type: object
+        additionalProperties:
+          type: string
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                type: string
+            - type: object
+              additionalProperties:
+                type: string
+      style: deepObject
+
     - $ref: ../../../components/parameters/SortParam.yml
-    - $ref: ../../../components/parameters/FilterParam.yml
+    # - $ref: ../../../components/parameters/FilterParam.yml
     - $ref: ../../../components/parameters/PageParam.yml
   responses:
     200:

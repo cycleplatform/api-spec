@@ -36,8 +36,37 @@ get:
           enum:
             - creators
             - stacks
+    - name: filter
+      in: query
+      required: false
+      description: |
+        ## Filter Field 
+        The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
+
+        ## Possible Values
+        ### Search 
+        `filter[search]=value` search for a value associated with a field on the given environment(s).
+
+        ### State
+        `filter[state][current]=value` state filtering will allow you to filter by the environment's current state.
+
+        ### Stack Build
+        `filter[stack_build]=ID` stack build filtering by ID.  Submit the ID of the stack build you wish to filter for and the return sill be any environments that have the stack build deployed to them.
+
+      schema:
+        type: object
+        additionalProperties:
+          type: string
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                type: string
+            - type: object
+              additionalProperties:
+                type: string
     - $ref: ../../../components/parameters/SortParam.yml
-    - $ref: ../../../components/parameters/FilterParam.yml
+    # - $ref: ../../../components/parameters/FilterParam.yml
     - $ref: ../../../components/parameters/PageParam.yml
   summary: List Environments
   description: Requires the `environments-view` capability.

@@ -44,7 +44,7 @@ get:
             - models
             - providers
     - $ref: ../../../components/parameters/SortParam.yml
-    - $ref: ../../../components/parameters/FilterParam.yml
+    # - $ref: ../../../components/parameters/FilterParam.yml filter not listed - filters by config not sure thats the same
     - $ref: ../../../components/parameters/PageParam.yml
   responses:
     200:

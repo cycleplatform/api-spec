@@ -28,8 +28,37 @@ get:
             - providers
             - containers
             - environments
+    - name: filter
+      in: query
+      required: false
+      description: |
+        ## Filter Field 
+        The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
+
+        ## Possible Values
+        ### State
+        `filter[state][current]=value` state filtering will allow you to filter by the instances current state.
+        ### Search 
+        `filter[search]=value` search instances for a value associated with a field on the given instance(s).
+
+        ### Server
+        `filter[server]=ID` server filtering by ID.  Submit the ID of the server you wish to filter for and the return will be any instances of the container currently deployed to the given server.
+
+      schema:
+        type: object
+        additionalProperties:
+          type: string
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                type: string
+            - type: object
+              additionalProperties:
+                type: string
+
     - $ref: ../../../../components/parameters/SortParam.yml
-    - $ref: ../../../../components/parameters/FilterParam.yml
+    # - $ref: ../../../../components/parameters/FilterParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
   summary: List Instances
   description: Requires the `containers-view` capability.
