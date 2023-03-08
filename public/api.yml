@@ -166,8 +166,6 @@ paths:
     "$ref": "./paths/environments/services/discovery/tasks.yml"
   "/v1/environments/{environmentId}/services/vpn":
     "$ref": "./paths/environments/services/vpn/vpnInfo.yml"
-  "/v1/environments/{environmentId}/services/vpn/logins":
-    "$ref": "./paths/environments/services/vpn/logins.yml"
   "/v1/environments/{environmentId}/services/vpn/users":
     "$ref": "./paths/environments/services/vpn/users.yml"
   "/v1/environments/{environmentId}/services/vpn/users/{userId}":
