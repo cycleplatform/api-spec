@@ -275,8 +275,6 @@ paths:
     "$ref": "./paths/images/images.yml"
   "/v1/images/{imageId}":
     "$ref": "./paths/images/image.yml"
-  # "/v1/images/{imageId}/containers":
-  #   "$ref": "./paths/images/containers.yml" REMOVED FROM API
   "/v1/images/{imageId}/build-log":
     "$ref": "./paths/images/build-log.yml"
   "/v1/images/tasks":
