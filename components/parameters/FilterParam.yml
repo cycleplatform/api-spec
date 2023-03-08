@@ -2,7 +2,6 @@
 name: filter
 in: query
 required: false
-description: "The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for. For example, you may want to find all containers using image X. In this case, you'd pass a filter of `?filter[image]=X`"
 schema:
   type: object
   additionalProperties:

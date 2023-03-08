@@ -47,7 +47,7 @@ get:
               additionalProperties:
                 type: string
     - $ref: ../../../../components/parameters/SortParam.yml
-    # - $ref: ../../../../components/parameters/FilterParam.yml
+
     - $ref: ../../../../components/parameters/PageParam.yml
   summary: List Records
   description: Requires the `dns-view` capability.

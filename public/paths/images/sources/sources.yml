@@ -59,7 +59,7 @@ get:
               additionalProperties:
                 type: string
     - $ref: ../../../../components/parameters/SortParam.yml
-    # - $ref: ../../../../components/parameters/FilterParam.yml
+
     - $ref: ../../../../components/parameters/PageParam.yml
   summary: List Sources
   description: Requires the `images-view` capability.

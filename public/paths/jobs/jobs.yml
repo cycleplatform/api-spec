@@ -48,7 +48,7 @@ get:
               additionalProperties:
                 type: string
     - $ref: ../../../components/parameters/SortParam.yml
-    # - $ref: ../../../components/parameters/FilterParam.yml
+
     - $ref: ../../../components/parameters/PageParam.yml
   summary: List Jobs.
   description: Requires the `jobs-view` permission.

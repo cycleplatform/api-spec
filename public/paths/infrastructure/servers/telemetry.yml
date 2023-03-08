@@ -33,7 +33,6 @@ get:
               additionalProperties:
                 type: string
     - $ref: "../../../../components/parameters/SortParam.yml"
-    # - $ref: "../../../../components/parameters/FilterParam.yml"
     - $ref: "../../../../components/parameters/PageParam.yml"
   summary: List Server Telemetry
   description: Requires the `servers-view` capability. This call requires the filter query be used.

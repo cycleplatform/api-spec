@@ -88,7 +88,6 @@ get:
       style: deepObject
 
     - $ref: ../../../components/parameters/SortParam.yml
-    # - $ref: ../../../components/parameters/FilterParam.yml
     - $ref: ../../../components/parameters/PageParam.yml
   responses:
     200:

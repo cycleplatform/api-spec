@@ -32,7 +32,6 @@ get:
             - type: object
               additionalProperties:
                 type: string
-    # - $ref: "../../../components/parameters/FilterParam.yml"
   summary: List Telemetry Data
   description: Requires the `environments-view` capability.
   responses:

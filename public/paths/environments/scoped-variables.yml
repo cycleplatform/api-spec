@@ -36,7 +36,7 @@ get:
               additionalProperties:
                 type: string
     - $ref: ../../../components/parameters/SortParam.yml
-    # - $ref: ../../../components/parameters/FilterParam.yml
+
     - $ref: ../../../components/parameters/PageParam.yml
   summary: List Scoped Variables
   description: Requires the `scoped-variables-view` capability.

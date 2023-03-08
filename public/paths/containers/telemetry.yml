@@ -33,7 +33,6 @@ get:
               additionalProperties:
                 type: string
       style: deepObject
-    # - $ref: "../../../components/parameters/FilterParam.yml"
   summary: List Telemetry Data
   description: Requires the `containers-view` capability.
   responses:
