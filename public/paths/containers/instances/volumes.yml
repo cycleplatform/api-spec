@@ -16,7 +16,6 @@ get:
       schema:
         type: string
     - $ref: ../../../../components/parameters/SortParam.yml
-    - $ref: ../../../../components/parameters/FilterParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
   summary: Fetch Instance Volume(s)
   description: Requires the `containers-view` capability.

@@ -3,8 +3,30 @@ get:
   tags:
     - Servers
   parameters:
-    - $ref: ../../../../components/parameters/FilterParam.yml
-      
+    - name: filter
+      in: query
+      required: false
+      description: |
+        ## Filter Field 
+        The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
+
+        ## Possible Values
+        ### Cluster
+        `filter[cluster]=clusterone,clustertwo` filtering by cluster.  Enter one or more clusters (commas separated) and the return will include tags from servers that match any cluster(s) in the list.
+
+      schema:
+        type: object
+        additionalProperties:
+          type: string
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                type: string
+            - type: object
+              additionalProperties:
+                type: string
+
   summary: List Server Tags
   description: Requires the `servers-view` capability.
   responses:

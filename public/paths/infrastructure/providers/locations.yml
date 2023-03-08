@@ -10,7 +10,6 @@ get:
       schema:
         type: string
     - $ref: ../../../../components/parameters/SortParam.yml
-    - $ref: ../../../../components/parameters/FilterParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
   summary: List Provider Locations
   description: No capability required, public information (datacenter locations).
