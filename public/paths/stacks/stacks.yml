@@ -47,7 +47,7 @@ get:
         `filter[search]=value` search stacks for a value associated with a field on the given stack(s).
 
         ### State
-        `filter[state][current]=value` state filtering will allow you to filter by the stacks current state.
+        `filter[state]=value` state filtering will allow you to filter by the stacks current state.
 
       schema:
         type: object

@@ -56,7 +56,7 @@ get:
         `filter[search]=value` search stack builds for a value associated with a field on the given stack build(s).
 
         ### State
-        `filter[state][current]=value` state filtering will allow you to filter by the stack builds current state.
+        `filter[state]=value` state filtering will allow you to filter by the stack builds current state.
 
       schema:
         type: object

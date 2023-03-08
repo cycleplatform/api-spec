@@ -33,7 +33,7 @@ get:
         `filter[search]=value` search jobs for a value associated with a field on the given job(s).
 
         ### State
-        `filter[state][current]=value` state filtering will allow you to filter by the jobs current state.
+        `filter[state]=value` state filtering will allow you to filter by the jobs current state.
 
       schema:
         type: object

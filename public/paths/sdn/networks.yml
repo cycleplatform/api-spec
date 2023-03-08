@@ -31,7 +31,7 @@ get:
         `filter[search]=value` search networks for a value associated with a field on the given network(s).
 
         ### State
-        `filter[state][current]=value` state filtering will allow you to filter by the networks current state.
+        `filter[state]=value` state filtering will allow you to filter by the networks current state.
 
       schema:
         type: object
