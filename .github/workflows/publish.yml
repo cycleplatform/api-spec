@@ -18,6 +18,7 @@ jobs:
       - name: Upload to SFTP server
         env:
           sftp_password: ${{secrets.SFTP_PASSWORD}}
+          pipeline_secret: ${{secrets.PIPELINE_SECRET}}
         run: |
           sshpass -p "$sftp_password" sftp -oStrictHostKeyChecking=no -P 2022 \
           6361f607716e770edcf653b7.60120f91b180486dfd1b6a59@zzwyt-aws-us-east-2.s.5a6b6f3df231a50001c2317c.cycle.io  -y <<EOF
@@ -26,3 +27,9 @@ jobs:
           put ./dist/internal-api.yml
           bye
           EOF
+      - name: Deploy API Docs
+        run: |
+          curl https://api.cycle.io/v1/pipelines/62d88cf218797f392fa66bb9/trigger \
+            -H "Content-Type: application/json" \
+            -d "{ \"secret\": \"$pipeline_secret\" }" \
+            -X POST
