@@ -38,6 +38,7 @@ get:
         ## Possible Values
         ### State
         `filter[state]=value1,value2` state filtering will allow you to filter by the instance's current state.
+
         ### Search 
         `filter[search]=value` search instances for a value associated with a field on the given instance(s).
 
