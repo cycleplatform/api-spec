@@ -1,6 +1,6 @@
 title: Activity
 type: object
-description: An resource representing information about activity taking place on a given hub.
+description: A resource representing information about activity taking place on a given hub.
 required:
   - id
   - hub_id
@@ -81,6 +81,11 @@ properties:
       type:
         type: string
         description: The type of component.
+  tags:
+    type: array
+    description: An array of tags that denote things such as a type of security event, or can be user-provided.
+    items:
+      type: string
   status:
     type: string
     description: A status for the given activity.
@@ -90,6 +95,8 @@ properties:
       - request
       - success
       - error
+      - alert
+      - recovery
   event:
     type: string
     description: The activity event.
