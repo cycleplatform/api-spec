@@ -29,9 +29,6 @@ get:
             - type: array
               items:
                 type: string
-            - type: object
-              additionalProperties:
-                type: string
       style: deepObject
   summary: List Telemetry Data
   description: Requires the `containers-view` capability.

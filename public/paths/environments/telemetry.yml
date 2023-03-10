@@ -29,9 +29,6 @@ get:
             - type: array
               items:
                 type: string
-            - type: object
-              additionalProperties:
-                type: string
   summary: List Telemetry Data
   description: Requires the `environments-view` capability.
   responses:
