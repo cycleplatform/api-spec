@@ -1,0 +1,10 @@
+title: SecurityReportSummary
+type: object
+description: A summary of the security tags accumulated over the report's range.
+required:
+  - tags
+properties:
+  tags:
+    type: object
+    additionalProperties:
+      type: integer

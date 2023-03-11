@@ -1,0 +1,11 @@
+title: Range
+type: object
+description: A start and end date-time pair indicating a range of time
+required:
+  - start
+  - end
+properties:
+  start:
+    $ref: ./DateTime.yml
+  end:
+    $ref: ./DateTime.yml

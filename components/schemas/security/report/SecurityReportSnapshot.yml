@@ -1,0 +1,13 @@
+title: SecurityReportSnapshot
+type: object
+description: A snapshot of security events for the given interval.
+required:
+  - time
+  - tags
+properties:
+  time:
+    $ref: ../../DateTime.yml
+  tags:
+    type: object
+    additionalProperties:
+      type: integer
