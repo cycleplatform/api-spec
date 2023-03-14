@@ -10,7 +10,6 @@ get:
     - name: filter
       in: query
       required: false
-      # TODO - source type isnt implemented correctly see notes
       description: |
         ## Filter Field 
         The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
