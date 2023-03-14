@@ -182,7 +182,7 @@ properties:
     "$ref": "../Creator.yml"
   factory:
     type: object
-    description: Adds a 'factory' field to an image return to identify which factory the image was built at and when.
+    description: Identifies which factory the image was built on and when.
     required:
       - node_id
       - acknowledged
