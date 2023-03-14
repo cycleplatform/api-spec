@@ -1,0 +1,15 @@
+title: SecuritySnapshotIncidentBreakdown
+type: object
+description: A breakdown of a snapshot's incidents inside a security report.
+required:
+  - surface
+  - attack
+properties:
+  surface:
+    type: object
+    additionalProperties:
+      type: integer
+  attack:
+    type: object
+    additionalProperties:
+      type: integer

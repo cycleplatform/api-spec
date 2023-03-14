@@ -1,0 +1,48 @@
+title: SecurityIncident
+type: object
+description: Details about a security incident/event that occurred.
+required:
+  - risk
+  - surface
+  - event
+  - attack
+  - count
+properties:
+  risk:
+    type: string
+    description: The risk level of the security.
+    enum:
+      - info
+      - low
+      - medium
+      - high
+      - critical
+  surface:
+    type: string
+    description: The vector of attack.
+    enum:
+      - network
+      - service
+      - fs
+      - api
+  event:
+    type: string
+    description: How the platform handled the event.
+    enum:
+      - suggestion
+      - notice
+      - prevention
+      - detection
+      - reaction
+  attack:
+    type: string
+    description: The type of attack detected.
+    enum:
+      - auth-failure
+      - brute-force
+      - exploit-vulnerability
+      - social-engineer
+      - service-interruption
+      - access-elevation
+  count:
+    type: integer

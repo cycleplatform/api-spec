@@ -1,10 +1,10 @@
 title: SecurityReportSummary
 type: object
-description: A summary of the security tags accumulated over the report's range.
+description: A summary of the incidents tags accumulated over the report's range.
 required:
-  - tags
+  - incidents
 properties:
-  tags:
-    type: object
-    additionalProperties:
-      type: integer
+  incidents:
+    type: array
+    items:
+      $ref: ./SecurityIncident.yml
