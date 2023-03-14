@@ -11,6 +11,11 @@ properties:
         description: A record with an ID mapped to a public account.
         additionalProperties:
           "$ref": "../creators/PublicAccount.yml"
+  accounts:
+    type: object
+    description: A record with an ID mapped to a public account.
+    additionalProperties:
+      "$ref": "../creators/PublicAccount.yml"
   hubs:
     type: object
     description: A record with an ID mapped to a hub resource.
