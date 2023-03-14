@@ -2,8 +2,6 @@ get:
   operationId: "getSecurityReport"
   tags:
     - Security
-  security:
-    - bearerAuth: []
   summary: Get Security Report
   description: Returns a report detailing incidents logged by the platform around security related events.
   parameters:
