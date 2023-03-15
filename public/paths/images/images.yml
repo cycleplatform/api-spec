@@ -128,6 +128,15 @@ post:
             source_id:
               type: string
               description: The ID for the image source to be used.
+            build:
+              type: object
+              description: A build object, holding information important to the image build.
+              properties:
+                args:
+                  type: object
+                  description: An object holding key value build time arguments needed for the image during build time.
+                  additionalProperties:
+                    type: string
             override:
               type: object
               description: An override object to be used for a single image create request.
