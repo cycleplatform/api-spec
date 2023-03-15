@@ -107,7 +107,7 @@ get:
     503:
       $ref: ../../../components/responses/errors/503.yml
 post:
-  operationId: "createImages"
+  operationId: "createImage"
   tags:
     - Images
   parameters: []
