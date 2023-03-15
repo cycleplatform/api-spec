@@ -1,4 +1,4 @@
-## Deploying from an existing branch using tags
+## Making hotfix changes to an existing release
 
 1. Create new branch off latest release tag
 2. Name said branch hotfix-\*
