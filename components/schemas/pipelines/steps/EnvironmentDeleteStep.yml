@@ -1,4 +1,4 @@
-title: EnvironmentStopStep
+title: EnvironmentDeleteStep
 type: object
 description: Settings for deleting an environment in a pipeline.
 required:

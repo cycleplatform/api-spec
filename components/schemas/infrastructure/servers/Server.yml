@@ -33,7 +33,7 @@ properties:
     type: string
     description: The server hostname.
   creator:
-    "$ref": "../../Creator.yml"
+    "$ref": "../../creators/CreatorScope.yml"
   provider:
     "$ref": "./ServerProvider.yml"
   cluster:

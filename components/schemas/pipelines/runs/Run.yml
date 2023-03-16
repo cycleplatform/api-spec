@@ -1,46 +1,80 @@
 title: PipelineRun
-type: object 
-description: A pipeline run resource. 
-required: 
-  - id 
-  - creator 
-  - hub_id 
-  - pipeline_id 
-  - stages 
-  - state 
-  - events 
-properties: 
-  id: 
-    "$ref": "../../ID.yml" 
-  creator: 
-    "$ref": "../../Creator.yml" 
-  hub_id: 
-    "$ref": "../../HubID.yml" 
-  pipeline_id: 
-    type: string 
+type: object
+description: A pipeline run resource.
+required:
+  - id
+  - creator
+  - hub_id
+  - pipeline_id
+  - stages
+  - state
+  - events
+properties:
+  id:
+    "$ref": "../../ID.yml"
+  creator:
+    "$ref": "../../creators/CreatorScope.yml"
+  hub_id:
+    "$ref": "../../HubID.yml"
+  pipeline_id:
+    type: string
     description: The ID for the pipeline this run belongs to.
-  stages: 
+  stages:
     type: array
-    description: An array of pipeline stages. 
-    items: 
-      "$ref": "../PipelineStage.yml"
-  state: 
-    "$ref": "./RunState.yml" 
+    description: An array of pipeline stages.
+    items:
+      type: object
+      required:
+        - identifier
+        - steps
+        - events
+      properties:
+        identifier:
+          type: string
+          description: A stage identifier.
+        steps:
+          type: array
+          items:
+            type: object
+            required:
+              - identifier
+              - action
+              - events
+              - success
+            properties:
+              identifier:
+                type: string
+              action:
+                type: string
+                enum:
+                  - environment.create
+                  - environment.start
+                  - environment.stop
+                  - environment.delete
+                  - image.source.create
+                  - image.create
+                  - image.import
+                  - images.prune
+                  - container.create
+                  - container.reimage
+                  - container.start
+                  - container.stop
+                  - container.restart
+                  - container.delete
+                  - stack.build.create
+                  - stack.build.deploy
+                  - stack.build.generate
+                  - sleep
+                  - webhook.post
+              events:
+                $ref: ./PipelineRunEvents.yml
+              success:
+                type: boolean
+
+        events:
+          $ref: ./PipelineRunEvents.yml
+
+  state:
+    "$ref": "./RunState.yml"
   events:
-    title: PipelineRunEvents
-    type: object
-    description: A collection of timestamps for each event in the pipeline run's lifetime.
-    required:
-      - started
-      - queued
-      - finished
-    properties:
-      started:
-        description: The timestamp of when the pipeline run was started.
-        "$ref": "../../DateTime.yml"
-      queued:
-        description: The timestamp of when the pipeline run was queued.
-        "$ref": "../../DateTime.yml"
-      finished:
-        description: The timestamp of when the pipeline run was finished.
-        "$ref": "../../DateTime.yml"
+    $ref: ./PipelineRunEvents.yml

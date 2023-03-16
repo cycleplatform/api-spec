@@ -25,7 +25,7 @@ properties:
     type: string
     description: A human readable slugged identifier for this container. Usually used as a key in a stack file.
   creator:
-    "$ref": "../Creator.yml"
+    "$ref": "../creators/CreatorScope.yml"
   environment:
     "$ref": "./summaries/ContainerEnvironmentSummary.yml"
   hub_id:

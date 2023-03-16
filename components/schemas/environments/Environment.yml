@@ -28,7 +28,7 @@ properties:
   about:
     "$ref": "./EnvironmentAbout.yml"
   creator:
-    "$ref": "../Creator.yml"
+    "$ref": "../creators/CreatorScope.yml"
   hub_id:
     "$ref": "../HubID.yml"
   state:

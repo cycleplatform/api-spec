@@ -1,30 +1,30 @@
-title: Job 
-description: A job resource. 
-type: object 
-required: 
-  - id 
-  - queue 
-  - caption 
-  - events 
-  - schedule 
-  - expires 
-  - tasks 
-  - hash 
-  - limit_duplicates 
-  - creator 
-  - hub_id 
-  - state 
-properties: 
-  id: 
-    "$ref": "../ID.yml" 
-  hub_id: 
-    "$ref": "../HubID.yml" 
-  queue: 
-    type: string 
-    description: A dash separated string showing the environment_id where the job is taking place. 
-  caption: 
-    type: string 
-    description: A short description of the job. 
+title: Job
+description: A job resource.
+type: object
+required:
+  - id
+  - queue
+  - caption
+  - events
+  - schedule
+  - expires
+  - tasks
+  - hash
+  - limit_duplicates
+  - creator
+  - hub_id
+  - state
+properties:
+  id:
+    "$ref": "../ID.yml"
+  hub_id:
+    "$ref": "../HubID.yml"
+  queue:
+    type: string
+    description: A dash separated string showing the environment_id where the job is taking place.
+  caption:
+    type: string
+    description: A short description of the job.
   events:
     title: JobEvents
     type: object
@@ -43,24 +43,24 @@ properties:
       started:
         description: The timestamp of when the job was started.
         "$ref": "../DateTime.yml"
-  schedule: 
-    description: A timestamp of when the job was scheduled. 
+  schedule:
+    description: A timestamp of when the job was scheduled.
     "$ref": "../DateTime.yml"
-  tasks: 
-    description: An array of job tasks. 
-    type: array 
-    items: 
+  tasks:
+    description: An array of job tasks.
+    type: array
+    items:
       "$ref": "./JobTasks.yml"
-  expires: 
-    description: A timestamp for when the job expires. 
+  expires:
+    description: A timestamp for when the job expires.
     "$ref": "../DateTime.yml"
-  hash: 
-    type: string 
-    description: A combination of the individual task details and job details. 
-  limit_duplicates: 
-    type: boolean 
-    description: A boolean where true represents the job is set to prevent duplicates of itself quickly after creation. 
-  creator: 
-    "$ref": "../Creator.yml" 
-  state: 
-    "$ref": "./JobState.yml" 
+  hash:
+    type: string
+    description: A combination of the individual task details and job details.
+  limit_duplicates:
+    type: boolean
+    description: A boolean where true represents the job is set to prevent duplicates of itself quickly after creation.
+  creator:
+    "$ref": "../creators/CreatorScope.yml"
+  state:
+    "$ref": "./JobState.yml"

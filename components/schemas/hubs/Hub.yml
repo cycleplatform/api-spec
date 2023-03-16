@@ -17,7 +17,7 @@ properties:
     type: string
     description: A name for the hub.
   creator:
-    "$ref": "../Creator.yml"
+    "$ref": "../creators/CreatorScope.yml"
   events:
     title: HubEvents
     type: object

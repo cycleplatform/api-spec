@@ -62,6 +62,7 @@ get:
                   $ref: ../../../components/schemas/pipelines/Pipeline.yml
               includes:
                 $ref: ../../../components/schemas/pipelines/PipelineIncludes.yml
+
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:

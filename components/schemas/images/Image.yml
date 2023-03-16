@@ -179,7 +179,7 @@ properties:
           origin:
             $ref: ../../schemas/images/sources/ImageSourceOrigin.yml
   creator:
-    "$ref": "../Creator.yml"
+    "$ref": "../creators/CreatorScope.yml"
   factory:
     type: object
     description: Identifies which factory the image was built on and when.
