@@ -99,6 +99,31 @@ post:
                 - admin
                 - developer
                 - analyst
+            permissions:
+              type: object
+              description: The environment permissions the invitee will have
+              required:
+                - all_environments
+                - environments
+              properties:
+                all_environments:
+                  type: boolean
+                  description: Boolean value that indicates the user has access to all environments
+                environments:
+                  type: array
+                  description: A list of objects that describe the specific environments the invitee will have access to
+                  items:
+                    type: object
+                    required:
+                      - id
+                      - manage
+                    properties:
+                      id:
+                        type: string
+                        description: The ID of the environment
+                      manage:
+                        type: boolean
+                        description: Boolean indicating the invitee has manage rights to environment
   responses:
     201:
       description: Returns a hub membership resource.

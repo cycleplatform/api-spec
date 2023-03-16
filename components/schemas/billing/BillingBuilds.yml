@@ -1,0 +1,21 @@
+title: BillingBuilds
+type: object
+description: An object holding information about servers included in Billing tier
+required:
+  - parallel
+  - cpu_cores
+  - ram_gb
+  - max_daily_builds
+properties:
+  parallel:
+    type: number
+  cpu_cores:
+    type: number
+    description: The number of CPU Cores availiable for builds
+  ram_gb:
+    type: number
+    description: The amount of RAM availiable for builds
+  max_daily_builds:
+    type: number
+    nullable: true
+    description: The maximum number of builds processed per day
