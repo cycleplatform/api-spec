@@ -3,22 +3,24 @@ title: Permissions
 description: Permissions information for an API Key
 type: object
 required:
- - all_environments
- - environments
+  - all_environments
+  - environments
 properties:
   all_environments:
     type: boolean
     description: A boolean, where true represents this API key is authorized to make requests that involve all of a hubs environments
   environments:
     title: EnvironmentPermission
+    type: array
     description: An environment ID and a boolean representing management configuration for an API key
-    type: object
-    required:
-      - id
-      - manage
-    properties:
-      id: 
-        $ref: "../ID.yml"
-      manage:
-        type: boolean
-        description: A boolean, where true represents the API keys ability to make changes to the environment components
+    items:
+      type: object
+      required:
+        - id
+        - manage
+      properties:
+        id:
+          $ref: "../ID.yml"
+        manage:
+          type: boolean
+          description: A boolean, where true represents the API keys ability to make changes to the environment components
