@@ -102,7 +102,7 @@ post:
               properties:
                 native:
                   type: object
-                  description: Nativly supported IAL provider integration.
+                  description: Natively supported IAL provider integration.
                   required:
                     - identifier
                     - auth

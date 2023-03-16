@@ -1,5 +1,5 @@
 get:
-  operationId: "getInstanceResourcesTelemetryReport"
+  operationId: "getInstanceTelemetryReport"
   tags:
     - Instances
   parameters:
@@ -23,7 +23,7 @@ get:
       content:
         application/json:
           schema:
-            title: InstaceTelemetryReportReturn
+            title: InstanceTelemetryReportReturn
             type: object
             properties:
               data:

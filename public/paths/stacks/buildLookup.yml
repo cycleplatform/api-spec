@@ -1,5 +1,5 @@
 get:
-  operationId: "getStackBuildLookup"
+  operationId: "getBuildLookup"
   tags:
     - Stacks
   parameters:

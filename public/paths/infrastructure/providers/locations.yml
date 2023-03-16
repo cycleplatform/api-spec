@@ -12,7 +12,7 @@ get:
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
   summary: List Provider Locations
-  description: No capability required, public information (datacenter locations).
+  description: No capability required, public information (data-center locations).
   responses:
     200:
       description: Returns a list of provider locations.

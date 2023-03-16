@@ -1,5 +1,5 @@
 get:
-  operationId: "ContainersListServers"
+  operationId: "getContainerServers"
   tags:
     - Containers
   summary: List Container Servers

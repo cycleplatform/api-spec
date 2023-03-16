@@ -16,7 +16,7 @@ get:
       schema:
         type: string
   summary: Instance Console Auth
-  description: Requires the `contaiers-console` capability.
+  description: Requires the `containers-console` capability.
   responses:
     200:
       description: Returns a token and address.

@@ -1,5 +1,5 @@
 get:
-  operationId: "getSource"
+  operationId: "getImageSource"
   tags:
     - ImageSources
   parameters:

@@ -1,5 +1,5 @@
 post:
-  operationId: "reconfigureLoadBalancer"
+  operationId: "createLoadBalancerServiceJob"
   tags:
     - Environments
   parameters:

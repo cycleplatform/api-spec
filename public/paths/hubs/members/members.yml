@@ -43,7 +43,7 @@ get:
   description: Requires the `hubs-members-view` capability.
   responses:
     200:
-      description: Returns a list of memebership resources.
+      description: Returns a list of membership resources.
       content:
         application/json:
           schema:

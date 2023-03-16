@@ -1,7 +1,7 @@
 post:
   tags:
     - Images
-  operationId: "createImageCollectionJob"
+  operationId: "createImagesJob"
   parameters: []
   summary: Images Prune
   description: Used to perform different actions on a given image. Requires the `images-delete` capability.

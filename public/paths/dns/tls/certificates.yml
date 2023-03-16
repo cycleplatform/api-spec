@@ -1,5 +1,5 @@
 get:
-  operationId: "lookupDnsCertificate"
+  operationId: "getDNSCertificate"
   tags:
     - DNS
   parameters:

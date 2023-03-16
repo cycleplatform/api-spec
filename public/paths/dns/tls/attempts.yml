@@ -1,5 +1,5 @@
 get:
-  operationId: "DNSTLSAttempts"
+  operationId: "getDNSTLSAttempts"
   tags:
     - DNS
   parameters:

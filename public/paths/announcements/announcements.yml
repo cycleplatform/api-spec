@@ -1,11 +1,11 @@
 get:
-  operationId: "getAnnouncementsList"
+  operationId: "getAnnouncements"
   security:
     - bearerAuth: []
   tags:
     - Announcements
   summary: List Announcements
-  description: Lists any important updates posted by the Cycle team
+  description: Lists any important updates posted by the Cycle team.
   responses:
     200:
       description: List of announcements.

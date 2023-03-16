@@ -1,5 +1,5 @@
 get:
-  operationId: "GetServerUsage"
+  operationId: "getServerUsage"
   tags:
     - Servers
   parameters:

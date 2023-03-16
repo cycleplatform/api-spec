@@ -23,7 +23,7 @@ get:
       content:
         application/json:
           schema:
-            title: "InstanceTelemeteryStreamAuthResponse"
+            title: "InstanceTelemetryStreamAuthResponse"
             properties:
               data:
                 $ref: ../../../components/schemas/websocket-auth/InstanceTelemetryStreamAuth.yml

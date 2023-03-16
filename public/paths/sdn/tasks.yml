@@ -1,7 +1,7 @@
 post:
   tags:
     - Images
-  operationId: "createNetworkJob"
+  operationId: "createSDNJob"
   parameters:
     - name: networkId
       in: path

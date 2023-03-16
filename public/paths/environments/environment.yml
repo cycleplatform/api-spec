@@ -1,6 +1,6 @@
 ---
 get:
-  operationId: "getEnvironmentById"
+  operationId: "getEnvironment"
   tags:
     - Environments
   parameters:
@@ -90,7 +90,7 @@ patch:
       schema:
         type: string
   summary: Update Environment
-  description: Updates the specificed environment, setting the values of the parameters passed. If any parameters are omitted, they will be left unchanged. Requires the `environments-update` capability.
+  description: Updates the specified environment, setting the values of the parameters passed. If any parameters are omitted, they will be left unchanged. Requires the `environments-update` capability.
   requestBody:
     description: Parameters for updating an environment.
     content:

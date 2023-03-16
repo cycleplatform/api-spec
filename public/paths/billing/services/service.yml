@@ -10,7 +10,7 @@ get:
       schema:
         type: string
   summary: Fetch Billing Service
-  description: Requries the `billing-services-view` capability.
+  description: Requires the `billing-services-view` capability.
   responses:
     200:
       description: Returns a billing service resources.

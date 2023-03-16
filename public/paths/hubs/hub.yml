@@ -79,7 +79,7 @@ patch:
                 server_deployed:
                   nullable: true
                   type: string
-                  description: A webahook to report information to each time a server is deployed on the given hub.
+                  description: A webhook to report information to each time a server is deployed on the given hub.
   responses:
     200:
       description: Returns the updated Hub resource.
@@ -117,7 +117,7 @@ delete:
     - bearerAuth: []
   parameters: []
   summary: Remove Hub
-  description: Requires the `hubs-delete` capability. This can only be aquired by being the hub owner.
+  description: Requires the `hubs-delete` capability. This can only be acquired by being the hub owner.
   responses:
     200:
       description: Returns a task descriptor.

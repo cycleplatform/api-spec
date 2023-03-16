@@ -1,5 +1,5 @@
 get:
-  operationId: "listScopedVariables"
+  operationId: "getScopedVariables"
   tags:
     - Environments
   parameters:

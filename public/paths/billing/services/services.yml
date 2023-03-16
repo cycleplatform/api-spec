@@ -7,7 +7,7 @@ get:
     - $ref: ../../../../components/parameters/FilterParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
   summary: List Billing Services
-  description: Requries the `billing-services-view` capability.
+  description: Requires the `billing-services-view` capability.
   responses:
     200:
       description: Returns a collection of billing service resources.

@@ -1,5 +1,5 @@
 get:
-  operationId: "getInfrastructureIPPool"
+  operationId: "getIPPool"
   tags:
     - InfrastructureIPs
   parameters:
@@ -61,7 +61,7 @@ get:
     503:
       $ref: ../../../../components/responses/errors/503.yml
 delete:
-  operationId: "removeIpPool"
+  operationId: "removeIPPool"
   tags:
     - InfrastructureIPs
   parameters:

@@ -1,5 +1,5 @@
 get:
-  operationId: "getRecordsCollection"
+  operationId: "getDNSRecords"
   tags:
     - DNS
   parameters:

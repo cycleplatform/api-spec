@@ -1,5 +1,5 @@
 get:
-  operationId: "fetchScopedVariable"
+  operationId: "getScopedVariable"
   tags:
     - Environments
   parameters:
@@ -128,7 +128,7 @@ patch:
     503:
       $ref: ../../../components/responses/errors/503.yml
 delete:
-  operationId: "removeScopedVariableById"
+  operationId: "removeScopedVariable"
   tags:
     - Environments
   parameters:

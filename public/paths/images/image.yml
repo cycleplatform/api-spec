@@ -140,7 +140,7 @@ delete:
       schema:
         type: string
   summary: Delete Image
-  description: Requires the `images-updae` capability.
+  description: Requires the `images-update` capability.
   responses:
     200:
       description: Returns a task descriptor.

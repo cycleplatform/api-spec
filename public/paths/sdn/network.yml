@@ -1,5 +1,5 @@
 get:
-  operationId: "getNetwork"
+  operationId: "getSDN"
   tags:
     - SDN
   parameters:
@@ -41,7 +41,7 @@ get:
     503:
       $ref: ../../../components/responses/errors/503.yml
 patch:
-  operationId: "updateSDNNetwork"
+  operationId: "updateSDN"
   tags:
     - SDN
   parameters:
@@ -96,7 +96,7 @@ patch:
     503:
       $ref: ../../../components/responses/errors/503.yml
 delete:
-  operationId: "removeSDNNetwork"
+  operationId: "removeSDN"
   tags:
     - SDN
   parameters:

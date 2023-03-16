@@ -1,8 +1,8 @@
 get:
-  operationId: "GetServersClusters"
+  operationId: "GetServerClusters"
   tags:
     - Servers
-  summary: List Servers Clusters
+  summary: List Server Clusters
   description: Requires the `servers-view` capability.
   responses:
     200:

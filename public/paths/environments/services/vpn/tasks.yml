@@ -1,5 +1,5 @@
 post:
-  operationId: "reconfigureVPN"
+  operationId: "createVPNServiceJob"
   tags:
     - Environments
   parameters:

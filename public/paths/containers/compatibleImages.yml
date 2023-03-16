@@ -19,7 +19,7 @@ get:
       content:
         application/json:
           schema:
-            title: CompatibleImagesReponse
+            title: CompatibleImagesResponse
             type: object
             properties:
               data:

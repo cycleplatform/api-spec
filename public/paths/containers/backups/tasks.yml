@@ -1,7 +1,7 @@
 post:
   tags:
     - Backups
-  operationId: "restoreBackupJob"
+  operationId: "createBackupJob"
   parameters:
     - name: containerId
       description: The ID of the requested container.

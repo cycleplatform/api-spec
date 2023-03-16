@@ -3,7 +3,7 @@ get:
   tags:
     - Billing
   summary: List Tiers
-  description: Returns list of availiable tiers
+  description: Returns list of available tiers.
   parameters: []
   responses:
     200:

@@ -17,7 +17,7 @@ get:
       content:
         application/json:
           schema:
-            title: "ListJobsReturn"
+            title: "FetchJobReturn"
             type: object
             properties:
               data:

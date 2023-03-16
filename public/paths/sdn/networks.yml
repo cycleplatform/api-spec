@@ -1,5 +1,5 @@
 get:
-  operationId: "getNetworks"
+  operationId: "getSDNs"
   tags:
     - SDN
   parameters:
@@ -81,7 +81,7 @@ get:
     503:
       $ref: ../../../components/responses/errors/503.yml
 post:
-  operationId: "createSDNNetwork"
+  operationId: "createSDN"
   tags:
     - SDN
   parameters: []

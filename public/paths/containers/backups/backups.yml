@@ -1,5 +1,5 @@
 get:
-  operationId: "getBackupsCollection"
+  operationId: "getBackups"
   tags:
     - Backups
   parameters:
@@ -19,7 +19,7 @@ get:
       content:
         application/json:
           schema:
-            title: ConatainerBackupListResponse
+            title: ContainerBackupListResponse
             type: object
             properties:
               data:

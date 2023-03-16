@@ -1,5 +1,5 @@
 get:
-  operationId: "getInfrastructureIPPools"
+  operationId: "getIPPools"
   tags:
     - InfrastructureIPs
   parameters:

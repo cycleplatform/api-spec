@@ -1,5 +1,5 @@
 get:
-  operationId: "getInstances"
+  operationId: "getContainerInstances"
   tags:
     - Instances
   parameters:
@@ -154,7 +154,7 @@ post:
     503:
       $ref: ../../../../components/responses/errors/503.yml
 delete:
-  operationId: "removeMultipleContainerInstances"
+  operationId: "removeContainerInstances"
   tags:
     - Instances
   parameters:

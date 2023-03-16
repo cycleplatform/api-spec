@@ -47,7 +47,7 @@ get:
     503:
       $ref: ../../../../components/responses/errors/503.yml
 delete:
-  operationId: "expireInstanceSSHTokens"
+  operationId: "expireSSHTokens"
   tags:
     - Instances
   parameters:
