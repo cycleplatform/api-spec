@@ -41,7 +41,7 @@ properties:
         description: The timestamp of when the provider was last used to provision a server.
         "$ref": "../../DateTime.yml"
   creator:
-    "$ref": "../../Creator.yml"
+    "$ref": "../../creators/CreatorScope.yml"
   state:
     "$ref": "./ProviderState.yml"
   meta:

@@ -16,7 +16,7 @@ properties:
     type: string
     description: The username for the login.
   creator:
-    "$ref": "../../Creator.yml"
+    "$ref": "../../creators/CreatorScope.yml"
   last_login:
     description: A timestamp of the last time the user logged into the VPN.
     "$ref": "../../DateTime.yml"

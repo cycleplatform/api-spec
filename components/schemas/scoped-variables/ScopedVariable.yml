@@ -17,7 +17,7 @@ properties:
   id:
     "$ref": "../ID.yml"
   creator:
-    "$ref": "../Creator.yml"
+    "$ref": "../creators/CreatorScope.yml"
   hub_id:
     "$ref": "../HubID.yml"
   environment_id:

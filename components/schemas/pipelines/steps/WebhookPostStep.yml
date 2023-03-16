@@ -1,6 +1,9 @@
 title: WebhookPostStep
-description: An action describing a webhook post.
+description: An action describing a webhook post. The webhook will post the full body of the resource referenced by the step - for example if you were to reference a step creating a container, you would receive that container object in the post body.
 type: object
+required:
+  - action
+  - details
 properties:
   action:
     type: string

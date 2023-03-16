@@ -21,7 +21,7 @@ properties:
     type: string
     description: A name for the API key.
   creator:
-    "$ref": "../Creator.yml"
+    "$ref": "../creators/CreatorScope.yml"
   secret:
     type: string
     description: The API key secret.
@@ -61,7 +61,10 @@ properties:
         type: boolean
         description: A boolean where true represents this key has all available capabilities.
       specific:
-        "$ref": "../common/Capabilities.yml"
+        description: An array a capabilities this key has.
+        type: array
+        items:
+          "$ref": "../common/Capabilities.yml"
   ips:
     type: array
     description: An array of IP's this API key can make calls from.
