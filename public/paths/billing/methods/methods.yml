@@ -67,7 +67,27 @@ post:
             address:
               $ref: ../../../../components/schemas/billing/methods/Address.yml
             credit_card:
-              $ref: ../../../../components/schemas/billing/methods/CreditCard.yml
+              type: object
+              required:
+                - name
+                - number
+                - cvv
+                - expiration
+              name:
+                type: string
+              number:
+                type: string
+              cvv:
+                type: string
+              expiration:
+                type: object
+                required:
+                  - month
+                  - year
+                month:
+                  type: number
+                year:
+                  type: number
   responses:
     200:
       description: Returns a billing method resource.

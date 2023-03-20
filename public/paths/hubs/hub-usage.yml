@@ -1,0 +1,41 @@
+get:
+  operationId: "getHubUsage"
+  tags:
+    - Hubs
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: "../../../../public-spec/components/parameters/FilterParam.yml"
+  summary: Fetch Hub
+  description: Requires the `hubs-view` capability.
+  responses:
+    200:
+      description: Returns an hubUsageResults resource.
+      content:
+        application/json:
+          schema:
+            title: "HubFetchReturn"
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: ../../../components/schemas/hubs/HubUsageDatum.yml
+    400:
+      $ref: ../../../components/responses/errors/400.yml
+    401:
+      $ref: ../../../components/responses/errors/401.yml
+    403:
+      $ref: ../../../components/responses/errors/403.yml
+    404:
+      $ref: ../../../components/responses/errors/404.yml
+    409:
+      $ref: ../../../components/responses/errors/409.yml
+    415:
+      $ref: ../../../components/responses/errors/415.yml
+    422:
+      $ref: ../../../components/responses/errors/422.yml
+    500:
+      $ref: ../../../components/responses/errors/500.yml
+    503:
+      $ref: ../../../components/responses/errors/503.yml
