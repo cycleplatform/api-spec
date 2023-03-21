@@ -73,21 +73,23 @@ post:
                 - number
                 - cvv
                 - expiration
-              name:
-                type: string
-              number:
-                type: string
-              cvv:
-                type: string
-              expiration:
-                type: object
-                required:
-                  - month
-                  - year
-                month:
-                  type: number
-                year:
-                  type: number
+              properties:
+                name:
+                  type: string
+                number:
+                  type: string
+                cvv:
+                  type: string
+                expiration:
+                  type: object
+                  required:
+                    - month
+                    - year
+                  properties:
+                    month:
+                      type: number
+                    year:
+                      type: number
   responses:
     200:
       description: Returns a billing method resource.
