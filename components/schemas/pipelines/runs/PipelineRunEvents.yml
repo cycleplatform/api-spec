@@ -1,0 +1,17 @@
+title: PipelineRunEvents
+type: object
+description: A collection of timestamps for each event in the pipeline run's lifetime.
+required:
+  - started
+  - queued
+  - finished
+properties:
+  started:
+    description: The timestamp of when the pipeline run was started.
+    "$ref": "../../DateTime.yml"
+  queued:
+    description: The timestamp of when the pipeline run was queued.
+    "$ref": "../../DateTime.yml"
+  finished:
+    description: The timestamp of when the pipeline run was finished.
+    "$ref": "../../DateTime.yml"

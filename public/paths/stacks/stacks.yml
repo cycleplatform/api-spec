@@ -58,9 +58,6 @@ get:
             - type: array
               items:
                 type: string
-            - type: object
-              additionalProperties:
-                type: string
     - $ref: ../../../components/parameters/SortParam.yml
 
     - $ref: ../../../components/parameters/PageParam.yml

@@ -1,0 +1,55 @@
+get:
+  operationId: "getSecurityReport"
+  tags:
+    - Security
+  summary: Get Security Report
+  description: Returns a report detailing incidents logged by the platform around security related events.
+  parameters:
+    - name: filter
+      in: query
+      required: false
+      description: |
+        ## Filter Field 
+        The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
+
+        ## Possible Values
+        ### Environment
+        `filter[environment]=<Environment ID>` fetch the security report for the specified environment
+      schema:
+        type: object
+        additionalProperties:
+          type: string
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                type: string
+  responses:
+    200:
+      description: Returns the security report.
+      content:
+        application/json:
+          schema:
+            title: "SecurityReportResponse"
+            type: object
+            properties:
+              data:
+                $ref: ../../../components/schemas/security/report/SecurityReport.yml
+    400:
+      $ref: ../../../components/responses/errors/400.yml
+    401:
+      $ref: ../../../components/responses/errors/401.yml
+    403:
+      $ref: ../../../components/responses/errors/403.yml
+    404:
+      $ref: ../../../components/responses/errors/404.yml
+    409:
+      $ref: ../../../components/responses/errors/409.yml
+    415:
+      $ref: ../../../components/responses/errors/415.yml
+    422:
+      $ref: ../../../components/responses/errors/422.yml
+    500:
+      $ref: ../../../components/responses/errors/500.yml
+    503:
+      $ref: ../../../components/responses/errors/503.yml

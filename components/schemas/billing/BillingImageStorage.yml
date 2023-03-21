@@ -1,0 +1,29 @@
+title: BillingImageStorage
+type: object
+description: An object holding information about servers included in Billing tier
+required:
+  - included_gb
+  - additional_gb
+  - hard_cap
+properties:
+  included_gb:
+    type: number
+    description: The GB of image storage included in tier
+  additional_gb:
+    type: object
+    description: Additional cost for image storage exceeding included_gb
+    required:
+      - mills
+      - term
+    properties:
+      mills:
+        type: number
+      term:
+        type: string
+        enum:
+          - once
+          - monthly
+          - yearly
+  hard_cap:
+    type: boolean
+    description: A boolean indicating if there is a hard limit on the image storage

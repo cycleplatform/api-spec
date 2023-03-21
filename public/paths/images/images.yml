@@ -67,9 +67,6 @@ get:
             - type: array
               items:
                 type: string
-            - type: object
-              additionalProperties:
-                type: string
     - $ref: ../../../components/parameters/SortParam.yml
 
     - $ref: ../../../components/parameters/PageParam.yml
@@ -107,7 +104,7 @@ get:
     503:
       $ref: ../../../components/responses/errors/503.yml
 post:
-  operationId: "createImages"
+  operationId: "createImage"
   tags:
     - Images
   parameters: []
@@ -128,6 +125,15 @@ post:
             source_id:
               type: string
               description: The ID for the image source to be used.
+            build:
+              type: object
+              description: A build object, holding information important to the image build.
+              properties:
+                args:
+                  type: object
+                  description: An object holding key value build time arguments needed for the image during build time.
+                  additionalProperties:
+                    type: string
             override:
               type: object
               description: An override object to be used for a single image create request.

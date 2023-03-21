@@ -1,4 +1,3 @@
----
 title: TierPlan
 type: object
 description: A TierPlan object describes the attributes of a subscription tier
@@ -9,15 +8,15 @@ required:
   - generation
   - usable
   - price
-  # - servers
-  # - members
+  - servers
+  - members
   - max_nodes
   - max_members
-  # - advanced_features
+  - advanced_features
   - max_daily_api_requests
-  # - ram
-  # - image_storage
-  # - builds
+  - ram
+  - image_storage
+  - builds
   - hidden
   - description
 properties:
@@ -33,21 +32,35 @@ properties:
     type: boolean
   price:
     "$ref": "../BillingAmount.yml"
-  # servers: #TODO
-  # members: #TODO
+  servers:
+    "$ref": "../BillingServers.yml"
+  members:
+    "$ref": "../BillingMembers.yml"
   max_nodes:
     type: number
     nullable: true
   max_members:
     type: number
     nullable: true
-  # advanced_features: #TODO
+  advanced_features:
+    type: object
+    required:
+      - gpu
+      - ial
+    properties:
+      gpu:
+        type: boolean
+      ial:
+        type: boolean
   max_daily_api_requests:
     type: number
     nullable: true
-  # ram: #TODO
-  # image_storage: #TODO
-  # builds: #TODO
+  ram:
+    "$ref": "../BillingRam.yml"
+  image_storage:
+    "$ref": "../BillingImageStorage.yml"
+  builds:
+    "$ref": "../BillingBuilds.yml"
   hidden:
     type: boolean
   description:

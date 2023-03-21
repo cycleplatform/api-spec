@@ -42,9 +42,6 @@ get:
             - type: array
               items:
                 type: string
-            - type: object
-              additionalProperties:
-                type: string
     - $ref: ../../../components/parameters/SortParam.yml
 
     - $ref: ../../../components/parameters/PageParam.yml
@@ -65,6 +62,7 @@ get:
                   $ref: ../../../components/schemas/pipelines/Pipeline.yml
               includes:
                 $ref: ../../../components/schemas/pipelines/PipelineIncludes.yml
+
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:

@@ -23,9 +23,6 @@ get:
             - type: array
               items:
                 type: string
-            - type: object
-              additionalProperties:
-                type: string
 
   summary: List Server Tags
   description: Requires the `servers-view` capability.

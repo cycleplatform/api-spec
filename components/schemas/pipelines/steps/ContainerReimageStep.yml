@@ -1,6 +1,6 @@
 title: ContainerReimageStep
 type: object
-description: Settings for reimaging a container in a pipeline 
+description: Settings for reimaging a container in a pipeline
 required:
   - action
   - details
@@ -13,4 +13,16 @@ properties:
   details:
     allOf:
       - $ref: "../ResourceLocation.yml"
-      - $ref: "../../containers/taskActions/Reimage.yml"
+      - type: object
+        required:
+          - image
+        properties:
+          image:
+            $ref: "../ResourceLocation.yml"
+          options:
+            type: object
+            required:
+              - allow_incompatible
+            properties:
+              allow_incompatible:
+                type: boolean

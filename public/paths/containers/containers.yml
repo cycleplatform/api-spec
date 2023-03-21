@@ -82,9 +82,6 @@ get:
             - type: array
               items:
                 type: string
-            - type: object
-              additionalProperties:
-                type: string
       style: deepObject
 
     - $ref: ../../../components/parameters/SortParam.yml

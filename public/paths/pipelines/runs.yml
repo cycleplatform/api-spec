@@ -9,6 +9,21 @@ get:
       description: The ID of the pipeline.
       schema:
         type: string
+    - $ref: ../../../components/parameters/SortParam.yml
+    - name: include
+      in: query
+      required: false
+      description:
+        A comma separated list of include values. Included resources will show
+        up under the root document's `include` field, with the key being the id of the included
+        resource. In the case of applying an include to a collection of resources, if two
+        resources share the same include, it will only appear once in the return.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - creators
   summary: List Pipeline Runs
   description: Requires the `pieplines-view` capability.
   responses:
@@ -21,7 +36,15 @@ get:
             type: object
             properties:
               data:
-                $ref: ../../../components/schemas/pipelines/runs/Run.yml
+                type: array
+                items:
+                  $ref: ../../../components/schemas/pipelines/runs/Run.yml
+              includes:
+                type: object
+                properties:
+                  creators:
+                    "$ref": "../../../components/schemas/includes/CreatorInclude.yml"
+
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:

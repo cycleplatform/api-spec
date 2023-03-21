@@ -27,7 +27,7 @@ get:
 
         ## Possible Values
         ### Range 
-        `filter[range][start]=timestamp&filter[range][end]=timestamp` filter by range giving two times a `start` time and an `end` time. Date format `2023-03-07T14:55:17-08:00`.
+        `filter[range-start]=timestamp&filter[range-end]=timestamp` filter by range giving two times a `start` time and an `end` time. Date format `2023-03-07T14:55:17-08:00`.
 
         ### Search
         `filter[search]=value` search jobs for a value associated with a field on the given job(s).
@@ -43,9 +43,6 @@ get:
             - type: string
             - type: array
               items:
-                type: string
-            - type: object
-              additionalProperties:
                 type: string
     - $ref: ../../../components/parameters/SortParam.yml
 

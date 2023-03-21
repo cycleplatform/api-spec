@@ -1,0 +1,29 @@
+title: BillingMembers
+type: object
+description: An object holding information about members included in Billing tier
+required:
+  - included
+  - hard_cap
+  - additional
+properties:
+  included:
+    type: number
+    description: The number of members included in the tier price
+  hard_cap:
+    type: boolean
+    description: A boolean indicating if there is a hard member limit on the tier
+  additional:
+    type: object
+    description: An object describing the additonal cost of members exceeding the included member count
+    required:
+      - mills
+      - term
+    properties:
+      mills:
+        type: number
+      term:
+        type: string
+        enum:
+          - once
+          - monthly
+          - yearly

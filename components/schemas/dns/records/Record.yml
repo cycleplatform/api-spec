@@ -18,7 +18,7 @@ properties:
   hub_id:
     "$ref": "../../HubID.yml"
   creator:
-    "$ref": "../../Creator.yml"
+    "$ref": "../../creators/CreatorScope.yml"
   zone_id:
     type: string
     description: "A unique identifier for the zone"

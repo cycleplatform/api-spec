@@ -1,0 +1,24 @@
+title: SecurityReport
+type: object
+description: A report of all security events captured by the platform over a range of time.
+required:
+  - hub_id
+  - created
+  - range
+  - summary
+  - snapshots
+properties:
+  hub_id:
+    $ref: ../../HubID.yml
+  created:
+    $ref: ../../DateTime.yml
+  range:
+    $ref: ../../Range.yml
+    description: The period over which the report was generated.
+  summary:
+    $ref: ./SecurityReportSummary.yml
+  snapshots:
+    description: The ID of the environment this instnace is in.
+    type: array
+    items:
+      $ref: ./SecurityReportSnapshot.yml
