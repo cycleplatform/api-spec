@@ -23,7 +23,7 @@ properties:
   origin:
     $ref: "./ImageSourceOrigin.yml"
   creator:
-    "$ref": "../../Creator.yml"
+    "$ref": "../../creators/CreatorScope.yml"
   state:
     "$ref": "./ImageSourceState.yml"
   events:

@@ -13,7 +13,7 @@ properties:
     type: string
     description: The text describing the update to the announcement.
   creator:
-    "$ref": "../Creator.yml"
+    "$ref": "../creators/CreatorScope.yml"
   time:
     "$ref": "../DateTime.yml"
     description: A timestamp of when the update took place.

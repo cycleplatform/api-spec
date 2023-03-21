@@ -1,14 +1,10 @@
 get:
-  operationId: "getEnvironmentInstancesTelemetry"
+  operationId: "getSecurityReport"
   tags:
-    - Environments
+    - Security
+  summary: Get Security Report
+  description: Returns a report detailing incidents logged by the platform around security related events.
   parameters:
-    - name: environmentId
-      description: The ID of the desired environment
-      in: path
-      required: true
-      schema:
-        type: string
     - name: filter
       in: query
       required: false
@@ -17,9 +13,8 @@ get:
         The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
 
         ## Possible Values
-        ### Range 
-        `filter[range-start]=timestamp&filter[range-end]=timestamp` filter by range giving two times a `start` time and an `end` time. Date format `2023-03-07T14:55:17-08:00`.
-
+        ### Environment
+        `filter[environment]=<Environment ID>` fetch the security report for the specified environment
       schema:
         type: object
         additionalProperties:
@@ -29,21 +24,17 @@ get:
             - type: array
               items:
                 type: string
-  summary: List Telemetry Data
-  description: Requires the `environments-view` capability.
   responses:
     200:
-      description: Returns a collection of telemetry data points.
+      description: Returns the security report.
       content:
         application/json:
           schema:
-            title: "EnvironmentInstanceTelemetry"
+            title: "SecurityReportResponse"
             type: object
             properties:
               data:
-                type: array
-                items:
-                  $ref: ../../../components/schemas/environments/returns/InstanceTelemetryPoint.yml
+                $ref: ../../../components/schemas/security/report/SecurityReport.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:

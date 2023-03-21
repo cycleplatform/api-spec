@@ -16,7 +16,7 @@ properties:
     type: string
     description: A name for the pipeline.
   creator:
-    "$ref": "../Creator.yml"
+    "$ref": "../creators/CreatorScope.yml"
   hub_id:
     "$ref": "../HubID.yml"
   disable:

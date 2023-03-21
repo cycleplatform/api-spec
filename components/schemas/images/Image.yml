@@ -179,7 +179,20 @@ properties:
           origin:
             $ref: ../../schemas/images/sources/ImageSourceOrigin.yml
   creator:
-    "$ref": "../Creator.yml"
+    "$ref": "../creators/CreatorScope.yml"
+  factory:
+    type: object
+    description: Identifies which factory the image was built on and when.
+    required:
+      - node_id
+      - acknowledged
+    properties:
+      node_id:
+        type: string
+        description: The node holding the factory service that was responsible for building the image.
+      acknowledged:
+        $ref: ../DateTime.yml
+        description: A date timestamp for when the node acknowledged the image import job.
   state:
     "$ref": "./ImageState.yml"
   events:

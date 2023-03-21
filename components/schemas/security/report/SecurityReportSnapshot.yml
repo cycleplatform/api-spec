@@ -1,0 +1,25 @@
+title: SecurityReportSnapshot
+type: object
+description: A snapshot of security events for the given interval.
+required:
+  - time
+  - incidents
+  - count
+properties:
+  time:
+    $ref: ../../DateTime.yml
+  incidents:
+    type: object
+    properties:
+      info:
+        $ref: ./SecuritySnapshotIncidentBreakdown.yml
+      low:
+        $ref: ./SecuritySnapshotIncidentBreakdown.yml
+      medium:
+        $ref: ./SecuritySnapshotIncidentBreakdown.yml
+      high:
+        $ref: ./SecuritySnapshotIncidentBreakdown.yml
+      critical:
+        $ref: ./SecuritySnapshotIncidentBreakdown.yml
+  count:
+    type: integer

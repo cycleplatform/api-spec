@@ -1,29 +1,29 @@
-title: DNSZone 
-type: object 
+title: DNSZone
+type: object
 description: DNS (Domain Name System), in short, is a decentralized naming system for computers, services, or other resources connected to the internet or a private network. It is what allows the translation of a URL, such as http://example.com, to an IP address.
-required: 
+required:
   - id
-  - hub_id 
-  - creator 
-  - origin 
-  - hosted 
-  - state 
-  - events 
-properties: 
-  id: 
-    "$ref": "../ID.yml" 
-  hub_id: 
-    "$ref": "../HubID.yml" 
-  creator: 
-    "$ref": "../Creator.yml" 
-  origin: 
-    type: string 
-    description: The origin for the given DNS zone. 
-  hosted: 
-    type: boolean 
-    description: A boolean where true represents this zone is a hosted zone.  
-  state: 
-    "$ref": "./ZoneState.yml" 
+  - hub_id
+  - creator
+  - origin
+  - hosted
+  - state
+  - events
+properties:
+  id:
+    "$ref": "../ID.yml"
+  hub_id:
+    "$ref": "../HubID.yml"
+  creator:
+    "$ref": "../creators/CreatorScope.yml"
+  origin:
+    type: string
+    description: The origin for the given DNS zone.
+  hosted:
+    type: boolean
+    description: A boolean where true represents this zone is a hosted zone.
+  state:
+    "$ref": "./ZoneState.yml"
   events:
     title: ZoneEvents
     type: object
@@ -33,7 +33,7 @@ properties:
       - updated
       - deleted
       - last_verification
-      - verified 
+      - verified
     properties:
       created:
         description: The timestamp of when the DNS zone was created.

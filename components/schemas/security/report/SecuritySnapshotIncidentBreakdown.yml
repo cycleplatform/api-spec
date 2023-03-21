@@ -1,0 +1,35 @@
+title: SecuritySnapshotIncidentBreakdown
+type: object
+description: A breakdown of a snapshot's incidents inside a security report.
+required:
+  - surface
+  - attack
+properties:
+  surface:
+    type: object
+    properties:
+      network:
+        type: integer
+      service:
+        type: integer
+      fs:
+        type: integer
+      api:
+        type: integer
+  attack:
+    type: object
+    properties:
+      none:
+        type: integer
+      auth-failure:
+        type: integer
+      brute-force:
+        type: integer
+      exploit-vulnerability:
+        type: integer
+      social-engineer:
+        type: integer
+      service-interruption:
+        type: integer
+      access-elevation:
+        type: integer

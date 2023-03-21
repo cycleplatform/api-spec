@@ -1,9 +1,9 @@
 title: PipelineState
 type: object
-required:
-  - current
 allOf:
-  - properties:
+  - required:
+      - current
+    properties:
       current:
         description: The current state of the pipeline.
         type: string
