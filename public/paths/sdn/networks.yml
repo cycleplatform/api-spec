@@ -112,19 +112,10 @@ post:
               type: string
               description: The infrastructure cluster the environments belonging to this network belong to.
             environments:
-              description: An array of environments and timestamps.
+              description: An array of environment Ids
               type: array
               items:
-                type: object
-                required:
-                  - id
-                  - added
-                properties:
-                  id:
-                    $ref: ../../../components/schemas/ID.yml
-                  added:
-                    description: A timestamp of when the environment was added.
-                    $ref: ../../../components/schemas/DateTime.yml
+                type: string
   responses:
     201:
       description: Returns a network resource.
