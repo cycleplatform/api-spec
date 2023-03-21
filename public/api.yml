@@ -101,7 +101,7 @@ tags:
 
 security:
   - bearerAuth: []
-    hubAuth: []
+    hubId: []
 paths:
   # {changelog, channels, audit, surveys}
   # Accounts {checked}
@@ -385,7 +385,7 @@ components:
       type: http
       scheme: bearer
       bearerFormat: JWT
-    hubAuth:
+    hubId:
       name: X-Hub-Id
       in: header
       type: apiKey
