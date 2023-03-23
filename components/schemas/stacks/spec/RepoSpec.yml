@@ -1,45 +1,45 @@
 title: StackRepoSourceType
-type: object 
-description: A repo source type for a stack. 
+type: object
+description: A repo source type for a stack.
 required:
-  - url
-properties: 
-  url:
+  - type
+  - details
+properties:
+  type:
     type: string
-    description: The URL of the repository.
-  branch:
-    type: string
-    description: An optional branch arguement.  Default value is `master`.
-  auth:
-    type: object
-    description: Authentication information for the repository.
+    enum:
+      - git-repo
+  details:
     required:
-      - type
-      - credentials
+      - url
     properties:
-      # TODO can I use type here?
-      type:
+      url:
         type: string
-        description: The `type` of authentication being used.
-      credentials:
+        description: The URL of the repository.
+      branch:
+        type: string
+        description: An optional branch arguement.  Default value is `master`.
+      auth:
         type: object
-        description: Authentication credentials for the given type.
-        oneOf:
-          - "$ref": "../../images/sources/CredentialsHTTP.yml"
-          - "$ref": "../../images/sources/CredentialsSSH.yml"
-  ref:
-    type: object
-    description: Repository reference information.
-    required:
-      - type
-      - value
-    properties:
-      type:
-        type: string
-        description: The type of reference being used.
-        enum:
-          - hash
-          - tag
-      value:
-        type: string
-        description: The value for the given reference type.
+        description: Authentication information for the repository.
+        discriminator:
+          propertyName: "type"
+        anyOf:
+          - $ref: ../../images/sources/CredentialsHTTP.yml
+          - $ref: ../../images/sources/CredentialsSSH.yml
+      ref:
+        type: object
+        description: Repository reference information.
+        required:
+          - type
+          - value
+        properties:
+          type:
+            type: string
+            description: The type of reference being used.
+            enum:
+              - hash
+              - tag
+          value:
+            type: string
+            description: The value for the given reference type.
