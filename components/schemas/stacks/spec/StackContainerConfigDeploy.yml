@@ -1,0 +1,177 @@
+title: StackContainerConfigDeploy.yml
+type: object
+required:
+  - instances
+properties:
+  instances:
+    type: number
+  strategy:
+    type: string
+    enum:
+      - resource-density
+      - manual
+      - high-availability
+      - ephemeral
+  stateful:
+    type: object
+    required:
+      - instances
+    properties:
+      instances:
+        type: array
+        items:
+          title: StatefulInstance
+          type: object
+          required:
+            - match
+          properties:
+            match:
+              type: object
+              properties:
+                hostname:
+                  type: string
+            first_start:
+              type: object
+              properties:
+                command:
+                  type: object
+                  properties:
+                    path:
+                      type: string
+                    args:
+                      type: string
+                environment_vars:
+                  type: object
+                  additionalProperties:
+                    type: string
+            start:
+              type: object
+              properties:
+                command:
+                  type: object
+                  properties:
+                    path:
+                      type: string
+                    args:
+                      type: string
+                environment_vars:
+                  type: object
+                  additionalProperties:
+                    type: string
+  constraints:
+    type: object
+    properties:
+      node:
+        type: object
+        required:
+          - tags
+        properties:
+          tags:
+            type: object
+            properties:
+              any:
+                type: array
+                items:
+                  type: string
+              all:
+                type: array
+                items:
+                  type: string
+      secrets:
+        type: array
+        items:
+          type: string
+      containers:
+        type: array
+        items:
+          type: string
+  shutdown:
+    type: object
+    required:
+      - graceful_timeout
+    properties:
+      graceful_timeout:
+        type: number
+      signals:
+        type: array
+        items:
+          type: string
+          enum:
+            - SIGTERM
+            - SIGINT
+            - SIGUSR1
+            - SIGUSR2
+            - SIGHUP
+  startup:
+    type: object
+    properties:
+      delay:
+        type: number
+  restart:
+    type: object
+    required:
+      - condition
+      - delay
+      - max_attempts
+    properties:
+      condition:
+        type: string
+        enum:
+          - always
+          - never
+          - failure
+      delay:
+        type: number
+      max_attempts:
+        type: number
+      notify:
+        type: object
+        properties:
+          emails:
+            type: array
+            items:
+              type: string
+          web_hook:
+            type: string
+  health_check:
+    type: object
+    required:
+      - command
+      - retries
+      - interval
+      - timeout
+      - restart
+    properties:
+      command:
+        type: string
+      retries:
+        type: number
+      interval:
+        type: number
+      timeout:
+        type: number
+      restart:
+        type: boolean
+  telemetry:
+    type: object
+    required:
+      - retention
+      - interval
+      - disable
+    properties:
+      retention:
+        type: number
+      interval:
+        type: number
+      disable:
+        type: boolean
+  update:
+    type: object
+    required:
+      - parallelism
+      - delay
+    properties:
+      parallelism:
+        type: number
+      delay:
+        type: number

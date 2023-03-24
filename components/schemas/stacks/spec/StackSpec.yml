@@ -32,10 +32,10 @@ properties:
             type: string
             description: Information describing the stack.
       containers:
-        type: object
-        description: A list of records defining the stacks containers.
-        additionalProperties:
-          "$ref": "../../containers/Container.yml"
+        nullable: true
+        type: array
+        items:
+          $ref: ./StackContainer.yml
       annotations:
         type: object
         description: Additional meta info about the stack.
