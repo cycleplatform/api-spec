@@ -5,7 +5,7 @@ get:
   security:
     - bearerAuth: []
   parameters:
-    - $ref: "../../../../public-spec/components/parameters/FilterParam.yml"
+    - $ref: ../../../components/parameters/FilterParam.yml
   summary: Fetch Hub
   description: Requires the `hubs-view` capability.
   responses:
