@@ -1,0 +1,20 @@
+title: HubUsageDatum
+description: A hub usage data point
+type: object
+required:
+  - time
+  - servers
+  - members
+  - environments
+  - containers
+properties:
+  time:
+    type: string
+  servers:
+    type: number
+  members:
+    type: number
+  environments:
+    type: number
+  containers:
+    type: number
