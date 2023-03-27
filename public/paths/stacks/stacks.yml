@@ -20,6 +20,7 @@ get:
           type: string
           enum:
             - containers_count
+            - builds_count
     - name: include
       in: query
       required: false
@@ -59,7 +60,6 @@ get:
               items:
                 type: string
     - $ref: ../../../components/parameters/SortParam.yml
-
     - $ref: ../../../components/parameters/PageParam.yml
   responses:
     "200":

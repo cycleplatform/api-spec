@@ -45,3 +45,5 @@ properties:
       last_build:
         description: The timestamp for the last build of the stack.
         "$ref": "../DateTime.yml"
+  meta:
+    "$ref": "./StackMeta.yml"

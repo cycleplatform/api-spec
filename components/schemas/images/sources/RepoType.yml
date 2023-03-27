@@ -13,20 +13,11 @@ properties:
   auth:
     type: object
     description: Authentication information for the repository.
-    required:
-      - type
-      - credentials
-    properties:
-      # TODO can I use type here?
-      type:
-        type: string
-        description: The `type` of authentication being used.
-      credentials:
-        type: object
-        description: Authentication credentials for the given type.
-        oneOf:
-          - "$ref": "./CredentialsHTTP.yml"
-          - "$ref": "./CredentialsSSH.yml"
+    discriminator:
+      propertyName: "type"
+    anyOf:
+      - $ref: ../../images/sources/CredentialsHTTP.yml
+      - $ref: ../../images/sources/CredentialsSSH.yml
   ref:
     type: object
     description: Repository reference information.

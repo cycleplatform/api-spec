@@ -1,0 +1,72 @@
+title: StackContainerVolume.yml
+type: object
+required:
+  - read_only
+  - destination
+properties:
+  read_only:
+    type: boolean
+  local:
+    type: object
+    required:
+      - max_size
+      - storage_pool
+    properties:
+      max_size:
+        type: string
+      storage_pool:
+        type: boolean
+  destination:
+    type: string
+  remote_access:
+    type: object
+    required:
+      - enable
+      - password
+    properties:
+      enable:
+        type: boolean
+      ips:
+        type: array
+        items:
+          type: object
+          required:
+            - ip
+            - read_only
+            - password
+          properties:
+            ip:
+              type: string
+            read_only:
+              type: boolean
+            password:
+              nullable: true
+              type: object
+              required:
+                - algorithm
+                - data
+              properties:
+                algorithm:
+                  type: string
+                  enum:
+                    - raw
+                    - sha512
+                    - md5
+                data:
+                  type: string
+      web_hook:
+        type: string
+      password:
+        type: object
+        required:
+          - algorithm
+          - data
+        properties:
+          algorithm:
+            type: string
+            enum:
+              - raw
+              - sha512
+              - md5
+          data:
+            type: string

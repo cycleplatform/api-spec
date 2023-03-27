@@ -1,0 +1,30 @@
+title: StackContainerConfigScaling.yml
+type: object
+properties:
+  auto:
+    type: object
+    required:
+      - instances
+    properties:
+      instances:
+        type: object
+        required:
+          - min
+          - max
+        properties:
+          min:
+            type: number
+          max:
+            type: number
+      rules:
+        type: object
+        required:
+          - metric
+          - threshold
+        properties:
+          metric:
+            type: string
+            enum:
+              - ram
+          threshold:
+            type: string

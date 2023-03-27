@@ -1,0 +1,51 @@
+title: StackContainer
+type: object
+description: A list of records defining the stacks containers.
+additionalProperties:
+  type: object
+  description: Stacks container object
+  required:
+    - name
+    - image
+    - stateful
+  properties:
+    name:
+      type: string
+    image:
+      type: object
+      required:
+        - name
+        - origin
+      properties:
+        name:
+          type: string
+        origin:
+          $ref: "../../images/sources/ImageSourceOrigin.yml"
+        stateful:
+          type: boolean
+        config:
+          type: object
+          required:
+            - network
+            - deploy
+          properties:
+            network:
+              $ref: ./StackContainerConfigNetwork.yml
+            deploy:
+              $ref: ./StackContainerConfigDeploy.yml
+            scaling:
+              $ref: ./StackContainerConfigScaling.yml
+            runtime:
+              $ref: ./StackContainerConfigRuntime.yml
+            resources:
+              $ref: ./StackContainerConfigResources.yml
+            integrations:
+              $ref: ./StackContainerConfigIntegrations.yml
+        role:
+          type: string
+          enum:
+            - orchestrator
+        volumes:
+          type: array
+          items:
+            $ref: ./StackContainerVolume.yml
