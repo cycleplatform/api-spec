@@ -30,6 +30,8 @@ items:
     - environments-services-manage
     - environments-vpn
     - environments-vpn-manage
+    - environments-scopedvariables-manage
+    - environments-scopedvariables-view
     - containers-deploy
     - containers-view
     - containers-console
@@ -67,3 +69,4 @@ items:
     - usage-view
     - dns-view
     - dns-manage
+    - dns-certs-view
