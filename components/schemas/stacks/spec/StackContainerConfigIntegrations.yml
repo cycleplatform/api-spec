@@ -1,0 +1,85 @@
+title: StackContainerConfigIntegrations
+type: object
+properties:
+  webhooks:
+    type: object
+    properties:
+      events:
+        type: object
+        properties:
+          deploy:
+            type: string
+          start:
+            type: string
+          stop:
+            type: string
+      config:
+        type: string
+  lets_encrypt:
+    type: object
+    required:
+      - enable
+    properties:
+      enable:
+        type: boolean
+      certificate_path:
+        type: string
+      chain_path:
+        type: string
+      key_path:
+        type: string
+      bundle_path:
+        type: string
+      additional_certs_path:
+        type: string
+  files:
+    type: array
+    items:
+      type: object
+      required:
+        - source
+        - destination
+      properties:
+        source:
+          type: string
+        destination:
+          type: string
+  backups:
+    type: object
+    required:
+      - destination
+      - backup
+      - restore
+    properties:
+      destination:
+        type: string
+        enum:
+          - backblaze-b2
+      backup:
+        type: object
+        required:
+          - command
+          - timeout
+          - cron_string
+        properties:
+          command:
+            nullable: true
+            type: number
+          timeout:
+            nullable: true
+            type: number
+          cron_string:
+            nullable: true
+            type: string
+      restore:
+        nullable: true
+        type: object
+        required:
+          - command
+          - timeout
+        properties:
+          command:
+            type: string
+          timeout:
+            nullable: true
+            type: number

@@ -1,0 +1,34 @@
+title: StackContainerConfigResources
+type: object
+required:
+  - cpu
+  - ram
+properties:
+  cpu:
+    type: object
+    properties:
+      shares:
+        type: object
+        required:
+          - limit
+          - reserve
+        properties:
+          limit:
+            type: number
+          reserve:
+            type: number
+      cpus:
+        type: string
+  ram:
+    type: object
+    properties:
+      limit:
+        type: string
+      reserve:
+        type: string
+      swappiness:
+        type: number
+      kernel:
+        type: string
+      kernel_tcp:
+        type: string
