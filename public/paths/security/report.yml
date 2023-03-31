@@ -15,6 +15,10 @@ get:
         ## Possible Values
         ### Environment
         `filter[environment]=<Environment ID>` fetch the security report for the specified environment
+
+        ### Event
+        `filter[event]=value` filter by event occurrence. Example: `filter[event]=environment.services.vpn.login`
+
       schema:
         type: object
         additionalProperties:

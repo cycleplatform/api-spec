@@ -23,8 +23,55 @@ get:
             - stack_builds
             - stacks
             - environments
+    - name: filter
+      in: query
+      required: false
+      description: |
+        ## Filter Field
+        The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
+
+        ## Possible Values
+        ### Search
+        `filter[search]=value` search activities for a value associated with a field on the given activity(s).
+
+        ### State
+        `filter[state]=value1,value2` state filtering will allow you to filter by the activity's current state.
+
+        ### User 
+        `filter[user]=ID` user filtering by ID.  Submit the ID of the user you wish to filter for and the return will be any activity from that user.
+
+        ### Environment
+        `filter[environment]=ID` environment filtering by ID.  Submit the ID of the environment you wish to filter for and the return will be any activity from that environment.
+
+        ### container
+        `filter[container]=ID` container filtering by ID.  Submit the ID of the container you wish to filter for and the return will be any activity from that container.
+
+        ### Instance
+        `filter[instance]=ID` instance filtering by ID.  Submit the ID of the instance you wish to filter for and the return will be any activity from that instance.
+
+        ### Server
+        `filter[server]=ID` server filtering by ID.  Submit the ID of the server you wish to filter for and the return will be any activity from that server.
+
+        ### Event
+        `filter[event]=value` filter by event occurrence. Example: `filter[event]=environment.services.vpn.login`
+
+        ### Verbosity
+        `filter[verbosity]=integer` filter the activity return by verbosity. The verbosity can be:
+
+          `0` - Activity that users would find useful.
+          `1` - Activity that can be useful when tracking down how something happened. 
+          `2` - Full activity, can be useful in debugging problems.
+
+      schema:
+        type: object
+        additionalProperties:
+          type: string
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                type: string
     - $ref: ../../../components/parameters/SortParam.yml
-    - $ref: ../../../components/parameters/FilterParam.yml
     - $ref: ../../../components/parameters/PageParam.yml
   summary: List Activity
   description: Doesn't require a specific capability.
