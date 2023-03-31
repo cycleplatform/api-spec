@@ -12,14 +12,15 @@ required:
   - annotations
 properties:
   id:
-    "$ref": "../../ID.yml"
+    $ref: ../../ID.yml
   name:
     type: string
     description: A name for the location.
   geographic:
-    "$ref": "./Geographic.yml"
+    $ref: ./Geographic.yml
+    nullable: true
   provider:
-    "$ref": "./LocationProvider.yml"
+    $ref: ./LocationProvider.yml
   compatible:
     type: boolean
     description: A boolean where true means the locaiton is supported by the platform.
