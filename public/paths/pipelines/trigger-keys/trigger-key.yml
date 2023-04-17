@@ -65,6 +65,69 @@ patch:
         type: string
   summary: Update Trigger Key
   description: Requires the `pipelines-manage` capability.
+  requestBody:
+    description: Req body for updating trigger key
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: Set name of trigger key
+            ips:
+              description: List of Ip Restrictions
+              type: array
+              items:
+                type: string
+                description: Restricted Ip String
+  responses:
+    200:
+      description: Returns a task descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: ../../../../components/schemas/jobs/TaskDescriptor.yml
+    400:
+      $ref: ../../../../components/responses/errors/400.yml
+    401:
+      $ref: ../../../../components/responses/errors/401.yml
+    403:
+      $ref: ../../../../components/responses/errors/403.yml
+    404:
+      $ref: ../../../../components/responses/errors/404.yml
+    409:
+      $ref: ../../../../components/responses/errors/409.yml
+    415:
+      $ref: ../../../../components/responses/errors/415.yml
+    422:
+      $ref: ../../../../components/responses/errors/422.yml
+    500:
+      $ref: ../../../../components/responses/errors/500.yml
+    503:
+      $ref: ../../../../components/responses/errors/503.yml
+delete:
+  operationId: "removePipelineTriggerKey"
+  tags:
+    - Pipelines
+  parameters:
+    - name: pipelineId
+      in: path
+      required: true
+      description: The ID of the pipeline.
+      schema:
+        type: string
+    - name: triggerKeyId
+      in: path
+      required: true
+      description: The ID of the trigger key.
+      schema:
+        type: string
+  summary: Delete Trigger Key
+  description: Requires the `pipelines-manage` capability.
   responses:
     200:
       description: Returns a task descriptor.

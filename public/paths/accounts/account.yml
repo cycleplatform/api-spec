@@ -35,3 +35,91 @@ get:
       $ref: ../../../components/responses/errors/500.yml
     503:
       $ref: ../../../components/responses/errors/503.yml
+patch:
+  operationId: "updateAccount"
+  tags:
+    - Account
+  summary: Update Account
+  description: Updates the current account
+  requestBody:
+    description: Parameters for updating an account.
+    content:
+      application/json:
+        schema:
+          description: Parameters for updating an account.
+          type: object
+          properties:
+            name:
+              type: object
+              description: The name for the account.
+              properties:
+                first:
+                  type: string
+                last:
+                  type: string
+                allow_support_login:
+                  type: boolean
+  responses:
+    200:
+      description: Returns the updated account resource.
+      content:
+        application/json:
+          schema:
+            title: "AccountUpdateResponse"
+            type: object
+            properties:
+              data:
+                $ref: ../../../components/schemas/accounts/Account.yml
+    400:
+      $ref: ../../../components/responses/errors/400.yml
+    401:
+      $ref: ../../../components/responses/errors/401.yml
+    403:
+      $ref: ../../../components/responses/errors/403.yml
+    404:
+      $ref: ../../../components/responses/errors/404.yml
+    409:
+      $ref: ../../../components/responses/errors/409.yml
+    415:
+      $ref: ../../../components/responses/errors/415.yml
+    422:
+      $ref: ../../../components/responses/errors/422.yml
+    500:
+      $ref: ../../../components/responses/errors/500.yml
+    503:
+      $ref: ../../../components/responses/errors/503.yml
+delete:
+  operationId: "removeAccount"
+  tags:
+    - Account
+  summary: Delete Account
+  description: Deletes the current account
+  responses:
+    200:
+      description: Returns a task descriptor.
+      content:
+        application/json:
+          schema:
+            title: "AccountUpdateResponse"
+            type: object
+            properties:
+              data:
+                $ref: ../../../components/schemas/accounts/Account.yml
+    400:
+      $ref: ../../../components/responses/errors/400.yml
+    401:
+      $ref: ../../../components/responses/errors/401.yml
+    403:
+      $ref: ../../../components/responses/errors/403.yml
+    404:
+      $ref: ../../../components/responses/errors/404.yml
+    409:
+      $ref: ../../../components/responses/errors/409.yml
+    415:
+      $ref: ../../../components/responses/errors/415.yml
+    422:
+      $ref: ../../../components/responses/errors/422.yml
+    500:
+      $ref: ../../../components/responses/errors/500.yml
+    503:
+      $ref: ../../../components/responses/errors/503.yml
