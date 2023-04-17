@@ -20,6 +20,7 @@ get:
             - servers
             - providers
             - locations
+    - $ref: ../../../../components/parameters/PageParam.yml
     # TODO can i use sort and filter here?
   summary: List Pools
   description: Requires the `infrastructure-ips-manage` capability.

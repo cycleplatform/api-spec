@@ -11,14 +11,14 @@ required:
   - state
 properties:
   id:
-    "$ref": "../ID.yml"
+    $ref: ../ID.yml
   name:
     type: string
     description: A name for the pipeline.
   creator:
-    "$ref": "../creators/CreatorScope.yml"
+    $ref: ../creators/CreatorScope.yml
   hub_id:
-    "$ref": "../HubID.yml"
+    $ref: ../HubID.yml
   disable:
     type: boolean
     description: A boolean where true signifies the pipeline is disabled.
@@ -26,7 +26,7 @@ properties:
     description: An array of stages.
     type: array
     items:
-      "$ref": "./PipelineStage.yml"
+      $ref: ./PipelineStage.yml
   events:
     title: PipelineEvents
     type: object
@@ -35,15 +35,19 @@ properties:
       - created
       - updated
       - deleted
+      - last_run
     properties:
       created:
         description: The timestamp of when the pipeline was created.
-        "$ref": "../DateTime.yml"
+        $ref: ../DateTime.yml
       updated:
         description: The timestamp of when the pipeline was updated.
-        "$ref": "../DateTime.yml"
+        $ref: ../DateTime.yml
       deleted:
         description: The timestamp of when the pipeline was deleted.
-        "$ref": "../DateTime.yml"
+        $ref: ../DateTime.yml
+      last_run:
+        description: The timestamp of when the pipeline was last run.
+        $ref: ../DateTime.yml
   state:
-    "$ref": "./PipelineState.yml"
+    $ref: ./PipelineState.yml
