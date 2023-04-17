@@ -7,8 +7,8 @@ required:
 properties:
   volume_groups:
     description: An array of volume group objects.
-    type: array
-    items:
+    type: object
+    additionalProperties:
       type: object
       description: Volume group
       required:
@@ -24,8 +24,8 @@ properties:
           description: A number representing the aggregate group volume size in megabytes.
         volumes:
           description: The actual volumes.
-          type: array
-          items:
+          type: object
+          additionalProperties:
             type: object
             required:
               - name

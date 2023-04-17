@@ -5,6 +5,10 @@ get:
   tags:
     - Accounts
   summary: List Account Logins
+  parameters:
+    - $ref: ../../../components/parameters/SortParam.yml
+    - $ref: ../../../components/parameters/FilterParam.yml
+    - $ref: ../../../components/parameters/PageParam.yml
   description: Lists logins associated with a given account.
   responses:
     200:

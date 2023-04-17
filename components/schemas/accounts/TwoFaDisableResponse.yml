@@ -1,0 +1,10 @@
+title: TwoFaDisableResponse
+type: object
+required:
+  - qr
+  - secret
+properties:
+  qr:
+    type: string
+  secret:
+    type: string

@@ -115,6 +115,12 @@ paths:
     "$ref": "./paths/accounts/memberships.yml"
   "/v1/account/logins":
     "$ref": "./paths/accounts/logins.yml"
+  "/v1/account/password":
+    "$ref": "./paths/accounts/password.yml"
+  "/v1/account/2fa/setup":
+    "$ref": "./paths/accounts/twoFa/setup.yml"
+  "/v1/account/2fa/disable":
+    "$ref": "./paths/accounts/twoFa/disable.yml"
   # Announcements
   "/v1/announcements":
     $ref: "./paths/announcements/announcements.yml"
