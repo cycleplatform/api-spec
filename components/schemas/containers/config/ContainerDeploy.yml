@@ -16,6 +16,7 @@ properties:
       - first-available
       - manual
       - high-availability
+      - node
   stateful:
     type: object
     properties:
