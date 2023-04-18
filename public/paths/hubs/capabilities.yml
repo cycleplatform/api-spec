@@ -18,7 +18,7 @@ get:
               data:
                 type: array
                 items:
-                  $ref: ../../../components/schemas/common/Capabilities.yml
+                  $ref: ../../../components/schemas/common/Capability.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:

@@ -73,7 +73,9 @@ patch:
                 all:
                   type: boolean
                 specific:
-                  $ref: ../../../../components/schemas/common/Capabilities.yml
+                  type: array
+                  items:
+                    $ref: ../../../../components/schemas/common/Capability.yml
             ips:
               type: array
               nullable: true
