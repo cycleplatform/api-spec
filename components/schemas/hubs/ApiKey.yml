@@ -64,7 +64,7 @@ properties:
         description: An array a capabilities this key has.
         type: array
         items:
-          "$ref": "../common/Capabilities.yml"
+          "$ref": "../common/Capability.yml"
   ips:
     type: array
     description: An array of IP's this API key can make calls from.

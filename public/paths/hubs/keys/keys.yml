@@ -72,7 +72,7 @@ post:
                   type: array
                   description: An array of capabilites.
                   items:
-                    $ref: ../../../../components/schemas/common/Capabilities.yml
+                    $ref: ../../../../components/schemas/common/Capability.yml
             ips:
               type: array
               nullable: true
