@@ -1,0 +1,48 @@
+post:
+  operationId: "disableTwoFa"
+  tags:
+    - Accounts
+  parameters: []
+  summary: Disable TwoFa
+  description: Disable TwoFa for an account
+  requestBody:
+    description: Parameters setting up TwoFa
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - token
+          properties:
+            token:
+              type: string
+              description: The token to authenticate TwoFa Disable.
+  responses:
+    200:
+      description: Returns a TwoFaDisableResponse resource.
+      content:
+        application/json:
+          schema:
+            title: TwofaDisableResponse
+            type: object
+            properties:
+              data:
+                $ref: ../../../../components/schemas/accounts/TwoFaDisableResponse.yml
+    400:
+      $ref: ../../../../components/responses/errors/400.yml
+    401:
+      $ref: ../../../../components/responses/errors/401.yml
+    403:
+      $ref: ../../../../components/responses/errors/403.yml
+    404:
+      $ref: ../../../../components/responses/errors/404.yml
+    409:
+      $ref: ../../../../components/responses/errors/409.yml
+    415:
+      $ref: ../../../../components/responses/errors/415.yml
+    422:
+      $ref: ../../../../components/responses/errors/422.yml
+    500:
+      $ref: ../../../../components/responses/errors/500.yml
+    503:
+      $ref: ../../../../components/responses/errors/503.yml

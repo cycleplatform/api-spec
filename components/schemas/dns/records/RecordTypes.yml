@@ -26,8 +26,8 @@ properties:
     required:
       - domain
     properties:
-      domain: 
-        type: string 
+      domain:
+        type: string
         description: The domain string the record resolves to.
   ns:
     type: object
@@ -109,7 +109,7 @@ properties:
     required:
       - features
     properties:
-      contianer_id:
+      container_id:
         type: string
         description: The ID of the container this record is related to.
       features:
