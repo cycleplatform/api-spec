@@ -46,7 +46,7 @@ get:
             type: object
             properties:
               data:
-                $ref: ../../../../components/schemas/containers/instances/returns/InstanceTelemetryReport.yml
+                $ref: ../../../../../components/schemas/containers/instances/returns/InstanceTelemetryReport.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:
