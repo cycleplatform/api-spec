@@ -1,32 +1,49 @@
 get:
-  operationId: "instanceTelemetryAuth"
+  operationId: "getInstanceResourcesTelemetryStream"
   tags:
     - WebsocketAuth
+    - Instances
   parameters:
     - name: containerId
+      description: The ID of the requested container.
       in: path
       required: true
-      description: The ID for the container
       schema:
         type: string
     - name: instanceId
+      description: The ID for the container instance.
       in: path
       required: true
-      description: The ID of the instance.
       schema:
         type: string
-  summary: Instance Telemetry Auth
-  description: Requires the `containers-view` capability.
+  summary: Instance Telemetry Stream Credentials
+  description:
+    Requires the `containers-view` capability. Retrieves an access token and URL to open a websocket to for streaming instance telemetry live.
+    This connects directly to the compute layer on the server the instance is hosted on, and streams telemetry in real time.
   responses:
     200:
-      description: Returns a token and an address.
+      description: Returns credentials for connecting to an instance telemetry stream.
       content:
         application/json:
           schema:
-            title: "InstanceTelemeteryStreamAuthResponse"
+            title: InstanceTelemetryStreamCredentialsReturn
+            type: object
             properties:
               data:
-                $ref: ../../../components/schemas/websocket-auth/InstanceTelemetryStreamAuth.yml
+                title: InstanceTelemetryStreamCredentials
+                type: object
+                description: Credentials for connecting to the instance telemetry stream on compute.
+                required:
+                  - token
+                  - address
+                properties:
+                  token:
+                    type: string
+                    description: The authentication token passed into the address as a URL parameter (?token).
+                  address:
+                    description: The URL address to open a websocket to for streaming instance telemetry data.
+                    type: string
+
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:
