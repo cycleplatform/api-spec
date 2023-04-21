@@ -1,4 +1,4 @@
-title: DeploymentStrategies 
+title: DeploymentStrategy
 type: object 
 description: Information about supported container deployment strategies. 
 required: 
@@ -9,11 +9,6 @@ properties:
   name: 
     type: string 
     description: The name of the deployment strategy. 
-    enum: 
-      - First Available 
-      - Manual 
-      - Resource Density 
-      - High Availability 
   disabled: 
     type: boolean 
     description: A boolean where true signifies a strategy is either not yet or no longer available. 

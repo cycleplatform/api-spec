@@ -15,7 +15,9 @@ get:
             type: object
             properties:
               data:
-                $ref: ../../../components/schemas/infrastructure/DeploymentStrat.yml
+                type: array
+                items:
+                  $ref: ../../../components/schemas/infrastructure/DeploymentStrategy.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:
