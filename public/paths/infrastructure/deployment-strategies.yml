@@ -15,9 +15,21 @@ get:
             type: object
             properties:
               data:
-                type: array
-                items:
-                  $ref: ../../../components/schemas/infrastructure/DeploymentStrategy.yml
+                type: object
+                properties:
+                  resource-density:
+                    $ref: ../../../components/schemas/infrastructure/DeploymentStrategy.yml
+                  high-availability:
+                    $ref: ../../../components/schemas/infrastructure/DeploymentStrategy.yml
+                  first-available:
+                    $ref: ../../../components/schemas/infrastructure/DeploymentStrategy.yml
+                  node:
+                    $ref: ../../../components/schemas/infrastructure/DeploymentStrategy.yml
+                  edge:
+                    $ref: ../../../components/schemas/infrastructure/DeploymentStrategy.yml
+                  manual:
+                    $ref: ../../../components/schemas/infrastructure/DeploymentStrategy.yml
+
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:

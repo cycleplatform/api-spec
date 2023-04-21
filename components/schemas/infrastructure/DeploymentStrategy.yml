@@ -7,7 +7,7 @@ required:
   - description
 properties: 
   name: 
-    type: string 
+    $ref: DeploymentStrategyName.yml
     description: The name of the deployment strategy. 
   disabled: 
     type: boolean 
