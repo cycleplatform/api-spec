@@ -11,6 +11,7 @@ properties:
       - resource-density
       - manual
       - high-availability
+      - first-available
       - ephemeral
   stateful:
     type: object
