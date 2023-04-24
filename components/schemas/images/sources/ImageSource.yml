@@ -8,7 +8,7 @@ required:
   - hub_id
   - state
   - events
-  - creator
+  - creatorß
   - requires
 properties:
   id:
@@ -54,3 +54,5 @@ properties:
         type: boolean
         description: A boolean where true represents this image requies an Nvidia GPU to run properly.
         nullable: true
+  meta:
+    $ref: "./ImageSourceMeta.yml"
