@@ -1,0 +1,9 @@
+title: DeploymentStrategyName
+type: string  
+enum: 
+  - resource-density
+  - high-availability
+  - first-available
+  - node
+  - edge
+  - manual
