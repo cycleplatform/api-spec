@@ -24,23 +24,23 @@ properties:
           - deleting
         properties:
           new:
-            description: Number of image sources with state new
+            description: Number of images in this source with state new
             type: number
           downloading:
-            description: Number of image sources with state downloading
+            description: Number of images in this source with state downloading
             type: number
           building:
-            description: Number of image sources with state building
+            description: Number of images in this source with state building
             type: number
           verifying:
-            description: Number of image sources with state verifying
+            description: Number of images in this source with state verifying
             type: number
           saving:
-            description: Number of image sources with state saving
+            description: Number of images in this source with state saving
             type: number
           live:
-            description: Number of image sources with state live
+            description: Number of images in this source with state live
             type: number
           deleting:
-            description: Number of image sources with state deleting
+            description: Number of images in this source with state deleting
             type: number
