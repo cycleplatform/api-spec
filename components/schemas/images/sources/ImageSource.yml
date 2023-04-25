@@ -54,3 +54,5 @@ properties:
         type: boolean
         description: A boolean where true represents this image requies an Nvidia GPU to run properly.
         nullable: true
+  meta:
+    $ref: "./ImageSourceMeta.yml"
