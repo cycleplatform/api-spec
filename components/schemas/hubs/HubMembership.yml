@@ -92,28 +92,28 @@ properties:
             properties:
               jobs:
                 type: object
-              required:
-                - apikey_alerts
-              properties:
-                apikey_alerts:
-                  type: boolean
-    email:
-      type: object
-      required:
-        - notifications
-      properties:
-        notificaitons:
-          type: object
-          required:
-            - server
-          properties:
-            server:
-              type: object
-              properties:
-                new:
-                  type: boolean
-                offline:
-                  type: boolean
+                required:
+                  - apikey_alerts
+                properties:
+                  apikey_alerts:
+                    type: boolean
+      email:
+        type: object
+        required:
+          - notifications
+        properties:
+          notificaitons:
+            type: object
+            required:
+              - server
+            properties:
+              server:
+                type: object
+                properties:
+                  new:
+                    type: boolean
+                  offline:
+                    type: boolean
   cycle:
     type: object
     description: Information about the membership as it pertains to the account holders affiliation with being a Cycle employee. Cycle employee accounts do not consume a "membership" for a given hub.
