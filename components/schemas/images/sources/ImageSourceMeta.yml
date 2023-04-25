@@ -24,7 +24,7 @@ properties:
           - deleting
         properties:
           new:
-            description: Number of image sources with state new
+            description: Number of images in this source with state new
             type: number
           downloading:
             description: Number of images in this source with state downloading
