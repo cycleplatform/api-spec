@@ -9,14 +9,8 @@ properties:
     type: integer
     description: The number of initial desired instances for a given container.
   strategy:
-    type: string
+    $ref: ../../infrastructure/DeploymentStrategyName.yml
     description: The deployment strategy to use when scaling the given container.
-    enum:
-      - resource-density
-      - first-available
-      - manual
-      - high-availability
-      - node
   stateful:
     type: object
     properties:
