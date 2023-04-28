@@ -1,0 +1,95 @@
+title: InfrastructureSummary
+description: An infrastructure summary resource.
+type: object
+required:
+  - hub_id
+  - images
+  - clusters
+  - updated
+  - servers
+properties:
+  hub_id:
+    "$ref": "../../HubID.yml"
+  servers:
+    type: number
+    description: The number of servers on the cluster
+  images:
+    type: object
+    description: Statistics about image usage.
+    required:
+      - tier
+    properties:
+      tier:
+        type: object
+        description: Image tier information.
+        required:
+          - total_mb
+          - allocated_mb
+          - used_mb
+        properties:
+          total_mb:
+            type: integer
+            description: A value in MB representing the total MB of space on the infrastructure available for images.
+          allocated_mb:
+            type: integer
+            description: A value in MB representing the amount of allocated space for images.
+          used_mb:
+            type: integer
+            description: A value in MB representing the total MB of space images are taking up out of the total megabytes available.
+  clusters:
+    type: object
+    description: Records pointing to information about clusters that make up this hubs infrastructure.
+    additionalProperties:
+      type: object
+      required:
+        - name
+        - resources
+        - servers
+        - instances
+        - healthy
+        - versions
+      properties:
+        name:
+          type: string
+          description: The name of the cluster
+        resources:
+          $ref: ../servers/ServerResources.yml
+          description: Information about the aggregate resources of the cluster.
+        healthy:
+          type: boolean
+          description: Whether Cycle has determined this cluster to be healthy or not.
+        versions:
+          $ref: ./ClusterVersionServerCount.yml
+        instances:
+          $ref: ../../StateCountSummary.yml
+        servers:
+          type: object
+          required:
+            - count
+            - providers
+          properties:
+            count:
+              type: number
+            providers:
+              type: object
+              additionalProperties:
+                type: object
+                required:
+                  - count
+                  - locations
+                  - models
+                properties: 
+                  count:
+                    type: number
+                  locations:
+                    type: object
+                    additionalProperties:
+                      type: number
+                  models:
+                    type: object
+                    additionalProperties:
+                      type: number
+
+  updated:
+    description: A timestamp of when the infrastructure was last updated.
+    $ref: ../../DateTime.yml

@@ -16,8 +16,6 @@ get:
             type: object
             properties:
               data:
-                type: array
-                items:
                   $ref: ../../../components/schemas/search/Index.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
