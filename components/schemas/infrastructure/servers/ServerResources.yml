@@ -1,0 +1,68 @@
+type: object
+description: Information about server CPU, RAM and Disk resources.
+required:
+  - ram
+  - cpu
+  - disk
+properties:
+  ram:
+    type: object
+    description: Information about RAM Resources.
+    required:
+      - total_mb
+      - allocated_mb
+      - used_mb
+      - provisioned_mb
+    properties:
+      total_mb:
+        type: integer
+        description: The total amount of RAM in MBsr.
+      allocated_mb:
+        type: integer
+        description: The total amount of allocated RAM in MBs.
+      used_mb:
+        type: integer
+        description: The total amount of used RAM in MBs.
+      provisioned_mb:
+        type: integer
+        description: The total amount of provisioned RAM in MBs.
+  cpu:
+    type: object
+    description: Information about CPU resources.
+    required:
+      - cores
+      - shares
+      - shares_ratio
+    properties:
+      cores:
+        type: integer
+        description: The number of CPU cores.
+      shares:
+        type: object
+        description: Information about CPU shares.
+        required:
+          - allocated
+          - total
+        properties:
+          allocated:
+            type: integer
+            description: The number of shares allocated.
+          total:
+            type: integer
+            description: The total number of shares available.
+      share_ratio:
+        type: integer
+        description: The ratio of shares allocated to total shares.
+  disk:
+    type: object
+    description: Information about disk size and usage.
+    required:
+      - total_mb
+      - used_mb
+    properties:
+      total_mb:
+        type: integer
+        description: The total amount of disk space in MBs.
+      used_mb:
+        type: integer
+        description: The amount of disk space used in MBs.
