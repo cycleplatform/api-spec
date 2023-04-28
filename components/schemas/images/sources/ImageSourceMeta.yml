@@ -1,0 +1,46 @@
+---
+title: ImageSourceMeta
+type: object
+description: A list of meta fields that can be applied to this environment.
+properties:
+  images_count:
+    type: object
+    required:
+      - state
+      - total
+    properties:
+      total:
+        description: Number of image sources
+        type: number
+      state:
+        type: object
+        required:
+          - new
+          - downloading
+          - building
+          - verifying
+          - saving
+          - live
+          - deleting
+        properties:
+          new:
+            description: Number of images in this source with state new
+            type: number
+          downloading:
+            description: Number of images in this source with state downloading
+            type: number
+          building:
+            description: Number of images in this source with state building
+            type: number
+          verifying:
+            description: Number of images in this source with state verifying
+            type: number
+          saving:
+            description: Number of images in this source with state saving
+            type: number
+          live:
+            description: Number of images in this source with state live
+            type: number
+          deleting:
+            description: Number of images in this source with state deleting
+            type: number

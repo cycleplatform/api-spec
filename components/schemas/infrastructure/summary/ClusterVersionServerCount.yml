@@ -1,0 +1,21 @@
+title: ClusterVersionServerCount
+description: A count of servers in a cluster with the given version of Cycle software
+type: object
+required:
+  - agent
+  - agent-spawner
+  - compute
+  - compute-spawner
+properties:
+  agent: 
+    additionalProperties:
+      type: number
+  agent-spawner: 
+    additionalProperties:
+      type: number
+  compute: 
+    additionalProperties:
+      type: number
+  compute-spawner: 
+    additionalProperties:
+      type: number
