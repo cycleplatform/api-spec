@@ -78,16 +78,17 @@ properties:
                   - count
                   - locations
                   - models
-                count:
-                  type: number
-                locations:
-                  type: object
-                  additionalProperties:
+                properties: 
+                  count:
                     type: number
-                models:
-                  type: object
-                  additionalProperties:
-                    type: number
+                  locations:
+                    type: object
+                    additionalProperties:
+                      type: number
+                  models:
+                    type: object
+                    additionalProperties:
+                      type: number
 
   updated:
     description: A timestamp of when the infrastructure was last updated.
