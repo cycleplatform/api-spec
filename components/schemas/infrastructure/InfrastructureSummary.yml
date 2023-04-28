@@ -121,6 +121,34 @@ properties:
                 used_mb:
                   type: integer
                   description: The amount of disk space used across the given cluster, in MB.
+        servers:
+          type: object
+          required:
+            - count
+            - locations
+            - models
+            - server_ids
+          properties:
+            count:
+              type: number
+            providers:
+              type: object
+              additionalProperties:
+                type: number
+            models:
+              type: object
+              additionalProperties:
+                type: number
+        # instances: //TODO
+        healthy:
+          type: boolean
+        versions:
+          type: object
+          additionalProperties:
+            type: object
+            additionalProperties:
+              type: number
+
   updated:
     description: A timestamp of when the infrastructure was last updated.
     "$ref": "../DateTime.yml"

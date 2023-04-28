@@ -12,7 +12,7 @@ required:
   - annotations
 properties:
   id:
-    $ref: ../../ID.yml
+    type: string
   name:
     type: string
     description: A name for the location.

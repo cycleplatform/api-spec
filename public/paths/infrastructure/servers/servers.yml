@@ -131,6 +131,7 @@ post:
                   - model_id
                   - location_id
                   - quantity
+                  - advanced
                 properties:
                   provider:
                     type: string
@@ -149,6 +150,20 @@ post:
                     type: array
                     items:
                       type: string
+                advanced:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      provision_options:
+                        type: object
+                        properties:
+                          attached_storage_size:
+                            type: number
+                          reservation_id:
+                            type: string
+                      zone:
+                        type: string
   responses:
     201:
       description: Returns a single server resource.
