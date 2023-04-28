@@ -13,6 +13,15 @@ get:
         ## Possible Values
         ### Search 
         `filter[cluster]=value` return an infrastructure summary only for the specified cluster.
+      schema:
+        type: object
+        additionalProperties:
+          type: string
+          oneOf:
+            - type: string
+            - type: array
+              items:
+                type: string
   summary: Fetch Infrastructure Summary
   description: Requires the `infrastructure-servers-view` capability.
   responses:
