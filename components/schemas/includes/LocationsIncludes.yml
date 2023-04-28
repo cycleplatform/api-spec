@@ -2,4 +2,4 @@ title: LocationIncludes
 description: A resource thats associated with a provider location.
 type: object
 additionalProperties:
-  "$ref": "../infrastructure/providers/Location.yml"
+  "$ref": "../infrastructure/providers/InfrastructureProviderLocation.yml"

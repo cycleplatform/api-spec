@@ -25,7 +25,7 @@ get:
               data:
                 type: array
                 items:
-                  $ref: ../../../../components/schemas/infrastructure/providers/Location.yml
+                  $ref: ../../../../components/schemas/infrastructure/providers/InfrastructureProviderLocation.yml
     400:
       $ref: ../../../../components/responses/errors/400.yml
     401:
