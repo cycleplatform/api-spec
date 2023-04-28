@@ -2,8 +2,17 @@ get:
   operationId: "getInfrastructureSummary"
   tags:
     - Infrastructure
-  parameters: []
-  # TODO there are some settings and query params that need to be added here I just dont know how to read it.
+  parameters:
+    - name: filter
+      in: query
+      required: false
+      description: |
+        ## Filter Field 
+        The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
+
+        ## Possible Values
+        ### Search 
+        `filter[cluster]=value` return an infrastructure summary only for the specified cluster.
   summary: Fetch Infrastructure Summary
   description: Requires the `infrastructure-servers-view` capability.
   responses:
