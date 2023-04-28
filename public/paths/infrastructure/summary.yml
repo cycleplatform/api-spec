@@ -16,7 +16,7 @@ get:
             type: object
             properties:
               data:
-                $ref: ../../../components/schemas/infrastructure/InfrastructureSummary.yml
+                $ref: ../../../components/schemas/infrastructure/summary/InfrastructureSummary.yml
     400:
       $ref: ../../../components/responses/errors/400.yml
     401:
