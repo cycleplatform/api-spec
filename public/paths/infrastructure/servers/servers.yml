@@ -131,7 +131,6 @@ post:
                   - model_id
                   - location_id
                   - quantity
-                  - advanced
                 properties:
                   provider:
                     type: string
