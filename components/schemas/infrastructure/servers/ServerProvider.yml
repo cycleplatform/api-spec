@@ -28,3 +28,12 @@ properties:
   mac_addr:
     type: string
     description: The mac address for the server.
+  extra:
+    type: object
+  provision_options:
+    type: object
+    properties:
+      attachesd_storage_size:
+        type: number
+      reservation_id:
+        type: string

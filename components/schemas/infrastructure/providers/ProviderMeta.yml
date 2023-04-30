@@ -5,4 +5,4 @@ properties:
   locations:
     type: array
     items:
-      $ref: "./Location.yml"
+      $ref: "./InfrastructureProviderLocation.yml"

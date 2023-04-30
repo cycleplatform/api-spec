@@ -38,3 +38,7 @@ properties:
     description: Record of notices related to native provider
     additionalProperties:
       type: string
+  features:
+    type: array
+    items:
+      type: string

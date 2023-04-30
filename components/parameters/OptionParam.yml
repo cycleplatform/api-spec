@@ -1,5 +1,5 @@
 ---
-name: option
+name: options
 in: query
 required: false
 description: "The option field is a key-value object, where the key is the option, and the value is a boolean. For example, `?option[force]=true`"
