@@ -5,6 +5,14 @@ required:
   - action
   - details
 properties:
+  identifier:
+    type: string
+    description: An identifier for the step.
+  options:
+    type: object
+    properties:
+      skip:
+        type: boolean
   action:
     type: string
     description: The action that the step takes.
