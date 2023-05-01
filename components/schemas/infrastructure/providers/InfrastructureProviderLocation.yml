@@ -17,6 +17,7 @@ properties:
     type: string
     description: A name for the location.
   geographic:
+    type: object
     nullable: true
     anyOf:
       - $ref: ./Geographic.yml

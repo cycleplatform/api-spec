@@ -41,8 +41,6 @@ properties:
             type: boolean
           annotations:
             type: object
-            additionalProperties:
-              AnyValue: {}
           config:
             $ref: "../../containers/config/Config.yml"
           volumes:

@@ -30,8 +30,7 @@ properties:
     description: The mac address for the server.
   extra:
     type: object
-    additionalProperties:
-      AnyValue: {}
+    additionalProperties: true
   provision_options:
     type: object
     properties:
