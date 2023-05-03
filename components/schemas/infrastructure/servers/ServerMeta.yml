@@ -25,7 +25,7 @@ properties:
       state:
         "$ref": "./NodeState.yml"
       stats:
-        "$ref": "../stats/Stats.yml"
+        "$ref": "../stats/NodeMetaStats.yml"
       healthy:
         type: boolean
         description: A boolean where true means the platform is reporting the server as healthy.
