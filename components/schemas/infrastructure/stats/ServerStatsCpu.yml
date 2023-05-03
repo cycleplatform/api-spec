@@ -1,4 +1,4 @@
-title: ServerStatsCPU
+title: ServerStatsCpu
 type: object
 description: Statistics about the CPU resources on a server.
 properties:
@@ -18,4 +18,3 @@ properties:
         speed:
           type: integer
           description: The speed of the processor.
- 
