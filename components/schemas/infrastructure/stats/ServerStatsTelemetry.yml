@@ -14,7 +14,7 @@ properties:
   load:
     "$ref": "./ServerStatsLoad.yml"
   ram:
-    "$ref": "./ServerStatsRAM.yml"
+    "$ref": "./ServerStatsRam.yml"
   storage_base:
     type: object
     description: Telemetry data for the base volume of a given server.

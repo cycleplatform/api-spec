@@ -16,7 +16,7 @@ properties:
   uptime:
     "$ref": "./ServerStatsUptime.yml"
   cpu:
-    "$ref": "./ServerStatsCPU.yml"
+    "$ref": "./ServerStatsCpu.yml"
   load:
     "$ref": "./ServerStatsLoad.yml"
   ram:
