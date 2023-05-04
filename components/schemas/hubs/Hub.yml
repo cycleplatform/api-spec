@@ -69,6 +69,9 @@ properties:
         type: string
         description: A webhook to report information to each time a server is deployed on the given hub.
   billing:
-    "$ref": "./BillingProfile.yml"
+    type: object
+    nullable: true
+    anyOf:
+      - $ref: "./HubBillingProfile.yml"
   meta:
     "$ref": "./HubMeta.yml"
