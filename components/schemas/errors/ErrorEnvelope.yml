@@ -1,10 +1,12 @@
 title: ErrorEnvelope
 type: object
 description: An error response.
+required:
+  - error
+  - data
 properties:
   error:
     $ref: Error.yml
   data:
     description: Data will always be `null` here.
-    nullable: true
-    type: object
+    type: null
