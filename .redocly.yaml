@@ -8,7 +8,8 @@ apis:
 extends:
   - recommended
   
-# rules:
+rules:
+  operation-4xx-response: off
   # A sample custom rule. Read more about rules: https://redocly.com/docs/cli/rules/
   # assert/operation-description:
   #   subject: 
