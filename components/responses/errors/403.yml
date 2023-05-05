@@ -1,5 +1,0 @@
-description: Access to this resource is forbidden.
-content:
-  application/json:
-    schema:
-      $ref: ../../schemas/errors/ErrorEnvelope.yml
