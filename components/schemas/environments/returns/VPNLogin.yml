@@ -1,4 +1,4 @@
-title: VPNLogins
+title: VPNLogin
 type: object
 description: A VPN login event record.
 required:
