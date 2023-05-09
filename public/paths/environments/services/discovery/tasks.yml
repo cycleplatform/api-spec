@@ -33,7 +33,7 @@ post:
                   type: boolean
                   description: A boolean where `true` represents the desire to run the environment discovery service in high availability mode.
   responses:
-    200:
+    202:
       description: Returns a task descriptor.
       content:
         application/json:
@@ -43,21 +43,5 @@ post:
             properties:
               data:
                 $ref: ../../../../../components/schemas/jobs/TaskDescriptor.yml
-    400:
-      $ref: ../../../../../components/responses/errors/400.yml
-    401:
-      $ref: ../../../../../components/responses/errors/401.yml
-    403:
-      $ref: ../../../../../components/responses/errors/403.yml
-    404:
-      $ref: ../../../../../components/responses/errors/404.yml
-    409:
-      $ref: ../../../../../components/responses/errors/409.yml
-    415:
-      $ref: ../../../../../components/responses/errors/415.yml
-    422:
-      $ref: ../../../../../components/responses/errors/422.yml
-    500:
-      $ref: ../../../../../components/responses/errors/500.yml
-    503:
-      $ref: ../../../../../components/responses/errors/503.yml
+    default:
+      $ref: ../../../../../components/responses/errors/DefaultError.yml

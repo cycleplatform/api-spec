@@ -20,6 +20,6 @@ properties:
     description: A boolean representing if this service container is set to high availability
       mode or not.
   config:
-    type: object
+    type: null
     description: The config object for the discovery service.
-    properties: {}
+

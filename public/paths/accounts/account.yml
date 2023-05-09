@@ -17,24 +17,8 @@ get:
             properties:
               data:
                 $ref: ../../../components/schemas/accounts/Account.yml
-    400:
-      $ref: ../../../components/responses/errors/400.yml
-    401:
-      $ref: ../../../components/responses/errors/401.yml
-    403:
-      $ref: ../../../components/responses/errors/403.yml
-    404:
-      $ref: ../../../components/responses/errors/404.yml
-    409:
-      $ref: ../../../components/responses/errors/409.yml
-    415:
-      $ref: ../../../components/responses/errors/415.yml
-    422:
-      $ref: ../../../components/responses/errors/422.yml
-    500:
-      $ref: ../../../components/responses/errors/500.yml
-    503:
-      $ref: ../../../components/responses/errors/503.yml
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
 patch:
   operationId: "updateAccount"
   tags:
@@ -70,24 +54,9 @@ patch:
             properties:
               data:
                 $ref: ../../../components/schemas/accounts/Account.yml
-    400:
-      $ref: ../../../components/responses/errors/400.yml
-    401:
-      $ref: ../../../components/responses/errors/401.yml
-    403:
-      $ref: ../../../components/responses/errors/403.yml
-    404:
-      $ref: ../../../components/responses/errors/404.yml
-    409:
-      $ref: ../../../components/responses/errors/409.yml
-    415:
-      $ref: ../../../components/responses/errors/415.yml
-    422:
-      $ref: ../../../components/responses/errors/422.yml
-    500:
-      $ref: ../../../components/responses/errors/500.yml
-    503:
-      $ref: ../../../components/responses/errors/503.yml
+      
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
 delete:
   operationId: "removeAccount"
   tags:
@@ -105,21 +74,5 @@ delete:
             properties:
               data:
                 $ref: ../../../components/schemas/accounts/Account.yml
-    400:
-      $ref: ../../../components/responses/errors/400.yml
-    401:
-      $ref: ../../../components/responses/errors/401.yml
-    403:
-      $ref: ../../../components/responses/errors/403.yml
-    404:
-      $ref: ../../../components/responses/errors/404.yml
-    409:
-      $ref: ../../../components/responses/errors/409.yml
-    415:
-      $ref: ../../../components/responses/errors/415.yml
-    422:
-      $ref: ../../../components/responses/errors/422.yml
-    500:
-      $ref: ../../../components/responses/errors/500.yml
-    503:
-      $ref: ../../../components/responses/errors/503.yml
+    default:
+        $ref: ../../../components/responses/errors/DefaultError.yml
