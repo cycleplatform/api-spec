@@ -26,19 +26,9 @@ properties:
     required:
     - deploy
     - haproxy
+    - ipv4
+    - ipv6
     properties:
-      deploy:
-        type: string
-        description: "The deployment strategy for this environment's load balancer(s).
-          \n - single: Deploys a single load balancer instance to the first available
-          node in the target environment's cluster. \n - per-provider: Deploys a load
-          balancer instance to the first available node for every provider in the
-          target environment's cluster. \n - per-location: Deploys a load balancer
-          instance to one node per location in the target environment's cluster."
-        enum:
-        - single
-        - per-provider
-        - per-location
       haproxy:
         type: object
         description: Describes settings that are passed to HAProxy within the load
@@ -47,8 +37,6 @@ properties:
         required:
         - default
         - ports
-        - ipv4
-        - ipv6
         properties:
           default:
             allOf:
@@ -60,12 +48,14 @@ properties:
             - description: An object that defines how HAProxy will act on a specific
                 port. The key is a custom port, and the value is the same settings
                 object found under `default` above.
-            - "$ref": "./HAProxyConfig.yml"
-          ipv4:
-            type: boolean
-            nullable: true
-            description: Allow / disallow traffic to be routed via IPv4.
-          ipv6:
-            type: boolean
-            nullable: true
-            description: Allow / disallow traffic to be routed via IPv6.
+            - type: object
+              additionalProperties:
+                $ref: ./HAProxyConfig.yml
+      ipv4:
+        type: boolean
+        nullable: true
+        description: Allow / disallow traffic to be routed via IPv4.
+      ipv6:
+        type: boolean
+        nullable: true
+        description: Allow / disallow traffic to be routed via IPv6.

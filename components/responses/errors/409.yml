@@ -1,5 +1,0 @@
-description: The requested change (usually a PATCH request) would cause a conflict with an existing resource.
-content:
-  application/json:
-    schema:
-      $ref: ../../schemas/errors/ErrorEnvelope.yml

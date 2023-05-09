@@ -1,4 +1,4 @@
-description: The request body is invalid for this endpoint.
+description: General error response from the platform
 content:
   application/json:
     schema:

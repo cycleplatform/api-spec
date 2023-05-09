@@ -1,4 +1,4 @@
-title: ServerStatsTelemetery
+title: ServerStatsTelemetry
 type: object
 description: Statistics about a given servers telemetery data.
 required:
@@ -12,9 +12,9 @@ properties:
     description: The timestamp for when the telemetery data was collected.
     "$ref": "../../DateTime.yml"
   load:
-    "$ref": "./Load.yml"
+    "$ref": "./ServerStatsLoad.yml"
   ram:
-    "$ref": "./RAM.yml"
+    "$ref": "./ServerStatsRam.yml"
   storage_base:
     type: object
     description: Telemetry data for the base volume of a given server.

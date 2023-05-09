@@ -1,5 +1,0 @@
-description: Cycle is preparing the requested resource, but the resource isn't ready yet.
-content:
-  application/json:
-    schema:
-      $ref: ../../schemas/errors/ErrorEnvelope.yml
