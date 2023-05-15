@@ -40,6 +40,9 @@ get:
         The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
 
         ## Possible Values
+        ### Identifier
+        `filter[identifier]=value` List only those image sources matching this identifier. May return multiple results.
+
         ### Search 
         `filter[search]=value` search for a value associated with a field on the given image source(s).
 
@@ -97,6 +100,8 @@ post:
             name:
               type: string
               description: A name for the image source.
+            identifier:
+              $ref: ../../../../components/schemas/Identifier.yml
             type:
               type: string
               description: A value identifiying the type of image.

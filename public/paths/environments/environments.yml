@@ -44,6 +44,9 @@ get:
         The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
 
         ## Possible Values
+        ### Identifier
+        `filter[identifier]=value` List only those environments matching this identifier. May return multiple results.
+
         ### Search 
         `filter[search]=value` search for a value associated with a field on the given environment(s).
 
@@ -111,6 +114,8 @@ post:
             name:
               type: string
               description: A user defined name for the environment resource.
+            identifier:
+              $ref: ../../../components/schemas/Identifier.yml
             cluster:
               type: string
               description: The cluster this environment is associated with.

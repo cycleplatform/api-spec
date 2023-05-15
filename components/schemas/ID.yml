@@ -1,4 +1,4 @@
 ---
 title: ID
 type: string
-description: A unique identifier.
+description: A 24 character hex string used to identify a unique resource.

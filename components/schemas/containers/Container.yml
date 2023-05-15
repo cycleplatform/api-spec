@@ -3,6 +3,7 @@ type: object
 description: Containers are a way to package together your application along with it's dependencies, and run in a resource isolated process. They provide consistency across different hosts, efficiency over traditional hosting methods, and facilitate a micro-service based approach, where each logical piece of your application is split into multiple, easily testable parts (such as API, Backend, Frontend, etc).
 required:
   - id
+  - identifier
   - name
   - identifier
   - creator
@@ -18,12 +19,12 @@ required:
 properties:
   id:
     "$ref": "../ID.yml"
+  identifier:
+    $ref: ../Identifier.yml 
+    description: A human readable slugged identifier for this container. Usually used as a key in a stack file.
   name:
     type: string
     description: A user defined name for the container resource.
-  identifier:
-    type: string
-    description: A human readable slugged identifier for this container. Usually used as a key in a stack file.
   creator:
     "$ref": "../creators/CreatorScope.yml"
   environment:

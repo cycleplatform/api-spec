@@ -44,6 +44,9 @@ get:
         The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
 
         ## Possible Values
+        ### Identifier
+        `filter[identifier]=value` List only those stacks matching this identifier. May return multiple results.
+
         ### Search
         `filter[search]=value` search stacks for a value associated with a field on the given stack(s).
 
@@ -98,6 +101,8 @@ post:
             name:
               type: string
               description: A name for the stack.
+            identifier:
+              $ref: ../../../components/schemas/Identifier.yml
             source:
               $ref: ../../../components/schemas/stacks/StackSource.yml
   responses:
