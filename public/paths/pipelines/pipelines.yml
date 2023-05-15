@@ -27,6 +27,9 @@ get:
         The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
 
         ## Possible Values
+        ### Identifier
+        `filter[identifier]=value` List only those pipelines matching this identifier. May return multiple results.
+        
         ### Search
         `filter[search]=value` search pipelines for a value associated with a field on the given pipeline(s).
 
@@ -84,6 +87,8 @@ post:
             name:
               type: string
               description: A name for the pipeline.
+            identifier:
+              $ref: ../../../components/schemas/Identifier.yml
             stages:
               description: An array of stages.
               type: array
