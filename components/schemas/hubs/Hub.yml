@@ -3,6 +3,7 @@ description: A hub resource.
 type: object
 required:
   - id
+  - identifier
   - name
   - creator
   - events
@@ -13,6 +14,9 @@ required:
 properties:
   id:
     "$ref": "../ID.yml"
+  identifier:
+    $ref: ../Identifier.yml 
+    description: A human readable slugged identifier for this hub.
   name:
     type: string
     description: A name for the hub.
