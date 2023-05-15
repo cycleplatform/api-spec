@@ -23,10 +23,7 @@ properties:
             type: integer
             description: The reserve (allocation) number of shares for each instance of a given container.
       cpus:
-        type: array
-        items:
-          type: integer
-        description: An array of CPU cores this container will be pinned to.
+        type: string
   ram:
     type: object
     description: Configuration settings for limits and reserves of RAM resources for the given container.
