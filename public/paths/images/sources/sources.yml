@@ -100,6 +100,8 @@ post:
             name:
               type: string
               description: A name for the image source.
+            identifier:
+              $ref: ../../../../components/schemas/Identifier.yml
             type:
               type: string
               description: A value identifiying the type of image.

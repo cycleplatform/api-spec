@@ -129,6 +129,8 @@ post:
             name:
               type: string
               description: A user defined name for the container.
+            identifier:
+              $ref: ../../../components/schemas/Identifier.yml
             environment_id:
               type: string
               description: An identifier for the environment this container will be deployed to.

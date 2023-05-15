@@ -101,6 +101,8 @@ post:
             name:
               type: string
               description: A name for the stack.
+            identifier:
+              $ref: ../../../components/schemas/Identifier.yml
             source:
               $ref: ../../../components/schemas/stacks/StackSource.yml
   responses:

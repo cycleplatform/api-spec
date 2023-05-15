@@ -67,6 +67,8 @@ post:
             name:
               type: string
               description: A name for the hub.
+            identifier:
+              $ref: ../../../components/schemas/Identifier.yml
             integrations:
               $ref: ../../../components/schemas/hubs/HubIntegrations.yml
             webhooks:

@@ -114,6 +114,8 @@ post:
             name:
               type: string
               description: A user defined name for the environment resource.
+            identifier:
+              $ref: ../../../components/schemas/Identifier.yml
             cluster:
               type: string
               description: The cluster this environment is associated with.

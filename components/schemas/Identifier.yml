@@ -3,7 +3,7 @@ title: Identifier
 type: string
 description: |
   A human-readable identifier used to refer to a resource, where using the official ID may be inconvenient.
-  The identifier is tokenized from the name/relevant field of the resource. For example, a container named "My Container" will
+  The identifier is automatically tokenized from the name/relevant field of the resource if one is not provided. For example, a container named "My Container" will
   have the identifier of `my-container` and is automatically created by the platform.
 
-  Though an identifier generally refers to one specific resource, there may be cases where multiple resources have the same identifier.
+  The identifier does not have to be unique.
