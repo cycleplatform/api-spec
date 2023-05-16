@@ -12,4 +12,4 @@ properties:
     type: string
     description: A unique hash for the given volume.
   config:
-    "$ref": "../config/Volumes.yml"
+    "$ref": "../config/ContainerVolume.yml"
