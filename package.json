@@ -13,9 +13,6 @@
     "preview:public": "npm run build:public && npx @redocly/cli preview-docs dist/public-api.yml",
     "preview:internal": "npm run build:internal && npx @redocly/cli preview-docs dist/internal-api.yml"
   },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@openapitools/openapi-generator-cli": "^2.5.1"
-  }
+  "author": "Petrichor Holdings, Inc.",
+  "license": "Apache-2.0"
 }
