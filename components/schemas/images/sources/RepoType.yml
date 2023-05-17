@@ -15,6 +15,9 @@ properties:
     description: Authentication information for the repository.
     discriminator:
       propertyName: type
+      mapping:
+        http: ../../images/sources/CredentialsHTTP.yml
+        ssh: ../../images/sources/CredentialsSSH.yml 
     oneOf:
       - $ref: ../../images/sources/CredentialsHTTP.yml
       - $ref: ../../images/sources/CredentialsSSH.yml

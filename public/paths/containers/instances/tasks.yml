@@ -24,6 +24,9 @@ post:
         schema:
           discriminator:
             propertyName: action
+            mapping: 
+              migrate: ../../../../components/schemas/containers/instances/taskActions/Migrate.yml
+              migrate_revert: ../../../../components/schemas/containers/instances/taskActions/RevertMigration.yml
           oneOf:
             - $ref: ../../../../components/schemas/containers/instances/taskActions/RevertMigration.yml
             - $ref: ../../../../components/schemas/containers/instances/taskActions/Migrate.yml

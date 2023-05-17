@@ -3,6 +3,9 @@ type: object
 description: A source for a stack to be created from.
 discriminator:
   propertyName: type
+  mapping:
+    git-repo: ./spec/RepoSpec.yml
+    raw: ./spec/StackSpec.yml
 oneOf:
-  - "$ref": "./spec/RepoSpec.yml"
-  - "$ref": "./spec/StackSpec.yml"
+  - $ref: ./spec/RepoSpec.yml
+  - $ref: ./spec/StackSpec.yml

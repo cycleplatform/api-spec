@@ -24,6 +24,9 @@ post:
         schema:
           discriminator:
             propertyName: action
+            mapping:
+              generate: ../../../../components/schemas/stacks/builds/taskActions/GenerateStackBuildAction.yml
+              deploy: ../../../../components/schemas/stacks/builds/taskActions/DeployStackBuildAction.yml
           oneOf:
             - $ref: ../../../../components/schemas/stacks/builds/taskActions/GenerateStackBuildAction.yml
             - $ref: ../../../../components/schemas/stacks/builds/taskActions/DeployStackBuildAction.yml
