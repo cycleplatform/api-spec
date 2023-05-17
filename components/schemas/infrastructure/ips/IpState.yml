@@ -11,3 +11,4 @@ allOf:
           - assigned
           - releasing
           - available
+  - $ref: "../../State.yml"
