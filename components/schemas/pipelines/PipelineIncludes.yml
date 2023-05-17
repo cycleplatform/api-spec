@@ -12,7 +12,7 @@ properties:
     type: object
     description: A record of resources that can be associated with the pipeline.
     additionalProperties:
-      anyOf:
+      oneOf:
         - "$ref": "../containers/Container.yml"
         - "$ref": "../environments/Environment.yml"
         - "$ref": "../stacks/Stack.yml"

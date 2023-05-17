@@ -21,6 +21,7 @@ properties:
   spec:
     "$ref": "../spec/StackSpec.yml"
   about:
+    x-ogen-name: StackBuildAboutDetails
     type: object
     description: Information about the stack build.
     required:
@@ -34,8 +35,9 @@ properties:
         type: string
         description: Information describing the stack
       git_commit:
-        "$ref": "./StackGitCommit.yml" 
+        "$ref": "./StackGitCommit.yml"
   instructions:
+    x-ogen-name: StackBuildInstructionsDetails
     type: object
     description: Git information on where to pull stack resources from.
     properties:
