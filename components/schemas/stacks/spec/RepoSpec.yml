@@ -24,7 +24,7 @@ properties:
         type: object
         description: Authentication information for the repository.
         discriminator:
-          propertyName: "type"
+          propertyName: type
         oneOf:
           - $ref: ../../images/sources/CredentialsHTTP.yml
           - $ref: ../../images/sources/CredentialsSSH.yml

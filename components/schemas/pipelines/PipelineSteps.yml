@@ -1,5 +1,7 @@
 title: PipelineStep
 description: A step for a pipeline stage.
+discriminator:
+  propertyName: action
 oneOf:
   # image steps
   - $ref: "./steps/ImageSourceCreateStep.yml"

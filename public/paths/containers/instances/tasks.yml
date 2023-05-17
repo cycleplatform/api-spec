@@ -22,6 +22,8 @@ post:
     content:
       application/json:
         schema:
+          discriminator:
+            propertyName: action
           oneOf:
             - $ref: ../../../../components/schemas/containers/instances/taskActions/RevertMigration.yml
             - $ref: ../../../../components/schemas/containers/instances/taskActions/Migrate.yml

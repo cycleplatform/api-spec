@@ -16,6 +16,8 @@ post:
     content:
       application/json:
         schema:
+          discriminator:
+            propertyName: action
           oneOf:
             - $ref: ../../../../components/schemas/infrastructure/servers/taskActions/ReconfigureServer.yml
             - $ref: ../../../../components/schemas/infrastructure/servers/taskActions/RestartServer.yml
