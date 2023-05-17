@@ -1,18 +1,17 @@
-title: InstanceVolume 
-type: object 
-description: A container instance volume resource. 
-required: 
-  - id 
-  - config 
-  - deployed 
-  - sftp 
-properties: 
-  id: 
-    "$ref": "../../ID.yml" 
-  config: 
-    "$ref": "../config/Volumes.yml" 
-  deployed: 
-    "$ref": "./DeployedVolume.yml" 
-  sftp: 
+title: InstanceVolume
+type: object
+description: A container instance volume resource.
+required:
+  - id
+  - config
+  - deployed
+  - sftp
+properties:
+  id:
+    "$ref": "../../ID.yml"
+  config:
+    "$ref": "../config/ContainerVolume.yml"
+  deployed:
+    "$ref": "./DeployedVolume.yml"
+  sftp:
     "$ref": "./SFTP.yml"
-    

@@ -145,7 +145,7 @@ post:
             volumes:
               type: array
               items:
-                $ref: ../../../components/schemas/containers/config/Volumes.yml
+                $ref: ../../../components/schemas/containers/config/ContainerVolume.yml
             annotations:
               type: object
               description: User defined meta data for the container.

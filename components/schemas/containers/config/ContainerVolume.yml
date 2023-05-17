@@ -1,4 +1,4 @@
-title: ContainerVolumes
+title: ContainerVolume
 type: object
 description: Configuration settings for container volumes.
 required:
@@ -36,7 +36,7 @@ properties:
         description: A boolean where true represents this container volume being open to remote access connections over SFTP.
       ips:
         type: array
-        items: 
+        items:
           type: string
       web_hook:
         type: string
