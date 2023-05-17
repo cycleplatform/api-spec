@@ -7,6 +7,4 @@ schema:
   type: object
   additionalProperties:
     type: string
-    oneOf:
-      - type: string
 style: deepObject

@@ -67,9 +67,7 @@ post:
                         ports:
                           type: object
                           additionalProperties:
-                            type: string
-                            oneOf:
-                              - $ref: ../../../../../components/schemas/environments/config/HAProxyConfig.yml
+                            $ref: ../../../../../components/schemas/environments/config/HAProxyConfig.yml
 
   responses:
     202:

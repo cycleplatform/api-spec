@@ -1,4 +1,5 @@
 title: CreditCard
+type: object
 description: Information about a credit card.
 required:
   - name

@@ -1,4 +1,4 @@
-title: ContainerActionTask
+title: ContainerStopActionTask
 type: object
 required:
   - action
@@ -6,6 +6,5 @@ properties:
   action:
     type: string
     enum:
-      - start
       - stop
     description: The name of the action to perform.

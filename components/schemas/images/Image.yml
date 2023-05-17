@@ -157,6 +157,7 @@ properties:
         type: string
         description: A set command to be run if a signal is called.
   source:
+    x-ogen-name: ImageSourceDetails
     type: object
     required:
       - type

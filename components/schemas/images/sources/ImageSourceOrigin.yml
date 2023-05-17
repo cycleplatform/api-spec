@@ -2,8 +2,12 @@ title: ImageSourceOrigin
 type: object
 description: The origin of the given image source.
 discriminator:
-  propertyName: "type"
-anyOf:
-  - "$ref": "./DockerHubSource.yml"
-  - "$ref": "./DockerfileFileSource.yml"
-  - "$ref": "./DockerRegistrySource.yml"
+  propertyName: type
+  mapping:
+    docker-hub: ./DockerHubSource.yml
+    docker-file: ./DockerfileFileSource.yml
+    docker-registry: ./DockerRegistrySource.yml
+oneOf:
+  - $ref: ./DockerHubSource.yml
+  - $ref: ./DockerfileFileSource.yml
+  - $ref: ./DockerRegistrySource.yml

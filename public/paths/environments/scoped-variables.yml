@@ -101,7 +101,10 @@ post:
               description: The source or value of the scoped variable.
               discriminator:
                 propertyName: type
-              anyOf:
+                mapping:
+                  raw: ../../../components/schemas/scoped-variables/RawSource.yml
+                  url: ../../../components/schemas/scoped-variables/URLSource.yml
+              oneOf:
                 - $ref: ../../../components/schemas/scoped-variables/RawSource.yml
                 - $ref: ../../../components/schemas/scoped-variables/URLSource.yml
   responses:
