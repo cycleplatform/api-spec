@@ -2,7 +2,7 @@ title: ImageSourceOrigin
 type: object
 description: The origin of the given image source.
 discriminator:
-  propertyName: "type"
+  propertyName: type
 oneOf:
   - "$ref": "./DockerHubSource.yml"
   - "$ref": "./DockerfileFileSource.yml"
