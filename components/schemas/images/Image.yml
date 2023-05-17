@@ -157,6 +157,7 @@ properties:
         type: string
         description: A set command to be run if a signal is called.
   source:
+    title: "InlineImageSource"
     type: object
     required:
       - type
