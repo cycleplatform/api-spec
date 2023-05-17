@@ -3,7 +3,7 @@ type: object
 description: The origin of the given image source.
 discriminator:
   propertyName: "type"
-anyOf:
+oneOf:
   - "$ref": "./DockerHubSource.yml"
   - "$ref": "./DockerfileFileSource.yml"
   - "$ref": "./DockerRegistrySource.yml"
