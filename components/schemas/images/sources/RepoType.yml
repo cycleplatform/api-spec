@@ -15,7 +15,7 @@ properties:
     description: Authentication information for the repository.
     discriminator:
       propertyName: "type"
-    anyOf:
+    oneOf:
       - $ref: ../../images/sources/CredentialsHTTP.yml
       - $ref: ../../images/sources/CredentialsSSH.yml
   ref:

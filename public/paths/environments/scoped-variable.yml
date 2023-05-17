@@ -79,7 +79,7 @@ patch:
               description: The source or value of the scoped variable.
               discriminator:
                 propertyName: type
-              anyOf:
+              oneOf:
                 - $ref: ../../../components/schemas/scoped-variables/RawSource.yml
                 - $ref: ../../../components/schemas/scoped-variables/URLSource.yml
   responses:

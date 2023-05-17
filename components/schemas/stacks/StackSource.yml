@@ -3,6 +3,6 @@ type: object
 description: A source for a stack to be created from.
 discriminator:
   propertyName: "type"
-anyOf:
+oneOf:
   - "$ref": "./spec/RepoSpec.yml"
   - "$ref": "./spec/StackSpec.yml"
