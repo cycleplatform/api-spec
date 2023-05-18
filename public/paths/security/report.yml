@@ -16,6 +16,12 @@ get:
       schema:
         type: object
         properties:
+          range-start:
+            description: The start date from when to pull the security report
+            $ref: ../../../components/schemas/DateTime.yml
+          range-end:
+            description: The end date from when to pull the security report
+            $ref: ../../../components/schemas/DateTime.yml
           environment:
             type: string
             description: |
