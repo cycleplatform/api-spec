@@ -6,22 +6,18 @@ get:
     - name: filter
       in: query
       required: false
+      # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706
+      style: deepObject
       description: |
         ## Filter Field 
         The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
-
-        ## Possible Values
-        ### Search 
-        `filter[cluster]=value` return an infrastructure summary only for the specified cluster.
       schema:
         type: object
-        additionalProperties:
-          type: string
-          oneOf:
-            - type: string
-            - type: array
-              items:
-                type: string
+        properties:
+          cluster:
+            type: string
+            description: |
+              `filter[cluster]=value` return an infrastructure summary only for the specified cluster.
   summary: Fetch Infrastructure Summary
   description: Requires the `infrastructure-servers-view` capability.
   responses:

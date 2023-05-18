@@ -7,27 +7,23 @@ get:
   parameters:
     - name: filter
       in: query
+      # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706
+      style: deepObject
       required: false
       description: |
         ## Filter Field 
         The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
-
-        ## Possible Values
-        ### Environment
-        `filter[environment]=<Environment ID>` fetch the security report for the specified environment
-
-        ### Event
-        `filter[event]=value` filter by event occurrence. Example: `filter[event]=environment.services.vpn.login`
-
       schema:
         type: object
-        additionalProperties:
-          type: string
-          oneOf:
-            - type: string
-            - type: array
-              items:
-                type: string
+        properties:
+          environment:
+            type: string
+            description: |
+              `filter[environment]=<Environment ID>` fetch the security report for the specified environment
+          event:
+            type: string
+            description: |
+              `filter[event]=value` filter by event occurrence. Example: `filter[event]=environment.services.vpn.login`
   responses:
     200:
       description: Returns the security report.

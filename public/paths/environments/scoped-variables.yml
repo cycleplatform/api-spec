@@ -15,23 +15,21 @@ get:
       description: |
         ## Filter Field 
         The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
-
-        ## Possible Values
-        ### Search 
-        `filter[search]=value` search for a value associated with a field on the given scoped variable(s).
-
-        ### State
-        `filter[state]=value1,value2` state filtering will allow you to filter by the scoped variable's current state.
-
       schema:
         type: object
-        additionalProperties:
-          type: string
-          oneOf:
-            - type: string
-            - type: array
-              items:
-                type: string
+        properties:
+          identifier:
+            type: string
+            description: |
+              `filter[identifier]=value` List only those environments matching this identifier. May return multiple results.
+          search:
+            type: string
+            description: |
+              `filter[search]=value` search for a value associated with a field on the given scoped variable(s).
+          state:
+            type: string
+            description: |
+              `filter[state]=value1,value2` state filtering will allow you to filter by the scoped variable's current state.
     - $ref: ../../../components/parameters/SortParam.yml
 
     - $ref: ../../../components/parameters/PageParam.yml

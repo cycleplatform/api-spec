@@ -39,34 +39,36 @@ get:
             - sources
     - name: filter
       in: query
+      # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706
+      style: deepObject
       required: false
       # TODO - source type isnt implemented correctly see notes
       description: |
         ## Filter Field 
         The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
-
-        ## Possible Values
-        ### Search 
-        `filter[search]=value` search for a value associated with a field on the given image(s).
-
-        ### State
-        `filter[state]=value1,value2` state filtering will allow you to filter by the image's current state.
-
-        ### Source Type
-        `filter[source_type]=value` filter images by the image source's type.  Can be: `direct` or `stack_build`
-
-        ### Source
-        `filter[source_id]=ID` image filtering by source ID.  Submit the ID of the image source you wish to filter for and the return will be any images created from that source.
-
       schema:
         type: object
-        additionalProperties:
-          type: string
-          oneOf:
-            - type: string
-            - type: array
-              items:
-                type: string
+        properties:
+          identifier:
+            type: string
+            description: |
+              `filter[identifier]=value` List only those images matching this identifier. May return multiple results.
+          search:
+            type: string
+            description: |
+              `filter[search]=value` search for a value associated with a field on the given image(s).
+          state:
+            type: string
+            description: |
+              `filter[state]=value1,value2` state filtering will allow you to filter by the image's current state.
+          source_type:
+            type: string
+            description: |
+              `filter[source_type]=value` filter images by the image source's type.  Can be: `direct` or `stack_build`
+          source_id:
+            type: string
+            description: |
+              `filter[source_id]=ID` image filtering by source ID.  Submit the ID of the image source you wish to filter for and the return will be any images created from that source.
     - $ref: ../../../components/parameters/SortParam.yml
 
     - $ref: ../../../components/parameters/PageParam.yml
