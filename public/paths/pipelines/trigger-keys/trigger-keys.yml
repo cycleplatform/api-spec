@@ -11,29 +11,24 @@ get:
         type: string
     - name: filter
       in: query
+      # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706
+      style: deepObject
       required: false
       description: |
-        ## Filter Field
+        ## Filter Field 
         The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
-
-        ## Possible Values
-        ### Search
-        `filter[search]=value` search trigger keys for a value associated with a field on the given trigger key(s).
-
-        ### State
-        `filter[state]=value1,value2` state filtering will allow you to filter by the trigger key's current state.
-
       schema:
         type: object
-        additionalProperties:
-          type: string
-          oneOf:
-            - type: string
-            - type: array
-              items:
-                type: string
+        properties:
+          search:
+            type: string
+            description: |
+              `filter[search]=value` search for a value associated with a field on the given trigger key(s).
+          state:
+            type: string
+            description: |
+              `filter[state]=value1,value2` state filtering will allow you to filter by the trigger key's current state.
     - $ref: ../../../../components/parameters/SortParam.yml
-
     - $ref: ../../../../components/parameters/PageParam.yml
   summary: List Trigger Keys
   description: Requires the `pipelines-manage` capability.
