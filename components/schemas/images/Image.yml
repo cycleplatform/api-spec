@@ -118,8 +118,10 @@ properties:
         additionalProperties:
           type: string
       labels:
-        type: string
+        type: object
         description: Image labels.
+        additionalProperties:
+          type: string
       command:
         description: The CMD array used to start the container.
         type: array
