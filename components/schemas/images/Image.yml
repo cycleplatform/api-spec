@@ -162,15 +162,40 @@ properties:
     required:
       - type
       - details
-    # TODO update with discrimantor based on selected type
     properties:
       type:
-        type: string
+        $ref: sources/ImageSourceType.yml
       details:
+        oneOf:
+          - type: object
+            required:
+              - id
+              - origin
+            properties:
+              id:
+                type: string
+              origin:
+                $ref: ./origins/ImageOrigin.yml
+          - type: object
+            required:
+              - id
+              - stack_id
+              - containers
+              - origin
+            properties:
+              id:
+                type: string
+              stack_id:
+                type: string
+              containers:
+                type: array
+                items:
+                  $ref: ../Identifier.yml
+              origin:
+                $ref: ./origins/ImageOrigin.yml
         type: object
         required:
           - id
-          - stack_id
           - origin
         properties:
           id:
@@ -179,6 +204,13 @@ properties:
             type: string
           origin:
             $ref: ./origins/ImageOrigin.yml
+      override:
+        type: object
+        properties:
+          target:
+            type: string
+          targz_url:
+            type: string
   creator:
     "$ref": "../creators/CreatorScope.yml"
   factory:
