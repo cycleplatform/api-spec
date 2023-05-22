@@ -8,6 +8,7 @@ required:
   - stack
   - size
   - backend
+  - factory
   - tags
   - config
   - state
@@ -211,6 +212,7 @@ properties:
     "$ref": "../creators/CreatorScope.yml"
   factory:
     type: object
+    nullable: true
     description: Identifies which factory the image was built on and when.
     required:
       - node_id
