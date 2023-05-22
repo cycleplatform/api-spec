@@ -214,11 +214,15 @@ properties:
     description: Identifies which factory the image was built on and when.
     required:
       - node_id
+      - cached
       - acknowledged
     properties:
       node_id:
         type: string
         description: The node holding the factory service that was responsible for building the image.
+      cached:
+        $ref: ../DateTime.yml
+        description: A date timestamp for when the node cached the image.
       acknowledged:
         $ref: ../DateTime.yml
         description: A date timestamp for when the node acknowledged the image import job.
