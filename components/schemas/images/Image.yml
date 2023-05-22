@@ -86,7 +86,6 @@ properties:
       - env
       - labels
       - command
-      - onbuild
       - entrypoint
       - volumes
       - workdir
@@ -124,11 +123,6 @@ properties:
           type: string
       command:
         description: The CMD array used to start the container.
-        type: array
-        items:
-          type: string
-      onbuild:
-        description: Additional commands to run at build time.
         type: array
         items:
           type: string
