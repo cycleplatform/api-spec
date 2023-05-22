@@ -8,6 +8,7 @@ allOf:
         type: string
         enum:
           - new
+          - uploading
           - downloading
           - building
           - verifying
