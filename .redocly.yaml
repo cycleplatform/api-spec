@@ -7,19 +7,18 @@ apis:
 
 extends:
   - recommended
-  
+
 rules:
   operation-4xx-response: off
   # A sample custom rule. Read more about rules: https://redocly.com/docs/cli/rules/
   # assert/operation-description:
-  #   subject: 
+  #   subject:
   #     type: Operation
   #     property: description
   #   assertions:
   #     defined: true
   #     minLength: 30
   #     pattern: ^[A-Z].+(\.|\.)$
-
 # features.openapi:
 #   generateCodeSamples:
 #     languages:

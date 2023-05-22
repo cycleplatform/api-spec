@@ -1,5 +1,6 @@
-title: DockerRegistrySource
+title: DockerRegistryOrigin
 type: object
+description: An image origin where the image is pulled from a private Docker registry.
 properties:
   type:
     type: string
@@ -7,7 +8,6 @@ properties:
       - docker-registry
   details:
     type: object
-    description: An image source origin that pulls from a private Docker registry.
     required:
       - target
       - url

@@ -56,7 +56,6 @@ get:
             description: |
               `filter[state]=value1,value2` state filtering will allow you to filter by the image source's current state.
     - $ref: ../../../../components/parameters/SortParam.yml
-
     - $ref: ../../../../components/parameters/PageParam.yml
   summary: List Sources
   description: Requires the `images-view` capability.
@@ -100,13 +99,9 @@ post:
             identifier:
               $ref: ../../../../components/schemas/Identifier.yml
             type:
-              type: string
-              description: A value identifiying the type of image.
-              enum:
-                - stack_build
-                - direct
+              $ref: ../../../../components/schemas/images/sources/ImageSourceType.yml
             origin:
-              $ref: "../../../../components/schemas/images/sources/ImageSourceOrigin.yml"
+              $ref: "../../../../components/schemas/images/origins/ImageOrigin.yml"
             about:
               type: object
               description: User defined information about the image source.

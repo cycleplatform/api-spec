@@ -20,7 +20,7 @@ additionalProperties:
         name:
           type: string
         origin:
-          $ref: "../../images/sources/ImageSourceOrigin.yml"
+          $ref: "../../images/origins/ImageOrigin.yml"
         stateful:
           type: boolean
         config:

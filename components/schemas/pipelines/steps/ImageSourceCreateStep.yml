@@ -32,4 +32,4 @@ properties:
       about:
         $ref: "../../images/sources/ImageSourceAbout.yml"
       origin:
-        $ref: "../../images/sources/ImageSourceOrigin.yml"
+        $ref: "../../images/origins/ImageOrigin.yml"

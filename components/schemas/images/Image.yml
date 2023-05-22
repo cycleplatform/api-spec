@@ -178,7 +178,7 @@ properties:
           stack_id:
             type: string
           origin:
-            $ref: ../../schemas/images/sources/ImageSourceOrigin.yml
+            $ref: ./origins/ImageOrigin.yml
   creator:
     "$ref": "../creators/CreatorScope.yml"
   factory:

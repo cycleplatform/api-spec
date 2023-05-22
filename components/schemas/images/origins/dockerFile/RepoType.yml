@@ -16,11 +16,11 @@ properties:
     discriminator:
       propertyName: type
       mapping:
-        http: ../../images/sources/CredentialsHTTP.yml
-        ssh: ../../images/sources/CredentialsSSH.yml 
+        http: ../CredentialsHTTP.yml
+        ssh: ../CredentialsSSH.yml
     oneOf:
-      - $ref: ../../images/sources/CredentialsHTTP.yml
-      - $ref: ../../images/sources/CredentialsSSH.yml
+      - $ref: ../CredentialsHTTP.yml
+      - $ref: ../CredentialsSSH.yml
   ref:
     type: object
     description: Repository reference information.
