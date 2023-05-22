@@ -79,7 +79,7 @@ patch:
               type: string
               description: A name for the image source.
             origin:
-              $ref: "../../../../components/schemas/images/sources/ImageSourceOrigin.yml"
+              $ref: "../../../../components/schemas/images/origins/ImageOrigin.yml"
             about:
               type: object
               description: User defined information about the image source.

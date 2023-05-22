@@ -1,5 +1,6 @@
-title: DockerHubSource
+title: DockerHubOrigin
 type: object
+description: An image origin where the image is pulled from DockerHub.
 properties:
   type:
     type: string
@@ -7,7 +8,6 @@ properties:
       - docker-hub
   details:
     type: object
-    description: An image source origin that pulls from DockerHub.
     required:
       - target
     properties:

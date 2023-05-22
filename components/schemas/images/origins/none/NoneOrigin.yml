@@ -1,0 +1,10 @@
+title: NoneOrigin
+type: object
+description: An empty origin. No details are provided for this image.
+properties:
+  type:
+    type: string
+    enum:
+      - none
+  details:
+    type: object
