@@ -64,7 +64,7 @@ properties:
         type: string
         description: The provider where this image is hosted.
       size:
-        type: string
+        type: integer
         description: The size of the image in bytes.
       file_name:
         type: string
