@@ -8,6 +8,7 @@ required:
   - size
   - backend
   - requires
+  - build
   - factory
   - config
   - state
@@ -62,6 +63,7 @@ properties:
         type: boolean
   build:
     type: object
+    nullable: true
     description: Any additional build details for this image
     properties:
       args:
