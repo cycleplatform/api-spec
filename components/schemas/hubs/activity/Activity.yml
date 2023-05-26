@@ -244,7 +244,6 @@ properties:
       - stack.build.deploy
       - stack.build.delete
       - stack.build.task.delete
-      - stack.build.create
       - stack.build.task.generate
       - stack.build.task.deploy
 
@@ -263,6 +262,7 @@ properties:
       - infrastructure.server.task.provision
       - infrastructure.server.ssh.token
       - infrastructure.server.task.reconfigure.features
+      - infrastructure.server.services.sftp.lockdown
 
       - sdn.network.update
       - sdn.network.task.delete
