@@ -22,5 +22,5 @@ additionalProperties:
     - $ref: ../pipelines/trigger-keys/TriggerKey.yml
     - $ref: ../scoped-variables/ScopedVariable.yml
     - $ref: ../hubs/Hub.yml
-
-    # TODO BILLING INVOICE and METHOD
+    - $ref: ../billing/invoices/Invoice.yml
+    - $ref: ../billing/methods/Method.yml
