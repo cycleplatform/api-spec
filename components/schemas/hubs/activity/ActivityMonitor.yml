@@ -1,0 +1,36 @@
+title: ActivityMonitor
+type: object
+description: Details related to the monitor that raised this activity event.
+required:
+  - level
+  - event
+  - state
+properties:
+  level:
+    type: string
+    description: |
+      The severity of the event.
+    enum:
+      - info
+      - low
+      - medium
+      - high
+      - critical
+  event:
+    type: string
+    description: How the platform has handled this monitor event.
+    enum:
+      - suggestion
+      - notice
+      - prevention
+      - detection
+      - reaction
+  state:
+    type: string
+    description: The current state of the monitored resource
+    enum:
+      - none
+      - unknown
+      - unreachable
+      - flux
+      - recovered

@@ -157,7 +157,8 @@ properties:
         $ref: sources/ImageSourceType.yml
       details:
         oneOf:
-          - type: object
+          - title: BasicSource
+            type: object
             required:
               - id
               - origin
@@ -166,7 +167,8 @@ properties:
                 type: string
               origin:
                 $ref: ./origins/ImageOrigin.yml
-          - type: object
+          - title: StackSource
+            type: object
             required:
               - id
               - stack_id

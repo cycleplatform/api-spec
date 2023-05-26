@@ -1,0 +1,47 @@
+title: ActivitySecurity
+type: object
+description: Security information pertaining to this activity.
+required:
+  - risk
+  - surface
+  - event
+  - attack
+properties:
+  risk:
+    type: string
+    description: |
+      A risk level assessed by the platform. Depending on the nature of the incident, this may change even if the event type is the same.
+    enum:
+      - info
+      - low
+      - medium
+      - high
+      - critical
+  surface:
+    type: string
+    description: From where the platform has determined this security event originated from.
+    enum:
+      - network
+      - service
+      - fs
+      - api
+  event:
+    type: string
+    description: How the platform has handled this security event.
+    enum:
+      - suggestion
+      - notice
+      - prevention
+      - detection
+      - reaction
+  attack:
+    type: string
+    description: The type of attack the platform has determined has occurred.
+    enum:
+      - none
+      - auth-failure
+      - brute-force
+      - exploit-vulnerability
+      - social-engineer
+      - service-interruption
+      - access-elevation
