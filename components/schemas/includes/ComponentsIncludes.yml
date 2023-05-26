@@ -7,6 +7,7 @@ additionalProperties:
     - $ref: ../containers/instances/Instance.yml
     - $ref: ../environments/Environment.yml
     - $ref: ../images/Image.yml
+    - $ref: ../images/sources/ImageSource.yml
     - $ref: ../infrastructure/servers/Server.yml
     - $ref: ../infrastructure/ips/Pool.yml
     - $ref: ../stacks/Stack.yml
