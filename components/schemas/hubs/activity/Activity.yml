@@ -263,6 +263,7 @@ properties:
       - infrastructure.server.ssh.token
       - infrastructure.server.task.reconfigure.features
       - infrastructure.server.services.sftp.lockdown
+      - infrastructure.server.services.internal-api.throttle
 
       - sdn.network.update
       - sdn.network.task.delete
