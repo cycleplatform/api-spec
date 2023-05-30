@@ -181,22 +181,27 @@ properties:
       - hub.membership.create
       - hub.membership.update
 
-      - container.intialize
-      - container.delete
+      - container.initialize
+      - container.task.start
       - container.start
+      - container.task.stop
       - container.stop
+      - container.task.reconfigure
       - container.reconfigure
+      - container.task.reconfigure.volumes
       - container.reconfigure.volumes
-      - container.reimage
-      - container.scale
-      - container.instances.create
-      - container.instances.delete
       - container.create
       - container.restart
+      - container.task.reimage
       - container.reimage
       - container.update
       - container.task.delete
+      - container.delete
       - container.task.scale
+      - container.scale
+
+      - container.instances.create
+      - container.instances.delete
 
       - container.instance.healthcheck.restarted
       - container.instance.error
@@ -239,7 +244,6 @@ properties:
       - stack.build.deploy
       - stack.build.delete
       - stack.build.task.delete
-      - stack.build.create
       - stack.build.task.generate
       - stack.build.task.deploy
 
@@ -258,6 +262,8 @@ properties:
       - infrastructure.server.task.provision
       - infrastructure.server.ssh.token
       - infrastructure.server.task.reconfigure.features
+      - infrastructure.server.services.sftp.lockdown
+      - infrastructure.server.services.internal-api.throttle
 
       - sdn.network.update
       - sdn.network.task.delete
