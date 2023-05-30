@@ -28,7 +28,7 @@ jobs:
           EOF
       - name: Deploy API Docs
         env:
-          sftp_password: ${{secrets.SFTP_PASSWORD}}
+          pipeline_secret: ${{secrets.PIPELINE_SECRET}}
         run: |
           curl https://api.cycle.io/v1/pipelines/62d88cf218797f392fa66bb9/trigger \
             -H "Content-Type: application/json" \
