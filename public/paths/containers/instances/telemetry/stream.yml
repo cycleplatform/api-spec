@@ -2,6 +2,7 @@ get:
   operationId: "getInstanceResourcesTelemetryStream"
   tags:
     - Instances
+    - WebsocketAuth
   parameters:
     - name: containerId
       description: The ID of the requested container.
