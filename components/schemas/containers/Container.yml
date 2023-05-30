@@ -20,7 +20,7 @@ properties:
   id:
     "$ref": "../ID.yml"
   identifier:
-    $ref: ../Identifier.yml 
+    $ref: ../Identifier.yml
     description: A human readable slugged identifier for this container. Usually used as a key in a stack file.
   name:
     type: string
@@ -62,6 +62,9 @@ properties:
   deprecate:
     type: boolean
     description: A boolean where true signifies the container is marked as deprecated.
+  lock:
+    type: boolean
+    description: When set to true, prevents this container from being deleted.
   state:
     "$ref": "./ContainerState.yml"
   events:
