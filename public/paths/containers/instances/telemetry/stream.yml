@@ -2,6 +2,7 @@ get:
   operationId: "getInstanceResourcesTelemetryStream"
   tags:
     - Instances
+    - WebsocketAuth
   parameters:
     - name: containerId
       description: The ID of the requested container.
@@ -43,4 +44,4 @@ get:
                     description: The URL address to open a websocket to for streaming instance telemetry data.
                     type: string
     default:
-      $ref: ../../../components/responses/errors/DefaultError.yml
+      $ref: ../../../../../components/responses/errors/DefaultError.yml

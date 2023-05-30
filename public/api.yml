@@ -207,6 +207,8 @@ paths:
     "$ref": "./paths/containers/instances/volumes.yml"
   "/v1/containers/{containerId}/instances/{instanceId}/telemetry/resources/report":
     "$ref": paths/containers/instances/telemetry/report.yml
+  "/v1/containers/{containerId}/instances/{instanceId}/telemetry/resources/stream":
+    "$ref": paths/containers/instances/telemetry/stream.yml
   "/v1/containers/{containerId}/servers":
     "$ref": "./paths/containers/listServers.yml"
   "/v1/containers/{containerId}/servers/usable":
@@ -382,8 +384,6 @@ paths:
     "$ref": "./paths/channels/hub.yml"
   "/v1/containers/{containerId}/instances/{instanceId}/console":
     "$ref": "./paths/channels/instance-console.yml"
-  "/v1/containers/{containerId}/instances/{instanceId}/telemetry/resources/stream":
-    "$ref": "./paths/channels/instance-telemetry.yml"
   # Security
   "/v1/security/report":
     $ref: paths/security/report.yml
