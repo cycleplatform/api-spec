@@ -1,43 +1,30 @@
 title: StackSpec
 type: object
-description: A stack spec resource.
 required:
-  - type
-  - details
+  - version
+  - containers
 properties:
-  type:
+  version:
     type: string
-    enum:
-      - raw
-  details:
+    description: A string defining the version of the stack spec.
+  about:
     type: object
+    description: Information about the stack.
     required:
+      - description
       - version
-      - containers
     properties:
       version:
         type: string
-        description: A string defining the version of the stack spec.
-      about:
-        type: object
-        description: Information about the stack.
-        required:
-          - description
-          - version
-        properties:
-          version:
-            type: string
-            description: Internal version information set by the user.
-          description:
-            type: string
-            description: Information describing the stack.
-      containers:
-        nullable: true
-        type: array
-        items:
-          $ref: ./StackContainer.yml
-      annotations:
-        type: object
-        description: Additional meta info about the stack.
-        additionalProperties:
-          type: string
+        description: Internal version information set by the user.
+      description:
+        type: string
+        description: Information describing the stack.
+  containers:
+    nullable: true
+    $ref: ./StackContainer.yml
+  annotations:
+    type: object
+    description: Additional meta info about the stack.
+    additionalProperties:
+      type: string

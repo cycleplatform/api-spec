@@ -1,0 +1,13 @@
+title: StackRawSource
+type: object
+description: A stack spec resource.
+required:
+  - type
+  - details
+properties:
+  type:
+    type: string
+    enum:
+      - raw
+  details:
+    $ref: ./StackSpec.yml

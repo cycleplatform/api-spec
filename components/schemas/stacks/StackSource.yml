@@ -4,8 +4,8 @@ description: A source for a stack to be created from.
 discriminator:
   propertyName: type
   mapping:
-    git-repo: ./spec/RepoSpec.yml
-    raw: ./spec/StackSpec.yml
+    git-repo: ./spec/StackRepoSource.yml
+    raw: ./spec/StackRawSource.yml
 oneOf:
-  - $ref: ./spec/RepoSpec.yml
-  - $ref: ./spec/StackSpec.yml
+  - $ref: ./spec/StackRepoSource.yml
+  - $ref: ./spec/StackRawSource.yml
