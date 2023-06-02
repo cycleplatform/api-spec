@@ -1,4 +1,4 @@
-title: StackRepoSourceType
+title: StackRepoSource
 type: object
 description: A repo source type for a stack.
 required:
