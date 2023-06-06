@@ -27,9 +27,11 @@ properties:
     properties:
       tier_id:
         type: string
+        nullable: true
         description: An ID referencing the pricing tier applied to this hub.
       support_id:
         type: string
+        nullable: true
         description: An ID referencing the support plan applied to this hub.
   emails:
     type: array
