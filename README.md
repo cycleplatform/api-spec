@@ -1,5 +1,7 @@
 # Cycle API Spec
 
+![cycle](https://cycle.io/global/resources/images/logos/cycle-logo-white.svg)
+
 This repository contains the [OpenAPI](https://www.openapis.org/) definitions for the [Cycle API](https://api-docs.cycle.io). It is used in several downstream API clients and projects, and is the basis of our API documentation.
 
 ⚠️ This spec is still under development. While most endpoints should be stable, there are still edge cases and small discrepancies that are actively being worked on.
