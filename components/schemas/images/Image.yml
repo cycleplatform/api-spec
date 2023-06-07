@@ -149,60 +149,15 @@ properties:
   source:
     x-ogen-name: ImageSourceDetails
     type: object
-    required:
-      - type
-      - details
-    properties:
-      type:
-        $ref: sources/ImageSourceType.yml
-      details:
-        oneOf:
-          - title: BasicSource
-            type: object
-            required:
-              - id
-              - origin
-            properties:
-              id:
-                type: string
-              origin:
-                $ref: ./origins/ImageOrigin.yml
-          - title: StackSource
-            type: object
-            required:
-              - id
-              - stack_id
-              - containers
-              - origin
-            properties:
-              id:
-                type: string
-              stack_id:
-                type: string
-              containers:
-                type: array
-                items:
-                  $ref: ../Identifier.yml
-              origin:
-                $ref: ./origins/ImageOrigin.yml
-        type: object
-        required:
-          - id
-          - origin
-        properties:
-          id:
-            type: string
-          stack_id:
-            type: string
-          origin:
-            $ref: ./origins/ImageOrigin.yml
-      override:
-        type: object
-        properties:
-          target:
-            type: string
-          targz_url:
-            type: string
+    discriminator:
+      propertyName: type
+      mapping:
+        stack-build: ./sources/StackImageSourceType.yml
+        direct: ./sources/DirectImageSourceType.yml
+        bucket: ./sources/DirectImageSourceType.yml
+    oneOf:
+      - $ref: ./sources/DirectImageSourceType.yml
+      - $ref: ./sources/StackImageSourceType.yml
   creator:
     "$ref": "../creators/CreatorScope.yml"
   factory:
