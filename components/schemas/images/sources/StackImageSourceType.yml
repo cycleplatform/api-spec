@@ -1,0 +1,35 @@
+title: StackImageSource
+type: object
+required:
+  - id
+  - origin
+properties:
+  type:
+    type: string
+    enum:
+      - stack-build
+  details:
+    type: object
+    required:
+      - id
+      - stack_id
+      - containers
+      - origin
+    properties:
+      id:
+        type: string
+      stack_id:
+        type: string
+      containers:
+        type: array
+        items:
+          $ref: ../../Identifier.yml
+      origin:
+        $ref: ../origins/ImageOrigin.yml
+  override:
+    type: object
+    properties:
+      target:
+        type: string
+      targz_url:
+        type: string

@@ -39,11 +39,12 @@ post:
                   type: object
                   description: The config object for the loadbalancer service.
                   nullable: true
-                  required:
-                    - haproxy
                   properties:
                     version:
                       type: string
+                      enum:
+                        - v1
+                        - haproxy
                     ipv4:
                       type: boolean
                       nullable: true

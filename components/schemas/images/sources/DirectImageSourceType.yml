@@ -1,0 +1,28 @@
+title: DirectImageSource
+type: object
+required:
+  - id
+  - origin
+properties:
+  type:
+    type: string
+    enum:
+      - direct
+      - bucket
+  details:
+    type: object
+    required:
+      - id
+      - origin
+    properties:
+      id:
+        type: string
+      origin:
+        $ref: ../origins/ImageOrigin.yml
+  override:
+    type: object
+    properties:
+      target:
+        type: string
+      targz_url:
+        type: string
