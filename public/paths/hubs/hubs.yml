@@ -7,6 +7,7 @@ get:
   summary: List Hubs
   description: Lists all associated hubs.
   parameters:
+    - $ref: "../../../components/parameters/PageParam.yml"
     - name: filter
       in: query
       # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706
