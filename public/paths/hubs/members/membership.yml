@@ -1,0 +1,58 @@
+get:
+  operationId: "getHubMembership"
+  tags:
+    - Hubs
+  security:
+    - bearerAuth: []
+  parameters:
+    - name: meta
+      in: query
+      required: false
+      description:
+        A comma separated list of meta values. Meta values will show up under a resource's
+        `meta` field. In the case of applying a meta to a collection of resources, each
+        resource will have it's own relevant meta data. In some rare cases, meta may not
+        apply to individual resources, and may appear in the root document. These will be
+        clearly labeled.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - capabilities
+    - name: include
+      in: query
+      required: false
+      description:
+        A comma separated list of include values. Included resources will show
+        up under the root document's `include` field, with the key being the id of the included
+        resource. In the case of applying an include to a collection of resources, if two
+        resources share the same include, it will only appear once in the return.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - accounts
+    - $ref: ../../../../components/parameters/SortParam.yml
+    - $ref: ../../../../components/parameters/FilterParam.yml
+    - $ref: ../../../../components/parameters/PageParam.yml
+  summary: List Hub Memberships
+  description: Requires the `hubs-members-view` capability.
+  responses:
+    200:
+      description: Returns a list of memebership resources.
+      content:
+        application/json:
+          schema:
+            title: "ListHubMembersReturn"
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: ../../../../components/schemas/hubs/HubMembership.yml
+              includes:
+                $ref: ../../../../components/schemas/hubs/HubMembershipIncludes.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
