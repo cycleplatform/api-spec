@@ -265,8 +265,8 @@ paths:
     "$ref": "./paths/hubs/invites/invites.yml"
   "/v1/hubs/current/members":
     "$ref": "./paths/hubs/members/members.yml"
-  # "/v1/hubs/current/membership":
-  #   "$ref": "./paths/hubs/members/membership.yml"
+  "/v1/hubs/current/membership":
+    "$ref": "./paths/hubs/members/membership.yml"
   "/v1/hubs/current/members/{memberId}":
     "$ref": "./paths/hubs/members/member.yml"
   "/v1/hubs/current/members/account/{accountId}":
