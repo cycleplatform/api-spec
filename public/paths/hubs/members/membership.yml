@@ -38,20 +38,18 @@ get:
     - $ref: ../../../../components/parameters/FilterParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
   summary: List Hub Memberships
-  description: Requires the `hubs-members-view` capability.
+  description: Gets the membership information for the current hub for the requesting account.
   responses:
     200:
-      description: Returns a list of memebership resources.
+      description: Returns a hub membership.
       content:
         application/json:
           schema:
-            title: "ListHubMembersReturn"
+            title: "HubMembershipReturn"
             type: object
             properties:
               data:
-                type: array
-                items:
-                  $ref: ../../../../components/schemas/hubs/HubMembership.yml
+                $ref: ../../../../components/schemas/hubs/HubMembership.yml
               includes:
                 $ref: ../../../../components/schemas/hubs/HubMembershipIncludes.yml
     default:
