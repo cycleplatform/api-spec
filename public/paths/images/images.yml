@@ -70,7 +70,6 @@ get:
             description: |
               `filter[source_id]=ID` image filtering by source ID.  Submit the ID of the image source you wish to filter for and the return will be any images created from that source.
     - $ref: ../../../components/parameters/SortParam.yml
-
     - $ref: ../../../components/parameters/PageParam.yml
   responses:
     200:
@@ -123,12 +122,13 @@ post:
             override:
               type: object
               description: An override object to be used for a single image create request.
-              required:
-                - target
               properties:
                 target:
                   type: string
-                  description: A target to be used for overridding the default target.
+                  description: For image sources with `docker-hub` or `docker-registry` origin types. A target to be used for overridding the default target - should include an image and a tag.
+                targz_url:
+                  type: string
+                  description: For image sources with `docker-file` origin types. A URL pointing to a .tar.gz file of a repo with a Dockerfile in it - can be used instead of linking Cycle directly to a repository.
   responses:
     201:
       description: Returns an image resource.
