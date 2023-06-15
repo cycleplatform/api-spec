@@ -6,6 +6,7 @@ required:
   - cpu
   - memory
   - processes
+  - network
 properties:
   time:
     description: A timestamp of the time this snapshot was captured at.
