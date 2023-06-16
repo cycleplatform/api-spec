@@ -153,8 +153,7 @@ post:
             annotations:
               type: object
               description: User defined meta data for the container.
-              additionalProperties:
-                type: string
+              additionalProperties: {}
 
   responses:
     201:

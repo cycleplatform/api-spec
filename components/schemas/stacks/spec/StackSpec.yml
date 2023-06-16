@@ -99,5 +99,4 @@ properties:
   annotations:
     type: object
     description: Additional meta info about the stack.
-    additionalProperties:
-      type: string
+    additionalProperties: {}
