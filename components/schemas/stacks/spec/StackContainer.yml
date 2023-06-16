@@ -13,8 +13,6 @@ additionalProperties:
   properties:
     name:
       type: string
-    identifier:
-      type: string
     image:
       $ref: StackSpecContainerImage.yml
     annotations:

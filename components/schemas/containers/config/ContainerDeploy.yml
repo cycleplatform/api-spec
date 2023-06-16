@@ -77,17 +77,6 @@ properties:
       delay:
         type: integer
         description: A value in seconds representing how long the platform will wait before sending the start signal to the given container.
-  update:
-    type: object
-    description: Configurations for how the container behaves when updating.
-    required:
-      - parallelism
-      - delay
-    properties:
-      parallelism:
-        type: integer
-      delay:
-        type: integer
   restart:
     type: object
     description: Configurations for container restart events.

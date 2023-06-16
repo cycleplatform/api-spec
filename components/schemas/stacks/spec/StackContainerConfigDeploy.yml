@@ -127,13 +127,3 @@ properties:
         type: integer
       disable:
         type: boolean
-  update:
-    type: object
-    required:
-      - parallelism
-      - delay
-    properties:
-      parallelism:
-        type: integer
-      delay:
-        type: integer
