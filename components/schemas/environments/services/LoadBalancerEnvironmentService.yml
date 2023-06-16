@@ -22,6 +22,6 @@ properties:
       A boolean representing if this service container is set to high availability
       mode or not.
   config:
+    nullable: true
     allOf:
-      - nullable: true
       - $ref: ./lb/LoadBalancerConfig.yml
