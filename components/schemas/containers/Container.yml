@@ -48,8 +48,7 @@ properties:
     type: object
     description: Custom meta data for a given container
     nullable: true
-    additionalProperties:
-      type: string
+    additionalProperties: {}
   role:
     type: string
     description: The role of a given container if it has one.

@@ -49,5 +49,4 @@ properties:
   annotations:
     type: object
     description: Additional information about the given provider locaiton.
-    additionalProperties:
-      type: string
+    additionalProperties: {}

@@ -65,8 +65,7 @@ properties:
   annotations:
     type: object
     description: A record of additional annotations for the activity.
-    additionalProperties:
-      type: string
+    additionalProperties: {}
   error:
     type: object
     description: An object describing a given activity error.
