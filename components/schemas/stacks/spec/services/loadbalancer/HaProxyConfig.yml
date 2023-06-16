@@ -1,4 +1,5 @@
 ---
+title: HAProxyConfig
 type: object
 required:
   - frontend
@@ -6,7 +7,6 @@ required:
 properties:
   frontend:
     type: object
-    nullable: true
     description:
       Settings that describe how incoming traffic to the load balancer
       is handled.
@@ -76,7 +76,6 @@ properties:
               for more information. (`http` mode only)
   backend:
     type: object
-    nullable: true
     description:
       Settings related to how the load balancer routes connections to container
       instances.

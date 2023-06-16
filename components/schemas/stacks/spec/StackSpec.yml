@@ -20,9 +20,82 @@ properties:
       description:
         type: string
         description: Information describing the stack.
+  tests:
+    type: array
+    items:
+      $ref: StackSpecTestContainer.yml
   containers:
-    nullable: true
     $ref: ./StackContainer.yml
+  services:
+    title: StackSpecServices
+    type: object
+    properties:
+      loadbalancer:
+        type: object
+        properties:
+          haproxy:
+            type: object
+            properties:
+              haproxy:
+                type: object
+                nullable: true
+                required:
+                  - default
+                  - ports
+                properties:
+                  default:
+                    $ref: ../../stacks/spec/services/loadbalancer/HaProxyConfig.yml
+                  ports:
+                    type: object
+                    additionalProperties:
+                      $ref: ../../stacks/spec/services/loadbalancer/HaProxyConfig.yml
+          ipv4:
+            type: boolean
+          ipv6:
+            type: boolean
+          egress_gateways:
+            type: object
+            required:
+              - name
+              - destinations
+              - ports
+            properties:
+              name:
+                type: string
+              destinations:
+                type: array
+                items:
+                  type: string
+              ports:
+                type: object
+                required:
+                  - internal
+                  - external
+                properties:
+                  internal:
+                    type: integer
+                  external:
+                    type: integer
+      vpn:
+        type: object
+        required:
+          - auth
+          - allow_internet
+        properties:
+          auth:
+            type: object
+            required:
+              - cycle_accounts
+              - vpn_accounts
+            properties:
+              webhook:
+                type: string
+              cycle_accounts:
+                type: boolean
+              vpn_accounts:
+                type: boolean
+          allow_internet:
+            type: boolean
   annotations:
     type: object
     description: Additional meta info about the stack.
