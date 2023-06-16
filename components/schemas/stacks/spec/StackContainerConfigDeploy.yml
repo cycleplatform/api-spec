@@ -4,7 +4,7 @@ required:
   - instances
 properties:
   instances:
-    type: number
+    type: integer
   strategy:
     type: string
     enum:
@@ -12,53 +12,20 @@ properties:
       - manual
       - high-availability
       - first-available
-      - ephemeral
+      - node
+      - edge
   stateful:
     type: object
     required:
-      - instances
+      - options
     properties:
-      instances:
-        type: array
-        items:
-          title: StatefulInstance
-          type: object
-          required:
-            - match
-          properties:
-            match:
-              type: object
-              properties:
-                hostname:
-                  type: string
-            first_start:
-              type: object
-              properties:
-                command:
-                  type: object
-                  properties:
-                    path:
-                      type: string
-                    args:
-                      type: string
-                environment_vars:
-                  type: object
-                  additionalProperties:
-                    type: string
-            start:
-              type: object
-              properties:
-                command:
-                  type: object
-                  properties:
-                    path:
-                      type: string
-                    args:
-                      type: string
-                environment_vars:
-                  type: object
-                  additionalProperties:
-                    type: string
+      options:
+        nullable: true
+        type: object
+        properties:
+          use_base_hostname:
+            type: boolean
+            nullable: true
   constraints:
     type: object
     properties:
@@ -88,26 +55,20 @@ properties:
           type: string
   shutdown:
     type: object
-    required:
-      - graceful_timeout
     properties:
       graceful_timeout:
-        type: number
+        nullable: true
+        type: integer
       signals:
         type: array
         items:
           type: string
-          enum:
-            - SIGTERM
-            - SIGINT
-            - SIGUSR1
-            - SIGUSR2
-            - SIGHUP
   startup:
     type: object
     properties:
       delay:
-        type: number
+        nullable: true
+        type: integer
   restart:
     type: object
     required:
@@ -122,9 +83,9 @@ properties:
           - never
           - failure
       delay:
-        type: number
+        type: integer
       max_attempts:
-        type: number
+        type: integer
       notify:
         type: object
         properties:
@@ -146,11 +107,11 @@ properties:
       command:
         type: string
       retries:
-        type: number
+        type: integer
       interval:
-        type: number
+        type: integer
       timeout:
-        type: number
+        type: integer
       restart:
         type: boolean
   telemetry:
@@ -161,18 +122,8 @@ properties:
       - disable
     properties:
       retention:
-        type: number
+        type: integer
       interval:
-        type: number
+        type: integer
       disable:
         type: boolean
-  update:
-    type: object
-    required:
-      - parallelism
-      - delay
-    properties:
-      parallelism:
-        type: number
-      delay:
-        type: number

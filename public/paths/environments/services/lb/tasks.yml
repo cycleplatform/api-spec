@@ -64,11 +64,11 @@ post:
                         - ports
                       properties:
                         default:
-                          $ref: ../../../../../components/schemas/environments/config/HAProxyConfig.yml
+                          $ref: ../../../../../components/schemas/stacks/spec/services/loadbalancer/HaProxyConfig.yml
                         ports:
                           type: object
                           additionalProperties:
-                            $ref: ../../../../../components/schemas/environments/config/HAProxyConfig.yml
+                            $ref: ../../../../../components/schemas/stacks/spec/services/loadbalancer/HaProxyConfig.yml
 
   responses:
     202:

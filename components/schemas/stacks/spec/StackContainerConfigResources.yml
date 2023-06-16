@@ -14,9 +14,9 @@ properties:
           - reserve
         properties:
           limit:
-            type: number
+            type: integer
           reserve:
-            type: number
+            type: integer
       cpus:
         type: string
   ram:
@@ -28,7 +28,3 @@ properties:
         type: string
       swappiness:
         type: number
-      kernel:
-        type: string
-      kernel_tcp:
-        type: string
