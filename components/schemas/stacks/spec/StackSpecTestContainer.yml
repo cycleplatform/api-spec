@@ -8,6 +8,7 @@ properties:
   name:
     type: string
   image:
+    type: object
     nullable: true
     allOf:
       - $ref: StackSpecContainerImage.yml
@@ -17,9 +18,11 @@ properties:
     properties:
       runtime:
         nullable: true
+        type: object
         allOf:
           - $ref: StackContainerConfigRuntime.yml
       resources:
         nullable: true
+        type: object
         allOf:
           - $ref: StackContainerConfigResources.yml
