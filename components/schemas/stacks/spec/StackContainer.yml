@@ -19,7 +19,6 @@ additionalProperties:
       type: object
       description: Additional meta info about the container.
       additionalProperties: {}
-
     stateful:
       type: boolean
     config:
