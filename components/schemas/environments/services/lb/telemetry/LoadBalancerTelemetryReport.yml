@@ -1,0 +1,33 @@
+title: LoadBalancerTelemetryReport
+description: Aggregated load balancer telemetry across all instances for a given range.
+type: object
+required:
+  - created
+  - range
+  - snapshots
+properties:
+  created:
+    $ref: ../../../../DateTime.yml
+  range:
+    $ref: ../../../../Range.yml
+  snapshots:
+    type: array
+    items:
+      type: object
+      title: LoadBalancerTelemetryReportMergedSnapshot
+      required:
+        - time
+        - controller
+        - snapshot
+      properties:
+        time:
+          $ref: ../../../../DateTime.yml
+        controller:
+          $ref: "../../../../Identifier.yml"
+        snapshot:
+          type: object
+          required:
+            - metrics
+          properties:
+            metrics:
+              $ref: LoadBalancerTelemetryControllerMetrics.yml

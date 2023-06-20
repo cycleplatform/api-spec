@@ -1,0 +1,60 @@
+title: LoadBalancerLatestTelemetry
+description: Detailed report of load balancer telemetry data aggregated per-controller
+type: object
+required:
+  - created
+  - controllers
+properties:
+  created:
+    $ref: ../../../../DateTime.yml
+  controllers:
+    type: array
+    items:
+      type: object
+      required:
+        - time
+        - controller
+        - instances
+      properties:
+        time:
+          $ref: ../../../../DateTime.yml
+        controller:
+          $ref: ../../../../Identifier.yml
+        instances:
+          type: array
+          items:
+            title: LoadBalancerTelemetryInstance
+            description: Detailed telemetry for a load balancer instance at a point in time.
+            type: object
+            required:
+              - id
+              - hub_id
+              - environment_id
+              - container_id
+              - instance_id
+              - server_id
+              - cluster
+              - time
+              - controller
+              - snapshot
+            properties:
+              id:
+                $ref: ../../../../ID.yml
+              hub_id:
+                $ref: ../../../../HubID.yml
+              environment_id:
+                $ref: ../../../../ID.yml
+              container_id:
+                $ref: ../../../../ID.yml
+              instance_id:
+                $ref: ../../../../ID.yml
+              server_id:
+                $ref: ../../../../ID.yml
+              cluster:
+                $ref: ../../../../Identifier.yml
+              time:
+                $ref: ../../../../DateTime.yml
+              controller:
+                $ref: ../../../../Identifier.yml
+              snapshot:
+                $ref: LoadBalancerTelemetrySnapshot.yml

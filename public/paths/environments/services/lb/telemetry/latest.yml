@@ -1,0 +1,31 @@
+get:
+  operationId: "getLoadBalancerLatestTelemetryReport"
+  tags:
+    - Environments
+  parameters:
+    - name: environmentId
+      description: The environmentId where the load balancer resides.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Fetch the latest load balancer v1 telemetry.
+  description: |
+    ## Permissions
+    Requires the `environments-view` capability. Also requires the user to have access specifically to the requested environment.
+
+    ## Details
+    Fetches the latest telemetry report for Cycle's native load balancer. Provides detailed information on a per-instance basis.
+  responses:
+    200:
+      description: Returns the load balancer telemetry report
+      content:
+        application/json:
+          schema:
+            title: "GetLoadBalancerTelemetryReportReturn"
+            type: object
+            properties:
+              data:
+                $ref: ../../../../../../components/schemas/environments/services/lb/telemetry/LoadBalancerLatestTelemetry.yml
+    default:
+      $ref: ../../../../../../components/responses/errors/DefaultError.yml

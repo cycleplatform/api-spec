@@ -1,0 +1,17 @@
+title: LoadBalancerTelemetrySnapshot
+type: object
+required:
+  - time
+  - dataset_id
+  - metrics
+properties:
+  time:
+    $ref: ../../../../DateTime.yml
+  dataset_id:
+    type: integer
+  router:
+    $ref: LoadBalancerTelemetryRouterMetrics.yml
+  urls:
+    $ref: LoadBalancerTelemetryUrlMetrics.yml
+  metrics:
+    $ref: LoadBalancerTelemetryControllerMetrics.yml

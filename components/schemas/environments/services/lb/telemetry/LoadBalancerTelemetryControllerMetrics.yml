@@ -1,0 +1,43 @@
+title: LoadBalancerTelemetryControllerMetrics
+type: object
+required:
+  - disconnects
+  - connections
+  - requests
+  - bytes_transmitted
+  - bytes_received
+properties:
+  disconnects:
+    title: LoadBalancerTelemetryControllerDisconnectsMetrics
+    type: object
+    required:
+      - no_error
+      - request_invalid
+      - timeout_idle
+      - router_none
+      - router_nomatch
+      - destination_unavailable
+      - unknown_error
+    properties:
+      no_error:
+        type: integer
+      request_invalid:
+        type: integer
+      timeout_idle:
+        type: integer
+      router_none:
+        type: integer
+      router_nomatch:
+        type: integer
+      destination_unavailable:
+        type: integer
+      unknown_error:
+        type: integer
+  connections:
+    type: integer
+  requests:
+    type: integer
+  bytes_transmitted:
+    type: integer
+  bytes_received:
+    type: integer
