@@ -164,12 +164,19 @@ paths:
     "$ref": "./paths/environments/tasks.yml"
   "/v1/environments/{environmentId}/summary":
     "$ref": "./paths/environments/summary.yml"
+  ## Load Balancer
   "/v1/environments/{environmentId}/services/lb":
     "$ref": "./paths/environments/services/lb/lb.yml"
   "/v1/environments/{environmentId}/services/lb/tasks":
     "$ref": "./paths/environments/services/lb/tasks.yml"
+  "/v1/environments/{environmentId}/services/lb/telemetry/report":
+    "$ref": "./paths/environments/services/lb/telemetry/report.yml"
+  "/v1/environments/{environmentId}/services/lb/telemetry/latest":
+    "$ref": "./paths/environments/services/lb/telemetry/latest.yml"
+  ## Discovery
   "/v1/environments/{environmentId}/services/discovery/tasks":
     "$ref": "./paths/environments/services/discovery/tasks.yml"
+  ## VPN
   "/v1/environments/{environmentId}/services/vpn":
     "$ref": "./paths/environments/services/vpn/vpnInfo.yml"
   "/v1/environments/{environmentId}/services/vpn/logins":
