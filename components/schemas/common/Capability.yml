@@ -1,6 +1,7 @@
 type: string
 description: A capability that a user or API key that represents what an API key or a user can do.
 enum:
+  # hubs
   - hubs-update
   - hubs-delete
   - hubs-invites-send
@@ -9,17 +10,24 @@ enum:
   - hubs-members-view
   - hubs-notifications-listen
   - hubs-integrations-manage
+  - hubs-usage-view
+  # billing
   - billing-methods-manage
   - billing-invoices-view
   - billing-invoices-pay
   - billing-orders-manage
   - billing-services-view
   - billing-credits-view
+  # sdn
   - sdn-networks-view
   - sdn-networks-manage
+  - sdn-global-lbs-manage
+  - sdn-global-lbs-view
+  # pipelines
   - pipelines-manage
   - pipelines-view
   - pipelines-trigger
+  # environments
   - environments-create
   - environments-delete
   - environments-view
@@ -30,6 +38,7 @@ enum:
   - environments-vpn-manage
   - environments-scopedvariables-manage
   - environments-scopedvariables-view
+  # containers
   - containers-deploy
   - containers-view
   - containers-console
@@ -42,10 +51,12 @@ enum:
   - containers-instances-migrate
   - containers-backups-manage
   - containers-backups-view
+  # stacks
   - stacks-manage
   - stacks-view
   - stacks-builds-manage
   - stacks-builds-deploy
+  # images
   - images-view
   - images-import
   - images-update
@@ -53,8 +64,11 @@ enum:
   - images-build
   - images-sources-view
   - images-sources-manage
+  # jobs
   - jobs-view
+  # api keys
   - api-keys-manage
+  # infrastructure
   - ips-manage
   - servers-provision
   - servers-view
@@ -64,7 +78,13 @@ enum:
   - servers-decommission
   - infrastructure-providers-manage
   - infrastructure-providers-view
-  - usage-view
+  # security
+  - security-view
+  - security-manage
+  # monitoring
+  - monitor-view
+  - monitor-manage
+  # dns
   - dns-view
   - dns-manage
   - dns-certs-view

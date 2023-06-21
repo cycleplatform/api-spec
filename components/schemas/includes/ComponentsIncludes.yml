@@ -17,7 +17,7 @@ additionalProperties:
     - $ref: ../dns/records/Record.yml
     - $ref: ../hubs/ApiKey.yml
     - $ref: ../infrastructure/providers/Provider.yml
-    - $ref: ../sdn/SDNNetwork.yml
+    - $ref: ../sdn/Network.yml
     - $ref: ../hubs/HubMembership.yml
     - $ref: ../pipelines/Pipeline.yml
     - $ref: ../pipelines/trigger-keys/TriggerKey.yml
