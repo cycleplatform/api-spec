@@ -1,12 +1,12 @@
 get:
-  operationId: "getNetwork"
+  operationId: "getGlobalLoadBalancer"
   tags:
     - SDN
   parameters:
-    - name: networkId
+    - name: lbId
       in: path
       required: true
-      description: The ID of the network.
+      description: The ID of the global load balancer.
       schema:
         type: string
     - name: include
@@ -24,32 +24,32 @@ get:
           enum:
             - creators
             - environments
-  summary: Fetch SDN Network
-  description: Requires the `sdn-networks-view` capability.
+  summary: Fetch a Global Load Balancer
+  description: Requires the `sdn-global-lbs-view` capability.
   responses:
     200:
-      description: Returns a single network resource.
+      description: Returns a single global load balancer resource.
       content:
         application/json:
           schema:
-            title: "GetNetworkResponse"
+            title: "GetGlobalLoadBalancerResponse"
             type: object
             properties:
               data:
-                $ref: ../../../components/schemas/sdn/networks/Network.yml
+                $ref: ../../../components/schemas/sdn/global-lbs/GlobalLoadBalancer.yml
               includes:
-                $ref: ../../../components/schemas/sdn/networks/NetworkIncludes.yml
+                $ref: ../../../components/schemas/sdn/global-lbs/GlobalLoadBalancerIncludes.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
 patch:
-  operationId: "updateSDNNetwork"
+  operationId: "updateGlobalLoadBalancer"
   tags:
     - SDN
   parameters:
-    - name: networkId
+    - name: lbId
       in: path
       required: true
-      description: The ID of the network.
+      description: The ID of the global load balancer.
       schema:
         type: string
     - name: include
@@ -67,10 +67,10 @@ patch:
           enum:
             - creators
             - environments
-  summary: Update SDN Network
-  description: Requires the `sdn-networks-manage` capability.
+  summary: Update Global Load Balancer
+  description: Requires the `sdn-global-lbs-manage` capability.
   requestBody:
-    description: Parameters for updating a network.
+    description: Parameters for updating a global load balancer.
     content:
       application/json:
         schema:
@@ -78,35 +78,38 @@ patch:
           properties:
             name:
               type: string
-              description: The name of the network.
+              description: A new name for this global load balancer.
+            identifier:
+              type: string
+              description: A new identifier for this global load balancer.
   responses:
     200:
-      description: Returns a network resource.
+      description: Returns a global load balancer resource.
       content:
         application/json:
           schema:
-            title: "UpdateNetworkResponse"
+            title: "UpdateGlobalLoadBalancerResponse"
             type: object
             properties:
               data:
-                $ref: ../../../components/schemas/sdn/networks/Network.yml
+                $ref: ../../../components/schemas/sdn/global-lbs/GlobalLoadBalancer.yml
               includes:
-                $ref: ../../../components/schemas/sdn/networks/NetworkIncludes.yml
+                $ref: ../../../components/schemas/sdn/global-lbs/GlobalLoadBalancerIncludes.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
 delete:
-  operationId: "removeSDNNetwork"
+  operationId: "removeGlobalLoadBalancer"
   tags:
     - SDN
   parameters:
-    - name: networkId
+    - name: lbId
       in: path
       required: true
-      description: The ID of the network.
+      description: The ID of the global load balancer.
       schema:
         type: string
-  summary: Remove SDN Network
-  description: Requires the `sdn-networks-manage` capability.
+  summary: Remove Global Load Balancer
+  description: Requires the `sdn-global-lbs-manage` capability.
   responses:
     200:
       description: Returns a task descriptor.

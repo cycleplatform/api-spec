@@ -1,5 +1,5 @@
 get:
-  operationId: "getNetworks"
+  operationId: "getGlobalLoadBalancers"
   tags:
     - SDN
   parameters:
@@ -18,7 +18,6 @@ get:
           enum:
             - creators
             - environments
-
     - name: filter
       in: query
       # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706
@@ -30,37 +29,41 @@ get:
       schema:
         type: object
         properties:
+          identifier:
+            type: string
+            description: |
+              `filter[identifier]=value` only return global load balancers that match the identifier
           search:
             type: string
             description: |
-              `filter[search]=value` search for a value associated with a field on the given network(s).
+              `filter[search]=value` search for a value associated with a field on the given global load balancer(s).
           state:
             type: string
             description: |
-              `filter[state]=value1,value2` state filtering will allow you to filter by the network's current state.
+              `filter[state]=value1,value2` state filtering will allow you to filter by the global load balancer's current state.
     - $ref: ../../../components/parameters/SortParam.yml
     - $ref: ../../../components/parameters/PageParam.yml
-  summary: List SDN Network
-  description: Requires the `sdn-networks-view` capability.
+  summary: List Global Load Balancers
+  description: Requires the `sdn-global-lbs-view` capability.
   responses:
     200:
-      description: Returns a collection of network resources.
+      description: Returns a list of global load balancers associated with this hub.
       content:
         application/json:
           schema:
-            title: "ListNetworksResponse"
+            title: "ListGlobalLoadBalancersResponse"
             type: object
             properties:
               data:
                 type: array
                 items:
-                  $ref: ../../../components/schemas/sdn/networks/Network.yml
+                  $ref: ../../../components/schemas/sdn/global-lbs/GlobalLoadBalancer.yml
               includes:
-                $ref: ../../../components/schemas/sdn/networks/NetworkIncludes.yml
+                $ref: ../../../components/schemas/sdn/global-lbs/GlobalLoadBalancerIncludes.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
 post:
-  operationId: "createSDNNetwork"
+  operationId: "createGlobalLoadBalancer"
   tags:
     - SDN
   parameters:
@@ -79,10 +82,10 @@ post:
           enum:
             - creators
             - environments
-  summary: Create SDN Network
-  description: Requires the `sdn-networks-manage` capability.
+  summary: Create Global Load Balancer
+  description: Requires the `sdn-global-lbs-manage` capability.
   requestBody:
-    description: Parameters for creating a new network.
+    description: Parameters for creating a new global load balancer.
     content:
       application/json:
         schema:
@@ -95,30 +98,30 @@ post:
           properties:
             name:
               type: string
-              description: The name of the network.
+              description: The name of the global load balancer.
             identifier:
               type: string
-              description: A network identifier used to construct http calls that specifically use this network over another.
+              description: A human-readable identifier for referencing this global load balancer. Identifiers do not need to be unique.
             cluster:
               type: string
-              description: The infrastructure cluster the environments belonging to this network belong to.
+              description: The infrastructure cluster this global load balancer will be associated with.
             environments:
-              description: An array of environment Ids
+              description: An array of environment ids that this global load balancer will balance traffic across
               type: array
               items:
                 type: string
   responses:
     201:
-      description: Returns a network resource.
+      description: Returns a global load balancer resource.
       content:
         application/json:
           schema:
-            title: "CreateNetworkResponse"
+            title: "CreateGlobalLoadBalancerResponse"
             type: object
             properties:
               data:
-                $ref: ../../../components/schemas/sdn/networks/Network.yml
+                $ref: ../../../components/schemas/sdn/global-lbs/GlobalLoadBalancer.yml
               includes:
-                $ref: ../../../components/schemas/sdn/networks/NetworkIncludes.yml
+                $ref: ../../../components/schemas/sdn/global-lbs/GlobalLoadBalancerIncludes.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml

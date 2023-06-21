@@ -83,7 +83,7 @@ tags:
   - name: Servers
     description: "A subgroup of infrastructure, servers call deal specificially with server resources."
   - name: SDN
-    description: "Software defined networks that can be created when a user needs to create a new private network spanning multiple environments."
+    description: "Software defined networking. Includes networks that can be created when a user needs to create a new private network spanning multiple environments, and global load balancers for balancing traffic across multiple environments."
   - name: WebsocketAuth
     description: "A collection of calls used to create resources necessary to connect to a websocket based resource. "
   - name: Backups
@@ -103,8 +103,7 @@ security:
   - bearerAuth: []
     hubAuth: []
 paths:
-  # {changelog, channels, audit, surveys}
-  # Accounts {checked}
+  # Accounts
   "/v1/account":
     "$ref": "./paths/accounts/account.yml"
   "/v1/account/invites":
@@ -124,7 +123,7 @@ paths:
   # Announcements
   "/v1/announcements":
     $ref: "./paths/announcements/announcements.yml"
-  # Billing {checked}
+  # Billing
   "/v1/billing/orders":
     "$ref": "./paths/billing/orders/orders.yml"
   "/v1/billing/orders/{orderId}":
@@ -155,7 +154,7 @@ paths:
     "$ref": "./paths/billing/credits/credits.yml"
   "/v1/billing/credits/{creditsId}":
     "$ref": "./paths/billing/credits/credit.yml"
-  # Environments {events, scoped variables {collection, single }}
+  # Environments
   "/v1/environments":
     "$ref": "./paths/environments/environments.yml"
   "/v1/environments/{environmentId}":
@@ -193,7 +192,7 @@ paths:
     "$ref": "./paths/environments/scoped-variables.yml"
   "/v1/environments/{environmentId}/scoped-variables/{scopedVariableId}":
     "$ref": "./paths/environments/scoped-variable.yml"
-  # containers
+  # Containers
   "/v1/containers":
     "$ref": "./paths/containers/containers.yml"
   "/v1/containers/{containerId}":
@@ -232,7 +231,7 @@ paths:
     "$ref": "./paths/containers/backups/backupLogs.yml"
   "/v1/containers/{containerId}/telemetry/instances":
     $ref: paths/containers/telemetry.yml
-  # DNS {domains, tls attempts}
+  # DNS
   "/v1/dns/zones":
     "$ref": "./paths/dns/zones.yml"
   "/v1/dns/zones/{zoneId}":
@@ -249,7 +248,7 @@ paths:
     "$ref": "./paths/dns/tls/attempts.yml"
   "/v1/dns/tls/certificates/lookup":
     "$ref": "./paths/dns/tls/certificates.yml"
-  # Hub
+  # Hubs
   "/v1/hubs":
     "$ref": "./paths/hubs/hubs.yml"
   # "/v1/hub/{hubId}":
@@ -285,7 +284,7 @@ paths:
   # Index
   "/v1/search/index":
     "$ref": "./paths/search/index.yml"
-  # Images {checked}
+  # Images
   "/v1/images":
     "$ref": "./paths/images/images.yml"
   "/v1/images/{imageId}":
@@ -302,10 +301,10 @@ paths:
     "$ref": "./paths/images/sources/source.yml"
   # "/v1/images/sources/{sourceId}/tasks":
   #   "$ref": "./paths/images/sources/tasks.yml"
-  # Infrastructure {checked}
+  # Infrastructure
   "/v1/infrastructure/summary":
     "$ref": "./paths/infrastructure/summary.yml"
-  # Providers {checked}
+  # Providers
   "/v1/infrastructure/providers/native":
     "$ref": "./paths/infrastructure/providers/native.yml"
   "/v1/infrastructure/providers/{providerId}/servers":
@@ -318,7 +317,7 @@ paths:
     "$ref": "./paths/infrastructure/providers/provider.yml"
   "/v1/infrastructure/providers/{providerId}/tasks":
     "$ref": "./paths/infrastructure/providers/tasks.yml"
-  # Servers {console{not implemented yet}, }
+  # Servers
   "/v1/infrastructure/servers":
     "$ref": "./paths/infrastructure/servers/servers.yml"
   "/v1/infrastructure/servers/{serverId}":
@@ -335,7 +334,7 @@ paths:
     "$ref": "./paths/infrastructure/servers/clusters.yml"
   "/v1/infrastructure/servers/{serverId}/usage":
     "$ref": "./paths/infrastructure/servers/usage.yml"
-  # IPS {checked}
+  # IPs
   "/v1/infrastructure/ips/pools":
     "$ref": "./paths/infrastructure/ips/pools.yml"
   "/v1/infrastructure/ips/pools/{poolId}":
@@ -344,14 +343,14 @@ paths:
     "$ref": "./paths/infrastructure/ips/ips.yml"
   "/v1/infrastructure/deployment-strategies":
     "$ref": "./paths/infrastructure/deployment-strategies.yml"
-  # jobs {checked }
+  # Jobs
   "/v1/jobs":
     "$ref": "./paths/jobs/jobs.yml"
   "/v1/jobs/{jobId}":
     "$ref": "./paths/jobs/job.yml"
   "/v1/jobs/latest":
     "$ref": "./paths/jobs/latest.yml"
-  # Stacks {checked}
+  # Stacks
   "/v1/stacks":
     "$ref": "./paths/stacks/stacks.yml"
   "/v1/stacks/{stackId}":
@@ -366,14 +365,20 @@ paths:
     "$ref": "./paths/stacks/builds/stackbuild.yml"
   "/v1/stacks/{stackId}/builds/{buildId}/tasks":
     "$ref": "./paths/stacks/builds/tasks.yml"
-  # SDN {checked}
+  # SDN
+  ## Networks
   "/v1/sdn/networks":
     "$ref": "./paths/sdn/networks.yml"
   "/v1/sdn/networks/{networkId}":
     "$ref": "./paths/sdn/network.yml"
   "/v1/sdn/networks/{networkId}/tasks":
     "$ref": "./paths/sdn/tasks.yml"
-  # Pipelines {trigger < not implemented its a task}
+  ## Global Load Balancers
+  "/v1/sdn/global-lbs":
+    $ref: ./paths/sdn/global-lbs.yml
+  "/v1/sdn/global-lbs/{lbId}":
+    $ref: paths/sdn/global-lb.yml
+  # Pipelines
   "/v1/pipelines":
     "$ref": "./paths/pipelines/pipelines.yml"
   "/v1/pipelines/{pipelineId}":
@@ -386,7 +391,7 @@ paths:
     "$ref": "./paths/pipelines/trigger-keys/trigger-keys.yml"
   "/v1/pipelines/{pipelineId}/keys/{triggerKeyId}":
     "$ref": "./paths/pipelines/trigger-keys/trigger-key.yml"
-  # NOTIFICATION ENDPOINTS
+  # Notifications
   "/v1/hubs/current/notifications":
     "$ref": "./paths/channels/hub.yml"
   "/v1/containers/{containerId}/instances/{instanceId}/console":
