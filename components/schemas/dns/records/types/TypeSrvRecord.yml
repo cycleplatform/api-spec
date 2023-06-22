@@ -1,0 +1,21 @@
+title: TypeSrvRecord
+type: object
+description: A DNS SRV record.
+required:
+  - weight
+  - priority
+  - port
+  - domain
+properties:
+  weight:
+    type: integer
+    description: Teh weight configured for this record - breaks ties for priority.
+  priority:
+    type: integer
+    description: The priority for the record.
+  port:
+    type: integer
+    description: The port number for the service.
+  domain:
+    type: string
+    description: The domain for the record.

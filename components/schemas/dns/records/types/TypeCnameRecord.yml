@@ -1,0 +1,9 @@
+title: TypeCnameRecord
+type: object
+description: A DNS CNAME record
+required:
+  - domain
+properties:
+  domain:
+    type: string
+    description: The domain string the record resolves to.

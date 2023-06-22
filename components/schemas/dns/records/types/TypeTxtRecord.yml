@@ -1,0 +1,9 @@
+title: TypeTxtRecord
+type: object
+description: A DNS TXT record.
+required:
+  - value
+properties:
+  value:
+    type: string
+    description: The value for this TXT record.

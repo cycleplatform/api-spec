@@ -1,0 +1,9 @@
+title: TypeAaaaRecord
+type: object
+description: A DNS AAAA record
+required:
+  - ip
+properties:
+  ip:
+    type: string
+    description: The IPv6 address that the AAAA record should map to.

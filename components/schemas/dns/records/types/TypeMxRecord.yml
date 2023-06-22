@@ -1,0 +1,13 @@
+title: TypeMxRecord
+type: object
+description: A DNS MX record
+required:
+  - priority
+  - domain
+properties:
+  priority:
+    type: string
+    description: The priority setting for this mx record.
+  domain:
+    type: string
+    description: The domain this mx record points to.

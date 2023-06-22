@@ -1,0 +1,13 @@
+title: TypeCaaRecord
+type: object
+description: A DNS CAA record.
+required:
+  - tag
+  - value
+properties:
+  tag:
+    type: string
+    description: The ASCII string that represents the identifier of the property represented by the record.
+  value:
+    type: string
+    description: The value associated with the tag.
