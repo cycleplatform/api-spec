@@ -106,24 +106,42 @@ properties:
   linked:
     type: object
     description: A Linked record is a record special to Cycle.  It represents a url that points to a specific container, however the IP address mapping in handled automatically by the platform.
-    required:
-      - features
-    properties:
-      container_id:
-        type: string
-        description: The ID of the container this record is related to.
-      features:
-        type: object
-        description: Features associated with this record.
+    allOf:
+      - type: object
         required:
-          - tls
+          - features
         properties:
-          tls:
+          features:
             type: object
-            description: TLS properties of the record.
+            description: Features associated with this record.
             required:
-              - enable
+              - tls
             properties:
-              enable:
-                type: boolean
-                description: A boolean, where true represents this record will be paired with a TLS certificate automatically maintained by the platform.
+              tls:
+                type: object
+                description: TLS properties of the record.
+                required:
+                  - enable
+                properties:
+                  enable:
+                    type: boolean
+                    description: A boolean, where true represents this record will be paired with a TLS certificate automatically maintained by the platform.
+      - oneOf:
+          - type: object
+            properties:
+              container_id:
+                type: string
+                description: The ID of the container this record is related to.
+          - type: object
+            properties:
+              global_lb:
+                type: object
+                description: If pointed at a global load balancer, the information about which container behind that global lb this record points to. Must point to a container identifier, and that identifier must be the same in every environment referenced by the global lb.
+                required:
+                  - id
+                  - container
+                properties:
+                  id:
+                    $ref: ../../ID.yml
+                  container:
+                    $ref: ../../Identifier.yml
