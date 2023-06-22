@@ -1,6 +1,6 @@
 ---
 title: Events
-description: Cycle resources usually contain an events field, the event being the key and a formatted time string being the value.
+description: Describes the date and time at which certain events occurred in the lifetime of this resource.
 type: object
 additionalProperties:
   $ref: "./DateTime.yml"

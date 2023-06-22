@@ -1,4 +1,4 @@
-title: SDNNetwork
+title: Network
 type: object
 description: SDN Network resource.
 required:
@@ -14,7 +14,7 @@ required:
   - events
 properties:
   id:
-    "$ref": "../ID.yml"
+    $ref: ../../ID.yml
   name:
     type: string
     description: The name of the network.
@@ -25,13 +25,13 @@ properties:
     type: string
     description: The infrastructure cluster the environments belonging to this network belong to.
   creator:
-    "$ref": "../creators/CreatorScope.yml"
+    $ref: ../../creators/CreatorScope.yml
   hub_id:
-    "$ref": "../HubID.yml"
+    $ref: ../../HubID.yml
   state:
-    "$ref": "./NetworkState.yml"
+    $ref: NetworkState.yml
   private_network:
-    "$ref": "./SDNPrivateNetwork.yml"
+    $ref: NetworkPrivacySettings.yml
   environments:
     description: An array of environments and timestamps.
     type: array
@@ -42,14 +42,14 @@ properties:
         - added
       properties:
         id:
-          "$ref": "../ID.yml"
+          $ref: ../../ID.yml
         added:
           description: A timestamp of when the environment was added.
-          "$ref": "../DateTime.yml"
+          $ref: ../../DateTime.yml
   events:
     title: NetworkEvents
     type: object
-    description: A collection of timestamps for each event in the image's lifetime.
+    description: A collection of timestamps for each event in the network's lifetime.
     required:
       - created
       - updated
@@ -57,10 +57,10 @@ properties:
     properties:
       created:
         description: The timestamp of when the image was created.
-        "$ref": "../DateTime.yml"
+        $ref: ../../DateTime.yml
       updated:
         description: The timestamp of when the image was updated.
-        "$ref": "../DateTime.yml"
+        $ref: ../../DateTime.yml
       deleted:
         description: The timestamp of when the image was deleted.
-        "$ref": "../DateTime.yml"
+        $ref: ../../DateTime.yml

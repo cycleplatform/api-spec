@@ -1,0 +1,71 @@
+title: GlobalLoadBalancer
+description:
+  A load balancer that sits outside of any environment and routes traffic between multiple environments.
+  Global load balancers are used to manage rainbow/canary deployments and prevent downtime during an update.
+type: object
+required:
+  - id
+  - name
+  - identifier
+  - cluster
+  - creator
+  - hub_id
+  - state
+  - environments
+  - events
+properties:
+  id:
+    $ref: ../../ID.yml
+  name:
+    type: string
+    description: A custom name given to this global load balancer
+  identifier:
+    $ref: ../../Identifier.yml
+  cluster:
+    $ref: ../../Identifier.yml
+  creator:
+    $ref: ../../Creator.yml
+  hub_id:
+    $ref: ../../ID.yml
+  state:
+    $ref: GlobalLoadBalancerState.yml
+  environments:
+    type: array
+    nullable: true
+    description: An array where each item lists an environment ID and settings for the global load balancer to route traffic to them.
+    items:
+      title: GlobalLoadBalancerEnvironment
+      type: object
+      required:
+        - id
+        - traffic
+      properties:
+        id:
+          $ref: ../../ID.yml
+        traffic:
+          title: GlobalLoadBalancerEnvironmentTraffic
+          type: object
+          required:
+            - percentage
+          properties:
+            percentage:
+              type: integer
+              description: The percentage of all traffic the global load balancer should route to this environment. Must add up to 100% across all environments.
+  events:
+    title: GlobalLoadBalancerEvents
+    type: object
+    description: Describes the date and time at which certain events occurred in the lifetime of this resource.
+    required:
+      - created
+      - updated
+      - deleted
+    properties:
+      created:
+        description: The timestamp of when the global lb was created.
+        $ref: ../../DateTime.yml
+      updated:
+        description: The timestamp of when the global lb was updated.
+        $ref: ../../DateTime.yml
+      deleted:
+        description: The timestamp of when the global lb was deleted.
+        $ref: ../../DateTime.yml
