@@ -1,64 +1,129 @@
 title: DNSRecordTypes
 type: object
 description: DNS record types the platform supports.
-oneOf:
-  - type: object
+properties:
+  a:
+    type: object
+    description: A DNS A record
     required:
-      - a
+      - ip
     properties:
-      a:
-        $ref: types/TypeARecord.yml
-  - type: object
+      ip:
+        type: string
+        description: The IPv4 address that the A record should map to.
+  aaaa:
+    type: object
+    description: A DNS AAAA record
     required:
-      - aaaa
+      - ip
     properties:
-      aaaa:
-        $ref: types/TypeAaaaRecord.yml
-  - type: object
+      ip:
+        type: string
+        description: The IPv6 address that the AAAA record should map to.
+  cname:
+    type: object
+    description: A DNS CNAME record
     required:
-      - cname
+      - domain
     properties:
-      cname:
-        $ref: types/TypeCnameRecord.yml
-  - type: object
+      domain:
+        type: string
+        description: The domain string the record resolves to.
+  ns:
+    type: object
+    description: A DNS NS record
     required:
-      - srv
+      - domain
     properties:
-      srv:
-        $ref: types/TypeSrvRecord.yml
-  - type: object
+      domain:
+        type: string
+        description: The domain of the nameserver for this record.
+  mx:
+    type: object
+    description: A DNS MX record
     required:
-      - ns
+      - priority
+      - domain
     properties:
-      ns:
-        $ref: types/TypeNsRecord.yml
-  - type: object
+      priority:
+        type: string
+        description: The priority setting for this mx record.
+      domain:
+        type: string
+        description: The domain this mx record points to.
+  txt:
+    type: object
+    description: A DNS TXT record.
     required:
-      - caa
+      - value
     properties:
-      caa:
-        $ref: types/TypeCaaRecord.yml
-  - type: object
+      value:
+        type: string
+        description: The value for this TXT record.
+  alias:
+    type: object
+    description: A DNS ALIAS record.
     required:
-      - mx
+      - domain
     properties:
-      mx:
-        $ref: types/TypeMxRecord.yml
-  - type: object
+      domain:
+        type: string
+        description: The domain string returned from the DNS server when this alias record is requested.
+  srv:
+    type: object
+    description: A DNS SRV record.
     required:
-      - txt
+      - weight
+      - priority
+      - port
+      - domain
     properties:
-      txt:
-        $ref: types/TypeTxtRecord.yml
-  - type: object
+      weight:
+        type: integer
+        description: Teh weight configured for this record - breaks ties for priority.
+      priority:
+        type: integer
+        description: The priority for the record.
+      port:
+        type: integer
+        description: The port number for the service.
+      domain:
+        type: string
+        description: The domain for the record.
+  caa:
+    type: object
+    description: A DNS CAA record.
     required:
-      - alias
+      - tag
+      - value
     properties:
-      alias:
-        $ref: types/TypeAliasRecord.yml
-  - type: object
+      tag:
+        type: string
+        description: The ASCII string that represents the identifier of the property represented by the record.
+      value:
+        type: string
+        description: The value associated with the tag.
+  linked:
+    type: object
+    description: A Linked record is a record special to Cycle.  It represents a url that points to a specific container, however the IP address mapping in handled automatically by the platform.
     required:
-      - linked
+      - features
     properties:
-      linked:
-        $ref: types/TypeLinkedRecord.yml
+      container_id:
+        type: string
+        description: The ID of the container this record is related to.
+      features:
+        type: object
+        description: Features associated with this record.
+        required:
+          - tls
+        properties:
+          tls:
+            type: object
+            description: TLS properties of the record.
+            required:
+              - enable
+            properties:
+              enable:
+                type: boolean
+                description: A boolean, where true represents this record will be paired with a TLS certificate automatically maintained by the platform.
