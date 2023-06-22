@@ -3,42 +3,62 @@ type: object
 description: DNS record types the platform supports.
 oneOf:
   - type: object
+    required:
+      - a
     properties:
       a:
         $ref: types/TypeARecord.yml
   - type: object
+    required:
+      - aaaa
     properties:
       aaaa:
         $ref: types/TypeAaaaRecord.yml
   - type: object
+    required:
+      - cname
     properties:
       cname:
         $ref: types/TypeCnameRecord.yml
   - type: object
+    required:
+      - srv
     properties:
       srv:
         $ref: types/TypeSrvRecord.yml
   - type: object
+    required:
+      - ns
     properties:
       ns:
         $ref: types/TypeNsRecord.yml
   - type: object
+    required:
+      - caa
     properties:
       caa:
         $ref: types/TypeCaaRecord.yml
   - type: object
+    required:
+      - mx
     properties:
       mx:
         $ref: types/TypeMxRecord.yml
   - type: object
+    required:
+      - txt
     properties:
       txt:
         $ref: types/TypeTxtRecord.yml
   - type: object
+    required:
+      - alias
     properties:
       alias:
         $ref: types/TypeAliasRecord.yml
   - type: object
+    required:
+      - linked
     properties:
       linked:
         $ref: types/TypeLinkedRecord.yml
