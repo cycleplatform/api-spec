@@ -12,6 +12,7 @@ properties:
     $ref: ../../../../Range.yml
   snapshots:
     type: array
+    nullable: true
     items:
       type: object
       title: LoadBalancerTelemetryReportMergedSnapshot
