@@ -41,6 +41,7 @@ post:
                   nullable: true
                   properties:
                     version:
+                      nullable: true
                       type: string
                       enum:
                         - v1
