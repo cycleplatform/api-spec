@@ -1,0 +1,13 @@
+type: object
+description: DNS record types the platform supports.
+oneOf:
+  - $ref: types/TypeARecord.yml
+  - $ref: types/TypeAaaaRecord.yml
+  - $ref: types/TypeCnameRecord.yml
+  - $ref: types/TypeSrvRecord.yml
+  - $ref: types/TypeNsRecord.yml
+  - $ref: types/TypeCaaRecord.yml
+  - $ref: types/TypeMxRecord.yml
+  - $ref: types/TypeTxtRecord.yml
+  - $ref: types/TypeAliasRecord.yml
+  - $ref: types/TypeLinkedRecord.yml

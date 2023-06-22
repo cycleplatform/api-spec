@@ -29,17 +29,7 @@ properties:
     type: string
     description: The name of the record and the origin as a domain name.
   type:
-    oneOf:
-      - $ref: types/TypeARecord.yml
-      - $ref: types/TypeAaaaRecord.yml
-      - $ref: types/TypeCnameRecord.yml
-      - $ref: types/TypeSrvRecord.yml
-      - $ref: types/TypeNsRecord.yml
-      - $ref: types/TypeCaaRecord.yml
-      - $ref: types/TypeMxRecord.yml
-      - $ref: types/TypeTxtRecord.yml
-      - $ref: types/TypeAliasRecord.yml
-      - $ref: types/TypeLinkedRecord.yml
+    $ref: RecordTypes.yml
   features:
     type: object
     description: TLS features for the record.
