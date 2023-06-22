@@ -7,7 +7,6 @@ required:
   - name
   - identifier
   - creator
-  - environment
   - hub_id
   - image
   - config
