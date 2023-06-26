@@ -12,6 +12,8 @@ required:
 properties:
   id:
     $ref: ../ID.yml
+  identifier:
+    $ref: ../../../components/schemas/Identifier.yml
   name:
     type: string
     description: A name for the pipeline.

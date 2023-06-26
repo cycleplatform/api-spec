@@ -3,6 +3,7 @@ type: object
 description: Stacks are a way to orchestrate multiple containers atomically and automatically.
 required:
   - id
+  - identifier
   - name
   - hub_id
   - creator
@@ -12,6 +13,9 @@ required:
 properties:
   id:
     "$ref": "../ID.yml"
+  identifier:
+    $ref: ../Identifier.yml 
+    description: A human readable slugged identifier for this stack.
   name:
     type: string
     description: A user defined name for the stack resource.

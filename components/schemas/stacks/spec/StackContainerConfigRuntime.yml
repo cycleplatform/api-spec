@@ -1,13 +1,12 @@
 title: StackContainerConfigRuntime
 type: object
+required:
+  - privileged
 properties:
   workdir:
     type: string
   command:
     type: object
-    required:
-      - path
-      - args
     properties:
       path:
         type: string
@@ -28,6 +27,7 @@ properties:
         - network
         - mount
         - user
+        - cgroup
   sysctl:
     type: object
     additionalProperties:
@@ -41,13 +41,14 @@ properties:
         - soft
       properties:
         hard:
-          type: number
+          type: integer
         soft:
-          type: number
+          type: integer
   seccomp:
     type: object
     required:
       - disable
+      - rules
     properties:
       disable:
         type: boolean
@@ -57,7 +58,7 @@ properties:
           type: object
           required:
             - capabilities
-            - specs
+            - syscall
           properties:
             capabilities:
               type: object
@@ -69,12 +70,11 @@ properties:
                   type: string
                 excludes:
                   type: string
-            specs:
+            syscall:
               type: object
               required:
                 - names
                 - action
-                - args
               properties:
                 names:
                   type: array
@@ -82,8 +82,18 @@ properties:
                     type: string
                 action:
                   type: string
-                arrnoRet:
-                  type: number
+                  enum:
+                    - SCMP_ACT_KILL
+                    - SCMP_ACT_KILL_PROCESS
+                    - SCMP_ACT_KILL_THREAD
+                    - SCMP_ACT_TRAP
+                    - SCMP_ACT_ERRNO
+                    - SCMP_ACT_TRACE
+                    - SCMP_ACT_ALLOW
+                    - SCMP_ACT_LOG
+                    - SCMP_ACT_NOTIFY
+                errnoRet:
+                  type: integer
                 args:
                   type: array
                   items:
@@ -91,63 +101,69 @@ properties:
                     required:
                       - index
                       - value
-                      - valueTwo
                       - op
                     properties:
                       index:
-                        type: number
+                        type: integer
                       value:
-                        type: number
+                        type: integer
                       valuetwo:
-                        type: number
+                        type: integer
                       op:
                         type: string
+                        enum:
+                          - SCMP_CMP_NE
+                          - SCMP_CMP_LT
+                          - SCMP_CMP_LE
+                          - SCMP_CMP_EQ
+                          - SCMP_CMP_GE
+                          - SCMP_CMP_GT
+                          - SCMP_CMP_MASKED_EQ
   privileged:
     type: boolean
   capabilities:
-    oneOf:
-      - type: array
-        items:
-          type: string
-          enum:
-            - CAP_CHOWN
-            - CAP_FSETID
-            - CAP_DAC_OVERRIDE
-            - CAP_FOWNER
-            - CAP_SETFCAP
-            - CAP_SETGID
-            - CAP_SETUID
-            - CAP_KILL
-            - CAP_MKNOD
-            - CAP_NET_BIND_SERVICE
-            - CAP_NET_RAW
-            - CAP_AUDIT_WRITE
-            - CAP_SYS_CHROOT
-      - type: array
-        items:
-          type: string
-          enum:
-            - CAP_SETPCAP
-            - CAP_DAC_READ_SEARCH
-            - CAP_NET_ADMIN
-            - CAP_NET_BROADCAST
-            - CAP_SYS_ADMIN
-            - CAP_SYS_MODULE
-            - CAP_SYS_NICE
-            - CAP_SYS_PACCT
-            - CAP_SYS_PTRACE
-            - CAP_SYS_RAWIO
-            - CAP_SYS_RESOURCE
-            - CAP_SYS_TTY_CONFIG
-            - CAP_SYSLOG
-            - CAP_AUDIT_CONTROL
-            - CAP_AUDIT_READ
-            - CAP_IPC_LOCK
-            - CAP_IPC_OWNER
-            - CAP_LINUX_IMMUTABLE
-            - CAP_MAC_ADMIN
-            - CAP_MAC_OVERRIDE
-            - CAP_BLOCK_SUSPEND
+    type: array
+    items:
+      type: string
+      enum:
+        - CAP_CHOWN
+        - CAP_FSETID
+        - CAP_DAC_OVERRIDE
+        - CAP_FOWNER
+        - CAP_SETFCAP
+        - CAP_SETGID
+        - CAP_SETUID
+        - CAP_KILL
+        - CAP_MKNOD
+        - CAP_NET_BIND_SERVICE
+        - CAP_NET_RAW
+        - CAP_AUDIT_WRITE
+        - CAP_SYS_CHROOT
+        - CAP_SETPCAP
+        - CAP_DAC_READ_SEARCH
+        - CAP_NET_ADMIN
+        - CAP_NET_BROADCAST
+        - CAP_SYS_ADMIN
+        - CAP_SYS_MODULE
+        - CAP_SYS_NICE
+        - CAP_SYS_PACCT
+        - CAP_SYS_PTRACE
+        - CAP_SYS_RAWIO
+        - CAP_SYS_RESOURCE
+        - CAP_SYS_BOOT
+        - CAP_SYS_TIME
+        - CAP_SYS_TTY_CONFIG
+        - CAP_SYSLOG
+        - CAP_AUDIT_CONTROL
+        - CAP_AUDIT_READ
+        - CAP_IPC_LOCK
+        - CAP_IPC_OWNER
+        - CAP_LINUX_IMMUTABLE
+        - CAP_MAC_ADMIN
+        - CAP_MAC_OVERRIDE
+        - CAP_BLOCK_SUSPEND
+        - CAP_LEASE
+        - CAP_WAKE_ALARM
   rootfs:
     type: object
     required:

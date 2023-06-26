@@ -1,6 +1,6 @@
 post:
   tags:
-    - Images
+    - SDN
   operationId: "createNetworkJob"
   parameters:
     - name: networkId

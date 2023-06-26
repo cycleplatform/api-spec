@@ -50,11 +50,10 @@ properties:
       - destination
       - backup
       - restore
+      - retention
     properties:
       destination:
         type: string
-        enum:
-          - backblaze-b2
       backup:
         type: object
         required:
@@ -63,11 +62,10 @@ properties:
           - cron_string
         properties:
           command:
-            nullable: true
-            type: number
+            type: string
           timeout:
             nullable: true
-            type: number
+            type: integer
           cron_string:
             nullable: true
             type: string
@@ -82,4 +80,7 @@ properties:
             type: string
           timeout:
             nullable: true
-            type: number
+            type: integer
+      retention:
+        type: integer
+        nullable: true

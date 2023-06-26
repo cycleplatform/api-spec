@@ -39,11 +39,13 @@ post:
                   type: object
                   description: The config object for the loadbalancer service.
                   nullable: true
-                  required:
-                    - haproxy
                   properties:
                     version:
+                      nullable: true
                       type: string
+                      enum:
+                        - v1
+                        - haproxy
                     ipv4:
                       type: boolean
                       nullable: true
@@ -63,13 +65,11 @@ post:
                         - ports
                       properties:
                         default:
-                          $ref: ../../../../../components/schemas/environments/config/HAProxyConfig.yml
+                          $ref: ../../../../../components/schemas/stacks/spec/services/loadbalancer/HaProxyConfig.yml
                         ports:
                           type: object
                           additionalProperties:
-                            type: string
-                            oneOf:
-                              - $ref: ../../../../../components/schemas/environments/config/HAProxyConfig.yml
+                            $ref: ../../../../../components/schemas/stacks/spec/services/loadbalancer/HaProxyConfig.yml
 
   responses:
     202:

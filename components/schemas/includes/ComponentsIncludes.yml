@@ -3,21 +3,25 @@ type: object
 description: A resource thats assocaited with activity.
 additionalProperties:
   oneOf:
-    - "$ref": "../containers/Container.yml"
-    - "$ref": "../containers/instances/Instance.yml"
-    - "$ref": "../environments/Environment.yml"
-    - "$ref": "../images/Image.yml"
-    - "$ref": "../infrastructure/servers/Server.yml"
-    - "$ref": "../infrastructure/ips/Pool.yml"
-    - "$ref": "../stacks/Stack.yml"
-    - "$ref": "../stacks/builds/StackBuild.yml"
-    - "$ref": "../dns/Zone.yml"
-    - "$ref": "../dns/records/Record.yml"
-    - "$ref": "../hubs/ApiKey.yml"
-    - "$ref": "../infrastructure/providers/Provider.yml"
-    - "$ref": "../sdn/SDNNetwork.yml"
-    - "$ref": "../hubs/HubMembership.yml"
-    - "$ref": "../pipelines/Pipeline.yml"
-    - "$ref": "../pipelines/trigger-keys/TriggerKey.yml"
-
-    # TODO BILLING INVOICE and METHOD
+    - $ref: ../containers/Container.yml
+    - $ref: ../containers/instances/Instance.yml
+    - $ref: ../environments/Environment.yml
+    - $ref: ../images/Image.yml
+    - $ref: ../images/sources/ImageSource.yml
+    - $ref: ../infrastructure/servers/Server.yml
+    - $ref: ../infrastructure/ips/Pool.yml
+    - $ref: ../infrastructure/providers/Provider.yml
+    - $ref: ../stacks/Stack.yml
+    - $ref: ../stacks/builds/StackBuild.yml
+    - $ref: ../dns/Zone.yml
+    - $ref: ../dns/records/Record.yml
+    - $ref: ../hubs/ApiKey.yml
+    - $ref: ../infrastructure/providers/Provider.yml
+    - $ref: ../sdn/networks/Network.yml
+    - $ref: ../hubs/HubMembership.yml
+    - $ref: ../pipelines/Pipeline.yml
+    - $ref: ../pipelines/trigger-keys/TriggerKey.yml
+    - $ref: ../scoped-variables/ScopedVariable.yml
+    - $ref: ../hubs/Hub.yml
+    - $ref: ../billing/invoices/Invoice.yml
+    - $ref: ../billing/methods/Method.yml

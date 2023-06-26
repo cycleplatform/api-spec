@@ -7,7 +7,7 @@ required:
   - user
   - verbosity
   - context
-  # - session
+  - session
   - changes
   - annotations
   - error
@@ -40,24 +40,32 @@ properties:
           - "visitor"
       id:
         type: string
-        description: The given users ID.
+        description: The given user's ID.
   verbosity:
     type: integer
-    description: A number representing how verbose the acitivty reporting is for a given hub.
+    description: |
+      A number representing the detail level (verbosity) of this activity.
+
+      ## Levels
+      - 0: activity that other users would find useful
+      - 1: activity that can be useful in tracking down how a user did something
+      - 2: full activity, can be useful in debugging problems
   context:
-    "$ref": "./Context.yml"
+    $ref: Context.yml
   session:
-    "$ref": "./Session.yml"
+    type: object
+    nullable: true
+    anyOf:
+      - $ref: Session.yml
   changes:
     type: array
     description: An array of changes.
     items:
-      "$ref": "./Change.yml"
+      $ref: Change.yml
   annotations:
     type: object
     description: A record of additional annotations for the activity.
-    additionalProperties:
-      type: string
+    additionalProperties: {}
   error:
     type: object
     description: An object describing a given activity error.
@@ -91,141 +99,188 @@ properties:
     description: A status for the given activity.
     enum:
       - info
-      - warning
+      - warn
       - request
       - success
       - error
       - alert
-      - recovery
+  security:
+    $ref: ActivitySecurity.yml
+  monitor:
+    $ref: ActivityMonitor.yml
   event:
     type: string
     description: The activity event.
     enum:
-      - "hub.task.delete"
-      - "hub.update"
-      - "hub.create"
-      - "hub.images.prune"
-      - "hub.task.images.prune"
-      - "environment.initialize"
-      - "environment.start"
-      - "environment.stop"
-      - "environment.task.start"
-      - "environment.task.stop"
-      - "environment.task.initialize"
-      - "environment.delete"
-      - "environment.task.delete"
-      - "environment.update"
-      - "environment.create"
-      - "environment.services.discovery.task.reconfigure"
-      - "environment.services.lb.task.reconfigure"
-      - "environment.services.vpn.task.reconfigure"
-      - "image.import"
-      - "image.task.import"
-      - "image.update"
-      - "image.create"
-      - "image.delete"
-      - "image.task.delete"
-      - "image.source.create"
-      - "image.source.update"
-      - "image.source.task.delete"
-      - "container.create"
-      - "container.update"
-      - "container.initialize"
-      - "container.start"
-      - "container.task.start"
-      - "container.stop"
-      - "container.task.stop"
-      - "container.reconfigure"
-      - "container.task.reconfigure"
-      - "container.reconfigure.volumes"
-      - "container.task.reconfigure.volumes"
-      - "container.reimage"
-      - "container.task.reimage"
-      - "container.scale"
-      - "container.task.scale"
-      - "container.delete"
-      - "container.task.delete"
-      - "container.instance.error"
-      - "container.instance.sftp.login"
-      - "container.instance.migration.start"
-      - "container.instance.migration.revert"
-      - "container.instance.delete"
-      - "container.instances.delete"
-      - "container.instances.create"
-      - "container.instance.healthcheck.restarted"
-      - "container.backup.create"
-      - "container.backup.restore"
-      - "container.backup.task.restore"
-      - "container.backup.delete"
-      - "container.backup.task.delete"
-      - "dns.zone.task.verify"
-      - "dns.zone.task.delete"
-      - "dns.zone.update"
-      - "dns.zone.create"
-      - "dns.zone.verify"
-      - "dns.zone.delete"
-      - "dns.zone.record.cert.generate.auto"
-      - "dns.zone.record.cert.generate"
-      - "dns.zone.record.delete"
-      - "dns.zone.record.update"
-      - "dns.zone.record.create"
-      - "dns.zone.record.task.delete"
-      - "dns.zone.record.task.cert.generate"
-      - "stack.task.delete"
-      - "stack.update"
-      - "stack.create"
-      - "stack.task.prune"
-      - "stack.build.create"
-      - "stack.build.generate"
-      - "stack.build.deploy"
-      - "stack.build.delete"
-      - "stack.build.task.generate"
-      - "stack.build.task.delete"
-      - "infrastructure.server.task.delete"
-      - "infrastructure.server.task.restart"
-      - "infrastructure.server.task.provision"
-      - "infrastructure.server.update"
-      - "infrastructure.server.delete"
-      - "infrastructure.server.restart"
-      - "infrastructure.server.compute.restart"
-      - "infrastructure.server.provision"
-      - "infrastructure.server.live"
-      - "infrastructure.server.services.sftp.lockdown.auto"
-      - "infrastructure.server.reconfigure.features"
-      - "infrastructure.server.task.reconfigure.features"
-      - "infrastructure.provider.create"
-      - "infrastructure.provider.update"
-      - "infrastructure.provider.delete"
-      - "sdn.network.task.delete"
-      - "sdn.network.update"
-      - "sdn.network.create"
-      - "sdn.network.task.reconfigure"
-      - "infrastructure.ips.pool.task.delete"
-      - "billing.order.task.confirm"
-      - "billing.order.confirm"
-      - "billing.invoice.task.void"
-      - "billing.invoice.task.credit"
-      - "billing.invoice.task.refund"
-      - "billing.invoice.task.pay"
-      - "billing.invoice.pay"
-      - "billing.method.update"
-      - "billing.method.create"
-      - "billing.method.delete"
-      - "billing.method.task.delete"
-      - "hub.apikey.create"
-      - "hub.apikey.update"
-      - "hub.apikey.delete"
-      - "hub.membership.create"
-      - "hub.membership.delete"
-      - "pipeline.update"
-      - "pipeline.task.delete"
-      - "pipeline.delete"
-      - "pipeline.create"
-      - "pipeline.task.trigger"
-      - "pipeline.trigger"
-      - "pipeline.key.update"
-      - "pipeline.key.delete"
-      - "pipeline.key.create"
+      - hub.images.prune
+      - hub.update
+      - hub.create
+      - hub.task.delete
+      - hub.task.images.prune
+
+      - environment.services.discovery.reconfigure
+      - environment.services.lb.reconfigure
+      - environment.services.vpn.reconfigure
+      - environment.delete
+      - environment.initialize
+      - environment.start
+      - environment.stop
+      - environment.create
+      - environment.update
+      - environment.task.delete
+      - environment.services.discovery.task.reconfigure
+      - environment.services.lb.task.reconfigure
+      - environment.services.vpn.task.reconfigure
+      - environment.vpn.user.create
+      - environment.task.initialize
+      - environment.task.start
+      - environment.task.stop
+
+      - environment.scoped-variable.delete
+      - environment.scoped-variable.update
+      - environment.scoped-variable.task.delete
+      - environment.scoped-variable.create
+
+      - image.delete
+      - image.import
+      - image.create
+      - image.update
+      - image.task.delete
+      - image.task.import
+
+      - image.source.delete
+      - image.source.create
+      - image.source.update
+      - image.source.task.delete
+
+      - billing.invoice.task.void
+      - billing.invoice.task.credit
+      - billing.invoice.task.refund
+      - billing.invoice.pay
+      - billing.invoice.task.pay
+
+      - billing.order.confirm
+      - billing.order.task.confirm
+
+      - billing.method.update
+      - billing.method.delete
+      - billing.method.task.delete
+      - billing.method.create
+
+      - infrastructure.provider.update
+      - infrastructure.provider.task.delete
+      - infrastructure.provider.create
+      - infrastructure.provider.task.verify
+
+      - hub.apikey.update
+      - hub.apikey.delete
+      - hub.apikey.create
+
+      - hub.membership.delete
+      - hub.membership.create
+      - hub.membership.update
+
+      - container.initialize
+      - container.task.start
+      - container.start
+      - container.task.stop
+      - container.stop
+      - container.task.reconfigure
+      - container.reconfigure
+      - container.task.reconfigure.volumes
+      - container.reconfigure.volumes
+      - container.create
+      - container.restart
+      - container.task.reimage
+      - container.reimage
+      - container.update
+      - container.task.delete
+      - container.delete
+      - container.task.scale
+      - container.scale
+
+      - container.instances.create
+      - container.instances.delete
+
+      - container.instance.healthcheck.restarted
+      - container.instance.error
+      - container.instance.ssh.login
+      - container.instance.migration.start
+      - container.instance.migration.revert
+      - container.instance.delete
+      - container.instance.task.migrate_revert
+      - container.instance.task.migrate
+      # there may be other custom-generated container.instance events
+
+      - container.backup.create
+      - container.backup.restore
+      - container.backup.delete
+      - container.backup.task.delete
+      - container.backup.task.restore
+
+      - dns.zone.verify
+      - dns.zone.delete
+      - dns.zone.task.verify
+      - dns.zone.update
+      - dns.zone.task.delete
+      - dns.zone.create
+
+      - dns.zone.record.delete
+      - dns.zone.record.cert.generate
+      - dns.zone.record.cert.generate.auto
+      - dns.zone.record.task.cert.generate
+      - dns.zone.record.update
+      - dns.zone.record.task.delete
+      - dns.zone.record.create
+
+      - stack.update
+      - stack.task.delete
+      - stack.create
+      - stack.task.prune
+
+      - stack.build.create
+      - stack.build.generate
+      - stack.build.deploy
+      - stack.build.delete
+      - stack.build.task.delete
+      - stack.build.task.generate
+      - stack.build.task.deploy
+
+      - infrastructure.server.task.delete
+      - infrastructure.server.task.restart
+      - infrastructure.server.services.sftp.auth
+      - infrastructure.server.live
+      - infrastructure.server.delete
+      - infrastructure.server.restart
+      - infrastructure.server.compute.restart
+      - infrastructure.server.compute.spawner.restart
+      - infrastructure.server.reconfigure.features
+      - infrastructure.server.provision
+      - infrastructure.server.console
+      - infrastructure.server.update
+      - infrastructure.server.task.provision
+      - infrastructure.server.ssh.token
+      - infrastructure.server.task.reconfigure.features
+      - infrastructure.server.services.sftp.lockdown
+      - infrastructure.server.services.internal-api.throttle
+
+      - sdn.network.update
+      - sdn.network.task.delete
+      - sdn.network.create
+      - sdn.network.task.reconfigure
+
+      - pipeline.delete
+      - pipeline.trigger
+      - pipeline.update
+      - pipeline.task.delete
+      - pipeline.create
+      - pipeline.task.trigger
+
+      - pipeline.key.update
+      - pipeline.key.delete
+      - pipeline.key.create
+
+      - infrastructure.ips.pool.task.delete
   time:
     description: A timestamp for when the activity took place.
     "$ref": "../../DateTime.yml"

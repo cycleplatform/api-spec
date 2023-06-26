@@ -92,6 +92,9 @@ patch:
             deprecate:
               type: boolean
               description: Sets whether container should be deprecated.
+            lock:
+              type: boolean
+              description: When set to true, prevents this container from being deleted.
             annotation:
               type: object
               description: User meta data for the container.

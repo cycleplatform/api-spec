@@ -14,11 +14,11 @@ required:
   - events
 properties:
   id:
-    "$ref": "../../ID.yml"
+    $ref: ../../ID.yml
   hub_id:
-    "$ref": "../../HubID.yml"
+    $ref: ../../HubID.yml
   creator:
-    "$ref": "../../creators/CreatorScope.yml"
+    $ref: ../../creators/CreatorScope.yml
   zone_id:
     type: string
     description: "A unique identifier for the zone"
@@ -29,7 +29,7 @@ properties:
     type: string
     description: The name of the record and the origin as a domain name.
   type:
-    "$ref": "./RecordTypes.yml"
+    $ref: RecordTypes.yml
   features:
     type: object
     description: TLS features for the record.
@@ -38,8 +38,8 @@ properties:
     nullable: true
     properties:
       certificate:
-        "$ref": "./Certificate.yml"
+        $ref: Certificate.yml
   state:
-    "$ref": "./RecordState.yml"
+    $ref: RecordState.yml
   events:
-    "$ref": "../../Events.yml"
+    $ref: ../../Events.yml

@@ -20,32 +20,30 @@ get:
 
     - name: filter
       in: query
+      # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706
+      style: deepObject
       required: false
       description: |
         ## Filter Field 
         The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
-
-        ## Possible Values
-        ### Range 
-        `filter[range-start]=timestamp&filter[range-end]=timestamp` filter by range giving two times a `start` time and an `end` time. Date format `2023-03-07T14:55:17-08:00`.
-
-        ### Search
-        `filter[search]=value` search jobs for a value associated with a field on the given job(s).
-
-        ### State
-        `filter[state]=value1,value2` state filtering will allow you to filter by the job's current state.
-
       schema:
         type: object
-        additionalProperties:
-          type: string
-          oneOf:
-            - type: string
-            - type: array
-              items:
-                type: string
+        properties:
+          range-start:
+            description: The start date from when to fetch jobs
+            $ref: ../../../components/schemas/DateTime.yml
+          range-end:
+            description: The end date from when to fetch jobs
+            $ref: ../../../components/schemas/DateTime.yml
+          search:
+            type: string
+            description: |
+              `filter[search]=value` search jobs for a value associated with a field on the given job(s).
+          state:
+            type: string
+            description: |
+              `filter[state]=value1,value2` state filtering will allow you to filter by the job's current state.
     - $ref: ../../../components/parameters/SortParam.yml
-
     - $ref: ../../../components/parameters/PageParam.yml
   summary: List Jobs.
   description: Requires the `jobs-view` permission.

@@ -69,6 +69,7 @@ properties:
       - destination
       - backup
       - restore
+      - retention
     properties:
       destination:
         type: string
@@ -94,6 +95,7 @@ properties:
       restore:
         type: object
         description: Configuration settings for restoring from a backup.
+        nullable: true
         required:
           - command
         properties:
@@ -104,3 +106,8 @@ properties:
             type: integer
             nullable: true
             description: The time in seconds for the restore to appempt to complete before timing out.
+      retention:
+        type: integer
+        nullable: true
+        description: How long (in seconds) to keep backups. Default is 1 year.
+        default: 31536000

@@ -6,6 +6,7 @@ description:
   them. For more information on environments, see the [main docs](https://docs.cycle.io/environments/overview/).
 required:
   - id
+  - identifier
   - name
   - cluster
   - about
@@ -19,6 +20,9 @@ required:
 properties:
   id:
     "$ref": "../ID.yml"
+  identifier:
+    $ref: ../Identifier.yml 
+    description: A human readable slugged identifier for this environment.
   name:
     type: string
     description: A user defined name for the environment resource.

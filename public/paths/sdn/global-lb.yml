@@ -1,0 +1,124 @@
+get:
+  operationId: "getGlobalLoadBalancer"
+  tags:
+    - SDN
+  parameters:
+    - name: lbId
+      in: path
+      required: true
+      description: The ID of the global load balancer.
+      schema:
+        type: string
+    - name: include
+      in: query
+      required: false
+      description:
+        A comma separated list of include values. Included resources will show
+        up under the root document's `include` field, with the key being the id of the included
+        resource. In the case of applying an include to a collection of resources, if two
+        resources share the same include, it will only appear once in the return.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - creators
+            - environments
+  summary: Fetch a Global Load Balancer
+  description: Requires the `sdn-global-lbs-view` capability.
+  responses:
+    200:
+      description: Returns a single global load balancer resource.
+      content:
+        application/json:
+          schema:
+            title: "GetGlobalLoadBalancerResponse"
+            type: object
+            properties:
+              data:
+                $ref: ../../../components/schemas/sdn/global-lbs/GlobalLoadBalancer.yml
+              includes:
+                $ref: ../../../components/schemas/sdn/global-lbs/GlobalLoadBalancerIncludes.yml
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+patch:
+  operationId: "updateGlobalLoadBalancer"
+  tags:
+    - SDN
+  parameters:
+    - name: lbId
+      in: path
+      required: true
+      description: The ID of the global load balancer.
+      schema:
+        type: string
+    - name: include
+      in: query
+      required: false
+      description:
+        A comma separated list of include values. Included resources will show
+        up under the root document's `include` field, with the key being the id of the included
+        resource. In the case of applying an include to a collection of resources, if two
+        resources share the same include, it will only appear once in the return.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - creators
+            - environments
+  summary: Update Global Load Balancer
+  description: Requires the `sdn-global-lbs-manage` capability.
+  requestBody:
+    description: Parameters for updating a global load balancer.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: A new name for this global load balancer.
+            identifier:
+              type: string
+              description: A new identifier for this global load balancer.
+  responses:
+    200:
+      description: Returns a global load balancer resource.
+      content:
+        application/json:
+          schema:
+            title: "UpdateGlobalLoadBalancerResponse"
+            type: object
+            properties:
+              data:
+                $ref: ../../../components/schemas/sdn/global-lbs/GlobalLoadBalancer.yml
+              includes:
+                $ref: ../../../components/schemas/sdn/global-lbs/GlobalLoadBalancerIncludes.yml
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+delete:
+  operationId: "removeGlobalLoadBalancer"
+  tags:
+    - SDN
+  parameters:
+    - name: lbId
+      in: path
+      required: true
+      description: The ID of the global load balancer.
+      schema:
+        type: string
+  summary: Remove Global Load Balancer
+  description: Requires the `sdn-global-lbs-manage` capability.
+  responses:
+    200:
+      description: Returns a task descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: ../../../components/schemas/jobs/TaskDescriptor.yml
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml

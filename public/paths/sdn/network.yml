@@ -9,7 +9,22 @@ get:
       description: The ID of the network.
       schema:
         type: string
-  summary: Fetch SDN
+    - name: include
+      in: query
+      required: false
+      description:
+        A comma separated list of include values. Included resources will show
+        up under the root document's `include` field, with the key being the id of the included
+        resource. In the case of applying an include to a collection of resources, if two
+        resources share the same include, it will only appear once in the return.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - creators
+            - environments
+  summary: Fetch SDN Network
   description: Requires the `sdn-networks-view` capability.
   responses:
     200:
@@ -17,11 +32,13 @@ get:
       content:
         application/json:
           schema:
-            title: "SDNFetchResponse"
+            title: "GetNetworkResponse"
             type: object
             properties:
               data:
-                $ref: ../../../components/schemas/sdn/SDNNetwork.yml
+                $ref: ../../../components/schemas/sdn/networks/Network.yml
+              includes:
+                $ref: ../../../components/schemas/sdn/networks/NetworkIncludes.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
 patch:
@@ -35,7 +52,22 @@ patch:
       description: The ID of the network.
       schema:
         type: string
-  summary: Update SDN
+    - name: include
+      in: query
+      required: false
+      description:
+        A comma separated list of include values. Included resources will show
+        up under the root document's `include` field, with the key being the id of the included
+        resource. In the case of applying an include to a collection of resources, if two
+        resources share the same include, it will only appear once in the return.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - creators
+            - environments
+  summary: Update SDN Network
   description: Requires the `sdn-networks-manage` capability.
   requestBody:
     description: Parameters for updating a network.
@@ -47,20 +79,19 @@ patch:
             name:
               type: string
               description: The name of the network.
-            identifier:
-              type: string
-              description: A network identifier used to construct http calls that specifically use this network over another.
   responses:
     200:
       description: Returns a network resource.
       content:
         application/json:
           schema:
-            title: "SDNUpdateResponse"
+            title: "UpdateNetworkResponse"
             type: object
             properties:
               data:
-                $ref: ../../../components/schemas/sdn/SDNNetwork.yml
+                $ref: ../../../components/schemas/sdn/networks/Network.yml
+              includes:
+                $ref: ../../../components/schemas/sdn/networks/NetworkIncludes.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
 delete:
@@ -74,7 +105,7 @@ delete:
       description: The ID of the network.
       schema:
         type: string
-  summary: Remove SDN
+  summary: Remove SDN Network
   description: Requires the `sdn-networks-manage` capability.
   responses:
     200:

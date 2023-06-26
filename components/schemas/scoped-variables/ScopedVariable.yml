@@ -46,9 +46,12 @@ properties:
     description: The source or value of the scoped variable.
     discriminator:
       propertyName: type
-    anyOf:
-      - "$ref": "./URLSource.yml"
-      - "$ref": "./RawSource.yml"
+      mapping:
+        url: ./URLSource.yml
+        raw: ./RawSource.yml
+    oneOf:
+      - $ref: ./URLSource.yml
+      - $ref: ./RawSource.yml
   state:
     "$ref": "./ScopedVariableState.yml"
   events:

@@ -1,0 +1,23 @@
+title: InstanceTelemetryNetworkSnapshot
+type: object
+description: A snapshot of network usage statistics.
+required:
+  - interfaces
+properties:
+  interfaces:
+    type: array
+    description: An array of network interfaces attached to this instance.
+    items:
+      type: object
+      title: InstanceTelemetryNetworkInterfaceSnapshot
+      required:
+        - name
+        - rx_bytes
+        - tx_bytes
+      properties:
+        name:
+          type: string
+        rx_bytes:
+          type: integer
+        tx_bytes:
+          type: integer

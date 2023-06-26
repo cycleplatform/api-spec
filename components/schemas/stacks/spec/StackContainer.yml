@@ -1,51 +1,102 @@
 title: StackContainer
 type: object
-description: A list of records defining the stacks containers.
+description: Records defining the containers within the stack.
 additionalProperties:
   type: object
   description: Stacks container object
   required:
     - name
+    - identifier
     - image
+    - annotations
     - stateful
   properties:
     name:
       type: string
     image:
+      $ref: StackSpecContainerImage.yml
+    annotations:
       type: object
+      description: Additional meta info about the container.
+      additionalProperties: {}
+    stateful:
+      type: boolean
+    config:
+      type: object
+      title: StackSpecContainerConfig
       required:
-        - name
-        - origin
+        - network
+        - deploy
       properties:
-        name:
-          type: string
-        origin:
-          $ref: "../../images/sources/ImageSourceOrigin.yml"
-        stateful:
-          type: boolean
-        config:
-          type: object
-          required:
-            - network
-            - deploy
-          properties:
-            network:
-              $ref: ./StackContainerConfigNetwork.yml
-            deploy:
-              $ref: ./StackContainerConfigDeploy.yml
-            scaling:
-              $ref: ./StackContainerConfigScaling.yml
-            runtime:
-              $ref: ./StackContainerConfigRuntime.yml
-            resources:
-              $ref: ./StackContainerConfigResources.yml
-            integrations:
-              $ref: ./StackContainerConfigIntegrations.yml
-        role:
-          type: string
-          enum:
-            - orchestrator
-        volumes:
-          type: array
-          items:
-            $ref: ./StackContainerVolume.yml
+        network:
+          $ref: ./StackContainerConfigNetwork.yml
+        deploy:
+          $ref: ./StackContainerConfigDeploy.yml
+        scaling:
+          $ref: ./StackContainerConfigScaling.yml
+        runtime:
+          $ref: ./StackContainerConfigRuntime.yml
+        resources:
+          $ref: ./StackContainerConfigResources.yml
+        integrations:
+          $ref: ./StackContainerConfigIntegrations.yml
+    role:
+      type: string
+      enum:
+        - "conductor"
+    pod:
+      type: string
+    volumes:
+      type: array
+      items:
+        title: StackSpecContainerVolume
+        type: object
+        required:
+          - destination
+          - read_only
+        properties:
+          local:
+            type: object
+            required:
+              - max_size
+            properties:
+              max_size:
+                type: string
+              storage_pool:
+                type: boolean
+          destination:
+            type: string
+          read_only:
+            type: boolean
+          remote_access:
+            type: object
+            required:
+              - enable
+              - password
+            properties:
+              enable:
+                type: boolean
+              ips:
+                type: array
+                items:
+                  type: string
+              web_hook:
+                type: string
+              password:
+                type: object
+                required:
+                  - algorigthm
+                  - data
+                properties:
+                  algorithm:
+                    type: string
+                    enum:
+                      - raw
+                      - sha512
+                      - md5
+                  data:
+                    type: string
+    deprecate:
+      type: boolean
+    lock:
+      type: boolean

@@ -17,10 +17,23 @@ get:
       content:
         application/json:
           schema:
-            title: "LoadBalancerEnvironmentService"
+            title: "GetLoadBalancerInfoReturn"
             type: object
             properties:
               data:
-                $ref: ../../../../../components/schemas/environments/returns/LoadBalancerInfoReturn.yml
+                type: object
+                description: Information about an environments load balancer configuration, state, and availability settings.
+                required:
+                  - default_config
+                  - service
+                properties:
+                  default_config:
+                    allOf:
+                      - description: The default configuration of the load balancer.
+                      - $ref: ../../../../../components/schemas/environments/services/lb/LoadBalancerConfig.yml
+                  service:
+                    allOf:
+                      - description: Contains information about the status of the load balancer, as well as configuration overrides.
+                      - $ref: ../../../../../components/schemas/environments/services/LoadBalancerEnvironmentService.yml
     default:
       $ref: ../../../../../components/responses/errors/DefaultError.yml

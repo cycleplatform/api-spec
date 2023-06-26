@@ -1,0 +1,48 @@
+title: LoadBalancerTelemetryRouterMetrics
+type: object
+required:
+  - destinations
+properties:
+  destinations:
+    type: object
+    additionalProperties:
+      type: object
+      required:
+        - connections
+        - requests
+      properties:
+        connections:
+          nullable: true
+          type: object
+          required:
+            - success
+            - unavailable
+          properties:
+            sucess:
+              type: integer
+            unavailable:
+              type: integer
+            errors:
+              type: object
+              additionalProperties:
+                type: integer
+        requests:
+          nullable: true
+          type: object
+          required:
+            - total
+          properties:
+            total:
+              type: integer
+            responses:
+              type: object
+              additionalProperties:
+                type: integer
+            errors:
+              type: object
+              additionalProperties:
+                type: integer
+        latency:
+          type: array
+          items:
+            type: integer

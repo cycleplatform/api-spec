@@ -1,0 +1,20 @@
+title: StackSpecContainerImage
+type: object
+required:
+  - name
+  - origin
+properties:
+  name:
+    nullable: true
+    type: string
+  origin:
+    $ref: "../../images/origins/ImageOrigin.yml"
+  build:
+    type: object
+    required:
+      - args
+    properties:
+      args:
+        type: object
+        additionalProperties:
+          type: string

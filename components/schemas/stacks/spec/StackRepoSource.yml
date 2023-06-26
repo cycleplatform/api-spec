@@ -1,0 +1,49 @@
+title: StackRepoSource
+type: object
+description: A repo source type for a stack.
+required:
+  - type
+  - details
+properties:
+  type:
+    type: string
+    enum:
+      - git-repo
+  details:
+    type: object
+    required:
+      - url
+    properties:
+      url:
+        type: string
+        description: The URL of the repository.
+      branch:
+        type: string
+        description: An optional branch arguement.  Default value is `master`.
+      auth:
+        type: object
+        description: Authentication information for the repository.
+        discriminator:
+          propertyName: type
+          mapping:
+            http: ../../images/origins/CredentialsHTTP.yml
+            ssh: ../../images/origins/CredentialsSSH.yml
+        oneOf:
+          - $ref: ../../images/origins/CredentialsHTTP.yml
+          - $ref: ../../images/origins/CredentialsSSH.yml
+      ref:
+        type: object
+        description: Repository reference information.
+        required:
+          - type
+          - value
+        properties:
+          type:
+            type: string
+            description: The type of reference being used.
+            enum:
+              - hash
+              - tag
+          value:
+            type: string
+            description: The value for the given reference type.

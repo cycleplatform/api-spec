@@ -1,0 +1,25 @@
+title: DockerFileOrigin
+type: object
+description: An image origin where the image is built from a Dockerfile located in a git repository.
+properties:
+  type:
+    type: string
+    enum:
+      - docker-file
+  details:
+    type: object
+    properties:
+      # TODO toggle between repo / tarball
+      repo:
+        "$ref": "./RepoType.yml"
+      targz_url:
+        type: string
+        description: An endpoint that serves the tar file.
+      context_dir:
+        type: string
+        description: The path to the directory to use as the context when building the image.
+      build_file:
+        type: string
+        description: The path to the Dockerfile to be used for buiding the image.
+      credentials:
+        "$ref": "./DockerfileCredentials.yml"

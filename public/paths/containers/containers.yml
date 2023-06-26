@@ -43,47 +43,51 @@ get:
             - environments
     - name: filter
       in: query
+      # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706
+      style: deepObject
       required: false
       description: |
         ## Filter Field
         The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
-
-        ## Possible Values
-        ### Search
-        `filter[search]=value` search containers for a value associated with a field on the given container(s).
-
-        ### State
-        `filter[state]=value1,value2` state filtering will allow you to filter by the container's current state.
-
-        ### Service
-        `filter[service]=value` service filtering will allow you to filter by service type: `loadbalancer`, `discovery`, `vpn`.
-
-        ### Public Network
-        `filter[public_network]=value` public network filtering will allow you to filter by the containers network settings: `enabled`, `disabled`, `egress-only`.
-
-        ### Image 
-        `filter[image]=ID` image filtering by ID.  Submit the ID of the image you wish to filter for and the return will be any containers currently using the image.
-
-        ### Environment
-        `filter[environment]=ID` environment filtering by ID.  Submit the ID of the environment you wish to filter for and the return will be any containers in that environment.
-
-        ### Tags
-        `filter[tags]=tagone,tagtwo,tagthree` container filtering using server tags. If the container has the tags you submit it will be part of the return. 
-
-        ### Stacks
-        `filter[stack]=ID` stack filtering by ID.  Submit the ID of the stack you wish to filter for and the return will be any containers deployed associated with 'containers' from the stack.
-
       schema:
         type: object
-        additionalProperties:
-          type: string
-          oneOf:
-            - type: string
-            - type: array
-              items:
-                type: string
-      style: deepObject
-
+        properties:
+          identifier:
+            type: string
+            description: |
+              `filter[identifier]=value` List only those containers matching this identifier. May return multiple results.
+          search:
+            type: string
+            description: |
+              `filter[search]=value` search containers for a value associated with a field on the given container(s).
+          state:
+            type: string
+            description: |
+              `filter[state]=value1,value2` state filtering will allow you to filter by the container's current state.
+          service:
+            type: string
+            description: |
+              `filter[service]=value` service filtering will allow you to filter by service type: `loadbalancer`, `discovery`, `vpn`.
+          public_network:
+            type: string
+            description: |
+              `filter[public_network]=value` public network filtering will allow you to filter by the containers network settings: `enabled`, `disabled`, `egress-only`.
+          image:
+            type: string
+            description: |
+              `filter[image]=ID` image filtering by ID.  Submit the ID of the image you wish to filter for and the return will be any containers currently using the image.
+          environment:
+            type: string
+            description: |
+              `filter[environment]=ID` environment filtering by ID.  Submit the ID of the environment you wish to filter for and the return will be any containers in that environment.
+          tags:
+            type: string
+            description: |
+              `filter[tags]=tagone,tagtwo,tagthree` container filtering using server tags. If the container has the tags you submit it will be part of the return.
+          stack:
+            type: string
+            description: |
+              `filter[stack]=ID` stack filtering by ID.  Submit the ID of the stack you wish to filter for and the return will be any containers deployed associated with 'containers' from the stack.
     - $ref: ../../../components/parameters/SortParam.yml
     - $ref: ../../../components/parameters/PageParam.yml
   responses:
@@ -126,6 +130,8 @@ post:
             name:
               type: string
               description: A user defined name for the container.
+            identifier:
+              $ref: ../../../components/schemas/Identifier.yml
             environment_id:
               type: string
               description: An identifier for the environment this container will be deployed to.
@@ -137,15 +143,17 @@ post:
               description: A boolean where true represents this container is stateful.
             config:
               "$ref": "../../../components/schemas/containers/config/Config.yml"
+            lock:
+              type: boolean
+              description: When set to true, prevents this container from being deleted.
             volumes:
               type: array
               items:
-                $ref: ../../../components/schemas/containers/config/Volumes.yml
+                $ref: ../../../components/schemas/containers/config/ContainerVolume.yml
             annotations:
               type: object
               description: User defined meta data for the container.
-              additionalProperties:
-                type: string
+              additionalProperties: {}
 
   responses:
     201:

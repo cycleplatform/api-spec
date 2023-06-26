@@ -9,4 +9,4 @@ properties:
     type: string
     description: A url associated with the VPN service.
   service:
-    "$ref": "../config/VpnEnvironmentService.yml"
+    "$ref": "../services/VpnEnvironmentService.yml"

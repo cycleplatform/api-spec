@@ -1,0 +1,8 @@
+---
+title: ImageSourceType
+type: string
+description: The type of images in this source.
+enum:
+  - stack-build
+  - direct
+  - bucket

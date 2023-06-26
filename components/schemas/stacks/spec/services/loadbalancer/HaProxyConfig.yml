@@ -1,0 +1,152 @@
+---
+title: HAProxyConfig
+type: object
+required:
+  - frontend
+  - backend
+properties:
+  frontend:
+    type: object
+    description:
+      Settings that describe how incoming traffic to the load balancer
+      is handled.
+    required:
+      - mode
+      - max_connections
+      - timeouts
+    properties:
+      mode:
+        type: string
+        description:
+          "The type of traffic expected by the load balancer for this port.
+          Can be either: \n - tcp: Traffic is forwarded without any parsing or additional
+          manipulation. \n - http: Traffic is treated as web traffic. If a LINKED
+          record is configured for a container exposing this port, the domain will
+          be parsed and it will be forwarded to the proper container. This allows
+          multiple services to run on port 80 in the same environment."
+        enum:
+          - tcp
+          - http
+      max_connections:
+        type: integer
+        nullable: true
+        description:
+          The number of simultaneous connections that can be processed
+          at a time.
+      timeouts:
+        type: object
+        nullable: true
+        description:
+          Various options for handling timeouts when communicating with
+          the client.
+        required:
+          - client_secs
+          - client_fin_ms
+          - http_keep_alive_ms
+          - http_request_ms
+        properties:
+          client_secs:
+            type: integer
+            nullable: true
+            description:
+              The number of seconds the load balancer will wait for a response
+              from a client before disconnecting.
+          client_fin_ms:
+            type: integer
+            nullable: true
+            description:
+              The number of milliseconds the load balancer will wait for
+              a client to send it data when one direction is already closed. This
+              is particularly useful to avoid keeping connections in a waiting state
+              for too long when clients do not disconnect cleanly.
+          http_keep_alive_ms:
+            type: integer
+            nullable: true
+            description:
+              The number of milliseconds the load balancer will wait for
+              a new HTTP request to start coming after a response was set. See the
+              [HAProxy Docs](https://cbonte.github.io/haproxy-dconv/1.7/configuration.html#4.2-timeout%20http-request)
+              for more information. (`http` mode only)
+          http_request_ms:
+            type: integer
+            nullable: true
+            description:
+              The number of milliseconds the load balancer will wait for
+              a complete HTTP request. See the [HAProxy Docs](https://cbonte.github.io/haproxy-dconv/1.7/configuration.html#4.2-timeout%20http-request)
+              for more information. (`http` mode only)
+  backend:
+    type: object
+    description:
+      Settings related to how the load balancer routes connections to container
+      instances.
+    required:
+      - balance
+      - timeouts
+    properties:
+      balance:
+        type: string
+        description:
+          "How connections are balanced across your container instances.
+          Can be one of the following: \n - `roundrobin`: Each container instance
+          is used in turns. \n - `static-rr`: Each container instance is used in turns,
+          but is faster than Round Robin at the expense of being less dynamic. \n
+          - `leastconn`: Routes traffic to the instance with the least number of active
+          connections. \n - `first`: Routes traffic to the first available instance.
+          \n - `source`: The same client IP always reaches the same container instance
+          as long as no instance goes down or up."
+        enum:
+          - roundrobin
+          - static-rr
+          - leastconn
+          - first
+          - source
+      timeouts:
+        type: object
+        nullable: true
+        description:
+          Various options for handling timeouts when communicating with
+          a container instance behind the load balancer.
+        required:
+          - server_secs
+          - server_fin_ms
+          - connect_ms
+          - queue_ms
+          - tunnel_secs
+        properties:
+          server_secs:
+            type: integer
+            nullable: true
+            description:
+              The number of seconds the load balancer will wait for a response
+              from the container instance. See the [HAProxy Docs](https://cbonte.github.io/haproxy-dconv/1.7/configuration.html#4.2-timeout%20server)
+              for more information.
+          server_fin_ms:
+            type: integer
+            nullable: true
+            description:
+              The number of milliseconds the load balancer will wait for
+              the server to send data when one direction is already closed. See the
+              [HAProxy Docs](https://cbonte.github.io/haproxy-dconv/1.7/configuration.html#4-timeout%20server-fin)
+              for more information.
+          connect_ms:
+            type: integer
+            nullable: true
+            description:
+              The number of milliseconds the load balancer will wait for
+              a successful connection to a container instance. See the [HAProxy Docs](https://cbonte.github.io/haproxy-dconv/1.7/configuration.html#4-timeout%20connect)
+              for more information.
+          queue_ms:
+            type: integer
+            nullable: true
+            description:
+              The number of milliseconds the load balancer will hold connections
+              in a queue when the maximum number of connections has been reached.
+              See the [HAProxy Docs](https://cbonte.github.io/haproxy-dconv/1.7/configuration.html#4-timeout%20queue)
+              for more information.
+          tunnel_secs:
+            type: integer
+            nullable: true
+            description:
+              The number of milliseconds the load balancer will allow for
+              inactivity on a bidirectional tunnel. See the [HAProxy Docs](https://cbonte.github.io/haproxy-dconv/1.7/configuration.html#4-timeout%20tunnel)
+              for more information.

@@ -7,15 +7,19 @@ required:
   - compute
   - compute-spawner
 properties:
-  agent: 
+  agent:
+    type: object
     additionalProperties:
       type: number
-  agent-spawner: 
+  agent-spawner:
+    type: object
     additionalProperties:
       type: number
-  compute: 
+  compute:
+    type: object
     additionalProperties:
       type: number
-  compute-spawner: 
+  compute-spawner:
+    type: object
     additionalProperties:
       type: number

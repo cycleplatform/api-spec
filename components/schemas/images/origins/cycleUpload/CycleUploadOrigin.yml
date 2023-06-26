@@ -1,0 +1,24 @@
+title: CycleUploadOrigin
+type: object
+description: |
+  An image origin where the image is pushed directly to the factory, bypassing the need for a registry or external source.
+
+  In order to utilize this image origin type, a tar file of an OCI compliant image will need to be generated and pushed directly to the factory. The authentication token is generated when this image is created, and expires at the provided time.
+  Once you have a token, it can be uploaded as multipart form data under the key `file.tar`, directly to the factory at `https://factory.cycle.io:9414/v1/images/<IMAGE ID>/upload?hub-id=<HUB ID>&token=<TOKEN>`.
+properties:
+  type:
+    type: string
+    enum:
+      - cycle-upload
+  details:
+    type: object
+    required:
+      - expires
+      - token
+    properties:
+      expires:
+        $ref: ../../../DateTime.yml
+        description: The date-time at which the authorization token for uploading this image expires.
+      token:
+        type: string
+        description: The token that is required by the factory to accept an upload for this image.

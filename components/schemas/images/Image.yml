@@ -1,14 +1,15 @@
 title: Image
 type: object
-description: An Image Resource, which is a point in time build on a given image source.
+description: An image is a point in time build on a given image source, and what is distributed by Cycle to run containers.
 required:
   - id
   - hub_id
   - name
-  - stack
   - size
   - backend
-  - tags
+  - requires
+  - build
+  - factory
   - config
   - state
   - events
@@ -20,24 +21,6 @@ properties:
   name:
     type: string
     description: A user defined name for the image.
-  stack:
-    type: object
-    description: If the image is part of a stack, that information will be available here.
-    required:
-      - id
-      - build_id
-      - containers
-    properties:
-      id:
-        "$ref": "../ID.yml"
-      build_id:
-        type: string
-        description: A unique identifier for the build the image is assocaited with.
-      containers:
-        description: If this image is being used for any containers their identifiers are listed here.
-        type: array
-        items:
-          type: string
   size:
     type: integer
     description: The image size in bytes.
@@ -64,7 +47,7 @@ properties:
         type: string
         description: The provider where this image is hosted.
       size:
-        type: string
+        type: integer
         description: The size of the image in bytes.
       file_name:
         type: string
@@ -72,11 +55,22 @@ properties:
       file_id:
         type: string
         description: A file id for the image, used by the platform.
-  tags:
-    description: Tags that describe the version, package, or data about the image.
-    type: array
-    items:
-      type: string
+  requires:
+    type: object
+    description: Any restrictions or requirements needed to run this image as a container.
+    properties:
+      nvidia_gpu:
+        type: boolean
+  build:
+    type: object
+    nullable: true
+    description: Any additional build details for this image
+    properties:
+      args:
+        type: object
+        description: Arguments to pass to the factory during a build of this image.
+        additionalProperties:
+          type: string
   config:
     type: object
     description: Configuration settings for the image.
@@ -86,7 +80,6 @@ properties:
       - env
       - labels
       - command
-      - onbuild
       - entrypoint
       - volumes
       - workdir
@@ -118,15 +111,12 @@ properties:
         additionalProperties:
           type: string
       labels:
-        type: string
+        type: object
         description: Image labels.
+        additionalProperties:
+          type: string
       command:
         description: The CMD array used to start the container.
-        type: array
-        items:
-          type: string
-      onbuild:
-        description: Additional commands to run at build time.
         type: array
         items:
           type: string
@@ -157,39 +147,34 @@ properties:
         type: string
         description: A set command to be run if a signal is called.
   source:
+    x-ogen-name: ImageSourceDetails
     type: object
-    required:
-      - type
-      - details
-    # TODO update with discrimantor based on selected type
-    properties:
-      type:
-        type: string
-      details:
-        type: object
-        required:
-          - id
-          - stack_id
-          - origin
-        properties:
-          id:
-            type: string
-          stack_id:
-            type: string
-          origin:
-            $ref: ../../schemas/images/sources/ImageSourceOrigin.yml
+    discriminator:
+      propertyName: type
+      mapping:
+        stack-build: ./sources/StackImageSourceType.yml
+        direct: ./sources/DirectImageSourceType.yml
+        bucket: ./sources/DirectImageSourceType.yml
+    oneOf:
+      - $ref: ./sources/DirectImageSourceType.yml
+      - $ref: ./sources/StackImageSourceType.yml
   creator:
     "$ref": "../creators/CreatorScope.yml"
   factory:
     type: object
+    nullable: true
     description: Identifies which factory the image was built on and when.
     required:
       - node_id
+      - cached
       - acknowledged
     properties:
       node_id:
         type: string
         description: The node holding the factory service that was responsible for building the image.
+      cached:
+        $ref: ../DateTime.yml
+        description: A date timestamp for when the node cached the image.
       acknowledged:
         $ref: ../DateTime.yml
         description: A date timestamp for when the node acknowledged the image import job.

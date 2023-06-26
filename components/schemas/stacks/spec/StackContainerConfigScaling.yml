@@ -13,9 +13,9 @@ properties:
           - max
         properties:
           min:
-            type: number
+            type: integer
           max:
-            type: number
+            type: integer
       rules:
         type: object
         required:

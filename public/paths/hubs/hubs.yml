@@ -6,6 +6,31 @@ get:
     - bearerAuth: []
   summary: List Hubs
   description: Lists all associated hubs.
+  parameters:
+    - $ref: "../../../components/parameters/PageParam.yml"
+    - name: filter
+      in: query
+      # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706
+      style: deepObject
+      required: false
+      description: |
+        ## Filter Field
+        The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
+      schema:
+        type: object
+        properties:
+          identifier:
+            type: string
+            description: |
+              `filter[identifier]=value` List only those environments matching this identifier. May return multiple results.
+          search:
+            type: string
+            description: |
+              `filter[search]=value` search hubs for a value associated with a field on the given hub(s).
+          state:
+            type: string
+            description: |
+              `filter[state]=value1,value2` state filtering will allow you to filter by the hub's current state.
   responses:
     200:
       description: Returns a list of hub resources.
@@ -40,6 +65,8 @@ post:
             name:
               type: string
               description: A name for the hub.
+            identifier:
+              $ref: ../../../components/schemas/Identifier.yml
             integrations:
               $ref: ../../../components/schemas/hubs/HubIntegrations.yml
             webhooks:

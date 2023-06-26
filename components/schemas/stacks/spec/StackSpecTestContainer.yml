@@ -1,0 +1,28 @@
+title: StackSpecTestContainer
+type: object
+required:
+  - name
+  - image
+  - config
+properties:
+  name:
+    type: string
+  image:
+    type: object
+    nullable: true
+    allOf:
+      - $ref: StackSpecContainerImage.yml
+  config:
+    type: object
+    nullable: true
+    properties:
+      runtime:
+        nullable: true
+        type: object
+        allOf:
+          - $ref: StackContainerConfigRuntime.yml
+      resources:
+        nullable: true
+        type: object
+        allOf:
+          - $ref: StackContainerConfigResources.yml

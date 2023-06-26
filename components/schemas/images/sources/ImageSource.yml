@@ -3,6 +3,8 @@ type: object
 description: An image source is a set of resources that direct the platform on where it can find the resources needed to build an image resource.
 required:
   - id
+  - type
+  - identifier
   - name
   - origin
   - hub_id
@@ -13,6 +15,11 @@ required:
 properties:
   id:
     "$ref": "../../ID.yml"
+  identifier:
+    $ref: ../../Identifier.yml
+    description: A human readable slugged identifier for this image source.
+  type:
+    $ref: ImageSourceType.yml
   hub_id:
     "$ref": "../../HubID.yml"
   name:
@@ -21,7 +28,7 @@ properties:
   about:
     $ref: "./ImageSourceAbout.yml"
   origin:
-    $ref: "./ImageSourceOrigin.yml"
+    $ref: "../origins/ImageOrigin.yml"
   creator:
     "$ref": "../../creators/CreatorScope.yml"
   state:
@@ -44,15 +51,5 @@ properties:
       deleted:
         description: The timestamp of when the iamge source was deleted.
         "$ref": "../../DateTime.yml"
-  requires:
-    type: object
-    description: Information about a server resource this image requires to function properly.
-    required:
-      - nvidia_gpu
-    properties:
-      nvidia_gpu:
-        type: boolean
-        description: A boolean where true represents this image requies an Nvidia GPU to run properly.
-        nullable: true
   meta:
     $ref: "./ImageSourceMeta.yml"

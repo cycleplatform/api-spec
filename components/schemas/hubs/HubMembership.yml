@@ -3,7 +3,6 @@ type: object
 description: A membership resource that is scoped to an individual hub.
 required:
   - id
-  - account_id
   - hub_id
   - role
   - events
@@ -19,17 +18,11 @@ properties:
     description: An ID for the account associated with the given membership.
   hub_id:
     "$ref": "../HubID.yml"
-  role:
-    type: integer
-    description: A number that maps to the currently set role of the member.
   events:
     title: MembershipEvents
     type: object
     description: A collection of timestamps for each event in the membership's lifetime.
     required:
-      - created
-      - updated
-      - deleted
       - joined
     properties:
       created:
@@ -44,13 +37,21 @@ properties:
       joined:
         description: The timestamp of when the membership was accepted.
         "$ref": "../DateTime.yml"
-  state:
-    "$ref": "./MembershipState.yml"
-  invitation:
-    "$ref": "./Invitation.yml"
+  role:
+    type: integer
+    description: |
+      A number that maps to the currently set role of the member.
+
+      ## Roles
+      0 = DEFAULT
+      1 = OWNER
+      2 = ADMIN
+      4 = DEVELOPER
+      8 = ANALYST
   permissions:
     type: object
-    description: Information about this members permissions for a given hub.
+    title: "HubMembershipPermissions"
+    description: Information about this member's permissions for a given hub.
     required:
       - all_environments
       - environments
@@ -73,8 +74,9 @@ properties:
             manage:
               type: boolean
               description: A boolean where true represents this environment can be managed by the membership (i.e. its not just read-only).
-  prefereneces:
+  preferences:
     type: object
+    title: HubMembershipPreferences
     description: Preference information set by the user for the membership.
     required:
       - portal
@@ -109,14 +111,23 @@ properties:
             properties:
               server:
                 type: object
+                required:
+                  - new
+                  - offline
                 properties:
                   new:
+                    nullable: true
                     type: boolean
                   offline:
+                    nullable: true
                     type: boolean
+  state:
+    "$ref": "./MembershipState.yml"
+  invitation:
+    "$ref": "./Invitation.yml"
   cycle:
     type: object
-    description: Information about the membership as it pertains to the account holders affiliation with being a Cycle employee. Cycle employee accounts do not consume a "membership" for a given hub.
+    description: If this member is a Cycle employee, their employee ID will be listed here. Cycle employee accounts do not consume a "membership" for a given hub.
     required:
       - employee_id
     properties:

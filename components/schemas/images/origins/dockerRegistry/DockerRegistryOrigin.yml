@@ -1,0 +1,29 @@
+title: DockerRegistryOrigin
+type: object
+description: An image origin where the image is pulled from a private Docker registry.
+properties:
+  type:
+    type: string
+    enum:
+      - docker-registry
+  details:
+    type: object
+    required:
+      - target
+      - url
+    properties:
+      target:
+        type: string
+        description: The image name on the registry.
+      url:
+        type: string
+        description: The url of the remote registry.
+      username:
+        type: string
+        description: For authentication, a username.
+      token:
+        type: string
+        description: For authentication, a token.
+      password:
+        type: string
+        description: For authentication, a password.

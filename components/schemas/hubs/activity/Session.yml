@@ -1,10 +1,10 @@
 title: ActivitySession
 type: object
 description: Session info about the activity entry.
-nullable: true
 required:
   - url
   - ip
+  - token
   - api_key
 properties:
   url:
@@ -13,6 +13,17 @@ properties:
   ip:
     type: string
     description: The IP of the account associated with the session.
+  token:
+    type: object
+    nullable: true
+    required:
+      - application_id
+      - application_capabilities_version
+    properties:
+      application_id:
+        $ref: ../../ID.yml
+      application_capabilities_version:
+        type: integer
   api_key:
     type: string
     description: The API key ID.

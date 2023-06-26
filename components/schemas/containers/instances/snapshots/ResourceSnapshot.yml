@@ -6,6 +6,7 @@ required:
   - cpu
   - memory
   - processes
+  - network
 properties:
   time:
     description: A timestamp of the time this snapshot was captured at.
@@ -22,10 +23,12 @@ properties:
     type: string
     description: An ID for an associated environment.
   cpu:
-    "$ref": "../snapshots/CPUSnapshot.yml"
+    $ref: CPUSnapshot.yml
   memory:
-    "$ref": "../snapshots/MemorySnapshot.yml"
+    $ref: MemorySnapshot.yml
   processes:
-    "$ref": "../snapshots/ProcessesSnapshot.yml"
+    $ref: ProcessesSnapshot.yml
+  network:
+    $ref: NetworkSnapshot.yml
   hugetlb:
     "$ref": "HugeTLB.yml"

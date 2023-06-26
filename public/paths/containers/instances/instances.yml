@@ -31,32 +31,27 @@ get:
     - name: filter
       in: query
       required: false
+       # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706
+      style: deepObject
       description: |
         ## Filter Field 
         The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
-
-        ## Possible Values
-        ### State
-        `filter[state]=value1,value2` state filtering will allow you to filter by the instance's current state.
-
-        ### Search 
-        `filter[search]=value` search instances for a value associated with a field on the given instance(s).
-
-        ### Server
-        `filter[server]=ID` server filtering by ID.  Submit the ID of the server you wish to filter for and the return will be any instances of the container currently deployed to the given server.
-
       schema:
         type: object
-        additionalProperties:
-          type: string
-          oneOf:
-            - type: string
-            - type: array
-              items:
-                type: string
-
+        properties:
+          state:
+            type: string
+            description: |
+              `filter[state]=value1,value2` state filtering will allow you to filter by the instance's current state.
+          search: 
+            type: string
+            description: |
+              `filter[search]=value` search instances for a value associated with a field on the given instance(s).
+          server:
+            type: string
+            description: |
+              `filter[server]=ID` server filtering by ID. Submit the ID of the server you wish to filter for and the return will be any instances of the container currently deployed to the given server.
     - $ref: ../../../../components/parameters/SortParam.yml
-
     - $ref: ../../../../components/parameters/PageParam.yml
   summary: List Instances
   description: Requires the `containers-view` capability.

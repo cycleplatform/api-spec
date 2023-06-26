@@ -2,7 +2,10 @@ title: StackSource
 type: object
 description: A source for a stack to be created from.
 discriminator:
-  propertyName: "type"
-anyOf:
-  - "$ref": "./spec/RepoSpec.yml"
-  - "$ref": "./spec/StackSpec.yml"
+  propertyName: type
+  mapping:
+    git-repo: ./spec/StackRepoSource.yml
+    raw: ./spec/StackRawSource.yml
+oneOf:
+  - $ref: ./spec/StackRepoSource.yml
+  - $ref: ./spec/StackRawSource.yml
