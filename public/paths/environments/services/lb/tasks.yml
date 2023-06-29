@@ -28,16 +28,14 @@ post:
               description: The name of the action to perform.
             contents:
               type: object
+              required:
+                - high_availability
               properties:
                 high_availability:
                   type: boolean
                   description: A boolean where `true` represents the desire to run the environment load balancer service in high availability mode.
                 config:
-                  type: object
-                  allOf:
-                    - type: object
-                      nullable: true
-                    - $ref: ../../../../../components/schemas/environments/services/lb/LoadBalancerConfig.yml
+                  $ref: ../../../../../components/schemas/environments/services/lb/LoadBalancerConfig.yml
 
   responses:
     202:
