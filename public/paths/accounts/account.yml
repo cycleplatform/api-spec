@@ -41,8 +41,8 @@ patch:
                   type: string
                 last:
                   type: string
-                allow_support_login:
-                  type: boolean
+            allow_support_login:
+              type: boolean
   responses:
     200:
       description: Returns the updated account resource.
@@ -54,7 +54,7 @@ patch:
             properties:
               data:
                 $ref: ../../../components/schemas/accounts/Account.yml
-      
+
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
 delete:
@@ -75,4 +75,4 @@ delete:
               data:
                 $ref: ../../../components/schemas/accounts/Account.yml
     default:
-        $ref: ../../../components/responses/errors/DefaultError.yml
+      $ref: ../../../components/responses/errors/DefaultError.yml
