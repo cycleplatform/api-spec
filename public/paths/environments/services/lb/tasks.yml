@@ -35,9 +35,9 @@ post:
                 config:
                   type: object
                   allOf:
-                    - anyOf:
-                        - $ref: ../../../../../components/schemas/environments/services/lb/LoadBalancerConfig.yml
-                        - $ref: ../../../../../components/schemas/NullType.yml
+                    - type: object
+                      nullable: true
+                    - $ref: ../../../../../components/schemas/environments/services/lb/LoadBalancerConfig.yml
 
   responses:
     202:
