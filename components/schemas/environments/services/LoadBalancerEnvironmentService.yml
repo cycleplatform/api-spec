@@ -22,7 +22,4 @@ properties:
       A boolean representing if this service container is set to high availability
       mode or not.
   config:
-    type: object
-    nullable: true
-    allOf:
-      - $ref: ./lb/LoadBalancerConfig.yml
+    $ref: ./lb/LoadBalancerConfig.yml
