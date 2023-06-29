@@ -1,0 +1,12 @@
+title: V1LbType
+type: object
+required:
+  - type
+  - details
+properties:
+  type:
+    type: string
+    enum:
+      - "v1"
+  details:
+    $ref: V1LbConfig.yml

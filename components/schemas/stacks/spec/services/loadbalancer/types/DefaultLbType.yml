@@ -1,0 +1,12 @@
+title: DefaultLbType
+type: object
+required:
+  - type
+  - details
+properties:
+  type:
+    type: string
+    enum:
+      - "default"
+  details:
+    $ref: haproxy/HaProxyConfig.yml

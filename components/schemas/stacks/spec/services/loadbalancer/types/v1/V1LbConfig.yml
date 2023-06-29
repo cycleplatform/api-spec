@@ -1,0 +1,54 @@
+title: V1LbConfig
+type: object
+required:
+  - controllers
+properties:
+  controllers:
+    type: object
+    additionalProperties:
+      title: V1LbController
+      type: object
+      required:
+        - identifier
+        - transport
+      properties:
+        identifier:
+          $ref: ../../../../../../Identifier.yml
+        transport:
+          title: V1LbControllerTransport
+          type: object
+          required:
+            - mode
+            - performance
+            - ingress
+            - timeouts
+            - routers
+          properties:
+            mode:
+              type: string
+              enum:
+                - tcp
+                - http
+            performance:
+              type: boolean
+            ingress:
+              type: object
+              required:
+                - port
+                - tls
+              properties:
+                port:
+                  type: integer
+                tls:
+                  type: boolean
+            timeouts:
+              type: object
+              required:
+                - idle
+              properties:
+                idle:
+                  type: integer
+            routers:
+              type: array
+              items:
+                $ref: V1LbConfigRouter.yml

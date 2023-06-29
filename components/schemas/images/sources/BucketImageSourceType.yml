@@ -1,4 +1,4 @@
-title: DirectImageSource
+title: BucketImageSource
 type: object
 required:
   - id
@@ -7,7 +7,7 @@ properties:
   type:
     type: string
     enum:
-      - direct
+      - bucket
   details:
     type: object
     required:
