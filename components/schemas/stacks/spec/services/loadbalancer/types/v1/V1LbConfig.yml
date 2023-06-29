@@ -1,0 +1,9 @@
+title: V1LbConfig
+type: object
+required:
+  - controllers
+properties:
+  controllers:
+    type: object
+    additionalProperties:
+      type: string

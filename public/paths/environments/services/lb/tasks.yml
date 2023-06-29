@@ -36,40 +36,9 @@ post:
                   type: boolean
                   description: A boolean where `true` represents the desire to run the environment load balancer service in high availability mode.
                 config:
-                  type: object
-                  description: The config object for the loadbalancer service.
-                  nullable: true
-                  properties:
-                    version:
-                      nullable: true
-                      type: string
-                      enum:
-                        - v1
-                        - haproxy
-                    ipv4:
-                      type: boolean
-                      nullable: true
-                      description: Allow / disallow traffic to be routed via IPv4.
-                    ipv6:
-                      type: boolean
-                      nullable: true
-                      description: Allow / disallow traffic to be routed via IPv6.
-                    haproxy:
-                      type: object
-                      description:
-                        Describes settings that are passed to HAProxy within the load
-                        balancer.
-                      nullable: true
-                      required:
-                        - default
-                        - ports
-                      properties:
-                        default:
-                          $ref: ../../../../../components/schemas/stacks/spec/services/loadbalancer/HaProxyConfig.yml
-                        ports:
-                          type: object
-                          additionalProperties:
-                            $ref: ../../../../../components/schemas/stacks/spec/services/loadbalancer/HaProxyConfig.yml
+                  anyOf:
+                    - $ref: ../../../../../components/schemas/NullType.yml
+                    - $ref: ../../../../../components/schemas/environments/services/lb/LoadBalancerConfig.yml
 
   responses:
     202:
