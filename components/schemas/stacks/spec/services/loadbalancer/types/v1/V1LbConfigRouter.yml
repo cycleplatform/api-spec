@@ -1,0 +1,38 @@
+title: V1LbConfigRouter
+type: object
+required:
+  - identifier
+  - mode
+  - config
+properties:
+  identifier:
+    type: string
+  mode:
+    type: string
+    enum:
+      - random
+      - round-robin
+  config:
+    type: object
+    required:
+      - performance
+      - sticky_sessions
+      - destination_retries
+      - transport
+      - timeouts
+    properties:
+      performance:
+        type: boolean
+      sticky_sessions:
+        type: boolean
+      destination_retries:
+        type: integer
+      transport:
+        type: object
+      timeouts:
+        type: object
+        required:
+          - idle
+        properties:
+          idle:
+            type: integer
