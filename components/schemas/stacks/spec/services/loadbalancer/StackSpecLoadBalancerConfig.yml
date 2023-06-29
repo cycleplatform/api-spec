@@ -6,7 +6,7 @@ discriminator:
   mapping:
     haproxy: types/haproxy/HaProxyLbType.yml
     v1: types/v1/V1LbType.yml
-    default: types/haproxy/DefaultLbType.yml
+    default: types/DefaultLbType.yml
 allOf:
   - type: object
     required:

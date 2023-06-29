@@ -7,7 +7,7 @@ discriminator:
   mapping:
     haproxy: ../../../stacks/spec/services/loadbalancer/types/haproxy/HaProxyLbType.yml
     v1: ../../../stacks/spec/services/loadbalancer/types/v1/V1LbType.yml
-    default: ../../../stacks/spec/services/loadbalancer/types/haproxy/HaProxyLbType.yml
+    default: ../../../stacks/spec/services/loadbalancer/types/DefaultLbType.yml
 allOf:
   - type: object
     required:
@@ -23,3 +23,4 @@ allOf:
   - oneOf:
       - $ref: ../../../stacks/spec/services/loadbalancer/types/v1/V1LbType.yml
       - $ref: ../../../stacks/spec/services/loadbalancer/types/haproxy/HaProxyLbType.yml
+      - $ref: ../../../stacks/spec/services/loadbalancer/types/DefaultLbType.yml
