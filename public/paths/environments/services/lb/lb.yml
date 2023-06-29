@@ -24,11 +24,21 @@ get:
                 type: object
                 description: Information about an environments load balancer configuration, state, and availability settings.
                 required:
-                  - default_config
+                  - default_configS
                   - service
                 properties:
                   default_config:
                     $ref: ../../../../../components/schemas/environments/services/lb/LoadBalancerConfig.yml
+                  base_configs:
+                    type: object
+                    required:
+                      - haproxy
+                      - v1
+                    properties:
+                      haproxy:
+                        $ref: ../../../../../components/schemas/stacks/spec/services/loadbalancer/types/haproxy/HaProxyConfig.yml
+                      v1:
+                        $ref: ../../../../../components/schemas/stacks/spec/services/loadbalancer/types/v1/V1LbConfig.yml
                   service:
                     $ref: ../../../../../components/schemas/environments/services/LoadBalancerEnvironmentService.yml
     default:
