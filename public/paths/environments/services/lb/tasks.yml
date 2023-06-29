@@ -34,8 +34,10 @@ post:
                   description: A boolean where `true` represents the desire to run the environment load balancer service in high availability mode.
                 config:
                   type: object
-                  nullable: true
-                  $ref: ../../../../../components/schemas/environments/services/lb/LoadBalancerConfig.yml
+                  allOf:
+                    - anyOf:
+                        - $ref: ../../../../../components/schemas/environments/services/lb/LoadBalancerConfig.yml
+                        - $ref: ../../../../../components/schemas/NullType.yml
 
   responses:
     202:
