@@ -1,4 +1,0 @@
-title: "OpenAPI 3.0 null-type ref"
-description: "for adding nullability to a ref"
-enum:
-  - null
