@@ -9,4 +9,7 @@ properties:
     enum:
       - "v1"
   details:
-    $ref: V1LbConfig.yml
+    type: object
+    nullable: true
+    allOf:
+      - $ref: V1LbConfig.yml

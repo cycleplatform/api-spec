@@ -9,4 +9,7 @@ properties:
     enum:
       - "haproxy"
   details:
-    $ref: HaProxyConfig.yml
+    type: object
+    nullable: true
+    allOf:
+      - $ref: HaProxyConfig.yml
