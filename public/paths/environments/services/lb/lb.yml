@@ -29,6 +29,11 @@ get:
                 properties:
                   default_config:
                     $ref: ../../../../../components/schemas/environments/services/lb/LoadBalancerConfig.yml
+                  default_type:
+                    type: string
+                    enum:
+                      - haproxy
+                      - v1
                   base_configs:
                     type: object
                     required:
