@@ -1,0 +1,18 @@
+type: object
+description: Describes settings that are passed to HAProxy within the load
+  balancer.
+required:
+  - default
+  - ports
+properties:
+  default:
+    description: Settings that are applied to any port that is not overridden
+      in the following ports section.
+    $ref: HaProxyConfigSet.yml
+  ports:
+    description: An object that defines how HAProxy will act on a specific
+      port. The key is a custom port, and the value is the same settings
+      object found under `default` above.
+    type: object
+    additionalProperties:
+      $ref: HaProxyConfigSet.yml

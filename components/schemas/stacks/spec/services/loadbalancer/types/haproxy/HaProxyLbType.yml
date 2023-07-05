@@ -1,0 +1,12 @@
+title: HaProxyLbType
+type: object
+required:
+  - type
+  - details
+properties:
+  type:
+    type: string
+    enum:
+      - "haproxy"
+  details:
+    $ref: HaProxyConfig.yml

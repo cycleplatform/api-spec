@@ -28,48 +28,15 @@ post:
               description: The name of the action to perform.
             contents:
               type: object
+              required:
+                - high_availability
               properties:
-                customize:
-                  type: boolean
-                  description: Boolean that sets custom vs default VPN configuration
                 high_availability:
+                  nullable: true
                   type: boolean
                   description: A boolean where `true` represents the desire to run the environment load balancer service in high availability mode.
                 config:
-                  type: object
-                  description: The config object for the loadbalancer service.
-                  nullable: true
-                  properties:
-                    version:
-                      nullable: true
-                      type: string
-                      enum:
-                        - v1
-                        - haproxy
-                    ipv4:
-                      type: boolean
-                      nullable: true
-                      description: Allow / disallow traffic to be routed via IPv4.
-                    ipv6:
-                      type: boolean
-                      nullable: true
-                      description: Allow / disallow traffic to be routed via IPv6.
-                    haproxy:
-                      type: object
-                      description:
-                        Describes settings that are passed to HAProxy within the load
-                        balancer.
-                      nullable: true
-                      required:
-                        - default
-                        - ports
-                      properties:
-                        default:
-                          $ref: ../../../../../components/schemas/stacks/spec/services/loadbalancer/HaProxyConfig.yml
-                        ports:
-                          type: object
-                          additionalProperties:
-                            $ref: ../../../../../components/schemas/stacks/spec/services/loadbalancer/HaProxyConfig.yml
+                  $ref: ../../../../../components/schemas/environments/services/lb/LoadBalancerConfig.yml
 
   responses:
     202:

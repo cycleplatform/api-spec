@@ -154,10 +154,11 @@ properties:
       mapping:
         stack-build: ./sources/StackImageSourceType.yml
         direct: ./sources/DirectImageSourceType.yml
-        bucket: ./sources/DirectImageSourceType.yml
+        bucket: ./sources/BucketImageSourceType.yml
     oneOf:
-      - $ref: ./sources/DirectImageSourceType.yml
-      - $ref: ./sources/StackImageSourceType.yml
+      - $ref: sources/DirectImageSourceType.yml
+      - $ref: sources/StackImageSourceType.yml
+      - $ref: sources/BucketImageSourceType.yml
   creator:
     "$ref": "../creators/CreatorScope.yml"
   factory:

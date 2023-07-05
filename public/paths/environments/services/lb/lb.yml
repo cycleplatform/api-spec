@@ -26,14 +26,26 @@ get:
                 required:
                   - default_config
                   - service
+                  - default_type
                 properties:
                   default_config:
-                    allOf:
-                      - description: The default configuration of the load balancer.
-                      - $ref: ../../../../../components/schemas/environments/services/lb/LoadBalancerConfig.yml
+                    $ref: ../../../../../components/schemas/environments/services/lb/LoadBalancerConfig.yml
+                  default_type:
+                    type: string
+                    enum:
+                      - haproxy
+                      - v1
+                  base_configs:
+                    type: object
+                    required:
+                      - haproxy
+                      - v1
+                    properties:
+                      haproxy:
+                        $ref: ../../../../../components/schemas/stacks/spec/services/loadbalancer/types/haproxy/HaProxyConfig.yml
+                      v1:
+                        $ref: ../../../../../components/schemas/stacks/spec/services/loadbalancer/types/v1/V1LbConfig.yml
                   service:
-                    allOf:
-                      - description: Contains information about the status of the load balancer, as well as configuration overrides.
-                      - $ref: ../../../../../components/schemas/environments/services/LoadBalancerEnvironmentService.yml
+                    $ref: ../../../../../components/schemas/environments/services/LoadBalancerEnvironmentService.yml
     default:
       $ref: ../../../../../components/responses/errors/DefaultError.yml

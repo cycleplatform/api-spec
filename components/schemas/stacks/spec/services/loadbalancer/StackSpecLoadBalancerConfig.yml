@@ -1,0 +1,27 @@
+title: StackSpecLoadBalancerConfig
+type: object
+description: The config object for the loadbalancer service.
+discriminator:
+  propertyName: type
+  mapping:
+    haproxy: types/haproxy/HaProxyLbType.yml
+    v1: types/v1/V1LbType.yml
+    default: types/DefaultLbType.yml
+allOf:
+  - type: object
+    required:
+      - ipv4
+      - ipv6
+    properties:
+      ipv4:
+        nullable: true
+        type: boolean
+        description: Allow / disallow traffic to be routed via IPv4.
+      ipv6:
+        nullable: true
+        type: boolean
+        description: Allow / disallow traffic to be routed via IPv6.
+  - oneOf:
+      - $ref: ./types/haproxy/HaProxyLbType.yml
+      - $ref: ./types/v1/V1LbType.yml
+      - $ref: ./types/DefaultLbType.yml
