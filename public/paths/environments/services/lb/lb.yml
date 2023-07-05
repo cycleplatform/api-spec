@@ -26,6 +26,7 @@ get:
                 required:
                   - default_config
                   - service
+                  - default_type
                 properties:
                   default_config:
                     $ref: ../../../../../components/schemas/environments/services/lb/LoadBalancerConfig.yml
