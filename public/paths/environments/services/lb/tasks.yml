@@ -28,8 +28,6 @@ post:
               description: The name of the action to perform.
             contents:
               type: object
-              required:
-                - high_availability
               properties:
                 high_availability:
                   nullable: true
