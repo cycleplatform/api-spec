@@ -1,9 +1,25 @@
 title: ContainerImageSummary
 description: A summary of the image this container was created from.
 type: object
+required:
+  - id
+  - service
+  - extension
 properties:
   id:
-    "$ref": "../../ID.yml"
+    type: string
+    nullable: true
+    allOf:
+      - $ref: "../../ID.yml"
+  extension:
+    type: object
+    description: An image that is packaged with Cycle directly, such as the global load balancer.
+    nullable: true
+    required:
+      - identifier
+    properties:
+      identifier:
+        $ref: ../../Identifier.yml
   service:
     type: string
     nullable: true
