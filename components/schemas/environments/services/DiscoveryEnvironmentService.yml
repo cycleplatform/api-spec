@@ -4,10 +4,10 @@ type: object
 nullable: true
 description: Information about the environments discovery service(s).
 required:
-- enable
-- container_id
-- high_availability
-- config
+  - enable
+  - container_id
+  - high_availability
+  - config
 properties:
   enable:
     type: boolean
@@ -17,9 +17,10 @@ properties:
     description: The ID of the discovery service container
   high_availability:
     type: boolean
-    description: A boolean representing if this service container is set to high availability
+    description:
+      A boolean representing if this service container is set to high availability
       mode or not.
   config:
-    type: null
+    nullable: true
+    type: object
     description: The config object for the discovery service.
-
