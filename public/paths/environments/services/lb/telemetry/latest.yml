@@ -18,7 +18,7 @@ get:
     Fetches the latest telemetry report for Cycle's native load balancer. Provides detailed information on a per-instance basis.
   responses:
     200:
-      description: Returns the load balancer telemetry report
+      description: Returns the latest load balancer telemetry
       content:
         application/json:
           schema:
