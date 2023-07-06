@@ -23,7 +23,7 @@ properties:
         instances:
           type: array
           items:
-            title: LoadBalancerTelemetryInstance
+            title: LoadBalancerControllerInstanceTelem
             description: Detailed telemetry for a load balancer instance at a point in time.
             type: object
             required:
@@ -56,5 +56,12 @@ properties:
                 $ref: ../../../../DateTime.yml
               controller:
                 $ref: ../../../../Identifier.yml
-              snapshot:
-                $ref: LoadBalancerTelemetrySnapshot.yml
+              latest:
+                type: object
+                nullable: true
+                allOf:
+                  - $ref: LoadBalancerTelemetrySnapshot.yml
+              snapshots:
+                type: array
+                items:
+                  $ref: LoadBalancerTelemetrySnapshot.yml
