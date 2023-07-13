@@ -1,0 +1,42 @@
+post:
+  operationId: "recoverTwoFa"
+  tags:
+    - Accounts
+  parameters: []
+  summary: Disable TwoFa
+  description: Disable TwoFa for an account
+  requestBody:
+    description: Parameters setting up TwoFa
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - email
+            - password
+            - recovery_codes
+          properties:
+            email:
+              type: string
+              description: The user’s email
+            password:
+              type: string
+            recovery_codes:
+              type: array
+              items:
+                type: string
+            token:
+              type: string
+  responses:
+    200:
+      description: Returns a TwoFaDisableResponse resource.
+      content:
+        application/json:
+          schema:
+            title: TwofaDisableResponse
+            type: object
+            properties:
+              data:
+                $ref: ../../../../components/schemas/accounts/TwoFaDisableResponse.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml

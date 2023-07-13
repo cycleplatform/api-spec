@@ -120,6 +120,8 @@ paths:
     "$ref": "./paths/accounts/twoFa/setup.yml"
   "/v1/account/2fa/disable":
     "$ref": "./paths/accounts/twoFa/disable.yml"
+  "/v1/account/2fa/recover":
+    "$ref": "./paths/accounts/twoFa/recover.yml"
   # Announcements
   "/v1/announcements":
     $ref: "./paths/announcements/announcements.yml"
