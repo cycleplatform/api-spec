@@ -64,8 +64,11 @@ properties:
           command:
             type: string
           timeout:
+            type: string
             nullable: true
-            type: integer
+            description: How long the backup will attempt to run before timing out.
+            allOf:
+              - $ref: ../../Duration.yml
           cron_string:
             nullable: true
             type: string
@@ -79,8 +82,15 @@ properties:
           command:
             type: string
           timeout:
+            type: string
             nullable: true
-            type: integer
+            description: The time in seconds for the restore to attempt to complete before timing out.
+            allOf:
+              - $ref: ../../Duration.yml
       retention:
-        type: integer
+        type: string
         nullable: true
+        description: How long the platform will keep backups. Default is 1 year.
+        allOf:
+          - $ref: ../../Duration.yml
+        default: "365d"

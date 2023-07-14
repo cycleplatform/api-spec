@@ -21,6 +21,6 @@ properties:
   details:
     type: object
     properties:
-      seconds:
-        type: integer
-        description: Total duration (seconds) to run this step for, before moving on to the next step.
+      duration:
+        description: Total duration to run this step for, before moving on to the next step.
+        $ref: ../../Duration.yml

@@ -86,9 +86,11 @@ properties:
             type: string
             description: The command to run for the backup.
           timeout:
-            $ref: ../../Duration.yml
-            description: How long the backup will attempt to run before timing out.
+            type: string
             nullable: true
+            description: How long the backup will attempt to run before timing out.
+            allOf:
+              - $ref: ../../Duration.yml
           cron_string:
             type: string
             description: A cron string that configures how often the backup will run.
@@ -105,7 +107,7 @@ properties:
           timeout:
             type: string
             nullable: true
-            description: The time in seconds for the restore to appempt to complete before timing out.
+            description: The time in seconds for the restore to attempt to complete before timing out.
             allOf:
               - $ref: ../../Duration.yml
       retention:

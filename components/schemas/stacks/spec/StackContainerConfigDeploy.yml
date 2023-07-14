@@ -57,8 +57,11 @@ properties:
     type: object
     properties:
       graceful_timeout:
+        type: string
         nullable: true
-        type: integer
+        description: How long the platform will wait for a container to stop gracefully.
+        allOf:
+          - $ref: ../../Duration.yml
       signals:
         type: array
         items:
@@ -68,7 +71,10 @@ properties:
     properties:
       delay:
         nullable: true
-        type: integer
+        type: string
+        description: How long the platform will wait before sending the start signal to the given container.
+        allOf:
+          - $ref: ../../Duration.yml
   restart:
     type: object
     required:
@@ -83,7 +89,8 @@ properties:
           - never
           - failure
       delay:
-        type: integer
+        $ref: ../../Duration.yml
+        description: How long the platform will wait before trying to restart the container.
       max_attempts:
         type: integer
       notify:
@@ -109,9 +116,11 @@ properties:
       retries:
         type: integer
       interval:
-        type: integer
+        $ref: ../../Duration.yml
+        description: How long to wait between restarts.
       timeout:
-        type: integer
+        $ref: ../../Duration.yml
+        description: How long before a health check attempt times out.
       restart:
         type: boolean
   telemetry:
@@ -122,8 +131,10 @@ properties:
       - disable
     properties:
       retention:
-        type: integer
+        $ref: ../../Duration.yml
+        description: How long telemetry data should be retained.
       interval:
-        type: integer
+        $ref: ../../Duration.yml
+        description: The duration between samples.
       disable:
         type: boolean
