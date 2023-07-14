@@ -1,0 +1,4 @@
+title: Duration
+type: string
+description: A string signifying a duration of time. Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h", "d", "w", "y".
+example: 72h45m2s
