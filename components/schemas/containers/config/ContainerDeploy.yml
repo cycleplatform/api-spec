@@ -56,8 +56,8 @@ properties:
       - signals
     properties:
       graceful_timeout:
-        type: integer
-        description: The time in seconds the platform will wait for a container to stop gracefully.
+        $ref: ../../Duration.yml
+        description: How long the platform will wait for a container to stop gracefully.
       signals:
         type: array
         items:
@@ -75,8 +75,8 @@ properties:
     description: Configurations for container startup.
     properties:
       delay:
-        type: integer
-        description: A value in seconds representing how long the platform will wait before sending the start signal to the given container.
+        $ref: ../../Duration.yml
+        description: How long the platform will wait before sending the start signal to the given container.
   restart:
     type: object
     description: Configurations for container restart events.
@@ -93,8 +93,8 @@ properties:
           - never
           - failure
       delay:
-        type: integer
-        description: Time in seconds the platform will wait before trying to restart the container.
+        $ref: ../../Duration.yml
+        description: How long the platform will wait before trying to restart the container.
       max_attempts:
         type: integer
         description: The amount of times the platform will attempt the restart policies.
@@ -115,11 +115,11 @@ properties:
         type: integer
         description: The number of times the platform will retry the command before marking the container unhealthy.
       interval:
-        type: integer
-        description: The number of seconds between retries.
+        $ref: ../../Duration.yml
+        description: How long to wait between restarts.
       timeout:
-        type: integer
-        description: The number of time in seconds before a health check attempt times out.
+        $ref: ../../Duration.yml
+        description: How long before a health check attempt times out.
       restart:
         type: boolean
         description: A boolean where `true` represents the desire for a container to restart if unhealthy.
@@ -132,11 +132,11 @@ properties:
       - disable
     properties:
       retention:
-        type: integer
-        description: The number in seconds for telemetry data to be retained.
+        $ref: ../../Duration.yml
+        description: How long telemetry data should be retained.
       interval:
-        type: integer
-        description: The number in seconds between samples.
+        $ref: ../../Duration.yml
+        description: The duration between samples.
       disable:
         type: boolean
         description: A boolean where true disables all telemetry reporting for this container.

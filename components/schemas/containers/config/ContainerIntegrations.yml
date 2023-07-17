@@ -86,9 +86,11 @@ properties:
             type: string
             description: The command to run for the backup.
           timeout:
-            type: integer
-            description: The time in seconds for the backup to attempt to run before timing out.
+            type: string
             nullable: true
+            description: How long the backup will attempt to run before timing out.
+            allOf:
+              - $ref: ../../Duration.yml
           cron_string:
             type: string
             description: A cron string that configures how often the backup will run.
@@ -103,11 +105,15 @@ properties:
             type: string
             description: The command to run for restoring from a backup.
           timeout:
-            type: integer
+            type: string
             nullable: true
-            description: The time in seconds for the restore to appempt to complete before timing out.
+            description: The time in seconds for the restore to attempt to complete before timing out.
+            allOf:
+              - $ref: ../../Duration.yml
       retention:
-        type: integer
+        type: string
         nullable: true
-        description: How long (in seconds) to keep backups. Default is 1 year.
-        default: 31536000
+        description: How long the platform will keep backups. Default is 1 year.
+        allOf:
+          - $ref: ../../Duration.yml
+        default: "365d"
