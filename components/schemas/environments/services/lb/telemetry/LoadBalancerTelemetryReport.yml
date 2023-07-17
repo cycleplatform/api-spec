@@ -19,16 +19,11 @@ properties:
       required:
         - time
         - controller
-        - snapshot
+        - metrics
       properties:
         time:
           $ref: ../../../../DateTime.yml
         controller:
           $ref: "../../../../Identifier.yml"
-        snapshot:
-          type: object
-          required:
-            - metrics
-          properties:
-            metrics:
-              $ref: LoadBalancerTelemetryControllerMetrics.yml
+        metrics:
+          $ref: LoadBalancerTelemetryControllerMetrics.yml
