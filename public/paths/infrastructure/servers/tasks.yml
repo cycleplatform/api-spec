@@ -22,10 +22,12 @@ post:
               reconfigure.features: ../../../../components/schemas/infrastructure/servers/taskActions/ReconfigureServer.yml
               restart: ../../../../components/schemas/infrastructure/servers/taskActions/RestartServer.yml
               compute.restart: ../../../../components/schemas/infrastructure/servers/taskActions/RestartCompute.yml
+              compute.spawner.restart: ../../../../components/schemas/infrastructure/servers/taskActions/RestartComputeSpawner.yml
           oneOf:
             - $ref: ../../../../components/schemas/infrastructure/servers/taskActions/ReconfigureServer.yml
             - $ref: ../../../../components/schemas/infrastructure/servers/taskActions/RestartServer.yml
             - $ref: ../../../../components/schemas/infrastructure/servers/taskActions/RestartCompute.yml
+            - $ref: ../../../../components/schemas/infrastructure/servers/taskActions/RestartComputeSpawner.yml
   responses:
     200:
       description: Returns a task descriptor.
