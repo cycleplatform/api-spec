@@ -7,12 +7,7 @@ required:
 properties:
   identifier:
     type: string
-    description: An identifier for the provider. Custom IAL providers will be listed as `a-<ID>` where the ID is a MongoDB ID.
-    enum:
-      - equinix-metal
-      - vultr
-      - aws
-      - a-<MongoID>
+    description: An identifier for the provider. Custom IAL providers will be listed as `a-<ID>`.
   location:
     type: string
     description: A location identifier associated with the provider.
