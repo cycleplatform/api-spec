@@ -12,6 +12,8 @@ properties:
       - target
       - url
     properties:
+      existing:
+        $ref: ../ExistingSource.yml
       target:
         type: string
         description: The image name on the registry.
