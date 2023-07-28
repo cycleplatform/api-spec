@@ -9,5 +9,4 @@ properties:
     enum:
       - "default"
   details:
-    type: object
-    nullable: true
+    $ref: ../../../../../../../components/schemas/stacks/spec/services/loadbalancer/types/haproxy/HaProxyConfig.yml
