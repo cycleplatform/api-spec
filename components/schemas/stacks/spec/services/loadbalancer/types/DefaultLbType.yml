@@ -11,3 +11,7 @@ properties:
   details:
     type: object
     nullable: true
+    allOf:
+      - oneOf:
+          - $ref: ../../../../../../../components/schemas/stacks/spec/services/loadbalancer/types/haproxy/HaProxyConfig.yml
+          - $ref: ../../../../../../../components/schemas/stacks/spec/services/loadbalancer/types/v1/V1LbConfig.yml
