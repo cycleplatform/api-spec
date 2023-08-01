@@ -140,6 +140,6 @@ properties:
       disable:
         type: boolean
         description: A boolean where true disables all telemetry reporting for this container.
-      webhook:
+      web_hook:
         type: string
         description: An endpoint to report the telemetry data to.
