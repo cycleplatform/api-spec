@@ -1,4 +1,4 @@
-title: ServerStatsRamTelemetry
+title: ServerStatsRam
 type: object
 description: Statistics about the RAM on a given server.
 required:
@@ -7,11 +7,14 @@ required:
   - total
 properties:
   available:
-    type: integer
+    type: number
+    format: float
     description: The available RAM on the server.
   free:
-    type: integer
+    type: number
+    format: float
     description: The free RAM on the server.
   total:
-    type: integer
+    type: number
+    format: float
     description: The total RAM on the server.
