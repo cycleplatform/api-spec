@@ -1,0 +1,23 @@
+title: ServerStatsCpuUsage
+type: object
+properties:
+  user:
+    type: integer
+  nice:
+    type: integer
+  system:
+    type: integer
+  idle:
+    type: integer
+  iowait:
+    type: integer
+  irq:
+    type: integer
+  soft_irq:
+    type: integer
+  steal:
+    type: integer
+  guest:
+    type: integer
+  guest_nice:
+    type: integer
