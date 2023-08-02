@@ -2,22 +2,22 @@ title: ServerStatsCpuUsage
 type: object
 properties:
   user:
-    type: number
+    type: integer
   nice:
-    type: number
+    type: integer
   system:
-    type: number
+    type: integer
   idle:
-    type: number
+    type: integer
   iowait:
-    type: number
+    type: integer
   irq:
-    type: number
+    type: integer
   soft_irq:
-    type: number
+    type: integer
   steal:
-    type: number
+    type: integer
   guest:
-    type: number
+    type: integer
   guest_nice:
-    type: number
+    type: integer
