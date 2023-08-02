@@ -7,11 +7,14 @@ required:
   - avg15m
 properties:
   avg1m:
-    type: integer
+    type: number
+    format: float
     description: The 1 minute load average.
   avg5m:
-    type: integer
+    type: number
+    format: float
     description: The 5 minute load average.
   avg15m:
-    type: integer
+    type: number
+    format: float
     description: the 15 minute load average.
