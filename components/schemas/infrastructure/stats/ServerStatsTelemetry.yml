@@ -14,7 +14,7 @@ properties:
   cpu_usage:
     $ref: ./ServerStatsCpuUsageTelemetry.yml
   load:
-    "$ref": "./ServerStatsLoadTelemetry.yml"
+    "$ref": "./ServerStatsLoad.yml"
   ram:
     "$ref": "./ServerStatsRamTelemetry.yml"
   storage_base:
