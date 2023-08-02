@@ -1,4 +1,4 @@
-title: ServerStatsRamTelemetry
+title: ServerStatsRam
 type: object
 description: Statistics about the RAM on a given server.
 required:
