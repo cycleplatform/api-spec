@@ -1,4 +1,4 @@
-title: ServerStatsLoad
+title: ServerStatsLoadTelemetry
 type: object
 description: Statistics about the current load on the server.
 required:
