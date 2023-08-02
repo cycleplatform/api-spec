@@ -1,0 +1,23 @@
+title: ServerStatsCpuUsage
+type: object
+properties:
+  user:
+    type: number
+  nice:
+    type: number
+  system:
+    type: number
+  idle:
+    type: number
+  iowait:
+    type: number
+  irq:
+    type: number
+  soft_irq:
+    type: number
+  steal:
+    type: number
+  guest:
+    type: number
+  guest_nice:
+    type: number

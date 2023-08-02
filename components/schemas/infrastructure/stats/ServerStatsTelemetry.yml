@@ -11,6 +11,8 @@ properties:
   time:
     description: The timestamp for when the telemetery data was collected.
     "$ref": "../../DateTime.yml"
+  cpu_usage:
+    $ref: ./ServerStatsCpuUsage.yml
   load:
     "$ref": "./ServerStatsLoad.yml"
   ram:
