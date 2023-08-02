@@ -1,4 +1,4 @@
-title: ServerStatsCpuUsage
+title: ServerStatsCpuUsageTelemetry
 type: object
 properties:
   user:
