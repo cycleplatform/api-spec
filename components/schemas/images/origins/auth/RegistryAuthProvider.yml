@@ -1,0 +1,40 @@
+title: RegistryAuthProvider
+description: Credentials for authentication to a provider-native image registry, such as AWS ECR.
+type: object
+required:
+  - type
+  - details
+properties:
+  type:
+    type: string
+    enum:
+      - provider
+  details:
+    type: object
+    required:
+      - flavor
+      - credentials
+    properties:
+      flavor:
+        type: string
+        enum:
+          - ecr
+      credentials:
+        title: RegistryAuthProviderCredentials
+        type: object
+        properties:
+          region:
+            type: string
+          namespace:
+            type: string
+          api_key:
+            type: string
+          secret:
+            type: string
+          subscription_id:
+            type: string
+          client_id:
+            type: string
+          config:
+            type: string
+            description: A base64'd string of additional configuration options.

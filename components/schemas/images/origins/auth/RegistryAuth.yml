@@ -1,0 +1,13 @@
+title: RegistryAuth
+type: object
+description: Authentication details for a third party image registry/source.
+discriminator:
+  propertyName: type
+  mapping:
+    user: ./RegistryAuthUser.yml
+    provider: ./RegistryAuthProvider.yml
+    webhook: ./RegistryAuthWebhook.yml
+oneOf:
+  - $ref: ./RegistryAuthUser.yml
+  - $ref: ./RegistryAuthProvider.yml
+  - $ref: ./RegistryAuthWebhook.yml

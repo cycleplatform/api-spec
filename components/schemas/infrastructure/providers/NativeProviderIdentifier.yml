@@ -1,12 +1,3 @@
 title: NativeProviderIdentifier
 type: string
-description: An identifier for the provider
-enum:
-  - equinix-metal
-  - coreweave
-  - vultr
-  - hivelocity
-  - aws
-  - azure
-  - gcp
-  - digitalocean
+description: An identifier for a native Cycle provider.
