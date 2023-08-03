@@ -1,0 +1,18 @@
+title: RegistryAuthWebhook
+description: Webhook-based authentication to the provided URL. This webhook expects to receive a base-64 string that when decoded is in the format `username:password`
+type: object
+required:
+  - type
+  - details
+properties:
+  type:
+    type: string
+    enum:
+      - webhook
+  details:
+    type: object
+    required:
+      - url
+    properties:
+      url:
+        type: string

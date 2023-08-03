@@ -4,16 +4,18 @@ description: The origin of the given image source.
 discriminator:
   propertyName: type
   mapping:
-    docker-hub: ./dockerHub/DockerHubOrigin.yml
-    docker-file: ./dockerFile/DockerFileOrigin.yml
-    docker-registry: ./dockerRegistry/DockerRegistryOrigin.yml
-    cycle-upload: ./cycleUpload/CycleUploadOrigin.yml
-    cycle-source: ./cycleSource/CycleSourceOrigin.yml
-    none: ./none/NoneOrigin.yml
+    docker-hub: dockerHub/DockerHubOrigin.yml
+    docker-file: dockerFile/DockerFileOrigin.yml
+    docker-registry: dockerRegistry/DockerRegistryOrigin.yml
+    oci-registry: ociRegistry/OciRegistryOrigin.yml
+    cycle-upload: cycleUpload/CycleUploadOrigin.yml
+    cycle-source: cycleSource/CycleSourceOrigin.yml
+    none: none/NoneOrigin.yml
 oneOf:
-  - $ref: ./dockerHub/DockerHubOrigin.yml
-  - $ref: ./dockerFile/DockerFileOrigin.yml
-  - $ref: ./dockerRegistry/DockerRegistryOrigin.yml
-  - $ref: ./cycleUpload/CycleUploadOrigin.yml
-  - $ref: ./cycleSource/CycleSourceOrigin.yml
+  - $ref: dockerHub/DockerHubOrigin.yml
+  - $ref: dockerFile/DockerFileOrigin.yml
+  - $ref: dockerRegistry/DockerRegistryOrigin.yml
+  - $ref: ociRegistry/OciRegistryOrigin.yml
+  - $ref: cycleUpload/CycleUploadOrigin.yml
+  - $ref: cycleSource/CycleSourceOrigin.yml
   - $ref: none/NoneOrigin.yml
