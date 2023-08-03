@@ -1,0 +1,18 @@
+title: RegistryAuthUser
+description: User/token based credentials for authentication to a third-party image source.
+type: object
+required:
+  - type
+  - details
+properties:
+  type:
+    type: string
+    enum:
+      - user
+  details:
+    type: object
+    properties:
+      username:
+        type: string
+      token:
+        type: string
