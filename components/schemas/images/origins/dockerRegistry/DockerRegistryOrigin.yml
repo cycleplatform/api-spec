@@ -1,6 +1,9 @@
 title: DockerRegistryOrigin
 type: object
 description: An image origin where the image is pulled from a private Docker registry.
+required:
+  - type
+  - details
 properties:
   type:
     type: string

@@ -1,6 +1,9 @@
 title: DockerFileOrigin
 type: object
 description: An image origin where the image is built from a Dockerfile located in a git repository.
+required:
+  - type
+  - details
 properties:
   type:
     type: string

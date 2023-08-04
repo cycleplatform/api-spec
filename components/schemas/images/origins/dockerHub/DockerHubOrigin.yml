@@ -1,6 +1,9 @@
 title: DockerHubOrigin
 type: object
 description: An image origin where the image is pulled from DockerHub.
+required:
+  - type
+  - details
 properties:
   type:
     type: string

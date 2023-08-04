@@ -1,6 +1,8 @@
 title: NoneOrigin
 type: object
 description: An empty origin. No details are provided for this image.
+required:
+  - type
 properties:
   type:
     type: string

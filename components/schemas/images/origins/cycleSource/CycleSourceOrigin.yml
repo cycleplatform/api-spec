@@ -4,6 +4,9 @@ description: |
   An image origin that references an image source on Cycle. 
 
   This origin will never be embedded in an image source. It is for use in stacks, describing an image which is already a part of an image source on Cycle.
+required:
+  - type
+  - details
 properties:
   type:
     type: string

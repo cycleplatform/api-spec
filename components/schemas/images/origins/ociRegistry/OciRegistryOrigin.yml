@@ -1,6 +1,9 @@
 title: OciRegistryOrigin
 type: object
 description: An image origin that pulls images fro an OCI-compatible registry. Also used for provider-native registries, such as AWS ECR.
+required:
+  - type
+  - details
 properties:
   type:
     type: string
@@ -11,6 +14,7 @@ properties:
     required:
       - target
       - url
+      - auth
     properties:
       existing:
         $ref: ../ExistingSource.yml
@@ -21,7 +25,4 @@ properties:
         type: string
         description: The url of the remote registry.
       auth:
-        allOf:
-          - type: object
-            nullable: true
-          - $ref: ../auth/RegistryAuth.yml
+        $ref: ../auth/RegistryAuth.yml
