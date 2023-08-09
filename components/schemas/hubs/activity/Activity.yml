@@ -131,7 +131,7 @@ properties:
       - environment.services.discovery.task.reconfigure
       - environment.services.lb.task.reconfigure
       - environment.services.vpn.task.reconfigure
-      - environment.vpn.user.create
+      - environment.services.vpn.user.create
       - environment.services.vpn.login
       - environment.task.initialize
       - environment.task.start
