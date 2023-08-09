@@ -62,10 +62,10 @@ get:
             type: string
             description: |
               `filter[server]=ID` server filtering by ID. Submit the ID of the server you wish to filter for and the return will be any activity from that server.
-          event:
+          events:
             type: string
             description: |
-              `filter[event]=value` filter by event occurrence. Example: `filter[event]=environment.services.vpn.login`
+              `filter[events]=value` filter by event names. Example: `filter[event]=environment.services.vpn.login`
           verbosity:
             type: integer
             description: |
