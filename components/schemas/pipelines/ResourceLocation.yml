@@ -1,25 +1,29 @@
 title: StepResourceLocation
-type: object 
-description: Either a details ID or details from where the ID is an identifier for an existing resource and a from is an identifier from a previous step in this pipeline. 
-oneOf: 
+type: object
+description: Either a details ID or details from where the ID is an identifier for an existing resource and a from is an identifier from a previous step in this pipeline.
+oneOf:
   - title: DetailsId
-    type: object 
-    properties: 
-      id: 
-        type: string 
-        description: The ID of an existing resource that exists before the pipeline is run. 
-  - title: DetailsFrom 
-    type: object 
-    properties: 
-      from: 
-        type: object 
+    type: object
+    required:
+      - id
+    properties:
+      id:
+        type: string
+        description: The ID of an existing resource that exists before the pipeline is run.
+  - title: DetailsFrom
+    type: object
+    required:
+      - from
+    properties:
+      from:
+        type: object
         description: The stage and step to report on.
-        required: 
-          - step 
-        properties: 
-          stage: 
-            type: string 
-            description: An identifier for the stage the step being reported on resides in. 
-          step: 
-            type: string 
-            description: An identifier for the step to be reported on. 
+        required:
+          - step
+        properties:
+          stage:
+            type: string
+            description: An identifier for the stage the step being reported on resides in.
+          step:
+            type: string
+            description: An identifier for the step to be reported on.
