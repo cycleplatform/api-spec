@@ -46,7 +46,7 @@ properties:
       - domain
     properties:
       priority:
-        type: string
+        type: integer
         description: The priority setting for this mx record.
       domain:
         type: string
