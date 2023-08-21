@@ -19,9 +19,7 @@ properties:
           type: object
           required:
             - mode
-            - performance
-            - ingress
-            - timeouts
+            - config
             - routers
           properties:
             mode:
@@ -29,25 +27,45 @@ properties:
               enum:
                 - tcp
                 - http
-            performance:
-              type: boolean
-            ingress:
+            config:
               type: object
               required:
-                - port
-                - tls
+                - performance
+                - ingress
+                - timeouts
               properties:
-                port:
-                  type: integer
-                tls:
+                performance:
                   type: boolean
-            timeouts:
-              type: object
-              required:
-                - idle
-              properties:
-                idle:
-                  type: integer
+                ingress:
+                  type: object
+                  required:
+                    - port
+                    - tls
+                  properties:
+                    port:
+                      type: integer
+                    tls:
+                      type: boolean
+                timeouts:
+                  type: object
+                  required:
+                    - idle
+                  properties:
+                    idle:
+                      type: integer
+                extension:
+                  type: object
+                  required:
+                    - type
+                    - details
+                  properties:
+                    type:
+                      description: String describing an extension type
+                      type: string
+                    details:
+                      type: object
+                      additionalProperties: {}
+                      description: Custom details data for an extension
             routers:
               type: array
               items:
