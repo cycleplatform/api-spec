@@ -1,0 +1,11 @@
+title: VpnResetTask
+description: This will reset the VPN certificates and restart the container. Should be done when the certificates expire, every 1000 days. Then, you will need to redownload the VPN config in order to connect.
+type: object
+required:
+  - action
+properties:
+  action:
+    type: string
+    enum:
+      - reset
+    description: The name of the action to perform.
