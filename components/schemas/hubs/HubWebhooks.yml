@@ -1,0 +1,15 @@
+title: HubWebhooks
+type: object
+description: Hub related webhooks. When supplied, the given webhook will be called with a payload any time one of these events occurs.
+required:
+  - server_deployed
+  - server_deleted
+properties:
+  server_deployed:
+    nullable: true
+    type: string
+    description: A webhook that is called any time a server is deployed to this hub. The payload will be a `Server` object.
+  server_deleted:
+    nullable: true
+    type: string
+    description: A webhook that is called any time a server in this hub is deleted. The payload will be a `Server` object.

@@ -15,7 +15,7 @@ properties:
   id:
     "$ref": "../ID.yml"
   identifier:
-    $ref: ../Identifier.yml 
+    $ref: ../Identifier.yml
     description: A human readable slugged identifier for this hub.
   name:
     type: string
@@ -63,15 +63,7 @@ properties:
   integrations:
     "$ref": "./HubIntegrations.yml"
   webhooks:
-    type: object
-    description: All hub webhooks for the given hub.
-    required:
-      - server_deployed
-    properties:
-      server_deployed:
-        nullable: true
-        type: string
-        description: A webhook to report information to each time a server is deployed on the given hub.
+    $ref: HubWebhooks.yml
   billing:
     type: object
     nullable: true
