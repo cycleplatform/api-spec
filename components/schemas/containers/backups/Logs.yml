@@ -1,30 +1,63 @@
 title: BackupLogs
-type: object 
-description: Backup logs for a given container. 
-required: 
-  - id 
-  - backup_id 
-  - hub_id 
-  - type 
-  - log 
-  - events 
-properties: 
-  id: 
-    "$ref": "../../ID.yml" 
-  backup_id: 
-    type: string 
-    description: An identifier for the backup. 
-  hub_id: 
-    "$ref": "../../HubID.yml" 
-  type: 
-    type: string 
-    description: The type of the backup log. 
-    enum: 
-      - restore 
-      - backup 
-  log: 
-    type: string 
-    description: The log. 
+type: object
+description: Backup logs for a given container.
+required:
+  - id
+  - container_id
+  - instance_id
+  - backup_id
+  - hub_id
+  - type
+  - log
+  - events
+properties:
+  id:
+    "$ref": "../../ID.yml"
+  container_id:
+    type: string
+    description: An identifier for the container.
+  instance_id:
+    type: string
+    description: An identifier for the instance.
+  backup_id:
+    type: string
+    description: An identifier for the backup.
+  hub_id:
+    "$ref": "../../HubID.yml"
+  type:
+    type: string
+    description: The type of the backup log.
+    enum:
+      - restore
+      - backup
+  log:
+    type: string
+    description: The log.
+  error:
+    type: object
+    nullable: true
+    required:
+      - message
+    properties:
+      message:
+        type: string
+      message_internal:
+        type: string
+      stack:
+        type: array
+        items:
+          type: object
+          required:
+            - file
+            - function
+            - line
+          properties:
+            file:
+              type: string
+            function:
+              type: string
+            line:
+              type: integer
   events:
     title: BackupLogEvents
     type: object
