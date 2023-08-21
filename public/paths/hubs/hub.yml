@@ -55,15 +55,7 @@ patch:
             integrations:
               $ref: ../../../components/schemas/hubs/HubIntegrations.yml
             webhooks:
-              type: object
-              description: All hub webhooks for the given hub.
-              required:
-                - server_deployed
-              properties:
-                server_deployed:
-                  nullable: true
-                  type: string
-                  description: A webahook to report information to each time a server is deployed on the given hub.
+              $ref: ../../../components/schemas/hubs/HubWebhooks.yml
   responses:
     200:
       description: Returns the updated Hub resource.
