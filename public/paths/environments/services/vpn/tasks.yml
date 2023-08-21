@@ -1,5 +1,5 @@
 post:
-  operationId: "reconfigureVPN"
+  operationId: "createEnvironmentVpnTask"
   tags:
     - Environments
   parameters:
@@ -9,62 +9,21 @@ post:
       required: true
       schema:
         type: string
-  summary: Reconfigure VPN
-  description: Requires the `environments-vpn-manage` capability.
+  summary: Create Environment VPN Job
+  description: Used to reconfigure or reset the environment VPN. Requires the `environments-vpn-manage` capability.
   requestBody:
-    description: An object to be submitted when reconfiguring a VPN service.
+    description: The task contents used to build the environment VPN job.
     content:
       application/json:
         schema:
-          type: object
-          required:
-            - action
-            - contents
-          properties:
-            action:
-              type: string
-              enum:
-                - reconfigure
-              description: The action to take.
-            contents:
-              type: object
-              description: Additional information the platform needs to create this job.
-              properties:
-                enable:
-                  type: boolean
-                  description: A boolean where true means the VPN service is enabled.
-                config:
-                  type: object
-                  nullable: true
-                  description: The config object for the VPN service, in this case without the required fields normally found in a VPN config object.
-                  properties:
-                    allow_internet:
-                      type: boolean
-                      description: If true, routes all traffic through the VPN, even non-Cycle traffic.
-                    auth:
-                      type: object
-                      description: Auth configuration for the VPN.
-                      required:
-                        - webhook
-                        - cycle_accounts
-                      properties:
-                        webhook:
-                          type: string
-                          nullable: true
-                          description:
-                            A webhook endpoint to hit. Will be passed the login credentials
-                            provided to the user, and should return a 200 status if the login is
-                            permitted.
-                        cycle_accounts:
-                          type: boolean
-                          description:
-                            If true, allows any Cycle account with access to the environment
-                            to log in to the VPN using their Cycle email and password.
-                        vpn_accounts:
-                          type: boolean
-                          description:
-                            If true, allows the custom VPN accounts to log in to the
-                            VPN.
+          discriminator:
+            propertyName: action
+            mapping:
+              reset: ../../../../../components/schemas/environments/services/vpn/taskActions/VpnResetTask.yml
+              reconfigure: ../../../../../components/schemas/environments/services/vpn/taskActions/VpnReconfigureTask.yml
+          oneOf:
+            - $ref: ../../../../../components/schemas/environments/services/vpn/taskActions/VpnResetTask.yml
+            - $ref: ../../../../../components/schemas/environments/services/vpn/taskActions/VpnReconfigureTask.yml
   responses:
     202:
       description: Returns a task descriptor.
