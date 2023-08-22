@@ -5,6 +5,7 @@ required:
 properties:
   controllers:
     type: object
+    description: A configuration for a specific port.
     additionalProperties:
       title: V1LbController
       type: object
@@ -13,9 +14,11 @@ properties:
         - transport
       properties:
         identifier:
-          $ref: ../../../../../../Identifier.yml
+          type: string
+          description: A human-readable identifier for this controller. It will default to the port, i.e. `port-443`, but can be renamed to anything, such as the service this controller represents.
         transport:
           title: V1LbControllerTransport
+          description: Defines how traffic comes in to the load balancer, and how the load balancer handles it.
           type: object
           required:
             - mode
@@ -24,11 +27,13 @@ properties:
           properties:
             mode:
               type: string
+              description: The kind of traffic (http/tcp) that will be sent to the load balancer.
               enum:
                 - tcp
                 - http
             config:
               type: object
+              description: Defines how the transport for this controller operates.
               required:
                 - performance
                 - ingress
@@ -36,37 +41,75 @@ properties:
               properties:
                 performance:
                   type: boolean
+                  description: |
+                    Enable/disable performance mode. If enabled, some telemetry will be disabled to dedicate full processing to handling requests.
+                    You will not see per-request breakdowns or URL logging if performance mode is enabled.
                 ingress:
                   type: object
+                  description: Defines how traffic gets into the load balancer.
                   required:
                     - port
                     - tls
                   properties:
                     port:
                       type: integer
+                      description: The port inbound trafic is accepted on.
                     tls:
-                      type: boolean
+                      type: object
+                      description: TLS termination configuration. If null, the platform will use the default configuration. Port 443 by default has TLS termination enabled.
+                      required:
+                        - enable
+                        - server_name
+                        - allow_insecure
+                        - client_auth
+                      properties:
+                        enable:
+                          type: boolean
+                          description: Allow TLS connections and enable TLS termination.
+                        server_name:
+                          type: string
+                          nullable: true
+                          description: |
+                            [Advanced] Change the domain the controller listens on.
+                        allow_insecure:
+                          type: boolean
+                          description: If enabled, accept TLS traffic with an invalid certificate. This is usually done for development/testing, and is not recommended for production use.
+                        client_auth:
+                          type: string
+                          enum:
+                            - none
+                            - request
+                            - require
+                            - require-verify
+                          description: |
+                            Defines how to validate the connecting TLS certificate.
+                            `none`: Do not require a TLS certificate to be sent
+                            `request`: Asks the client to send a TLS certificate, but does not require nor validate it.
+                            `require`: Requires a certificate be sent for the request to be valid, but does not validate the certificate.
+                            `require-verify`: Requires both that the client send a certificate, and that the certificate is valid. This is required when using https.
                 timeouts:
                   type: object
+                  description: Defines settings for various types of timeouts.
                   required:
                     - idle
                   properties:
                     idle:
-                      type: integer
+                      description: The total amount of time a connection can be idle before being killed.
+                      $ref: ../../../../../../Duration.yml
                 extension:
                   type: object
-                  required:
-                    - type
-                    - details
-                  properties:
-                    type:
-                      description: String describing an extension type
-                      type: string
-                    details:
-                      type: object
-                      additionalProperties: {}
-                      description: Custom details data for an extension
+                  description: Extended configurations for the specified transport mode (http/tcp)
+                  discriminator:
+                    propertyName: type
+                    mapping:
+                      tcp: transports/TcpTransportConfig.yml
+                      http: transports/HttpTransportConfig.yml
+
+                  oneOf:
+                    - $ref: transports/TcpTransportConfig.yml
+                    - $ref: transports/HttpTransportConfig.yml
             routers:
               type: array
+              description: Defines where traffic is sent. Many can be defined per controller.
               items:
                 $ref: V1LbConfigRouter.yml

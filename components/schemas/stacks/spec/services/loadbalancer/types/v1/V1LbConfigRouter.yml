@@ -1,38 +1,68 @@
-title: V1LbConfigRouter
+title: V1LbRouterConfig
+description: A specific router configuration that describes how traffic matching the rule is handled.
 type: object
 required:
-  - identifier
+  - match
   - mode
   - config
 properties:
-  identifier:
-    type: string
+  match:
+    type: object
+    description: The ruleset for this router to be selected. If both `domains`` and `internal_port` are null, then this match acts as a wildcard and will match all.
+    required:
+      - domains
+      - internal_port
+    properties:
+      domains:
+        nullable: true
+        type: array
+        description: The specific domains to match against.
+        items:
+          type: string
+      internal_port:
+        nullable: true
+        type: array
+        description: The specific ports to match against.
+        items:
+          type: integer
   mode:
     type: string
+    description: |
+      How to route the traffic to the destination.
+      `random`: Pick a valid destination at random.
+      `round-robin`: Send each request to the 'next' destination on the list, restarting from the beginning when the last destination is used.
     enum:
       - random
       - round-robin
   config:
     type: object
     required:
-      - performance
       - sticky_sessions
       - destination_retries
-      - transport
       - timeouts
     properties:
-      performance:
-        type: boolean
       sticky_sessions:
         type: boolean
+        description: If a request comes in from the same origin, ensure it hits the same destination.
       destination_retries:
         type: integer
-      transport:
-        type: object
+        description: If a destination is unavailable, retry up to [x] times, instead of immediately failing with a 503/504 error.
       timeouts:
         type: object
+        description: Defines how the length of various sorts of timeouts when communicating with the destination.
         required:
-          - idle
+          - destination_connection
         properties:
-          idle:
-            type: integer
+          destination_connection:
+            description: The duration the load balancer will wait before timing out while attempting to connect to the destination.
+      extension:
+        type: object
+        description: Additional configuration options specific to the selected mode (tcp/http).
+        discriminator:
+          propertyName: type
+          mapping:
+            tcp: routers/TcpRouterConfig.yml
+            http: routers/HttpRouterConfig.yml
+        oneOf:
+          - $ref: routers/TcpRouterConfig.yml
+          - $ref: routers/HttpRouterConfig.yml

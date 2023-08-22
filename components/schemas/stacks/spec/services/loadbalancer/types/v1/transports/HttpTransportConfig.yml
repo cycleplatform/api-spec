@@ -1,0 +1,26 @@
+title: HttpTransportConfig
+description: Additional configuration options for the HTTP transport mode.
+type: object
+required:
+  - type
+  - details
+properties:
+  type:
+    type: string
+    enum:
+      - http
+  details:
+    type: object
+    required:
+      - connections
+    properties:
+      connections:
+        type: object
+        required:
+          - max_idle_conns_per_connection
+        description: Defines extra configuration options connections to the load balancer
+        properties:
+          max_idle_conns_per_connection:
+            nullable: true
+            type: integer
+            description: Maximum number of simultaneous connections (via http/2) per connection.
