@@ -1,0 +1,19 @@
+title: TcpTransportConfig
+description: Additional configuration options for the TCP transport mode.
+type: object
+required:
+  - type
+  - details
+properties:
+  type:
+    type: string
+    enum:
+      - tcp
+  details:
+    type: object
+    required:
+      - connections
+    properties:
+      connections:
+        type: object
+        additionalProperties: {}
