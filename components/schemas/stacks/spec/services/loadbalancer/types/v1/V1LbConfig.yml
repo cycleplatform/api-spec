@@ -55,6 +55,7 @@ properties:
                       type: integer
                       description: The port inbound trafic is accepted on.
                     tls:
+                      nullable: true
                       type: object
                       description: TLS termination configuration. If null, the platform will use the default configuration. Port 443 by default has TLS termination enabled.
                       required:
