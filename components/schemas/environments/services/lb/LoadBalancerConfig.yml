@@ -8,19 +8,7 @@ discriminator:
     haproxy: ../../../stacks/spec/services/loadbalancer/types/haproxy/HaProxyLbType.yml
     v1: ../../../stacks/spec/services/loadbalancer/types/v1/V1LbType.yml
     default: ../../../stacks/spec/services/loadbalancer/types/DefaultLbType.yml
-allOf:
-  - type: object
-    required:
-      - ipv4
-      - ipv6
-    properties:
-      ipv4:
-        type: boolean
-        description: Allow / disallow traffic to be routed via IPv4.
-      ipv6:
-        type: boolean
-        description: Allow / disallow traffic to be routed via IPv6.
-  - oneOf:
-      - $ref: ../../../stacks/spec/services/loadbalancer/types/v1/V1LbType.yml
-      - $ref: ../../../stacks/spec/services/loadbalancer/types/haproxy/HaProxyLbType.yml
-      - $ref: ../../../stacks/spec/services/loadbalancer/types/DefaultLbType.yml
+oneOf:
+  - $ref: ../../../stacks/spec/services/loadbalancer/types/v1/V1LbType.yml
+  - $ref: ../../../stacks/spec/services/loadbalancer/types/haproxy/HaProxyLbType.yml
+  - $ref: ../../../stacks/spec/services/loadbalancer/types/DefaultLbType.yml
