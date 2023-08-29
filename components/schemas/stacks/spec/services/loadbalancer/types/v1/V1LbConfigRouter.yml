@@ -54,6 +54,7 @@ properties:
           - destination_connection
         properties:
           destination_connection:
+            $ref: ../../../../../../Duration.yml
             description: The duration the load balancer will wait before timing out while attempting to connect to the destination.
             $ref: ../../../../../../Duration.yml
       extension:

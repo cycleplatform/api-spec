@@ -105,7 +105,6 @@ properties:
                     mapping:
                       tcp: transports/TcpTransportConfig.yml
                       http: transports/HttpTransportConfig.yml
-
                   oneOf:
                     - $ref: transports/TcpTransportConfig.yml
                     - $ref: transports/HttpTransportConfig.yml

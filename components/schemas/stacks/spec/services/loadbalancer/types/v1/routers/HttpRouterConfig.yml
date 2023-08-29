@@ -41,3 +41,15 @@ properties:
             nullable: true
             type: string
             description: A specific URL to redirect to.
+      forward:
+        nullable: true
+        type: object
+        required:
+          - scheme
+        properties:
+          scheme:
+            nullable: true
+            type: string
+            enum:
+              - tcp
+              - http
