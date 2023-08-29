@@ -55,6 +55,7 @@ properties:
         properties:
           destination_connection:
             description: The duration the load balancer will wait before timing out while attempting to connect to the destination.
+            $ref: ../../../../../../Duration.yml
       extension:
         type: object
         description: Additional configuration options specific to the selected mode (tcp/http).
