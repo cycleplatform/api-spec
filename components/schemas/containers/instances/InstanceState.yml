@@ -20,6 +20,7 @@ allOf:
           - deleted
       health:
         type: object
+        nullable: true
         description: information about the health of the instance.
         required:
           - healthy
@@ -27,7 +28,12 @@ allOf:
         properties:
           healthy:
             type: boolean
-            description: A boolean where true represents the instance being healthy.
+            nullable: true
+            description: |
+              Describes the healthiness of the instance. Health checks can be configured at the container level. 
+              - `true`: The instance is considered healthy.
+              - `false`: The instance is considered unhealthy.
+              - `null`: The instance has not yet reported its health, or a health check has not yet been performed.
           updated:
             description: A timestamp of the last time the instance health was updated.
             "$ref": "../../DateTime.yml"
