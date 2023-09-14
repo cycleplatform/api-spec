@@ -75,6 +75,13 @@ properties:
         description: How long the platform will wait before sending the start signal to the given container.
         allOf:
           - $ref: ../../Duration.yml
+  update:
+    type: object
+    description: Configurations for container updates.
+    properties:
+      stagger:
+        $ref: ../../Duration.yml
+        description: When set, Cycle will pick a random time from `0 - this duration`, and stagger the instances so they all start at different times (up to the time specified here).
   restart:
     type: object
     required:
