@@ -4,7 +4,7 @@ get:
     - Providers
   parameters:
     - name: providerId
-      description: The ID for the given provider.
+      description: The identifier for the given provider. Can be `aws`, `gcp`, `equinix-metal`, `vultr`.
       in: path
       required: true
       schema:
