@@ -9,6 +9,8 @@ properties:
     $ref: ContainerNetwork.yml
   deploy:
     $ref: ContainerDeploy.yml
+  scale:
+    $ref: ContainerScale.yml
   runtime:
     $ref: ContainerRuntime.yml
   resources:

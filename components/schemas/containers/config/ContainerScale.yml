@@ -1,0 +1,51 @@
+title: ContainerScale
+type: object
+description: Network configuration for a container.
+required:
+  - autoscale_group
+  - instances
+  - window
+  - thresholds
+properties:
+  autoscale_group:
+    type: string
+  instances:
+    type: object
+    required:
+      - min
+      - delta
+      - max
+      - max_server
+      - min_ttl
+    properties:
+      min:
+        type: integer
+      delta:
+        type: integer
+      max:
+        type: integer
+      max_server:
+        type: integer
+      min_ttl:
+        $ref: ../../Duration.yml
+  window:
+    $ref: ../../Duration.yml
+  thresholds:
+    type: array
+    items:
+      type: object
+      description: PLACEHOLDER
+      discriminator:
+        propertyName: type
+        mapping:
+          ram: ./scale/ScaleThresholdMetricRam.yml
+          cpu: ./scale/ScaleThresholdMetricCpu.yml
+          network_connections: ./scale/ScaleThresholdMetricNetworkConnections.yml
+          network_requests: ./scale/ScaleThresholdMetricNetworkRequests.yml
+          network_throughput: ./scale/ScaleThresholdMetricNetworkThroughput.yml
+      oneOf:
+        - $ref: ./scale/ScaleThresholdMetricRam.yml
+        - $ref: ./scale/ScaleThresholdMetricCpu.yml
+        - $ref: ./scale/ScaleThresholdMetricNetworkConnections.yml
+        - $ref: ./scale/ScaleThresholdMetricNetworkRequests.yml
+        - $ref: ./scale/ScaleThresholdMetricNetworkThroughput.yml

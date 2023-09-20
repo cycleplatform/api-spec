@@ -1,0 +1,22 @@
+title: ScaleThresholdMetricNetworkThroughput
+type: object
+required:
+  - type
+  - details
+properties:
+  type:
+    type: string
+    enum:
+      - network_throughput
+  details:
+    type: object
+    required:
+      - private
+      - bandwidth
+    properties:
+      private:
+        type: boolean
+      bandwidth:
+        type: string
+        description: The limit (maximum) amount of throughput each instance of the given container can use before triggering a scaling event.
+        example: "1G, 2M"

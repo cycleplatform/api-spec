@@ -1,0 +1,17 @@
+title: ScaleThresholdMetricRam
+type: object
+required:
+  - type
+  - details
+properties:
+  type:
+    type: string
+    enum:
+      - ram
+  details:
+    type: object
+    required:
+      - utilization
+    properties:
+      utilization:
+        type: integer

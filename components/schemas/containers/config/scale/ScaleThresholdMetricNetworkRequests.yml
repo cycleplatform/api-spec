@@ -1,0 +1,17 @@
+title: ScaleThresholdMetricNetworkRequests
+type: object
+required:
+  - type
+  - details
+properties:
+  type:
+    type: string
+    enum:
+      - network_requests
+  details:
+    type: object
+    required:
+      - requests_total
+    properties:
+      requests_total:
+        type: integer

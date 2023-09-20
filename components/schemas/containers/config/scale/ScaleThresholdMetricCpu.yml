@@ -1,0 +1,19 @@
+title: ScaleThresholdMetricCpu
+type: object
+required:
+  - type
+  - details
+properties:
+  type:
+    type: string
+    enum:
+      - cpu
+  details:
+    type: object
+    required:
+      - used
+    properties:
+      used:
+        type: string
+        description: The limit (maximum) amount of CPU each instance of the given container can use before triggering a scaling event.
+        example: "1G, 2M"

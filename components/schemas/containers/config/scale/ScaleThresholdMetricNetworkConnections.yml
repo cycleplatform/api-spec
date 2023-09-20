@@ -1,0 +1,17 @@
+title: ScaleThresholdMetricNetworkConnections
+type: object
+required:
+  - type
+  - details
+properties:
+  type:
+    type: string
+    enum:
+      - network_connections
+  details:
+    type: object
+    required:
+      - connections_total
+    properties:
+      connections_total:
+        type: integer
