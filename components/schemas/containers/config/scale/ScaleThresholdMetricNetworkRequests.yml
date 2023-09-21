@@ -7,7 +7,7 @@ properties:
   type:
     type: string
     enum:
-      - network_requests
+      - network-requests
   details:
     type: object
     required:

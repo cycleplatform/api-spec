@@ -1,0 +1,17 @@
+title: ScaleThresholdMetric
+type: object
+description: PLACEHOLDER
+discriminator:
+  propertyName: type
+  mapping:
+    ram: ./ScaleThresholdMetricRam.yml
+    cpu: ./ScaleThresholdMetricCpu.yml
+    network-connections: ./ScaleThresholdMetricNetworkConnections.yml
+    network-requests: ./ScaleThresholdMetricNetworkRequests.yml
+    network-throughput: ./ScaleThresholdMetricNetworkThroughput.yml
+oneOf:
+  - $ref: ./ScaleThresholdMetricRam.yml
+  - $ref: ./ScaleThresholdMetricCpu.yml
+  - $ref: ./ScaleThresholdMetricNetworkConnections.yml
+  - $ref: ./ScaleThresholdMetricNetworkRequests.yml
+  - $ref: ./ScaleThresholdMetricNetworkThroughput.yml

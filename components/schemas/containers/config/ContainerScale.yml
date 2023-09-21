@@ -33,19 +33,4 @@ properties:
   thresholds:
     type: array
     items:
-      type: object
-      description: PLACEHOLDER
-      discriminator:
-        propertyName: type
-        mapping:
-          ram: ./scale/ScaleThresholdMetricRam.yml
-          cpu: ./scale/ScaleThresholdMetricCpu.yml
-          network_connections: ./scale/ScaleThresholdMetricNetworkConnections.yml
-          network_requests: ./scale/ScaleThresholdMetricNetworkRequests.yml
-          network_throughput: ./scale/ScaleThresholdMetricNetworkThroughput.yml
-      oneOf:
-        - $ref: ./scale/ScaleThresholdMetricRam.yml
-        - $ref: ./scale/ScaleThresholdMetricCpu.yml
-        - $ref: ./scale/ScaleThresholdMetricNetworkConnections.yml
-        - $ref: ./scale/ScaleThresholdMetricNetworkRequests.yml
-        - $ref: ./scale/ScaleThresholdMetricNetworkThroughput.yml
+      $ref: ./scale/ScaleThresholdMetric.yml
