@@ -11,7 +11,9 @@ properties:
   details:
     type: object
     required:
-      - utilization
+      - used
     properties:
-      utilization:
-        type: integer
+      used:
+        type: string
+        description: The limit (maximum) amount of RAM each instance of the given container can use before triggering a scaling event.
+        example: "1G, 2M"

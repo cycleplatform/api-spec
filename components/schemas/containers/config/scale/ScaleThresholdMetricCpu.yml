@@ -11,9 +11,7 @@ properties:
   details:
     type: object
     required:
-      - used
+      - utilization
     properties:
-      used:
-        type: string
-        description: The limit (maximum) amount of CPU each instance of the given container can use before triggering a scaling event.
-        example: "1G, 2M"
+      utilization:
+        type: integer
