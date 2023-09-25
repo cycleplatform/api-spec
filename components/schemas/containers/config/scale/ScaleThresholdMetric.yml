@@ -1,6 +1,6 @@
 title: ScaleThresholdMetric
 type: object
-description: PLACEHOLDER
+description: Discriminated union describing the different types of scaling threshold and their respective details
 discriminator:
   propertyName: type
   mapping:

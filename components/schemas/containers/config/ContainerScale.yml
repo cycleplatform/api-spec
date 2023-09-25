@@ -9,8 +9,10 @@ required:
 properties:
   autoscale_group:
     type: string
+    description: The autoscaling group describes which servers should be deployed
   instances:
     type: object
+    description: Describes how many instances should be running
     required:
       - min
       - delta
@@ -20,17 +22,24 @@ properties:
     properties:
       min:
         type: integer
+        description: Minimum additional instances the autoscaler will run at any time
       delta:
         type: integer
+        description: Number of additional instances the autoscaler will add/subtract per scaling event
       max:
         type: integer
+        description: Maximum additional instances the autoscaler will run at any time
       max_server:
         type: integer
+        description: Minimum number of instances per server
       min_ttl:
         $ref: ../../Duration.yml
+        description: Minimum amount of time an instance will live
   window:
+    description: Duration in which the autoscaler will watch for changes
     $ref: ../../Duration.yml
   thresholds:
+    description: An array of rules that dictate when a scaling event will be triggered
     type: array
     items:
       $ref: ./scale/ScaleThresholdMetric.yml

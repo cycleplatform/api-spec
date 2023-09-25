@@ -1,30 +1,45 @@
 title: StackContainerConfigScaling.yml
 type: object
+description: Network configuration for a container.
+required:
+  - autoscale_group
+  - instances
+  - window
+  - thresholds
 properties:
-  auto:
+  autoscale_group:
+    type: string
+    description: The autoscaling group describes which servers should be deployed
+  instances:
     type: object
+    description: Describes how many instances should be running
     required:
-      - instances
+      - min
+      - delta
+      - max
+      - max_server
+      - min_ttl
     properties:
-      instances:
-        type: object
-        required:
-          - min
-          - max
-        properties:
-          min:
-            type: integer
-          max:
-            type: integer
-      rules:
-        type: object
-        required:
-          - metric
-          - threshold
-        properties:
-          metric:
-            type: string
-            enum:
-              - ram
-          threshold:
-            type: string
+      min:
+        type: integer
+        description: Minimum additional instances the autoscaler will run at any time
+      delta:
+        type: integer
+        description: Number of additional instances the autoscaler will add/subtract per scaling event
+      max:
+        type: integer
+        description: Maximum additional instances the autoscaler will run at any time
+      max_server:
+        type: integer
+        description: Minimum number of instances per server
+      min_ttl:
+        $ref: ../../Duration.yml
+        description: Minimum amount of time an instance will live
+  window:
+    description: Duration in which the autoscaler will watch for changes
+    $ref: ../../Duration.yml
+  thresholds:
+    description: An array of rules that dictate when a scaling event will be triggered
+    type: array
+    items:
+      $ref: ./scale/StackContainerScaleThreshold.yml
