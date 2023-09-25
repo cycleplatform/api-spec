@@ -1,0 +1,19 @@
+title: StackContainerScaleThresholdNetworkRequests
+type: object
+description: Describes the network requests threshold at which scaling will occur
+
+required:
+  - type
+  - details
+properties:
+  type:
+    type: string
+    enum:
+      - network-requests
+  details:
+    type: object
+    required:
+      - requests_total
+    properties:
+      requests_total:
+        type: integer

@@ -1,4 +1,4 @@
-title: StackContainerConfigScaling.yml
+title: ContainerScale
 type: object
 description: Network configuration for a container.
 required:
@@ -42,4 +42,4 @@ properties:
     description: An array of rules that dictate when a scaling event will be triggered
     type: array
     items:
-      $ref: ./scale/StackContainerScaleThreshold.yml
+      $ref: ./scale/ScaleThresholdMetric.yml
