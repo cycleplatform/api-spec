@@ -1,6 +1,6 @@
 title: ScaleThresholdMetricRam
 type: object
-description: Describes the Ram threshold at which scaling will occur
+description: Describes the RAM threshold at which scaling will occur
 required:
   - type
   - details
