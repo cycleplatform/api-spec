@@ -1,0 +1,22 @@
+title: Scale
+type: object
+required:
+  - enable
+properties:
+  enable:
+    type: boolean
+  down:
+    type: object
+    properties:
+      minimum:
+        type: integer
+      method:
+        type: string
+        enum:
+          - fifo
+          - lifo
+  up:
+    type: object
+    properties:
+      maximum:
+        type: integer
