@@ -115,7 +115,9 @@ paths:
   "/v1/account/logins":
     "$ref": "./paths/accounts/logins.yml"
   "/v1/account/password":
-    "$ref": "./paths/accounts/password.yml"
+    "$ref": "./paths/accounts/updatePassword.yml"
+  "/v1/account/reset-password":
+    "$ref": "./paths/accounts/resetPassword.yml"
   "/v1/account/2fa/setup":
     "$ref": "./paths/accounts/twoFa/setup.yml"
   "/v1/account/2fa/disable":
