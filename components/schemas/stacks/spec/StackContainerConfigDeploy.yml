@@ -120,16 +120,23 @@ properties:
     properties:
       command:
         type: string
+        description: The command to run as your health check
+        example: /bin/sh healthcheck.sh
       retries:
         type: integer
+        description: The number of times to retry the command before marking an instance unhealthy
       interval:
         $ref: ../../Duration.yml
-        description: How long to wait between restarts.
+        description: How long to wait between running health checks.
       timeout:
         $ref: ../../Duration.yml
         description: How long before a health check attempt times out.
       restart:
         type: boolean
+        description: A boolean where true represents the desire for the container to restart if any instance is unhealthy.
+      delay:
+        $ref: ../../Duration.yml
+        description: How long to wait after a container start event before starting health checks.
   telemetry:
     type: object
     required:
