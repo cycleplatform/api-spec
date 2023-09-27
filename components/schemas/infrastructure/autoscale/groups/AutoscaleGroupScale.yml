@@ -1,10 +1,6 @@
 title: AutoscaleGroupScale
 type: object
-required:
-  - enable
 properties:
-  enable:
-    type: boolean
   down:
     title: AutoscaleGroupScaleDown
     type: object
