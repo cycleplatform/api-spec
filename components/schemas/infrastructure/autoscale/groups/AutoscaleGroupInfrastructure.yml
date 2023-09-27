@@ -19,7 +19,7 @@ properties:
           type: string
         priority:
           type: integer
-        location:
+        locations:
           type: array
           items:
             type: object

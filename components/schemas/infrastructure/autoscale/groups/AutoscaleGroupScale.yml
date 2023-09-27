@@ -1,4 +1,4 @@
-title: Scale
+title: AutoscaleGroupScale
 type: object
 required:
   - enable
@@ -6,6 +6,7 @@ properties:
   enable:
     type: boolean
   down:
+    title: AutoscaleGroupScaleDown
     type: object
     properties:
       minimum:
@@ -16,6 +17,7 @@ properties:
           - fifo
           - lifo
   up:
+    title: AutoscaleGroupScaleUp
     type: object
     properties:
       maximum:

@@ -1,4 +1,4 @@
-title: Group
+title: AutoscaleGroup
 type: object
 required:
   - id
@@ -19,15 +19,30 @@ properties:
   identifier:
     type: string
   creator:
+    $ref: ../../../creators/CreatorScope.yml
   hub_id:
     type: string
   cluster:
     type: string
   scale:
-    $ref: "./Scale.yml"
+    $ref: "./AutoscaleGroupScale.yml"
   infrastructure:
+    $ref: "./AutoscaleGroupInfrastructure.yml"
   state:
-    $ref: ../../../State.yml
+    title: AutoscaleGroupState
+    allOf:
+      - required:
+          - current
+        properties:
+          current:
+            description: The current state of the server.
+            type: string
+            enum:
+              - new
+              - live
+              - deleting
+              - deleted
+      - $ref: ../../../State.yml
   events:
     title: AutoscaleGroupEvents
     type: object

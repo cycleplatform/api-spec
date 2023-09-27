@@ -321,6 +321,10 @@ paths:
     "$ref": "./paths/infrastructure/providers/provider.yml"
   "/v1/infrastructure/providers/{providerId}/tasks":
     "$ref": "./paths/infrastructure/providers/tasks.yml"
+  "/v1/infrastructure/auto-scale/groups":
+    "$ref": "./paths/infrastructure/autoscale/groups/groups.yml"
+  "/v1/infrastructure/auto-scale/groups/{groupId}":
+    "$ref": "./paths/infrastructure/autoscale/groups/group.yml"
   # Servers
   "/v1/infrastructure/servers":
     "$ref": "./paths/infrastructure/servers/servers.yml"
