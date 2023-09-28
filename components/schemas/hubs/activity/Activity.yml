@@ -202,6 +202,8 @@ properties:
 
       - container.instances.create
       - container.instances.delete
+      - container.instances.autoscale.up
+      - container.instances.autoscale.down
 
       - container.instance.healthcheck.restarted
       - container.instance.error
