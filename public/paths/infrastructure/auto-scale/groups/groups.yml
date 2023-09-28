@@ -4,6 +4,22 @@ get:
     - InfrastructureAutoScaleGroup
   parameters:
     - $ref: ../../../../../components/parameters/PageParam.yml
+    - name: include
+      in: query
+      required: false
+      description:
+        A comma separated list of include values. Included resources will show
+        up under the root document's `include` field, with the key being the id of the included
+        resource. In the case of applying an include to a collection of resources, if two
+        resources share the same include, it will only appear once in the return.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - providers
+            - models
+            - locations
   summary: Get Auto-Scale Groups list
   description: Requires the `autoscale-groups-manage` capability.
   responses:
@@ -19,6 +35,8 @@ get:
                 type: array
                 items:
                   $ref: ../../../../../components/schemas/infrastructure/auto-scale/groups/AutoScaleGroup.yml
+              includes:
+                $ref: ../../../../../components/schemas/infrastructure/auto-scale/groups/AutoScaleGroupIncludes.yml
     default:
       $ref: ../../../../../components/responses/errors/DefaultError.yml
 post:

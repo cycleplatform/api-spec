@@ -1,0 +1,10 @@
+title: AutoScaleGroupIncludes
+description: All includable resource linkable to the given auto-scale group.
+type: object
+properties:
+  providers:
+    "$ref": "../../../includes/ProvidersIncludes.yml"
+  models:
+    "$ref": "../../../includes/ServerModelsIncludes.yml"
+  locations:
+    "$ref": "../../../includes/LocationsIncludes.yml"
