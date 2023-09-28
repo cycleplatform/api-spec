@@ -168,11 +168,6 @@ properties:
       - billing.method.task.delete
       - billing.method.create
 
-      - infrastructure.provider.update
-      - infrastructure.provider.task.delete
-      - infrastructure.provider.create
-      - infrastructure.provider.task.verify
-
       - hub.apikey.update
       - hub.apikey.delete
       - hub.apikey.create
@@ -249,6 +244,11 @@ properties:
       - stack.build.task.generate
       - stack.build.task.deploy
 
+      - infrastructure.provider.update
+      - infrastructure.provider.task.delete
+      - infrastructure.provider.create
+      - infrastructure.provider.task.verify
+
       - infrastructure.server.task.delete
       - infrastructure.server.task.restart
       - infrastructure.server.services.sftp.auth
@@ -267,6 +267,10 @@ properties:
       - infrastructure.server.services.sftp.lockdown
       - infrastructure.server.services.internal-api.throttle
 
+      - infrastructure.autoscale.group.update
+
+      - infrastructure.ips.pool.task.delete
+
       - sdn.network.update
       - sdn.network.task.delete
       - sdn.network.create
@@ -282,8 +286,6 @@ properties:
       - pipeline.key.update
       - pipeline.key.delete
       - pipeline.key.create
-
-      - infrastructure.ips.pool.task.delete
   time:
     description: A timestamp for when the activity took place.
     "$ref": "../../DateTime.yml"
