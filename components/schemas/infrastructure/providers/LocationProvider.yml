@@ -16,3 +16,7 @@ properties:
   code:
     type: string
     description: A location code returned from the provider.
+  availability_zones:
+    type: array
+    items:
+      type: string
