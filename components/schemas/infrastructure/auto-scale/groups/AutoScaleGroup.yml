@@ -1,4 +1,4 @@
-title: AutoscaleGroup
+title: AutoScaleGroup
 type: object
 required:
   - id
@@ -25,17 +25,17 @@ properties:
   cluster:
     type: string
   scale:
-    $ref: "./AutoscaleGroupScale.yml"
+    $ref: "./AutoScaleGroupScale.yml"
   infrastructure:
-    $ref: "./AutoscaleGroupInfrastructure.yml"
+    $ref: "./AutoScaleGroupInfrastructure.yml"
   state:
-    title: AutoscaleGroupState
+    title: AutoScaleGroupState
     allOf:
       - required:
           - current
         properties:
           current:
-            description: The current state of the server.
+            description: The current state of the auto-scale group.
             type: string
             enum:
               - new
@@ -44,9 +44,9 @@ properties:
               - deleted
       - $ref: ../../../State.yml
   events:
-    title: AutoscaleGroupEvents
+    title: AutoScaleGroupEvents
     type: object
-    description: A collection of timestamps for each event in the network's lifetime.
+    description: A collection of timestamps for each event in the auto-scale group's lifetime.
     required:
       - created
       - updated
@@ -54,14 +54,14 @@ properties:
       - last_sync
     properties:
       created:
-        description: The timestamp of when the autoscale group was created.
+        description: The timestamp of when the auto-scale group was created.
         $ref: ../../../DateTime.yml
       updated:
-        description: The timestamp of when the autoscale group was updated.
+        description: The timestamp of when the auto-scale group was updated.
         $ref: ../../../DateTime.yml
       deleted:
-        description: The timestamp of when the autoscale group was deleted.
+        description: The timestamp of when the auto-scale group was deleted.
         $ref: ../../../DateTime.yml
       last_sync:
-        description: The timestamp of when the autoscale group was last synced.
+        description: The timestamp of when the auto-scale group was last synced.
         $ref: ../../../DateTime.yml

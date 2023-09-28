@@ -1,35 +1,35 @@
 get:
-  operationId: "getAutoscaleGroups"
+  operationId: "getAutoScaleGroups"
   tags:
-    - InfrastructureAutoscaleGroup
+    - InfrastructureAutoScaleGroup
   parameters:
     - $ref: ../../../../../components/parameters/PageParam.yml
-  summary: Get Autoscale Groups list
+  summary: Get Auto-Scale Groups list
   description: Requires the `autoscale-groups-manage` capability.
   responses:
     200:
-      description: A collection of pool resources.
+      description: A collection of autoscale group resources.
       content:
         application/json:
           schema:
-            title: "IPPoolsReturn"
+            title: "GetAutoScaleGroupResponse"
             type: object
             properties:
               data:
                 type: array
                 items:
-                  $ref: ../../../../../components/schemas/infrastructure/autoscale/groups/AutoscaleGroup.yml
+                  $ref: ../../../../../components/schemas/infrastructure/auto-scale/groups/AutoScaleGroup.yml
     default:
       $ref: ../../../../../components/responses/errors/DefaultError.yml
 post:
-  operationId: createAutoscaleGroup
+  operationId: createAutoScaleGroup
   tags:
-    - InfrastructureAutoscaleGroup
+    - InfrastructureAutoScaleGroup
   parameters: []
-  summary: Create Autoscale Group
+  summary: Create Auto-Scale Group
   description: Requires the 'autoscale-groups-manage'
   requestBody:
-    description: Parameters for creating an autoscale group
+    description: Parameters for creating an auto-scale group
     content:
       application/json:
         schema:
@@ -48,19 +48,19 @@ post:
             cluster:
               type: string
             scale:
-              $ref: ../../../../../components/schemas/infrastructure/autoscale/groups/AutoscaleGroupScale.yml
+              $ref: ../../../../../components/schemas/infrastructure/auto-scale/groups/AutoScaleGroupScale.yml
             infrastructure:
-              $ref: ../../../../../components/schemas/infrastructure/autoscale/groups/AutoscaleGroupInfrastructure.yml
+              $ref: ../../../../../components/schemas/infrastructure/auto-scale/groups/AutoScaleGroupInfrastructure.yml
   responses:
     201:
-      description: Returns a autoscale group resource.
+      description: Returns an auto-scale group resource.
       content:
         application/json:
           schema:
-            title: "ProviderCreateResponse"
+            title: "CreateAutoScaleGroupResponse"
             type: object
             properties:
               data:
-                $ref: ../../../../../components/schemas/infrastructure/autoscale/groups/AutoscaleGroup.yml
+                $ref: ../../../../../components/schemas/infrastructure/auto-scale/groups/AutoScaleGroup.yml
     default:
       $ref: ../../../../../components/responses/errors/DefaultError.yml

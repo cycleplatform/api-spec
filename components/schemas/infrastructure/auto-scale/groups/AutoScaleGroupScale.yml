@@ -1,8 +1,8 @@
-title: AutoscaleGroupScale
+title: AutoScaleGroupScale
 type: object
 properties:
   down:
-    title: AutoscaleGroupScaleDown
+    title: AutoScaleGroupScaleDown
     type: object
     properties:
       minimum:
@@ -13,7 +13,7 @@ properties:
           - fifo
           - lifo
   up:
-    title: AutoscaleGroupScaleUp
+    title: AutoScaleGroupScaleUp
     type: object
     properties:
       maximum:
