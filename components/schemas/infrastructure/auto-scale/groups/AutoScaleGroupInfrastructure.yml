@@ -1,0 +1,35 @@
+title: AutoScaleGroupInfrastructure
+type: object
+required:
+  - models
+properties:
+  models:
+    type: array
+    items:
+      type: object
+      required:
+        - provider
+        - id
+        - priority
+        - locations
+      properties:
+        provider:
+          type: string
+        id:
+          type: string
+        priority:
+          type: integer
+        locations:
+          type: array
+          items:
+            type: object
+            required:
+              - id
+              - availability_zones
+            properties:
+              id:
+                type: string
+              availability_zones:
+                type: array
+                items:
+                  type: string

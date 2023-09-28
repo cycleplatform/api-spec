@@ -1,0 +1,20 @@
+title: AutoScaleGroupScale
+type: object
+properties:
+  down:
+    title: AutoScaleGroupScaleDown
+    type: object
+    properties:
+      minimum:
+        type: integer
+      method:
+        type: string
+        enum:
+          - fifo
+          - lifo
+  up:
+    title: AutoScaleGroupScaleUp
+    type: object
+    properties:
+      maximum:
+        type: integer

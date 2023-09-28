@@ -1,0 +1,66 @@
+get:
+  operationId: "getAutoScaleGroups"
+  tags:
+    - InfrastructureAutoScaleGroup
+  parameters:
+    - $ref: ../../../../../components/parameters/PageParam.yml
+  summary: Get Auto-Scale Groups list
+  description: Requires the `autoscale-groups-manage` capability.
+  responses:
+    200:
+      description: A collection of autoscale group resources.
+      content:
+        application/json:
+          schema:
+            title: "GetAutoScaleGroupResponse"
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: ../../../../../components/schemas/infrastructure/auto-scale/groups/AutoScaleGroup.yml
+    default:
+      $ref: ../../../../../components/responses/errors/DefaultError.yml
+post:
+  operationId: createAutoScaleGroup
+  tags:
+    - InfrastructureAutoScaleGroup
+  parameters: []
+  summary: Create Auto-Scale Group
+  description: Requires the 'autoscale-groups-manage'
+  requestBody:
+    description: Parameters for creating an auto-scale group
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - name
+            - identifier
+            - cluster
+            - scale
+            - infrastructure
+          properties:
+            name:
+              type: string
+            identifier:
+              type: string
+            cluster:
+              type: string
+            scale:
+              $ref: ../../../../../components/schemas/infrastructure/auto-scale/groups/AutoScaleGroupScale.yml
+            infrastructure:
+              $ref: ../../../../../components/schemas/infrastructure/auto-scale/groups/AutoScaleGroupInfrastructure.yml
+  responses:
+    201:
+      description: Returns an auto-scale group resource.
+      content:
+        application/json:
+          schema:
+            title: "CreateAutoScaleGroupResponse"
+            type: object
+            properties:
+              data:
+                $ref: ../../../../../components/schemas/infrastructure/auto-scale/groups/AutoScaleGroup.yml
+    default:
+      $ref: ../../../../../components/responses/errors/DefaultError.yml

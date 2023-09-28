@@ -1,0 +1,67 @@
+title: AutoScaleGroup
+type: object
+required:
+  - id
+  - name
+  - identifier
+  - creator
+  - hub_id
+  - cluster
+  - infrastructure
+  - state
+  - events
+  - cache
+properties:
+  id:
+    type: string
+  name:
+    type: string
+  identifier:
+    type: string
+  creator:
+    $ref: ../../../creators/CreatorScope.yml
+  hub_id:
+    type: string
+  cluster:
+    type: string
+  scale:
+    $ref: "./AutoScaleGroupScale.yml"
+  infrastructure:
+    $ref: "./AutoScaleGroupInfrastructure.yml"
+  state:
+    title: AutoScaleGroupState
+    allOf:
+      - required:
+          - current
+        properties:
+          current:
+            description: The current state of the auto-scale group.
+            type: string
+            enum:
+              - new
+              - live
+              - deleting
+              - deleted
+      - $ref: ../../../State.yml
+  events:
+    title: AutoScaleGroupEvents
+    type: object
+    description: A collection of timestamps for each event in the auto-scale group's lifetime.
+    required:
+      - created
+      - updated
+      - deleted
+      - last_sync
+    properties:
+      created:
+        description: The timestamp of when the auto-scale group was created.
+        $ref: ../../../DateTime.yml
+      updated:
+        description: The timestamp of when the auto-scale group was updated.
+        $ref: ../../../DateTime.yml
+      deleted:
+        description: The timestamp of when the auto-scale group was deleted.
+        $ref: ../../../DateTime.yml
+      last_sync:
+        description: The timestamp of when the auto-scale group was last synced.
+        $ref: ../../../DateTime.yml
