@@ -9,13 +9,13 @@ properties:
       type: object
       required:
         - provider
-        - id
+        - model_id
         - priority
         - locations
       properties:
         provider:
           type: string
-        id:
+        model_id:
           type: string
         priority:
           type: integer
