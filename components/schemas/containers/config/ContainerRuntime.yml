@@ -29,6 +29,7 @@ properties:
         - network
         - mount
         - user
+        - cgroup
     description: Namespaces the given container will have access to.
   environment_vars:
     type: object
