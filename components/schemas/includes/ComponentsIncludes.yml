@@ -25,3 +25,4 @@ additionalProperties:
     - $ref: ../hubs/Hub.yml
     - $ref: ../billing/invoices/Invoice.yml
     - $ref: ../billing/methods/Method.yml
+    - $ref: ../infrastructure/auto-scale/groups/AutoScaleGroup.yml
