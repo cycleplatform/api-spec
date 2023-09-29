@@ -139,9 +139,9 @@ properties:
   state:
     $ref: InstanceState.yml
   autoscale:
+    type: object
+    nulable: true
     allOf:
-      - type: object
-        nullable: true
       - $ref: InstanceAutoScale.yml
   events:
     title: InstanceEvents
