@@ -16,6 +16,7 @@ required:
   - migration
   - service
   - state
+  - autoscale
   - events
 properties:
   id:
@@ -41,7 +42,7 @@ properties:
       - vxlan_tag
     properties:
       id:
-        $ref: "../../ID.yml"
+        $ref: ../../ID.yml
       network_subnet:
         type: string
       subnet:
@@ -78,7 +79,7 @@ properties:
       - base_hostname
     properties:
       id:
-        $ref: "../../ID.yml"
+        $ref: ../../ID.yml
       base_hostname:
         type: string
         description: The base hostname for the given instance.
@@ -109,15 +110,15 @@ properties:
       - copy_volumes
     properties:
       to:
-        $ref: "./MigrationInstance.yml"
+        $ref: MigrationInstance.yml
       from:
-        $ref: "./MigrationInstance.yml"
+        $ref: MigrationInstance.yml
       started:
         description: A timestamp of when the migration was started.
-        $ref: "../../DateTime.yml"
+        $ref: ../../DateTime.yml
       completed:
         description: A timestamp of when the migration was completed.
-        $ref: "../../DateTime.yml"
+        $ref: ../../DateTime.yml
       key:
         type: string
         description: A key used by the platform to verify the migration.
@@ -126,7 +127,7 @@ properties:
         description: A boolean where true represents the volumes for the instance should be copied to the new server as well.
   purge_time:
     description: If the instance was purged, the timestamp of when that happened.
-    $ref: "../../DateTime.yml"
+    $ref: ../../DateTime.yml
   service:
     type: string
     description: If the instance is an instance of a service container that will be denoted here.
@@ -136,7 +137,12 @@ properties:
       - vpn
       - loadbalancer
   state:
-    $ref: "./InstanceState.yml"
+    $ref: "InstanceState.yml"
+  autoscale:
+    allOf:
+      - type: object
+        nullable: true
+      - $ref: InstanceAutoScale.yml
   events:
     title: InstanceEvents
     description: A collection of timestamps for each event in the instnaces lifetime.
@@ -148,13 +154,13 @@ properties:
     properties:
       created:
         description: The timestamp of when the instance was created.
-        $ref: "../../DateTime.yml"
+        $ref: ../../DateTime.yml
       updated:
         description: The timestamp of when the instance was updated.
-        $ref: "../../DateTime.yml"
+        $ref: ../../DateTime.yml
       deleted:
         description: The timestamp of when the instance was deleted.
-        $ref: "../../DateTime.yml"
+        $ref: ../../DateTime.yml
       first_started:
         description: The timestamp of when the instance was started.
-        $ref: "../../DateTime.yml"
+        $ref: ../../DateTime.yml
