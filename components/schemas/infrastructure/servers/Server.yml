@@ -14,13 +14,15 @@ required:
   - cluster
   - features
   - constraints
+  - ephemeral
+  - autoscale
   - state
   - events
 properties:
   id:
-    "$ref": "../../ID.yml"
+    $ref: "../../ID.yml"
   hub_id:
-    "$ref": "../../HubID.yml"
+    $ref: "../../HubID.yml"
   location_id:
     type: string
     description: An identifier for the location this server is deployed to.
@@ -34,18 +36,29 @@ properties:
     type: string
     description: The server hostname.
   creator:
-    "$ref": "../../creators/CreatorScope.yml"
+    $ref: "../../creators/CreatorScope.yml"
   provider:
-    "$ref": "./ServerProvider.yml"
+    $ref: "./ServerProvider.yml"
   cluster:
     type: string
     description: The cluster the given server is deployed to.
   features:
-    "$ref": "./ServerFeatures.yml"
+    $ref: "./ServerFeatures.yml"
   constraints:
-    "$ref": "./ServerConstraints.yml"
+    $ref: "./ServerConstraints.yml"
+  autoscale:
+    nullable: true
+    type: object
+    required:
+      - group_id
+    properties:
+      group_id:
+        $ref: "../../ID.yml"
+  ephemeral:
+    type: boolean
+    description: Set to true when a server is created as part of an auto-scale event.
   state:
-    "$ref": "./ServerState.yml"
+    $ref: "./ServerState.yml"
   events:
     title: ServerEvents
     type: object
@@ -58,13 +71,13 @@ properties:
     properties:
       created:
         description: The timestamp of when the server was created.
-        "$ref": "../../DateTime.yml"
+        $ref: "../../DateTime.yml"
       updated:
         description: The timestamp of when the server was updated.
-        "$ref": "../../DateTime.yml"
+        $ref: "../../DateTime.yml"
       deleted:
         description: The timestamp of when the server was deleted.
-        "$ref": "../../DateTime.yml"
+        $ref: "../../DateTime.yml"
       provisioning:
         type: object
         description: Information about the provisioning of the server.
@@ -74,9 +87,9 @@ properties:
         properties:
           started:
             description: A timestamp of when the server started provisioning.
-            "$ref": "../../DateTime.yml"
+            $ref: "../../DateTime.yml"
           completed:
             description: A timestamp of when the server completed provisioning.
-            "$ref": "../../DateTime.yml"
+            $ref: "../../DateTime.yml"
   meta:
-    "$ref": "./ServerMeta.yml"
+    $ref: "./ServerMeta.yml"
