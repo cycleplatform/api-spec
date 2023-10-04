@@ -14,15 +14,11 @@ properties:
     type: object
     description: Describes how many instances should be running
     required:
-      - min
       - delta
       - max
       - max_server
       - min_ttl
     properties:
-      min:
-        type: integer
-        description: Minimum additional instances the auto-scaler will run at any time
       delta:
         type: integer
         description: Number of additional instances the auto-scaler will add/subtract per scaling event
