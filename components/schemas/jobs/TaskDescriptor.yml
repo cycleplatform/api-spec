@@ -8,9 +8,6 @@ properties:
   action:
     type: string
     description: The action that was taken.
-  job_id:
-    type: string
-    description: The ID of the job associated with this task.
   job:
     type: object
     description: Contains some basic information about the job associated with this task.
