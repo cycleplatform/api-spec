@@ -67,6 +67,7 @@ properties:
       - created
       - updated
       - deleted
+      - latest_instance
       - provisioning
     properties:
       created:
@@ -78,15 +79,22 @@ properties:
       deleted:
         description: The timestamp of when the server was deleted.
         $ref: "../../DateTime.yml"
+      latest_instance:
+        description: The timestamp of when the latest instance was deployed to this server.
+        $ref: "../../DateTime.yml"
       provisioning:
         type: object
         description: Information about the provisioning of the server.
         required:
           - started
+          - failed
           - completed
         properties:
           started:
             description: A timestamp of when the server started provisioning.
+            $ref: "../../DateTime.yml"
+          failed:
+            description: A timestamp of when the server failed provisioning.
             $ref: "../../DateTime.yml"
           completed:
             description: A timestamp of when the server completed provisioning.
