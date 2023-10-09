@@ -5,8 +5,12 @@ properties:
     title: AutoScaleGroupScaleDown
     type: object
     properties:
-      minimum:
-        type: integer
+      min_ttl:
+        description: "The minimum TTL for the server once deployed through an autoscale event."
+        $ref: ../../../Duration.yml
+      inactivity_period:
+        description: "The amount of time between last instance deployed and when the server can begin to get deleted."
+        $ref: ../../../Duration.yml
       method:
         type: string
         enum:
