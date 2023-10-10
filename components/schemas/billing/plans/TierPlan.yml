@@ -47,10 +47,16 @@ properties:
     required:
       - gpu
       - ial
+      - glb
+      - autoscale
     properties:
       gpu:
         type: boolean
       ial:
+        type: boolean
+      glb:
+        type: boolean
+      autoscale:
         type: boolean
   max_daily_api_requests:
     type: number
