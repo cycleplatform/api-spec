@@ -52,6 +52,10 @@ get:
       schema:
         type: object
         properties:
+          creator:
+            type: string
+            description: |
+              `filter[creator]=account-ID` filter for containers matching a particular creator, such as `account-ID` or `environment-ID`
           identifier:
             type: string
             description: |

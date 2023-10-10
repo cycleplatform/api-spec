@@ -20,6 +20,33 @@ get:
             - providers
             - models
             - locations
+    - name: filter
+      in: query
+      # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706
+      style: deepObject
+      required: false
+      description: |
+        ## Filter Field 
+        The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
+      schema:
+        type: object
+        properties:
+          search:
+            type: string
+            description: |
+              `filter[search]=value` search for a value associated with a field on the given auto-scale group(s).
+          cluster:
+            type: string
+            description: |
+              `filter[cluster]=value` return a list of auto-scale groups that are associated with the specified cluster.
+          identifier:
+            type: string
+            description: |
+              `filter[identifier]=value` list only those auto-scale groups matching this identifier. May return multiple results.
+          state:
+            type: string
+            description: |
+              `filter[state]=value1,value2` state filtering will allow you to filter by the provider's current state.
   summary: Get Auto-Scale Groups list
   description: Requires the `autoscale-groups-manage` capability.
   responses:

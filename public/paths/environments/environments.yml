@@ -47,6 +47,10 @@ get:
       schema:
         type: object
         properties:
+          creator:
+            type: string
+            description: |
+              `filter[creator]=account-ID` filter for environments matching a particular creator, such as `account-ID`.
           identifier:
             type: string
             description: |
