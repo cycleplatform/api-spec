@@ -3,7 +3,7 @@ title: NodeState
 allOf:
   - required:
       - current
-      - current
+      - changed
     properties:
       current:
         description: The current state of the node.
