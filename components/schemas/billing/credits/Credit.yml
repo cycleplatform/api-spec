@@ -30,8 +30,9 @@ properties:
     type: integer
     description: The amount of the credit that remains after being applied to invoices.
   expires:
-    nullable: true
-    type: object
+    type:
+      - "object"
+      - "null"
     description: Information on when the billing credit expires.
     properties:
       date:

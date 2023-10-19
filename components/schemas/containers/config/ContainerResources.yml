@@ -29,9 +29,8 @@ properties:
     description: Configuration settings for limits and reserves of RAM resources for the given container.
     properties:
       limit:
-        type: string
         description: The limit (maximum) amount of RAM each instance of the given container can use.
-        example: "1G, 2M"
+        $ref: ../../ByteSize.yml
       reserve:
         type: string
         description: The reserve (allocation) of RAM given to each instance of the container.

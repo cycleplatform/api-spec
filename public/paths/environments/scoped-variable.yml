@@ -60,8 +60,9 @@ patch:
               type: string
               description: An identifier, similar to a key in an environment variable.  Its used when envoking the scoped variable.
             secret:
-              nullable: true
-              type: object
+              type:
+                - "object"
+                - "null"
               description: An object with information about the encryption of the scoped variable.
               required:
                 - encrypted

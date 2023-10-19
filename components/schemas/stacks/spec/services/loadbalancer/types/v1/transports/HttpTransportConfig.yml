@@ -21,6 +21,7 @@ properties:
         description: Defines extra configuration options connections to the load balancer
         properties:
           max_idle_conns_per_connection:
-            nullable: true
-            type: integer
+            type:
+              - "integer"
+              - "null"
             description: Maximum number of simultaneous connections (via http/2) per connection.

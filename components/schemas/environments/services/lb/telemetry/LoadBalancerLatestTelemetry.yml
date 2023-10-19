@@ -49,9 +49,8 @@ items:
           controller:
             $ref: ../../../../Identifier.yml
           latest:
-            type: object
-            nullable: true
             allOf:
+              - type: "null"
               - $ref: LoadBalancerTelemetrySnapshot.yml
           snapshots:
             type: array

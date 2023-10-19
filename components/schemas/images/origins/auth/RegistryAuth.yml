@@ -1,6 +1,7 @@
 title: RegistryAuth
-type: object
-nullable: true
+type:
+  - "object"
+  - "null"
 description: Authentication details for a third party image registry/source.
 discriminator:
   propertyName: type

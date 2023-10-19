@@ -18,6 +18,5 @@ properties:
       private:
         type: boolean
       bandwidth:
-        type: string
+        $ref: ../../../ByteSize.yml
         description: The limit (maximum) amount of throughput each instance of the given container can use before triggering a scaling event.
-        example: "1G, 2M"

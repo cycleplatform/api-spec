@@ -12,8 +12,9 @@ properties:
         - requests
       properties:
         connections:
-          nullable: true
-          type: object
+          type:
+            - "object"
+            - "null"
           required:
             - success
             - unavailable
@@ -27,8 +28,9 @@ properties:
               additionalProperties:
                 type: integer
         requests:
-          nullable: true
-          type: object
+          type:
+            - "object"
+            - "null"
           required:
             - total
           properties:

@@ -26,16 +26,19 @@ properties:
       - support_id
     properties:
       tier_id:
-        type: string
-        nullable: true
+        type:
+          - "string"
+          - "null"
         description: An ID referencing the pricing tier applied to this hub.
       support_id:
-        type: string
-        nullable: true
+        type:
+          - "string"
+          - "null"
         description: An ID referencing the support plan applied to this hub.
   emails:
-    type: array
-    nullable: true
+    type:
+      - "array"
+      - "null"
     items:
       type: string
     description: An array of email addresses to whom the billing invoices will be sent to. If left empty, they will be sent to the owner of this hub.

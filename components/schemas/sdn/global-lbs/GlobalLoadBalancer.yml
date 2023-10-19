@@ -30,8 +30,9 @@ properties:
   state:
     $ref: GlobalLoadBalancerState.yml
   environments:
-    type: array
-    nullable: true
+    type:
+      - "array"
+      - "null"
     description: An array where each item lists an environment ID and settings for the global load balancer to route traffic to them.
     items:
       title: GlobalLoadBalancerEnvironment

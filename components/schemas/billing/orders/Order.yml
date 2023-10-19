@@ -18,8 +18,9 @@ properties:
   creator:
     "$ref": "../../common/UserScope.yml"
   promo_code_id:
-    type: string
-    nullable: true
+    type:
+      - "string"
+      - "null"
   term:
     "$ref": "../Term.yml"
   approved:

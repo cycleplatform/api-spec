@@ -9,5 +9,4 @@ properties:
     $ref: Error.yml
   data:
     description: Data will always be `null` here.
-    type: object
-    nullable: true
+    type: "null"

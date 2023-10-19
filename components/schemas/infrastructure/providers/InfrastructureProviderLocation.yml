@@ -17,9 +17,8 @@ properties:
     type: string
     description: A name for the location.
   geographic:
-    allOf:
-      - type: object
-        nullable: true
+    anyOf:
+      - type: "null"
       - $ref: ./Geographic.yml
   provider:
     $ref: ./LocationProvider.yml

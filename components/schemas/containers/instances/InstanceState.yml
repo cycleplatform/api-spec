@@ -19,16 +19,18 @@ allOf:
           - deleting
           - deleted
       health:
-        type: object
-        nullable: true
+        type:
+          - "object"
+          - "null"
         description: information about the health of the instance.
         required:
           - healthy
           - updated
         properties:
           healthy:
-            type: boolean
-            nullable: true
+            type:
+              - "boolean"
+              - "null"
             description: |
               Describes the healthiness of the instance. Health checks can be configured at the container level. 
               - `true`: The instance is considered healthy.

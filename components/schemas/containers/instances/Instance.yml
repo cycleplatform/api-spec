@@ -48,11 +48,13 @@ properties:
       subnet:
         type: string
       ipv6:
-        nullable: true
-        $ref: ../../environments/IPNet.yml
+        anyOf:
+          - type: "null"
+          - $ref: ../../environments/IPNet.yml
       legacy:
-        nullable: true
-        type: object
+        type:
+          - "object"
+          - "null"
         required:
           - host
           - subnet
@@ -63,17 +65,19 @@ properties:
           subnet:
             type: integer
           ipv4:
-            nullable: true
-            $ref: ../../environments/IPNet.yml
+            anyOf:
+              - type: "null"
+              - $ref: ../../environments/IPNet.yml
       mac_addr:
         type: string
       vxlan_tag:
         type: integer
 
   stateful:
-    type: object
+    type:
+      - "object"
+      - "null"
     description: Additional information about the instance relating to its setting as being stateful.
-    nullable: true
     required:
       - id
       - base_hostname
@@ -102,9 +106,10 @@ properties:
     type: string
     description: The hostname of the instance.
   migration:
-    type: object
+    type:
+      - "object"
+      - "null"
     description: If this instance is scheduled to be migrated or has been migrated in the past, there will be information populating this field with the server that the instance came from or the server that the instance was moved to and the instance ID.
-    nullable: true
     required:
       - key
       - copy_volumes
@@ -129,9 +134,10 @@ properties:
     description: If the instance was purged, the timestamp of when that happened.
     $ref: ../../DateTime.yml
   service:
-    type: string
+    type:
+      - "string"
+      - "null"
     description: If the instance is an instance of a service container that will be denoted here.
-    nullable: true
     enum:
       - discovery
       - vpn
@@ -139,9 +145,8 @@ properties:
   state:
     $ref: InstanceState.yml
   autoscale:
-    type: object
-    nullable: true
-    allOf:
+    anyOf:
+      - type: "null"
       - $ref: InstanceAutoScale.yml
   events:
     title: InstanceEvents

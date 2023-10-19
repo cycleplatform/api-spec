@@ -66,11 +66,12 @@ properties:
         items:
           "$ref": "../common/Capability.yml"
   ips:
-    type: array
+    type:
+      - "array"
+      - "null"
     description: An array of IP's this API key can make calls from.
     items:
       type: string
-    nullable: true
   state:
     "$ref": "./ApiKeyState.yml"
   events:

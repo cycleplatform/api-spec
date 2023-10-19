@@ -1,11 +1,12 @@
 title: DNSRecordCertificate
-type: object
+type:
+  - "object"
+  - "null"
 description: A TLS record certificate
 required:
   - id
   - generated
   - wildcard_child
-nullable: true
 properties:
   id:
     "$ref": "../../ID.yml"

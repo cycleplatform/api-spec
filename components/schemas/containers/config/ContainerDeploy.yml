@@ -14,12 +14,14 @@ properties:
     type: object
     properties:
       options:
-        type: object
-        nullable: true
+        type:
+          - "object"
+          - "null"
         properties:
           use_base_hostname:
-            type: boolean
-            nullable: true
+            type:
+              - "boolean"
+              - "null"
   constraints:
     type: object
     description: Settings that give more granular control over deployment targets and conditions.

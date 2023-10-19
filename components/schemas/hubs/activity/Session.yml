@@ -14,8 +14,9 @@ properties:
     type: string
     description: The IP of the account associated with the session.
   token:
-    type: object
-    nullable: true
+    type:
+      - "object"
+      - "null"
     required:
       - application_id
       - application_capabilities_version
@@ -25,6 +26,7 @@ properties:
       application_capabilities_version:
         type: integer
   api_key:
-    type: string
+    type:
+      - "string"
+      - "null"
     description: The API key ID.
-    nullable: true

@@ -20,12 +20,14 @@ properties:
       - options
     properties:
       options:
-        nullable: true
-        type: object
+        type:
+          - "object"
+          - "null"
         properties:
           use_base_hostname:
-            type: boolean
-            nullable: true
+            type:
+              - "boolean"
+              - "null"
   constraints:
     type: object
     properties:
@@ -57,10 +59,9 @@ properties:
     type: object
     properties:
       graceful_timeout:
-        type: string
-        nullable: true
         description: How long the platform will wait for a container to stop gracefully.
-        allOf:
+        anyOf:
+          - type: "null"
           - $ref: ../../Duration.yml
       signals:
         type: array
@@ -70,10 +71,9 @@ properties:
     type: object
     properties:
       delay:
-        nullable: true
-        type: string
         description: How long the platform will wait before sending the start signal to the given container.
-        allOf:
+        anyOf:
+          - type: "null"
           - $ref: ../../Duration.yml
   update:
     type: object
@@ -121,7 +121,8 @@ properties:
       command:
         type: string
         description: The command to run as your health check
-        example: /bin/sh healthcheck.sh
+        examples:
+          - /bin/sh healthcheck.sh
       retries:
         type: integer
         description: The number of times to retry the command before marking an instance unhealthy
