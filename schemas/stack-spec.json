@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/cycleplatform/api-spec/main/schemas/stack-schema.json",
+  "title": "Cycle Stack File",
+  "description": "A stack file for use with https://cycle.io",
+  "type": "object",
+  "required": ["version", "containers"],
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "A string defining the version of the stack spec."
+    },
+    "about": {
+      "type": "object",
+      "description": "Information about the stack.",
+      "required": ["description", "version"],
+      "properties": {
+        "version": {
+          "type": "string",
+          "description": "Internal version information set by the user."
+        },
+        "description": {
+          "type": "string",
+          "description": "Information describing the stack."
+        }
+      }
+    },
+    "tests": {
+      "type": "array",
+      "items": {
+        "$ref": "StackSpecTestContainer.yml"
+      }
+    },
+    "containers": {
+      "$ref": "./StackContainer.yml"
+    },
+    "services": {
+      "title": "StackSpecServices",
+      "type": "object",
+      "properties": {
+        "loadbalancer": {
+          "$ref": "services/loadbalancer/StackSpecLoadBalancerConfig.yml"
+        },
+        "vpn": {
+          "type": "object",
+          "required": ["auth", "allow_internet"],
+          "properties": {
+            "auth": {
+              "type": "object",
+              "required": ["cycle_accounts", "vpn_accounts"],
+              "properties": {
+                "webhook": {
+                  "type": "string"
+                },
+                "cycle_accounts": {
+                  "type": "boolean"
+                },
+                "vpn_accounts": {
+                  "type": "boolean"
+                }
+              }
+            },
+            "allow_internet": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "annotations": {
+      "type": "object",
+      "description": "Additional meta info about the stack.",
+      "additionalProperties": {}
+    }
+  }
+}

@@ -58,8 +58,9 @@ post:
                   items:
                     $ref: ../../../../components/schemas/common/Capability.yml
             ips:
-              type: array
-              nullable: true
+              type:
+                - "array"
+                - "null"
               description: An array of approved IPs from which this API Key can be used.
               items:
                 type: string

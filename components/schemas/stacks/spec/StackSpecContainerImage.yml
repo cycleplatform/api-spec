@@ -5,8 +5,9 @@ required:
   - origin
 properties:
   name:
-    nullable: true
-    type: string
+    type:
+      - "string"
+      - "null"
   origin:
     $ref: "../../images/origins/ImageOrigin.yml"
   build:

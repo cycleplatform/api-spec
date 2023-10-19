@@ -15,9 +15,8 @@ properties:
       - max_size
     properties:
       max_size:
-        type: string
-        description: The maximum size the volume can grow to. A number followed by a size. `10G` would be 10 gigabytes.
-        example: "10G"
+        description: The maximum size the volume can grow to.
+        $ref: ../../ByteSize.yml
       storage_pool:
         type: boolean
         description: A boolean where true signifies using the largest drive over 2TB for the target server.
@@ -42,8 +41,9 @@ properties:
         type: string
         description: Call out to a webhook to authenticate usernames/passwords if an organization manages their own accounts
       password:
-        type: object
-        nullable: true
+        type:
+          - "object"
+          - "null"
         description: Password configuration settings for the remote access of the container volume.
         required:
           - algorithm

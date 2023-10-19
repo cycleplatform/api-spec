@@ -31,8 +31,9 @@ properties:
       - description
     properties:
       description:
-        type: string
-        nullable: true
+        type:
+          - "string"
+          - "null"
         description: A description of the image.
   backend:
     type: object
@@ -62,8 +63,9 @@ properties:
       nvidia_gpu:
         type: boolean
   build:
-    type: object
-    nullable: true
+    type:
+      - "object"
+      - "null"
     description: Any additional build details for this image
     properties:
       args:
@@ -162,8 +164,9 @@ properties:
   creator:
     "$ref": "../creators/CreatorScope.yml"
   factory:
-    type: object
-    nullable: true
+    type:
+      - "object"
+      - "null"
     description: Identifies which factory the image was built on and when.
     required:
       - node_id

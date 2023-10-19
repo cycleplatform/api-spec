@@ -14,14 +14,16 @@ properties:
       - internal_port
     properties:
       domains:
-        nullable: true
-        type: array
+        type:
+          - "array"
+          - "null"
         description: The specific domains to match against.
         items:
           type: string
       internal_port:
-        nullable: true
-        type: array
+        type:
+          - "array"
+          - "null"
         description: The specific ports to match against.
         items:
           type: integer

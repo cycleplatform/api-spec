@@ -16,8 +16,9 @@ properties:
       - forward
     properties:
       redirect:
-        nullable: true
-        type: object
+        type:
+          - "object"
+          - "null"
         required:
           - auto_https_redirect
           - port
@@ -26,30 +27,36 @@ properties:
         description: Defines a built-in redirect for HTTP mode routers
         properties:
           auto_https_redirect:
-            nullable: true
-            type: boolean
+            type:
+              - "boolean"
+              - "null"
             description: If enabled and a sibling controller exists for port 443, requests will be auto redirected to it. Essentially sets up automatic TLS redirection for this router.
           port:
-            nullable: true
-            type: integer
+            type:
+              - "integer"
+              - "null"
             description: The port to redirect traffic to.
           scheme:
-            nullable: true
-            type: string
+            type:
+              - "string"
+              - "null"
             description: The scheme to redirect to. (i.e. `https`)
           url:
-            nullable: true
-            type: string
+            type:
+              - "string"
+              - "null"
             description: A specific URL to redirect to.
       forward:
-        nullable: true
-        type: object
+        type:
+          - "object"
+          - "null"
         required:
           - scheme
         properties:
           scheme:
-            nullable: true
-            type: string
+            type:
+              - "string"
+              - "null"
             enum:
               - tcp
               - http

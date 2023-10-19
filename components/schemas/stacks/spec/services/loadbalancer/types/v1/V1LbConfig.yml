@@ -55,8 +55,9 @@ properties:
                       type: integer
                       description: The port inbound trafic is accepted on.
                     tls:
-                      nullable: true
-                      type: object
+                      type:
+                        - "object"
+                        - "null"
                       description: TLS termination configuration. If null, the platform will use the default configuration. Port 443 by default has TLS termination enabled.
                       required:
                         - enable
@@ -68,8 +69,9 @@ properties:
                           type: boolean
                           description: Allow TLS connections and enable TLS termination.
                         server_name:
-                          type: string
-                          nullable: true
+                          type:
+                            - "string"
+                            - "null"
                           description: |
                             [Advanced] Change the domain the controller listens on.
                         allow_insecure:

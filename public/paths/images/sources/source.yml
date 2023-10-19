@@ -87,8 +87,9 @@ patch:
                 - description
               properties:
                 description:
-                  type: string
-                  nullable: true
+                  type:
+                    - "object"
+                    - "null"
                   description: A description of the image source.
   responses:
     200:

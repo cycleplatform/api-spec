@@ -45,16 +45,18 @@ properties:
     items:
       $ref: ./summaries/VolumeSummary.yml
   annotations:
-    type: object
+    type:
+      - "object"
+      - "null"
     description: Custom meta data for a given container
-    nullable: true
     additionalProperties: {}
   role:
-    type: string
+    type:
+      - "string"
+      - "null"
     description: The role of a given container if it has one.
     enum:
       - orchestrator
-    nullable: true
   stateful:
     type: boolean
     description: A boolean where true signifies the container is stateful.

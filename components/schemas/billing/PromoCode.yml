@@ -11,8 +11,9 @@ properties:
     type: string
     description: The promo "code".
   credit:
-    type: object
-    nullable: true
+    type:
+      - "object"
+      - "null"
     description: The amount of credit the promo code offers.
     additionalProperties:
       type: object

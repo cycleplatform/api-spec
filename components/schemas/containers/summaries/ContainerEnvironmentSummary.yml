@@ -1,8 +1,9 @@
 ---
 title: ContainerEnvironmentSummary
 description: A summary of supplemental environment and network information specific to a container.
-type: object
-nullable: true
+type:
+  - "object"
+  - "null"
 required:
   - id
   - cluster

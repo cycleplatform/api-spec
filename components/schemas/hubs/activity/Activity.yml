@@ -53,9 +53,8 @@ properties:
   context:
     $ref: Context.yml
   session:
-    type: object
-    nullable: true
     anyOf:
+      - type: "null"
       - $ref: Session.yml
   changes:
     type: array
@@ -67,9 +66,10 @@ properties:
     description: A record of additional annotations for the activity.
     additionalProperties: {}
   error:
-    type: object
+    type:
+      - "object"
+      - "null"
     description: An object describing a given activity error.
-    nullable: true
     required:
       - message
     properties:
@@ -77,9 +77,10 @@ properties:
         type: string
         description: The error message.
   component:
-    type: object
+    type:
+      - "object"
+      - "null"
     description: An object holding information about a component.
-    nullable: true
     required:
       - id
       - type

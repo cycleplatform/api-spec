@@ -22,14 +22,17 @@ properties:
       - vpn
     properties:
       loadbalancer:
-        nullable: true
-        $ref: "./EnvironmentServiceContainerSummary.yml"
+        anyOf:
+          - type: "null"
+          - $ref: "./EnvironmentServiceContainerSummary.yml"
       discovery:
-        nullable: true
-        $ref: "./EnvironmentServiceContainerSummary.yml"
+        anyOf:
+          - type: "null"
+          - $ref: "./EnvironmentServiceContainerSummary.yml"
       vpn:
-        nullable: true
-        $ref: "./EnvironmentServiceContainerSummary.yml"
+        anyOf:
+          - type: "null"
+          - $ref: "./EnvironmentServiceContainerSummary.yml"
   stats:
     title: EnvironmentSummaryStats
     type: object

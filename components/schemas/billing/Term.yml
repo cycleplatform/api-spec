@@ -1,23 +1,23 @@
-title: BillingTerm 
-type: object 
-description: Information about a billing term. 
-required: 
-  - start 
-  - end 
-  - renew 
-properties: 
-  start: 
-    description: A timestamp describing the start of a billing term. 
-    "$ref": "../DateTime.yml" 
-  end: 
-    description: A timestamp describing the end of a billing term. 
-    "$ref": "../DateTime.yml" 
-  renew: 
-    type: string 
-    description: The term renewal period. 
-    enum: 
-      - once 
-      - monthly 
-      - yearly 
-    nullable: true
-    
+title: BillingTerm
+type: object
+description: Information about a billing term.
+required:
+  - start
+  - end
+  - renew
+properties:
+  start:
+    description: A timestamp describing the start of a billing term.
+    "$ref": "../DateTime.yml"
+  end:
+    description: A timestamp describing the end of a billing term.
+    "$ref": "../DateTime.yml"
+  renew:
+    type:
+      - "string"
+      - "null"
+    description: The term renewal period.
+    enum:
+      - once
+      - monthly
+      - yearly

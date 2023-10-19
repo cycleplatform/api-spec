@@ -104,8 +104,9 @@ properties:
           type: integer
           description: The soft limit for the rlimit.
   seccomp:
-    nullable: true
-    type: object
+    type:
+      - "object"
+      - "null"
     properties:
       disable:
         type: boolean

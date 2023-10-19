@@ -132,8 +132,9 @@ post:
             features:
               $ref: ../../../components/schemas/environments/Features.yml
             stack:
-              type: object
-              nullable: true
+              type:
+                - "object"
+                - "null"
               description: An object representing the associated stack.
               required:
                 - id

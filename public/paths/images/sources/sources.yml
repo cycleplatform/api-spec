@@ -109,8 +109,9 @@ post:
                 - description
               properties:
                 description:
-                  type: string
-                  nullable: true
+                  type:
+                    - "string"
+                    - "null"
                   description: A description of the image source.
   responses:
     201:

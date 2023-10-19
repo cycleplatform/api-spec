@@ -1,12 +1,13 @@
 ---
 title: PrivateNetwork
-type: object
-nullable: true
+type:
+  - "object"
+  - "null"
 required:
-- vxlan_tag
-- subnet
-- ipv6
-- legacy
+  - vxlan_tag
+  - subnet
+  - ipv6
+  - legacy
 properties:
   vxlan_tag:
     type: integer
@@ -16,8 +17,7 @@ properties:
     description: The subnet ID.
   ipv6:
     allOf:
-    - description: The IPv6 interface.
-    - "$ref": "./IPNet.yml"
+      - description: The IPv6 interface.
+      - "$ref": "./IPNet.yml"
   legacy:
     $ref: "./LegacyNetwork.yml"
-

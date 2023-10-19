@@ -1,7 +1,8 @@
 ---
 title: DiscoveryEnvironmentService
-type: object
-nullable: true
+type:
+  - "object"
+  - "null"
 description: Information about the environments discovery service(s).
 required:
   - enable
@@ -21,6 +22,7 @@ properties:
       A boolean representing if this service container is set to high availability
       mode or not.
   config:
-    nullable: true
-    type: object
+    type:
+      - "object"
+      - "null"
     description: The config object for the discovery service.

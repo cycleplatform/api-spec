@@ -1,0 +1,7 @@
+title: ByteSize
+type: string
+description: A string signifying a size in bytes, kilobytes, megabytes, etc.
+examples:
+  - 1G
+  - 5M
+  - 2K

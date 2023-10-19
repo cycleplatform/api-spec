@@ -1,25 +1,26 @@
 title: ReconfigureServerAction
-type: object 
-required: 
-- action 
-- contents 
-properties: 
-  action: 
-    type: string 
-    description: The action to take. 
-    enum: 
+type: object
+required:
+  - action
+  - contents
+properties:
+  action:
+    type: string
+    description: The action to take.
+    enum:
       - "reconfigure.features"
-  contents: 
-    type: object 
-    description: Supplemental information needed to perform the action. 
-    required: 
-      - sftp 
-      - base_volume_gb 
-    properties: 
-      sftp: 
-        type: boolean 
-        description: A boolean where true represents the desire for the server to accept incoming SFTP requests for container volumes. 
-      base_volume_gb: 
-        type: integer 
-        description: A number in GB for how big the base volume should be.  This cannot be lower than the currently set value for the server. 
-        nullable: true 
+  contents:
+    type: object
+    description: Supplemental information needed to perform the action.
+    required:
+      - sftp
+      - base_volume_gb
+    properties:
+      sftp:
+        type: boolean
+        description: A boolean where true represents the desire for the server to accept incoming SFTP requests for container volumes.
+      base_volume_gb:
+        type:
+          - "integer"
+          - "null"
+        description: A number in GB for how big the base volume should be.  This cannot be lower than the currently set value for the server.

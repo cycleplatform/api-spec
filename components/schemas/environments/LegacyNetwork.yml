@@ -1,7 +1,8 @@
 ---
 title: LegacyNetwork
-type: object
-nullable: true
+type:
+  - "object"
+  - "null"
 description: Legacy network information for an environment.
 required:
   - subnet
