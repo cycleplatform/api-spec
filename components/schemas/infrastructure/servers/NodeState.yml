@@ -3,6 +3,7 @@ title: NodeState
 allOf:
   - required:
       - current
+      - changed
     properties:
       current:
         description: The current state of the node.
@@ -13,4 +14,6 @@ allOf:
           - authorizing
           - online
           - decommissioned
+      changed:
+        $ref: ../../DateTime.yml
   - "$ref": "../../State.yml"
