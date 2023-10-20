@@ -15,9 +15,13 @@ properties:
       - target
       - url
       - auth
+      - existing
     properties:
       existing:
-        $ref: ../ExistingSource.yml
+        type: object
+        nullable: true
+        allOf:
+          - $ref: ../ExistingSource.yml
       target:
         type: string
         description: The image name on the registry.
