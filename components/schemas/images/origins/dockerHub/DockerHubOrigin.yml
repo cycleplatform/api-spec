@@ -13,9 +13,13 @@ properties:
     type: object
     required:
       - target
+      - existing
     properties:
       existing:
-        $ref: ../ExistingSource.yml
+        type: object
+        nullable: true
+        allOf:
+          - $ref: ../ExistingSource.yml
       target:
         type: string
         description: The DockerHub target string. ex - `mysql:5.7`
