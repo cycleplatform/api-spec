@@ -74,9 +74,11 @@ properties:
                             [Advanced] Change the domain the controller listens on.
                         allow_insecure:
                           type: boolean
+                          nullable: true
                           description: If enabled, accept TLS traffic with an invalid certificate. This is usually done for development/testing, and is not recommended for production use.
                         client_auth:
                           type: string
+                          nullable: true
                           enum:
                             - none
                             - request
