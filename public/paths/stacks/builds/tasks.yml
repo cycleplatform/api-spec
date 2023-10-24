@@ -31,7 +31,7 @@ post:
             - $ref: ../../../../components/schemas/stacks/builds/taskActions/GenerateStackBuildAction.yml
             - $ref: ../../../../components/schemas/stacks/builds/taskActions/DeployStackBuildAction.yml
   responses:
-    200:
+    202:
       description: Returns a task descriptor.
       content:
         application/json:

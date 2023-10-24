@@ -27,7 +27,7 @@ post:
               enum:
                 - trigger
   responses:
-    200:
+    202:
       description: Returns a task descriptor.
       content:
         application/json:
