@@ -146,7 +146,7 @@ post:
                         zone:
                           type: string
   responses:
-    201:
+    202:
       description: Returns a task descriptor.
       content:
         application/json:
