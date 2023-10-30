@@ -14,13 +14,9 @@ properties:
     required:
       - target
       - url
-      - existing
     properties:
       existing:
-        type: object
-        nullable: true
-        allOf:
-          - $ref: ../ExistingSource.yml
+        $ref: ../ExistingSource.yml
       target:
         type: string
         description: The image name on the registry.
