@@ -4,7 +4,7 @@ get:
     - Providers
   parameters:
     - name: providerIdentifier
-      description: The ID for the given provider.
+      description: The identifier for the given provider. Example `gcp`, `equinix-metal`, `a-<abstract-provider-id>`, etc.
       in: path
       required: true
       schema:
@@ -30,7 +30,7 @@ patch:
     - Providers
   parameters:
     - name: providerIdentifier
-      description: The identifier for the given provider. Can be `aws`, `gcp`, `equinix-metal`, `vultr`.
+      description: The identifier for the given provider. Example `gcp`, `equinix-metal`, `a-<abstract-provider-id>`, etc.
       in: path
       required: true
       schema:
@@ -96,7 +96,7 @@ delete:
     - Providers
   parameters:
     - name: providerIdentifier
-      description: The identifier for the given provider. Can be `aws`, `gcp`, `equinix-metal`, `vultr`.
+      description: The identifier for the given provider. Example `gcp`, `equinix-metal`, `a-<abstract-provider-id>`, etc.
       in: path
       required: true
       schema:
