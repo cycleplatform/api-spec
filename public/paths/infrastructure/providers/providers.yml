@@ -20,6 +20,7 @@ get:
             - node
             - instances_count
             - locations
+            - identifier
     - name: filter
       in: query
       # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706

@@ -3,8 +3,8 @@ get:
   tags:
     - Providers
   parameters:
-    - name: providerId
-      description: The identifier for the given provider. Can be `aws`, `gcp`, `equinix-metal`, `vultr`.
+    - name: providerIdentifier
+      description: The identifier for the given provider. Example `gcp`, `exuinix-metal`, `a-<abstract-provider-id>`, etc.
       in: path
       required: true
       schema:

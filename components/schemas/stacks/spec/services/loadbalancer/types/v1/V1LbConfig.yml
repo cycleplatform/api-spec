@@ -49,7 +49,6 @@ properties:
                   description: Defines how traffic gets into the load balancer.
                   required:
                     - port
-                    - tls
                   properties:
                     port:
                       type: integer

@@ -3,8 +3,8 @@ post:
     - Providers
   operationId: "createProviderJob"
   parameters:
-    - name: providerId
-      description: The ID for the given provider.
+    - name: providerIdentifier
+      description: The identifier for the given provider. Example `gcp`, `equinix-metal`, `a-<abstract-provider-id>`, etc.
       in: path
       required: true
       schema:

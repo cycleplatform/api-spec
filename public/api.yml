@@ -309,17 +309,17 @@ paths:
   "/v1/infrastructure/summary":
     "$ref": "./paths/infrastructure/summary.yml"
   # Providers
-  "/v1/infrastructure/providers/native":
+  "/v1/infrastructure/native-providers":
     "$ref": "./paths/infrastructure/providers/native.yml"
-  "/v1/infrastructure/providers/{providerId}/servers":
+  "/v1/infrastructure/providers/{providerIdentifier}/servers":
     "$ref": "./paths/infrastructure/providers/servers.yml"
-  "/v1/infrastructure/providers/{providerId}/locations":
+  "/v1/infrastructure/providers/{providerIdentifier}/locations":
     "$ref": "./paths/infrastructure/providers/locations.yml"
   "/v1/infrastructure/providers":
     "$ref": "./paths/infrastructure/providers/providers.yml"
-  "/v1/infrastructure/providers/{providerId}":
+  "/v1/infrastructure/providers/{providerIdentifier}":
     "$ref": "./paths/infrastructure/providers/provider.yml"
-  "/v1/infrastructure/providers/{providerId}/tasks":
+  "/v1/infrastructure/providers/{providerIdentifier}/tasks":
     "$ref": "./paths/infrastructure/providers/tasks.yml"
   "/v1/infrastructure/auto-scale/groups":
     "$ref": "./paths/infrastructure/auto-scale/groups/groups.yml"
