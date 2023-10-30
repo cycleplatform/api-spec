@@ -3,7 +3,7 @@ post:
     - Providers
   operationId: "createProviderJob"
   parameters:
-    - name: providerId
+    - name: providerIdentifier
       description: The ID for the given provider.
       in: path
       required: true

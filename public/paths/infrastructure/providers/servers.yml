@@ -3,7 +3,7 @@ get:
   tags:
     - Providers
   parameters:
-    - name: providerId
+    - name: providerIdentifier
       description: The identifier for the given provider. Can be `aws`, `gcp`, `equinix-metal`, `vultr`.
       in: path
       required: true

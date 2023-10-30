@@ -6,3 +6,5 @@ properties:
     type: array
     items:
       $ref: "./InfrastructureProviderLocation.yml"
+  identifier:
+    type: string

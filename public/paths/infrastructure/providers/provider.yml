@@ -3,7 +3,7 @@ get:
   tags:
     - Providers
   parameters:
-    - name: providerId
+    - name: providerIdentifier
       description: The ID for the given provider.
       in: path
       required: true
@@ -29,8 +29,8 @@ patch:
   tags:
     - Providers
   parameters:
-    - name: providerId
-      description: The ID for the given provider.
+    - name: providerIdentifier
+      description: The identifier for the given provider. Can be `aws`, `gcp`, `equinix-metal`, `vultr`.
       in: path
       required: true
       schema:
@@ -95,8 +95,8 @@ delete:
   tags:
     - Providers
   parameters:
-    - name: providerId
-      description: The ID for the given provider.
+    - name: providerIdentifier
+      description: The identifier for the given provider. Can be `aws`, `gcp`, `equinix-metal`, `vultr`.
       in: path
       required: true
       schema:
