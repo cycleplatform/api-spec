@@ -146,8 +146,8 @@ post:
                         zone:
                           type: string
   responses:
-    201:
-      description: Returns a single server resource.
+    202:
+      description: Returns a task descriptor.
       content:
         application/json:
           schema:
@@ -155,6 +155,6 @@ post:
             type: object
             properties:
               data:
-                $ref: ../../../../components/schemas/infrastructure/servers/Server.yml
+                $ref: ../../../../components/schemas/jobs/TaskDescriptor.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
