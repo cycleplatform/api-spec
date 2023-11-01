@@ -50,6 +50,3 @@ properties:
           scheme:
             nullable: true
             type: string
-            enum:
-              - tcp
-              - http
