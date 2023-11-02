@@ -122,18 +122,20 @@ properties:
         type: boolean
       shared_directories:
         nullable: true
-        type: object
-        required:
-          - identifier
-          - writable
-          - mount_point
-        properties:
-          identifier:
-            type: string
-          writable:
-            type: boolean
-          mount_point:
-            type: string
+        type: array
+        items:
+          type: object
+          required:
+            - identifier
+            - writable
+            - mount_point
+          properties:
+            identifier:
+              type: string
+            writable:
+              type: boolean
+            mount_point:
+              type: string
   rootfs:
     type: object
     properties:
