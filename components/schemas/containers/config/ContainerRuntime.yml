@@ -122,16 +122,13 @@ properties:
         type: boolean
       shared_directories:
         nullable: true
-        type: array
-        items:
+        type: object
+        additionalProperties:
           type: object
           required:
-            - identifier
             - writable
             - mount_point
           properties:
-            identifier:
-              type: string
             writable:
               type: boolean
             mount_point:
