@@ -113,6 +113,27 @@ properties:
         type: array
         items:
           $ref: seccomp/SeccompRule.yml
+  host:
+    nullable: true
+    type: object
+    properties:
+      shared_prod:
+        nullable: true
+        type: boolean
+      shared_directories:
+        nullable: true
+        type: object
+        required:
+          - identifier
+          - writable
+          - mount_point
+        properties:
+          identifier:
+            type: string
+          writable:
+            type: booleam
+          mount_point:
+            type: string
   rootfs:
     type: object
     properties:
