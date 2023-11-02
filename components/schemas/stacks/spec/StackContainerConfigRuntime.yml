@@ -119,6 +119,13 @@ properties:
                           - SCMP_CMP_GE
                           - SCMP_CMP_GT
                           - SCMP_CMP_MASKED_EQ
+  host:
+    nullable: true
+    type: object
+    properties:
+      expose_proc:
+        nullable: true
+        type: boolean
   privileged:
     type: boolean
   capabilities:

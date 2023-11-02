@@ -113,6 +113,13 @@ properties:
         type: array
         items:
           $ref: seccomp/SeccompRule.yml
+  host:
+    nullable: true
+    type: object
+    properties:
+      expose_proc:
+        nullable: true
+        type: boolean
   rootfs:
     type: object
     properties:
