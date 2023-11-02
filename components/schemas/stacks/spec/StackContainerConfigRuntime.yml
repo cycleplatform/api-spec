@@ -119,6 +119,27 @@ properties:
                           - SCMP_CMP_GE
                           - SCMP_CMP_GT
                           - SCMP_CMP_MASKED_EQ
+  host:
+    nullable: true
+    type: object
+    properties:
+      shared_prod:
+        nullable: true
+        type: boolean
+      shared_directories:
+        nullable: true
+        type: object
+        required:
+          - identifier
+          - writable
+          - mount_point
+        properties:
+          identifier:
+            type: string
+          writable:
+            type: booleam
+          mount_point:
+            type: string
   privileged:
     type: boolean
   capabilities:
