@@ -137,7 +137,7 @@ properties:
           identifier:
             type: string
           writable:
-            type: booleam
+            type: boolean
           mount_point:
             type: string
   privileged:
