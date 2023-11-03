@@ -4,7 +4,6 @@ get:
     - Billing
   parameters:
     - $ref: ../../../../components/parameters/SortParam.yml
-    - $ref: ../../../../components/parameters/FilterParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
     - name: meta
       in: query
@@ -21,6 +20,28 @@ get:
           type: string
           enum:
             - due
+    - name: filter
+      in: query
+      required:
+        false
+        # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706
+      style: deepObject
+      description: |
+        ## Filter Field 
+        The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
+      schema:
+        type: object
+        properties:
+          state:
+            type: string
+            description: |
+              `filter[state]=value1,value2` state filtering will allow you to filter by the instance's current state.
+          range-start:
+            description: The start date from when to pull the invoices
+            $ref: ../../../../components/schemas/DateTime.yml
+          range-end:
+            description: The end date from when to pull the invoices
+            $ref: ../../../../components/schemas/DateTime.yml
   summary: List Billing Invoices
   description: Requires the `billing-invoices-view` capability.
   responses:
