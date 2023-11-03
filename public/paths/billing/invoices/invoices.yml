@@ -35,7 +35,7 @@ get:
           state:
             type: string
             description: |
-              `filter[state]=value1,value2` state filtering will allow you to filter by the instance's current state.
+              `filter[state]=value1,value2` state filtering will allow you to filter by the invoice's current state.
           range-start:
             description: The start date from when to pull the invoices
             $ref: ../../../../components/schemas/DateTime.yml

@@ -19,7 +19,7 @@ get:
           state:
             type: string
             description: |
-              `filter[state]=value1,value2` state filtering will allow you to filter by the instance's current state.
+              `filter[state]=value1,value2` state filtering will allow you to filter by the credit's current state.
           range-start:
             description: The start date from when to pull the credits
             $ref: ../../../../components/schemas/DateTime.yml
