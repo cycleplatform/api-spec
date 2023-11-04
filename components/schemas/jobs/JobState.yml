@@ -1,17 +1,27 @@
 title: JobState
-allOf:
-  - required:
-      - current
+type: object
+required:
+  - current
+  - error
+properties:
+  current:
+    description: The current state of the job.
+    type: string
+    enum:
+      - new
+      - queued
+      - error
+      - scheduled
+      - expired
+      - running
+      - completed
+  changed:
+    $ref: "../DateTime.yml"
+  error:
+    type: object
+    nullable: true
+    description: An error, if any, that has occurred for this job.
     properties:
-      current:
-        description: The current state of the job.
+      message:
         type: string
-        enum:
-          - new
-          - queued
-          - error
-          - scheduled
-          - expired
-          - running
-          - completed
-  - "$ref": "../State.yml"
+        description: Details about the error that has occurred.

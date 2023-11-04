@@ -1,14 +1,13 @@
 title: TaskState
-allOf:
-  - required:
-      - current
-    properties:
-      current:
-        description: The current state of the task.
-        type: string
-        enum:
-          - pending
-          - error
-          - running
-          - completed
-  - "$ref": "../State.yml"
+type: object
+properties:
+  changed:
+    $ref: ../DateTime.yml
+  current:
+    description: The current state of the task.
+    type: string
+    enum:
+      - pending
+      - error
+      - running
+      - completed
