@@ -38,6 +38,7 @@ properties:
                 - performance
                 - ingress
                 - timeouts
+                - verbosity
               properties:
                 performance:
                   type: boolean
@@ -98,6 +99,14 @@ properties:
                     idle:
                       description: The total amount of time a connection can be idle before being killed.
                       $ref: ../../../../../../Duration.yml
+                verbosity:
+                  type: string
+                  description: Verbosity describes the level of logging detail for the controller
+                  enum:
+                    - low
+                    - normal
+                    - high
+                    - debug
                 extension:
                   type: object
                   description: Extended configurations for the specified transport mode (http/tcp)
