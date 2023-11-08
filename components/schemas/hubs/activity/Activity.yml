@@ -201,6 +201,7 @@ properties:
       - container.instances.autoscale.down
 
       - container.instance.healthcheck.restarted
+      - container.instance.healthcheck.failed
       - container.instance.error
       - container.instance.ssh.login
       - container.instance.migration.start
