@@ -92,6 +92,13 @@ get:
             type: string
             description: |
               `filter[stack]=ID` stack filtering by ID.  Submit the ID of the stack you wish to filter for and the return will be any containers deployed associated with 'containers' from the stack.
+          range-start:
+            description: The start date from when to pull the containers
+            $ref: ../../../components/schemas/DateTime.yml
+          range-end:
+            description: The end date from when to pull the containers
+            $ref: ../../../components/schemas/DateTime.yml
+
     - $ref: ../../../components/parameters/SortParam.yml
     - $ref: ../../../components/parameters/PageParam.yml
   responses:
