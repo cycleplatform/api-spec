@@ -408,7 +408,7 @@ paths:
   "/v1/security/report":
     $ref: paths/security/report.yml
   # Utils
-  "/v1/utils/lookup":
+  "/v1/utils/resource/lookup":
     $ref: paths/utils/resource/lookup.yml
 components:
   securitySchemes:
