@@ -1,0 +1,43 @@
+get:
+  operationId: "lookupIdentifier"
+  tags:
+    - Utility
+  summary: Look up a resource identifier
+  description: Given a (base64) resource identifier string, returns the ID of the targeted resource
+  parameters:
+    - name: identifier
+      in: query
+      required: true
+      example: "cltr:production/environment:654d4e848924c1c445c3635a/container:api"
+      description: A base64 encoded resource identifier string.
+      schema:
+        type: string
+    - name: desired-component
+      in: query
+      required: true
+      description: The type of resource to lookup from the identifier string.
+      schema:
+        type: string
+        enum:
+          - cluster
+          - environment
+          - image-source
+          - stack
+          - server
+          - container
+  responses:
+    200:
+      description: Returns the ID of the requested resource from the identifier string.
+      content:
+        application/json:
+          schema:
+            title: "ResourceLookup"
+            type: object
+            properties:
+              data:
+                type: object
+                properties:
+                  id:
+                    type: string
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
