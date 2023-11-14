@@ -30,8 +30,9 @@ get:
             - environments
     - name: filter
       in: query
-      required: false
-       # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706
+      required:
+        false
+        # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706
       style: deepObject
       description: |
         ## Filter Field 
@@ -43,7 +44,7 @@ get:
             type: string
             description: |
               `filter[state]=value1,value2` state filtering will allow you to filter by the instance's current state.
-          search: 
+          search:
             type: string
             description: |
               `filter[search]=value` search instances for a value associated with a field on the given instance(s).
@@ -51,6 +52,12 @@ get:
             type: string
             description: |
               `filter[server]=ID` server filtering by ID. Submit the ID of the server you wish to filter for and the return will be any instances of the container currently deployed to the given server.
+          range-start:
+            description: The start date from when to pull the instances
+            $ref: ../../../../components/schemas/DateTime.yml
+          range-end:
+            description: The end date from when to pull the instances
+            $ref: ../../../../components/schemas/DateTime.yml
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
   summary: List Instances
