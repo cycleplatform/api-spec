@@ -1,0 +1,68 @@
+title: JobTask
+type: object
+description: Information about a job task.
+required:
+  - id
+  - caption
+  - header
+  - events
+  - error
+  - steps
+  - state
+  - input
+  - output
+properties:
+  id:
+    $ref: ../ID.yml
+  caption:
+    type: string
+    description: A short description of the task.
+  header:
+    type: string
+    description: The API function called.
+  events:
+    title: TaskEvents
+    type: object
+    description: A collection of timestamps for each event in the job's lifetime.
+    required:
+      - queued
+      - completed
+      - started
+    properties:
+      queued:
+        description: The timestamp of when the task was queued.
+        $ref: "../DateTime.yml"
+      completed:
+        description: The timestamp of when the task was completed.
+        $ref: "../DateTime.yml"
+      started:
+        description: The timestamp of when the task was started.
+        $ref: "../DateTime.yml"
+  steps:
+    description: An array of job task steps.
+    type: array
+    items:
+      $ref: ./TaskStep.yml
+  state:
+    $ref: ./TaskState.yml
+  input:
+    type: object
+    description: Input information used for the job tasks.
+    additionalProperties:
+      type: string
+  output:
+    type: object
+    nullable: true
+    description: Output informaiton used for the job tasks.
+    additionalProperties:
+      type: string
+  error:
+    type: object
+    nullable: true
+    description: An error object describing issues with the job.
+    required:
+      - message
+    properties:
+      message:
+        type: string
+        description: An error message

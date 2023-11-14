@@ -7,7 +7,7 @@ required:
 properties:
   error:
     $ref: Error.yml
-  data:
-    description: Data will always be `null` here.
-    type: object
-    nullable: true
+  # data:
+  #   description: Data will always be `null` here.
+  #   type: object
+  #   nullable: true
