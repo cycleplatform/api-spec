@@ -11,6 +11,22 @@ get:
         type: string
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
+
+    - name: filter
+      in: query
+      # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706
+      style: deepObject
+      required: false
+      description: |
+        ## Filter Field
+        The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
+      schema:
+        type: object
+        properties:
+          location_ids:
+            type: string
+            description: |
+              `filter[location_ids]=value` List only those provider servers matching this location. May return multiple results.
   summary: List Provider Servers
   description: Requires the `infrastructure-providers-view` capability.
   responses:
