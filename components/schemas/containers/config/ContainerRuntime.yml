@@ -3,7 +3,6 @@ type: object
 description: Runtime configurations for a given container.
 required:
   - privileged
-  - seccomp
 properties:
   command:
     type: object
