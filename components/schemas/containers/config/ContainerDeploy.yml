@@ -111,6 +111,7 @@ properties:
     required:
       - command
       - retries
+      - delay
       - interval
       - timeout
       - restart
@@ -122,8 +123,11 @@ properties:
         type: integer
         description: The number of times the platform will retry the command before marking the container unhealthy.
       delay:
-        $ref: ../../Duration.yml
+        type: string
+        nullable: true
         description: How long to wait before performing an initial health check when the instance starts. The `state.health.healthy` field of the instance will be `null`` until the first check is performed.
+        allOf:
+          - $ref: ../../Duration.yml
       interval:
         $ref: ../../Duration.yml
         description: How long to wait between restarts.
