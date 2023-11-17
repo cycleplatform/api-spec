@@ -49,7 +49,7 @@ get:
   description: Requires the `containers-view` capability.
   responses:
     200:
-      description: Returns an container resource.
+      description: Returns a container resource.
       content:
         application/json:
           schema:
@@ -59,7 +59,7 @@ get:
               data:
                 $ref: ../../../components/schemas/containers/Container.yml
               includes:
-                $ref: ../../../components/schemas/containers/instances/InstanceIncludes.yml
+                $ref: ../../../components/schemas/containers/ContainerIncludes.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
 patch:
