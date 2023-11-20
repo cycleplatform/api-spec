@@ -4,15 +4,18 @@ required:
   - controllers
 properties:
   controllers:
-    type: object
+    type: array
     description: A configuration for a specific port.
-    additionalProperties:
+    items:
       title: V1LbController
       type: object
       required:
+        - default
         - identifier
         - transport
       properties:
+        default:
+          type: boolean
         identifier:
           type: string
           description: A human-readable identifier for this controller. It will default to the port, i.e. `port-443`, but can be renamed to anything, such as the service this controller represents.

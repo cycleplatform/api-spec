@@ -32,6 +32,10 @@ post:
                 high_availability:
                   type: boolean
                   description: A boolean where `true` represents the desire to run the environment discovery service in high availability mode.
+                auto_update:
+                  type: boolean
+                  description: A boolean where `true` represents the desire to automatically update the environment discovery service.
+
   responses:
     202:
       description: Returns a task descriptor.
