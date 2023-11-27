@@ -14,6 +14,7 @@ required:
   - ready_state
   - hostname
   - migration
+  - purge_time
   - service
   - state
   - autoscale
@@ -126,8 +127,11 @@ properties:
         type: boolean
         description: A boolean where true represents the volumes for the instance should be copied to the new server as well.
   purge_time:
+    nullable: true
+    type: string
     description: If the instance was purged, the timestamp of when that happened.
-    $ref: ../../DateTime.yml
+    allOf:
+      - $ref: ../../DateTime.yml
   service:
     type: string
     description: If the instance is an instance of a service container that will be denoted here.

@@ -12,6 +12,7 @@ get:
     - name: include
       in: query
       required: false
+      explode: false
       description:
         A comma separated list of include values. Included resources will show
         up under the root document's `include` field, with the key being the id of the included
