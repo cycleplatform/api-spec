@@ -1,13 +1,6 @@
 title: InstanceIncludes
 description: A resource associated with an instance.
 type: object
-required:
-  - creator
-  - servers
-  - locations
-  - providers
-  - containers
-  - environments
 properties:
   creators:
     "$ref": "../../includes/CreatorInclude.yml"

@@ -125,9 +125,9 @@ delete:
       schema:
         type: string
   summary: Delete Container
-  description: Requires the `contianers-update` capability.
+  description: Requires the `containers-update` capability.
   responses:
-    200:
+    202:
       description: Returns a task descriptor.
       content:
         application/json:
