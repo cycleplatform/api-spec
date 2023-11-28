@@ -52,7 +52,7 @@ properties:
           type: array
           items:
             type: integer
-        container_id:
-          type: string
         instance_id:
+          type: string
+        container_id:
           type: string
