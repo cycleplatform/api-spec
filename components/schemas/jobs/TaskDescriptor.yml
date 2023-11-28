@@ -15,6 +15,9 @@ properties:
       - id
       - accepted
       - queue
+      - schedule
+      - parallel
+      - tasks
     properties:
       id:
         description: The ID of the job
@@ -25,3 +28,18 @@ properties:
       queue:
         description: Describes the queue this job is a part of.
         type: string
+      schedule:
+        $ref: "../DateTime.yml"
+      parallel:
+        type: object
+        required:
+          - tasks
+        properties:
+          sub_queue:
+            type: string
+          tasks:
+            type: boolean
+      tasks:
+        type: array
+        items:
+          $ref: ./JobTask.yml
