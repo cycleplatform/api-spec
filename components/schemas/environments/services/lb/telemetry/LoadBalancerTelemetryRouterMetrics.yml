@@ -10,6 +10,8 @@ properties:
       required:
         - connections
         - requests
+        - instance_id
+        - container_id
       properties:
         connections:
           nullable: true
@@ -18,7 +20,7 @@ properties:
             - success
             - unavailable
           properties:
-            sucess:
+            success:
               type: integer
             unavailable:
               type: integer
@@ -26,6 +28,10 @@ properties:
               type: object
               additionalProperties:
                 type: integer
+            bytes_transmitted:
+              type: integer
+            bytes_received:
+              type: integer
         requests:
           nullable: true
           type: object
@@ -42,7 +48,11 @@ properties:
               type: object
               additionalProperties:
                 type: integer
-        latency:
+        latency_ms:
           type: array
           items:
             type: integer
+        container_id:
+          type: string
+        instance_id:
+          type: string
