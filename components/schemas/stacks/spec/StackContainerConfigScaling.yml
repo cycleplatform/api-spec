@@ -9,6 +9,7 @@ required:
 properties:
   autoscale_group:
     type: string
+    nullable: true
     description: The autoscaling group describes which servers should be deployed
   instances:
     type: object
