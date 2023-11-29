@@ -20,5 +20,8 @@ properties:
     description:
       A boolean representing if this service container is set to high availability
       mode or not.
+  auto_update:
+    type: boolean
+    description: A boolean where `true` represents the desire to automatically update the environment discovery service.
   config:
     description: The config object for the discovery service.
