@@ -40,6 +40,7 @@ properties:
         $ref: "../DateTime.yml"
   steps:
     description: An array of job task steps.
+    nullable: true
     type: array
     items:
       $ref: ./TaskStep.yml
