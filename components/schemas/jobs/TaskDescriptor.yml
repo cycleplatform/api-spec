@@ -36,6 +36,7 @@ properties:
           - tasks
         properties:
           sub_queue:
+            nullable: true
             type: string
           tasks:
             type: boolean
