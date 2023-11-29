@@ -29,6 +29,8 @@ get:
                     $ref: ../../../components/schemas/infrastructure/DeploymentStrategy.yml
                   manual:
                     $ref: ../../../components/schemas/infrastructure/DeploymentStrategy.yml
+                  function:
+                    $ref: ../../../components/schemas/infrastructure/DeploymentStrategy.yml
 
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml

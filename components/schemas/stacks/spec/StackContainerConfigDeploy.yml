@@ -14,6 +14,7 @@ properties:
       - first-available
       - node
       - edge
+      - function
   stateful:
     type: object
     required:
