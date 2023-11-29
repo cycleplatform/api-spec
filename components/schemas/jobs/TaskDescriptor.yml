@@ -43,4 +43,28 @@ properties:
         type: array
         nullable: true
         items:
-          $ref: ./JobTask.yml
+          title: NewTask
+          type: object
+          required:
+            - caption
+            - header
+            - input
+            - steps
+          properties:
+            caption:
+              type: string
+              description: A short description of the task.
+            header:
+              type: string
+              description: The API function called.
+            steps:
+              description: An array of job task steps.
+              nullable: true
+              type: array
+              items:
+                $ref: ./TaskStep.yml
+            input:
+              type: object
+              description: Input information used for the job tasks.
+              additionalProperties:
+                type: string
