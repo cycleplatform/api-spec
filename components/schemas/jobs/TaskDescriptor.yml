@@ -41,9 +41,6 @@ properties:
             type: boolean
       tasks:
         type: array
-<<<<<<< HEAD
         nullable: true
-=======
->>>>>>> main
         items:
           $ref: ./JobTask.yml
