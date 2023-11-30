@@ -4,10 +4,10 @@ type: object
 nullable: true
 description: Information about the environments vpn service(s).
 required:
-- enable
-- container_id
-- high_availability
-- config
+  - enable
+  - container_id
+  - high_availability
+  - config
 properties:
   enable:
     type: boolean
@@ -15,17 +15,16 @@ properties:
   container_id:
     type: string
     description: The ID of the VPN service container
-  high_availability:
+  auto_update:
     type: boolean
-    description: A boolean representing if this service container is set to high availability
-      mode or not.
+    description: A boolean representing if this service container is set to autoupdate or not
   config:
     type: object
     nullable: true
     description: The config object for the VPN service.
     required:
-    - allow_internet
-    - auth
+      - allow_internet
+      - auth
     properties:
       allow_internet:
         type: boolean
@@ -34,20 +33,23 @@ properties:
         type: object
         description: Auth configuration for the VPN.
         required:
-        - webhook
-        - cycle_accounts
+          - webhook
+          - cycle_accounts
         properties:
           webhook:
             type: string
             nullable: true
-            description: A webhook endpoint to hit. Will be passed the login credentials
+            description:
+              A webhook endpoint to hit. Will be passed the login credentials
               provided to the user, and should return a 200 status if the login is
               permitted.
           cycle_accounts:
             type: boolean
-            description: If true, allows any Cycle account with access to the environment
+            description:
+              If true, allows any Cycle account with access to the environment
               to log in to the VPN using their Cycle email and password.
           vpn_accounts:
             type: boolean
-            description: If true, allows the custom VPN accounts to log in to the
+            description:
+              If true, allows the custom VPN accounts to log in to the
               VPN.
