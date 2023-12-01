@@ -25,6 +25,9 @@ properties:
         description: The specific ports to match against.
         items:
           type: integer
+      path:
+        nullable: true
+        type: string
   mode:
     type: string
     description: |
