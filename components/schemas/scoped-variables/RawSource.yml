@@ -13,12 +13,23 @@ properties:
   details:
     type: object
     required:
-      - string
+      - value
       - blob
     properties:
-      string:
+      value:
         type: string
         description: The value of the source.
       blob:
         type: boolean
         description: A boolean where true represents the text the user is entering will be multi line.
+      secret:
+        nullable: true
+        type: object
+        required:
+        properties:
+          iv:
+            nullable: true
+            type: string
+          hint:
+            nullable: true
+            type: string

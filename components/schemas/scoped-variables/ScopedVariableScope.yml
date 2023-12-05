@@ -5,22 +5,6 @@ required:
   - access
   - containers
 properties:
-  access:
-    type: object
-    description: The type or way the scoped variable is accessed.
-    required:
-      - env_variable
-      - internal_api
-    properties:
-      env_variable:
-        type: boolean
-        description: A boolean, where true represents this scoped variable is accessed like a normal environment variable.
-      internal_api:
-        type: boolean
-        description: A boolean, where true represents this scoped variable is accessed through Cycle's internal API.
-      file:
-        type: boolean
-        description: A boolean, where true represents this scoped variables is accessed as a file located at `/var/run/cycle/variables/<identifier>`
   containers:
     type: object
     description: Information about the assignment of the scoped variable to different containers in the environment.

@@ -1,0 +1,25 @@
+title: ScopedVariableAccess
+type: object
+description: The type or way the scoped variable is accessed.
+required:
+  - env_variable
+properties:
+  env_variable:
+    type: boolean
+    description: A boolean, where true represents this scoped variable is accessed like a normal environment variable.
+  internal_api:
+    nullable: true
+    type: object
+    properties:
+      duration:
+        $ref: ../Duration.yml
+  file:
+    nullable: true
+    type: object
+    required:
+      - decode
+    properties:
+      decode:
+        type: boolean
+      path:
+        type: string

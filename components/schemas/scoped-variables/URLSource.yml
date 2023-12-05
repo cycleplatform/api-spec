@@ -14,7 +14,15 @@ properties:
     type: object
     required:
       - url
+      - headers
     properties:
       url:
         type: string
         description: The URL to call to produce the value.
+      headers:
+        type: object
+        description: Additional information about a container
+        additionalProperties: {}
+      auth_token_url:
+        nullable: true
+        type: string

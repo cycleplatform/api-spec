@@ -8,7 +8,6 @@ required:
   - hub_id
   - environment_id
   - identifier
-  - secret
   - scope
   - source
   - state
@@ -26,21 +25,10 @@ properties:
   identifier:
     type: string
     description: An identifier, similar to a key in an environment variable.  Its used when envoking the scoped variable.
-  secret:
-    nullable: true
-    type: object
-    description: An object with information about the encryption of the scoped variable.
-    required:
-      - encrypted
-    properties:
-      encrypted:
-        type: boolean
-        description: A boolean where true means the scoped variables value is encrypted.
-      hint:
-        type: string
-        description: A hint for the decryption password.
   scope:
     "$ref": "./ScopedVariableScope.yml"
+  access:
+    $ref: ./ScopedVariableAccess.yml
   source:
     type: object
     description: The source or value of the scoped variable.
