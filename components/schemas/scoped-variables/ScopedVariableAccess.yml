@@ -1,25 +1,35 @@
 title: ScopedVariableAccess
 type: object
-description: The type or way the scoped variable is accessed.
+description: The way the scoped variable is accessed.
 required:
   - env_variable
 properties:
   env_variable:
     type: boolean
-    description: A boolean, where true represents this scoped variable is accessed like a normal environment variable.
+    description: When set to true, this scoped variable is set as an environment variable inside the container.
   internal_api:
     nullable: true
+    description: Descibes an object with variables that the internal api will serve after runtime starts
     type: object
     properties:
       duration:
-        $ref: ../Duration.yml
+        type: object
+        description: Duration is a time string that the internal api will serve that variable after runtime starts
+        nullable: true
+        anyOf:
+          - $ref: ../Duration.yml
   file:
     nullable: true
+    description: File is an on object that describes an optional path to mount the file to.  The default is /var/run/cycle/variables/<myVariable>
     type: object
     required:
       - decode
+      - path
     properties:
       decode:
+        description: Decode tells Cycle that the file is a base64 encoded string
         type: boolean
       path:
+        nullable: true
+        description: The path to mount the file to
         type: string

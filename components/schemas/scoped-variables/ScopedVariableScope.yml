@@ -2,7 +2,6 @@ title: ScopedVariableScope
 type: object
 description: Information about the assignment of the scoped variable and how it is invoked.
 required:
-  - access
   - containers
 properties:
   containers:

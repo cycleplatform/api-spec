@@ -10,6 +10,7 @@ required:
   - identifier
   - scope
   - source
+  - access
   - state
   - events
 properties:
@@ -30,6 +31,7 @@ properties:
   access:
     $ref: ./ScopedVariableAccess.yml
   source:
+    nullable: true
     type: object
     description: The source or value of the scoped variable.
     discriminator:

@@ -15,14 +15,16 @@ properties:
     required:
       - url
       - headers
+      - auth_token_url
     properties:
       url:
         type: string
         description: The URL to call to produce the value.
       headers:
         type: object
-        description: Additional information about a container
+        description: Additional information about a URL source
         additionalProperties: {}
       auth_token_url:
         nullable: true
         type: string
+        description: The response is from auth_token_url will be sent as header authorization which allows third party integration

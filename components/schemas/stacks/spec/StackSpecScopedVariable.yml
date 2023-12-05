@@ -1,0 +1,75 @@
+title: StackSpecScopedVariable
+type: object
+required:
+  - identifier
+  - scope
+  - access
+  - source
+properties:
+  identifier:
+    type: string
+  scope:
+    type: object
+    required:
+      - containers
+    properties:
+      containers:
+        type: object
+        description: Information about the assignment of the scoped variable to different containers in the environment.
+        required:
+          - global
+          - ids
+          - identifiers
+        properties:
+          global:
+            type: boolean
+            description: A boolean where true represents the scoped variables is globally assigned to all current and future containers in the environment.
+          ids:
+            type: array
+            description: An array of container IDs, where each container identified will have access to the scoped variable.
+            items:
+              type: string
+          identifiers:
+            type: array
+            description: An array of container identifiers, where each container identfied will have access to the scoped variable.
+            items:
+              type: string
+  access:
+    type: object
+    required:
+      - env_variable
+      - internal_api
+      - file
+    properties:
+      env_variable:
+        type: boolean
+      internal_api:
+        nullable: true
+        description: Descibes an object with variables that the internal api will serve after runtime starts
+        type: object
+        properties:
+          duration:
+            type: object
+            description: Duration is a time string that the internal api will serve that variable after runtime starts
+            nullable: true
+            anyOf:
+              - $ref: ../../Duration.yml
+      file:
+        nullable: true
+        description: File is an on object that describes an optional path to mount the file to.  The default is /var/run/cycle/variables/<myVariable>
+        type: object
+        required:
+          - decode
+          - path
+        properties:
+          decode:
+            description: Decode tells Cycle that the file is a base64 encoded string
+            type: boolean
+          path:
+            nullable: trie
+            description: The path to mount the file to
+            type: string
+  source:
+    nullable: true
+    anyOf:
+      - $ref: ../StackSource.yml
