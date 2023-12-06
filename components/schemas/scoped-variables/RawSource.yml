@@ -13,12 +13,23 @@ properties:
   details:
     type: object
     required:
-      - string
+      - value
       - blob
     properties:
-      string:
+      value:
         type: string
-        description: The value of the source.
+        description: The value of the variable.
       blob:
         type: boolean
         description: A boolean where true represents the text the user is entering will be multi line.
+      secret:
+        nullable: true
+        type: object
+        properties:
+          iv:
+            type: string
+            description: A string describing the IV Hex associated with the encryption of the variable
+          hint:
+            nullable: true
+            type: string
+            description: A user specified hint that will suggest what the encryption key might be

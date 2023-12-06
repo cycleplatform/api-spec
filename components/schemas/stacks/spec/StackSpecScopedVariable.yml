@@ -1,0 +1,76 @@
+title: StackSpecScopedVariable
+type: object
+required:
+  - identifier
+  - scope
+  - access
+  - source
+properties:
+  identifier:
+    type: string
+  scope:
+    type: object
+    required:
+      - containers
+    properties:
+      containers:
+        type: object
+        description: Information about the assignment of the scoped variable to different containers in the environment.
+        required:
+          - global
+          - ids
+          - identifiers
+        properties:
+          global:
+            type: boolean
+            description: A boolean where true represents the scoped variables is globally assigned to all current and future containers in the environment.
+          ids:
+            type: array
+            description: An array of container IDs, where each container identified will have access to the scoped variable.
+            items:
+              type: string
+          identifiers:
+            type: array
+            description: An array of container identifiers, where each container identfied will have access to the scoped variable.
+            items:
+              type: string
+  access:
+    type: object
+    required:
+      - env_variable
+      - internal_api
+      - file
+    properties:
+      env_variable:
+        type: boolean
+      internal_api:
+        nullable: true
+        description: If set, this scoped variable will be available over the internal API. Contains settings for accessing this variable over the internal API.
+        type: object
+        properties:
+          duration:
+            type: object
+            description: Duration is a time string that the internal API will serve that variable after runtime starts.
+            nullable: true
+            anyOf:
+              - $ref: ../../Duration.yml
+      file:
+        nullable: true
+        description: File is an object that describes a path to mount the file to inside the container.
+        type: object
+        required:
+          - decode
+          - path
+        properties:
+          decode:
+            description: When true, Cycle will interpret this variable as a base-64 encoded string, and decode it before passing it into the container.
+            type: boolean
+          path:
+            nullable: true
+            example: /var/run/cycle/variables/<myVariable>
+            description: The path to mount the file to inside the container.
+            type: string
+  source:
+    nullable: true
+    anyOf:
+      - $ref: ../StackSource.yml

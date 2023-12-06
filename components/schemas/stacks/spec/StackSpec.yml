@@ -24,6 +24,11 @@ properties:
     type: array
     items:
       $ref: StackSpecTestContainer.yml
+  scoped_variables:
+    nullable: true
+    type: array
+    items:
+      $ref: ../../scoped-variables/ScopedVariable.yml
   containers:
     $ref: ./StackContainer.yml
   services:
