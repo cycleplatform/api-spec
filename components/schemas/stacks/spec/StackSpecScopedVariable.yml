@@ -45,29 +45,30 @@ properties:
         type: boolean
       internal_api:
         nullable: true
-        description: Descibes an object with variables that the internal api will serve after runtime starts
+        description: If set, this scoped variable will be available over the internal API. Contains settings for accessing this variable over the internal API.
         type: object
         properties:
           duration:
             type: object
-            description: Duration is a time string that the internal api will serve that variable after runtime starts
+            description: Duration is a time string that the internal API will serve that variable after runtime starts.
             nullable: true
             anyOf:
               - $ref: ../../Duration.yml
       file:
         nullable: true
-        description: File is an on object that describes an optional path to mount the file to.  The default is /var/run/cycle/variables/<myVariable>
+        description: File is an object that describes a path to mount the file to inside the container.
         type: object
         required:
           - decode
           - path
         properties:
           decode:
-            description: Decode tells Cycle that the file is a base64 encoded string
+            description: When true, Cycle will interpret this variable as a base-64 encoded string, and decode it before passing it into the container.
             type: boolean
           path:
             nullable: true
-            description: The path to mount the file to
+            example: /var/run/cycle/variables/<myVariable>
+            description: The path to mount the file to inside the container.
             type: string
   source:
     nullable: true

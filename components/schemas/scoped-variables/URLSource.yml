@@ -22,9 +22,9 @@ properties:
         description: The URL to call to produce the value.
       headers:
         type: object
-        description: Additional information about a URL source
+        description: Additional headers that can be attached to the URL request. Useful for adding metadata to third-party services.
         additionalProperties: {}
       auth_token_url:
         nullable: true
         type: string
-        description: The response is from auth_token_url will be sent as header authorization which allows third party integration
+        description: A URL that can be provided to authenticate with a third party secret service. Cycle will make a request to this URL before fetching the secret URL, and use the response as the value of an Authorization header when requesting the secret.
