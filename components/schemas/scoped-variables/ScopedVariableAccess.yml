@@ -13,7 +13,7 @@ properties:
     type: object
     properties:
       duration:
-        type: object
+        type: string
         description: Duration is a time string that the internal API will serve that variable after runtime starts.
         nullable: true
         anyOf:
