@@ -13,7 +13,7 @@ properties:
     type: object
     properties:
       duration:
-        type: object
+        type: string
         description: Duration is a time string that the internal API will serve that variable after runtime starts.
         nullable: true
         anyOf:
@@ -22,6 +22,10 @@ properties:
     nullable: true
     description: File is an object that describes a path to mount the file to inside the container.
     type: object
+    # avoid conflicting name in ogen generator with the Decode method
+    x-ogen-properties:
+      decode:
+      name: "DecodeBase64"
     required:
       - decode
       - path
