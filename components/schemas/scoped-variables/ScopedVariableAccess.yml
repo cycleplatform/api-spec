@@ -25,7 +25,7 @@ properties:
     # avoid conflicting name in ogen generator with the Decode method
     x-ogen-properties:
       decode:
-      name: "DecodeBase64"
+        name: "DecodeBase64"
     required:
       - decode
       - path
