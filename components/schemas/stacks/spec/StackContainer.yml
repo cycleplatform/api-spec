@@ -8,14 +8,15 @@ additionalProperties:
     - name
     - identifier
     - image
-    - annotations
     - stateful
+    - config
   properties:
     name:
       type: string
     image:
       $ref: StackSpecContainerImage.yml
     annotations:
+      nullable: true
       type: object
       description: Additional meta info about the container.
       additionalProperties: {}
