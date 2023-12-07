@@ -6,9 +6,8 @@ additionalProperties:
   description: Stacks container object
   required:
     - name
-    - identifier
     - image
-    - annotations
+    - config
     - stateful
   properties:
     name:
