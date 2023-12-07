@@ -75,6 +75,7 @@ properties:
             description: The path to mount the file to inside the container.
             type: string
   source:
+    type: object
     nullable: true
     anyOf:
       - $ref: ../StackSource.yml
