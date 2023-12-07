@@ -28,7 +28,7 @@ properties:
     nullable: true
     type: array
     items:
-      $ref: ../../scoped-variables/ScopedVariable.yml
+      $ref: ./StackSpecScopedVariable.yml
   containers:
     $ref: ./StackContainer.yml
   services:
