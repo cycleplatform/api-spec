@@ -16,7 +16,6 @@ additionalProperties:
     image:
       $ref: StackSpecContainerImage.yml
     annotations:
-      nullable: true
       type: object
       description: Additional meta info about the container.
       additionalProperties: {}
