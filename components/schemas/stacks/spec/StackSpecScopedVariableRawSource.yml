@@ -1,0 +1,35 @@
+title: StackSpecScopedVariableRawSource
+type: object
+description: A stack spec resource.
+required:
+  - type
+  - details
+properties:
+  type:
+    type: string
+    enum:
+      - raw
+  details:
+    type: object
+    required:
+      - value
+      - blob
+      - secret
+    properties:
+      value:
+        type: string
+        description: The value of the variable.
+      blob:
+        type: boolean
+        description: A boolean where true represents the text the user is entering will be multi line.
+      secret:
+        nullable: true
+        type: object
+        required:
+        properties:
+          iv:
+            type: string
+            description: A string describing the IV Hex associated with the encryption of the variable
+          hint:
+            type: string
+            description: A user specified hint that will suggest what the encryption key might be
