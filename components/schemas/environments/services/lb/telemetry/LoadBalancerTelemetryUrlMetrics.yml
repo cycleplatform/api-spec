@@ -39,7 +39,7 @@ properties:
               example: 11
             last_hit:
               description: The date of the most recent hit to the URL.
-              $ref: ../../../../Duration.yml
+              $ref: ../../../../DateTime.yml
             handlers:
               type: object
               description: An object describing the relative breakdown of proxy, cache, forward, and redirect URL responses.
@@ -50,12 +50,16 @@ properties:
                 - redirect
               properties:
                 proxy:
+                  description: Object containing hit count and timing data for proxy responses.
                   $ref: ./LoadBalancerTelemetryUrlRequestHandler.yml
                 cache:
+                  description: Object containing hit count and timing data for cache responses.
                   $ref: ./LoadBalancerTelemetryUrlRequestHandler.yml
                 forward:
+                  description: Object containing hit count and timing data for forward responses.
                   $ref: ./LoadBalancerTelemetryUrlRequestHandler.yml
                 redirect:
+                  description: Object containing hit count and timing data for redirect responses.
                   $ref: ./LoadBalancerTelemetryUrlRequestHandler.yml
             responses:
               type: object
