@@ -25,7 +25,6 @@ properties:
       secret:
         nullable: true
         type: object
-        required:
         properties:
           iv:
             type: string
