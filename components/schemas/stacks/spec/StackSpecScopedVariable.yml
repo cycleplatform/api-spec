@@ -75,7 +75,14 @@ properties:
             description: The path to mount the file to inside the container.
             type: string
   source:
-    type: object
     nullable: true
-    anyOf:
-      - $ref: ../StackSource.yml
+    type: object
+    description: The source or value of the scoped variable.
+    discriminator:
+      propertyName: type
+      mapping:
+        url: ./URLSource.yml
+        raw: ./RawSource.yml
+    oneOf:
+      - $ref: ./URLSource.yml
+      - $ref: ./RawSource.yml
