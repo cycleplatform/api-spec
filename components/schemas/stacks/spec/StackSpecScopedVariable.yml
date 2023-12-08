@@ -81,8 +81,8 @@ properties:
     discriminator:
       propertyName: type
       mapping:
-        url: ./URLSource.yml
-        raw: ./RawSource.yml
+        url: ./StackSpecScopedVariableUrlSource.yml
+        raw: ./StackSpecScopedVariableRawSource.yml
     oneOf:
-      - $ref: ./URLSource.yml
-      - $ref: ./RawSource.yml
+      - $ref: ./StackSpecScopedVariableUrlSource.yml
+      - $ref: ./StackSpecScopedVariableRawSource.yml
