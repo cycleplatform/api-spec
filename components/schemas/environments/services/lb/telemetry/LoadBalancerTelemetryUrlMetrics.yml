@@ -23,26 +23,26 @@ properties:
           properties:
             host:
               type: string
-              description: The host name of the URL request
+              description: The host name of the URL request.
               example: abc.cycle.io
             method:
               type: string
-              description: The method of the UrRL request
+              description: The HTTP method of the URL request.
               example: GET
             path:
               type: string
-              description: The path name of the URL request
+              description: The path portion of the inbound URL request.
               example: /pathname
             total:
               type: integer
-              description: The number of requests to a certain URL
+              description: The number of requests to a this URL.
               example: 11
             last_hit:
-              description: The timestamp of the most recent hit to the URL
+              description: The date of the most recent hit to the URL.
               $ref: ../../../../Duration.yml
             handlers:
               type: object
-              description: An object describing the relative breakdown of proxy, cache, forward, and redirect URL responses
+              description: An object describing the relative breakdown of proxy, cache, forward, and redirect URL responses.
               required:
                 - proxy
                 - cache
@@ -59,12 +59,13 @@ properties:
                   $ref: ./LoadBalancerTelemetryUrlRequestHandler.yml
             responses:
               type: object
-              description: An object where the key is the response type and the key is the number of hits with that response
-              example: "{ http: 404: 10 }"
+              example: { "http:404": 10 }
+              description: An object where the key is the response type and the value is the number of hits with that response.
               additionalProperties:
                 type: integer
             errors:
               type: object
-              description: An object where the key is the error type and the key is the number of hits with that error
+              example: { "i/o timeout": 1 }
+              description: An object where the key is the error type and the value is the number of hits with that error.
               additionalProperties:
                 type: integer

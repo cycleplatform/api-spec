@@ -5,8 +5,8 @@ required:
   - timing_ms
 properties:
   hits:
-    description: The number of hits to a specific URL handler
+    description: The number of hits to a specific URL handler.
     type: integer
   timing_ms:
-    description: The cumulative ms of response time across all hits
+    description: The cumulative ms of response time across all hits.
     type: integer
