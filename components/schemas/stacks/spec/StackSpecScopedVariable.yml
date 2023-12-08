@@ -77,7 +77,6 @@ properties:
   source:
     type: object
     nullable: true
-    type: object
     description: The source or value of the scoped variable.
     discriminator:
       propertyName: type
