@@ -10,4 +10,7 @@ properties:
     enum:
       - raw
   details:
-    $ref: ./StackSpec.yml
+    type: object
+    nullable: true
+    allOf:
+      - $ref: ./StackSpec.yml
