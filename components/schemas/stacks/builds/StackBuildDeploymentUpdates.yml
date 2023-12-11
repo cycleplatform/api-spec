@@ -14,7 +14,7 @@ properties:
   scoped_variables:
     nullable: true
     type: object
-    description: An object that describes configuration options for scoped variables on stack build
+    description: An object that describes configuration options for scoped variables on stack build.
     required:
       - add_new
       - replace_existing
