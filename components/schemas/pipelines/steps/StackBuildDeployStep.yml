@@ -32,4 +32,7 @@ properties:
           environment:
             $ref: "../ResourceLocation.yml"
           update:
-            $ref: "../../stacks/builds/StackBuildDeploymentUpdates.yml"
+            nullable: true
+            type: object
+            anyOf:
+              - $ref: "../../stacks/builds/StackBuildDeploymentUpdates.yml"

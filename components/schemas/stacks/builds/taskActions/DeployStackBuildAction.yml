@@ -19,4 +19,7 @@ properties:
         type: string
         description: The ID for the environment this stack build will be deployed to.
       update:
-        $ref: "../StackBuildDeploymentUpdates.yml"
+        nullable: true
+        type: object
+        anyOf:
+          - $ref: "../StackBuildDeploymentUpdates.yml"
