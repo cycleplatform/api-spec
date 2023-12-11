@@ -32,4 +32,4 @@ properties:
           environment:
             $ref: "../ResourceLocation.yml"
           update:
-            $ref: "../../stacks/builds/StackBuildContainerUpdate.yml"
+            $ref: "../../stacks/builds/StackBuildDeploymentUpdates.yml"
