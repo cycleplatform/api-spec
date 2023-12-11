@@ -55,7 +55,7 @@ properties:
   session:
     type: object
     nullable: true
-    anyOf:
+    allOf:
       - $ref: Session.yml
   changes:
     type: array

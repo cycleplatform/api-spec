@@ -34,5 +34,5 @@ properties:
           update:
             nullable: true
             type: object
-            anyOf:
+            allOf:
               - $ref: "../../stacks/builds/StackBuildDeploymentUpdates.yml"
