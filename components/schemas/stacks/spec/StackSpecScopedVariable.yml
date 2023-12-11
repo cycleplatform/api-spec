@@ -18,18 +18,18 @@ properties:
         description: Information about the assignment of the scoped variable to different containers in the environment.
         required:
           - global
-          - ids
-          - identifiers
         properties:
           global:
             type: boolean
             description: A boolean where true represents the scoped variables is globally assigned to all current and future containers in the environment.
           ids:
+            nullable: true
             type: array
             description: An array of container IDs, where each container identified will have access to the scoped variable.
             items:
               type: string
           identifiers:
+            nullable: true
             type: array
             description: An array of container identifiers, where each container identfied will have access to the scoped variable.
             items:
@@ -38,8 +38,6 @@ properties:
     type: object
     required:
       - env_variable
-      - internal_api
-      - file
     properties:
       env_variable:
         type: boolean
