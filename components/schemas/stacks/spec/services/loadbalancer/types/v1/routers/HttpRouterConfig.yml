@@ -14,6 +14,8 @@ properties:
     required:
       - redirect
       - forward
+      - proxy
+      - caching
     properties:
       redirect:
         nullable: true
@@ -50,3 +52,35 @@ properties:
           scheme:
             nullable: true
             type: string
+      proxy:
+        nullable: true
+        type: object
+        required:
+          - domain
+        properties:
+          domain:
+            nullable: true
+            type: string
+            description: The proxy domain for this router.
+      caching:
+        nullable: true
+        type: object
+        required:
+          - files
+        properties:
+          files:
+            nullable: true
+            type: array
+            items:
+              type: object
+              required:
+                - match
+                - ttl
+              properties:
+                match:
+                  describe: Regex string that describes the files types to cache.
+                  example: (.*)\\.(js|jpg|css|png|svg)$
+                  type: string
+                ttl:
+                  description: Time string describing the time to live.
+                  $ref: ../../../../../../../Duration.yml
