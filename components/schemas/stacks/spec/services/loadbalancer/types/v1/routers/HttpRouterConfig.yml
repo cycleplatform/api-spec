@@ -60,8 +60,6 @@ properties:
       caching:
         nullable: true
         type: object
-        required:
-          - files
         properties:
           files:
             nullable: true
