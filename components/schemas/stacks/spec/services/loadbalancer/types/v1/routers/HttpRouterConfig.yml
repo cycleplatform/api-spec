@@ -22,15 +22,18 @@ properties:
         type: object
         required:
           - auto_https_redirect
+          - remove_www
           - port
           - scheme
           - url
         description: Defines a built-in redirect for HTTP mode routers
         properties:
           auto_https_redirect:
-            nullable: true
             type: boolean
             description: If enabled and a sibling controller exists for port 443, requests will be auto redirected to it. Essentially sets up automatic TLS redirection for this router.
+          remove_www:
+            description: If true, any request comes in with "www" prefix will be permanently redirected to the same path without www.
+            type: boolean
           port:
             nullable: true
             type: integer
