@@ -41,8 +41,6 @@ properties:
       forward:
         nullable: true
         type: object
-        required:
-          - scheme
         properties:
           scheme:
             nullable: true
@@ -50,8 +48,6 @@ properties:
       proxy:
         nullable: true
         type: object
-        required:
-          - domain
         properties:
           domain:
             nullable: true
