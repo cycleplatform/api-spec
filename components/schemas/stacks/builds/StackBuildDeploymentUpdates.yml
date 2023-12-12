@@ -1,0 +1,27 @@
+title: StackBuildDeploymentUpdates
+type: object
+description: Optional update object used to specify specific params to update from the stack build.
+required:
+  - containers
+  - scoped_variables
+properties:
+  containers:
+    type: object
+    description: A map of the container names to update within the environment.
+    additionalProperties:
+      $ref: "../StackDeployContainersObject.yml"
+    minProperties: 1
+  scoped_variables:
+    nullable: true
+    type: object
+    description: An object that describes configuration options for scoped variables on stack build.
+    required:
+      - add_new
+      - replace_existing
+    properties:
+      add_new:
+        description: Add new scoped variables defined in the stack.
+        type: boolean
+      replace_existing:
+        description: Replace all scoped variables with those defined in the stack.
+        type: boolean
