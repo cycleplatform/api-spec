@@ -18,9 +18,6 @@ properties:
         required:
           - auto_https_redirect
           - remove_www
-          - port
-          - scheme
-          - url
         description: Defines a built-in redirect for HTTP mode routers
         properties:
           auto_https_redirect:
