@@ -78,9 +78,9 @@ properties:
                 - ttl
               properties:
                 match:
-                  describe: Regex string that describes the files types to cache.
+                  description: Regex string that describes the files to cache.
                   example: (.*)\\.(js|jpg|css|png|svg)$
                   type: string
                 ttl:
-                  description: Time string describing the time to live.
+                  description: Time string that describes the time to live.
                   $ref: ../../../../../../../Duration.yml
