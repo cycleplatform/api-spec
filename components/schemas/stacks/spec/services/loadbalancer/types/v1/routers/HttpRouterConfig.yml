@@ -11,24 +11,21 @@ properties:
       - http
   details:
     type: object
-    required:
-      - redirect
-      - forward
     properties:
       redirect:
         nullable: true
         type: object
         required:
           - auto_https_redirect
-          - port
-          - scheme
-          - url
+          - remove_www
         description: Defines a built-in redirect for HTTP mode routers
         properties:
           auto_https_redirect:
-            nullable: true
             type: boolean
             description: If enabled and a sibling controller exists for port 443, requests will be auto redirected to it. Essentially sets up automatic TLS redirection for this router.
+          remove_www:
+            description: If true, any request comes in with "www" prefix will be permanently redirected to the same path without www.
+            type: boolean
           port:
             nullable: true
             type: integer
@@ -44,9 +41,35 @@ properties:
       forward:
         nullable: true
         type: object
-        required:
-          - scheme
         properties:
           scheme:
             nullable: true
             type: string
+      proxy:
+        nullable: true
+        type: object
+        properties:
+          domain:
+            nullable: true
+            type: string
+            description: The proxy domain for this router.
+      caching:
+        nullable: true
+        type: object
+        properties:
+          files:
+            nullable: true
+            type: array
+            items:
+              type: object
+              required:
+                - match
+                - ttl
+              properties:
+                match:
+                  description: Regex string that describes the files to cache.
+                  example: (.*)\\.(js|jpg|css|png|svg)$
+                  type: string
+                ttl:
+                  description: Time string that describes the time to live.
+                  $ref: ../../../../../../../Duration.yml
