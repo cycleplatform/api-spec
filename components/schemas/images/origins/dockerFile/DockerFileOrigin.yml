@@ -13,18 +13,30 @@ properties:
     type: object
     properties:
       existing:
-        $ref: ../ExistingSource.yml
+        allOf:
+          - type: object
+            nullable: true
+          - $ref: ../ExistingSource.yml
       # TODO toggle between repo / tarball
       repo:
-        "$ref": "./RepoType.yml"
+        allOf:
+          - type: object
+            nullable: true
+          - $ref: ./RepoType.yml
       targz_url:
         type: string
+        nullable: true
         description: An endpoint that serves the tar file.
       context_dir:
         type: string
+        nullable: true
         description: The path to the directory to use as the context when building the image.
       build_file:
         type: string
+        nullable: true
         description: The path to the Dockerfile to be used for buiding the image.
       credentials:
-        "$ref": "./DockerfileCredentials.yml"
+        allOf:
+          - type: array
+            nullable: true
+          - $ref: ./DockerfileCredentials.yml

@@ -7,6 +7,7 @@ properties:
     type: integer
   strategy:
     type: string
+    nullable: true
     enum:
       - resource-density
       - manual
@@ -17,6 +18,7 @@ properties:
       - function
   stateful:
     type: object
+    nullable: true
     required:
       - options
     properties:
@@ -29,9 +31,11 @@ properties:
             nullable: true
   constraints:
     type: object
+    nullable: true
     properties:
       node:
         type: object
+        nullable: true
         required:
           - tags
         properties:
@@ -47,15 +51,18 @@ properties:
                 items:
                   type: string
       secrets:
+        nullable: true
         type: array
         items:
           type: string
       containers:
+        nullable: true
         type: array
         items:
           type: string
   shutdown:
     type: object
+    nullable: true
     properties:
       graceful_timeout:
         type: string
@@ -69,6 +76,7 @@ properties:
           type: string
   startup:
     type: object
+    nullable: true
     properties:
       delay:
         nullable: true
@@ -78,13 +86,18 @@ properties:
           - $ref: ../../Duration.yml
   update:
     type: object
+    nullable: true
     description: Configurations for container updates.
     properties:
       stagger:
-        $ref: ../../Duration.yml
+        allOf:
+          - type: string
+            nullable: true
+          - $ref: ../../Duration.yml
         description: When set, Cycle will pick a random time from `0 - this duration`, and stagger the instances so they all start at different times (up to the time specified here).
   restart:
     type: object
+    nullable: true
     required:
       - condition
       - delay
@@ -103,6 +116,7 @@ properties:
         type: integer
       notify:
         type: object
+        nullable: true
         properties:
           emails:
             type: array
@@ -112,6 +126,7 @@ properties:
             type: string
   health_check:
     type: object
+    nullable: true
     required:
       - command
       - retries
@@ -136,20 +151,32 @@ properties:
         type: boolean
         description: A boolean where true represents the desire for the container to restart if any instance is unhealthy.
       delay:
-        $ref: ../../Duration.yml
+        allOf:
+          - $ref: ../../Duration.yml
+          - type: string
+            nullable: true
         description: How long to wait after a container start event before starting health checks.
   telemetry:
     type: object
+    nullable: true
     required:
-      - retention
-      - interval
       - disable
     properties:
       retention:
-        $ref: ../../Duration.yml
+        allOf:
+          - type: string
+            nullable: true
+          - $ref: ../../Duration.yml
         description: How long telemetry data should be retained.
       interval:
-        $ref: ../../Duration.yml
+        allOf:
+          - type: string
+            nullable: true
+          - $ref: ../../Duration.yml
         description: The duration between samples.
+      web_hook:
+        type: string
+        nullable: true
+        description: A URL where Cycle will send telemetry data to.
       disable:
         type: boolean

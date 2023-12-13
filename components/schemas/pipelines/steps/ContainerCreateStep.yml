@@ -19,33 +19,31 @@ properties:
     enum:
       - container.create
   details:
-    allOf:
-      - $ref: "../ResourceLocation.yml"
-      - type: object
-        required:
-          - name
-          - environment
-          - image
-          - stateful
-          - config
-          - volumes
-          - annotations
-        properties:
-          name:
-            type: string
-          environment:
-            $ref: "../ResourceLocation.yml"
-          image:
-            $ref: "../ResourceLocation.yml"
-          stateful:
-            type: boolean
-          annotations:
-            type: object
-            description: Additional information about a container
-            additionalProperties: {}
-          config:
-            $ref: "../../containers/config/Config.yml"
-          volumes:
-            type: array
-            items:
-              $ref: "../../containers/config/ContainerVolume.yml"
+    type: object
+    required:
+      - name
+      - environment
+      - image
+      - stateful
+      - config
+      - volumes
+    properties:
+      name:
+        type: string
+      environment:
+        $ref: "../ResourceLocation.yml"
+      image:
+        $ref: "../ResourceLocation.yml"
+      stateful:
+        type: boolean
+      annotations:
+        type: object
+        nullable: true
+        description: Additional information about a container
+        additionalProperties: {}
+      config:
+        $ref: "../../containers/config/Config.yml"
+      volumes:
+        type: array
+        items:
+          $ref: "../../containers/config/ContainerVolume.yml"

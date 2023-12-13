@@ -6,16 +6,16 @@ required:
 properties:
   command:
     type: object
+    nullable: true
     description: A command that will be run in place of the images defined startup command.
-    required:
-      - path
-      - args
     properties:
       path:
         type: string
+        nullable: true
         description: System path for the command.
       args:
         type: string
+        nullable: true
         description: Arguments to pass to the command.
   namespaces:
     type: array

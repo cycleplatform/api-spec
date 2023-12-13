@@ -1,9 +1,8 @@
 title: ImageSourceAbout
 type: object
 description: Information about the image source resource.
-required:
-  - description
 properties:
   description:
+    nullable: true
     type: string
     description: Some information about the image source resource.
