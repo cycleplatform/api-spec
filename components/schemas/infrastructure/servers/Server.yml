@@ -8,6 +8,7 @@ required:
   - location_id
   - model_id
   - node_id
+  - mounts
   - hostname
   - creator
   - provider
