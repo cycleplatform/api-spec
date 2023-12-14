@@ -1,0 +1,26 @@
+title: ServerSharedFileSystems
+type: object
+properties:
+  mounts:
+    type: object
+    additionalProperties:
+      type: object
+      required:
+        - type
+        - options
+        - source
+      properties:
+        type:
+          type: string
+          description: String describing the server mount type.
+        options:
+          type: string
+          description: Comma separated string describing the server mount options.
+          example: key1=value1,key2=value2
+        source:
+          type: string
+          description: String describing the server mount source.
+  directories:
+    type: object
+    description: An object describing directory identifiers with key {}
+    additionalProperties: {}

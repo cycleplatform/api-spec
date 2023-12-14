@@ -261,6 +261,7 @@ properties:
       - infrastructure.server.compute.restart
       - infrastructure.server.compute.spawner.restart
       - infrastructure.server.reconfigure.features
+      - infrastructure.server.reconfigure.sharedfs
       - infrastructure.server.provision
       - infrastructure.server.console
       - infrastructure.server.update
