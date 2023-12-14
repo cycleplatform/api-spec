@@ -110,7 +110,6 @@ properties:
                     - normal
                     - high
                     - debug
-                    - ""
                 extension:
                   type: object
                   description: Extended configurations for the specified transport mode (http/tcp)

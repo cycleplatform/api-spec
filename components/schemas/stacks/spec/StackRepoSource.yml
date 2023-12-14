@@ -41,10 +41,6 @@ properties:
           type:
             type: string
             description: The type of reference being used.
-            enum:
-              - hash
-              - tag
-              - ""
           value:
             type: string
             description: The value for the given reference type.
