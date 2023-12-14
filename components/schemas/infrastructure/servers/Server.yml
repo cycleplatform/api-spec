@@ -32,7 +32,10 @@ properties:
     type: string
     description: An identifier for the node.
   mounts:
-    $ref: ./ServerMounts.yml
+    nullable: true
+    type: object
+    allOf:
+      - $ref: ./ServerMounts.yml
   hostname:
     type: string
     description: The server hostname.
