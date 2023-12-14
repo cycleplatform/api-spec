@@ -49,8 +49,7 @@ properties:
   input:
     type: object
     description: Input information used for the job tasks.
-    additionalProperties:
-      type: string
+    additionalProperties: {}
   output:
     type: object
     nullable: true
