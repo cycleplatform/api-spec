@@ -22,5 +22,5 @@ properties:
           description: String describing the server mount source.
   directories:
     type: object
-    description: An object describing directory identifiers with key {}
+    description: An object describing directory identifiers with key {}.
     additionalProperties: {}

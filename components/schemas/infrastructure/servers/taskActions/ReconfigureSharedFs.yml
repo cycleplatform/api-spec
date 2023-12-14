@@ -35,5 +35,5 @@ properties:
       directories:
         nullable: true
         type: object
-        description: An object describing directory identifiers with key {}
+        description: An object describing directory identifiers with key {}.
         additionalProperties: {}
