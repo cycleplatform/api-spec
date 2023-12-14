@@ -1,0 +1,19 @@
+title: ServerMounts
+type: object
+additionalProperties:
+  type: object
+  required:
+    - type
+    - options
+    - source
+  properties:
+    type:
+      type: string
+      description: String describing the server mount type.
+    options:
+      type: string
+      description: Comma separated string describing the server mount options.
+      example: key1=value1,key2=value2
+    source:
+      type: string
+      description: String describing the IP of the server mount device.

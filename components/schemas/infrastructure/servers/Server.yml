@@ -15,7 +15,6 @@ required:
   - features
   - constraints
   - ephemeral
-  - autoscale
   - state
   - events
 properties:
@@ -32,6 +31,8 @@ properties:
   node_id:
     type: string
     description: An identifier for the node.
+  mounts:
+    $ref: ./ServerMounts.yml
   hostname:
     type: string
     description: The server hostname.
