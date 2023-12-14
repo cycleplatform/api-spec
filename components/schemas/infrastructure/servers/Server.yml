@@ -33,7 +33,9 @@ properties:
     description: An identifier for the node.
   mounts:
     nullable: true
-    $ref: ./ServerMounts.yml
+    type: object
+    allOf:
+      - $ref: ./ServerMounts.yml
   hostname:
     type: string
     description: The server hostname.
