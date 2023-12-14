@@ -117,7 +117,7 @@ properties:
         allOf:
           - $ref: ../../Duration.yml
         default: "365d"
-  shared_directories:
+  shared_file_systems:
     nullable: true
     type: object
     additionalProperties:
