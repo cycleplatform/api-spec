@@ -16,4 +16,4 @@ additionalProperties:
       example: key1=value1,key2=value2
     source:
       type: string
-      description: String describing the IP of the server mount device.
+      description: String describing the server mount source.
