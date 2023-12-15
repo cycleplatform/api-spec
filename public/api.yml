@@ -342,6 +342,8 @@ paths:
     "$ref": "./paths/infrastructure/servers/clusters.yml"
   "/v1/infrastructure/servers/{serverId}/usage":
     "$ref": "./paths/infrastructure/servers/usage.yml"
+  "/v1/infrastructure/servers/{serverId}/console":
+    "$ref": "./paths/infrastructure/servers/console.yml"
   # IPs
   "/v1/infrastructure/ips/pools":
     "$ref": "./paths/infrastructure/ips/pools.yml"
