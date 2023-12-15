@@ -13,6 +13,7 @@ properties:
     type: object
     required:
       - connections
+      - telemetry
     properties:
       connections:
         type: object
@@ -24,3 +25,20 @@ properties:
             nullable: true
             type: integer
             description: Maximum number of simultaneous connections (via http/2) per connection.
+      telemetry:
+        type: object
+        description: Configuration options for how telemetry is handled.
+        properties:
+          tracking_window:
+            type: string
+            nullable: true
+            allOf:
+              - $ref: ../../../../../../../Duration.yml
+          track_invalid_requests:
+            type: boolean
+            nullable: true
+          ignore_paths:
+            type: array
+            nullable: true
+            items:
+              type: string
