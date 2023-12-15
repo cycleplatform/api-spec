@@ -8,6 +8,7 @@ required:
   - location_id
   - model_id
   - node_id
+  - shared_file_systems
   - hostname
   - creator
   - provider
@@ -31,8 +32,8 @@ properties:
   node_id:
     type: string
     description: An identifier for the node.
-  mounts:
-    $ref: ./ServerMounts.yml
+  shared_file_systems:
+    $ref: ./ServerSharedFileSystems.yml
   hostname:
     type: string
     description: The server hostname.
