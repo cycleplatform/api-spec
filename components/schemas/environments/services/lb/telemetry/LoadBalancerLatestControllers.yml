@@ -1,5 +1,5 @@
-title: LoadBalancerLatestTelemetry
-description: Snapshots of the latest load balancer telemetry
+title: LoadBalancerLatestControllers
+description: Information about the latest controllers that generated traffic.
 type: object
 required:
   - created

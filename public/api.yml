@@ -176,6 +176,8 @@ paths:
     "$ref": "./paths/environments/services/lb/telemetry/report.yml"
   "/v1/environments/{environmentId}/services/lb/telemetry/latest":
     "$ref": "./paths/environments/services/lb/telemetry/latest.yml"
+  "/v1/environments/{environmentId}/services/lb/telemetry/latest-controllers":
+    "$ref": "./paths/environments/services/lb/telemetry/controllers.yml"
   ## Discovery
   "/v1/environments/{environmentId}/services/discovery/tasks":
     "$ref": "./paths/environments/services/discovery/tasks.yml"

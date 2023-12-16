@@ -1,0 +1,31 @@
+get:
+  operationId: "getLoadBalancerTelemetryLatestControllers"
+  tags:
+    - Environments
+  parameters:
+    - name: environmentId
+      description: The ID of the environment of the desired load balancer.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Gets the latest relevant controllers where traffic data is present.
+  description: |
+    ## Permissions
+    Requires the `environments-view` capability. Also requires the user to have access specifically to the requested environment.
+
+    ## Details
+    Gets the controller information for the specified load balancer. Returns a similar struct to the 'latest' load balancer telemetry call, but does NOT return snapshots, just the controller information.
+  responses:
+    200:
+      description: Returns information about the latest controllers that produced telemetry.
+      content:
+        application/json:
+          schema:
+            title: "GetLoadBalancerTelemetryLatestControllersReturn"
+            type: object
+            properties:
+              data:
+                $ref: ../../../../../../components/schemas/environments/services/lb/telemetry/LoadBalancerLatestControllers.yml
+    default:
+      $ref: ../../../../../../components/responses/errors/DefaultError.yml
