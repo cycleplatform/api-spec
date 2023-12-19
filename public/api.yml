@@ -176,6 +176,8 @@ paths:
     "$ref": "./paths/environments/services/lb/telemetry/report.yml"
   "/v1/environments/{environmentId}/services/lb/telemetry/latest":
     "$ref": "./paths/environments/services/lb/telemetry/latest.yml"
+  "/v1/environments/{environmentId}/services/lb/telemetry/latest-controllers":
+    "$ref": "./paths/environments/services/lb/telemetry/controllers.yml"
   ## Discovery
   "/v1/environments/{environmentId}/services/discovery/tasks":
     "$ref": "./paths/environments/services/discovery/tasks.yml"
@@ -342,6 +344,8 @@ paths:
     "$ref": "./paths/infrastructure/servers/clusters.yml"
   "/v1/infrastructure/servers/{serverId}/usage":
     "$ref": "./paths/infrastructure/servers/usage.yml"
+  "/v1/infrastructure/servers/{serverId}/console":
+    "$ref": "./paths/infrastructure/servers/console.yml"
   # IPs
   "/v1/infrastructure/ips/pools":
     "$ref": "./paths/infrastructure/ips/pools.yml"

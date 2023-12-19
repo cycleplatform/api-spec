@@ -9,6 +9,24 @@ get:
       required: true
       schema:
         type: string
+    - name: filter
+      in: query
+      # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706
+      style: deepObject
+      required: true
+      description: |
+        ## Filter Field
+        The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
+        ### Required Filter
+        On this endpoint, you MUST pass filter[controller].
+      schema:
+        type: object
+        properties:
+          controller:
+            type: string
+            description: |
+              `filter[controller]=port-123` filter for a specific controller to load telemetry for. THIS FILTER IS REQUIRED.
+
   summary: Fetch the latest load balancer v1 telemetry.
   description: |
     ## Permissions

@@ -3,7 +3,6 @@ type: object
 required:
   - time
   - controller
-  - instances
 properties:
   time:
     $ref: ../../../../DateTime.yml
@@ -11,5 +10,6 @@ properties:
     $ref: ../../../../Identifier.yml
   instances:
     type: array
+    nullable: true
     items:
       $ref: ./LoadBalancerLatestTelemetryInstance.yml
