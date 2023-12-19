@@ -16,7 +16,8 @@ properties:
           type: string
           description: The model of the processor.
         speed:
-          type: integer
+          type: number
+          format: float
           description: The speed of the processor.
   usage:
     $ref: ./ServerStatsCpuUsage.yml

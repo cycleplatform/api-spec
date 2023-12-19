@@ -2,6 +2,7 @@ title: ServerSharedFileSystems
 type: object
 properties:
   mounts:
+    nullable: true
     type: object
     additionalProperties:
       type: object
@@ -22,5 +23,6 @@ properties:
           description: String describing the server mount source.
   directories:
     type: object
+    nullable: true
     description: An object describing directory identifiers with value {}.
     additionalProperties: {}

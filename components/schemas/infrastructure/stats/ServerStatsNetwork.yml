@@ -25,6 +25,7 @@ properties:
           type: string
           description: The mac address for the interface.
         addrs:
+          nullable: true
           description: An array of IP addresses associated with the interface.
           type: array
           items:
