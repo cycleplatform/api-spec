@@ -16,6 +16,7 @@ additionalProperties:
       $ref: StackSpecContainerImage.yml
     annotations:
       type: object
+      nullable: true
       description: Additional meta info about the container.
       additionalProperties: {}
     stateful:
@@ -32,21 +33,36 @@ additionalProperties:
         deploy:
           $ref: ./StackContainerConfigDeploy.yml
         scaling:
-          $ref: ./StackContainerConfigScaling.yml
+          allOf:
+            - type: object
+              nullable: true
+            - $ref: ./StackContainerConfigScaling.yml
         runtime:
-          $ref: ./StackContainerConfigRuntime.yml
+          allOf:
+            - type: object
+              nullable: true
+            - $ref: ./StackContainerConfigRuntime.yml
         resources:
-          $ref: ./StackContainerConfigResources.yml
+          allOf:
+            - type: object
+              nullable: true
+            - $ref: ./StackContainerConfigResources.yml
         integrations:
-          $ref: ./StackContainerConfigIntegrations.yml
+          allOf:
+            - type: object
+              nullable: true
+            - $ref: ./StackContainerConfigIntegrations.yml
     role:
       type: string
+      nullable: true
       enum:
         - "conductor"
     pod:
       type: string
+      nullable: true
     volumes:
       type: array
+      nullable: true
       items:
         title: StackSpecContainerVolume
         type: object

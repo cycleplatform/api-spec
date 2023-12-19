@@ -23,12 +23,8 @@ properties:
       - $ref: "../ResourceLocation.yml"
       - type: object
         required:
-          - id
           - environment
         properties:
-          id:
-            type: string
-            description: Id of stack build
           environment:
             $ref: "../ResourceLocation.yml"
           update:

@@ -10,6 +10,7 @@ properties:
   origin:
     $ref: "../../images/origins/ImageOrigin.yml"
   build:
+    nullable: true
     type: object
     required:
       - args

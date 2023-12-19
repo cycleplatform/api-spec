@@ -19,21 +19,25 @@ properties:
     enum:
       - environment.create
   details:
-    allOf:
-      - $ref: "../ResourceLocation.yml"
-      - type: object
-        required:
-          - name
-          - cluster
-          - features
-        properties:
-          name:
-            type: string
-          about:
-            $ref: "../../environments/EnvironmentAbout.yml"
-          cluster:
-            type: string
-          stack_build:
-            $ref: "../ResourceLocation.yml"
-          features:
-            $ref: "../../environments/Features.yml"
+    type: object
+    required:
+      - name
+      - cluster
+      - features
+    properties:
+      name:
+        type: string
+      about:
+        allOf:
+          - $ref: "../../environments/EnvironmentAbout.yml"
+          - type: object
+            nullable: true
+      cluster:
+        type: string
+      stack_build:
+        allOf:
+          - $ref: "../ResourceLocation.yml"
+          - type: object
+            nullable: true
+      features:
+        $ref: "../../environments/Features.yml"

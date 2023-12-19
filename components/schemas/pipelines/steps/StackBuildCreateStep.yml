@@ -19,15 +19,19 @@ properties:
     enum:
       - stack.build.create
   details:
-    allOf:
-      - $ref: "../ResourceLocation.yml"
-      - type: object
-        required:
-          - stack
-        properties:
-          stack:
-            $ref: "../ResourceLocation.yml"
-          instructions:
-            $ref: "../../stacks/builds/StackBuildInstructions.yml"
-          about:
-            $ref: "../../stacks/builds/StackBuildAbout.yml"
+    type: object
+    required:
+      - stack
+    properties:
+      stack:
+        $ref: ../ResourceLocation.yml
+      instructions:
+        allOf:
+          - $ref: ../../stacks/builds/StackBuildInstructions.yml
+          - type: object
+            nullable: true
+      about:
+         allOf:
+          - $ref: ../../stacks/builds/StackBuildAbout.yml
+          - type: object
+            nullable: true

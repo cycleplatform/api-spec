@@ -24,6 +24,7 @@ properties:
       - source
     properties:
       name:
+        nullable: true
         type: string
       source:
         $ref: "../ResourceLocation.yml"

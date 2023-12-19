@@ -8,6 +8,7 @@ properties:
     type: string
     description: A string defining the version of the stack spec.
   about:
+    nullable: true
     type: object
     description: Information about the stack.
     required:
@@ -22,6 +23,7 @@ properties:
         description: Information describing the stack.
   tests:
     type: array
+    nullable: true
     items:
       $ref: StackSpecTestContainer.yml
   scoped_variables:
@@ -33,6 +35,7 @@ properties:
     $ref: ./StackContainer.yml
   services:
     title: StackSpecServices
+    nullable: true
     type: object
     properties:
       loadbalancer:
