@@ -1,8 +1,0 @@
-title: GlobalLoadBalancerIncludes
-description: All includable resource linkable to the given global load balancer.
-type: object
-properties:
-  creators:
-    $ref: ../../includes/CreatorInclude.yml
-  environments:
-    $ref: ../../includes/EnvironmentIncludes.yml

@@ -30,6 +30,11 @@ properties:
   location_id:
     type: string
     description: A location identifier that's associated with the server this instance is deployed to.
+  deployment:
+    type: object
+    nullable: true
+    allOf:
+      - $ref: ../Deployment.yml
   environment:
     type: object
     description: Details about the environment network this instance is a member of.

@@ -132,18 +132,3 @@ properties:
               container_id:
                 type: string
                 description: The ID of the container this record is related to.
-          - type: object
-            required:
-              - global_lb
-            properties:
-              global_lb:
-                type: object
-                description: If pointed at a global load balancer, the information about which container behind that global lb this record points to. Must point to a container identifier, and that identifier must be the same in every environment referenced by the global lb.
-                required:
-                  - id
-                  - container
-                properties:
-                  id:
-                    $ref: ../../ID.yml
-                  container:
-                    $ref: ../../Identifier.yml

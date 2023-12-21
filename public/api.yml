@@ -385,11 +385,6 @@ paths:
     "$ref": "./paths/sdn/network.yml"
   "/v1/sdn/networks/{networkId}/tasks":
     "$ref": "./paths/sdn/tasks.yml"
-  ## Global Load Balancers
-  "/v1/sdn/global-lbs":
-    $ref: ./paths/sdn/global-lbs.yml
-  "/v1/sdn/global-lbs/{lbId}":
-    $ref: paths/sdn/global-lb.yml
   # Pipelines
   "/v1/pipelines":
     "$ref": "./paths/pipelines/pipelines.yml"

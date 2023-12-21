@@ -37,6 +37,11 @@ properties:
     "$ref": "./summaries/StackSummary.yml"
   config:
     "$ref": "./config/Config.yml"
+  deployment:
+    type: object
+    nullable: true
+    allOf:
+      - $ref: ./Deployment.yml
   instances:
     type: integer
     description: The number of instances for a given container.

@@ -18,6 +18,11 @@ properties:
       environment_id:
         type: string
         description: The ID for the environment this stack build will be deployed to.
+      deployment:
+        type: object
+        nullable: true
+        allOf:
+          - $ref: ../../../containers/Deployment.yml
       update:
         nullable: true
         type: object
