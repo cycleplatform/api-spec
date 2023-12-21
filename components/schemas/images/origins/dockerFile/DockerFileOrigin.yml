@@ -13,15 +13,15 @@ properties:
     type: object
     properties:
       existing:
+        type: object
+        nullable: true
         allOf:
-          - type: object
-            nullable: true
           - $ref: ../ExistingSource.yml
       # TODO toggle between repo / tarball
       repo:
+        type: object
+        nullable: true
         allOf:
-          - type: object
-            nullable: true
           - $ref: ./RepoType.yml
       targz_url:
         type: string
@@ -36,7 +36,7 @@ properties:
         nullable: true
         description: The path to the Dockerfile to be used for buiding the image.
       credentials:
+        type: array
+        nullable: true
         allOf:
-          - type: array
-            nullable: true
           - $ref: ./DockerfileCredentials.yml

@@ -28,16 +28,16 @@ properties:
       name:
         type: string
       about:
+        type: object
+        nullable: true
         allOf:
           - $ref: "../../environments/EnvironmentAbout.yml"
-          - type: object
-            nullable: true
       cluster:
         type: string
       stack_build:
+        type: object
+        nullable: true
         allOf:
           - $ref: "../ResourceLocation.yml"
-          - type: object
-            nullable: true
       features:
         $ref: "../../environments/Features.yml"
