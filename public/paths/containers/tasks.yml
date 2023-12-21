@@ -18,11 +18,11 @@ post:
         schema:
           discriminator:
             propertyName: action
-            mapping: 
+            mapping:
               start: ../../../components/schemas/containers/taskActions/ContainerStartAction.yml
               stop: ../../../components/schemas/containers/taskActions/ContainerStopAction.yml
               reconfigure: ../../../components/schemas/containers/taskActions/ReconfigureContainer.yml
-              reconfigure.volumes: ../../../components/schemas/containers/taskActions/ReconfigureVolumes.yml
+              volumes.reconfigure: ../../../components/schemas/containers/taskActions/ReconfigureVolumes.yml
               reimage: ../../../components/schemas/containers/taskActions/Reimage.yml
               scale: ../../../components/schemas/containers/taskActions/Scale.yml
           oneOf:

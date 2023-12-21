@@ -105,7 +105,7 @@ properties:
         description: The value associated with the tag.
   linked:
     type: object
-    description: A Linked record is a record special to Cycle.  It represents a url that points to a specific container, however the IP address mapping in handled automatically by the platform.
+    description: A LINKED record is a record special to Cycle.  It represents a URL that points to a specific container or deployment of a container, however the IP address mapping in handled automatically by the platform.
     allOf:
       - type: object
         required:
@@ -131,4 +131,33 @@ properties:
             properties:
               container_id:
                 type: string
+                nullable: true
                 description: The ID of the container this record is related to.
+          - type: object
+            properties:
+              deployment:
+                type: object
+                nullable: true
+                description: Information about the deployment this record points to.
+                required:
+                  - environment_id
+                  - match
+                properties:
+                  environment_id:
+                    $ref: ../../ID.yml
+                    description: The ID of the environment with the deployment tag mapping we want to reference.
+                  match:
+                    type: object
+                    description: Describes which container and which tagged deployment this record should target.
+                    required:
+                      - container
+                    properties:
+                      container:
+                        $ref: ../../Identifier.yml
+                        description: The identifier of the container in the environment this record should point to.
+                      tag:
+                        type: string
+                        nullable: true
+                        description: The deployment tag that this record should point to. The tags are set on the root of an environment and map to a deployment version.
+                        allOf:
+                          - $ref: ../../Identifier.yml

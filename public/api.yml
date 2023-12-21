@@ -167,6 +167,8 @@ paths:
     "$ref": "./paths/environments/tasks.yml"
   "/v1/environments/{environmentId}/summary":
     "$ref": "./paths/environments/summary.yml"
+  "/v1/environments/{environmentId}/deployments":
+    "$ref": "./paths/environments/deployments.yml"
   ## Load Balancer
   "/v1/environments/{environmentId}/services/lb":
     "$ref": "./paths/environments/services/lb/lb.yml"

@@ -4,13 +4,14 @@ enum:
   # hubs
   - hubs-update
   - hubs-delete
+  - hubs-integrations-manage
+  - hubs-usage-view
   - hubs-invites-send
   - hubs-invites-manage
   - hubs-members-manage
   - hubs-members-view
   - hubs-notifications-listen
-  - hubs-integrations-manage
-  - hubs-usage-view
+
   # billing
   - billing-methods-manage
   - billing-invoices-view
@@ -18,71 +19,95 @@ enum:
   - billing-orders-manage
   - billing-services-view
   - billing-credits-view
+
   # sdn
-  - sdn-networks-view
   - sdn-networks-manage
+  - sdn-networks-view
+  - sdn-global-lbs-manage
+  - sdn-global-lbs-view
+
   # pipelines
   - pipelines-manage
   - pipelines-view
   - pipelines-trigger
+
   # environments
   - environments-create
   - environments-delete
   - environments-view
   - environments-update
   - environments-state
+  - environments-deployments-manage
   - environments-services-manage
-  - environments-vpn
-  - environments-vpn-manage
   - environments-scopedvariables-manage
   - environments-scopedvariables-view
+  - environments-vpn
+  - environments-vpn-manage
+
   # containers
   - containers-deploy
   - containers-view
   - containers-console
   - containers-ssh
   - containers-update
+  - containers-lock
   - containers-delete
   - containers-state
   - containers-volumes-manage
   - containers-volumes-view
-  - containers-instances-migrate
   - containers-backups-manage
   - containers-backups-view
+  - containers-instances-migrate
+
   # stacks
   - stacks-manage
   - stacks-view
   - stacks-builds-manage
   - stacks-builds-deploy
+
   # images
   - images-view
   - images-import
   - images-update
   - images-delete
-  - images-build
   - images-sources-view
   - images-sources-manage
+
   # jobs
   - jobs-view
-  # api keys
+
+  # api-keys
   - api-keys-manage
+
   # infrastructure
   - ips-manage
   - servers-provision
   - servers-view
-  - servers-update
+  - servers-console
   - servers-login
+  - servers-update
   - servers-state
   - servers-decommission
+
+  # autoscale-groups
+  - autoscale-groups-manage
+  - autoscale-groups-view
+
+  # infrastructure-providers
   - infrastructure-providers-manage
   - infrastructure-providers-view
+
   # security
   - security-view
   - security-manage
-  # monitoring
+
+  # monitor
   - monitor-view
   - monitor-manage
+
   # dns
   - dns-view
   - dns-manage
+
+  # dns-certs
   - dns-certs-view

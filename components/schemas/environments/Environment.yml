@@ -16,12 +16,11 @@ required:
   - events
   - features
   - services
-  - private_network
 properties:
   id:
-    "$ref": "../ID.yml"
+    $ref: ../ID.yml
   identifier:
-    $ref: ../Identifier.yml 
+    $ref: ../Identifier.yml
     description: A human readable slugged identifier for this environment.
   name:
     type: string
@@ -30,13 +29,13 @@ properties:
     type: string
     description: The cluster this environment is associated with.
   about:
-    "$ref": "./EnvironmentAbout.yml"
+    $ref: ./EnvironmentAbout.yml
   creator:
-    "$ref": "../creators/CreatorScope.yml"
+    $ref: ../creators/CreatorScope.yml
   hub_id:
-    "$ref": "../HubID.yml"
+    $ref: ../HubID.yml
   state:
-    "$ref": "./EnvironmentState.yml"
+    $ref: ./EnvironmentState.yml
   events:
     title: EnvironmentEvents
     type: object
@@ -48,18 +47,32 @@ properties:
     properties:
       created:
         description: The timestamp of when the environment was created.
-        "$ref": "../DateTime.yml"
+        $ref: ../DateTime.yml
       updated:
         description: The timestamp of when the environment was updated.
-        "$ref": "../DateTime.yml"
+        $ref: ../DateTime.yml
       deleted:
         description: The timestamp of when the environment was deleted.
-        "$ref": "../DateTime.yml"
+        $ref: ../DateTime.yml
   features:
-    "$ref": "./Features.yml"
+    $ref: ./Features.yml
   services:
-    "$ref": "./EnvironmentServices.yml"
+    $ref: ./EnvironmentServices.yml
   private_network:
-    "$ref": "./PrivateNetwork.yml"
+    type: object
+    nullable: true
+    allOf:
+      - $ref: ./PrivateNetwork.yml
+  deployments:
+    type: object
+    nullable: true
+    description: |
+      A map of custom tags to deployment versions.
+    required:
+      - tags
+    properties:
+      tags:
+        $ref: EnvironmentDeploymentTags.yml
+
   meta:
     $ref: "./EnvironmentMeta.yml"
