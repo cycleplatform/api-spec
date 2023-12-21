@@ -8,6 +8,6 @@ required:
   - version
 properties:
   version:
-    $ref: ../Identifier.yml
+    $ref: ../Version.yml
     description: |
-      A label representing the deployment.
+      A version string representing the deployment.

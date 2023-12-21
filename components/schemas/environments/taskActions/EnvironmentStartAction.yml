@@ -1,0 +1,11 @@
+title: EnvironmentStartAction
+description: A task to start an environment.
+type: object
+required:
+  - action
+properties:
+  action:
+    type: string
+    enum:
+      - start
+    description: The name of the action to perform.

@@ -1,0 +1,11 @@
+title: EnvironmentStopAction
+description: A task to stop an environment.
+type: object
+required:
+  - action
+properties:
+  action:
+    type: string
+    enum:
+      - stop
+    description: The name of the action to perform.
