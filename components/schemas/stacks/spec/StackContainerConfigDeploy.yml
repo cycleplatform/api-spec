@@ -90,9 +90,9 @@ properties:
     description: Configurations for container updates.
     properties:
       stagger:
+        type: string
+        nullable: true
         allOf:
-          - type: string
-            nullable: true
           - $ref: ../../Duration.yml
         description: When set, Cycle will pick a random time from `0 - this duration`, and stagger the instances so they all start at different times (up to the time specified here).
   restart:
@@ -151,10 +151,10 @@ properties:
         type: boolean
         description: A boolean where true represents the desire for the container to restart if any instance is unhealthy.
       delay:
+        type: string
+        nullable: true
         allOf:
           - $ref: ../../Duration.yml
-          - type: string
-            nullable: true
         description: How long to wait after a container start event before starting health checks.
   telemetry:
     type: object
@@ -163,15 +163,15 @@ properties:
       - disable
     properties:
       retention:
+        type: string
+        nullable: true
         allOf:
-          - type: string
-            nullable: true
           - $ref: ../../Duration.yml
         description: How long telemetry data should be retained.
       interval:
+        type: string
+        nullable: true
         allOf:
-          - type: string
-            nullable: true
           - $ref: ../../Duration.yml
         description: The duration between samples.
       web_hook:

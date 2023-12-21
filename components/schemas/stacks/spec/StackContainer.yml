@@ -33,24 +33,24 @@ additionalProperties:
         deploy:
           $ref: ./StackContainerConfigDeploy.yml
         scaling:
+          type: object
+          nullable: true
           allOf:
-            - type: object
-              nullable: true
             - $ref: ./StackContainerConfigScaling.yml
         runtime:
+          type: object
+          nullable: true
           allOf:
-            - type: object
-              nullable: true
             - $ref: ./StackContainerConfigRuntime.yml
         resources:
+          type: object
+          nullable: true
           allOf:
-            - type: object
-              nullable: true
             - $ref: ./StackContainerConfigResources.yml
         integrations:
+          type: object
+          nullable: true
           allOf:
-            - type: object
-              nullable: true
             - $ref: ./StackContainerConfigIntegrations.yml
     role:
       type: string
