@@ -143,6 +143,11 @@ post:
                   $ref: ../../../components/schemas/ID.yml
                 build_id:
                   $ref: ../../../components/schemas/ID.yml
+                deployment:
+                  type: object
+                  nullable: true
+                  allOf:
+                    - $ref: ../../../components/schemas/containers/Deployment.yml
   responses:
     201:
       description: Returns an environment resource.

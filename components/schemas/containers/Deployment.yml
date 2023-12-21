@@ -1,0 +1,13 @@
+title: Deployment
+description: |
+  A logical grouping of containers inside of an Environment. Facilitates zero-downtime deployments by separating multiple versions of the same application within an environment.
+
+  If a container is a member of a deployment, it can only resolve containers in that same deployment, or containers NOT in a deployment. If a container is NOT a member of a deployment, it can resolve all containers in the environment.
+type: object
+required:
+  - version
+properties:
+  version:
+    $ref: ../Identifier.yml
+    description: |
+      A label representing the deployment.
