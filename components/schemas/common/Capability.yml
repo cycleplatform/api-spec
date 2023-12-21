@@ -21,8 +21,6 @@ enum:
   # sdn
   - sdn-networks-view
   - sdn-networks-manage
-  - sdn-global-lbs-manage
-  - sdn-global-lbs-view
   # pipelines
   - pipelines-manage
   - pipelines-view
