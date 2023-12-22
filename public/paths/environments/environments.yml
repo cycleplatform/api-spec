@@ -131,23 +131,6 @@ post:
                   description: A custom description for this environment.
             features:
               $ref: ../../../components/schemas/environments/Features.yml
-            stack:
-              type: object
-              nullable: true
-              description: An object representing the associated stack.
-              required:
-                - id
-                - build_id
-              properties:
-                id:
-                  $ref: ../../../components/schemas/ID.yml
-                build_id:
-                  $ref: ../../../components/schemas/ID.yml
-                deployment:
-                  type: object
-                  nullable: true
-                  allOf:
-                    - $ref: ../../../components/schemas/containers/Deployment.yml
   responses:
     201:
       description: Returns an environment resource.
