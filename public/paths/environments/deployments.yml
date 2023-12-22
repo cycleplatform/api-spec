@@ -27,20 +27,25 @@ get:
             properties:
               data:
                 type: object
-                description: A map where the key is the version property of a deployment.
-                additionalProperties:
-                  type: object
-                  required:
-                    - containers
-                    - tags
-                  properties:
-                    tags:
-                      type: array
-                      description: An array of all tags on this environment that point to this version.
-                      items:
-                        $ref: ../../../components/schemas/Identifier.yml
-                    containers:
-                      type: integer
-                      description: The number of containers utilizing this version of this deployment.
+                required:
+                  - versions
+                properties:
+                  versions:
+                    type: object
+                    description: A map where the key is the version property of a deployment.
+                    additionalProperties:
+                      type: object
+                      required:
+                        - containers
+                        - tags
+                      properties:
+                        tags:
+                          type: array
+                          description: An array of all tags on this environment that point to this version.
+                          items:
+                            $ref: ../../../components/schemas/Identifier.yml
+                        containers:
+                          type: integer
+                          description: The number of containers utilizing this version of this deployment.
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
