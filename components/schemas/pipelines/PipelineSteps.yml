@@ -19,10 +19,11 @@ discriminator:
     environment.start: ./steps/EnvironmentStartStep.yml
     environment.stop: ./steps/EnvironmentStopStep.yml
     environment.delete: ./steps/EnvironmentDeleteStep.yml
-    
+    environment.deployments.tag: ./steps/EnvironmentDeploymentsTagStep.yml
+
     stack.build.create: ./steps/StackBuildCreateStep.yml
     stack.build.generate: ./steps/StackBuildGenerateStep.yml
-    stack.build.deploy: ./steps/StackBuildDeployStep.yml 
+    stack.build.deploy: ./steps/StackBuildDeployStep.yml
 
     sleep: ./steps/SleepStep.yml
     webhook.post: ./steps/WebhookPostStep.yml
@@ -46,6 +47,7 @@ oneOf:
   - $ref: ./steps/EnvironmentStartStep.yml
   - $ref: ./steps/EnvironmentStopStep.yml
   - $ref: ./steps/EnvironmentDeleteStep.yml
+  - $ref: ./steps/EnvironmentDeploymentsTagStep.yml
 
   # stack steps
   - $ref: ./steps/StackBuildCreateStep.yml
