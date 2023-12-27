@@ -47,3 +47,8 @@ properties:
         type: array
         items:
           $ref: "../../containers/config/ContainerVolume.yml"
+      deployment:
+        type: object
+        nullable: true
+        allOf:
+          - $ref: ../../containers/Deployment.yml

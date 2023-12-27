@@ -32,3 +32,8 @@ properties:
             type: object
             allOf:
               - $ref: "../../stacks/builds/StackBuildDeploymentUpdates.yml"
+          deployment:
+            nullable: true
+            type: object
+            allOf:
+              - $ref: ../../containers/Deployment.yml
