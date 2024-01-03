@@ -8,6 +8,7 @@ required:
   - location_id
   - model_id
   - node_id
+  - shared_file_systems
   - hostname
   - creator
   - provider
@@ -15,7 +16,6 @@ required:
   - features
   - constraints
   - ephemeral
-  - autoscale
   - state
   - events
 properties:
@@ -32,6 +32,8 @@ properties:
   node_id:
     type: string
     description: An identifier for the node.
+  shared_file_systems:
+    $ref: ./ServerSharedFileSystems.yml
   hostname:
     type: string
     description: The server hostname.

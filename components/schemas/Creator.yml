@@ -14,5 +14,3 @@ properties:
       - api-key
       - visitor
       - environments
-      # Some legacy stuff has an empty type for creator.
-      - ""

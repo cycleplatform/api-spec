@@ -1,4 +1,4 @@
-title: ReconfigureVolumeTask 
+title: ReconfigureVolumeTask
 type: object
 required:
   - action
@@ -7,7 +7,7 @@ properties:
   action:
     type: string
     enum:
-      - reconfigure.volumes
+      - volumes.reconfigure
     description: The action to take.
   contents:
     description: An array of volume objects to be reconfigured.

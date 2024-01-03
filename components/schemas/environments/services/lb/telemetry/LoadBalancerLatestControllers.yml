@@ -1,0 +1,13 @@
+title: LoadBalancerLatestControllers
+description: Information about the latest controllers that generated traffic.
+type: object
+required:
+  - created
+properties:
+  created:
+    $ref: ../../../../DateTime.yml
+  controllers:
+    type: array
+    nullable: true
+    items:
+      $ref: ./LoadBalancerLatestTelemetryController.yml

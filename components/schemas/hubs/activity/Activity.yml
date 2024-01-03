@@ -138,6 +138,8 @@ properties:
       - environment.task.initialize
       - environment.task.start
       - environment.task.stop
+      - environment.task.deployments.reconfigure
+      - environment.deployments.reconfigure
 
       - environment.scoped-variable.delete
       - environment.scoped-variable.update
@@ -185,8 +187,8 @@ properties:
       - container.stop
       - container.task.reconfigure
       - container.reconfigure
-      - container.task.reconfigure.volumes
-      - container.reconfigure.volumes
+      - container.task.volumes.reconfigure
+      - container.volumes.reconfigure
       - container.create
       - container.restart
       - container.task.reimage
@@ -260,13 +262,15 @@ properties:
       - infrastructure.server.restart
       - infrastructure.server.compute.restart
       - infrastructure.server.compute.spawner.restart
-      - infrastructure.server.reconfigure.features
+      - infrastructure.server.features.reconfigure
+      - infrastructure.server.sharedfs.reconfigure
       - infrastructure.server.provision
       - infrastructure.server.console
       - infrastructure.server.update
       - infrastructure.server.task.provision
       - infrastructure.server.ssh.token
-      - infrastructure.server.task.reconfigure.features
+      - infrastructure.server.task.features.reconfigure
+      - infrastructure.server.task.sharedfs.reconfigure
       - infrastructure.server.services.sftp.lockdown
       - infrastructure.server.services.internal-api.throttle
 

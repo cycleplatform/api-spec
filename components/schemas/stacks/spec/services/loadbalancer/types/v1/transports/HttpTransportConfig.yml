@@ -13,6 +13,7 @@ properties:
     type: object
     required:
       - connections
+      - telemetry
     properties:
       connections:
         type: object
@@ -24,3 +25,23 @@ properties:
             nullable: true
             type: integer
             description: Maximum number of simultaneous connections (via http/2) per connection.
+      telemetry:
+        type: object
+        description: Configuration options for how telemetry is handled.
+        properties:
+          tracking_window:
+            description: "Determines how long the load balancer will track a URL from its last hit. Helps reduce noise by not tracking URLs that are occasionally hit. Defaults to 8h. "
+            type: string
+            nullable: true
+            allOf:
+              - $ref: ../../../../../../../Duration.yml
+          track_invalid_requests:
+            description: Whether or not to track invalid requests. An invalid request is a request that came in that no router existed for. Usually this means bot requests. Defaults to false.
+            type: boolean
+            nullable: true
+          ignore_paths:
+            description: An array of paths to exclude from tracking.
+            type: array
+            nullable: true
+            items:
+              type: string

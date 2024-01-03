@@ -3,11 +3,11 @@ description: Snapshots of the latest load balancer telemetry
 type: object
 required:
   - created
-  - controllers
 properties:
   created:
     $ref: ../../../../DateTime.yml
   controllers:
     type: array
+    nullable: true
     items:
       $ref: ./LoadBalancerLatestTelemetryController.yml

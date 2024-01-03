@@ -1,0 +1,19 @@
+title: EnvironmentReconfigureDeploymentsAction
+description: A task to reconfigure deployment mappings on an environment.
+type: object
+required:
+  - action
+  - contents
+properties:
+  action:
+    type: string
+    enum:
+      - deployments.reconfigure
+    description: The action to take.
+  contents:
+    type: object
+    required:
+      - tags
+    properties:
+      tags:
+        $ref: ../EnvironmentDeploymentTags.yml

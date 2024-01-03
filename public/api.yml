@@ -167,6 +167,8 @@ paths:
     "$ref": "./paths/environments/tasks.yml"
   "/v1/environments/{environmentId}/summary":
     "$ref": "./paths/environments/summary.yml"
+  "/v1/environments/{environmentId}/deployments":
+    "$ref": "./paths/environments/deployments.yml"
   ## Load Balancer
   "/v1/environments/{environmentId}/services/lb":
     "$ref": "./paths/environments/services/lb/lb.yml"
@@ -176,6 +178,8 @@ paths:
     "$ref": "./paths/environments/services/lb/telemetry/report.yml"
   "/v1/environments/{environmentId}/services/lb/telemetry/latest":
     "$ref": "./paths/environments/services/lb/telemetry/latest.yml"
+  "/v1/environments/{environmentId}/services/lb/telemetry/latest-controllers":
+    "$ref": "./paths/environments/services/lb/telemetry/controllers.yml"
   ## Discovery
   "/v1/environments/{environmentId}/services/discovery/tasks":
     "$ref": "./paths/environments/services/discovery/tasks.yml"
@@ -342,6 +346,8 @@ paths:
     "$ref": "./paths/infrastructure/servers/clusters.yml"
   "/v1/infrastructure/servers/{serverId}/usage":
     "$ref": "./paths/infrastructure/servers/usage.yml"
+  "/v1/infrastructure/servers/{serverId}/console":
+    "$ref": "./paths/infrastructure/servers/console.yml"
   # IPs
   "/v1/infrastructure/ips/pools":
     "$ref": "./paths/infrastructure/ips/pools.yml"
@@ -381,11 +387,6 @@ paths:
     "$ref": "./paths/sdn/network.yml"
   "/v1/sdn/networks/{networkId}/tasks":
     "$ref": "./paths/sdn/tasks.yml"
-  ## Global Load Balancers
-  "/v1/sdn/global-lbs":
-    $ref: ./paths/sdn/global-lbs.yml
-  "/v1/sdn/global-lbs/{lbId}":
-    $ref: paths/sdn/global-lb.yml
   # Pipelines
   "/v1/pipelines":
     "$ref": "./paths/pipelines/pipelines.yml"

@@ -1,0 +1,38 @@
+title: EnvironmentDeploymentsTagStep
+type: object
+description: Settings for updating a deployment tag to another deployment version.
+required:
+  - action
+  - details
+properties:
+  identifier:
+    type: string
+    description: An identifier for the step.
+  options:
+    type: object
+    properties:
+      skip:
+        type: boolean
+  action:
+    type: string
+    description: The action that the step takes.
+    enum:
+      - environment.deployments.tag
+  details:
+    type: object
+    required:
+      - environment
+      - tag
+      - deployment
+    properties:
+      environment:
+        $ref: ../FluidIdentifier.yml
+      tag:
+        $ref: ../../Identifier.yml
+      deployment:
+        type: object
+        required:
+          - version
+        properties:
+          version:
+            $ref: ../../Version.yml

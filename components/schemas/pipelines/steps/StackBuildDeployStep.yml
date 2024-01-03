@@ -19,20 +19,22 @@ properties:
     enum:
       - stack.build.deploy
   details:
-    allOf:
-      - $ref: "../ResourceLocation.yml"
-      - type: object
-        required:
-          - id
-          - environment
-        properties:
-          id:
-            type: string
-            description: Id of stack build
-          environment:
-            $ref: "../ResourceLocation.yml"
-          update:
-            nullable: true
-            type: object
-            allOf:
-              - $ref: "../../stacks/builds/StackBuildDeploymentUpdates.yml"
+    type: object
+    required:
+      - environment
+      - build
+    properties:
+      build:
+        $ref: ../FluidIdentifier.yml
+      environment:
+        $ref: ../FluidIdentifier.yml
+      update:
+        nullable: true
+        type: object
+        allOf:
+          - $ref: "../../stacks/builds/StackBuildDeploymentUpdates.yml"
+      deployment:
+        nullable: true
+        type: object
+        allOf:
+          - $ref: ../../containers/Deployment.yml

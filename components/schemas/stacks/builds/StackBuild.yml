@@ -5,7 +5,6 @@ required:
   - id
   - hub_id
   - stack_id
-  - spec
   - about
   - instructions
   - events
@@ -19,7 +18,10 @@ properties:
     type: string
     description: An identifier for the stack related to this build.
   spec:
-    "$ref": "../spec/StackSpec.yml"
+    type: object
+    nullable: true
+    allOf:
+      - $ref: ../spec/StackSpec.yml
   about:
     x-ogen-name: StackBuildAboutDetails
     type: object

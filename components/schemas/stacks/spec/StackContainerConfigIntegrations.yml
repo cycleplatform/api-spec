@@ -3,37 +3,50 @@ type: object
 properties:
   webhooks:
     type: object
+    nullable: true
     properties:
       events:
         type: object
+        nullable: true
         properties:
           deploy:
+            nullable: true
             type: string
           start:
+            nullable: true
             type: string
           stop:
+            nullable: true
             type: string
       config:
+        nullable: true
         type: string
   lets_encrypt:
     type: object
+    nullable: true
     required:
       - enable
     properties:
       enable:
         type: boolean
       certificate_path:
+        nullable: true
         type: string
       chain_path:
+        nullable: true
         type: string
       key_path:
+        nullable: true
         type: string
       bundle_path:
+        nullable: true
         type: string
       additional_certs_path:
+        nullable: true
         type: string
   files:
     type: array
+    nullable: true
     items:
       type: object
       required:
@@ -46,6 +59,7 @@ properties:
           type: string
   backups:
     type: object
+    nullable: true
     required:
       - destination
       - backup
@@ -94,7 +108,7 @@ properties:
         allOf:
           - $ref: ../../Duration.yml
         default: "365d"
-  shared_directories:
+  shared_file_systems:
     nullable: true
     type: object
     additionalProperties:

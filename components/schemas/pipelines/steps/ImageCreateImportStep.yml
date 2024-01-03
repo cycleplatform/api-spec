@@ -1,0 +1,30 @@
+title: ImageCreateImportStep
+type: object
+description: A pipeline step for creating and importing an image in one go.
+required:
+  - action
+  - details
+properties:
+  identifier:
+    type: string
+    description: An identifier for the step.
+  options:
+    type: object
+    properties:
+      skip:
+        type: boolean
+  action:
+    type: string
+    description: The action that the step takes.
+    enum:
+      - image.create-import
+  details:
+    type: object
+    required:
+      - source
+    properties:
+      name:
+        nullable: true
+        type: string
+      source:
+        $ref: ../FluidIdentifier.yml

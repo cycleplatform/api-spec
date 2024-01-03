@@ -110,8 +110,8 @@ properties:
 
         # 422
       - 422.missing_argument
-      - 422.invalid_argument"
-      - 422.invalid_input"
+      - 422.invalid_argument
+      - 422.invalid_input
       - 422.max_exceeded
       - 422.not_compatible
       - 422.already_exists
