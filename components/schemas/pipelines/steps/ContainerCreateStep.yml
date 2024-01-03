@@ -31,9 +31,9 @@ properties:
       name:
         type: string
       environment:
-        $ref: "../ResourceLocation.yml"
+        $ref: ../FluidIdentifier.yml
       image:
-        $ref: "../ResourceLocation.yml"
+        $ref: ../FluidIdentifier.yml
       stateful:
         type: boolean
       annotations:

@@ -27,4 +27,4 @@ properties:
         nullable: true
         type: string
       source:
-        $ref: "../ResourceLocation.yml"
+        $ref: ../FluidIdentifier.yml

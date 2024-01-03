@@ -26,7 +26,7 @@ properties:
       - deployment
     properties:
       environment:
-        $ref: ../ResourceLocation.yml
+        $ref: ../FluidIdentifier.yml
       tag:
         $ref: ../../Identifier.yml
       deployment:

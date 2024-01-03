@@ -1,6 +1,6 @@
-title: EnvironmentDeleteStep
+title: EnvironmentDeploymentsPruneStep
 type: object
-description: Settings for deleting an environment in a pipeline.
+description: Remove any containers that are part of a deployment that does NOT have a tag associated with it.
 required:
   - action
   - details
@@ -17,7 +17,7 @@ properties:
     type: string
     description: The action that the step takes.
     enum:
-      - environment.delete
+      - environment.deployments.tag
   details:
     type: object
     required:
