@@ -19,18 +19,19 @@ properties:
     enum:
       - container.reimage
   details:
-    allOf:
-      - $ref: "../ResourceLocation.yml"
-      - type: object
+    type: object
+    required:
+      - image
+      - container
+    properties:
+      container:
+        $ref: ../FluidIdentifier.yml
+      image:
+        $ref: ../FluidIdentifier.yml
+      options:
+        type: object
         required:
-          - image
+          - allow_incompatible
         properties:
-          image:
-            $ref: "../ResourceLocation.yml"
-          options:
-            type: object
-            required:
-              - allow_incompatible
-            properties:
-              allow_incompatible:
-                type: boolean
+          allow_incompatible:
+            type: boolean

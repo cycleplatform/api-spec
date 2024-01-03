@@ -19,4 +19,9 @@ properties:
     enum:
       - container.start
   details:
-    $ref: "../ResourceLocation.yml"
+    type: object
+    required:
+      - container
+    properties:
+      container:
+        $ref: ../FluidIdentifier.yml

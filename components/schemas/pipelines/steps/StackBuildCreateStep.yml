@@ -24,7 +24,7 @@ properties:
       - stack
     properties:
       stack:
-        $ref: ../ResourceLocation.yml
+        $ref: ../FluidIdentifier.yml
       instructions:
         type: object
         nullable: true

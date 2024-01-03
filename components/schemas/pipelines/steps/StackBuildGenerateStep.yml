@@ -19,4 +19,9 @@ properties:
     enum:
       - stack.build.generate
   details:
-    $ref: "../ResourceLocation.yml"
+    type: object
+    required:
+      - build
+    properties:
+      build:
+        $ref: ../FluidIdentifier.yml

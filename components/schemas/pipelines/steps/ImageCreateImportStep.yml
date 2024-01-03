@@ -1,6 +1,6 @@
-title: EnvironmentDeleteStep
+title: ImageCreateImportStep
 type: object
-description: Settings for deleting an environment in a pipeline.
+description: A pipeline step for creating and importing an image in one go.
 required:
   - action
   - details
@@ -17,11 +17,14 @@ properties:
     type: string
     description: The action that the step takes.
     enum:
-      - environment.delete
+      - image.create-import
   details:
     type: object
     required:
-      - environment
+      - source
     properties:
-      environment:
+      name:
+        nullable: true
+        type: string
+      source:
         $ref: ../FluidIdentifier.yml

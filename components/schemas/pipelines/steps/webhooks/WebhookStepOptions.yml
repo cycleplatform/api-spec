@@ -1,0 +1,43 @@
+title: WebhookStepOptions
+description: Options for configuring webhook pipeline steps.
+type: object
+properties:
+  max_attempts:
+    type: integer
+    nullable: true
+  interval:
+    description: How long to wait between retries on wait.
+    allOf:
+      - type: object
+        nullable: true
+      - $ref: ../../../Duration.yml
+  fail_on:
+    nullable: true
+    type: object
+    required:
+      - non_200
+    properties:
+      non_200:
+        type: boolean
+        description: Fail on any non-200 status codes.
+      http_codes:
+        type: array
+        nullable: true
+        description: A list of http response codes that will trigger a failure.
+        items:
+          type: integer
+  wait_on:
+    nullable: true
+    type: object
+    required:
+      - non_200
+    properties:
+      non_200:
+        type: boolean
+        description: Wait for interval on any non-200 response
+      http_codes:
+        type: array
+        nullable: true
+        description: A list of http response codes that will trigger a wait.
+        items:
+          type: integer

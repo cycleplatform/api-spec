@@ -19,4 +19,9 @@ properties:
     enum:
       - container.delete
   details:
-    $ref: "../ResourceLocation.yml"
+    type: object
+    required:
+      - container
+    properties:
+      container:
+        $ref: ../FluidIdentifier.yml
