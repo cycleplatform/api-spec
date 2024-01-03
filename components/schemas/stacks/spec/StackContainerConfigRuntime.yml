@@ -1,7 +1,5 @@
 title: StackContainerConfigRuntime
 type: object
-required:
-  - privileged
 properties:
   workdir:
     type: string
