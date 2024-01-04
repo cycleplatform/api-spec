@@ -17,7 +17,7 @@ properties:
     type: string
     description: The action that the step takes.
     enum:
-      - environment.deployments.tag
+      - environment.deployments.prune
   details:
     type: object
     required:

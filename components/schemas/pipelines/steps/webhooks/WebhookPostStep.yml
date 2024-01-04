@@ -22,44 +22,38 @@ properties:
     enum:
       - webhook.post
   details:
-    allOf:
-      - type: object
+    type: object
+    required:
+      - url
+    properties:
+      url:
+        type: string
+        description: The url to submit a POST request to.
+      headers:
+        type: object
+        nullable: true
+        description: An optional map of headers to send with the request.
+        additionalProperties:
+          type: string
+      options:
+        allOf:
+          - type: object
+            nullable: true
+          - $ref: WebhookStepOptions.yml
+      body:
+        nullable: true
+        type: string
+        description: An optional POST body to send with the request. Cannot be used with `from``.
+      from:
+        type: object
+        nullable: true
+        description: Takes the output from a previous step and uses it as the body for the POST request. Cannot be used with `body`.
         required:
-          - url
+          - step
         properties:
-          url:
+          stage:
             type: string
-            description: The url to submit a POST request to.
-          headers:
-            type: object
-            nullable: true
-            description: An optional map of headers to send with the request.
-            additionalProperties:
-              type: string
-          options:
-            allOf:
-              - type: object
-                nullable: true
-              - $ref: WebhookStepOptions.yml
-      - oneOf:
-          - type: object
-            nullable: true
-            properties:
-              body:
-                type: string
-                description: An optional POST body to send with the request.
-          - type: object
-            nullable: true
-            properties:
-              from:
-                type: object
-                description: Takes the output from a previous step and uses it as the body for the POST request.
-                required:
-                  - step
-                properties:
-                  stage:
-                    type: string
-                    description: An identifier for the stage the step being reported on resides in.
-                  step:
-                    type: string
-                    description: An identifier for the step to be reported on.
+            description: An identifier for the stage the step being reported on resides in.
+          step:
+            type: string
+            description: An identifier for the step to be reported on.

@@ -18,7 +18,7 @@ properties:
     type: string
     description: The action that the step takes.
     enum:
-      - webhook.post
+      - webhook.get
   details:
     type: object
     required:
