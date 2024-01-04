@@ -47,14 +47,14 @@ properties:
     required:
       - gpu
       - ial
-      - glb
       - autoscale
+      - deployments
     properties:
       gpu:
         type: boolean
       ial:
         type: boolean
-      glb:
+      deployments:
         type: boolean
       autoscale:
         type: boolean
