@@ -36,9 +36,9 @@ properties:
         additionalProperties:
           type: string
       options:
+        type: object
+        nullable: true
         allOf:
-          - type: object
-            nullable: true
           - $ref: WebhookStepOptions.yml
       body:
         nullable: true
