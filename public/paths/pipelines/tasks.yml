@@ -26,6 +26,15 @@ post:
               description: The job to do.
               enum:
                 - trigger
+            contents:
+              type: object
+              properties:
+                variables:
+                  type: object
+                  description: A map of variables to pass into the pipeline when it runs.
+                  additionalProperties:
+                    type: string
+
   responses:
     202:
       description: Returns a task descriptor.
