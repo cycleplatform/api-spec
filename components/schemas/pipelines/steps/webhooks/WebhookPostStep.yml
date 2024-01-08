@@ -45,15 +45,7 @@ properties:
         type: string
         description: An optional POST body to send with the request. Cannot be used with `from``.
       from:
-        type: object
+        type: string
         nullable: true
-        description: Takes the output from a previous step and uses it as the body for the POST request. Cannot be used with `body`.
-        required:
-          - step
-        properties:
-          stage:
-            type: string
-            description: An identifier for the stage the step being reported on resides in.
-          step:
-            type: string
-            description: An identifier for the step to be reported on.
+        description: Takes the output from a previous step and uses it as the body for the POST request. Cannot be used with `body`. String format is <stageIdentifier/stepIdentifier>
+        example: "init/image-create"
