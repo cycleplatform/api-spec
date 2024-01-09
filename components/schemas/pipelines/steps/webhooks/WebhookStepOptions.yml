@@ -15,11 +15,11 @@ properties:
     nullable: true
     type: object
     required:
-      - non_200
+      - not
     properties:
-      non_200:
+      not:
         type: boolean
-        description: Fail on any non-200 status codes.
+        description: If true, will fail on any codes NOT defined in the http_codes array.
       http_codes:
         type: array
         nullable: true
@@ -30,11 +30,11 @@ properties:
     nullable: true
     type: object
     required:
-      - non_200
+      - not
     properties:
-      non_200:
+      not:
         type: boolean
-        description: Wait for interval on any non-200 response
+        description: If true, will wait on any codes NOT defined in the http_codes array.
       http_codes:
         type: array
         nullable: true
