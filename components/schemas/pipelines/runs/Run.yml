@@ -51,8 +51,8 @@ properties:
                   - environment.start
                   - environment.stop
                   - environment.delete
-                  - environments.deployments.prune
-                  - environments.deployments.tag
+                  - environment.deployments.prune
+                  - environment.deployments.tag
                   - image.source.create
                   - image.create
                   - image.import
