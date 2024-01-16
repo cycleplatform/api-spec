@@ -292,6 +292,7 @@ properties:
       - pipeline.task.delete
       - pipeline.create
       - pipeline.task.trigger
+      - pipeline.run.completed
 
       - pipeline.key.update
       - pipeline.key.delete
