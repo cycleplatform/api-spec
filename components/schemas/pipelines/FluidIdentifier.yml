@@ -5,13 +5,9 @@ description: |
 
   ## Types:
   - `id:<mongo id>`: A raw resource ID
-  - `identifier:<a basic identifier>`: A basic identifier. Refers to a specific (i.e. container) resource.
   - `resource:<a resource identifier>`: A compound identifier pointing to a resource.
   - `from:<stage/step>`: For referencing a previous pipeline step.
-  - `var:<name of a variable>`: Specify the name of a variable that will eventually be passed later at runtime.
 example: |
   - id:6515098637b66c233ed164e7
-  - identifier:api
   - resource:cluster:dev,env:demo,container:api
   - from:/image-create
-  - var:test
