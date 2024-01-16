@@ -21,6 +21,8 @@ properties:
     type: object
     nullable: true
     description: An error, if any, that has occurred for this job.
+    required:
+      - message
     properties:
       message:
         type: string
