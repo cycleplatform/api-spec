@@ -11,5 +11,18 @@ properties:
   amount:
     "$ref": "./BillingAmount.yml"
   expires:
-    description: A timestamp of when the discount expires.
-    "$ref": "../DateTime.yml"
+    description: When this discount will expire.
+    type: object
+    required:
+      - interval
+      - number
+    properties:
+      interval:
+        type: string
+        enum:
+          - months
+          - years
+      number:
+        type: integer
+        
+      
