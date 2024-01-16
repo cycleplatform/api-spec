@@ -25,3 +25,4 @@ properties:
     description: A boolean where `true` represents the desire to automatically update the environment discovery service.
   config:
     description: The config object for the discovery service.
+    $ref: ./discovery/DiscoveryConfig.yml

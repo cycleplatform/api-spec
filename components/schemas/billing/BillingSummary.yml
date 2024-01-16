@@ -28,4 +28,3 @@ properties:
     description: 1/10th of a cent.
   discount:
     type: string
-    description: 1/10th of a cent.
