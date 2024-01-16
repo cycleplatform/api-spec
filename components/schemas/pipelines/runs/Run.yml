@@ -51,10 +51,13 @@ properties:
                   - environment.start
                   - environment.stop
                   - environment.delete
+                  - environments.deployments.prune
+                  - environments.deployments.tag
                   - image.source.create
                   - image.create
                   - image.import
                   - images.prune
+                  - image.create-import
                   - container.create
                   - container.reimage
                   - container.start
@@ -66,10 +69,21 @@ properties:
                   - stack.build.generate
                   - sleep
                   - webhook.post
+                  - webhook.get
               events:
                 $ref: ./PipelineRunEvents.yml
               success:
                 type: boolean
+              error:
+                type: object
+                nullable: true
+                description: An error, if any, that has occurred for this step.
+                required:
+                  - message
+                properties:
+                  message:
+                    type: string
+                    description: Details about the error that has occurred.
 
         events:
           $ref: ./PipelineRunEvents.yml
