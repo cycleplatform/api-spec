@@ -26,7 +26,7 @@ properties:
         description: A list of http response codes that will trigger a failure.
         items:
           type: integer
-  wait_on:
+  retry_on:
     nullable: true
     type: object
     required:
@@ -34,10 +34,10 @@ properties:
     properties:
       not:
         type: boolean
-        description: If true, will wait on any codes NOT defined in the http_codes array.
+        description: If true, will retry on any codes NOT defined in the http_codes array.
       http_codes:
         type: array
         nullable: true
-        description: A list of http response codes that will trigger a wait.
+        description: A list of http response codes that will trigger a retry.
         items:
           type: integer
