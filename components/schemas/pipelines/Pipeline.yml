@@ -6,6 +6,7 @@ required:
   - hub_id
   - name
   - creator
+  - dynamic
   - disable
   - events
   - state
@@ -24,6 +25,9 @@ properties:
   disable:
     type: boolean
     description: A boolean where true signifies the pipeline is disabled.
+  dynamic:
+    type: boolean
+    description: Setting to true enables variable and other advanced logic support on this pipeline. This is a one-way toggle. Once set to true, it cannot be set back to false.
   stages:
     description: An array of stages.
     type: array
