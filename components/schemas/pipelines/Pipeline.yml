@@ -6,6 +6,7 @@ required:
   - hub_id
   - name
   - creator
+  - dynamic
   - disable
   - events
   - state

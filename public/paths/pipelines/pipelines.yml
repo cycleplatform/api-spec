@@ -43,7 +43,6 @@ get:
             description: |
               `filter[state]=value1,value2` state filtering will allow you to filter by the pipeline's current state.
     - $ref: ../../../components/parameters/SortParam.yml
-
     - $ref: ../../../components/parameters/PageParam.yml
   summary: List Pipelines
   description: Requires the `pipelines-view` capability.
@@ -86,6 +85,9 @@ post:
               description: A name for the pipeline.
             identifier:
               $ref: ../../../components/schemas/Identifier.yml
+            dynamic:
+              type: boolean
+              description: Setting to true enables variable and other advanced logic support on this pipeline. This is a one-way toggle. Once set to true, it cannot be set back to false.
             stages:
               description: An array of stages.
               type: array
