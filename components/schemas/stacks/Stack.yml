@@ -14,7 +14,7 @@ properties:
   id:
     "$ref": "../ID.yml"
   identifier:
-    $ref: ../Identifier.yml 
+    $ref: ../Identifier.yml
     description: A human readable slugged identifier for this stack.
   name:
     type: string
@@ -27,6 +27,11 @@ properties:
     "$ref": "./StackSource.yml"
   state:
     "$ref": "./StackState.yml"
+  variables:
+    type: object
+    description: A map of default variable values used when building this stack. A variable can be added anywhere in a stack using the format `{{var}}` where `var` would be a key in this map.
+    additionalProperties:
+      type: string
   events:
     title: StackEvents
     type: object
