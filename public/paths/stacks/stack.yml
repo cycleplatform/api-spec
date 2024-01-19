@@ -47,6 +47,11 @@ patch:
             name:
               type: string
               description: A name for the stack.
+            variables:
+              type: object
+              description: A map of default variable values used when building this stack. A variable can be added anywhere in a stack using the format `{{var}}` where `var` would be a key in this map.
+              additionalProperties:
+                type: string
             source:
               $ref: ../../../components/schemas/stacks/StackSource.yml
   responses:
