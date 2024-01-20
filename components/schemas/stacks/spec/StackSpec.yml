@@ -38,6 +38,26 @@ properties:
     nullable: true
     type: object
     properties:
+      discovery:
+        type: object
+        nullable: true
+        properties:
+          hosts:
+            nullable: true
+            type: object
+            additionalProperties:
+              type: object
+              properties:
+                ipv4:
+                  nullable: true
+                  type: array
+                  items:
+                    type: string
+                ipv6:
+                  nullable: true
+                  type: array
+                  items:
+                    type: string
       loadbalancer:
         $ref: services/loadbalancer/StackSpecLoadBalancerConfig.yml
       vpn:
