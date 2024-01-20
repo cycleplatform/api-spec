@@ -9,12 +9,16 @@ properties:
     nullable: true
     additionalProperties:
       type: object
-      properties: 
-        ipv4: 
+      properties:
+        ipv4:
           description: The IPv4 address the discovery server should return to any container instance requesting this hostname.
-          type: string
           nullable: true
-        ipv6: 
+          type: array
+          items:
+            type: string
+        ipv6:
           description: The IPv6 address the discovery server should return to any container instance requesting this hostname.
-          type: string
           nullable: true
+          type: array
+          items:
+            type: string
