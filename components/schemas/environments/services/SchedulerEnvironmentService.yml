@@ -19,7 +19,8 @@ properties:
     type: boolean
     description:
       A boolean representing if the scheduler service container is set to high availability.
-      mode or not.
+      mode or not. As of Jan 2024, this will always be false because HA is not availiable for the scheduler
+      service.
   auto_update:
     type: boolean
     description: A boolean where `true` represents the desire to automatically update the environment scheduler service.
