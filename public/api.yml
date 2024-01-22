@@ -183,6 +183,9 @@ paths:
   ## Discovery
   "/v1/environments/{environmentId}/services/discovery/tasks":
     "$ref": "./paths/environments/services/discovery/tasks.yml"
+  ## Scheduler
+  "/v1/environments/{environmentId}/services/scheduler/tasks":
+    "$ref": "./paths/environments/services/scheduler/tasks.yml"
   ## VPN
   "/v1/environments/{environmentId}/services/vpn":
     "$ref": "./paths/environments/services/vpn/vpnInfo.yml"

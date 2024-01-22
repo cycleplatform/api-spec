@@ -1,0 +1,50 @@
+post:
+  operationId: "reconfigureScheduler"
+  tags:
+    - Environments
+  parameters:
+    - name: environmentId
+      description: The ID of the environment where this scheduler service resides.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Reconfigure Scheduler
+  description: Creates a task that will update the scheduler service's configuration.
+  requestBody:
+    description: Parameters for reconfiguring a scheduler service.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - action
+            - contents
+          properties:
+            action:
+              type: string
+              enum:
+                - reconfigure
+              description: The name of the action to perform.
+            contents:
+              type: object
+              properties:
+                config:
+                  type: object
+                auto_update:
+                  type: boolean
+                  nullable: true
+                  description: A boolean where `true` represents the desire to automatically update the environment scheduler service.
+  responses:
+    202:
+      description: Returns a task descriptor.
+      content:
+        application/json:
+          schema:
+            title: "TaskResponse"
+            type: object
+            properties:
+              data:
+                $ref: ../../../../../components/schemas/jobs/TaskDescriptor.yml
+    default:
+      $ref: ../../../../../components/responses/errors/DefaultError.yml

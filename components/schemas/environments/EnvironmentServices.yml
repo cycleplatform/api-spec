@@ -11,3 +11,5 @@ properties:
     $ref: ./services/DiscoveryEnvironmentService.yml
   vpn:
     $ref: ./services/VpnEnvironmentService.yml
+  scheduler:
+    $ref: ./services/SchedulerEnvironmentService.yml
