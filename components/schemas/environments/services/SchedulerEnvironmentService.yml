@@ -14,11 +14,11 @@ properties:
     description: Whether or not the scheduler service is enabled.
   container_id:
     type: string
-    description: The ID of the scheduler service container
+    description: The ID of the scheduler service container.
   high_availability:
     type: boolean
     description:
-      A boolean representing if te scheduler service container is set to high availability
+      A boolean representing if the scheduler service container is set to high availability.
       mode or not.
   auto_update:
     type: boolean

@@ -30,6 +30,7 @@ post:
               type: object
               properties:
                 config:
+                  nullable: true
                   type: object
                 auto_update:
                   type: boolean
