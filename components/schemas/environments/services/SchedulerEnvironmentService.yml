@@ -1,0 +1,31 @@
+---
+title: SchedulerEnvironmentService
+type: object
+nullable: true
+description:
+  Information about the environments scheduler service. The scheduler is used by containers with a
+  function deployment strategy to route requests to the correct instances.
+required:
+  - enable
+  - container_id
+  - high_availablity
+  - config
+properties:
+  enable:
+    type: boolean
+    description: Whether or not the scheduler service is enabled.
+  container_id:
+    type: string
+    description: The ID of the scheduler service container.
+  high_availability:
+    type: boolean
+    description:
+      A boolean representing if the scheduler service container is set to high availability.
+      mode or not. As of Jan 2024, this will always be false because HA is not availiable for the scheduler
+      service.
+  auto_update:
+    type: boolean
+    description: A boolean where `true` represents the desire to automatically update the environment scheduler service.
+  config:
+    description: The config object for the scheduler service.
+    type: object

@@ -30,6 +30,9 @@ properties:
       vpn:
         nullable: true
         $ref: "./EnvironmentServiceContainerSummary.yml"
+      scheduler:
+        nullable: true
+        $ref: "./EnvironmentServiceContainerSummary.yml"
   stats:
     title: EnvironmentSummaryStats
     type: object
