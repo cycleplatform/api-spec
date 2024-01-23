@@ -3,7 +3,7 @@ title: SchedulerEnvironmentService
 type: object
 nullable: true
 description:
-  Information about the environments scheduler service(s). The scheduler is used by containers with a
+  Information about the environments scheduler service. The scheduler is used by containers with a
   function deployment strategy to route requests to the correct instances.
 required:
   - enable
