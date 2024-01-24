@@ -36,6 +36,8 @@ get:
           schema:
             title: "EnvironmentInstanceTelemetry"
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array

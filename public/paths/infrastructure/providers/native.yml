@@ -46,6 +46,8 @@ get:
           schema:
             title: "ListNativeProvidersReturn"
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array

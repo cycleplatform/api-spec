@@ -20,6 +20,8 @@ get:
           schema:
             title: "EnvironmentSummaryResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../components/schemas/environments/summaries/EnvironmentSummary.yml

@@ -50,6 +50,8 @@ get:
           schema:
             title: "FetchHubMembersAccountReturn"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/hubs/HubMembership.yml

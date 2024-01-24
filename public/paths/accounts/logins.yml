@@ -18,6 +18,8 @@ get:
           schema:
             title: "AccountLoginsResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array

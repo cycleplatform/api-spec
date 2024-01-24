@@ -14,6 +14,8 @@ get:
           schema:
             title: "AccountMembershipsResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array

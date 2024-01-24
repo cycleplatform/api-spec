@@ -34,6 +34,8 @@ get:
           schema:
             title: "FetchProviderReturn"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/infrastructure/providers/Provider.yml
@@ -100,6 +102,8 @@ patch:
           schema:
             title: "ProviderUpdateReturn"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/infrastructure/providers/Provider.yml
@@ -125,6 +129,8 @@ delete:
         application/json:
           schema:
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/jobs/TaskDescriptor.yml

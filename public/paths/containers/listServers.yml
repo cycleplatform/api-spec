@@ -36,6 +36,8 @@ get:
           schema:
             title: ContainerInstanceServerListResponse
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../components/schemas/containers/ServersList.yml

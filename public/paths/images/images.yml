@@ -79,6 +79,8 @@ get:
           schema:
             title: "ImagesListResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array
@@ -137,6 +139,8 @@ post:
           schema:
             title: "ImagesCreateResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../components/schemas/images/Image.yml

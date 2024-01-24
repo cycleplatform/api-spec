@@ -25,6 +25,8 @@ get:
           schema:
             title: ContainerInstanceSSHResponse
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/containers/instances/returns/SSHResponse.yml
@@ -57,6 +59,8 @@ delete:
           schema:
             title: ExpireSSHTokenResponse
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: object

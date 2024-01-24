@@ -36,6 +36,8 @@ get:
           schema:
             title: "IPPoolReturn"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/infrastructure/ips/Pool.yml
@@ -63,6 +65,8 @@ delete:
         application/json:
           schema:
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/jobs/TaskDescriptor.yml

@@ -37,6 +37,8 @@ get:
           schema:
             title: "ListBillingCreditsReturn"
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array

@@ -25,6 +25,8 @@ get:
           schema:
             title: EnvironmentBackupsReturn
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array

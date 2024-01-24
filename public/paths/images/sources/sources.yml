@@ -67,6 +67,8 @@ get:
           schema:
             title: "ImageSourceCollectionResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array
@@ -120,6 +122,8 @@ post:
           schema:
             title: "ImageSourceCreateResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/images/sources/ImageSource.yml

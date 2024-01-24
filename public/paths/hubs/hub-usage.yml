@@ -16,6 +16,8 @@ get:
           schema:
             title: "HubFetchReturn"
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array

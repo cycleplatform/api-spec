@@ -54,6 +54,8 @@ get:
           schema:
             title: "ListPipelineResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array
@@ -104,6 +106,8 @@ post:
           schema:
             title: "PipelineCreateResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../components/schemas/pipelines/Pipeline.yml

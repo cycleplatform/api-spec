@@ -55,6 +55,8 @@ get:
           schema:
             title: "ListJobsReturn"
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array

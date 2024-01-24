@@ -139,6 +139,8 @@ post:
           schema:
             title: "EnvironmentResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../components/schemas/environments/Environment.yml

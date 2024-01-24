@@ -48,6 +48,8 @@ get:
           schema:
             title: "ImageSourceFetchResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/images/sources/ImageSource.yml
@@ -98,6 +100,8 @@ patch:
           schema:
             title: "ImageSourceCreateResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/images/sources/ImageSource.yml
@@ -123,6 +127,8 @@ delete:
         application/json:
           schema:
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/jobs/TaskDescriptor.yml

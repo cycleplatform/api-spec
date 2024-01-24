@@ -53,6 +53,8 @@ get:
           schema:
             title: "ImagesFetchResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../components/schemas/images/Image.yml
@@ -91,6 +93,8 @@ patch:
           schema:
             title: "ImagesCreateResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../components/schemas/images/Image.yml
@@ -116,6 +120,8 @@ delete:
         application/json:
           schema:
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../components/schemas/jobs/TaskDescriptor.yml

@@ -16,6 +16,8 @@ get:
           schema:
             title: "ListApiKeysResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array
@@ -71,6 +73,8 @@ post:
           schema:
             title: "CreateApiKeyResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/hubs/ApiKey.yml

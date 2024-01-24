@@ -42,6 +42,8 @@ get:
           schema:
             title: "GetLoadBalancerTelemetryReportReturn"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../../../components/schemas/environments/services/lb/telemetry/LoadBalancerLatestTelemetry.yml

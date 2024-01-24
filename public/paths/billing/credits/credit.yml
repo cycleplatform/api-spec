@@ -19,6 +19,8 @@ get:
           schema:
             title: FetchBillingCreditReturn
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/billing/credits/Credit.yml

@@ -42,6 +42,8 @@ get:
           schema:
             title: InstaceTelemetryReportReturn
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../../components/schemas/containers/instances/returns/InstanceTelemetryReport.yml

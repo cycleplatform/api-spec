@@ -1,6 +1,8 @@
 title: ServerTags 
 description: Tags for a given server. 
-type: object 
+type: object
+required: 
+  - data
 properties: 
   data: 
     type: array 

@@ -71,6 +71,8 @@ get:
           schema:
             title: ContainerInstanceListResponse
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array
@@ -119,6 +121,8 @@ post:
         application/json:
           schema:
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/jobs/TaskDescriptor.yml
@@ -144,6 +148,8 @@ delete:
         application/json:
           schema:
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/jobs/TaskDescriptor.yml

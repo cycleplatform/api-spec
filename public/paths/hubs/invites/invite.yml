@@ -21,6 +21,8 @@ delete:
           schema:
             title: "RemoveHubInviteReturn"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/hubs/HubMembership.yml

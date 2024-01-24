@@ -71,6 +71,8 @@ patch:
           schema:
             title: "DNSZoneUpdateResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../components/schemas/dns/Zone.yml
@@ -98,6 +100,8 @@ delete:
         application/json:
           schema:
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../components/schemas/jobs/TaskDescriptor.yml

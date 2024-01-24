@@ -39,6 +39,8 @@ get:
           schema:
             title: "ListHubsResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array
@@ -80,6 +82,8 @@ post:
           schema:
             title: "HubCreateResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../components/schemas/hubs/Hub.yml

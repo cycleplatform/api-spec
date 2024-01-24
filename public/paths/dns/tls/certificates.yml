@@ -27,6 +27,8 @@ get:
           schema:
             title: "DNSZoneCertificateLookupResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/dns/tls/DnsTlsCertificate.yml

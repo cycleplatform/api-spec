@@ -25,6 +25,8 @@ delete:
           schema:
             title: "VPNUserDeleteReturn"
             type: object
+            required: 
+              - data
             properties:
               data:
                 # TODO - this should be null

@@ -19,6 +19,8 @@ get:
           schema:
             title: "GetPoolsIPReturn"
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array

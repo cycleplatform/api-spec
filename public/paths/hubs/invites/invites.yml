@@ -49,6 +49,8 @@ get:
           schema:
             title: "ListHubInvitesReturn"
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array
@@ -116,6 +118,8 @@ post:
           schema:
             title: "CreateHubInviteReturn"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/hubs/HubMembership.yml

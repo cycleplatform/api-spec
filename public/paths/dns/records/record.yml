@@ -36,6 +36,8 @@ patch:
           schema:
             title: "DNSRecordUpdateResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/dns/records/Record.yml

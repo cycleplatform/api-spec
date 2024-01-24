@@ -44,6 +44,8 @@ get:
           schema:
             title: "DNSZoneListReturn"
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array
@@ -85,6 +87,8 @@ post:
           schema:
             title: "DNSZoneCreateResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../components/schemas/dns/Zone.yml

@@ -62,13 +62,15 @@ get:
     - $ref: ../../../components/parameters/SortParam.yml
     - $ref: ../../../components/parameters/PageParam.yml
   responses:
-    "200":
+    200:
       description: A collection of stack resources.
       content:
         application/json:
           schema:
             title: "ListStacksResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array
@@ -115,6 +117,8 @@ post:
           schema:
             title: "StackCreateResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../components/schemas/stacks/Stack.yml

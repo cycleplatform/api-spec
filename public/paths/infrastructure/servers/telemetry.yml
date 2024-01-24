@@ -38,6 +38,8 @@ get:
           schema:
             title: "ServerTelemetryReturn"
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array

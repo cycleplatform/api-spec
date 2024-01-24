@@ -18,6 +18,8 @@ get:
           schema:
             title: "AnnouncementsListResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array
