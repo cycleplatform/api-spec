@@ -92,3 +92,8 @@ properties:
     "$ref": "./RunState.yml"
   events:
     $ref: ./PipelineRunEvents.yml
+  variables:
+    type: object
+    description: A map of variable values used during pipeline run.
+    additionalProperties:
+      type: string
