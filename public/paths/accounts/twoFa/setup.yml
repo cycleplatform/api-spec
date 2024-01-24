@@ -45,6 +45,8 @@ post:
           schema:
             title: TwofaSetupResponse
             type: object
+            required:
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/accounts/TwoFaSetupResponse.yml

@@ -51,6 +51,8 @@ patch:
           schema:
             title: "AccountUpdateResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../components/schemas/accounts/Account.yml

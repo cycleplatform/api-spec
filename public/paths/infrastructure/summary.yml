@@ -28,6 +28,8 @@ get:
           schema:
             title: "InfrastructureSummaryResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../components/schemas/infrastructure/summary/InfrastructureSummary.yml

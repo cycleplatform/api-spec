@@ -52,6 +52,8 @@ get:
           schema:
             title: "ListProvidersReturn"
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array
@@ -114,6 +116,8 @@ post:
           schema:
             title: "ProviderCreateResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/infrastructure/providers/Provider.yml

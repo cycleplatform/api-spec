@@ -37,6 +37,8 @@ post:
           schema:
             title: "TaskResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../components/schemas/jobs/TaskDescriptor.yml

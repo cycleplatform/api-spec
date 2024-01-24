@@ -64,6 +64,8 @@ patch:
           schema:
             title: "HubUpdateResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../components/schemas/hubs/Hub.yml
@@ -85,6 +87,8 @@ delete:
         application/json:
           schema:
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../components/schemas/jobs/TaskDescriptor.yml

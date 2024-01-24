@@ -32,6 +32,8 @@ get:
           schema:
             title: "IPPoolsReturn"
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array

@@ -37,6 +37,8 @@ get:
           schema:
             title: "FetchHubMemberReturn"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/hubs/HubMembership.yml
@@ -83,6 +85,8 @@ patch:
           schema:
             title: "UpdateHubMemberReturn"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/hubs/HubMembership.yml
@@ -110,6 +114,8 @@ delete:
         application/json:
           schema:
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/jobs/TaskDescriptor.yml

@@ -19,6 +19,8 @@ get:
           schema:
             title: "FetchBillingOrderResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/billing/orders/Order.yml
@@ -68,6 +70,8 @@ patch:
           schema:
             title: "BillingOrderUpdateResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/billing/orders/Order.yml

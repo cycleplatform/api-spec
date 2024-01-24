@@ -16,6 +16,8 @@ get:
           schema:
             title: ListBillingSupportPlanReturn
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array

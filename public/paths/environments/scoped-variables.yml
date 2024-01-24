@@ -101,6 +101,8 @@ post:
           schema:
             title: "CreateScopedVariableResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../components/schemas/scoped-variables/ScopedVariable.yml

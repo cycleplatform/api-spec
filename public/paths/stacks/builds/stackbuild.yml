@@ -25,6 +25,8 @@ get:
           schema:
             title: "FetchStackBuildResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/stacks/builds/StackBuild.yml
@@ -56,6 +58,8 @@ delete:
         application/json:
           schema:
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/jobs/TaskDescriptor.yml

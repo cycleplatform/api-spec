@@ -44,6 +44,8 @@ get:
           schema:
             title: ContainerInstanceResponse
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/containers/instances/Instance.yml
@@ -77,6 +79,8 @@ delete:
         application/json:
           schema:
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/jobs/TaskDescriptor.yml

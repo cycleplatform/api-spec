@@ -21,6 +21,8 @@ get:
           schema:
             title: "VPNInfoEnvironmentService"
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array

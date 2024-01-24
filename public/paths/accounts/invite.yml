@@ -34,6 +34,8 @@ patch:
           schema:
             title: "UpdateAccountInviteResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../components/schemas/hubs/HubMembership.yml

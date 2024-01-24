@@ -25,6 +25,8 @@ get:
           schema:
             title: SingleBackupReturn
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/containers/backups/Backup.yml
@@ -57,6 +59,8 @@ delete:
           schema:
             title: "TaskResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/jobs/TaskDescriptor.yml

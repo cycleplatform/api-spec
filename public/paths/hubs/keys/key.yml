@@ -74,6 +74,8 @@ patch:
           schema:
             title: "UpdateApiKeyReturn"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/hubs/ApiKey.yml
@@ -101,6 +103,8 @@ delete:
           schema:
             title: "ServerDeleteReturn"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/hubs/ApiKey.yml

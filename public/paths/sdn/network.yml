@@ -34,6 +34,8 @@ get:
           schema:
             title: "GetNetworkResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../components/schemas/sdn/networks/Network.yml
@@ -87,6 +89,8 @@ patch:
           schema:
             title: "UpdateNetworkResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../components/schemas/sdn/networks/Network.yml
@@ -114,6 +118,8 @@ delete:
         application/json:
           schema:
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../components/schemas/jobs/TaskDescriptor.yml

@@ -40,6 +40,8 @@ get:
           schema:
             title: "ListPipelineTriggerKeyResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array
@@ -76,13 +78,15 @@ post:
               items:
                 type: string
   responses:
-    "201":
+    201:
       description: Returns a trigger key resource.
       content:
         application/json:
           schema:
             title: "PipelineTriggerKeyCreateResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/pipelines/trigger-keys/TriggerKey.yml

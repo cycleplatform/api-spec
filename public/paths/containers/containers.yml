@@ -113,6 +113,8 @@ get:
           schema:
             title: "ListContainersResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array

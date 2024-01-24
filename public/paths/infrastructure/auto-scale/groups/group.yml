@@ -35,6 +35,8 @@ get:
           schema:
             title: "GetAutoScaleGroupReturn"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../../components/schemas/infrastructure/auto-scale/groups/AutoScaleGroup.yml
@@ -86,6 +88,8 @@ patch:
           schema:
             title: "UpdateAutoScaleGroupReturn"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../../components/schemas/infrastructure/auto-scale/groups/AutoScaleGroup.yml
@@ -111,6 +115,8 @@ delete:
         application/json:
           schema:
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../../components/schemas/jobs/TaskDescriptor.yml

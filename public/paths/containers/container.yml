@@ -55,6 +55,8 @@ get:
           schema:
             title: "ContainerResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../components/schemas/containers/Container.yml
@@ -108,6 +110,8 @@ patch:
           schema:
             title: "ContainerUpdateResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../components/schemas/containers/Container.yml
@@ -133,6 +137,8 @@ delete:
         application/json:
           schema:
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../components/schemas/jobs/TaskDescriptor.yml

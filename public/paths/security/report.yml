@@ -38,6 +38,8 @@ get:
           schema:
             title: "SecurityReportResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../components/schemas/security/report/SecurityReport.yml

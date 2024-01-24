@@ -39,6 +39,8 @@ get:
           schema:
             title: "GetServerInstancesReturn"
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array

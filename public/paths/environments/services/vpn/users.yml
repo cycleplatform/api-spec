@@ -19,6 +19,8 @@ get:
           schema:
             title: "getVPNUsersReturn"
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array
@@ -61,6 +63,8 @@ post:
           schema:
             title: VPNUserResponse
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../../components/schemas/environments/returns/VPNUsers.yml

@@ -19,6 +19,8 @@ get:
           schema:
             title: FetchBillingMethodReturn
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/billing/methods/Method.yml
@@ -62,6 +64,8 @@ patch:
           schema:
             title: UpdateBillingMethodReturn
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/billing/methods/Method.yml
@@ -88,6 +92,8 @@ delete:
           schema:
             title: "TaskResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/jobs/TaskDescriptor.yml

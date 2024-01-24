@@ -85,6 +85,8 @@ get:
           schema:
             title: "ListActivityResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array

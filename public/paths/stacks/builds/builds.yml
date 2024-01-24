@@ -55,6 +55,8 @@ get:
           schema:
             title: "StackBuildsCollectionResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array
@@ -94,6 +96,8 @@ post:
           schema:
             title: "StackBuildCreateResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/stacks/builds/StackBuild.yml

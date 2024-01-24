@@ -35,6 +35,8 @@ get:
           schema:
             title: "FetchPipelineResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../components/schemas/pipelines/Pipeline.yml
@@ -84,6 +86,8 @@ patch:
           schema:
             title: "FetchPipelineResource"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../components/schemas/pipelines/Pipeline.yml
@@ -109,6 +113,8 @@ delete:
         application/json:
           schema:
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../components/schemas/jobs/TaskDescriptor.yml

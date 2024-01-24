@@ -19,6 +19,8 @@ get:
           schema:
             title: "ListJobsReturn"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../components/schemas/jobs/Job.yml

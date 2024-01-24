@@ -49,6 +49,8 @@ get:
           schema:
             title: "ListNetworksResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array
@@ -114,6 +116,8 @@ post:
           schema:
             title: "CreateNetworkResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../components/schemas/sdn/networks/Network.yml

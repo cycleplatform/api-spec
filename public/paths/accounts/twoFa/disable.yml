@@ -25,6 +25,8 @@ post:
           schema:
             title: TwofaDisableResponse
             type: object
+            required:
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/accounts/TwoFaDisableResponse.yml

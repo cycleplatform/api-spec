@@ -36,6 +36,8 @@ get:
           schema:
             title: "ContainerInstancesTelemetry"
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array

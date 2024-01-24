@@ -25,6 +25,8 @@ get:
           schema:
             title: "InstanceConsoleAuthResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../components/schemas/websocket-auth/InstanceConsoleAuth.yml

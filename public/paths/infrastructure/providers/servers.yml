@@ -37,6 +37,8 @@ get:
           schema:
             title: "ListProviderServersReturn"
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array

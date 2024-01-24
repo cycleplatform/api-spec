@@ -51,6 +51,8 @@ get:
           schema:
             title: "ServerFetchReturn"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/infrastructure/servers/Server.yml
@@ -114,6 +116,8 @@ patch:
           schema:
             title: "ServerUpdateReturn"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/infrastructure/servers/Server.yml
@@ -140,6 +144,8 @@ delete:
         application/json:
           schema:
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/jobs/TaskDescriptor.yml

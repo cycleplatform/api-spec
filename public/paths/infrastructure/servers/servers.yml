@@ -74,6 +74,8 @@ get:
           schema:
             title: "ServerCollectionReturn"
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array
@@ -153,6 +155,8 @@ post:
           schema:
             title: "ServerCreateResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/jobs/TaskDescriptor.yml

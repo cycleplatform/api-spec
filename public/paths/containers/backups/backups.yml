@@ -21,6 +21,8 @@ get:
           schema:
             title: ConatainerBackupListResponse
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array

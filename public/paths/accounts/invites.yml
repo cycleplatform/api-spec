@@ -49,6 +49,8 @@ get:
           schema:
             title: "AccountInvitesResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array

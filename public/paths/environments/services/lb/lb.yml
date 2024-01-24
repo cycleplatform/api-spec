@@ -19,6 +19,8 @@ get:
           schema:
             title: "GetLoadBalancerInfoReturn"
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: object

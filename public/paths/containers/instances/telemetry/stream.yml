@@ -28,6 +28,8 @@ get:
           schema:
             title: InstanceTelemetryStreamCredentialsReturn
             type: object
+            required: 
+              - data
             properties:
               data:
                 title: InstanceTelemetryStreamCredentials

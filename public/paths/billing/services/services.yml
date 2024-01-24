@@ -16,6 +16,8 @@ get:
           schema:
             title: "ListBillingServicesResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array

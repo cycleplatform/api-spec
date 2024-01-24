@@ -57,6 +57,8 @@ get:
           schema:
             title: "GetAutoScaleGroupResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array
@@ -104,6 +106,8 @@ post:
           schema:
             title: "CreateAutoScaleGroupResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../../components/schemas/infrastructure/auto-scale/groups/AutoScaleGroup.yml

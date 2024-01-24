@@ -45,6 +45,8 @@ get:
           schema:
             title: "ListBillingOrdersResponse"
             type: object
+            required: 
+              - data
             properties:
               data:
                 type: array
@@ -92,6 +94,8 @@ post:
           schema:
             title: "OrderResource"
             type: object
+            required: 
+              - data
             properties:
               data:
                 $ref: ../../../../components/schemas/billing/BillingOrder.yml
