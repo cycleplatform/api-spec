@@ -1,0 +1,12 @@
+title: LoadBalancerLatestControllersIncludes
+description: Optionally included resources for load balancer controllers
+type: object
+properties:
+  creators:
+    $ref: ../../../../../../../components/schemas/includes/CreatorInclude.yml
+  stack_builds:
+    $ref: ../../../../../../../components/schemas/includes/StackBuildIncludes.yml
+  stacks:
+    $ref: ../../../../../../../components/schemas/includes/StackIncludes.yml
+  sources:
+    $ref: ../../../../../../../components/schemas/includes/ImageSourceIncludes.yml
