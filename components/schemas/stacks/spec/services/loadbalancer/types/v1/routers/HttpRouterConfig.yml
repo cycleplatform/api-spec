@@ -61,10 +61,10 @@ properties:
                     - value
                   properties:
                     match:
-                      properties: String that will be replaced.
+                      description: String that will be replaced.
                       type: string
                     value:
-                      properties: Replacement value.
+                      description: Replacement value.
                       type: string
       proxy:
         nullable: true
@@ -90,10 +90,10 @@ properties:
                     - value
                   properties:
                     match:
-                      properties: String that will be replaced.
+                      description: String that will be replaced.
                       type: string
                     value:
-                      properties: Replacement value.
+                      description: Replacement value.
                       type: string
       caching:
         nullable: true
