@@ -28,9 +28,22 @@ properties:
       telemetry:
         type: object
         description: Configuration options for how telemetry is handled.
+        required:
+          - disable_url_tracking
+          - disable_router_metrics
         properties:
+          disable_url_tracking:
+            description: "Determines if the load balancer will track url metrics. Defaults to false."
+            type: boolean
+          disable_router_metrics:
+            description: "Determines if the load balancer will track router metrics. Defaults to false."
+            type: boolean
+          max_trackable_urls:
+            description: "Determines how many URLs the load balancer will track at one time. Defaults to 150."
+            nullable: true
+            type: integer
           tracking_window:
-            description: "Determines how long the load balancer will track a URL from its last hit. Helps reduce noise by not tracking URLs that are occasionally hit. Defaults to 8h. "
+            description: "Determines how long the load balancer will track a URL from its last hit. Helps reduce noise by not tracking URLs that are occasionally hit. Defaults to 8h."
             type: string
             nullable: true
             allOf:
@@ -39,6 +52,12 @@ properties:
             description: Whether or not to track invalid requests. An invalid request is a request that came in that no router existed for. Usually this means bot requests. Defaults to false.
             type: boolean
             nullable: true
+          group_paths:
+            description: Group paths is used to group URLs.  The key is the URL and the value is the regex used to match URLs.
+            nullable: true
+            type: object
+            additionalProperties:
+              type: string
           ignore_paths:
             description: An array of paths to exclude from tracking.
             type: array
