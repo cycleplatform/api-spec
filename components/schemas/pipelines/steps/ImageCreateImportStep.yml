@@ -28,3 +28,16 @@ properties:
         type: string
       source:
         $ref: ../FluidIdentifier.yml
+      override:
+        nullable: true
+        type: object
+        description: An override object to be used for a single image create request.
+        properties:
+          target:
+            description: For image sources with `docker-hub` or `docker-registry` origin types. A target to be used for overridding the default target - should include an image and a tag.
+            nullable: true
+            type: string
+          targz_url:
+            description: For image sources with `docker-file` origin types. A URL pointing to a .tar.gz file of a repo with a Dockerfile in it - can be used instead of linking Cycle directly to a repository.
+            nullable: true
+            type: string
