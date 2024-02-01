@@ -140,6 +140,7 @@ properties:
       - environment.task.stop
       - environment.task.deployments.reconfigure
       - environment.deployments.reconfigure
+      - environment.deployments.prune
 
       - environment.scoped-variable.delete
       - environment.scoped-variable.update
