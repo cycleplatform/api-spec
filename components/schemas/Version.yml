@@ -1,5 +1,5 @@
 title: Version
 type: string
 description: |
-  A [Semantic Version](https://semver.org/) string. Follows the format vMAJOR.MINOR.PATCH-build. The `v` is required.
+  Version can be any string, but if it begins with a "v", semantic version will be enforces. A [Semantic Version](https://semver.org/) string. Follows the format vMAJOR.MINOR.PATCH-build.
 example: v1.2.3-dev
