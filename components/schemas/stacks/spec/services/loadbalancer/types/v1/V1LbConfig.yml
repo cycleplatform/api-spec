@@ -79,7 +79,7 @@ properties:
                           type: boolean
                           nullable: true
                           description: If enabled, accept TLS traffic with an invalid certificate. This is usually done for development/testing, and is not recommended for production use.
-                        client_cert:
+                        client_cert_auth:
                           nullable: true
                           description: A PEM encoded string of certificates.
                           type: string
