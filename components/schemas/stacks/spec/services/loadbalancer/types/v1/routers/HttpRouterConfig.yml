@@ -45,6 +45,27 @@ properties:
           scheme:
             nullable: true
             type: string
+          content_mod:
+            description: Allows the load balancer to modify content before it reaches the user.
+            nullable: true
+            type: object
+            properties:
+              replace:
+                description: An array that describes a list of replacement match/value pairs.
+                nullable: true
+                type: array
+                items:
+                  type: object
+                  required:
+                    - match
+                    - value
+                  properties:
+                    match:
+                      description: String that will be replaced.
+                      type: string
+                    value:
+                      description: Replacement value.
+                      type: string
       proxy:
         nullable: true
         type: object
@@ -53,6 +74,27 @@ properties:
             nullable: true
             type: string
             description: The proxy domain for this router.
+          content_mod:
+            description: Allows the load balancer to modify content before it reaches the user.
+            nullable: true
+            type: object
+            properties:
+              replace:
+                description: An array that describes a list of replacement match/value pairs.
+                nullable: true
+                type: array
+                items:
+                  type: object
+                  required:
+                    - match
+                    - value
+                  properties:
+                    match:
+                      description: String that will be replaced.
+                      type: string
+                    value:
+                      description: Replacement value.
+                      type: string
       caching:
         nullable: true
         type: object
