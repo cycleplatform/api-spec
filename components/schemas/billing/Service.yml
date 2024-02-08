@@ -28,7 +28,7 @@ properties:
   item:
     "$ref": "./ServiceItem.yml"
   discount:
-    "$ref": "./discounts/Discount.yml"
+    "$ref": "./discounts/AssociatedDiscount.yml"
   price:
     "$ref": "./BillingAmount.yml"
   term:
