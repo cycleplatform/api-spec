@@ -1,4 +1,4 @@
-title: BillingDiscount
+title: AssociatedDiscount
 type: object
 description: Information about a billing discount.
 required:
