@@ -16,6 +16,7 @@ properties:
         enum:
           - hash
           - tag
+          - branch
       value:
         type: string
         description: The actual value to be passed.
