@@ -28,6 +28,16 @@ properties:
         type: string
       source:
         $ref: ../FluidIdentifier.yml
+      build:
+        type: object
+        description: Optional build-time options for when this image is built on pipeline run.
+        properties:
+          arguments: 
+            type: object
+            description: Build args passed into the container image build process during pipeline run.
+            nullable: true
+            additionalProperties:
+              type: string
       override:
         nullable: true
         type: object

@@ -1,0 +1,33 @@
+title: EnvironmentDeploymentsStopStep
+type: object
+description: Stop all containers with a specific deployment version/tag within an environment.
+required:
+  - action
+  - details
+properties:
+  identifier:
+    type: string
+    description: An identifier for the step.
+  options:
+    type: object
+    properties:
+      skip:
+        type: boolean
+  action:
+    type: string
+    description: The action that the step takes.
+    enum:
+      - environment.deployments.stop
+  details:
+    type: object
+    required:
+      - environment
+    properties:
+      environment:
+        $ref: ../FluidIdentifier.yml
+      tag:
+        type: string
+        nullable: true
+      deployment:
+        type: string
+        nullable: true

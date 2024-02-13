@@ -20,6 +20,8 @@ discriminator:
     environment.start: steps/EnvironmentStartStep.yml
     environment.stop: steps/EnvironmentStopStep.yml
     environment.delete: steps/EnvironmentDeleteStep.yml
+    environment.deployments.start: steps/EnvironmentDeploymentsStartStep.yml
+    environment.deployments.stop: steps/EnvironmentDeploymentsStopStep.yml
     environment.deployments.tag: steps/EnvironmentDeploymentsTagStep.yml
     environment.deployments.prune: steps/EnvironmentDeploymentsPruneStep.yml
 
@@ -52,6 +54,8 @@ oneOf:
   - $ref: steps/EnvironmentStartStep.yml
   - $ref: steps/EnvironmentStopStep.yml
   - $ref: steps/EnvironmentDeleteStep.yml
+  - $ref: steps/EnvironmentDeploymentsStartStep.yml
+  - $ref: steps/EnvironmentDeploymentsStopStep.yml
   - $ref: steps/EnvironmentDeploymentsTagStep.yml
   - $ref: steps/EnvironmentDeploymentsPruneStep.yml
 

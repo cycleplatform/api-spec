@@ -28,10 +28,41 @@ properties:
       instructions:
         type: object
         nullable: true
-        allOf:
-          - $ref: ../../stacks/builds/StackBuildInstructions.yml
+        description: Additional instructions used when generating this stack build.
+        properties:
+          git:
+            type: object
+            description: Git information specifics.
+            required:
+              - type
+              - value
+            properties:
+              type:
+                type: string
+                description: The type of information the user is passing.
+                enum:
+                  - branch
+                  - hash
+                  - tag
+              value:
+                type: string
+                description: The actual value to be passed.
+          variables:
+            type: object
+            description: Custom variables applied to the stack during build. Any place in the stack where a `{{variable}}` is used is replaced with the value of the variable supplied in this map.
+            additionalProperties:
+              type: string
       about:
         type: object
         nullable: true
-        allOf:
-          - $ref: ../../stacks/builds/StackBuildAbout.yml
+        description: Information about the stack build.
+        required:
+          - version
+          - description
+        properties:
+          version:
+            type: string
+            description: A user defined version of the build.
+          description:
+            type: string
+            description: A user defined description for the build.
