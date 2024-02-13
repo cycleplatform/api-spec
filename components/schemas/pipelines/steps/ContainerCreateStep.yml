@@ -30,6 +30,9 @@ properties:
     properties:
       name:
         type: string
+      identifier:
+        type: string
+        nullable: true
       environment:
         $ref: ../FluidIdentifier.yml
       image:
