@@ -28,6 +28,6 @@ properties:
       tag:
         type: string
         nullable: true
-      deployment:
+      version:
         type: string
         nullable: true
