@@ -41,6 +41,7 @@ properties:
                 type: string
                 description: The type of information the user is passing.
                 enum:
+                  - branch
                   - hash
                   - tag
               value:
@@ -65,5 +66,3 @@ properties:
           description:
             type: string
             description: A user defined description for the build.
-          git_commit:
-            $ref: "./StackGitCommit.yml"
