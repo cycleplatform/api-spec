@@ -51,13 +51,10 @@ properties:
         type: integer
         description: If a destination is unavailable, retry up to [x] times, instead of immediately failing with a 503/504 error.
       tls:
+        nullable: true
         type: object
         description: TLS termination configuration. If null, the platform will use the default configuration. Port 443 by default has TLS termination enabled.
         required:
-          - enable
-          - server_name
-          - allow_insecure
-          - client_auth
         properties:
           server_name:
             type: string
