@@ -8,11 +8,14 @@
     "lint:public": "npx @redocly/cli lint ./public/api.yml",
     "lint:internal": "npx @redocly/cli lint ./internal/api.yml",
     "build": "npm run build:public && npm run build:internal",
-    "build:public": "npx @redocly/cli bundle public/api.yml --output dist/public-api.yml",
-    "build:internal": "npx @redocly/cli bundle internal/api.yml --output dist/internal-api.yml",
+    "build:public": "npx @redocly/cli@1.9.0 bundle public/api.yml --output dist/public-api.yml",
+    "build:internal": "npx @redocly/cli@1.9.0 bundle internal/api.yml --output dist/internal-api.yml",
     "preview:public": "npm run build:public && npx @redocly/cli preview-docs dist/public-api.yml",
     "preview:internal": "npm run build:internal && npx @redocly/cli preview-docs dist/internal-api.yml"
   },
   "author": "Petrichor Holdings, Inc.",
-  "license": "Apache-2.0"
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@redocly/cli": "1.9.0"
+  }
 }
