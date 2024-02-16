@@ -1,0 +1,42 @@
+title: EnvironmentDeploymentHealthyWatchStep
+type: object
+description: | 
+  Waits for a deployment to be considered 'healthy' before allowing the pipeline to continue.
+  A deployement is considered 'healthy' when all instances of all containers that have had a state change in the last 15 minutes
+  that have health checks defined, become healthy.
+required:
+  - action
+  - details
+properties:
+  identifier:
+    type: string
+    description: An identifier for the step.
+  options:
+    type: object
+    properties:
+      skip:
+        type: boolean
+  action:
+    type: string
+    description: The action that the step takes.
+    enum:
+      - environment.deployment.healthy.watch
+  details:
+    type: object
+    required:
+      - environment
+    properties:
+      environment:
+        $ref: ../FluidIdentifier.yml
+      tag:
+        type: string
+        nullable: true
+      version:
+        type: string
+        nullable: true
+      max_wait:
+        type: string
+        nullable: true
+        description: The maximum amount of time to wait for the deployment to become healthy before failing this step.
+        allOf:
+          - $ref: ../../Duration.yml
