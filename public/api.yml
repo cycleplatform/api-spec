@@ -262,20 +262,14 @@ paths:
   # Hubs
   "/v1/hubs":
     "$ref": "./paths/hubs/hubs.yml"
-  # "/v1/hub/{hubId}":
-  #   "$ref": "./paths/hubs/hub.yml"
   "/v1/hubs/current":
     "$ref": "./paths/hubs/hub.yml"
-  # "/v1/hubs/current/tasks":
-  #   "$ref": "./paths/hubs/tasks.yml"
   "/v1/hubs/current/activity":
     "$ref": "./paths/hubs/activity.yml"
   "/v1/hubs/capabilities":
     "$ref": "./paths/hubs/capabilities.yml"
   "/v1/hubs/current/usage":
     "$ref": "./paths/hubs/hub-usage.yml"
-  # "/v1/hubs/current/tier":
-  #   "$ref": "./paths/hubs/tier.yml"
   "/v1/hubs/current/invites/{inviteId}":
     "$ref": "./paths/hubs/invites/invite.yml"
   "/v1/hubs/current/invites":
@@ -292,6 +286,10 @@ paths:
     "$ref": "./paths/hubs/keys/keys.yml"
   "/v1/hubs/current/api-keys/{apikeyId}":
     "$ref": "./paths/hubs/keys/key.yml"
+  "/v1/hubs/current/integrations":
+    $ref: paths/hubs/integrations.yml
+  "/v1/hubs/current/integrations/available":
+    $ref: paths/hubs/available-integrations.yml
   # Index
   "/v1/search/index":
     "$ref": "./paths/search/index.yml"

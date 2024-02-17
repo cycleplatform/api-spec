@@ -7,7 +7,7 @@ required:
   - type
 properties:
   id:
-    $ref: "../ID.yml"
+    $ref: ../ID.yml
   type:
     type: string
     enum:
