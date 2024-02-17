@@ -1,0 +1,63 @@
+title: IntegrationDefinition
+description: Describes an integration for a Cycle Hub that can be enabled by the Hub owner.
+type: object
+required:
+  - identifier
+  - name
+  - supports_verification
+  - required_fields
+  - url
+properties:
+  identifier:
+    type: string
+    enum:
+      - backblaze
+      - depot
+      - stripe
+      - letsencrypt
+      - aws
+      - gcp
+      - equinix-metal
+      - vultr
+      - coreweave
+      - hivelocity
+      - abstraction
+  name:
+    type: string
+  supports_verification:
+    type: boolean
+  required_fields:
+    type: object
+    properties:
+      extra:
+        type: object
+        additionalProperties:
+          type: object
+          required:
+            - description
+          properties:
+            regex:
+              type: string
+              nullable: true
+            description:
+              type: string
+        nullable: true
+      auth:
+        type: object
+        additionalProperties:
+          type: object
+          required:
+            - description
+          properties:
+            regex:
+              type: string
+              nullable: true
+            description:
+              type: string
+        nullable: true
+  url:
+    type: string
+    format: uri
+  public:
+    type: boolean
+    nullable: true

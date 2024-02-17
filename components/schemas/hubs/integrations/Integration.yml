@@ -1,0 +1,60 @@
+title: Integration
+type: object
+required:
+  - id
+  - identifier
+  - creator
+  - hub_id
+  - state
+  - events
+properties:
+  id:
+    $ref: ../../ID.yml
+  name:
+    type: string
+    nullable: true
+    description: Name of the Integration.
+  identifier:
+    $ref: ../../Identifier.yml
+  auth:
+    type: string
+    nullable: true
+    description: Authentication information for the Integration, can be null.
+    allOf:
+      - $ref: IntegrationAuth.yml
+  extra:
+    type: object
+    additionalProperties:
+      type: string
+    nullable: true
+    description: Additional key-value pairs associated with the Integration.
+  creator:
+    $ref: ../../creators/CreatorScope.yml
+  hub_id:
+    $ref: ../../ID.yml
+    description: Identifier of the hub associated with the Integration.
+  state:
+    $ref: IntegrationState.yml
+  events:
+    title: IntegrationEvents
+    type: object
+    description: A collection of timestamps for each event in the Integration's lifetime.
+    required:
+      - created
+      - updated
+      - deleted
+    properties:
+      created:
+        description: The timestamp of when the Integration was created.
+        $ref: ../../DateTime.yml
+      updated:
+        description: The timestamp of when the Integration was updated.
+        $ref: ../../DateTime.yml
+      deleted:
+        description: The timestamp of when the Integration was deleted.
+        $ref: ../../DateTime.yml
+  meta:
+    type: object
+    additionalProperties: true
+    nullable: true
+    description: Additional properties about the integration that can be requested when fetched.

@@ -1,5 +1,6 @@
 ---
 title: ID
 type: string
+format: objectid
 description: A 24 character hex string used to identify a unique resource.
 example: 651586fca6078e98982dbd90
