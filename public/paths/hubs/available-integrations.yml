@@ -12,31 +12,33 @@ get:
           schema:
             type: object
             properties:
-              image-builders:
-                type: array
-                items:
-                  $ref: ../../../components/schemas/hubs/integrations/IntegrationDefinition.yml
-                nullable: true
-              object-storage:
-                type: array
-                items:
-                  $ref: ../../../components/schemas/hubs/integrations/IntegrationDefinition.yml
-                nullable: true
-              tls-certificate-generation:
-                type: array
-                items:
-                  $ref: ../../../components/schemas/hubs/integrations/IntegrationDefinition.yml
-                nullable: true
-              infrastructure-provider:
-                type: array
-                items:
-                  $ref: ../../../components/schemas/hubs/integrations/IntegrationDefinition.yml
-                nullable: true
-              billing:
-                type: array
-                items:
-                  $ref: ../../../components/schemas/hubs/integrations/IntegrationDefinition.yml
-                nullable: true
-            additionalProperties: false
+              data:
+                type: object
+                properties:
+                  image-builders:
+                    type: array
+                    items:
+                      $ref: ../../../components/schemas/hubs/integrations/IntegrationDefinition.yml
+                    nullable: true
+                  object-storage:
+                    type: array
+                    items:
+                      $ref: ../../../components/schemas/hubs/integrations/IntegrationDefinition.yml
+                    nullable: true
+                  tls-certificate-generation:
+                    type: array
+                    items:
+                      $ref: ../../../components/schemas/hubs/integrations/IntegrationDefinition.yml
+                    nullable: true
+                  infrastructure-provider:
+                    type: array
+                    items:
+                      $ref: ../../../components/schemas/hubs/integrations/IntegrationDefinition.yml
+                    nullable: true
+                  billing:
+                    type: array
+                    items:
+                      $ref: ../../../components/schemas/hubs/integrations/IntegrationDefinition.yml
+                    nullable: true
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
