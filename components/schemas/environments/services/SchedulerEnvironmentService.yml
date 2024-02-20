@@ -9,7 +9,7 @@ required:
   - enable
   - container_id
   - high_availablity
-  - config
+  # - config
 properties:
   enable:
     type: boolean
@@ -26,6 +26,7 @@ properties:
   auto_update:
     type: boolean
     description: A boolean where `true` represents the desire to automatically update the environment scheduler service.
-  config:
-    description: The config object for the scheduler service.
-    type: object
+  # config:
+  #   nullable: true
+  #   description: The config object for the scheduler service.
+  #   type: object

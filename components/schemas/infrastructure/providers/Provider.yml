@@ -14,7 +14,7 @@ properties:
   hub_id:
     "$ref": "../../HubID.yml"
   integration:
-    "$ref": "./Integration.yml"
+    "$ref": "./InfrastructureProviderIntegration.yml"
   name:
     type: string
     description: A string describing the name of a provider

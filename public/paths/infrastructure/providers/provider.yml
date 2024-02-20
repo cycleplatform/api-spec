@@ -34,7 +34,7 @@ get:
           schema:
             title: "FetchProviderReturn"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
@@ -64,6 +64,7 @@ patch:
             - integration
           properties:
             integration:
+              title: ProviderIntegration
               type: object
               description: An integration object defining the provider integration assets and endpoints.
               properties:
@@ -102,7 +103,7 @@ patch:
           schema:
             title: "ProviderUpdateReturn"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
@@ -129,7 +130,7 @@ delete:
         application/json:
           schema:
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
