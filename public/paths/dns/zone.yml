@@ -17,8 +17,9 @@ get:
       content:
         application/json:
           schema:
-            title: SingleDNSZoneReturn
             type: object
+            required:
+              - data
             properties:
               data:
                 $ref: ../../../components/schemas/dns/Zone.yml
@@ -71,7 +72,7 @@ patch:
           schema:
             title: "DNSZoneUpdateResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
@@ -94,13 +95,13 @@ delete:
   summary: Remove DNS Zone
   description: Requires the `dns-manage` capability.
   responses:
-    200:
+    202:
       description: Returns a task descriptor.
       content:
         application/json:
           schema:
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
