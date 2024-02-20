@@ -26,6 +26,8 @@ properties:
     type: string
   supports_verification:
     type: boolean
+  supports_multiple:
+    type: boolean
   required_fields:
     type: object
     properties:

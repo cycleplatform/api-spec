@@ -26,15 +26,23 @@ get:
             type: string
             description: |
               `filter[search]=value` Performs a text search across relevant fields of the integrations. For example, `filter[search]=example` would return integrations that have "example" in any of the searchable fields
+          identifier:
+            type: string
+            description: |
+              `filter[identifier]=value` Filters integrations by their identifier. For example, `filter[identifier]=abstraction` would return only integrations with the abstraction identifier.
   responses:
     200:
       description: A list of integrations
       content:
         application/json:
           schema:
-            type: array
-            items:
-              $ref: ../../../components/schemas/hubs/integrations/Integration.yml
+            title: GetIntegrationsReturn
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: ../../../components/schemas/hubs/integrations/Integration.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
 post:
