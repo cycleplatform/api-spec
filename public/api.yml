@@ -286,6 +286,8 @@ paths:
     "$ref": "./paths/hubs/keys/keys.yml"
   "/v1/hubs/current/api-keys/{apikeyId}":
     "$ref": "./paths/hubs/keys/key.yml"
+  "/v1/hubs/current/integrations/{integrationId}":
+    $ref: paths/hubs/integration.yml
   "/v1/hubs/current/integrations":
     $ref: paths/hubs/integrations.yml
   "/v1/hubs/current/integrations/available":

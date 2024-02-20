@@ -1,0 +1,114 @@
+get:
+  operationId: getIntegration
+  tags:
+    - Hubs
+  security:
+    - bearerAuth: []
+  summary: Retrieve a specific integration for the current hub
+  description: Retrieves details of a single integration associated with the current hub.
+  parameters:
+    - name: integrationId
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: '^[a-f0-9]{24}$'
+      description: The ID of the integration to retrieve.
+  responses:
+    200:
+      description: Details of the specified integration
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: '../../../components/schemas/hubs/integrations/Integration.yml'
+    default:
+      $ref: '../../../components/responses/errors/DefaultError.yml'
+
+patch:
+  operationId: updateIntegration
+  tags:
+    - Hubs
+  security:
+    - bearerAuth: []
+  summary: Update an integration
+  description: Updates the specified integration within the current hub.
+  parameters:
+    - name: integrationId
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: '^[a-f0-9]{24}$'
+      description: The ID of the integration to update.
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              nullable: true
+              description: A new name for the integration.
+            auth:
+              type: object
+              nullable: true
+              allOf: 
+                - $ref: '../../../components/schemas/hubs/integrations/IntegrationAuth.yml'
+            extra:
+              type: object
+              additionalProperties:
+                type: string
+              nullable: true
+              description: Updated key-value pairs associated with the integration.
+  responses:
+    200:
+      description: The updated integration
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: '../../../components/schemas/hubs/integrations/Integration.yml'
+    default:
+      $ref: '../../../components/responses/errors/DefaultError.yml'
+
+delete:
+  operationId: deleteIntegration
+  tags:
+    - Hubs
+  security:
+    - bearerAuth: []
+  summary: Delete an integration
+  description: Deletes the specified integration from the current hub, marking it as deleted and returning the updated integration.
+  parameters:
+    - name: integrationId
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: '^[a-f0-9]{24}$'
+      description: The ID of the integration to delete.
+  responses:
+    200:
+      description: The integration has been marked as deleted and is returned with its updated state.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: '../../../components/schemas/hubs/integrations/Integration.yml'
+    default:
+      $ref: '../../../components/responses/errors/DefaultError.yml'
