@@ -181,6 +181,10 @@ properties:
       - hub.membership.create
       - hub.membership.update
 
+      - hub.integration.create
+      - hub.integration.update
+      - hub.integration.delete
+
       - container.initialize
       - container.task.start
       - container.start
