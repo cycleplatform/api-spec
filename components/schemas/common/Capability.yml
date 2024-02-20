@@ -5,6 +5,7 @@ enum:
   - hubs-update
   - hubs-delete
   - hubs-integrations-manage
+  - hubs-integrations-view
   - hubs-usage-view
   - hubs-invites-send
   - hubs-invites-manage
