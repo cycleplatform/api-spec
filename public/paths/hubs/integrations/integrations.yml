@@ -102,7 +102,7 @@ post:
                   type: string
                   nullable: true
                   description: Client ID for the Integration.
-                config:
+                base64_config:
                   type: string
                   nullable: true
                   description: Base64 encoded configuration for the Integration.
