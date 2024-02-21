@@ -1,24 +1,23 @@
 post:
-  operationId: "DNSRecordTask"
+  operationId: "createHubIntegrationJob"
   tags:
-    - DNS
+    - Hub
   parameters:
-    - name: zoneId
-      description: The ID of the zone.
+    - name: integrationId
+      description: The ID of the Hub Integration.
       in: path
       required: true
       schema:
         type: string
-    - name: recordId
-      description: The ID of the record.
-      in: path
-      required: true
-      schema:
-        type: string
-  summary: Create a DNS record Job
-  description: Used to perform different actionson a given DNS record, requires the `dns-manage` capability.
+  summary: Create a new Hub Integration Job.
+  description: |
+    Creates a new job targeted at the provided Hub Integration. 
+
+    ## Required Permissions
+      - Requires a valid hub membership to the target hub
+      - Requires the `hubs-integrations-manage` capability.
   requestBody:
-    description: Parameters for creating a new DNS zone job.
+    description: Parameters for creating a new Hub Integration job.
     content:
       application/json:
         schema:
@@ -28,12 +27,12 @@ post:
           properties:
             action:
               type: string
-              description: The action that the job will take.
+              description: The type of Job/selected Job action to create.
               enum:
-                - generateCert
+                - verify
   responses:
     202:
-      description: Returns a task descriptor.
+      description: Returns a Job Descriptor, which contains relevant information about the new Job.
       content:
         application/json:
           schema:

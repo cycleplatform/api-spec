@@ -1,13 +1,15 @@
 title: IntegrationState
-allOf: 
-  - required: 
-      - current 
-    properties: 
-      current: 
-        description: The current state of the integration. 
-        type: string 
-        enum: 
-          - live 
-          - deleting 
-          - deleted 
+allOf:
+  - required:
+      - current
+    properties:
+      current:
+        description: The current state of the integration.
+        type: string
+        enum:
+          - new
+          - verifying
+          - live
+          - deleting
+          - deleted
   - $ref: ../../State.yml

@@ -21,12 +21,12 @@ get:
           schema:
             title: "ProviderLocationsReturn"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
                 type: array
                 items:
-                  $ref: ../../../../components/schemas/infrastructure/providers/InfrastructureProviderLocation.yml
+                  $ref: ../../../../components/schemas/infrastructure/providers/ProviderLocation.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml

@@ -35,14 +35,13 @@ get:
       content:
         application/json:
           schema:
-            title: "ListProviderServersReturn"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
                 type: array
                 items:
-                  $ref: ../../../../components/schemas/infrastructure/providers/ProviderServer.yml
+                  $ref: ../../../../components/schemas/infrastructure/providers/ProviderServerModel.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml

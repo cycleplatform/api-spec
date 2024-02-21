@@ -23,10 +23,10 @@ properties:
     type: array
     items:
       "$ref": "./Update.yml"
-  affected_providers:
+  affected_integrations:
     type: array
     items:
-      "$ref": "../infrastructure/providers/NativeProviderIdentifier.yml"
+      type: string
   state:
     allOf:
       - required:

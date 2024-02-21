@@ -12,7 +12,7 @@ get:
       required: true
       schema:
         type: string
-        pattern: '^[a-f0-9]{24}$'
+        pattern: "^[a-f0-9]{24}$"
       description: The ID of the integration to retrieve.
   responses:
     200:
@@ -25,9 +25,9 @@ get:
               - data
             properties:
               data:
-                $ref: '../../../components/schemas/hubs/integrations/Integration.yml'
+                $ref: "../../../../components/schemas/hubs/integrations/Integration.yml"
     default:
-      $ref: '../../../components/responses/errors/DefaultError.yml'
+      $ref: "../../../../components/responses/errors/DefaultError.yml"
 
 patch:
   operationId: updateIntegration
@@ -43,7 +43,7 @@ patch:
       required: true
       schema:
         type: string
-        pattern: '^[a-f0-9]{24}$'
+        pattern: "^[a-f0-9]{24}$"
       description: The ID of the integration to update.
   requestBody:
     required: true
@@ -59,8 +59,8 @@ patch:
             auth:
               type: object
               nullable: true
-              allOf: 
-                - $ref: '../../../components/schemas/hubs/integrations/IntegrationAuth.yml'
+              allOf:
+                - $ref: "../../../../components/schemas/hubs/integrations/IntegrationAuth.yml"
             extra:
               type: object
               additionalProperties:
@@ -78,12 +78,12 @@ patch:
               - data
             properties:
               data:
-                $ref: '../../../components/schemas/hubs/integrations/Integration.yml'
+                $ref: "../../../../components/schemas/hubs/integrations/Integration.yml"
     default:
-      $ref: '../../../components/responses/errors/DefaultError.yml'
+      $ref: "../../../../components/responses/errors/DefaultError.yml"
 
 delete:
-  operationId: deleteIntegration
+  operationId: removeIntegration
   tags:
     - Hubs
   security:
@@ -96,11 +96,11 @@ delete:
       required: true
       schema:
         type: string
-        pattern: '^[a-f0-9]{24}$'
+        pattern: "^[a-f0-9]{24}$"
       description: The ID of the integration to delete.
   responses:
-    200:
-      description: The integration has been marked as deleted and is returned with its updated state.
+    202:
+      description: Returns a task descriptor.
       content:
         application/json:
           schema:
@@ -109,6 +109,6 @@ delete:
               - data
             properties:
               data:
-                $ref: '../../../components/schemas/hubs/integrations/Integration.yml'
+                $ref: ../../../../components/schemas/jobs/JobDescriptor.yml
     default:
-      $ref: '../../../components/responses/errors/DefaultError.yml'
+      $ref: "../../../../components/responses/errors/DefaultError.yml"

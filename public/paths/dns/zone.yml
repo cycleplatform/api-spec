@@ -105,6 +105,6 @@ delete:
               - data
             properties:
               data:
-                $ref: ../../../components/schemas/jobs/TaskDescriptor.yml
+                $ref: ../../../components/schemas/jobs/JobDescriptor.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml

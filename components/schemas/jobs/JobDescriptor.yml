@@ -1,6 +1,5 @@
----
-title: TaskDescriptor
-description: A task descriptor object is returned on success by API calls that create jobs. It contains the action that was requested, as well as the ID of the job created as a result.
+title: JobDescriptor
+description: A Job Descriptor is returned on success by API calls that create jobs. It contains the action that was requested, as well as the ID of the job created as a result.
 type: object
 required:
   - action

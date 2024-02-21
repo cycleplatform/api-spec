@@ -28,7 +28,7 @@ properties:
     type: boolean
   supports_multiple:
     type: boolean
-  required_fields:
+  fields:
     type: object
     properties:
       extra:
@@ -37,10 +37,13 @@ properties:
           type: object
           required:
             - description
+            - required
           properties:
             regex:
               type: string
               nullable: true
+            required:
+              type: boolean
             description:
               type: string
         nullable: true
@@ -50,10 +53,13 @@ properties:
           type: object
           required:
             - description
+            - required
           properties:
             regex:
               type: string
               nullable: true
+            required:
+              type: boolean
             description:
               type: string
         nullable: true

@@ -74,7 +74,7 @@ get:
           schema:
             title: "ServerCollectionReturn"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
@@ -111,14 +111,14 @@ post:
               items:
                 type: object
                 required:
-                  - provider
+                  - integration_id
                   - model_id
                   - location_id
                   - quantity
                 properties:
-                  provider:
-                    type: string
-                    description: The provider this server is from.
+                  integration_id:
+                    $ref: ../../../../components/schemas/ID.yml
+                    description: The ID of the provider integration to use for this server.
                   model_id:
                     type: string
                     description: The model ID of the server.
@@ -155,10 +155,10 @@ post:
           schema:
             title: "ServerCreateResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
-                $ref: ../../../../components/schemas/jobs/TaskDescriptor.yml
+                $ref: ../../../../components/schemas/jobs/JobDescriptor.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml

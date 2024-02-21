@@ -1,4 +1,4 @@
-title: LocationGeographic
+title: ProviderLocationGeography
 type: object
 description: Geographic information about a provider location.
 required:
