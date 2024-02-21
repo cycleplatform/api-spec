@@ -302,7 +302,7 @@ paths:
     $ref: paths/hubs/integrations/integrations.yml
   "/v1/hubs/current/integrations/available":
     $ref: paths/hubs/integrations/available-integrations.yml
-  "/v1/hubs/current/integrations/{integrationId}/tasks"
+  "/v1/hubs/current/integrations/{integrationId}/tasks":
     $ref: paths/hubs/integrations/tasks.yml
 
   # Search Index
