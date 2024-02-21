@@ -19,7 +19,7 @@ get:
           schema:
             title: "StackFetchResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
@@ -64,7 +64,7 @@ patch:
           schema:
             title: "UpdateStackResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
@@ -91,10 +91,10 @@ delete:
         application/json:
           schema:
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
-                $ref: ../../../components/schemas/jobs/TaskDescriptor.yml
+                $ref: ../../../components/schemas/jobs/JobDescriptor.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml

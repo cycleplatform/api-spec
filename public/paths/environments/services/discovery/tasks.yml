@@ -29,7 +29,7 @@ post:
             contents:
               type: object
               properties:
-                config: 
+                config:
                   $ref: ../../../../../components/schemas/environments/services/discovery/DiscoveryConfig.yml
                 high_availability:
                   type: boolean
@@ -48,10 +48,10 @@ post:
           schema:
             title: "TaskResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
-                $ref: ../../../../../components/schemas/jobs/TaskDescriptor.yml
+                $ref: ../../../../../components/schemas/jobs/JobDescriptor.yml
     default:
       $ref: ../../../../../components/responses/errors/DefaultError.yml

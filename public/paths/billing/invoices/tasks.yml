@@ -33,10 +33,10 @@ post:
           schema:
             title: "TaskResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
-                $ref: ../../../../components/schemas/jobs/TaskDescriptor.yml
+                $ref: ../../../../components/schemas/jobs/JobDescriptor.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml

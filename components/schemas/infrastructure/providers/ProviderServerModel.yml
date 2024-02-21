@@ -1,4 +1,4 @@
-title: ProviderServer
+title: ProviderServerModel
 type: object
 description: A server from a provider.
 required:

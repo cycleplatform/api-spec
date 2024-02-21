@@ -124,9 +124,11 @@ paths:
     "$ref": "./paths/accounts/twoFa/disable.yml"
   "/v1/account/2fa/recover":
     "$ref": "./paths/accounts/twoFa/recover.yml"
+
   # Announcements
   "/v1/announcements":
     $ref: "./paths/announcements/announcements.yml"
+
   # Billing
   "/v1/billing/orders":
     "$ref": "./paths/billing/orders/orders.yml"
@@ -158,6 +160,7 @@ paths:
     "$ref": "./paths/billing/credits/credits.yml"
   "/v1/billing/credits/{creditsId}":
     "$ref": "./paths/billing/credits/credit.yml"
+
   # Environments
   "/v1/environments":
     "$ref": "./paths/environments/environments.yml"
@@ -203,6 +206,7 @@ paths:
     "$ref": "./paths/environments/scoped-variables.yml"
   "/v1/environments/{environmentId}/scoped-variables/{scopedVariableId}":
     "$ref": "./paths/environments/scoped-variable.yml"
+
   # Containers
   "/v1/containers":
     "$ref": "./paths/containers/containers.yml"
@@ -242,6 +246,7 @@ paths:
     "$ref": "./paths/containers/backups/backupLogs.yml"
   "/v1/containers/{containerId}/telemetry/instances":
     $ref: paths/containers/telemetry.yml
+
   # DNS
   "/v1/dns/zones":
     "$ref": "./paths/dns/zones.yml"
@@ -259,17 +264,20 @@ paths:
     "$ref": "./paths/dns/tls/attempts.yml"
   "/v1/dns/tls/certificates/lookup":
     "$ref": "./paths/dns/tls/certificates.yml"
+
   # Hubs
   "/v1/hubs":
     "$ref": "./paths/hubs/hubs.yml"
   "/v1/hubs/current":
     "$ref": "./paths/hubs/hub.yml"
-  "/v1/hubs/current/activity":
-    "$ref": "./paths/hubs/activity.yml"
   "/v1/hubs/capabilities":
     "$ref": "./paths/hubs/capabilities.yml"
   "/v1/hubs/current/usage":
     "$ref": "./paths/hubs/hub-usage.yml"
+  ## Hub Activity
+  "/v1/hubs/current/activity":
+    "$ref": "./paths/hubs/activity.yml"
+  ## Invites/Members
   "/v1/hubs/current/invites/{inviteId}":
     "$ref": "./paths/hubs/invites/invite.yml"
   "/v1/hubs/current/invites":
@@ -282,19 +290,25 @@ paths:
     "$ref": "./paths/hubs/members/member.yml"
   "/v1/hubs/current/members/account/{accountId}":
     "$ref": "./paths/hubs/members/account.yml"
+  ## API Keys
   "/v1/hubs/current/api-keys":
     "$ref": "./paths/hubs/keys/keys.yml"
   "/v1/hubs/current/api-keys/{apikeyId}":
     "$ref": "./paths/hubs/keys/key.yml"
+  ## Integrations
   "/v1/hubs/current/integrations/{integrationId}":
-    $ref: paths/hubs/integration.yml
+    $ref: paths/hubs/integrations/integration.yml
   "/v1/hubs/current/integrations":
-    $ref: paths/hubs/integrations.yml
+    $ref: paths/hubs/integrations/integrations.yml
   "/v1/hubs/current/integrations/available":
-    $ref: paths/hubs/available-integrations.yml
-  # Index
+    $ref: paths/hubs/integrations/available-integrations.yml
+  "/v1/hubs/current/integrations/{integrationId}/tasks"
+    $ref: paths/hubs/integrations/tasks.yml
+
+  # Search Index
   "/v1/search/index":
     "$ref": "./paths/search/index.yml"
+
   # Images
   "/v1/images":
     "$ref": "./paths/images/images.yml"
@@ -306,33 +320,28 @@ paths:
     "$ref": "./paths/images/collection-task.yml"
   "/v1/images/{imageId}/tasks":
     "$ref": "./paths/images/tasks.yml"
+  ## Image Sources
   "/v1/images/sources":
     "$ref": "./paths/images/sources/sources.yml"
   "/v1/images/sources/{sourceId}":
     "$ref": "./paths/images/sources/source.yml"
-  # "/v1/images/sources/{sourceId}/tasks":
-  #   "$ref": "./paths/images/sources/tasks.yml"
+
   # Infrastructure
   "/v1/infrastructure/summary":
     "$ref": "./paths/infrastructure/summary.yml"
-  # Providers
-  "/v1/infrastructure/native-providers":
-    "$ref": "./paths/infrastructure/providers/native.yml"
+  ## Providers
+  "/v1/infrastructure/providers/options":
+    "$ref": "./paths/infrastructure/providers/options.yml"
   "/v1/infrastructure/providers/{providerIdentifier}/servers":
     "$ref": "./paths/infrastructure/providers/servers.yml"
   "/v1/infrastructure/providers/{providerIdentifier}/locations":
     "$ref": "./paths/infrastructure/providers/locations.yml"
-  "/v1/infrastructure/providers":
-    "$ref": "./paths/infrastructure/providers/providers.yml"
-  "/v1/infrastructure/providers/{providerIdentifier}":
-    "$ref": "./paths/infrastructure/providers/provider.yml"
-  "/v1/infrastructure/providers/{providerIdentifier}/tasks":
-    "$ref": "./paths/infrastructure/providers/tasks.yml"
+  ## Auto-Scale Groups
   "/v1/infrastructure/auto-scale/groups":
     "$ref": "./paths/infrastructure/auto-scale/groups/groups.yml"
   "/v1/infrastructure/auto-scale/groups/{groupId}":
     "$ref": "./paths/infrastructure/auto-scale/groups/group.yml"
-  # Servers
+  ## Servers
   "/v1/infrastructure/servers":
     "$ref": "./paths/infrastructure/servers/servers.yml"
   "/v1/infrastructure/servers/{serverId}":
@@ -351,7 +360,7 @@ paths:
     "$ref": "./paths/infrastructure/servers/usage.yml"
   "/v1/infrastructure/servers/{serverId}/console":
     "$ref": "./paths/infrastructure/servers/console.yml"
-  # IPs
+  ## IPs
   "/v1/infrastructure/ips/pools":
     "$ref": "./paths/infrastructure/ips/pools.yml"
   "/v1/infrastructure/ips/pools/{poolId}":
@@ -360,6 +369,7 @@ paths:
     "$ref": "./paths/infrastructure/ips/ips.yml"
   "/v1/infrastructure/deployment-strategies":
     "$ref": "./paths/infrastructure/deployment-strategies.yml"
+
   # Jobs
   "/v1/jobs":
     "$ref": "./paths/jobs/jobs.yml"
@@ -367,6 +377,7 @@ paths:
     "$ref": "./paths/jobs/job.yml"
   "/v1/jobs/latest":
     "$ref": "./paths/jobs/latest.yml"
+
   # Stacks
   "/v1/stacks":
     "$ref": "./paths/stacks/stacks.yml"
@@ -374,6 +385,7 @@ paths:
     "$ref": "./paths/stacks/stack.yml"
   "/v1/stacks/{stackId}/tasks":
     "$ref": "./paths/stacks/tasks.yml"
+  ## Stack Builds
   "/v1/stacks/builds/{buildId}":
     "$ref": "./paths/stacks/buildLookup.yml"
   "/v1/stacks/{stackId}/builds":
@@ -382,6 +394,7 @@ paths:
     "$ref": "./paths/stacks/builds/stackbuild.yml"
   "/v1/stacks/{stackId}/builds/{buildId}/tasks":
     "$ref": "./paths/stacks/builds/tasks.yml"
+
   # SDN
   ## Networks
   "/v1/sdn/networks":
@@ -390,6 +403,7 @@ paths:
     "$ref": "./paths/sdn/network.yml"
   "/v1/sdn/networks/{networkId}/tasks":
     "$ref": "./paths/sdn/tasks.yml"
+
   # Pipelines
   "/v1/pipelines":
     "$ref": "./paths/pipelines/pipelines.yml"
@@ -399,18 +413,22 @@ paths:
     "$ref": "./paths/pipelines/runs.yml"
   "/v1/pipelines/{pipelineId}/tasks":
     "$ref": "./paths/pipelines/tasks.yml"
+  ## Trigger Keys
   "/v1/pipelines/{pipelineId}/keys":
     "$ref": "./paths/pipelines/trigger-keys/trigger-keys.yml"
   "/v1/pipelines/{pipelineId}/keys/{triggerKeyId}":
     "$ref": "./paths/pipelines/trigger-keys/trigger-key.yml"
+
   # Notifications
   "/v1/hubs/current/notifications":
     "$ref": "./paths/channels/hub.yml"
   "/v1/containers/{containerId}/instances/{instanceId}/console":
     "$ref": "./paths/channels/instance-console.yml"
+
   # Security
   "/v1/security/report":
     $ref: paths/security/report.yml
+
   # Utils
   "/v1/utils/resource/lookup":
     $ref: paths/utils/resource/lookup.yml

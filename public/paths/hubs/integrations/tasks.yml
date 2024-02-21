@@ -1,0 +1,46 @@
+post:
+  operationId: "createHubIntegrationJob"
+  tags:
+    - Hub
+  parameters:
+    - name: integrationId
+      description: The ID of the Hub Integration.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Create a new Hub Integration Job.
+  description: |
+    Creates a new job targeted at the provided Hub Integration. 
+
+    ## Required Permissions
+      - Requires a valid hub membership to the target hub
+      - Requires the `hubs-integrations-manage` capability.
+  requestBody:
+    description: Parameters for creating a new Hub Integration job.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - action
+          properties:
+            action:
+              type: string
+              description: The type of Job/selected Job action to create.
+              enum:
+                - verify
+  responses:
+    202:
+      description: Returns a Job Descriptor, which contains relevant information about the new Job.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/jobs/JobDescriptor.yml
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml

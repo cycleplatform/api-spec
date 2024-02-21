@@ -7,7 +7,7 @@ get:
   summary: Retrieve a list of integrations for the current hub
   description: Lists all integrations associated with the current hub, with optional filtering.
   parameters:
-    - $ref: ../../../components/parameters/PageParam.yml
+    - $ref: ../../../../components/parameters/PageParam.yml
     - name: filter
       in: query
       style: deepObject
@@ -42,9 +42,9 @@ get:
               data:
                 type: array
                 items:
-                  $ref: ../../../components/schemas/hubs/integrations/Integration.yml
+                  $ref: ../../../../components/schemas/hubs/integrations/Integration.yml
     default:
-      $ref: ../../../components/responses/errors/DefaultError.yml
+      $ref: ../../../../components/responses/errors/DefaultError.yml
 post:
   operationId: createIntegration
   tags:
@@ -125,6 +125,6 @@ post:
               - data
             properties:
               data:
-                $ref: ../../../components/schemas/hubs/integrations/Integration.yml
+                $ref: ../../../../components/schemas/hubs/integrations/Integration.yml
     default:
-      $ref: ../../../components/responses/errors/DefaultError.yml
+      $ref: ../../../../components/responses/errors/DefaultError.yml

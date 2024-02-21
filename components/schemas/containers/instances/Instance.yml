@@ -90,7 +90,7 @@ properties:
         type: string
         description: The base hostname for the given instance.
   provider:
-    $ref: "../summaries/ProviderSummary.yml"
+    $ref: InstanceProvider.yml
   server_id:
     type: string
     description: An identifier for the server this instance is deployed to.

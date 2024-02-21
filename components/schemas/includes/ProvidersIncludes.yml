@@ -2,4 +2,4 @@ title: ProvidersIncludes
 description: A resource thats associated with a provider.
 type: object
 additionalProperties:
-  "$ref": "../infrastructure/providers/Provider.yml"
+  $ref: ../hubs/integrations/Integration.yml

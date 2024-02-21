@@ -9,7 +9,9 @@ properties:
   identifier:
     type: string
     description: An identifier for the given provider
-    # TODO - might add the enum with possible entries although this might not matter as much here given it might change.
+  integration_id:
+    $ref: ../../ID.yml
+    description: The ID of the provider integration associated with this location.
   location:
     type: string
     description: A location name returned from the provider.

@@ -26,9 +26,8 @@ get:
       content:
         application/json:
           schema:
-            title: "InfrastructureSummaryResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

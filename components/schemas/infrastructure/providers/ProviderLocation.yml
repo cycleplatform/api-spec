@@ -1,10 +1,9 @@
-title: InfrastructureProviderLocation
+title: ProviderLocation
 type: object
 description: Location information for a given provider.
 required:
   - id
   - name
-  - geographic
   - provider
   - compatible
   - features
@@ -20,9 +19,9 @@ properties:
     allOf:
       - type: object
         nullable: true
-      - $ref: ./Geographic.yml
+      - $ref: ./ProviderLocationGeography.yml
   provider:
-    $ref: ./LocationProvider.yml
+    $ref: ./ProviderLocationDetails.yml
   compatible:
     type: boolean
     description: A boolean where true means the locaiton is supported by the platform.

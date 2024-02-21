@@ -1,16 +1,14 @@
 title: ServerIncludes
-type: object 
-description: A resource associated with a server. 
-required: 
+type: object
+description: A resource associated with a server.
+required:
   - locations
-  - models 
-  - providers 
-properties: 
-  locations: 
-    "$ref": "../../includes/LocationsIncludes.yml" 
-  models: 
-    "$ref": "../../includes/ProviderServersServerIncludes.yml"
-  providers: 
+  - models
+  - providers
+properties:
+  locations:
+    "$ref": "../../includes/LocationsIncludes.yml"
+  models:
+    "$ref": "../../includes/ServerModelIncludes.yml"
+  providers:
     "$ref": "../../includes/ProvidersIncludes.yml"
-
-  
