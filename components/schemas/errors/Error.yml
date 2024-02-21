@@ -58,6 +58,7 @@ properties:
       - 404.environment.scoped-variable
       - 404.hub.api_key
       - 404.hub.provider
+      - 404.hub.integration
       - 404.uri
       - 404.provider
       - 404.stack
