@@ -10,6 +10,11 @@ properties:
   identifier:
     type: string
     description: A provider identifier
+  integration_id:
+    type: string
+    nullable: true
+    allOf:
+      - $ref: "../../ID.yml"
   category:
     type: string
     description: A category for the server.
@@ -19,9 +24,6 @@ properties:
   model:
     type: string
     description: The model of the server.
-  plan_identifier:
-    type: string
-    description: A plan identifier, if there is one.
   locations:
     description: A list of location ID's this server is available.
     type: array

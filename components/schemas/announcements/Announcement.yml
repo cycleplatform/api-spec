@@ -26,7 +26,7 @@ properties:
   affected_providers:
     type: array
     items:
-      "$ref": "../infrastructure/providers/NativeProviderIdentifier.yml"
+      type: string
   state:
     allOf:
       - required:
