@@ -83,7 +83,7 @@ patch:
       $ref: "../../../../components/responses/errors/DefaultError.yml"
 
 delete:
-  operationId: deleteIntegration
+  operationId: removeIntegration
   tags:
     - Hubs
   security:
