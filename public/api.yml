@@ -330,8 +330,6 @@ paths:
   "/v1/infrastructure/summary":
     "$ref": "./paths/infrastructure/summary.yml"
   ## Providers
-  "/v1/infrastructure/providers/options":
-    "$ref": "./paths/infrastructure/providers/options.yml"
   "/v1/infrastructure/providers/{providerIdentifier}/servers":
     "$ref": "./paths/infrastructure/providers/servers.yml"
   "/v1/infrastructure/providers/{providerIdentifier}/locations":
