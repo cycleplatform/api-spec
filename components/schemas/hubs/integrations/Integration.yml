@@ -17,7 +17,7 @@ properties:
   identifier:
     $ref: ../../Identifier.yml
   auth:
-    type: string
+    type: object
     nullable: true
     description: Authentication information for the Integration, can be null.
     allOf:
