@@ -55,6 +55,6 @@ properties:
         $ref: ../../DateTime.yml
   meta:
     type: object
-    additionalProperties: true
     nullable: true
-    description: Additional properties about the integration that can be requested when fetched.
+    allOf:
+      - $ref: IntegrationMeta.yml

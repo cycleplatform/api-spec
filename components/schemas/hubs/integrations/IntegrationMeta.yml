@@ -3,5 +3,5 @@ type: object
 description: Additional fields that can be requested for an Integration on fetch.
 properties:
   definition:
-    $ref: "../StateCountSummary.yml"
+    $ref: IntegrationDefinition.yml
     description: The full Integration definition associated with this Integration.
