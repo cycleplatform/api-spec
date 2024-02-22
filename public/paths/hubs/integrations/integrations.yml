@@ -38,6 +38,8 @@ get:
           schema:
             title: GetIntegrationsReturn
             type: object
+            required:
+              - data
             properties:
               data:
                 type: array
