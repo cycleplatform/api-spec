@@ -5,8 +5,11 @@ required:
   - identifier
   - name
   - supports_verification
+  - supports_multiple
   - required_fields
   - url
+  - public
+  - usable
 properties:
   identifier:
     type: string
@@ -28,6 +31,29 @@ properties:
     type: boolean
   supports_multiple:
     type: boolean
+  features:
+    type: array
+    description: A list of additional features supported by this Integration.
+    nullable: true
+    items:
+      type: string
+  extended_configuration:
+    type: object
+    nullable: true
+    description: Additional configuration options that are available when using this Integration. These describe additional functionality that Cycle may utilize.
+    properties:
+      options:
+        type: array
+        nullable: true
+        items:
+          type: object
+          properties:
+            title:
+              type: string
+            key:
+              type: string
+            type:
+              type: string
   fields:
     type: object
     properties:
@@ -67,5 +93,8 @@ properties:
     type: string
     format: uri
   public:
+    type: boolean
+    nullable: true
+  usable:
     type: boolean
     nullable: true
