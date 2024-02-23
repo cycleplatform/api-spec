@@ -63,8 +63,8 @@ delete:
   summary: Delete Record
   description: Requires the `dns-manage` capability.
   responses:
-    200:
-      description: Returns a task descriptor.
+    202:
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:
