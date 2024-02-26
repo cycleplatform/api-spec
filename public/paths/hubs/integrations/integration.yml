@@ -51,7 +51,7 @@ patch:
   security:
     - bearerAuth: []
   summary: Update an integration
-  description: Updates the specified integration within the current hub.
+  description: Updates the specified integration within the current hub. If the Integration definition specifies that it requires verification, then you must submit a verify task to enable it.
   parameters:
     - name: integrationId
       in: path

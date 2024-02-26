@@ -89,7 +89,7 @@ post:
           enum:
             - definition
   summary: Create Integration
-  description: Create an integration resource within a hub.
+  description: Create an Integration resource within a hub.  If the Integration definition specifies that it requires verification, then you must submit a verify task to enable it.
   requestBody:
     description: Parameters for creating an integration.
     required: true
