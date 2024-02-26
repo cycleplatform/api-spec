@@ -27,7 +27,11 @@ properties:
             - mode
             - config
             - routers
+            - disable
           properties:
+            disable:
+              type: boolean
+              description: When true, this controller is disabled and will not be used.
             mode:
               type: string
               description: The kind of traffic (http/tcp) that will be sent to the load balancer.
