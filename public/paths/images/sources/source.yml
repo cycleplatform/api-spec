@@ -82,6 +82,14 @@ patch:
               description: A name for the image source.
             origin:
               $ref: "../../../../components/schemas/images/origins/ImageOrigin.yml"
+            builder:
+              type: object
+              nullable: true
+              required:
+                - integration_id
+              properties:
+                integration_id:
+                  $ref: ../../../../components/schemas/HybridIdentifer.yml
             about:
               type: object
               description: User defined information about the image source.

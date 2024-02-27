@@ -36,8 +36,8 @@ properties:
       - integration_id
     properties:
       integration_id:
-        description: The ID of the Integration used to do the build.
-        $ref: ../../ID.yml
+        description: The ID or Identifier of the Integration used to do the build.
+        $ref: ../../HybridIdentifer.yml
   creator:
     "$ref": "../../creators/CreatorScope.yml"
   state:

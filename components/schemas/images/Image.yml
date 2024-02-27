@@ -78,7 +78,7 @@ properties:
     properties: 
       integration_id: 
         description: The ID of the Integration used to do the build.
-        $ref: ../ID.yml
+        $ref: ../HybridIdentifer.yml
   config:
     type: object
     description: Configuration settings for the image.

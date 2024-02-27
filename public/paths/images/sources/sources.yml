@@ -100,6 +100,14 @@ post:
               description: A name for the image source.
             identifier:
               $ref: ../../../../components/schemas/Identifier.yml
+            builder:
+              type: object
+              nullable: true
+              required:
+                - integration_id
+              properties:
+                integration_id:
+                  $ref: ../../../../components/schemas/HybridIdentifer.yml
             type:
               $ref: ../../../../components/schemas/images/sources/ImageSourceType.yml
             origin:
