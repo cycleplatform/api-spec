@@ -98,15 +98,17 @@ post:
         schema:
           type: object
           required:
-            - identifier
+            - vendor
           properties:
             name:
               type: string
               nullable: true
               description: A name for the integration.
-            identifier:
+            vendor:
               type: string
-              description: Unique identifier for the integration, subject to validation.
+              description: Unique vendor for the integration, subject to validation.
+            identifier:
+              $ref: ../../../../components/schemas/Identifier.yml
             auth:
               type: object
               properties:

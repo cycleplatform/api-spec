@@ -86,6 +86,8 @@ patch:
               type: string
               nullable: true
               description: A new name for the integration.
+            identifier:
+              $ref: ../../../../components/schemas/Identifier.yml
             auth:
               type: object
               nullable: true

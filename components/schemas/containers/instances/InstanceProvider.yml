@@ -1,9 +1,9 @@
 title: InstanceProvider
 type: object
 properties:
-  identifier:
+  vendor:
     type: string
-    description: The identifier of the hub provider integration related to the server this instance runs on.
+    description: The vendor of the hub provider integration related to the server this instance runs on.
   integration_id:
     description: An ID of the provider Hub integration that this instance's host node is related to.
   location:
