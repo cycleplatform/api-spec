@@ -4,7 +4,7 @@ get:
     - Providers
   parameters:
     - name: providerVendor
-      description: The vendor for the given provider. Example `gcp`, `equinix-metal`, `abstraction`, etc.
+      description: The vendor for the given provider. Example `gcp`, `equinix-metal`, `abstraction`, etc. Can also provider provider id.
       in: path
       required: true
       schema:
