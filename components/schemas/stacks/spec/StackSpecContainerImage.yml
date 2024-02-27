@@ -19,3 +19,11 @@ properties:
         type: object
         additionalProperties:
           type: string
+  builder:
+    type: object
+    nullable: true
+    required:
+      - integration_id
+    properties:
+      integration_id:
+        $ref: ../../../../components/schemas/HybridIdentifer.yml

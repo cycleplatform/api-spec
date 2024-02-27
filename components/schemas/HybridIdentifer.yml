@@ -1,0 +1,5 @@
+---
+title: HybridIdentifier
+type: string
+description: Either a resource ID (objectid - i.e. 651586fca6078e98982dbd90) or a resource Identifier (human-readable)
+example: my-image-source
