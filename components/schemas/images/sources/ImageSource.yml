@@ -28,6 +28,16 @@ properties:
     $ref: "./ImageSourceAbout.yml"
   origin:
     $ref: "../origins/ImageOrigin.yml"
+  builder:
+    type: object
+    nullable: true
+    description: Configuration options regarding the builder used to create/import Images using this Image Source.
+    required:
+      - integration_id
+    properties:
+      integration_id:
+        description: The ID of the Integration used to do the build.
+        $ref: ../../ID.yml
   creator:
     "$ref": "../../creators/CreatorScope.yml"
   state:
