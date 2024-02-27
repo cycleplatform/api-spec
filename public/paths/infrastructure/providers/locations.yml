@@ -3,8 +3,8 @@ get:
   tags:
     - Providers
   parameters:
-    - name: providerIdentifier
-      description: The identifier for the given provider. Example `gcp`, `equinix-metal`, `a-<abstract-provider-id>`, etc.
+    - name: providerVendor
+      description: The vendor for the given provider. Example `gcp`, `equinix-metal`, `abstraction`, etc.
       in: path
       required: true
       schema:
