@@ -17,7 +17,7 @@ properties:
     description: Name of the Integration.
   vendor:
     type: string
-    description: Which definition/type this Integration is associated with.
+    description: Which vendor this Integration is associated with.
   identifier:
     $ref: ../../Identifier.yml
   auth:

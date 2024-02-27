@@ -106,7 +106,7 @@ post:
               description: A name for the integration.
             vendor:
               type: string
-              description: Unique identifier for the integration, subject to validation.
+              description: Unique vendor for the integration, subject to validation.
             identifier:
               $ref: ../../../../components/schemas/Identifier.yml
             auth:
