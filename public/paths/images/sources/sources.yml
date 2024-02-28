@@ -32,6 +32,7 @@ get:
           type: string
           enum:
             - creators
+            - integrations
     - name: filter
       in: query
       # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706
@@ -67,7 +68,7 @@ get:
           schema:
             title: "ImageSourceCollectionResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
@@ -130,7 +131,7 @@ post:
           schema:
             title: "ImageSourceCreateResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

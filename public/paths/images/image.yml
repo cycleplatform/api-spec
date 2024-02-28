@@ -43,6 +43,7 @@ get:
             - stack_builds
             - stacks
             - sources
+            - integrations
     - $ref: ../../../components/parameters/SortParam.yml
     - $ref: ../../../components/parameters/PageParam.yml
   responses:

@@ -37,6 +37,7 @@ get:
             - stack_builds
             - stacks
             - sources
+            - integrations
     - name: filter
       in: query
       # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706
@@ -79,7 +80,7 @@ get:
           schema:
             title: "ImagesListResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
@@ -139,7 +140,7 @@ post:
           schema:
             title: "ImagesCreateResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

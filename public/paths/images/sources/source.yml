@@ -38,6 +38,7 @@ get:
           type: string
           enum:
             - creators
+            - integrations
   summary: Fetch Source
   description: Requires the `images-view` capability.
   responses:
