@@ -3,4 +3,8 @@ description: A resource associate with an image source.
 type: object 
 properties: 
   creators: 
-    "$ref": "../../includes/CreatorInclude.yml" 
+    "$ref": "../../includes/CreatorInclude.yml"
+  integrations:
+    "$ref": "../../includes/IntegrationsIncludes.yml"
+  "integrations:identifiers":
+    $ref: ../../includes/IdentifierIncludes.yml

@@ -1,0 +1,5 @@
+title: IntegrationsIncludes
+description: A resource thats associated with an integration.
+type: object
+additionalProperties:
+  $ref: ../hubs/integrations/Integration.yml

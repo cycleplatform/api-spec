@@ -6,3 +6,5 @@ properties:
     "$ref": "../../includes/CreatorInclude.yml" 
   containers: 
     "$ref": "../../includes/ContainersIncludes.yml"
+  "containers:identifiers":
+    $ref: ../../includes/IdentifierIncludes.yml

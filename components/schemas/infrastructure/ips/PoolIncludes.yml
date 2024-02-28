@@ -12,6 +12,6 @@ properties:
   servers:
     "$ref": "../../includes/ServersIncludes.yml"
   providers:
-    "$ref": "../../includes/ProvidersIncludes.yml"
+    "$ref": "../../includes/IntegrationsIncludes.yml"
   locations:
     "$ref": "../../includes/LocationsIncludes.yml"
