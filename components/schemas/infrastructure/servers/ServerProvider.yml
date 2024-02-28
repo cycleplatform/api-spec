@@ -2,14 +2,14 @@ title: ServerProvider
 type: object
 description: A resource regarding the provider a given server is deployed from.
 required:
-  - identifier
+  - vendor
   - model
   - location
   - server
 properties:
-  identifier:
+  vendor:
     type: string
-    description: An identifier for the provider this server is deployed from.
+    description: The vendor for the provider this server is deployed from.
     # TODO might add the enum might not
   model:
     type: string
