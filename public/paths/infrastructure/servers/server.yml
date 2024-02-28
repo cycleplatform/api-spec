@@ -24,7 +24,7 @@ get:
           enum:
             - locations
             - models
-            - providers
+            - integrations
     - name: meta
       in: query
       required: false

@@ -1,17 +1,12 @@
 title: PoolIncludes
 type: object
 description: Resources associated with an IP Pool.
-required:
-  - creators
-  - servers
-  - providers
-  - locations
 properties:
   creators:
     "$ref": "../../includes/CreatorInclude.yml"
   servers:
     "$ref": "../../includes/ServersIncludes.yml"
-  providers:
+  integrations:
     "$ref": "../../includes/IntegrationsIncludes.yml"
   locations:
     "$ref": "../../includes/LocationsIncludes.yml"

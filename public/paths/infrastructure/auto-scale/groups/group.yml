@@ -22,7 +22,7 @@ get:
         items:
           type: string
           enum:
-            - providers
+            - integrations
             - models
             - locations
   summary: Fetch Auto-Scale Group

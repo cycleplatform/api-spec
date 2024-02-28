@@ -2,7 +2,7 @@ title: AutoScaleGroupIncludes
 description: All includable resource linkable to the given auto-scale group.
 type: object
 properties:
-  providers:
+  integrations:
     "$ref": "../../../includes/IntegrationsIncludes.yml"
   models:
     "$ref": "../../../includes/ServerModelsIncludes.yml"
