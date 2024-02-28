@@ -21,6 +21,7 @@ get:
           enum:
             - containers_count
             - builds_count
+            - integrations
     - name: include
       in: query
       required: false
@@ -69,7 +70,7 @@ get:
           schema:
             title: "ListStacksResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
@@ -117,7 +118,7 @@ post:
           schema:
             title: "StackCreateResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
