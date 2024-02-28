@@ -9,8 +9,14 @@ properties:
   locations:
     "$ref": "../../includes/LocationsIncludes.yml"
   providers:
-    "$ref": "../../includes/ProvidersIncludes.yml"
+    "$ref": "../../includes/IntegrationsIncludes.yml"
+  "providers:identifiers":
+    $ref: ../../includes/IdentifierIncludes.yml
   containers:
     "$ref": "../../includes/ContainersIncludes.yml"
+  "containers:identifiers":
+    $ref: ../../includes/IdentifierIncludes.yml
   environments:
     "$ref": "../../includes/EnvironmentIncludes.yml"
+  "environments:identifiers":
+    $ref: ../../includes/IdentifierIncludes.yml

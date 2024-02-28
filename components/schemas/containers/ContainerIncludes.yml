@@ -10,5 +10,10 @@ properties:
     "$ref": "../includes/StackBuildIncludes.yml"
   stacks:
     "$ref": "../includes/StackIncludes.yml"
+  "stacks:identifiers":
+    $ref: ../includes/IdentifierIncludes.yml
   environments:
     "$ref": "../includes/EnvironmentIncludes.yml"
+  "environments:identifiers":
+    $ref: ../includes/IdentifierIncludes.yml
+  

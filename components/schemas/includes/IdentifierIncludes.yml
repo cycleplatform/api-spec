@@ -1,0 +1,7 @@
+title: IdentifierIncludes
+type: object
+description: A map of identifiers to an array of resource IDs that are associated with it. All IDs point to the same type of resource.
+additionalProperties:
+  type: array
+  items:
+    $ref: "../ID.yml"

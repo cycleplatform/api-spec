@@ -11,4 +11,4 @@ properties:
   models:
     "$ref": "../../includes/ServerModelIncludes.yml"
   providers:
-    "$ref": "../../includes/ProvidersIncludes.yml"
+    "$ref": "../../includes/IntegrationsIncludes.yml"

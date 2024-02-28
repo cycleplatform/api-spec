@@ -8,5 +8,13 @@ properties:
     "$ref": "../includes/StackBuildIncludes.yml"
   stacks:
     "$ref": "../includes/StackIncludes.yml"
+  "stacks:identifiers":
+    $ref: ../includes/IdentifierIncludes.yml
   sources:
     "$ref": "../includes/ImageSourceIncludes.yml"
+  "sources:identifiers":
+    $ref: ../includes/IdentifierIncludes.yml
+  integrations:
+    "$ref": "../includes/IntegrationsIncludes.yml"
+  "integrations:identifiers":
+    $ref: ../includes/IdentifierIncludes.yml

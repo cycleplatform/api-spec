@@ -7,7 +7,6 @@ properties:
   name:
     type: string
     description: A name value.
-    # TODO - what is this name value
   components:
     type: object
     description: A record of resources that can be associated with the pipeline.
@@ -19,3 +18,5 @@ properties:
         - "$ref": "../stacks/builds/StackBuild.yml"
         - "$ref": "../images/Image.yml"
         - "$ref": "../images/sources/ImageSource.yml"
+  "components:identifiers":
+    $ref: ../includes/IdentifierIncludes.yml
