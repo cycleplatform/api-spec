@@ -21,7 +21,6 @@ get:
           enum:
             - containers_count
             - builds_count
-            - integrations
     - name: include
       in: query
       required: false
