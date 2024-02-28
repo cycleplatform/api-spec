@@ -1,5 +1,0 @@
-title: ProvidersIncludes
-description: A resource thats associated with a provider.
-type: object
-additionalProperties:
-  $ref: ../hubs/integrations/Integration.yml

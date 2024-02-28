@@ -34,7 +34,7 @@ get:
           enum:
             - locations
             - models
-            - providers
+            - integrations
     - name: filter
       in: query
       # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706

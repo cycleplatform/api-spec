@@ -18,7 +18,7 @@ get:
           enum:
             - creators
             - servers
-            - providers
+            - integrations
             - locations
     - $ref: ../../../../components/parameters/PageParam.yml
     # TODO can i use sort and filter here?

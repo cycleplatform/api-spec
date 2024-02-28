@@ -8,9 +8,9 @@ properties:
     "$ref": "../../includes/ServersIncludes.yml"
   locations:
     "$ref": "../../includes/LocationsIncludes.yml"
-  providers:
+  integrations:
     "$ref": "../../includes/IntegrationsIncludes.yml"
-  "providers:identifiers":
+  "integrations:identifiers":
     $ref: ../../includes/IdentifierIncludes.yml
   containers:
     "$ref": "../../includes/ContainersIncludes.yml"

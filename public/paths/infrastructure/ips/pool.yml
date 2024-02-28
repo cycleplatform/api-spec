@@ -24,7 +24,7 @@ get:
           enum:
             - creators
             - servers
-            - providers
+            - integrations
             - locations
   summary: Fetch Pool IP
   description: Requires the `infrastructure-ips-manage` capability.

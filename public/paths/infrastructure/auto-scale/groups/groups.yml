@@ -17,7 +17,7 @@ get:
         items:
           type: string
           enum:
-            - providers
+            - integrations
             - models
             - locations
     - name: filter

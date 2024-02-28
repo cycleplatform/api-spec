@@ -42,7 +42,7 @@ get:
           enum:
             - location
             - models
-            - providers
+            - integrations
     - $ref: ../../../components/parameters/SortParam.yml
     - $ref: ../../../components/parameters/PageParam.yml
   responses:
