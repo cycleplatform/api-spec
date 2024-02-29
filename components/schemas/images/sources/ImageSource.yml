@@ -33,8 +33,8 @@ properties:
     nullable: true
     description: Configuration options regarding the builder used to create/import Images using this Image Source.
     required:
-      - integration_id
     properties:
+      nullable: true
       integration_id:
         description: The ID or Identifier of the Integration used to do the build.
         $ref: ../../HybridIdentifer.yml
