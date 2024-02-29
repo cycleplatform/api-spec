@@ -86,9 +86,8 @@ patch:
             builder:
               type: object
               nullable: true
-              required:
-                - integration_id
               properties:
+                nullable: true
                 integration_id:
                   $ref: ../../../../components/schemas/HybridIdentifer.yml
             about:
