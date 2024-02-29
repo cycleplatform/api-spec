@@ -32,7 +32,6 @@ properties:
     type: object
     nullable: true
     description: Configuration options regarding the builder used to create/import Images using this Image Source.
-    required:
     properties:
       integration_id:
         nullable: true
