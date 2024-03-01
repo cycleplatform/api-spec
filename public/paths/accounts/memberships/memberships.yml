@@ -1,0 +1,31 @@
+get:
+  operationId: "getAccountMemberships"
+  security:
+    - bearerAuth: []
+  tags:
+    - Accounts
+  summary: Get Account Memberships
+  description: Lists the Hub Memberships for a given account.
+  parameters:
+    - $ref: includes/includes.yml
+    - $ref: ../../../../components/parameters/SortParam.yml
+    - $ref: ../../../../components/parameters/FilterParam.yml
+    - $ref: ../../../../components/parameters/PageParam.yml
+  responses:
+    200:
+      description: Returns a list of Hub Memberships associated with the Account.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: ../../../../components/schemas/hubs/HubMembership.yml
+              includes:
+                $ref: includes/AccountMembershipIncludes.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml

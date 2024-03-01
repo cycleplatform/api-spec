@@ -5,10 +5,10 @@ get:
   tags:
     - Accounts
   summary: Get Account
-  description: Gets the Account associated with the authenticated token.
+  description: Gets the Account associated with the authenticated bearer token.
   responses:
     200:
-      description: Returns an Account.
+      description: Returns the Account.
       content:
         application/json:
           schema:
@@ -24,18 +24,16 @@ patch:
   tags:
     - Accounts
   summary: Update Account
-  description: Updates the current Account.
+  description: Updates the Account.
   requestBody:
-    description: Parameters for updating an Account.
     content:
       application/json:
         schema:
-          description: Parameters for updating an Account.
           type: object
           properties:
             name:
               type: object
-              description: The name for the Account.
+              description: The new name on the Account.
               properties:
                 first:
                   type: string
@@ -43,9 +41,10 @@ patch:
                   type: string
             allow_support_login:
               type: boolean
+              description: If true, Cycle employees will have the ability, upon consent, to access the account for support purposes. This access will be logged.
   responses:
     200:
-      description: Returns the updated Account resource.
+      description: Returns the updated Account.
       content:
         application/json:
           schema:
@@ -63,7 +62,7 @@ delete:
   tags:
     - Accounts
   summary: Delete Account
-  description: Deletes the current Account
+  description: Puts the Account into a `deleted` state. This will fail if the Account is the current `OWNER` of an active Hub.
   responses:
     202:
       description: Returns a job descriptor with information about the status of the Account deletion.

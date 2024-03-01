@@ -1,6 +1,6 @@
-title: AccountInfo
+title: AccountLoginInfo
 type: object
-description: Information about a given account.
+description: Details of an Account login.
 required:
   - id
   - ip
@@ -9,4 +9,4 @@ properties:
     "$ref": "../ID.yml"
   ip:
     type: string
-    description: The IP of the computer used during login.
+    description: The IP of the request used during login.

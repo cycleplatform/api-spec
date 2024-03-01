@@ -1,0 +1,8 @@
+title: AccountMembershipIncludes
+description: Optional includable properties for Account Hub Membership queries.
+type: object
+properties:
+  senders:
+    $ref: "../../../../../components/schemas/includes/CreatorInclude.yml"
+  hubs:
+    $ref: "../../../../../components/schemas/includes/HubIncludes.yml"

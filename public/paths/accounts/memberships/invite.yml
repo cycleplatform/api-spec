@@ -11,6 +11,7 @@ patch:
       required: true
       schema:
         type: string
+    - $ref: includes/includes.yml
   summary: Accept or reject an Invite to join a Hub
   description: Accept/reject a pending Invite to join a Hub.
   requestBody:
@@ -31,12 +32,13 @@ patch:
       content:
         application/json:
           schema:
-            title: "UpdateAccountInviteResponse"
             type: object
             required:
               - data
             properties:
               data:
-                $ref: ../../../components/schemas/hubs/HubMembership.yml
+                $ref: ../../../../components/schemas/hubs/HubMembership.yml
+              includes:
+                $ref: includes/AccountMembershipIncludes.yml
     default:
-      $ref: ../../../components/responses/errors/DefaultError.yml
+      $ref: ../../../../components/responses/errors/DefaultError.yml

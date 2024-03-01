@@ -1,6 +1,0 @@
-title: AccountEmployeeLogin
-type: object
-description: A login event where the authentication mechanism was an employee login.
-allOf:
-  - "$ref": "./Account.yml"
-  - "$ref": "./Login.yml"

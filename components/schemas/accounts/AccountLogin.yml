@@ -1,6 +1,6 @@
-title: BaseLogin
+title: AccountLogin
 type: object
-description: A login event resource.
+description: A record of an Account login.
 required:
   - id
   - account

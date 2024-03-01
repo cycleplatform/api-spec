@@ -1,0 +1,46 @@
+get:
+  operationId: "getAccountInvites"
+  security:
+    - bearerAuth: []
+  tags:
+    - Accounts
+  parameters:
+    - name: meta
+      in: query
+      required: false
+      description:
+        A comma separated list of meta values. Meta values will show up under a resource's
+        `meta` field. In the case of applying a meta to a collection of resources, each
+        resource will have it's own relevant meta data. In some rare cases, meta may not
+        apply to individual resources, and may appear in the root document. These will be
+        clearly labeled.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - capabilities
+    - $ref: includes/includes.yml
+    - $ref: ../../../../components/parameters/SortParam.yml
+    - $ref: ../../../../components/parameters/FilterParam.yml
+    - $ref: ../../../../components/parameters/PageParam.yml
+  summary: Get Account Invites
+  description: Lists the pending Hub Memberships (also known as Invites) associated with the Account.
+  responses:
+    200:
+      description: Returns a list of pending Hub Memberships.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: ../../../../components/schemas/hubs/HubMembership.yml
+              includes:
+                $ref: ../../../../components/schemas/hubs/HubMembershipIncludes.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml

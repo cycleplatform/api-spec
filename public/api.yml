@@ -107,17 +107,17 @@ paths:
   "/v1/account":
     "$ref": "./paths/accounts/account.yml"
   "/v1/account/invites":
-    "$ref": "./paths/accounts/invites.yml"
+    "$ref": "./paths/accounts/memberships/invites.yml"
   "/v1/account/invites/{inviteId}":
-    "$ref": "./paths/accounts/invite.yml"
+    "$ref": "./paths/accounts/memberships/invite.yml"
   "/v1/account/memberships":
-    "$ref": "./paths/accounts/memberships.yml"
+    "$ref": "./paths/accounts/memberships/memberships.yml"
   "/v1/account/logins":
     "$ref": "./paths/accounts/logins.yml"
   "/v1/account/password":
-    "$ref": "./paths/accounts/updatePassword.yml"
+    "$ref": "./paths/accounts/update-password.yml"
   "/v1/account/reset-password":
-    "$ref": "./paths/accounts/resetPassword.yml"
+    "$ref": "./paths/accounts/reset-password.yml"
   "/v1/account/2fa/setup":
     "$ref": "./paths/accounts/twofactor/setup.yml"
   "/v1/account/2fa/disable":

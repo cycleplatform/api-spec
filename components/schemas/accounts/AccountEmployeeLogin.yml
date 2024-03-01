@@ -1,0 +1,22 @@
+title: AccountEmployeeLogin
+type: object
+description: A login event where the authentication mechanism was an employee login.
+allOf:
+  - "$ref": "./AccountLogin.yml"
+  - type: object
+    properties:
+      type:
+        type: string
+        enum:
+          - employee
+      employee:
+        type: object
+        description: If this was an employee login, contains information about who accessed the Account.
+        required:
+          - id
+          - ip
+        properties:
+          id:
+            $ref: "../ID.yml"
+          ip:
+            type: string
