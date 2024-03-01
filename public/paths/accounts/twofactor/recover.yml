@@ -1,12 +1,11 @@
 post:
-  operationId: "recoverTwoFa"
+  operationId: "recoverAccountTwoFactorAuth"
   tags:
     - Accounts
   parameters: []
-  summary: Disable TwoFa
-  description: Disable TwoFa for an account
+  summary: Recover Two-Factor Auth
+  description: Returns a new two-factor auth setup to reset the Account's two-factor auth.
   requestBody:
-    description: Parameters setting up TwoFa
     content:
       application/json:
         schema:
@@ -18,7 +17,7 @@ post:
           properties:
             email:
               type: string
-              description: The user’s email
+              description: The user's email
             password:
               type: string
             recovery_codes:
@@ -29,16 +28,15 @@ post:
               type: string
   responses:
     200:
-      description: Returns a TwoFaDisableResponse resource.
+      description: Returns details for setting up two-factor auth.
       content:
         application/json:
           schema:
-            title: TwofaDisableResponse
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
-                $ref: ../../../../components/schemas/accounts/TwoFaDisableResponse.yml
+                $ref: ../../../../components/schemas/accounts/twofactor/TwoFactorAuthSetup.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml

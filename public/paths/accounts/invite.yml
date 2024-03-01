@@ -6,15 +6,14 @@ patch:
     - Accounts
   parameters:
     - name: inviteId
-      description: The ID of the given invite.
+      description: The ID of the given Invite.
       in: path
       required: true
       schema:
         type: string
-  summary: Update Account Invite
-  description: Update a given invite.
+  summary: Accept or reject an Invite to join a Hub
+  description: Accept/reject a pending Invite to join a Hub.
   requestBody:
-    description: Req body for updating account invite
     content:
       application/json:
         schema:
@@ -22,19 +21,19 @@ patch:
           properties:
             accept:
               type: boolean
-              description: Set accept to true to accept
+              description: If true, the Invite will be accepted and the associated Account will join the Hub.
             decline:
               type: boolean
-              description: Set decline to true to decline
+              description: If true, the Invite will be declined and the associated Account will NOT join the Hub.
   responses:
     200:
-      description: Returns an membership resource.
+      description: Returns a Hub Membership.
       content:
         application/json:
           schema:
             title: "UpdateAccountInviteResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

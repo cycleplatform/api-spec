@@ -40,16 +40,15 @@ get:
     - $ref: ../../../components/parameters/FilterParam.yml
     - $ref: ../../../components/parameters/PageParam.yml
   summary: List Account Invites
-  description: Lists invites associated with a given account.
+  description: Returns a list of pending Hub Memberships(a.k.a Invites) associated with the Account.
   responses:
     200:
-      description: Returns a list of account invites.
+      description: Returns a list of pending Hub Memberships for the associated Account.
       content:
         application/json:
           schema:
-            title: "AccountInvitesResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

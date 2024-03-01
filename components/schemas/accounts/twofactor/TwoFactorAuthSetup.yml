@@ -1,4 +1,4 @@
-title: TwoFaDisableResponse
+title: TwoFactorAuthSetup
 type: object
 required:
   - qr

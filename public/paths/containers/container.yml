@@ -132,7 +132,7 @@ delete:
   description: Requires the `containers-update` capability.
   responses:
     202:
-      description: Returns a task descriptor.
+      description: Returns a job descriptor.
       content:
         application/json:
           schema:

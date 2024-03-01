@@ -1,4 +1,4 @@
-title: TwoFaSetupResponse
+title: TwoFactorAuthRecovery
 type: object
 required:
   - recovery_codes

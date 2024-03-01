@@ -4,11 +4,11 @@ get:
     - bearerAuth: []
   tags:
     - Accounts
-  summary: Fetch Account
-  description: Gets the account associated with the authenticated user token.
+  summary: Get Account
+  description: Gets the Account associated with the authenticated token.
   responses:
     200:
-      description: Returns an account.
+      description: Returns an Account.
       content:
         application/json:
           schema:
@@ -22,20 +22,20 @@ get:
 patch:
   operationId: "updateAccount"
   tags:
-    - Account
+    - Accounts
   summary: Update Account
-  description: Updates the current account
+  description: Updates the current Account.
   requestBody:
-    description: Parameters for updating an account.
+    description: Parameters for updating an Account.
     content:
       application/json:
         schema:
-          description: Parameters for updating an account.
+          description: Parameters for updating an Account.
           type: object
           properties:
             name:
               type: object
-              description: The name for the account.
+              description: The name for the Account.
               properties:
                 first:
                   type: string
@@ -45,13 +45,12 @@ patch:
               type: boolean
   responses:
     200:
-      description: Returns the updated account resource.
+      description: Returns the updated Account resource.
       content:
         application/json:
           schema:
-            title: "AccountUpdateResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
@@ -60,21 +59,22 @@ patch:
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
 delete:
-  operationId: "removeAccount"
+  operationId: "deleteAccount"
   tags:
-    - Account
+    - Accounts
   summary: Delete Account
-  description: Deletes the current account
+  description: Deletes the current Account
   responses:
-    200:
-      description: Returns a task descriptor.
+    202:
+      description: Returns a job descriptor with information about the status of the Account deletion.
       content:
         application/json:
           schema:
-            title: "AccountUpdateResponse"
             type: object
+            required:
+              - data
             properties:
               data:
-                $ref: ../../../components/schemas/accounts/Account.yml
+                $ref: ../../../components/schemas/jobs/JobDescriptor.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml

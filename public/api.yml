@@ -119,11 +119,11 @@ paths:
   "/v1/account/reset-password":
     "$ref": "./paths/accounts/resetPassword.yml"
   "/v1/account/2fa/setup":
-    "$ref": "./paths/accounts/twoFa/setup.yml"
+    "$ref": "./paths/accounts/twofactor/setup.yml"
   "/v1/account/2fa/disable":
-    "$ref": "./paths/accounts/twoFa/disable.yml"
+    "$ref": "./paths/accounts/twofactor/disable.yml"
   "/v1/account/2fa/recover":
-    "$ref": "./paths/accounts/twoFa/recover.yml"
+    "$ref": "./paths/accounts/twofactor/recover.yml"
 
   # Announcements
   "/v1/announcements":

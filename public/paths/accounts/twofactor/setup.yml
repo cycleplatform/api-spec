@@ -1,0 +1,51 @@
+get:
+  operationId: "getTwoFactorAuthSetup"
+  tags:
+    - Accounts
+  parameters: []
+  summary: Get Two-Factor Auth Setup
+  description: Gets the barcode and secret required for setting up two-factor authentication for the account.
+  responses:
+    200:
+      description: Returns necessary information for configuring two-factor auth for the Account.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: ../../../../components/schemas/accounts/twofactor/TwoFactorAuthSetup.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
+post:
+  operationId: "enableTwoFactorAuth"
+  tags:
+    - Accounts
+  parameters: []
+  summary: Enable Two-Factor Auth
+  description: Enables two-factor auth for the Account. Retrieve the token from an authenticator app using the secret from `getTwoFactorAuthSetup`.
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - token
+          properties:
+            token:
+              type: string
+              description: The token used to authenticate the two-factor setup.
+  responses:
+    200:
+      description: Returns the recovery codes needed in case two-factor auth is no longer possible.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/accounts/twofactor/TwoFactorAuthRecovery.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
