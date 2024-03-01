@@ -25,7 +25,7 @@ get:
           enum:
             - creators
   summary: List Pipeline Runs
-  description: Requires the `pieplines-view` capability.
+  description: Requires the `pipelines-view` capability.
   responses:
     200:
       description: Returns a list of pipeline run resources.
@@ -34,7 +34,7 @@ get:
           schema:
             title: "ListPipelineRunsResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
