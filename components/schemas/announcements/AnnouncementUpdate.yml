@@ -1,6 +1,6 @@
 title: AnnoucementUpdate
 type: object
-description: An update to an existing announcement.
+description: An update to an Announcement.
 required:
   - id
   - message
