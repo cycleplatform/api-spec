@@ -55,7 +55,7 @@ patch:
       description: The ID of the pipeline.
       schema:
         type: string
-  summary: Create Pipeline
+  summary: Update Pipeline
   description: Requires the `pipelines-manage` capability.
   requestBody:
     description: Parameters for updating a pipeline.
