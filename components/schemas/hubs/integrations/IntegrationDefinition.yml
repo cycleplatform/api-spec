@@ -10,6 +10,7 @@ required:
   - url
   - public
   - usable
+  - editable
 properties:
   vendor:
     type: string
@@ -82,7 +83,8 @@ properties:
     format: uri
   public:
     type: boolean
-    nullable: true
   usable:
     type: boolean
-    nullable: true
+  editable:
+    type: boolean
+    description: If true, the Integration can be edited. Otherwise, to make a change it will need to be deleted and recreated.
