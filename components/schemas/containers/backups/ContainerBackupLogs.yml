@@ -1,4 +1,4 @@
-title: BackupLogs
+title: ContainerBackupLogs
 type: object
 description: Backup logs for a given container.
 required:

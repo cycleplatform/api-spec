@@ -1,7 +1,7 @@
 get:
-  operationId: "getBackupLogs"
+  operationId: "getContainerBackupLogs"
   tags:
-    - Backups
+    - Containers
   parameters:
     - name: containerId
       description: The ID of the requested container.
@@ -15,22 +15,21 @@ get:
       required: true
       schema:
         type: string
-  summary: List Backup Logs
+  summary: List Container Backup Logs
   description: Requires the `containers-backups-view` capability.
   responses:
     200:
-      description: Returns a collection of backup logs.
+      description: Returns a collection of Container Backup Logs.
       content:
         application/json:
           schema:
-            title: EnvironmentBackupsReturn
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
                 type: array
                 items:
-                  $ref: ../../../../components/schemas/containers/backups/Logs.yml
+                  $ref: ../../../../components/schemas/containers/backups/ContainerBackupLogs.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml

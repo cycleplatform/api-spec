@@ -1,7 +1,7 @@
 get:
-  operationId: "getBackup"
+  operationId: "getContainerBackup"
   tags:
-    - Backups
+    - Containers
   parameters:
     - name: containerId
       description: The ID of the requested container.
@@ -15,45 +15,46 @@ get:
       required: true
       schema:
         type: string
-  summary: Fetch Backup
-  description: Requires the `containers-backups-view` capability.
+  summary: Get Container Backup
+  description: |
+    Gets the specified Container Backup.
+    Requires the `containers-backups-view` capability.
   responses:
     200:
-      description: Returns a backup resource.
+      description: Returns a Container Backup.
       content:
         application/json:
           schema:
-            title: SingleBackupReturn
             type: object
             required:
               - data
             properties:
               data:
-                $ref: ../../../../components/schemas/containers/backups/Backup.yml
+                $ref: ../../../../components/schemas/containers/backups/ContainerBackup.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
 delete:
-  operationId: "removeBackup"
+  operationId: "deleteContainerBackup"
   tags:
-    - Backups
+    - Containers
   parameters:
     - name: containerId
-      description: The ID of the requested container.
+      description: The ID of the container.
       in: path
       required: true
       schema:
         type: string
     - name: backupId
-      description: The ID for the container backup.
+      description: The ID of the container backup.
       in: path
       required: true
       schema:
         type: string
-  summary: Delete Backup
+  summary: Delete Container Backup
   description: Requires the `containers-backups-manage` capability.
   responses:
     202:
-      description: Returns a task descriptor.
+      description: Returns a Job descriptor.
       content:
         application/json:
           schema:

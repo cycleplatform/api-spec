@@ -1,17 +1,17 @@
 get:
-  operationId: "getBackupsCollection"
+  operationId: "getContainerBackups"
   tags:
     - Backups
   parameters:
     - name: containerId
-      description: The ID of the requested container.
+      description: The ID of the requested Container.
       in: path
       required: true
       schema:
         type: string
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
-  summary: List Backups
+  summary: List Container Backups
   description: Requires the `containers-backups-view` capability.
   responses:
     200:
@@ -21,12 +21,12 @@ get:
           schema:
             title: ConatainerBackupListResponse
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
                 type: array
                 items:
-                  $ref: ../../../../components/schemas/containers/backups/Backup.yml
+                  $ref: ../../../../components/schemas/containers/backups/ContainerBackup.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml

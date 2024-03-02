@@ -1,7 +1,7 @@
 post:
   tags:
     - Backups
-  operationId: "restoreBackupJob"
+  operationId: "createContainerBackupJob"
   parameters:
     - name: containerId
       description: The ID of the requested container.
@@ -15,10 +15,13 @@ post:
       required: true
       schema:
         type: string
-  summary: Create Backup Job
-  description: Used to restore a backup for a given container instance. Requires the `containers-backups-manage` capability.
+  summary: Create Container Backup Job
+  description: |
+    Creates a Container Backup Job.
+    Can be used to restore a Container Backup for a given Container Instance. 
+
+    Requires the `containers-backups-manage` capability.
   requestBody:
-    description: Parameters for creating a new backup job.
     content:
       application/json:
         schema:
@@ -34,20 +37,19 @@ post:
               description: The action to take.
             contents:
               type: object
-              description: Additional information the platform needs to create this job.
+              description: Additional information the platform needs to create this Job.
               required:
                 - instance_id
               properties:
                 instance_id:
                   type: string
-                  description: The ID of the instance this backup is being restored to.
+                  description: The ID of the instance this Container Backup is being restored to.
   responses:
     202:
-      description: Returns a task descriptor.
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:
-            title: "TaskResponse"
             type: object
             required:
               - data

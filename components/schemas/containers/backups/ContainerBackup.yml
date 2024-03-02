@@ -1,29 +1,29 @@
-title: Backup 
-type: object 
-description: A container backup resource. 
-required: 
-  - id 
+title: ContainerBackup
+type: object
+description: A Container Backup.
+required:
+  - id
   - hub_id
-  - container_id 
-  - instance_id 
-  - target 
-  - state 
-  - events 
-properties: 
-  id: 
-    "$ref": "../../ID.yml" 
-  hub_id: 
-    "$ref": "../../HubID.yml" 
-  container_id: 
-    type: string 
+  - container_id
+  - instance_id
+  - target
+  - state
+  - events
+properties:
+  id:
+    "$ref": "../../ID.yml"
+  hub_id:
+    "$ref": "../../HubID.yml"
+  container_id:
+    type: string
     description: The ID of the given container.
-  instance_id: 
-    type: string 
-    description: The ID of the instance the backup belongs to. 
-  target: 
-    "$ref": "./Target.yml" 
-  state: 
-    "$ref": "./BackupState.yml" 
+  instance_id:
+    type: string
+    description: The ID of the instance the backup belongs to.
+  target:
+    "$ref": "ContainerBackupTarget.yml"
+  state:
+    "$ref": "ContainerBackupState.yml"
   events:
     title: BackupEvents
     type: object
