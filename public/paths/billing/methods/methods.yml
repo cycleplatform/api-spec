@@ -7,16 +7,17 @@ get:
     - $ref: ../../../../components/parameters/FilterParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
   summary: List Billing Methods
-  description: Requires the `billing-methods-manage` capability.
+  description: |
+    Lists the Billing Methods associated with the Hub defined in X-Hub-ID.
+    Requires the `billing-methods-manage` capability.
   responses:
     200:
       description: returns a collection of billing methods.
       content:
         application/json:
           schema:
-            title: "ListBillingMethodsReturn"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
@@ -77,14 +78,13 @@ post:
                     year:
                       type: number
   responses:
-    200:
-      description: Returns a billing method resource.
+    201:
+      description: Returns a Billing Method resource.
       content:
         application/json:
           schema:
-            title: CreateBillingMethodReturn
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

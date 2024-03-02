@@ -5,15 +5,11 @@ required:
   - id
   - hub_id
   - approved
-  - services
-  - payments
-  - credits
-  - late_fees
   - charges
-  - due
-  - overdue
   - events
+  - failed_payment_attempts
   - state
+  - events
 properties:
   id:
     "$ref": "../../ID.yml"
@@ -24,17 +20,22 @@ properties:
     description: A boolean where true represents the invoice is approved for collection.
   services:
     type: array
+    nullable: true
     items:
       "$ref": "../BillingSummary.yml"
   payments:
     type: array
+    nullable: true
     items:
       "$ref": "./Payment.yml"
   credits:
     type: array
+    nullable: true
     items:
       "$ref": "./InvoiceCredit.yml"
   late_fees:
+    type: array
+    nullable: true
     "$ref": "./LateFee.yml"
   charges:
     type: integer
@@ -45,6 +46,9 @@ properties:
   overdue:
     description: A timestamp of when the invoice is overdue.
     "$ref": "../../DateTime.yml"
+  failed_payment_attempts:
+    type: integer
+    description: The number of failed payment attempts for the invoice.
   events:
     title: BillingOrderEvents
     type: object

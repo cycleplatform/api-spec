@@ -9,32 +9,13 @@ get:
     - name: meta
       in: query
       required: false
-      description:
-        A comma separated list of meta values. Meta values will show up under a resource's
-        `meta` field. In the case of applying a meta to a collection of resources, each
-        resource will have it's own relevant meta data. In some rare cases, meta may not
-        apply to individual resources, and may appear in the root document. These will be
-        clearly labeled.
       schema:
         type: array
         items:
           type: string
           enum:
             - due
-    - name: include
-      in: query
-      required: false
-      description:
-        A comma separated list of include values. Included resources will show
-        up under the root document's `include` field, with the key being the id of the included
-        resource. In the case of applying an include to a collection of resources, if two
-        resources share the same include, it will only appear once in the return.
-      schema:
-        type: array
-        items:
-          type: string
-          enum:
-            - promo_codes
+    - $ref: includes/includes.yml
   summary: List Billing Orders
   description: Requires the `billing-orders-manage` capability.
   responses:
@@ -43,9 +24,8 @@ get:
       content:
         application/json:
           schema:
-            title: "ListBillingOrdersResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
@@ -53,16 +33,26 @@ get:
                 items:
                   $ref: ../../../../components/schemas/billing/orders/Order.yml
               includes:
-                $ref: ../../../../components/schemas/billing/orders/OrderIncludes.yml
+                $ref: includes/BillingOrderIncludes.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
 post:
   operationId: "createOrder"
   tags:
     - Billing
-  parameters: []
-  summary: Create order
-  description: Requires TODO capability.
+  parameters:
+    - name: meta
+      in: query
+      required: false
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - due
+    - $ref: includes/includes.yml
+  summary: Create Billing Order
+  description: Requires the `billing-orders-manage` capability.
   requestBody:
     description: Parameters for creating a new order
     content:
@@ -72,10 +62,10 @@ post:
           properties:
             tier_plan_id:
               type: string
-              description: Id associated with the tier plan
+              description: ID associated with the tier plan
             support_plan_id:
               type: string
-              description: Id associated with the support plan
+              description: ID associated with the support plan
             term_length:
               type: string
               description: String that defines term length
@@ -88,16 +78,17 @@ post:
               description: String that defines a promo code
   responses:
     201:
-      description: Returns an order resource.
+      description: Returns a Billing Order.
       content:
         application/json:
           schema:
-            title: "OrderResource"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
                 $ref: ../../../../components/schemas/billing/BillingOrder.yml
+              includes:
+                $ref: includes/BillingOrderIncludes.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml

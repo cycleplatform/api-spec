@@ -12,7 +12,6 @@ post:
   summary: Create Invoice Job
   description: Requires the `billing-invoices-pay` capability.
   requestBody:
-    description: Parameters for creating a new invoice job.
     content:
       application/json:
         schema:
@@ -26,12 +25,11 @@ post:
                 - pay
               description: The name of the action to perform.
   responses:
-    200:
-      description: Returns a task descriptor.
+    202:
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:
-            title: "TaskResponse"
             type: object
             required:
               - data

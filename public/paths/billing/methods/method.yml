@@ -40,7 +40,6 @@ patch:
   summary: Update Billing Invoice
   description: Requires the `billing-methods-manage` capability.
   requestBody:
-    description: Parameters for updating a billing method.
     content:
       application/json:
         schema:
@@ -52,10 +51,6 @@ patch:
             primary:
               type: boolean
               description: A boolean where true represents a billing method being primary.
-            address:
-              $ref: ../../../../components/schemas/billing/methods/Address.yml
-            credit_card:
-              $ref: ../../../../components/schemas/billing/methods/CreditCard.yml
   responses:
     200:
       description: Returns a billing method resource.
@@ -72,7 +67,7 @@ patch:
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
 delete:
-  operationId: "removeBillingMethod"
+  operationId: "deleteBillingMethod"
   tags:
     - Billing
   parameters:
@@ -83,10 +78,12 @@ delete:
       schema:
         type: string
   summary: Delete Biilling Method
-  description: Requires the `billing-methods-manage` capability.
+  description: |
+    Deletes the Billing Method. However, the primary payment method may not be deleted.
+    Requires the `billing-methods-manage` capability.
   responses:
-    200:
-      description: Returns a task descriptor.
+    202:
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:

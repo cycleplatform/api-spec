@@ -32,6 +32,10 @@ get:
       schema:
         type: object
         properties:
+          search:
+            type: string
+            description: |
+              `filter[search]=value` search for the specified text on supported fields.
           state:
             type: string
             description: |
@@ -43,16 +47,17 @@ get:
             description: The end date from when to pull the invoices
             $ref: ../../../../components/schemas/DateTime.yml
   summary: List Billing Invoices
-  description: Requires the `billing-invoices-view` capability.
+  description: |
+    List the Invoices assoicated with the Hub in X-Hub-ID header.
+    Requires the `billing-invoices-view` capability.
   responses:
     200:
-      description: Returns a collection of invoice resources.
+      description: Returns a list of Invoices.
       content:
         application/json:
           schema:
-            title: "ListBillingInvoicesReturn"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

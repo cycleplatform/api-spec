@@ -7,16 +7,15 @@ get:
     - $ref: ../../../../components/parameters/FilterParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
   summary: List Support Plans
-  description: Doesn't require a specific capability to call.
+  deprecated: true
   responses:
     200:
-      description: Returns a billing support plan.
+      description: Returns available support plans.
       content:
         application/json:
           schema:
-            title: ListBillingSupportPlanReturn
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

@@ -17,9 +17,8 @@ get:
       content:
         application/json:
           schema:
-            title: "ListBillingServicesResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
