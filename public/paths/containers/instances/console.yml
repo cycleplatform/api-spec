@@ -1,0 +1,49 @@
+get:
+  operationId: "getInstanceConsoleAuth"
+  tags:
+    - Instances
+    - Console
+  parameters:
+    - name: containerId
+      in: path
+      required: true
+      description: The ID for the container
+      schema:
+        type: string
+    - name: instanceId
+      in: path
+      required: true
+      description: The ID of the instance.
+      schema:
+        type: string
+  summary: Instance Console Auth
+  description: |
+    Returns the authorization information necessary to connect to a Container Instance's console.
+    Use the returned address with an appended `?token=<token>`, where the token is part of the response as well.
+
+    Requires the `containers-console` capability.
+  responses:
+    200:
+      description: Returns authorization information necessary for accessing a Container Instance's console.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                title: InstanceConsoleAuth
+                type: object
+                required:
+                  - token
+                  - address
+                properties:
+                  token:
+                    type: string
+                    description: A token used for connecting to the Instance console.
+                  address:
+                    type: string
+                    description: The protocol and url for connecting to the Instance console.
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml

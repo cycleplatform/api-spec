@@ -419,9 +419,9 @@ paths:
 
   # Notifications
   "/v1/hubs/current/notifications":
-    "$ref": "./paths/channels/hub.yml"
+    "$ref": paths/hubs/notifications/pipeline.yml
   "/v1/containers/{containerId}/instances/{instanceId}/console":
-    "$ref": "./paths/channels/instance-console.yml"
+    "$ref": "paths/containers/instances/console.yml"
 
   # Security
   "/v1/security/report":

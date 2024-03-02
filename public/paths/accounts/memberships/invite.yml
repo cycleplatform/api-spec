@@ -11,7 +11,7 @@ patch:
       required: true
       schema:
         type: string
-    - $ref: includes/includes.yml
+    - $ref: includes/MembershipInlcudeParam.yml
   summary: Accept or reject an Invite to join a Hub
   description: Accept/reject a pending Invite to join a Hub.
   requestBody:

@@ -18,7 +18,7 @@ get:
           type: string
           enum:
             - due
-    - $ref: includes/includes.yml
+    - $ref: includes/OrderIncludeParam.yml
   summary: Get Billing Order
   description: Requires the `billing-orders-manage` capability.
   responses:
@@ -58,7 +58,7 @@ patch:
           type: string
           enum:
             - due
-    - $ref: includes/includes.yml
+    - $ref: includes/OrderIncludeParam.yml
   summary: Update Billing Order
   description: Requires the `billing-orders-manage` capability.
   requestBody:

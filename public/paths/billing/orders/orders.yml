@@ -15,7 +15,7 @@ get:
           type: string
           enum:
             - due
-    - $ref: includes/includes.yml
+    - $ref: includes/OrderIncludeParam.yml
   summary: List Billing Orders
   description: Requires the `billing-orders-manage` capability.
   responses:
@@ -50,7 +50,7 @@ post:
           type: string
           enum:
             - due
-    - $ref: includes/includes.yml
+    - $ref: includes/OrderIncludeParam.yml
   summary: Create Billing Order
   description: Requires the `billing-orders-manage` capability.
   requestBody:

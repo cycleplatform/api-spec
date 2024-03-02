@@ -7,7 +7,7 @@ get:
   summary: Get Account Memberships
   description: Lists the Hub Memberships for a given account.
   parameters:
-    - $ref: includes/includes.yml
+    - $ref: includes/MembershipInlcudeParam.yml
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/FilterParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml

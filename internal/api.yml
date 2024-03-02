@@ -53,7 +53,7 @@ paths:
   "/v1/containers/certificates":
     "$ref": "./paths/containers/certificates.yml"
   "/v1/notifications":
-    "$ref": "./paths/notifications/notifications.yml"
+    "$ref": "./paths/hubs/notifications.yml"
 components:
   securitySchemes:
     bearerAuth:
