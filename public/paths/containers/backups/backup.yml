@@ -54,7 +54,7 @@ delete:
   description: Requires the `containers-backups-manage` capability.
   responses:
     202:
-      description: Returns a Job descriptor.
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:
