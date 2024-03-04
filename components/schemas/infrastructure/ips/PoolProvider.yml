@@ -2,16 +2,16 @@ title: IPPoolProvider
 type: object
 description: A IP Pool provider.
 required:
-  - identifier
   - integration_id
   - location
   - reservation
   - server
   - server_assignment
+  - vendor
 properties:
-  identifier:
+  vendor:
     type: string
-    description: An identifier for a native provider.
+    description: A vendor for a provider.
   integration_id:
     $ref: ../../ID.yml
     description: ID of the provider integration used to provision the IP.
