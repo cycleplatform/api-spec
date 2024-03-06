@@ -40,7 +40,14 @@ properties:
       - env_variable
     properties:
       env_variable:
-        type: boolean
+        nullable: true
+        type: object
+        required:
+          - name
+        properties:
+          name:
+            description: The name of the access environment variable.
+            type: string
       internal_api:
         nullable: true
         description: If set, this scoped variable will be available over the internal API. Contains settings for accessing this variable over the internal API.
