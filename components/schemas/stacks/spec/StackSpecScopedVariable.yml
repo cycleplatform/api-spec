@@ -7,7 +7,7 @@ required:
   - source
 properties:
   identifier:
-    type: string
+    $ref: ../../../../components/schemas/Identifier.yml
   scope:
     type: object
     required:
@@ -43,10 +43,10 @@ properties:
         nullable: true
         type: object
         required:
-          - name
+          - key
         properties:
-          name:
-            description: The name of the access environment variable.
+          key:
+            description: The name of the environment variable set on the target container.
             type: string
       internal_api:
         nullable: true
