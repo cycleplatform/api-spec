@@ -15,7 +15,7 @@ info:
     in a client-side web application as well.
 
     ## Auth Basics 
-    Every API request much have an accompanying API key in the Authorization header. For more informaiton on generating an API key head over to the [Portal Docs](https://docs.cycle.io/docs/hubs/API-access/api-key-generate). 
+    Every API request much have an accompanying API key in the Authorization header. For more informaiton on generating an API key head over to the [Portal Docs](https://docs.cycle.io/reference/hubs/API-access/api-key-generate). 
 
     Your API key should never be made publicly available, published to a public repository, or used on a client side
     web app. If you would like to use the API from a web app, you should create a thin-client service that acts as a passthrough for
@@ -43,7 +43,7 @@ info:
     the specified hub. Most requests require this header.
 
     ## Queries
-    When trying to gather more complete or specific data you can use query paramaters to supplement the normal return (metas,
+    When trying to gather more complete or specific data you can use query parameters to supplement the normal return (metas,
     includes) and you can also add specificity to the format and the order (sort, filter). It's worth understanding that
     sort & filter should only be used on collections.
 
