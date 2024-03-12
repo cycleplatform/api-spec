@@ -1,0 +1,86 @@
+get:
+  operationId: "getRoles"
+  tags:
+    - Roles
+  parameters:
+    - $ref: ../../../../components/parameters/SortParam.yml
+    - $ref: ../../../../components/parameters/FilterParam.yml
+    - $ref: ../../../../components/parameters/PageParam.yml
+  summary: List Roles
+  description: Requires the `hubs-roles-manage` capability.
+  responses:
+    200:
+      description: Returns a collection of Role resources.
+      content:
+        application/json:
+          schema:
+            title: "GetRolesResponse"
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: ../../../../components/schemas/hubs/Role.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
+post:
+  operationId: "createRole"
+  tags:
+    - Roles
+  parameters: []
+  summary: Create Role
+  description: Requires the `hubs-roles-manage` capability.
+  requestBody:
+    description: Parameters for creating a Role.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - identifier
+            - rank
+          properties:
+            name:
+              nullable: true
+              type: string
+              description: A name given to the Role.
+            identifier:
+              type: string
+            capablities:
+              nullable: true
+              type: object
+              required:
+                - all
+                - specific
+              properties:
+                all:
+                  type: boolean
+                specific:
+                  type: array
+                  items:
+                    $ref: ../../../../components/schemas/common/Capability.yml
+            rank:
+              type: integer
+            extra:
+              nullable: true
+              type: object
+              description: Extra information about the Role if there is any.
+              additionalProperties:
+                type: string
+  responses:
+    201:
+      description: Returns a Role resource.
+      content:
+        application/json:
+          schema:
+            title: "CreateRoleResponse"
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/hubs/Role.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml

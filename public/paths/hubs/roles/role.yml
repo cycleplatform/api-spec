@@ -1,0 +1,120 @@
+get:
+  operationId: "getRole"
+  tags:
+    - Role
+  parameters:
+    - name: roleId
+      description: The ID of the Role.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Fetch Role
+  description: Requries the `hubs-roles-manage` capability.
+  responses:
+    200:
+      description: Returns an Role resource.
+      content:
+        application/json:
+          schema:
+            title: "GetRoleResponse"
+            type: object
+            properties:
+              data:
+                $ref: ../../../../components/schemas/hubs/Role.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
+patch:
+  operationId: "updateRole"
+  tags:
+    - Roles
+  parameters:
+    - name: roleId
+      description: The ID of the Role.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Update Role
+  description: Requires the `hubs-roles-manage` capability.
+  requestBody:
+    description: Parameters for updating an Role.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - identifier
+            - rank
+          properties:
+            name:
+              nullable: true
+              type: string
+              description: A name given to the Role.
+            identifier:
+              type: string
+            capablities:
+              nullable: true
+              type: object
+              required:
+                - all
+                - specific
+              properties:
+                all:
+                  type: boolean
+                specific:
+                  type: array
+                  items:
+                    $ref: ../../../../components/schemas/common/Capability.yml
+            rank:
+              type: integer
+            extra:
+              nullable: true
+              type: object
+              description: Extra information about the Role if there is any.
+              additionalProperties:
+                type: string
+  responses:
+    200:
+      description: Returns a Role resource.
+      content:
+        application/json:
+          schema:
+            title: "UpdateRoleReturn"
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/hubs/Role.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
+
+delete:
+  operationId: "deleteRole"
+  tags:
+    - Roles
+  parameters:
+    - name: roleId
+      description: The ID of the Role.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: remove Role
+  description: Requires the 'hubs-roles-manage' capability.
+  responses:
+    200:
+      description: Returns an Role resource
+      content:
+        application/json:
+          schema:
+            title: "ServerDeleteReturn"
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/hubs/Role.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
