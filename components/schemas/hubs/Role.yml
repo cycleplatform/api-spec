@@ -19,12 +19,16 @@ properties:
     nullable: true
     type: string
   root:
+    description: A root role is true for the creator of the hub, and they will have full moderatoion control of all roles.
     type: boolean
   default:
     type: boolean
   rank:
+    description: An integer between 0 and 10 that indicates the role heirarchy.  A user can only edit a role that is less than their rank.
+    example: Owner is rank 10 by default.
     type: integer
   identifier:
+    description: A human readable slugged identifier for this role.
     $ref: ../Identifier.yml
   creator:
     $ref: ../creators/CreatorScope.yml
