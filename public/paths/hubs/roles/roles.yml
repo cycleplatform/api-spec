@@ -48,7 +48,7 @@ post:
               description: A name given to the Role.
             identifier:
               type: string
-            capablities:
+            capabilities:
               nullable: true
               type: object
               required:
