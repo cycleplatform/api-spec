@@ -24,13 +24,11 @@ enum:
   - containers-backups-manage
   - containers-backups-view
   - containers-console
-  - containers-delete
   - containers-deploy
   - containers-instances-migrate
   - containers-lock
   - containers-ssh
-  - containers-state
-  - containers-update
+  - containers-manage
   - containers-view
   - containers-volumes-manage
   - containers-volumes-view
@@ -75,8 +73,7 @@ enum:
   - servers-decommission
   - servers-login
   - servers-provision
-  - servers-state
-  - servers-update
+  - servers-manage
   - servers-view
 
   # Monitor
