@@ -37,17 +37,9 @@ properties:
       joined:
         description: The timestamp of when the membership was accepted.
         "$ref": "../DateTime.yml"
-  role:
-    type: integer
-    description: |
-      A number that maps to the currently set role of the member.
-
-      ## Roles
-      0 = DEFAULT
-      1 = OWNER
-      2 = ADMIN
-      4 = DEVELOPER
-      8 = ANALYST
+  role_id:
+    definition: The ID of the Role assigned to this Hub Membership.
+    $ref: ../ID.yml
   permissions:
     type: object
     title: "HubMembershipPermissions"
@@ -122,9 +114,9 @@ properties:
                     nullable: true
                     type: boolean
   state:
-    "$ref": "./MembershipState.yml"
+    $ref: "./MembershipState.yml"
   invitation:
-    "$ref": "./Invitation.yml"
+    $ref: "./Invitation.yml"
   cycle:
     type: object
     description: If this member is a Cycle employee, their employee ID will be listed here. Cycle employee accounts do not consume a "membership" for a given hub.
@@ -135,4 +127,4 @@ properties:
         type: string
         description: The ID of the employee this membership is associated with.
   meta:
-    "$ref": "./HubMembershipMeta.yml"
+    $ref: "./HubMembershipMeta.yml"
