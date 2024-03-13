@@ -4,6 +4,14 @@ enum:
   # API Keys
   - api-keys-manage
 
+  # API-only
+  - apionly-jobs-view
+  - apionly-notifications-listen
+
+  # Autoscale Groups
+  - autoscale-groups-manage
+  - autoscale-groups-view
+
   # Billing
   - billing-credits-view
   - billing-invoices-pay
@@ -62,10 +70,6 @@ enum:
   - images-view
 
   # Infrastructure
-  - autoscale-groups-manage
-  - autoscale-groups-view
-  - infrastructure-providers-manage
-  - infrastructure-providers-view
   - ips-manage
   - servers-console
   - servers-decommission

@@ -36,10 +36,11 @@ get:
             - senders
             - hubs
             - accounts
+            - roles
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/FilterParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
-  summary: List Hub Memberships
+  summary: List Hub Members
   description: Requires the `hubs-members-view` capability.
   responses:
     200:
@@ -49,7 +50,7 @@ get:
           schema:
             title: "ListHubMembersReturn"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

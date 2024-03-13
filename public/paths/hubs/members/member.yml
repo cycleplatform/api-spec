@@ -27,6 +27,7 @@ get:
             - senders
             - hubs
             - accounts
+            - roles
   summary: Fetch Hub Member
   description: Requires the `hubs-members-view` capability.
   responses:
