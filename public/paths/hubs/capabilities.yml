@@ -14,12 +14,23 @@ get:
           schema:
             title: "HubCapabilitiesReturn"
             type: object
-            required: 
+            required:
               - data
+              - meta
             properties:
               data:
                 type: array
                 items:
                   $ref: ../../../components/schemas/common/Capability.yml
+              meta:
+                type: object
+                required:
+                  - captions
+                properties:
+                  captions:
+                    type: object
+                    description: Human-readable captions keyed by the platform level capability it describes.
+                    additionalProperties:
+                      type: string
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml

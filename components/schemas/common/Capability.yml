@@ -1,114 +1,99 @@
 type: string
 description: A capability that a user or API key that represents what an API key or a user can do.
 enum:
-  # hubs
-  - hubs-update
-  - hubs-delete
-  - hubs-integrations-manage
-  - hubs-integrations-view
-  - hubs-usage-view
-  - hubs-invites-send
-  - hubs-invites-manage
-  - hubs-members-manage
-  - hubs-members-view
-  - hubs-notifications-listen
+  # API Keys
+  - api-keys-manage
 
-  # billing
-  - billing-methods-manage
-  - billing-invoices-view
+  # Billing
+  - billing-credits-view
   - billing-invoices-pay
+  - billing-invoices-view
+  - billing-methods-manage
   - billing-services-manage
   - billing-services-view
-  - billing-credits-view
 
-  # sdn
-  - sdn-networks-manage
-  - sdn-networks-view
-  - sdn-global-lbs-manage
-  - sdn-global-lbs-view
+  # Containers
+  - containers-backups-manage
+  - containers-backups-view
+  - containers-console
+  - containers-delete
+  - containers-deploy
+  - containers-instances-migrate
+  - containers-lock
+  - containers-ssh
+  - containers-state
+  - containers-update
+  - containers-view
+  - containers-volumes-manage
+  - containers-volumes-view
 
-  # pipelines
-  - pipelines-manage
-  - pipelines-view
-  - pipelines-trigger
+  # DNS
+  - dns-certs-view
+  - dns-manage
+  - dns-view
 
-  # environments
-  - environments-create
-  - environments-delete
-  - environments-view
-  - environments-update
-  - environments-state
+  # Environments
   - environments-deployments-manage
-  - environments-services-manage
+  - environments-manage
   - environments-scopedvariables-manage
   - environments-scopedvariables-view
+  - environments-services-manage
+  - environments-view
   - environments-vpn
   - environments-vpn-manage
 
-  # containers
-  - containers-deploy
-  - containers-view
-  - containers-console
-  - containers-ssh
-  - containers-update
-  - containers-lock
-  - containers-delete
-  - containers-state
-  - containers-volumes-manage
-  - containers-volumes-view
-  - containers-backups-manage
-  - containers-backups-view
-  - containers-instances-migrate
+  # Hubs
+  - hubs-delete
+  - hubs-integrations-manage
+  - hubs-integrations-view
+  - hubs-invites-manage
+  - hubs-invites-send
+  - hubs-members-manage
+  - hubs-members-view
+  - hubs-roles-manage
+  - hubs-roles-view
+  - hubs-usage-view
+  - hubs-update
 
-  # stacks
-  - stacks-manage
-  - stacks-view
-  - stacks-builds-manage
-  - stacks-builds-deploy
-
-  # images
-  - images-view
-  - images-import
-  - images-update
-  - images-delete
-  - images-sources-view
+  # Images
+  - images-manage
   - images-sources-manage
+  - images-sources-view
+  - images-view
 
-  # jobs
-  - jobs-view
-
-  # api-keys
-  - api-keys-manage
-
-  # infrastructure
-  - ips-manage
-  - servers-provision
-  - servers-view
-  - servers-console
-  - servers-login
-  - servers-update
-  - servers-state
-  - servers-decommission
-
-  # autoscale-groups
+  # Infrastructure
   - autoscale-groups-manage
   - autoscale-groups-view
-
-  # infrastructure-providers
   - infrastructure-providers-manage
   - infrastructure-providers-view
+  - ips-manage
+  - servers-console
+  - servers-decommission
+  - servers-login
+  - servers-provision
+  - servers-state
+  - servers-update
+  - servers-view
 
-  # security
-  - security-view
-  - security-manage
-
-  # monitor
-  - monitor-view
+  # Monitor
   - monitor-manage
+  - monitor-view
 
-  # dns
-  - dns-view
-  - dns-manage
+  # Pipelines
+  - pipelines-manage
+  - pipelines-trigger
+  - pipelines-view
 
-  # dns-certs
-  - dns-certs-view
+  # SDN
+  - sdn-networks-manage
+  - sdn-networks-view
+
+  # Security
+  - security-manage
+  - security-view
+
+  # Stacks
+  - stacks-builds-deploy
+  - stacks-builds-manage
+  - stacks-manage
+  - stacks-view
