@@ -10,14 +10,19 @@ properties:
         type: object
         description: A record with an ID mapped to a public account.
         additionalProperties:
-          "$ref": "../creators/PublicAccount.yml"
+          $ref: "../creators/PublicAccount.yml"
   accounts:
     type: object
     description: A record with an ID mapped to a public account.
     additionalProperties:
-      "$ref": "../creators/PublicAccount.yml"
+      $ref: "../creators/PublicAccount.yml"
   hubs:
     type: object
     description: A record with an ID mapped to a hub resource.
     additionalProperties:
-      "$ref": "./Hub.yml"
+      $ref: "./Hub.yml"
+  roles:
+    type: object
+    description: A map of Roles relevant to this Hub Membership, keyed by the Role ID.
+    additionalProperties:
+      $ref: roles/Role.yml
