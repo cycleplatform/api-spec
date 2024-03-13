@@ -10,7 +10,7 @@ get:
       schema:
         type: string
   summary: Fetch Billing Order
-  description: Requires the `billing-orders-manage` capability.
+  description: Requires the `billing-services-manage` capability.
   responses:
     200:
       description: Returns a billing order resource
@@ -19,7 +19,7 @@ get:
           schema:
             title: "FetchBillingOrderResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
@@ -38,7 +38,7 @@ patch:
       schema:
         type: string
   summary: Update Billing Order
-  description: Requires the `billing-orders-manage` capability.
+  description: Requires the `billing-services-manage` capability.
   requestBody:
     description: Parameters for creating a new order
     content:
@@ -70,7 +70,7 @@ patch:
           schema:
             title: "BillingOrderUpdateResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

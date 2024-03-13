@@ -17,7 +17,7 @@ enum:
   - billing-methods-manage
   - billing-invoices-view
   - billing-invoices-pay
-  - billing-orders-manage
+  - billing-services-manage
   - billing-services-view
   - billing-credits-view
 

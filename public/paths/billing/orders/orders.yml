@@ -36,7 +36,7 @@ get:
           enum:
             - promo_codes
   summary: List Billing Orders
-  description: Requires the `billing-orders-manage` capability.
+  description: Requires the `billing-services-manage` capability.
   responses:
     200:
       description: Returns a collection of billing order resources.
@@ -45,7 +45,7 @@ get:
           schema:
             title: "ListBillingOrdersResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
@@ -94,7 +94,7 @@ post:
           schema:
             title: "OrderResource"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
