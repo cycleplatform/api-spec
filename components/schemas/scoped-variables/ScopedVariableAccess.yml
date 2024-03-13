@@ -1,11 +1,16 @@
 title: ScopedVariableAccess
 type: object
 description: The way the scoped variable is accessed.
-required:
-  - env_variable
 properties:
   env_variable:
-    type: boolean
+    nullable: true
+    type: object
+    required:
+      - key
+    properties:
+      key:
+        description: The name of the environment variable set on the target container.
+        type: string
     description: When set to true, this scoped variable is set as an environment variable inside the container.
   internal_api:
     nullable: true
