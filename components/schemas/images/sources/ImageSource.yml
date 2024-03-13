@@ -44,20 +44,20 @@ properties:
   events:
     title: ImageSourceEvents
     type: object
-    description: A collection of timestamps for each event in the iamge source's lifetime.
+    description: A collection of timestamps for each event in the image source's lifetime.
     required:
       - created
       - updated
       - deleted
     properties:
       created:
-        description: The timestamp of when the iamge source was created.
+        description: The timestamp of when the image source was created.
         "$ref": "../../DateTime.yml"
       updated:
-        description: The timestamp of when the iamge source was updated.
+        description: The timestamp of when the image source was updated.
         "$ref": "../../DateTime.yml"
       deleted:
-        description: The timestamp of when the iamge source was deleted.
+        description: The timestamp of when the image source was deleted.
         "$ref": "../../DateTime.yml"
   meta:
     $ref: "./ImageSourceMeta.yml"
