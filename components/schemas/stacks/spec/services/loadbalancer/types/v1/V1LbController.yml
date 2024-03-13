@@ -1,0 +1,96 @@
+title: V1LbController
+type: object
+required:
+  - default
+  - identifier
+  - transport
+properties:
+  default:
+    type: boolean
+  identifier:
+    type: string
+    description: A human-readable identifier for this controller. It will default to the port, i.e. `port-443`, but can be renamed to anything, such as the service this controller represents.
+  transport:
+    title: V1LbControllerTransport
+    description: Defines how traffic comes in to the load balancer, and how the load balancer handles it.
+    type: object
+    required:
+      - mode
+      - config
+      - routers
+      - disable
+    properties:
+      disable:
+        type: boolean
+        description: When true, this controller is disabled and will not be used.
+      mode:
+        type: string
+        description: The kind of traffic (http/tcp) that will be sent to the load balancer.
+        enum:
+          - tcp
+          - http
+      config:
+        type: object
+        description: Defines how the transport for this controller operates.
+        required:
+          - performance
+          - ingress
+          - timeouts
+          - verbosity
+        properties:
+          performance:
+            type: boolean
+            description: |
+              Enable/disable performance mode. If enabled, some telemetry will be disabled to dedicate full processing to handling requests.
+              You will not see per-request breakdowns or URL logging if performance mode is enabled.
+          ingress:
+            type: object
+            description: Defines how traffic gets into the load balancer.
+            required:
+              - port
+            properties:
+              port:
+                type: integer
+                description: The port inbound trafic is accepted on.
+              tls:
+                nullable: true
+                type: object
+                required:
+                  - enable
+                properties:
+                  enable:
+                    type: boolean
+                    description: Enables or disables TLS.
+          timeouts:
+            type: object
+            description: Defines settings for various types of timeouts.
+            required:
+              - idle
+            properties:
+              idle:
+                description: The total amount of time a connection can be idle before being killed.
+                $ref: ../../../../../../Duration.yml
+          verbosity:
+            type: string
+            description: Verbosity describes the level of logging detail for the controller
+            enum:
+              - low
+              - normal
+              - high
+              - debug
+          extension:
+            type: object
+            description: Extended configurations for the specified transport mode (http/tcp)
+            discriminator:
+              propertyName: type
+              mapping:
+                tcp: transports/TcpTransportConfig.yml
+                http: transports/HttpTransportConfig.yml
+            oneOf:
+              - $ref: transports/TcpTransportConfig.yml
+              - $ref: transports/HttpTransportConfig.yml
+      routers:
+        type: array
+        description: Defines where traffic is sent. Many can be defined per controller.
+        items:
+          $ref: V1LbConfigRouter.yml
