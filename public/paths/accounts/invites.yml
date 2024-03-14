@@ -36,6 +36,7 @@ get:
             - senders
             - hubs
             - accounts
+            - roles
     - $ref: ../../../components/parameters/SortParam.yml
     - $ref: ../../../components/parameters/FilterParam.yml
     - $ref: ../../../components/parameters/PageParam.yml
@@ -49,7 +50,7 @@ get:
           schema:
             title: "AccountInvitesResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

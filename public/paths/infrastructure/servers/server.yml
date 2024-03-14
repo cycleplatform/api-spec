@@ -72,7 +72,7 @@ patch:
       schema:
         type: string
   summary: Update Server
-  description: Requires the `servers-update` capability.
+  description: Requires the `servers-manage` capability.
   requestBody:
     description: Parameters for updating a server.
     content:
@@ -125,7 +125,7 @@ patch:
       $ref: ../../../../components/responses/errors/DefaultError.yml
 delete:
   summary: Remove Server
-  description: Requires the `servers-update` capability.
+  description: Requires the `servers-manage` capability.
   operationId: "removeServer"
   tags:
     - Servers

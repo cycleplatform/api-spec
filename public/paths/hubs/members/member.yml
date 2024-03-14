@@ -68,14 +68,9 @@ patch:
         schema:
           type: object
           properties:
-            role:
-              type: string
+            role_id:
               description: The account role.
-              enum:
-                - owner
-                - admin
-                - developer
-                - analyst
+              $ref: ../../../../components/schemas/ID.yml
             permissions:
               $ref: ../../../../components/schemas/creators/Permissions.yml
   responses:
