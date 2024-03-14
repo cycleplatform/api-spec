@@ -40,6 +40,7 @@ get:
             - senders
             - hubs
             - accounts
+            - roles
   summary: Fetch Members Account
   description: Requires the `hubs-members-view` capability.
   responses:
@@ -50,7 +51,7 @@ get:
           schema:
             title: "FetchHubMembersAccountReturn"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

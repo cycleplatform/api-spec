@@ -76,7 +76,7 @@ patch:
       schema:
         type: string
   summary: Update Environment
-  description: Updates the specificed environment, setting the values of the parameters passed. If any parameters are omitted, they will be left unchanged. Requires the `environments-update` capability.
+  description: Updates the specificed environment, setting the values of the parameters passed. If any parameters are omitted, they will be left unchanged. Requires the `environments-manage` capability.
   requestBody:
     description: Parameters for updating an environment.
     content:
@@ -115,7 +115,7 @@ delete:
       schema:
         type: string
   summary: Remove Environment
-  description: Requires the `environments-update` capability.
+  description: Requires the `environments-manage` capability.
   responses:
     202:
       description: Returns a task descriptor.
