@@ -30,6 +30,7 @@ properties:
         $ref: ../FluidIdentifier.yml
       build:
         type: object
+        nullable: true
         description: Optional build-time options for when this image is built on pipeline run.
         properties:
           args:

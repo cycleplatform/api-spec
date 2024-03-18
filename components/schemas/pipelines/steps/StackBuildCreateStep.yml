@@ -49,6 +49,7 @@ properties:
                 description: The actual value to be passed.
           variables:
             type: object
+            nullable: true
             description: Custom variables applied to the stack during build. Any place in the stack where a `{{variable}}` is used is replaced with the value of the variable supplied in this map.
             additionalProperties:
               type: string
