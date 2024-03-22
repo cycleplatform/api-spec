@@ -11,6 +11,7 @@ allOf:
           - new
           - starting
           - running
+          - function
           - stopping
           - stopped
           - deleting
@@ -22,6 +23,7 @@ allOf:
           - new
           - starting
           - running
+          - function
           - stopping
           - stopped
           - deleting
