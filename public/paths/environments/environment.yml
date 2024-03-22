@@ -85,8 +85,13 @@ patch:
           type: object
           properties:
             name:
+              nullable: true
+              type: string
+            identifier:
+              nullable: true
               type: string
             about:
+              nullable: true
               $ref: ../../../components/schemas/environments/EnvironmentAbout.yml
   responses:
     200:
