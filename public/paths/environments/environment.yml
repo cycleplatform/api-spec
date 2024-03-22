@@ -90,6 +90,9 @@ patch:
             identifier:
               nullable: true
               type: string
+            version:
+              nullable: true
+              type: string
             about:
               nullable: true
               $ref: ../../../components/schemas/environments/EnvironmentAbout.yml
