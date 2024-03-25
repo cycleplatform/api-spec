@@ -60,6 +60,7 @@ enum:
   - hubs-roles-view
   - hubs-usage-view
   - hubs-update
+  - hubs-auditlog-view
 
   # Images
   - images-manage
