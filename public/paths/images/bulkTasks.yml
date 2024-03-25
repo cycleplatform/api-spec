@@ -1,12 +1,15 @@
 post:
+  operationId: "createImagesJob"
+  summary: Images Prune
+  description: |
+    Used to perform different actions on a given image. 
+
+    Requires the `images-manage` capability.
   tags:
     - Images
-  operationId: "createImageCollectionJob"
   parameters: []
-  summary: Images Prune
-  description: Used to perform different actions on a given image. Requires the `images-delete` capability.
   requestBody:
-    description: Parameters for creating a new images collection job.
+    description: Parameters for creating a new Images job.
     content:
       application/json:
         schema:
@@ -27,13 +30,13 @@ post:
                 - source_ids
               properties:
                 source_ids:
-                  description: A list of source_ids to be pruned.
+                  description: A list of IDs to be pruned.
                   type: array
                   items:
                     type: string
   responses:
     202:
-      description: Returns a task descriptor.
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:

@@ -1,25 +1,24 @@
 get:
   operationId: "getImageBuildLog"
+  summary: Get Image Build Log
+  description: Requires the `images-view` capability.
   tags:
     - Images
-  summary: Fetch Build Log
-  description: Requires the `images-view` capability.
   parameters:
     - name: imageId
       in: path
       required: true
-      description: The ID of the image.
+      description: The ID of the Image.
       schema:
         type: string
   responses:
     200:
-      description: Returns a build log resource.
+      description: Returns an Image's build log.
       content:
         application/json:
           schema:
-            title: "ImageBuildLogResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

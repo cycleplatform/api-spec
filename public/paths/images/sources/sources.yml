@@ -1,7 +1,9 @@
 get:
-  operationId: "getSourcesCollection"
+  operationId: "getImageSources"
+  summary: List Image Sources
+  description: Requires the `images-sources-view` capability.
   tags:
-    - ImageSources
+    - Image Sources
   parameters:
     - name: meta
       in: query
@@ -51,22 +53,19 @@ get:
           search:
             type: string
             description: |
-              `filter[search]=value` search for a value associated with a field on the given image source(s).
+              `filter[search]=value` search for a value associated with a field on the given Image Source(s).
           state:
             type: string
             description: |
-              `filter[state]=value1,value2` state filtering will allow you to filter by the image source's current state.
+              `filter[state]=value1,value2` state filtering will allow you to filter by the Image Source's current state.
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
-  summary: List Sources
-  description: Requires the `images-view` capability.
   responses:
     200:
-      description: Returns a collection of image source resources.
+      description: Returns a list of Image Sources.
       content:
         application/json:
           schema:
-            title: "ImageSourceCollectionResponse"
             type: object
             required:
               - data
@@ -82,12 +81,12 @@ get:
 post:
   operationId: "createImageSource"
   tags:
-    - ImageSources
+    - Image Sources
   parameters: []
-  summary: Create Source
-  description: requires the `images-import` capability.
+  summary: Create Image Source
+  description: Requires the `images-sources-manage` capability.
   requestBody:
-    description: Parameters for creating an image source.
+    description: Parameters for creating an Image Source.
     content:
       application/json:
         schema:
@@ -98,7 +97,7 @@ post:
           properties:
             name:
               type: string
-              description: A name for the image source.
+              description: A name for the Image Source.
             identifier:
               $ref: ../../../../components/schemas/Identifier.yml
             builder:
@@ -115,21 +114,20 @@ post:
               $ref: "../../../../components/schemas/images/origins/ImageOrigin.yml"
             about:
               type: object
-              description: User defined information about the image source.
+              description: User defined information about the Image Source.
               required:
                 - description
               properties:
                 description:
                   type: string
                   nullable: true
-                  description: A description of the image source.
+                  description: A description of the Image Source.
   responses:
     201:
-      description: Returns an image source resource.
+      description: Returns an Image Source.
       content:
         application/json:
           schema:
-            title: "ImageSourceCreateResponse"
             type: object
             required:
               - data
