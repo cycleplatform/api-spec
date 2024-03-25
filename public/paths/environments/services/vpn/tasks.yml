@@ -1,5 +1,5 @@
 post:
-  operationId: "createEnvironmentVpnTask"
+  operationId: "createVPNServiceJob"
   tags:
     - Environments
   parameters:
@@ -26,11 +26,10 @@ post:
             - $ref: ../../../../../components/schemas/environments/services/vpn/taskActions/VpnReconfigureTask.yml
   responses:
     202:
-      description: Returns a task descriptor.
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:
-            title: "TaskResponse"
             type: object
             required:
               - data

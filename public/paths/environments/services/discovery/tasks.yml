@@ -1,5 +1,7 @@
 post:
-  operationId: "reconfigureDiscovery"
+  operationId: "createDiscoveryServiceJob"
+  summary: Reconfigure Discovery
+  description: Creates a task that will update the discovery service's configuration.
   tags:
     - Environments
   parameters:
@@ -9,8 +11,6 @@ post:
       required: true
       schema:
         type: string
-  summary: Reconfigure Discovery
-  description: Creates a task that will update the discovery service's configuration.
   requestBody:
     description: Parameters for reconfiguring a discovery service.
     content:
@@ -42,7 +42,7 @@ post:
 
   responses:
     202:
-      description: Returns a task descriptor.
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:

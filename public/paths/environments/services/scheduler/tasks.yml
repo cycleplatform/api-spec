@@ -1,5 +1,5 @@
 post:
-  operationId: "reconfigureScheduler"
+  operationId: "createSchedulerServiceJob"
   tags:
     - Environments
   parameters:
@@ -38,11 +38,10 @@ post:
                   description: A boolean where `true` represents the desire to automatically update the environment scheduler service.
   responses:
     202:
-      description: Returns a task descriptor.
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:
-            title: "TaskResponse"
             type: object
             required:
               - data

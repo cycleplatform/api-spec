@@ -1,5 +1,7 @@
 get:
-  operationId: "getVPNInfo"
+  operationId: "getVPNService"
+  summary: Get VPN Service
+  description: Requires the `environments-vpn` capability.
   tags:
     - Environments
   parameters:
@@ -9,17 +11,14 @@ get:
       required: true
       schema:
         type: string
-  summary: Fetch VPN Info
-  description: Requires the `environments-vpn` capability.
   responses:
     200:
-      description: Returns a VPNInfo resource.
+      description: Returns .
       content:
         application/json:
           schema:
-            title: "VPNInfoEnvironmentService"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

@@ -1,29 +1,28 @@
 get:
-  operationId: "fetchScopedVariable"
+  operationId: "getScopedVariable"
+  summary: Get Scoped Variable
+  description: Requires the `scoped-variables-view` capability.
   tags:
     - Environments
   parameters:
     - name: environmentId
-      description: The ID of the requested environment.
+      description: The ID of the requested Environment.
       in: path
       required: true
       schema:
         type: string
     - name: scopedVariableId
-      description: The ID of the requested scoped variable.
+      description: The ID of the requested Scoped Variable.
       in: path
       required: true
       schema:
         type: string
-  summary: Fetch Scoped Variable
-  description: Requires the `scoped-variables-view` capability.
   responses:
     200:
-      description: Returns a scoped variable resource.
+      description: Returns a Scoped Variable.
       content:
         application/json:
           schema:
-            title: "ScopedVariableResponse"
             type: object
             required:
               - data
@@ -34,25 +33,25 @@ get:
       $ref: ../../../components/responses/errors/DefaultError.yml
 patch:
   operationId: "updateScopedVariable"
+  summary: Update Scoped Variable
+  description: Requires the `scoped-variables-manage` capability.
   tags:
     - Environments
   parameters:
     - name: environmentId
-      description: The ID of the requested environment.
+      description: The ID of the requested endpointnvironment.
       in: path
       required: true
       schema:
         type: string
     - name: scopedVariableId
-      description: The ID of the requested scoped variable.
+      description: The ID of the requested Scoped Variable.
       in: path
       required: true
       schema:
         type: string
-  summary: Update Scoped Variable
-  description: Requires the `scoped-variables-manage` capability.
   requestBody:
-    description: Parameters for updating a scoped variable.
+    description: Parameters for updating a Scoped Variable.
     content:
       application/json:
         schema:
@@ -60,14 +59,14 @@ patch:
           properties:
             identifier:
               type: string
-              description: An identifier, similar to a key in an environment variable.  Its used when envoking the scoped variable.
+              description: An identifier, similar to a key in an Environment variable.  Its used when envoking the Scoped Variable.
             scope:
               $ref: ../../../components/schemas/scoped-variables/ScopedVariableScope.yml
             access:
               $ref: ../../../components/schemas/scoped-variables/ScopedVariableAccess.yml
             source:
               type: object
-              description: The source or value of the scoped variable.
+              description: The source or value of the Scoped Variable.
               discriminator:
                 propertyName: type
                 mapping:
@@ -78,11 +77,10 @@ patch:
                 - $ref: ../../../components/schemas/scoped-variables/URLSource.yml
   responses:
     200:
-      description: Returns a scoped variable resource.
+      description: Returns a Scoped Variable.
       content:
         application/json:
           schema:
-            title: "UpdateScopedVariableResponse"
             type: object
             required:
               - data
@@ -92,27 +90,27 @@ patch:
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
 delete:
-  operationId: "removeScopedVariableById"
+  operationId: "deleteScopedVariable"
+  summary: Delete Scoped Variable
+  description: Requires the `scoped-variables-manage` capability.
   tags:
     - Environments
   parameters:
     - name: environmentId
-      description: The ID of the requested environment.
+      description: The ID of the requested Environment.
       in: path
       required: true
       schema:
         type: string
     - name: scopedVariableId
-      description: The ID of the requested scoped variable.
+      description: The ID of the requested Scoped Variable.
       in: path
       required: true
       schema:
         type: string
-  summary: Remove Scoped Variable
-  description: Requires the `scoped-variables-manage` capability.
   responses:
     202:
-      description: Returns a task descriptor.
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:

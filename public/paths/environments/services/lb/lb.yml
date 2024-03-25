@@ -1,5 +1,7 @@
 get:
-  operationId: "getLoadBalancerInfo"
+  operationId: "getLoadBalancerService"
+  summary: Get Load Balancer Service
+  description: Requires the `environments-view` capability.
   tags:
     - Environments
   parameters:
@@ -9,17 +11,14 @@ get:
       required: true
       schema:
         type: string
-  summary: Fetch LB Info
-  description: Requires the `environments-view` capability.
   responses:
     200:
       description: Returns a load balancer info resource.
       content:
         application/json:
           schema:
-            title: "GetLoadBalancerInfoReturn"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

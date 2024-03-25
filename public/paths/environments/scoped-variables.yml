@@ -1,10 +1,12 @@
 get:
-  operationId: "listScopedVariables"
+  operationId: "getScopedVariables"
+  summary: List Scoped Variables
+  description: Requires the `scoped-variables-view` capability.
   tags:
     - Environments
   parameters:
     - name: environmentId
-      description: The ID of the requested environment.
+      description: The ID of the requested Environment.
       in: path
       required: true
       schema:
@@ -25,22 +27,19 @@ get:
           search:
             type: string
             description: |
-              `filter[search]=value` search for a value associated with a field on the given scoped variable(s).
+              `filter[search]=value` search for a value associated with a field on the given Scoped Variable(s).
           state:
             type: string
             description: |
-              `filter[state]=value1,value2` state filtering will allow you to filter by the scoped variable's current state.
+              `filter[state]=value1,value2` state filtering will allow you to filter by the Scoped Variable's current state.
     - $ref: ../../../components/parameters/SortParam.yml
     - $ref: ../../../components/parameters/PageParam.yml
-  summary: List Scoped Variables
-  description: Requires the `scoped-variables-view` capability.
   responses:
     200:
-      description: Returns a collection of scoped variable resources.
+      description: Returns a list of Scoped Variables.
       content:
         application/json:
           schema:
-            title: "ListScopedVariablesResponse"
             type: object
             required:
               - data
@@ -53,19 +52,19 @@ get:
       $ref: ../../../components/responses/errors/DefaultError.yml
 post:
   operationId: "createScopedVariable"
+  summary: Create Scoped Variable
+  description: Requires the `scoped-variables-manage` capability.
   tags:
     - Environments
   parameters:
     - name: environmentId
-      description: The ID of the requested environment.
+      description: The ID of the requested Environment.
       in: path
       required: true
       schema:
         type: string
-  summary: Create Scoped Variable
-  description: Requires the `scoped-variables-manage` capability.
   requestBody:
-    description: Parameters for creating a scoped variable.
+    description: Parameters for creating a Scoped Variable.
     content:
       application/json:
         schema:
@@ -77,14 +76,14 @@ post:
           properties:
             identifier:
               type: string
-              description: An identifier, similar to a key in an environment variable.  Its used when envoking the scoped variable.
+              description: An identifier for this Scoped Variable.
             scope:
               $ref: ../../../components/schemas/scoped-variables/ScopedVariableScope.yml
             access:
               $ref: ../../../components/schemas/scoped-variables/ScopedVariableAccess.yml
             source:
               type: object
-              description: The source or value of the scoped variable.
+              description: The source or value of the Scoped Variable.
               discriminator:
                 propertyName: type
                 mapping:
@@ -95,13 +94,12 @@ post:
                 - $ref: ../../../components/schemas/scoped-variables/URLSource.yml
   responses:
     201:
-      description: Returns a scoped variable resource.
+      description: Returns a Scoped Variable.
       content:
         application/json:
           schema:
-            title: "CreateScopedVariableResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

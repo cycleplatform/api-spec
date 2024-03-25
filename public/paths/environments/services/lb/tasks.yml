@@ -1,5 +1,5 @@
 post:
-  operationId: "reconfigureLoadBalancer"
+  operationId: "createLoadBalancerServiceJob"
   tags:
     - Environments
   parameters:
@@ -41,11 +41,10 @@ post:
                   $ref: ../../../../../components/schemas/environments/services/lb/LoadBalancerConfig.yml
   responses:
     202:
-      description: Returns a task descriptor.
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:
-            title: "TaskResponse"
             type: object
             required:
               - data

@@ -38,9 +38,8 @@ get:
       content:
         application/json:
           schema:
-            title: "GetLoadBalancerTelemetryLatestControllersReturn"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

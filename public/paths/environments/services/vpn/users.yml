@@ -1,5 +1,7 @@
 get:
   operationId: "getVPNUsers"
+  summary: List VPN Users
+  description: Requires the `environments-vpn-manage` capability.
   tags:
     - Environments
   parameters:
@@ -9,8 +11,6 @@ get:
       required: true
       schema:
         type: string
-  summary: List VPN Users
-  description: Requires the `environments-vpn-manage` capability.
   responses:
     200:
       description: Returns a list of VPN users for the given VPN.
@@ -19,7 +19,7 @@ get:
           schema:
             title: "getVPNUsersReturn"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
@@ -30,6 +30,8 @@ get:
       $ref: ../../../../../components/responses/errors/DefaultError.yml
 post:
   operationId: "createVPNUser"
+  summary: Create VPN User
+  description: Requires the `environments-vpn-manage` capability.
   tags:
     - Environments
   parameters:
@@ -39,8 +41,6 @@ post:
       required: true
       schema:
         type: string
-  summary: Create VPN User
-  description: Requires the `environments-vpn-manage` capability.
   requestBody:
     description: Parameters for creating a new VPN user.
     content:
@@ -57,13 +57,12 @@ post:
               type: string
   responses:
     201:
-      description: Returns a VPN user resource.
+      description: Returns a VPN User.
       content:
         application/json:
           schema:
-            title: VPNUserResponse
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
