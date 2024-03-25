@@ -1,11 +1,14 @@
 get:
   operationId: getIntegrations
+  summary: List Integrations
+  description: |
+    Lists all integrations associated with the current hub, with optional filtering.
+
+    Requires the `hubs-integrations-view` capability.
   tags:
     - Hubs
   security:
     - bearerAuth: []
-  summary: Retrieve a list of integrations for the current hub
-  description: Lists all integrations associated with the current hub, with optional filtering.
   parameters:
     - $ref: ../../../../components/parameters/PageParam.yml
     - name: meta
@@ -55,7 +58,6 @@ get:
       content:
         application/json:
           schema:
-            title: GetIntegrationsReturn
             type: object
             required:
               - data
@@ -68,6 +70,8 @@ get:
       $ref: ../../../../components/responses/errors/DefaultError.yml
 post:
   operationId: createIntegration
+  summary: Create Integration
+  description: Create an Integration resource within a hub. If the Integration definition specifies that it requires verification, then you must submit a verify task to enable it.
   tags:
     - Hubs
   security:
@@ -88,8 +92,6 @@ post:
           type: string
           enum:
             - definition
-  summary: Create Integration
-  description: Create an Integration resource within a hub.  If the Integration definition specifies that it requires verification, then you must submit a verify task to enable it.
   requestBody:
     description: Parameters for creating an integration.
     required: true

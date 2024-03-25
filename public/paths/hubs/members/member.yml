@@ -1,12 +1,14 @@
 get:
   operationId: "getHubMember"
+  summary: Get Hub Member
+  description: Requires the `hubs-members-view` capability.
   tags:
     - Hubs
   security:
     - bearerAuth: []
   parameters:
     - name: memberId
-      description: The ID for the given member.
+      description: The ID for the given Hub member.
       in: path
       required: true
       schema:
@@ -28,15 +30,12 @@ get:
             - hubs
             - accounts
             - roles
-  summary: Fetch Hub Member
-  description: Requires the `hubs-members-view` capability.
   responses:
     200:
-      description: Returns a membership resource.
+      description: Returns a Hub Membership.
       content:
         application/json:
           schema:
-            title: "FetchHubMemberReturn"
             type: object
             required:
               - data
@@ -47,9 +46,11 @@ get:
                 $ref: ../../../../components/schemas/hubs/HubMembershipIncludes.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 patch:
-  summary: "Update a Hub Member"
   operationId: "updateHubMember"
+  summary: "Update Hub Member"
+  description: Requires the `hubs-members-manage` capability.
   tags:
     - Hubs
   security:
@@ -62,7 +63,7 @@ patch:
       schema:
         type: string
   requestBody:
-    description: Parameters for updating a hub membership.
+    description: Parameters for updating a Hub membership.
     content:
       application/json:
         schema:
@@ -75,11 +76,10 @@ patch:
               $ref: ../../../../components/schemas/creators/Permissions.yml
   responses:
     200:
-      description: Returns a hub membership resource.
+      description: Returns a Hub Membership.
       content:
         application/json:
           schema:
-            title: "UpdateHubMemberReturn"
             type: object
             required:
               - data
@@ -88,15 +88,16 @@ patch:
                 $ref: ../../../../components/schemas/hubs/HubMembership.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 delete:
-  operationId: "removeHubMember"
+  operationId: "deleteHubMember"
   tags:
     - Hubs
   security:
     - bearerAuth: []
   parameters:
     - name: memberId
-      description: The ID for the given member.
+      description: The ID of the given Hub Member.
       in: path
       required: true
       schema:
@@ -105,7 +106,7 @@ delete:
   description: Requires the `hubs-members-manage` capability.
   responses:
     202:
-      description: Returns a task descriptor.
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:

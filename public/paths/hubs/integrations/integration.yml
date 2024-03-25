@@ -1,11 +1,14 @@
 get:
-  operationId: getIntegration
+  operationId: getHubIntegration
+  summary: Get Integration
+  description: |
+    Retrieves details of a single integration associated with the current hub.
+
+    Requires the `hubs-integrations-view` capability.
   tags:
     - Hubs
   security:
     - bearerAuth: []
-  summary: Retrieve a specific integration for the current hub
-  description: Retrieves details of a single integration associated with the current hub.
   parameters:
     - name: integrationId
       in: path
@@ -50,7 +53,7 @@ patch:
     - Hubs
   security:
     - bearerAuth: []
-  summary: Update an integration
+  summary: Update Integration
   description: Updates the specified integration within the current hub. If the Integration definition specifies that it requires verification, then you must submit a verify task to enable it.
   parameters:
     - name: integrationId

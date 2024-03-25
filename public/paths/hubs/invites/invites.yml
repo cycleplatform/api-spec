@@ -1,5 +1,7 @@
 get:
   operationId: "getHubInvites"
+  summary: List Hub Invites
+  description: Requires the `hubs-invites-manage` capability.
   tags:
     - Hubs
   security:
@@ -39,8 +41,6 @@ get:
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/FilterParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
-  summary: List Hub Invites
-  description: Requires the `hubs-invites-manage` capability.
   responses:
     200:
       description: Returns a list of membership resources.

@@ -1,7 +1,13 @@
 get:
   operationId: getRole
+  summary: Get Hub Role
+  description: |
+    Retrieves the specified Role.
+
+    Requries the `hubs-roles-manage` capability.
   tags:
-    - Role
+    - Hubs
+    - ACLs
   parameters:
     - name: roleId
       description: The ID of the Role.
@@ -9,11 +15,6 @@ get:
       required: true
       schema:
         type: string
-  summary: Fetch Role
-  description: |
-    Retrieves the specified Role.
-
-    Requries the `hubs-roles-manage` capability.
   responses:
     200:
       description: Returns a Role.
@@ -29,8 +30,14 @@ get:
       $ref: ../../../../components/responses/errors/DefaultError.yml
 patch:
   operationId: updateRole
+  summary: Update Hub Role
+  description: |
+    Updates various properties of a specific Role.
+
+    Requires the `hubs-roles-manage` capability.
   tags:
-    - Roles
+    - Hubs
+    - ACLs
   parameters:
     - name: roleId
       description: The ID of the Role.
@@ -38,11 +45,6 @@ patch:
       required: true
       schema:
         type: string
-  summary: Update Role
-  description: |
-    Updates various properties of a specific Role.
-
-    Requires the `hubs-roles-manage` capability.
   requestBody:
     content:
       application/json:
@@ -83,7 +85,7 @@ patch:
                 type: string
   responses:
     200:
-      description: Returns the updated Role.
+      description: Returns the updated Hub Role.
       content:
         application/json:
           schema:
@@ -98,8 +100,14 @@ patch:
 
 delete:
   operationId: deleteRole
+  summary: Delete Hub Role
+  description: |
+    Marks a Role as 'deleted'. 
+
+    Requires the 'hubs-roles-manage' capability.
   tags:
-    - Roles
+    - Hubs
+    - ACLs
   parameters:
     - name: roleId
       description: The ID of the Role.
@@ -107,11 +115,6 @@ delete:
       required: true
       schema:
         type: string
-  summary: Delete Role
-  description: |
-    Marks a Role as 'deleted'. 
-
-    Requires the 'hubs-roles-manage' capability.
   responses:
     202:
       description: Returns a Job Descriptor.

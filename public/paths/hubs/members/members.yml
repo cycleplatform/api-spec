@@ -1,5 +1,7 @@
 get:
   operationId: "getHubMembers"
+  summary: List Hub Members
+  description: Requires the `hubs-members-view` capability.
   tags:
     - Hubs
   security:
@@ -40,11 +42,9 @@ get:
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/FilterParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
-  summary: List Hub Members
-  description: Requires the `hubs-members-view` capability.
   responses:
     200:
-      description: Returns a list of memebership resources.
+      description: Returns a list of Hub Memberships.
       content:
         application/json:
           schema:

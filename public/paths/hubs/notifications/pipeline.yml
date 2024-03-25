@@ -13,7 +13,7 @@ get:
     Requesting this endpoint without a `?token=<token>` URL parameter will result in receiving a short lived token in the response body. That 
     token can then be applied to the URL parameter to the same endpoint to upgrade the connection to a websocket.
 
-    Requires the `hubs-notifications-listen` capability.
+    Requires the `apionly-notifications-listen` capability.
   responses:
     101:
       description: WebSocket protocol upgrade response, connection is upgraded to WebSocket.
