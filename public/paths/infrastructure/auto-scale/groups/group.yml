@@ -1,10 +1,13 @@
 get:
   operationId: "getAutoScaleGroup"
+  summary: Get Auto-Scale Group
+  description: Requires the `autoscale-groups-view` capability.
   tags:
-    - InfrastructureAutoScaleGroup
+    - Infrastructure
+    - Auto-Scale
   parameters:
     - name: groupId
-      description: The ID for the given auto-scale group.
+      description: The ID for the given Auto-Scale Group.
       in: path
       required: true
       schema:
@@ -25,15 +28,12 @@ get:
             - integrations
             - models
             - locations
-  summary: Fetch Auto-Scale Group
-  description: Requires the `autoscale-groups-view` capability.
   responses:
     200:
-      description: A single auto-scale group resource.
+      description: Returns an Auto-Scale Group.
       content:
         application/json:
           schema:
-            title: "GetAutoScaleGroupReturn"
             type: object
             required:
               - data
@@ -44,21 +44,23 @@ get:
                 $ref: ../../../../../components/schemas/infrastructure/auto-scale/groups/AutoScaleGroupIncludes.yml
     default:
       $ref: ../../../../../components/responses/errors/DefaultError.yml
+
 patch:
   operationId: "updateAutoScaleGroup"
+  summary: Update Auto-Scale Group
+  description: Requires the `autoscale-groups-manage` capability.
   tags:
-    - InfrastructureAutoScaleGroup
+    - Infrastructure
+    - Auto-Scale
   parameters:
     - name: groupId
-      description: The ID for the given auto-scale group.
+      description: The ID for the given Auto-Scale Group.
       in: path
       required: true
       schema:
         type: string
-  summary: Update Auto-Scale Group
-  description: Requires the `autoscale-groups-manage` capability.
   requestBody:
-    description: Parameters for creating an auto-scale group
+    description: Parameters for creating an Auto-Scale Group
     content:
       application/json:
         schema:
@@ -82,11 +84,10 @@ patch:
               $ref: ../../../../../components/schemas/infrastructure/auto-scale/groups/AutoScaleGroupInfrastructure.yml
   responses:
     200:
-      description: Returns an autoscale group resource.
+      description: Returns an Auto-Scale Group.
       content:
         application/json:
           schema:
-            title: "UpdateAutoScaleGroupReturn"
             type: object
             required:
               - data
@@ -95,10 +96,14 @@ patch:
                 $ref: ../../../../../components/schemas/infrastructure/auto-scale/groups/AutoScaleGroup.yml
     default:
       $ref: ../../../../../components/responses/errors/DefaultError.yml
+
 delete:
-  operationId: "removeAutoScaleGroup"
+  operationId: "deleteAutoScaleGroup"
+  summary: Delete Auto-Scale Group
+  description: Requires the `autoscale-group-manage` capability.
   tags:
-    - InfrastructureAutoScaleGroup
+    - Infrastructure
+    - Auto-Scale
   parameters:
     - name: groupId
       description: The ID for the given autoscale group.
@@ -106,8 +111,6 @@ delete:
       required: true
       schema:
         type: string
-  summary: Remove Auto-Scale Group
-  description: Requires the `autoscale-group-manage` capability.
   responses:
     202:
       description: Returns a task descriptor.

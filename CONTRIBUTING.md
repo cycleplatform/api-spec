@@ -1,6 +1,6 @@
 # Contributing to the Cycle API Spec
 
-🎉 First off, thank you for taking the time to contribute. We'll be fleshing out this guide a bit more as our open source initiatives expand. 
+🎉 First off, thank you for taking the time to contribute. We'll be fleshing out this guide a bit more as our open source initiatives expand.
 
 ## Code of Conduct
 
@@ -19,11 +19,7 @@ If you notice a discrepancy in the spec vs what you are seeing returned from the
 
 If you want to dive in by suggesting a change to the spec, check out some of the open issues and open a PR. Someone from the Cycle team will review it as soon as possible and give feedback or accept the merge. Please try to keep changes limited in scope and tackle only a single issue per PR.
 
-Your code must pass all of the linters/tests applied to this repo in order to receive a review. No code will be merged that does not pass our checks.   
-
-### Branching
-
-Please follow the template of `your-github-username/feature-name` for your branch names. 
+Your code must pass all of the linters/tests applied to this repo in order to receive a review. No code will be merged that does not pass our checks.
 
 ## Release Processes
 

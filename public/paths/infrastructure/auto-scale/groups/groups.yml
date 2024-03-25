@@ -1,7 +1,10 @@
 get:
   operationId: "getAutoScaleGroups"
+  summary: List Auto-Scale Groups
+  description: Requires the `autoscale-groups-manage` capability.
   tags:
-    - InfrastructureAutoScaleGroup
+    - Infrastructure
+    - Auto-Scale
   parameters:
     - $ref: ../../../../../components/parameters/PageParam.yml
     - name: include
@@ -47,17 +50,14 @@ get:
             type: string
             description: |
               `filter[state]=value1,value2` state filtering will allow you to filter by the provider's current state.
-  summary: Get Auto-Scale Groups list
-  description: Requires the `autoscale-groups-manage` capability.
   responses:
     200:
-      description: A collection of autoscale group resources.
+      description: Returns a list of Auto-Scale Groups.
       content:
         application/json:
           schema:
-            title: "GetAutoScaleGroupResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
@@ -68,15 +68,17 @@ get:
                 $ref: ../../../../../components/schemas/infrastructure/auto-scale/groups/AutoScaleGroupIncludes.yml
     default:
       $ref: ../../../../../components/responses/errors/DefaultError.yml
+
 post:
   operationId: createAutoScaleGroup
   tags:
-    - InfrastructureAutoScaleGroup
+    - Infrastructure
+    - AutoScaleGroup
   parameters: []
   summary: Create Auto-Scale Group
   description: Requires the 'autoscale-groups-manage'
   requestBody:
-    description: Parameters for creating an auto-scale group
+    description: Parameters for creating an Auto-Scale Group
     content:
       application/json:
         schema:
@@ -100,13 +102,13 @@ post:
               $ref: ../../../../../components/schemas/infrastructure/auto-scale/groups/AutoScaleGroupInfrastructure.yml
   responses:
     201:
-      description: Returns an auto-scale group resource.
+      description: Returns an Auto-Scale Group.
       content:
         application/json:
           schema:
             title: "CreateAutoScaleGroupResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
