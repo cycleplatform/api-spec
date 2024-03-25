@@ -10,11 +10,10 @@ get:
   description: Requires the `hubs-view` capability.
   responses:
     200:
-      description: Returns an hubUsageResults resource.
+      description: Returns usage detail points of the Hub over a range of time.
       content:
         application/json:
           schema:
-            title: "HubFetchReturn"
             type: object
             required:
               - data
