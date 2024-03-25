@@ -1,114 +1,101 @@
 type: string
 description: A capability that a user or API key that represents what an API key or a user can do.
 enum:
-  # hubs
-  - hubs-update
-  - hubs-delete
-  - hubs-integrations-manage
-  - hubs-integrations-view
-  - hubs-usage-view
-  - hubs-invites-send
-  - hubs-invites-manage
-  - hubs-members-manage
-  - hubs-members-view
-  - hubs-notifications-listen
-
-  # billing
-  - billing-methods-manage
-  - billing-invoices-view
-  - billing-invoices-pay
-  - billing-orders-manage
-  - billing-services-view
-  - billing-credits-view
-
-  # sdn
-  - sdn-networks-manage
-  - sdn-networks-view
-  - sdn-global-lbs-manage
-  - sdn-global-lbs-view
-
-  # pipelines
-  - pipelines-manage
-  - pipelines-view
-  - pipelines-trigger
-
-  # environments
-  - environments-create
-  - environments-delete
-  - environments-view
-  - environments-update
-  - environments-state
-  - environments-deployments-manage
-  - environments-services-manage
-  - environments-scopedvariables-manage
-  - environments-scopedvariables-view
-  - environments-vpn
-  - environments-vpn-manage
-
-  # containers
-  - containers-deploy
-  - containers-view
-  - containers-console
-  - containers-ssh
-  - containers-update
-  - containers-lock
-  - containers-delete
-  - containers-state
-  - containers-volumes-manage
-  - containers-volumes-view
-  - containers-backups-manage
-  - containers-backups-view
-  - containers-instances-migrate
-
-  # stacks
-  - stacks-manage
-  - stacks-view
-  - stacks-builds-manage
-  - stacks-builds-deploy
-
-  # images
-  - images-view
-  - images-import
-  - images-update
-  - images-delete
-  - images-sources-view
-  - images-sources-manage
-
-  # jobs
-  - jobs-view
-
-  # api-keys
+  # API Keys
   - api-keys-manage
 
-  # infrastructure
-  - ips-manage
-  - servers-provision
-  - servers-view
-  - servers-console
-  - servers-login
-  - servers-update
-  - servers-state
-  - servers-decommission
+  # API-only
+  - apionly-jobs-view
+  - apionly-notifications-listen
 
-  # autoscale-groups
+  # Autoscale Groups
   - autoscale-groups-manage
   - autoscale-groups-view
 
-  # infrastructure-providers
-  - infrastructure-providers-manage
-  - infrastructure-providers-view
+  # Billing
+  - billing-credits-view
+  - billing-invoices-pay
+  - billing-invoices-view
+  - billing-methods-manage
+  - billing-services-manage
+  - billing-services-view
 
-  # security
-  - security-view
-  - security-manage
+  # Containers
+  - containers-backups-manage
+  - containers-backups-view
+  - containers-console
+  - containers-deploy
+  - containers-instances-migrate
+  - containers-lock
+  - containers-ssh
+  - containers-manage
+  - containers-view
+  - containers-volumes-manage
+  - containers-volumes-view
 
-  # monitor
-  - monitor-view
-  - monitor-manage
-
-  # dns
-  - dns-view
-  - dns-manage
-
-  # dns-certs
+  # DNS
   - dns-certs-view
+  - dns-manage
+  - dns-view
+
+  # Environments
+  - environments-deployments-manage
+  - environments-manage
+  - environments-scopedvariables-manage
+  - environments-scopedvariables-view
+  - environments-services-manage
+  - environments-view
+  - environments-vpn
+  - environments-vpn-manage
+
+  # Hubs
+  - hubs-delete
+  - hubs-integrations-manage
+  - hubs-integrations-view
+  - hubs-invites-manage
+  - hubs-invites-send
+  - hubs-members-manage
+  - hubs-members-view
+  - hubs-roles-manage
+  - hubs-roles-view
+  - hubs-usage-view
+  - hubs-update
+  - hubs-auditlog-view
+
+  # Images
+  - images-manage
+  - images-sources-manage
+  - images-sources-view
+  - images-view
+
+  # Infrastructure
+  - ips-manage
+  - servers-console
+  - servers-decommission
+  - servers-login
+  - servers-provision
+  - servers-manage
+  - servers-view
+
+  # Monitor
+  - monitor-manage
+  - monitor-view
+
+  # Pipelines
+  - pipelines-manage
+  - pipelines-trigger
+  - pipelines-view
+
+  # SDN
+  - sdn-networks-manage
+  - sdn-networks-view
+
+  # Security
+  - security-manage
+  - security-view
+
+  # Stacks
+  - stacks-builds-deploy
+  - stacks-builds-manage
+  - stacks-manage
+  - stacks-view

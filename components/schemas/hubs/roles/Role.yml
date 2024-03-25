@@ -1,0 +1,82 @@
+title: Role
+type: object
+description: A Role is a custom combination of platform-level capabilities, allowing for fully customizable role-based access controls across the platform.
+required:
+  - id
+  - root
+  - default
+  - rank
+  - identifier
+  - creator
+  - capabilities
+  - hub_id
+  - state
+  - events
+properties:
+  id:
+    type: string
+  name:
+    nullable: true
+    type: string
+  root:
+    description: The Role marked as root has full moderation control over all Roles.
+    type: boolean
+  default:
+    type: boolean
+  rank:
+    description: An integer between 0 and 10 that indicates the Role hierarchy. An account can only edit a Role that is less than their rank. The 'owner' Role is rank 10.
+    type: integer
+  identifier:
+    $ref: ../../Identifier.yml
+  creator:
+    $ref: ../../creators/CreatorScope.yml
+  capabilities:
+    type: object
+    description: The list of platform level capabilities assigned to this Role.
+    required:
+      - all
+      - specific
+    properties:
+      all:
+        type: boolean
+        description: If true, the Role has all capabilities.
+      specific:
+        type: array
+        items:
+          $ref: ../../../../components/schemas/common/Capability.yml
+  extra:
+    type: object
+    description: Custom user-defined properties for storing extra information on the Role. Not utilized by Cycle.
+    additionalProperties:
+      type: string
+  hub_id:
+    $ref: ../../HubID.yml
+  state:
+    allOf:
+      - required:
+          - current
+        properties:
+          current:
+            description: The current state of the Role.
+            type: string
+            enum:
+              - live
+      - $ref: "../../State.yml"
+  events:
+    title: RoleEvents
+    type: object
+    description: Timestamps for each event in the Role's lifetime.
+    required:
+      - created
+      - updated
+      - deleted
+    properties:
+      created:
+        description: The timestamp of when the Role source was created.
+        $ref: "../../DateTime.yml"
+      updated:
+        description: The timestamp of when the Role source was updated.
+        $ref: "../../DateTime.yml"
+      deleted:
+        description: The timestamp of when the Role source was deleted.
+        $ref: "../../DateTime.yml"

@@ -20,7 +20,7 @@ get:
             - due
     - $ref: includes/OrderIncludeParam.yml
   summary: Get Billing Order
-  description: Requires the `billing-orders-manage` capability.
+  description: Requires the `billing-services-manage` capability.
   responses:
     200:
       description: Returns a Billing Order
@@ -60,7 +60,7 @@ patch:
             - due
     - $ref: includes/OrderIncludeParam.yml
   summary: Update Billing Order
-  description: Requires the `billing-orders-manage` capability.
+  description: Requires the `billing-services-manage` capability.
   requestBody:
     content:
       application/json:

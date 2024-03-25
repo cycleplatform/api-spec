@@ -147,3 +147,10 @@ properties:
     description:
       A [JSON pointer](https://tools.ietf.org/html/rfc6901/) describing
       the source of an error.
+  extra:
+    type: object
+    description: Additional entries on the error object to provide extra details.
+    properties:
+      capability:
+        description: If the error occured because of a lack of permission (403), this will list the specific capability that the Role/API Key is missing.
+        $ref: ../common/Capability.yml

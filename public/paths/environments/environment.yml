@@ -76,7 +76,7 @@ patch:
       schema:
         type: string
   summary: Update Environment
-  description: Updates the specificed environment, setting the values of the parameters passed. If any parameters are omitted, they will be left unchanged. Requires the `environments-update` capability.
+  description: Updates the specificed environment, setting the values of the parameters passed. If any parameters are omitted, they will be left unchanged. Requires the `environments-manage` capability.
   requestBody:
     description: Parameters for updating an environment.
     content:
@@ -85,8 +85,16 @@ patch:
           type: object
           properties:
             name:
+              nullable: true
+              type: string
+            identifier:
+              nullable: true
+              type: string
+            version:
+              nullable: true
               type: string
             about:
+              nullable: true
               $ref: ../../../components/schemas/environments/EnvironmentAbout.yml
   responses:
     200:
@@ -115,7 +123,7 @@ delete:
       schema:
         type: string
   summary: Remove Environment
-  description: Requires the `environments-update` capability.
+  description: Requires the `environments-manage` capability.
   responses:
     202:
       description: Returns a task descriptor.

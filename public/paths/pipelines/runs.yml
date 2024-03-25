@@ -40,7 +40,7 @@ get:
               data:
                 type: array
                 items:
-                  $ref: ../../../components/schemas/pipelines/runs/Run.yml
+                  $ref: ../../../components/schemas/pipelines/runs/PipelineRun.yml
               includes:
                 type: object
                 properties:

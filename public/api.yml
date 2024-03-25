@@ -295,6 +295,12 @@ paths:
     "$ref": "./paths/hubs/keys/keys.yml"
   "/v1/hubs/current/api-keys/{apikeyId}":
     "$ref": "./paths/hubs/keys/key.yml"
+
+  ## Hub Roles
+  "/v1/hubs/current/roles":
+    "$ref": "./paths/hubs/roles/roles.yml"
+  "/v1/hubs/current/roles/{roleId}":
+    "$ref": "./paths/hubs/roles/role.yml"
   ## Integrations
   "/v1/hubs/current/integrations/{integrationId}":
     $ref: paths/hubs/integrations/integration.yml
