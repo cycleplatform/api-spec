@@ -70,6 +70,7 @@ properties:
                   - stack.build.create
                   - stack.build.deploy
                   - stack.build.generate
+                  - stack.prune
                   - sleep
                   - webhook.post
                   - webhook.get

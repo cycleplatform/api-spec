@@ -29,6 +29,7 @@ discriminator:
     stack.build.create: steps/StackBuildCreateStep.yml
     stack.build.generate: steps/StackBuildGenerateStep.yml
     stack.build.deploy: steps/StackBuildDeployStep.yml
+    stack.prune: steps/StackPruneStep.yml
 
     sleep: steps/SleepStep.yml
 
@@ -65,6 +66,7 @@ oneOf:
   - $ref: steps/StackBuildCreateStep.yml
   - $ref: steps/StackBuildGenerateStep.yml
   - $ref: steps/StackBuildDeployStep.yml
+  - $ref: steps/StackPruneStep.yml
 
   # webhook steps
   - $ref: steps/webhooks/WebhookPostStep.yml
