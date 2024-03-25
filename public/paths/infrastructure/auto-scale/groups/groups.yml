@@ -71,12 +71,12 @@ get:
 
 post:
   operationId: createAutoScaleGroup
-  tags:
-    - Infrastructure
-    - AutoScaleGroup
-  parameters: []
   summary: Create Auto-Scale Group
   description: Requires the 'autoscale-groups-manage'
+  tags:
+    - Infrastructure
+    - Auto-Scale
+  parameters: []
   requestBody:
     description: Parameters for creating an Auto-Scale Group
     content:

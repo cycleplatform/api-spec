@@ -1,7 +1,9 @@
 get:
   operationId: "getInfrastructureIPPools"
+  summary: List IP Pools
+  description: Requires the `infrastructure-ips-manage` capability.
   tags:
-    - InfrastructureIPs
+    - Infrastructure
   parameters:
     - name: include
       in: query
@@ -16,30 +18,46 @@ get:
         items:
           type: string
           enum:
-            - creators
             - servers
             - integrations
             - locations
+    - name: filter
+      in: query
+      # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706
+      style: deepObject
+      required: false
+      description: |
+        ## Filter Field 
+        The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
+      schema:
+        type: object
+        properties:
+          available:
+            type: string
+            description: |
+              `filter[available]=true` filter for IPs that are available for use.
+          state:
+            type: string
+            description: |
+              `filter[state]=value1,value2` state filtering will allow you to filter by the IP's current state.
+    - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
-    # TODO can i use sort and filter here?
-  summary: List Pools
-  description: Requires the `infrastructure-ips-manage` capability.
+
   responses:
     200:
-      description: A collection of pool resources.
+      description: A list of IP Pools.
       content:
         application/json:
           schema:
-            title: "IPPoolsReturn"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
                 type: array
                 items:
-                  $ref:
-                    ../../../../components/schemas/infrastructure/ips/Pool.yml
-                    # TODO Pool Includes
+                  $ref: ../../../../components/schemas/infrastructure/ips/Pool.yml
+              includes:
+                $ref: ../../../../components/schemas/infrastructure/ips/PoolIncludes.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
