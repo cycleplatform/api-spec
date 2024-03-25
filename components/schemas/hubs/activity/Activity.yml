@@ -247,6 +247,7 @@ properties:
       - stack.task.delete
       - stack.create
       - stack.task.prune
+      - stack.prune
 
       - stack.build.create
       - stack.build.generate
