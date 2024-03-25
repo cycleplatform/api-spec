@@ -1,10 +1,12 @@
 patch:
-  operationId: "updateDNSRecord"
+  operationId: "updateDNSZoneRecord"
+  summary: Update DNS Zone Record
+  description: Requires the `dns-manage` capability.
   tags:
     - DNS
   parameters:
     - name: zoneId
-      description: The ID of the zone.
+      description: The ID of the Zone.
       in: path
       required: true
       schema:
@@ -15,10 +17,8 @@ patch:
       required: true
       schema:
         type: string
-  summary: Update DNS Record
-  description: Requires the `dns-manage` capability.
   requestBody:
-    description: Parameters for updating a DNS record. The name value cannot be updated and is omitted from the properties.
+    description: Parameters for updating a DNS Zone Record. The name value cannot be updated and is omitted from the properties.
     content:
       application/json:
         schema:
@@ -30,11 +30,10 @@ patch:
               $ref: ../../../../components/schemas/dns/records/RecordTypes.yml
   responses:
     200:
-      description: Returns a DNS record resource.
+      description: Returns a DNS Zone Record.
       content:
         application/json:
           schema:
-            title: "DNSRecordUpdateResponse"
             type: object
             required:
               - data
@@ -44,24 +43,24 @@ patch:
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
 delete:
-  operationId: "removeDNSRecord"
+  operationId: "deleteDNSZoneRecord"
+  summary: Delete DNS Zone Record
+  description: Requires the `dns-manage` capability.
   tags:
     - DNS
   parameters:
     - name: zoneId
-      description: The ID of the zone.
+      description: The ID of the Zone.
       in: path
       required: true
       schema:
         type: string
     - name: recordId
-      description: The ID of the record.
+      description: The ID of the DNS Zone Record.
       in: path
       required: true
       schema:
         type: string
-  summary: Delete Record
-  description: Requires the `dns-manage` capability.
   responses:
     202:
       description: Returns a Job Descriptor.

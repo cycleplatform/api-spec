@@ -1,5 +1,10 @@
 get:
-  operationId: "lookupDnsCertificate"
+  operationId: "lookupTLSCertificate"
+  summary: Lookup TLS Certificate
+  description: |
+    Lookup and retrieve a TLS certificate bundle for a specified domain.
+
+    Requires the `dns-view` capability.
   tags:
     - DNS
   parameters:
@@ -17,17 +22,14 @@ get:
       description: "Whether or not to lookup a *. wildcard certificate that would be applicable for this domain. For example, if you are looking for a certificate for x.test.com, setting this to true will identify a *.test.com certificate that would also be applicable."
       schema:
         type: boolean
-  summary: Fetch Domain TLS Certificate
-  description: Requires the `dns-view` capability.
   responses:
     200:
-      description: Returns a TLS certificate bundle resource.
+      description: Returns a TLS certificate bundle.
       content:
         application/json:
           schema:
-            title: "DNSZoneCertificateLookupResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
