@@ -1,0 +1,34 @@
+title: StackPruneStep
+type: object
+description: Settings for pruning a stack in a pipeline.
+required:
+  - action
+  - details
+properties:
+  identifier:
+    type: string
+    description: An identifier for the step.
+  options:
+    type: object
+    properties:
+      skip:
+        type: boolean
+  action:
+    type: string
+    description: The action that the step takes.
+    enum:
+      - stack.prune
+  details:
+    type: object
+    required:
+      - stack
+    properties:
+      stack:
+        $ref: ../FluidIdentifier.yml
+      criteria:
+        nullable: true
+        type: object
+        properties:
+          expire:
+            nullable: true
+            $ref: ../../Duration.yml
