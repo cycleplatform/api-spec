@@ -15,9 +15,10 @@ get:
       required: true
       schema:
         type: string
-  summary: Get Container Backup
+  summary: Get a specific Container Backup
   description: |
     Gets the specified Container Backup.
+
     Requires the `containers-backups-view` capability.
   responses:
     200:

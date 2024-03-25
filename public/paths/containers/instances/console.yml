@@ -1,8 +1,8 @@
 get:
-  operationId: "getInstanceConsoleAuth"
+  operationId: "getInstanceConsoleStreamAuth"
   tags:
+    - Containers
     - Instances
-    - Console
   parameters:
     - name: containerId
       in: path
@@ -16,7 +16,7 @@ get:
       description: The ID of the instance.
       schema:
         type: string
-  summary: Instance Console Auth
+  summary: Instance Console Stream Authorization
   description: |
     Returns the authorization information necessary to connect to a Container Instance's console.
     Use the returned address with an appended `?token=<token>`, where the token is part of the response as well.

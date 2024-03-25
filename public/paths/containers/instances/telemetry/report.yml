@@ -1,7 +1,8 @@
 get:
-  operationId: "getInstanceResourcesTelemetryReport"
+  operationId: "getInstanceTelemetryReport"
   tags:
-    - Container-Instances
+    - Containers
+    - Instances
   parameters:
     - name: containerId
       description: The ID of the requested container.
@@ -44,7 +45,6 @@ get:
       content:
         application/json:
           schema:
-            title: InstaceTelemetryReportReturn
             type: object
             required:
               - data

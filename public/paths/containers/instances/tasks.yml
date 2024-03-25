@@ -1,5 +1,6 @@
 post:
   tags:
+    - Containers
     - Instances
   operationId: "createContainerInstanceJob"
   parameters:
@@ -15,8 +16,11 @@ post:
       required: true
       schema:
         type: string
-  summary: Create Instance Task
-  description: Used to perform different actions on a given container instance, requries `containers-instance-migrate` capability.
+  summary: Create Container Instance Job
+  description: |
+    Used to perform different actions on a given Container Instance. Can be used to migrate or undo a migration of a Container Instance.
+
+    Requires the `containers-instance-migrate` capability.
   requestBody:
     description: Parameters for creating a new container instance job.
     content:
@@ -32,7 +36,7 @@ post:
             - $ref: ../../../../components/schemas/containers/instances/taskActions/Migrate.yml
   responses:
     202:
-      description: Returns a task descriptor.
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:

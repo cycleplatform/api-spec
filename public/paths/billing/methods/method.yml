@@ -17,7 +17,6 @@ get:
       content:
         application/json:
           schema:
-            title: FetchBillingMethodReturn
             type: object
             required:
               - data
@@ -57,7 +56,6 @@ patch:
       content:
         application/json:
           schema:
-            title: UpdateBillingMethodReturn
             type: object
             required:
               - data

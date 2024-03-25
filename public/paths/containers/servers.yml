@@ -1,9 +1,12 @@
 get:
-  operationId: "ContainersListServers"
+  operationId: "getContainerServers"
   tags:
     - Containers
   summary: List Container Servers
-  description: Requires the `containers-view` capability.
+  description: |
+    Lists all Servers that currently have an Instance of this Container deployed to them.
+
+    Requires the `containers-view` capability.
   parameters:
     - name: containerId
       description: The ID of the requested container.
@@ -30,16 +33,15 @@ get:
     - $ref: ../../../components/parameters/PageParam.yml
   responses:
     200:
-      description: Returns a list of server instance resources.
+      description: Returns an array of Server IDs / number of Instances of this Container deployed to them.
       content:
         application/json:
           schema:
-            title: ContainerInstanceServerListResponse
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
-                $ref: ../../../components/schemas/containers/ServersList.yml
+                $ref: ../../../components/schemas/containers/ServerInstancesSummary.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml

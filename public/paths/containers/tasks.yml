@@ -10,7 +10,16 @@ post:
       schema:
         type: string
   summary: Create Container Job
-  description: Used to perform different actions on a given container. Requires the `containers-state`, `containers-update`, or `containers-volumes-manage` capability (respectively).
+  description: |
+    Used to perform different actions on a given Container. 
+
+    Requires the following capabilities based on the task: 
+    `start`: `containers-manage`
+    `stop`: `containers-manage`
+    `reconfigure`: `containers-manage`
+    `volumes.reconfigure`: `containers-volumes-manage`
+    `reimage`: `containers-manage`
+    `scale`: `containers-manage`
   requestBody:
     description: Parameters for creating a new container job.
     content:

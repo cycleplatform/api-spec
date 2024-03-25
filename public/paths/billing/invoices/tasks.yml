@@ -10,7 +10,10 @@ post:
       schema:
         type: string
   summary: Create Invoice Job
-  description: Requires the `billing-invoices-pay` capability.
+  description: |
+    Creates a new Job on an Invoice. Generally used to make a payment on an Invoice.
+
+    Requires the `billing-invoices-pay` capability.
   requestBody:
     content:
       application/json:

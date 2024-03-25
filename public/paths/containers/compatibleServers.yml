@@ -1,9 +1,12 @@
 get:
-  operationId: "getUsableServers"
+  operationId: "getCompatibleServersForContainer"
   tags:
     - Containers
-  summary: List Usable Servers
-  description: Requires the `containers-view` capability.
+  summary: List Compatible Servers
+  description: |
+    Gets a list of servers that are compatible with the specified Container and its restrictions (tags, etc).
+
+    Requires the `containers-view` capability.
   parameters:
     - name: containerId
       description: The ID of the requested container.
@@ -47,12 +50,12 @@ get:
     - $ref: ../../../components/parameters/PageParam.yml
   responses:
     200:
-      description: Returns a list of server resources.
+      description: Returns a list of Servers.
       content:
         application/json:
           schema:
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

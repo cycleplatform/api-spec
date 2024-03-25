@@ -1,5 +1,5 @@
 get:
-  operationId: "getContainerById"
+  operationId: "getContainer"
   tags:
     - Containers
   parameters:
@@ -24,7 +24,6 @@ get:
           type: string
           enum:
             - instances_count
-            - domain
             - domains
             - ips
     - name: include
@@ -45,15 +44,17 @@ get:
             - stack_builds
             - stacks
             - environments
-  summary: Fetch Container
-  description: Requires the `containers-view` capability.
+  summary: Get Container
+  description: |
+    Fetch a single Container.
+
+    Requires the `containers-view` capability.
   responses:
     200:
-      description: Returns a container resource.
+      description: Returns a Container.
       content:
         application/json:
           schema:
-            title: "ContainerResponse"
             type: object
             required:
               - data
@@ -76,39 +77,40 @@ patch:
       schema:
         type: string
   summary: Update Container
-  description: Updates the specified container, setting the values of the parameters passed.  If any parameters are omitted, they will be left unchanged. Requires the `contianers-update` capability.
+  description: |
+    Updates the specified Container.
+
+    Requires the `containers-manage` capability.
   requestBody:
     description: Parameters for updating a container.
     content:
       application/json:
         schema:
-          description: Parameters for updating a container.
           type: object
           properties:
             name:
               type: string
-              description: The name for the container.
+              description: The name for the Container.
             identifier:
               type: string
               description: The name for the identifier.
             deprecate:
               type: boolean
-              description: Sets whether container should be deprecated.
+              description: Sets whether Container should be deprecated.
             lock:
               type: boolean
-              description: When set to true, prevents this container from being deleted.
+              description: When set to true, prevents this Container from being deleted.
             annotation:
               type: object
-              description: User meta data for the container.
+              description: User meta data for the Container.
               additionalProperties:
                 type: string
   responses:
     200:
-      description: Returns the updated container resource.
+      description: Returns the updated Container.
       content:
         application/json:
           schema:
-            title: "ContainerUpdateResponse"
             type: object
             required:
               - data
@@ -118,21 +120,21 @@ patch:
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
 delete:
-  operationId: "removeContainer"
+  operationId: "deleteContainer"
   tags:
     - Containers
   parameters:
     - name: containerId
-      description: The ID of the requested container.
+      description: The ID of the requested Container.
       in: path
       required: true
       schema:
         type: string
   summary: Delete Container
-  description: Requires the `containers-update` capability.
+  description: Requires the `containers-manage` capability.
   responses:
     202:
-      description: Returns a job descriptor.
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:

@@ -24,7 +24,7 @@ get:
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/FilterParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
-  summary: Get Account Invites
+  summary: List Account Invites
   description: Lists the pending Hub Memberships (also known as Invites) associated with the Account.
   responses:
     200:

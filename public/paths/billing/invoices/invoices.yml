@@ -48,7 +48,8 @@ get:
             $ref: ../../../../components/schemas/DateTime.yml
   summary: List Billing Invoices
   description: |
-    List the Invoices assoicated with the Hub in X-Hub-ID header.
+    List the Invoices assoicated with the Hub.  
+
     Requires the `billing-invoices-view` capability.
   responses:
     200:

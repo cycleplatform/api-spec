@@ -1,6 +1,6 @@
 post:
   tags:
-    - Backups
+    - Containers
   operationId: "createContainerBackupJob"
   parameters:
     - name: containerId
