@@ -9,6 +9,7 @@ get:
   summary: List Billing Methods
   description: |
     Lists the Billing Methods associated with the Hub defined in X-Hub-ID.
+
     Requires the `billing-methods-manage` capability.
   responses:
     200:
