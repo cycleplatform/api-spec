@@ -36,7 +36,8 @@ properties:
   late_fees:
     type: array
     nullable: true
-    "$ref": "./LateFee.yml"
+    items:
+      "$ref": "./LateFee.yml"
   charges:
     type: integer
     description: The amount in charges generated through the licesnse agreement + overages for the billing period covered by the invoice.
