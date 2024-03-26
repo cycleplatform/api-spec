@@ -13,7 +13,7 @@ get:
         type: string
   responses:
     200:
-      description: Returns .
+      description: Returns the VPN service.
       content:
         application/json:
           schema:
