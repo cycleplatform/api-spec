@@ -17,13 +17,14 @@ get:
                 $ref: ../../../../components/schemas/accounts/twofactor/TwoFactorAuthSetup.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 post:
   operationId: "enableTwoFactorAuth"
+  summary: Enable Two-Factor Auth
+  description: Enables two-factor auth for the Account. Retrieve the token from an authenticator app using the secret from `getTwoFactorAuthSetup`.
   tags:
     - Accounts
   parameters: []
-  summary: Enable Two-Factor Auth
-  description: Enables two-factor auth for the Account. Retrieve the token from an authenticator app using the secret from `getTwoFactorAuthSetup`.
   requestBody:
     content:
       application/json:

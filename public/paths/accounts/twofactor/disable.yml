@@ -1,5 +1,5 @@
 post:
-  operationId: "disableAccountTwoFactorAuth"
+  operationId: "disableTwoFactorAuth"
   summary: Disable Two-Factor Auth
   description: Disables two-factor auth for the account.
   tags:

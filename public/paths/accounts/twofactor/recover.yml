@@ -1,5 +1,5 @@
 post:
-  operationId: "recoverAccountTwoFactorAuth"
+  operationId: "recoverTwoFactorAuth"
   summary: Recover Two-Factor Auth
   description: Returns a new two-factor auth setup to reset the Account's two-factor auth.
   tags:
