@@ -1,31 +1,32 @@
 title: Account
 type: object
-description: "Represents information about the currently logged-in Account."
+description: An object representing information about the currently logged-in user.
 required:
   - id
   - name
   - email
-  - allow_support_login
+  - allow_support_logins
+  - state
   - events
 properties:
   id:
-    $ref: "../ID.yml"
+    "$ref": "../ID.yml"
   name:
     type: object
-    description: "Contains the first and last name associated with the Account."
+    description: The first and last name associated with the Account.
     required:
       - first
       - last
     properties:
       first:
         type: string
-        description: "The first name of the Account owner."
+        description: The first name of the Account owner.
       last:
         type: string
-        description: "The last name of the Account owner."
+        description: The last name of the Account owner.
   email:
     type: object
-    description: "Provides information about the email address associated with the Account."
+    description: Information about the email address associated with the Account.
     required:
       - address
       - verified
@@ -33,29 +34,47 @@ properties:
     properties:
       address:
         type: string
-        description: "The email address associated with the Account."
+        description: The email address.
       verified:
         type: boolean
-        description: "Indicates whether the email has been verified. If true, the Account is considered active."
+        description: If true, the email has been verified and the Account is active.
       added:
-        description: "The date when the email was added to the Account."
-        $ref: "../DateTime.yml"
+        description: The date the email was added to the Account
+        "$ref": "../DateTime.yml"
   two_factor_auth:
     type: object
     nullable: true
-    description: "Contains verification information for two-factor authentication, if it is available for the Account."
+    description: Two factor auth verification information.
+    required:
+      - verified
     properties:
       verified:
         type: boolean
-        description: "Indicates whether the Account has been verified with two-factor authentication."
+        description: A boolean representing if the Account has verified with two-factor authentication.
   allow_support_login:
+    description: Indicates whether or not Cycle employees have authorization to log in to this Account in a support capacity.
     type: boolean
-    description: "Specifies whether Cycle employees are authorized to log into this Account for support purposes."
+  state:
+    "$ref": "./AccountState.yml"
   events:
+    title: AccountEvents
     type: object
+    description: A collection of timestamps for each event in the Account's lifetime.
     required:
+      - created
+      - updated
+      - deleted
       - last_login
     properties:
+      created:
+        description: The timestamp of when the image was created.
+        "$ref": "../DateTime.yml"
+      updated:
+        description: The timestamp of when the image was updated.
+        "$ref": "../DateTime.yml"
+      deleted:
+        description: The timestamp of when the image was deleted.
+        "$ref": "../DateTime.yml"
       last_login:
-        description: "The timestamp of the Account's last access."
-        $ref: "../DateTime.yml"
+        description: The timestamp of when the Account was last accessed.
+        "$ref": "../DateTime.yml"
