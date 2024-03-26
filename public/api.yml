@@ -321,9 +321,9 @@ paths:
   "/v1/images/{imageId}":
     "$ref": "./paths/images/image.yml"
   "/v1/images/{imageId}/build-log":
-    "$ref": "./paths/images/build-log.yml"
+    "$ref": "./paths/images/buildLog.yml"
   "/v1/images/tasks":
-    "$ref": "./paths/images/collection-task.yml"
+    "$ref": paths/images/bulkTasks.yml
   "/v1/images/{imageId}/tasks":
     "$ref": "./paths/images/tasks.yml"
   ## Image Sources
