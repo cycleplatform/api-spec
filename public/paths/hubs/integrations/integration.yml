@@ -1,5 +1,5 @@
 get:
-  operationId: getHubIntegration
+  operationId: getIntegration
   summary: Get Integration
   description: |
     Retrieves details of a single Integration associated with the current hub.
