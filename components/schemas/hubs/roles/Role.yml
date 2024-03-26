@@ -22,7 +22,7 @@ properties:
     type: boolean
   default:
     nullable: true
-    type: string
+    $ref: ../../Identifier.yml
   rank:
     description: An integer between 0 and 10 that indicates the Role hierarchy. An account can only edit a Role that is less than their rank. The 'owner' Role is rank 10.
     type: integer
