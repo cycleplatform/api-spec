@@ -1,13 +1,13 @@
 get:
   operationId: "getBillingTiers"
-  tags:
-    - Billing
   summary: List Billing Tiers
   description: Returns list of availiable Billing Tiers.
+  tags:
+    - Billing
   parameters: []
   responses:
     200:
-      description: Returns a collection of tier resources.
+      description: Returns a list of available Billing Tiers.
       content:
         application/json:
           schema:

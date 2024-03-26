@@ -1,5 +1,10 @@
 get:
   operationId: "getContainerBackup"
+  summary: Get a specific Container Backup
+  description: |
+    Gets the specified Container Backup.
+
+    Requires the `containers-backups-view` capability.
   tags:
     - Containers
   parameters:
@@ -15,11 +20,6 @@ get:
       required: true
       schema:
         type: string
-  summary: Get a specific Container Backup
-  description: |
-    Gets the specified Container Backup.
-
-    Requires the `containers-backups-view` capability.
   responses:
     200:
       description: Returns a Container Backup.
@@ -34,8 +34,11 @@ get:
                 $ref: ../../../../components/schemas/containers/backups/ContainerBackup.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 delete:
   operationId: "deleteContainerBackup"
+  summary: Delete Container Backup
+  description: Requires the `containers-backups-manage` capability.
   tags:
     - Containers
   parameters:
@@ -51,8 +54,6 @@ delete:
       required: true
       schema:
         type: string
-  summary: Delete Container Backup
-  description: Requires the `containers-backups-manage` capability.
   responses:
     202:
       description: Returns a Job Descriptor.

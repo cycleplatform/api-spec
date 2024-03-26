@@ -26,14 +26,15 @@ get:
                   $ref: ../../../../components/schemas/hubs/ApiKey.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 post:
   operationId: "createApiKey"
+  summary: Create API Key
+  description: Requires the `api-keys-manage` capability.
   tags:
     - Hubs
     - API Keys
   parameters: []
-  summary: Create API Key
-  description: Requires the `api-keys-manage` capability.
   requestBody:
     description: Parameters for creating an API Key.
     content:

@@ -4,6 +4,7 @@ get:
   description: Requires the `scoped-variables-view` capability.
   tags:
     - Environments
+    - Scoped Variables
   parameters:
     - name: environmentId
       description: The ID of the requested Environment.
@@ -50,12 +51,14 @@ get:
                   $ref: ../../../components/schemas/scoped-variables/ScopedVariable.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
+
 post:
   operationId: "createScopedVariable"
   summary: Create Scoped Variable
   description: Requires the `scoped-variables-manage` capability.
   tags:
     - Environments
+    - Scoped Variables
   parameters:
     - name: environmentId
       description: The ID of the requested Environment.

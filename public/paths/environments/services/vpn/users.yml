@@ -28,6 +28,7 @@ get:
                   $ref: ../../../../../components/schemas/environments/returns/VPNUsers.yml
     default:
       $ref: ../../../../../components/responses/errors/DefaultError.yml
+
 post:
   operationId: "createVPNUser"
   summary: Create VPN User

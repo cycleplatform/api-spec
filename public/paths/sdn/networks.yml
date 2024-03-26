@@ -60,6 +60,7 @@ get:
                 $ref: ../../../components/schemas/sdn/networks/NetworkIncludes.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
+
 post:
   operationId: "createNetwork"
   summary: Create Network

@@ -1,5 +1,7 @@
 get:
   operationId: "getBillingOrder"
+  summary: Get Billing Order
+  description: Requires the `billing-services-manage` capability.
   tags:
     - Billing
   parameters:
@@ -19,15 +21,12 @@ get:
           enum:
             - due
     - $ref: includes/OrderIncludeParam.yml
-  summary: Get Billing Order
-  description: Requires the `billing-services-manage` capability.
   responses:
     200:
       description: Returns a Billing Order
       content:
         application/json:
           schema:
-            title: "FetchBillingOrderResponse"
             type: object
             required:
               - data
@@ -38,8 +37,11 @@ get:
                 $ref: includes/BillingOrderIncludes.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 patch:
   operationId: "updateBillingOrder"
+  summary: Update Billing Order
+  description: Requires the `billing-services-manage` capability.
   tags:
     - Billing
   parameters:
@@ -59,8 +61,6 @@ patch:
           enum:
             - due
     - $ref: includes/OrderIncludeParam.yml
-  summary: Update Billing Order
-  description: Requires the `billing-services-manage` capability.
   requestBody:
     content:
       application/json:

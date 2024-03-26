@@ -63,6 +63,7 @@ get:
                 $ref: ../../../../components/schemas/dns/records/RecordIncludes.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 post:
   operationId: "createDNSZoneRecord"
   summary: Create DNS Zone Record

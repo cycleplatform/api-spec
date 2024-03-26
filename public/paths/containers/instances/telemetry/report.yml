@@ -1,5 +1,10 @@
 get:
   operationId: "getInstanceTelemetryReport"
+  summary: Get Instance Telemetry Report
+  description: |
+    Retrieves a point-in-time report of an Instance's resource usage (CPU, RAM, Network, Storage, etc).
+
+    Requires the `containers-view` capability.
   tags:
     - Containers
     - Instances
@@ -34,11 +39,6 @@ get:
           range-end:
             description: The end date from when to pull instance telemetry data
             $ref: ../../../../../components/schemas/DateTime.yml
-  summary: Get Instance Telemetry Report
-  description: |
-    Retrieves a point-in-time report of an Instance's resource usage (CPU, RAM, Network, Storage, etc).
-
-    Requires the `containers-view` capability.
   responses:
     200:
       description: Returns an Instance telemetry report.

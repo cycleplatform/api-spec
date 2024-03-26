@@ -1,15 +1,15 @@
 get:
   operationId: "getAccountLogins"
+  summary: Get Account Logins
+  description: Lists logins associated with a given account.
   security:
     - bearerAuth: []
   tags:
     - Accounts
-  summary: Get Account Logins
   parameters:
     - $ref: ../../../components/parameters/SortParam.yml
     - $ref: ../../../components/parameters/FilterParam.yml
     - $ref: ../../../components/parameters/PageParam.yml
-  description: Lists logins associated with a given account.
   responses:
     200:
       description: Returns a list of login records associated with this Account.

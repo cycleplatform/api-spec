@@ -1,5 +1,7 @@
 get:
-  operationId: "getContainerInstance"
+  operationId: "getInstance"
+  summary: Get Instance
+  description: Requires the `containers-view` capability.
   tags:
     - Containers
     - Instances
@@ -35,8 +37,6 @@ get:
             - integrations
             - containers
             - environments
-  summary: Get Container Instance
-  description: Requires the `containers-view` capability.
   responses:
     200:
       description: Returns a Container Instance.
@@ -53,8 +53,11 @@ get:
                 $ref: ../../../../components/schemas/containers/instances/InstanceIncludes.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 delete:
-  operationId: "deleteContainerInstance"
+  operationId: "deleteInstance"
+  summary: Delete Container Instance
+  description: Requires the `containers-update` capability.
   tags:
     - Containers
     - Instances
@@ -71,11 +74,9 @@ delete:
       required: true
       schema:
         type: string
-  summary: Delete Container Instance
-  description: Requires the `containers-update` capability.
   responses:
-    200:
-      description: Returns a Job Descriptor
+    202:
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:

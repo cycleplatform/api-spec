@@ -9,7 +9,7 @@ post:
     - Images
   parameters: []
   requestBody:
-    description: Parameters for creating a new Images job.
+    description: Parameters for creating a new Images Job.
     content:
       application/json:
         schema:
@@ -20,12 +20,12 @@ post:
           properties:
             action:
               type: string
-              description: The action is the job type to create.
+              description: The action is the Job type to create.
               enum:
                 - prune
             contents:
               type: object
-              description: Additional contents needed by the platform to create the job.
+              description: Additional contents needed by the platform to create the Job.
               required:
                 - source_ids
               properties:

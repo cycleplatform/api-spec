@@ -1,8 +1,12 @@
----
 post:
+  operationId: "createEnvironmentJob"
+  summary: Create Environment Job
+  description: |
+    Create a job for an Environment, such as 'start' or 'stop'. 
+
+    Requires the `environments-manage` capability.
   tags:
     - Environments
-  operationId: "createEnvironmentJob"
   parameters:
     - name: environmentId
       description: The ID of the requested Environment.
@@ -10,11 +14,6 @@ post:
       required: true
       schema:
         type: string
-  summary: Create Environment Job
-  description: |
-    Create a job for an Environment, such as 'start' or 'stop'. 
-
-    Requires the `environments-manage` capability.
   requestBody:
     description: Parameters for creating a new Environment job.
     content:

@@ -1,5 +1,7 @@
 get:
   operationId: "getContainerBackups"
+  summary: List Container Backups
+  description: Requires the `containers-backups-view` capability.
   tags:
     - Containers
   parameters:
@@ -11,8 +13,6 @@ get:
         type: string
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
-  summary: List Container Backups
-  description: Requires the `containers-backups-view` capability.
   responses:
     200:
       description: Returns a list of container backup resources.

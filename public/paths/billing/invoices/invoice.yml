@@ -1,5 +1,7 @@
 get:
   operationId: "getInvoice"
+  summary: Get Billing Invoice
+  description: Requires the `billing-invoices-view` capability.
   tags:
     - Billing
   parameters:
@@ -24,17 +26,14 @@ get:
           type: string
           enum:
             - due
-  summary: Fetch Billing Invoice
-  description: Requires the `billing-invoices-view` capability.
   responses:
     200:
       description: Returns an invoice resource.
       content:
         application/json:
           schema:
-            title: FetchBillingInvoiceReturn
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

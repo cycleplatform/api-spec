@@ -1,12 +1,14 @@
 get:
   operationId: "getContainerServers"
-  tags:
-    - Containers
   summary: List Container Servers
   description: |
     Lists all Servers that currently have an Instance of this Container deployed to them.
 
     Requires the `containers-view` capability.
+  tags:
+    - Containers
+    - Infrastructure
+    - Servers
   parameters:
     - name: containerId
       description: The ID of the requested container.

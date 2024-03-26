@@ -1,5 +1,10 @@
 get:
   operationId: "getCredits"
+  summary: List Billing Credits
+  description: |
+    Lists the Billing Credits associated with the current Hub.
+
+    Requires the `billing-credits-view` capability.
   tags:
     - Billing
   parameters:
@@ -24,10 +29,6 @@ get:
             type: string
             description: Use a text-based search to filter the credits.
     - $ref: ../../../../components/parameters/PageParam.yml
-  summary: List Billing Credits
-  description: |
-    Lists the Billing Credits associated with the current Hub.
-    Requires the `billing-credits-view` capability.
   responses:
     200:
       description: Returns a collection of credit resources.

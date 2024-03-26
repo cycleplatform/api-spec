@@ -1,5 +1,7 @@
 get:
   operationId: "getPoolIPs"
+  summary: List Pool IPs
+  description: Requires the `infrastructure-ips-manage` capability.
   tags:
     - Infrastructure
   parameters:
@@ -9,8 +11,6 @@ get:
       required: true
       schema:
         type: string
-  summary: List Pool IPs
-  description: Requires the `infrastructure-ips-manage` capability.
   responses:
     200:
       description: A list of IPs.

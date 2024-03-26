@@ -1,13 +1,13 @@
 get:
   operationId: "getHubUsage"
+  summary: Get Hub Usage
+  description: Requires the `hubs-view` capability.
   tags:
     - Hubs
   security:
     - bearerAuth: []
   parameters:
     - $ref: "../../../components/parameters/FilterParam.yml"
-  summary: Fetch Hub
-  description: Requires the `hubs-view` capability.
   responses:
     200:
       description: Returns usage detail points of the Hub over a range of time.

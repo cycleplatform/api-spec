@@ -1,5 +1,11 @@
 get:
-  operationId: "generateContainerInstanceSSHCredentials"
+  operationId: "generateInstanceSSHCredentials"
+  summary: Generate Instance SSH Credentials
+  description: |
+    Generates credentials for connecting to an Instance via SSH. The generated endpoint/secret can be used to log in via SSH
+    into the Instance without exposing ports on the container or host.
+
+    Requires the `containers-ssh` capability.
   tags:
     - Containers
     - Instances
@@ -16,12 +22,6 @@ get:
       required: true
       schema:
         type: string
-  summary: Generate Instance SSH Credentials
-  description: |
-    Generates credentials for connecting to an Instance via SSH. The generated endpoint/secret can be used to log in via SSH
-    into the Instance without exposing ports on the container or host.
-
-    Requires the `containers-ssh` capability.
   responses:
     200:
       description: Returns an SSH connection response.
@@ -36,8 +36,9 @@ get:
                 $ref: ../../../../components/schemas/containers/instances/returns/SSHResponse.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 delete:
-  operationId: "expireContainerInstanceSSHCredentials"
+  operationId: "expireInstanceSSHCredentials"
   tags:
     - Containers
     - Instances

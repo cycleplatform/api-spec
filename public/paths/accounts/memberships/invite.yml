@@ -1,5 +1,7 @@
 patch:
   operationId: "updateAccountInvite"
+  summary: Accept or reject an Invite to join a Hub
+  description: Accept/reject a pending Invite to join a Hub.
   security:
     - bearerAuth: []
   tags:
@@ -12,8 +14,6 @@ patch:
       schema:
         type: string
     - $ref: includes/MembershipInlcudeParam.yml
-  summary: Accept or reject an Invite to join a Hub
-  description: Accept/reject a pending Invite to join a Hub.
   requestBody:
     content:
       application/json:

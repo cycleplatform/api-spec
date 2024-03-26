@@ -1,10 +1,15 @@
 get:
   operationId: "getContainer"
+  summary: Get Container
+  description: |
+    Gets a Container.
+
+    Requires the `containers-view` capability.
   tags:
     - Containers
   parameters:
     - name: containerId
-      description: The ID of the requested container.
+      description: The ID of the requested Container.
       in: path
       required: true
       schema:
@@ -44,11 +49,6 @@ get:
             - stack_builds
             - stacks
             - environments
-  summary: Get Container
-  description: |
-    Fetch a single Container.
-
-    Requires the `containers-view` capability.
   responses:
     200:
       description: Returns a Container.
@@ -65,24 +65,25 @@ get:
                 $ref: ../../../components/schemas/containers/ContainerIncludes.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
+
 patch:
   operationId: "updateContainer"
-  tags:
-    - Containers
-  parameters:
-    - name: containerId
-      description: The ID of the container.
-      in: path
-      required: true
-      schema:
-        type: string
   summary: Update Container
   description: |
     Updates the specified Container.
 
     Requires the `containers-manage` capability.
+  tags:
+    - Containers
+  parameters:
+    - name: containerId
+      description: The ID of the Container.
+      in: path
+      required: true
+      schema:
+        type: string
   requestBody:
-    description: Parameters for updating a container.
+    description: Parameters for updating a Container.
     content:
       application/json:
         schema:
@@ -119,8 +120,11 @@ patch:
                 $ref: ../../../components/schemas/containers/Container.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
+
 delete:
   operationId: "deleteContainer"
+  summary: Delete Container
+  description: Requires the `containers-manage` capability.
   tags:
     - Containers
   parameters:
@@ -130,8 +134,6 @@ delete:
       required: true
       schema:
         type: string
-  summary: Delete Container
-  description: Requires the `containers-manage` capability.
   responses:
     202:
       description: Returns a Job Descriptor.

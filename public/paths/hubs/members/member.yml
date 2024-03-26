@@ -91,6 +91,8 @@ patch:
 
 delete:
   operationId: "deleteHubMember"
+  summary: Delete Hub Member
+  description: Requires the `hubs-members-manage` capability.
   tags:
     - Hubs
   security:
@@ -102,8 +104,6 @@ delete:
       required: true
       schema:
         type: string
-  summary: Remove Hub Member
-  description: Requires the `hubs-members-manage` capability.
   responses:
     202:
       description: Returns a Job Descriptor.

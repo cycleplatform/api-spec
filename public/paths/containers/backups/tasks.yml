@@ -2,6 +2,12 @@ post:
   tags:
     - Containers
   operationId: "createContainerBackupJob"
+  summary: Create Container Backup Job
+  description: |
+    Creates a Container Backup Job.
+    Can be used to restore a Container Backup for a given Container Instance. 
+
+    Requires the `containers-backups-manage` capability.
   parameters:
     - name: containerId
       description: The ID of the requested container.
@@ -15,12 +21,6 @@ post:
       required: true
       schema:
         type: string
-  summary: Create Container Backup Job
-  description: |
-    Creates a Container Backup Job.
-    Can be used to restore a Container Backup for a given Container Instance. 
-
-    Requires the `containers-backups-manage` capability.
   requestBody:
     content:
       application/json:

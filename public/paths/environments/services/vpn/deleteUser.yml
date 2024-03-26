@@ -1,6 +1,6 @@
 delete:
   operationId: "deleteVPNUser"
-  summary: Delete VPN user
+  summary: Delete VPN User
   description: Requires the `environments-vpn-manage` capability.
   tags:
     - Environments
@@ -19,7 +19,7 @@ delete:
         type: string
   responses:
     200:
-      description: Returns a null data object.
+      description: Returns no data.
       content:
         application/json:
           schema:
@@ -29,7 +29,7 @@ delete:
               - data
             properties:
               data:
-                # TODO - this should be null
+                # TODO - this should be null. can't do until upgrade to 3.1.0
                 type: string
     default:
       $ref: ../../../../../components/responses/errors/DefaultError.yml

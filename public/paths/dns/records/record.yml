@@ -42,6 +42,7 @@ patch:
                 $ref: ../../../../components/schemas/dns/records/Record.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 delete:
   operationId: "deleteDNSZoneRecord"
   summary: Delete DNS Zone Record

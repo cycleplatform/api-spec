@@ -1,9 +1,10 @@
 get:
   operationId: getAvailableIntegrations
-  tags:
-    - Integrations
   summary: Get Available Integrations
   description: Returns a map of available integrations categorized by their type.
+  tags:
+    - Hubs
+    - Integrations
   responses:
     200:
       description: A map of categories to lists of integration definitions.

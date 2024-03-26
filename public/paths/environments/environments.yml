@@ -1,4 +1,3 @@
----
 get:
   operationId: "getEnvironments"
   summary: List Environments
@@ -92,13 +91,14 @@ get:
                     $ref: ../../../components/schemas/includes/CreatorInclude.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
+
 post:
   operationId: "createEnvironment"
+  summary: Create Environment
+  description: Requires the `environments-create` capability.
   tags:
     - Environments
   parameters: []
-  summary: Create Environment
-  description: Requires the `environments-create` capability.
   requestBody:
     content:
       application/json:

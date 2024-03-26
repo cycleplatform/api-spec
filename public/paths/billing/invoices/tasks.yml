@@ -1,5 +1,10 @@
 post:
   operationId: "createInvoiceJob"
+  summary: Create Invoice Job
+  description: |
+    Creates a new Job on an Invoice. Generally used to make a payment on an Invoice.
+
+    Requires the `billing-invoices-pay` capability.
   tags:
     - Billing
   parameters:
@@ -9,11 +14,6 @@ post:
       required: true
       schema:
         type: string
-  summary: Create Invoice Job
-  description: |
-    Creates a new Job on an Invoice. Generally used to make a payment on an Invoice.
-
-    Requires the `billing-invoices-pay` capability.
   requestBody:
     content:
       application/json:

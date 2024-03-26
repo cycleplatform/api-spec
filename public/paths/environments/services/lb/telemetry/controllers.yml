@@ -1,5 +1,11 @@
 get:
   operationId: "getLoadBalancerTelemetryLatestControllers"
+  summary: Get Latest Load Balancer Controller Telemetry
+  description: |
+    Gets the controller information for the specified load balancer. Returns a similar struct to the 'latest' load balancer telemetry call, but does NOT return snapshots, just the controller information.
+
+    ## Permissions
+    Requires the `environments-view` capability. Also requires the user to have access specifically to the requested Environment.
   tags:
     - Environments
   parameters:
@@ -25,13 +31,6 @@ get:
             - instances
             - servers
             - containers
-  summary: Gets the latest relevant controllers where traffic data is present.
-  description: |
-    ## Permissions
-    Requires the `environments-view` capability. Also requires the user to have access specifically to the requested environment.
-
-    ## Details
-    Gets the controller information for the specified load balancer. Returns a similar struct to the 'latest' load balancer telemetry call, but does NOT return snapshots, just the controller information.
   responses:
     200:
       description: Returns information about the latest controllers that produced telemetry.

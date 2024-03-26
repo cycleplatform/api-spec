@@ -1,5 +1,7 @@
 get:
-  operationId: "getContainerInstances"
+  operationId: "getInstances"
+  summary: List Instances
+  description: Requires the `containers-view` capability.
   tags:
     - Containers
     - Instances
@@ -62,8 +64,6 @@ get:
             $ref: ../../../../components/schemas/DateTime.yml
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
-  summary: List Container Instances
-  description: Requires the `containers-view` capability.
   responses:
     200:
       description: Returns a list of Container Instances.
@@ -82,8 +82,14 @@ get:
                 $ref: ../../../../components/schemas/containers/instances/InstanceIncludes.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 post:
   operationId: "createContainerInstances"
+  summary: Create Container Instances
+  description: |
+    Manually create Instances of a Container.
+
+    Requires the `containers-update` capability.
   tags:
     - Containers
     - Instances
@@ -94,11 +100,6 @@ post:
       required: true
       schema:
         type: string
-  summary: Create Container Instances
-  description: |
-    Manually create Instances of a Container.
-
-    Requires the `containers-update` capability.
   requestBody:
     content:
       application/json:
@@ -131,8 +132,14 @@ post:
                 $ref: ../../../../components/schemas/jobs/JobDescriptor.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 delete:
   operationId: "deleteContainerInstances"
+  summary: Delete Container Instance(s)
+  description: |
+    Manually delete Instances of a Container.
+
+    Requires the `containers-update` capability.
   tags:
     - Instances
   parameters:
@@ -142,13 +149,8 @@ delete:
       required: true
       schema:
         type: string
-  summary: Delete Container Instance(s)
-  description: |
-    Manually delete Instances of a Container.
-
-    Requires the `containers-update` capability.
   responses:
-    200:
+    202:
       description: Returns a Job Descriptor.
       content:
         application/json:

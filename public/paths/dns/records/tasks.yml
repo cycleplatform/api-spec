@@ -1,5 +1,10 @@
 post:
   operationId: "createDNSZoneRecordJob"
+  summary: Create a DNS Zone Record Job
+  description: |
+    Used to perform different actions on a given DNS Zone record. 
+
+    Requires the `dns-manage` capability.
   tags:
     - DNS
   parameters:
@@ -15,11 +20,6 @@ post:
       required: true
       schema:
         type: string
-  summary: Create a DNS Zone Record Job
-  description: |
-    Used to perform different actions on a given DNS Zone record. 
-
-    Requires the `dns-manage` capability.
   requestBody:
     description: Parameters for creating a new DNS Zone Record Job.
     content:

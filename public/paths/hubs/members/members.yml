@@ -48,7 +48,6 @@ get:
       content:
         application/json:
           schema:
-            title: "ListHubMembersReturn"
             type: object
             required:
               - data

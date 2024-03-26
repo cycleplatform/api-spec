@@ -1,9 +1,9 @@
 get:
   operationId: "getContainers"
-  tags:
-    - Containers
   summary: List Containers
   description: Requires the `containers-view` capability.
+  tags:
+    - Containers
   parameters:
     - name: meta
       in: query
@@ -122,13 +122,14 @@ get:
                 $ref: ../../../components/schemas/containers/ContainerIncludes.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
+
 post:
   operationId: "createContainer"
+  summary: Create Container
+  description: Requires the `containers-deploy` capability.
   tags:
     - Containers
   parameters: []
-  summary: Create Container
-  description: Requires the `containers-deploy` capability.
   requestBody:
     description: Parameters for creating a new Container.
     content:

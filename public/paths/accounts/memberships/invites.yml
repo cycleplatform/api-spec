@@ -1,5 +1,7 @@
 get:
   operationId: "getAccountInvites"
+  summary: List Account Invites
+  description: Lists the pending Hub Memberships (also known as Invites) associated with the Account.
   security:
     - bearerAuth: []
   tags:
@@ -24,8 +26,6 @@ get:
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/FilterParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
-  summary: List Account Invites
-  description: Lists the pending Hub Memberships (also known as Invites) associated with the Account.
   responses:
     200:
       description: Returns a list of pending Hub Memberships.

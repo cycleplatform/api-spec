@@ -1,10 +1,10 @@
 post:
   operationId: "disableAccountTwoFactorAuth"
+  summary: Disable Two-Factor Auth
+  description: Disables two-factor auth for the account.
   tags:
     - Accounts
   parameters: []
-  summary: Disable Two-Factor Auth
-  description: Disables two-factor auth for the account.
   requestBody:
     content:
       application/json:

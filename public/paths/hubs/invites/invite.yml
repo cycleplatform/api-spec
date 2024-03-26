@@ -1,6 +1,6 @@
 delete:
   operationId: "deleteHubInvite"
-  summary: Remove Hub Invite
+  summary: Delete Hub Invite
   description: Requires the `hub-invites-manage` capability.
   tags:
     - Hubs

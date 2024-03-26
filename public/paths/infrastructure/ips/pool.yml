@@ -46,6 +46,8 @@ get:
 
 delete:
   operationId: "deleteIPPool"
+  summary: Delete IP Pool
+  description: Requires the `infrastructure-ips-manage` capability.
   tags:
     - Infrastructure
   parameters:
@@ -55,8 +57,6 @@ delete:
       required: true
       schema:
         type: string
-  summary: Delete IP Pool
-  description: Requires the `infrastructure-ips-manage` capability.
   responses:
     202:
       description: Returns a Job Descriptor.

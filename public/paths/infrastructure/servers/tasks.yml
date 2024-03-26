@@ -1,8 +1,10 @@
 post:
+  operationId: "createServerJob"
+  summary: Create Server Job
+  description: Used to perform different actions on a given Server. Requires the `servers-manage` capability.
   tags:
     - Infrastructure
     - Servers
-  operationId: "createServerJob"
   parameters:
     - name: serverId
       description: The ID for the given Server.
@@ -10,8 +12,6 @@ post:
       required: true
       schema:
         type: string
-  summary: Create Server Job
-  description: Used to perform different actions on a given Server. Requires the `servers-manage` capability.
   requestBody:
     description: Parameters for creating the new Server Job.
     content:

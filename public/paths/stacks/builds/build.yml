@@ -35,6 +35,8 @@ get:
 
 delete:
   operationId: "deleteStackBuild"
+  summary: Delete Stack Build
+  description: Requires the `stacks-manage` capability.
   tags:
     - Stacks
     - Stack Builds
@@ -51,8 +53,6 @@ delete:
       description: The ID of the Build.
       schema:
         type: string
-  summary: Remove Stack Build
-  description: Requires the `stacks-manage` capability.
   responses:
     200:
       description: Returns a Job Descriptor.

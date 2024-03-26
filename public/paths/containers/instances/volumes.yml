@@ -1,5 +1,7 @@
 get:
-  operationId: "getContainerInstanceVolumes"
+  operationId: "getInstanceVolumes"
+  summary: List Instance Volumes
+  description: Requires the `containers-view` capability.
   tags:
     - Containers
     - Instances
@@ -18,8 +20,6 @@ get:
         type: string
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
-  summary: List Container Instance Volumes
-  description: Requires the `containers-view` capability.
   responses:
     200:
       description: Returns a list of Container Instance Volumes.

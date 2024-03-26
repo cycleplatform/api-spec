@@ -78,13 +78,14 @@ get:
                 $ref: ../../../../components/schemas/images/sources/SourceIncludes.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 post:
   operationId: "createImageSource"
+  summary: Create Image Source
+  description: Requires the `images-sources-manage` capability.
   tags:
     - Image Sources
   parameters: []
-  summary: Create Image Source
-  description: Requires the `images-sources-manage` capability.
   requestBody:
     description: Parameters for creating an Image Source.
     content:

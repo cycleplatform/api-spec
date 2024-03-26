@@ -1,8 +1,13 @@
 post:
+  operationId: "createInstanceJob"
+  summary: Create Instance Job
+  description: |
+    Used to perform different actions on a given Container Instance. Can be used to migrate or undo a migration of a Container Instance.
+
+    Requires the `containers-instance-migrate` capability.
   tags:
     - Containers
     - Instances
-  operationId: "createContainerInstanceJob"
   parameters:
     - name: containerId
       description: The ID of the requested container.
@@ -16,11 +21,6 @@ post:
       required: true
       schema:
         type: string
-  summary: Create Container Instance Job
-  description: |
-    Used to perform different actions on a given Container Instance. Can be used to migrate or undo a migration of a Container Instance.
-
-    Requires the `containers-instance-migrate` capability.
   requestBody:
     description: Parameters for creating a new container instance job.
     content:

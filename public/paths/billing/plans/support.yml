@@ -1,12 +1,12 @@
 get:
   operationId: "getBillingSupportPlans"
+  summary: List Support Plans
   tags:
     - Billing
   parameters:
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/FilterParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
-  summary: List Support Plans
   deprecated: true
   responses:
     200:

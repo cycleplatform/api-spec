@@ -1,16 +1,19 @@
 post:
-  tags:
-    - Orders
   operationId: "createBillingOrderJob"
+  summary: Create Billing Order Job
+  description: |
+    Used to confirm a Billing Order.
+
+    Requires the `billing-services-manage` capability.
+  tags:
+    - Billing
   parameters:
     - name: orderId
-      description: The ID of the requested order
+      description: The ID of the requested Order
       in: path
       required: true
       schema:
         type: string
-  summary: Create Billing Order Job
-  description: Used to confirm a Billing Order
   requestBody:
     content:
       application/json:

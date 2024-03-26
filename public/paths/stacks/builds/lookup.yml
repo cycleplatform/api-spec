@@ -25,6 +25,6 @@ get:
               - data
             properties:
               data:
-                $ref: ../../../components/schemas/stacks/builds/StackBuild.yml
+                $ref: ../../../../components/schemas/stacks/builds/StackBuild.yml
     default:
-      $ref: ../../../components/responses/errors/DefaultError.yml
+      $ref: ../../../../components/responses/errors/DefaultError.yml

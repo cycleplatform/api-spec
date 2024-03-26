@@ -1,5 +1,11 @@
 get:
   operationId: "getLoadBalancerTelemetryReport"
+  summary: Get load balancer v1 telemetry report
+  description: |
+    Fetches a telemetry report for Cycle's native load balancer for the specified range.
+
+    ## Permissions
+    Requires the `environments-view` capability. Also requires the user to have access specifically to the requested Environment.
   tags:
     - Environments
   parameters:
@@ -26,13 +32,6 @@ get:
           range-end:
             description: The end date from when to pull load balancer telemetry data
             $ref: ../../../../../../components/schemas/DateTime.yml
-  summary: Fetch load balancer v1 telemetry report
-  description: |
-    ## Permissions
-    Requires the `environments-view` capability. Also requires the user to have access specifically to the requested environment.
-
-    ## Details
-    Fetches a telemetry report for Cycle's native load balancer for the specified range.
   responses:
     200:
       description: Returns the load balancer telemetry report

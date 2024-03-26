@@ -88,12 +88,12 @@ get:
 
 post:
   operationId: "createServer"
+  summary: Create Server
+  description: Requires the `servers-provision` capability.
   tags:
     - Infrastructure
     - Servers
   parameters: []
-  summary: Create Server
-  description: Requires the `servers-provision` capability.
   requestBody:
     description: Parameters for creating a Server.
     content:

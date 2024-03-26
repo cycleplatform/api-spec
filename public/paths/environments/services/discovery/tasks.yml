@@ -1,6 +1,6 @@
 post:
   operationId: "createDiscoveryServiceJob"
-  summary: Reconfigure Discovery
+  summary: Create Discovery Service Job
   description: Creates a task that will update the discovery service's configuration.
   tags:
     - Environments

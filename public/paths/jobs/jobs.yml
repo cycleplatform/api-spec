@@ -32,10 +32,10 @@ get:
         type: object
         properties:
           range-start:
-            description: The start date from when to fetch jobs
+            description: The start date from when to fetch Jobs
             $ref: ../../../components/schemas/DateTime.yml
           range-end:
-            description: The end date from when to fetch jobs
+            description: The end date from when to fetch Jobs
             $ref: ../../../components/schemas/DateTime.yml
           search:
             type: string

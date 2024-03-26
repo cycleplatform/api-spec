@@ -63,6 +63,7 @@ get:
                     $ref: ../../../components/schemas/includes/CreatorInclude.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
+
 patch:
   operationId: "updateEnvironment"
   summary: Update Environment
@@ -112,6 +113,7 @@ patch:
                 $ref: ../../../components/schemas/environments/Environment.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
+
 delete:
   operationId: "deleteEnvironment"
   tags:

@@ -1,11 +1,11 @@
 get:
   operationId: "getAccountMemberships"
+  summary: Get Account Memberships
+  description: Lists the Hub Memberships for a given account.
   security:
     - bearerAuth: []
   tags:
     - Accounts
-  summary: Get Account Memberships
-  description: Lists the Hub Memberships for a given account.
   parameters:
     - $ref: includes/MembershipInlcudeParam.yml
     - $ref: ../../../../components/parameters/SortParam.yml

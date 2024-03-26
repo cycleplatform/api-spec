@@ -1,5 +1,10 @@
 get:
   operationId: "getInvoices"
+  summary: List Billing Invoices
+  description: |
+    List the Invoices assoicated with the Hub.  
+
+    Requires the `billing-invoices-view` capability.
   tags:
     - Billing
   parameters:
@@ -46,11 +51,6 @@ get:
           range-end:
             description: The end date from when to pull the invoices
             $ref: ../../../../components/schemas/DateTime.yml
-  summary: List Billing Invoices
-  description: |
-    List the Invoices assoicated with the Hub.  
-
-    Requires the `billing-invoices-view` capability.
   responses:
     200:
       description: Returns a list of Invoices.

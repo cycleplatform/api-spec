@@ -1,5 +1,7 @@
 get:
   operationId: "getAnnouncements"
+  summary: Get Announcements
+  description: Lists any important updates posted by the Cycle team.
   security:
     - bearerAuth: []
   tags:
@@ -28,8 +30,6 @@ get:
               - week
               - month
               - year
-  summary: Get Announcements
-  description: Lists any important updates posted by the Cycle team.
   responses:
     200:
       description: List of announcements.

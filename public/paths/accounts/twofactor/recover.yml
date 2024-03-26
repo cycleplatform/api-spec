@@ -1,10 +1,10 @@
 post:
   operationId: "recoverAccountTwoFactorAuth"
+  summary: Recover Two-Factor Auth
+  description: Returns a new two-factor auth setup to reset the Account's two-factor auth.
   tags:
     - Accounts
   parameters: []
-  summary: Recover Two-Factor Auth
-  description: Returns a new two-factor auth setup to reset the Account's two-factor auth.
   requestBody:
     content:
       application/json:

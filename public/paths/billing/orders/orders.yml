@@ -1,5 +1,7 @@
 get:
   operationId: "getOrders"
+  summary: List Billing Orders
+  description: Requires the `billing-services-manage` capability.
   tags:
     - Billing
   parameters:
@@ -16,11 +18,9 @@ get:
           enum:
             - due
     - $ref: includes/OrderIncludeParam.yml
-  summary: List Billing Orders
-  description: Requires the `billing-services-manage` capability.
   responses:
     200:
-      description: Returns a collection of billing order resources.
+      description: Returns a list of Billing Orders.
       content:
         application/json:
           schema:
@@ -36,8 +36,11 @@ get:
                 $ref: includes/BillingOrderIncludes.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 post:
   operationId: "createOrder"
+  summary: Create Billing Order
+  description: Requires the `billing-orders-manage` capability.
   tags:
     - Billing
   parameters:
@@ -51,8 +54,6 @@ post:
           enum:
             - due
     - $ref: includes/OrderIncludeParam.yml
-  summary: Create Billing Order
-  description: Requires the `billing-orders-manage` capability.
   requestBody:
     description: Parameters for creating a new order
     content:

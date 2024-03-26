@@ -28,6 +28,7 @@ get:
                 $ref: ../../../../components/schemas/hubs/roles/Role.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 patch:
   operationId: updateRole
   summary: Update Hub Role

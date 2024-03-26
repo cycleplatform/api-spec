@@ -114,6 +114,7 @@ patch:
                 $ref: ../../../../components/schemas/images/sources/ImageSource.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 delete:
   operationId: "deleteImageSource"
   summary: Delete Image Source

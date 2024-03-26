@@ -1,5 +1,7 @@
 get:
   operationId: "getContainerBackupLogs"
+  summary: List Container Backup Logs
+  description: Requires the `containers-backups-view` capability.
   tags:
     - Containers
   parameters:
@@ -15,8 +17,6 @@ get:
       required: true
       schema:
         type: string
-  summary: List Container Backup Logs
-  description: Requires the `containers-backups-view` capability.
   responses:
     200:
       description: Returns a collection of Container Backup Logs.

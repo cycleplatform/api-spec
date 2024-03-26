@@ -97,8 +97,11 @@ patch:
                 $ref: ../../../components/schemas/sdn/networks/NetworkIncludes.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
+
 delete:
   operationId: "deleteNetwork"
+  summary: Delete Network
+  description: Requires the `sdn-networks-manage` capability.
   tags:
     - SDN
   parameters:
@@ -108,8 +111,6 @@ delete:
       description: The ID of the Network.
       schema:
         type: string
-  summary: Delete Network
-  description: Requires the `sdn-networks-manage` capability.
   responses:
     202:
       description: Returns a Job Descriptor.

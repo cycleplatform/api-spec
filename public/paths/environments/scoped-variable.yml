@@ -4,6 +4,7 @@ get:
   description: Requires the `scoped-variables-view` capability.
   tags:
     - Environments
+    - Scoped Variables
   parameters:
     - name: environmentId
       description: The ID of the requested Environment.
@@ -31,12 +32,14 @@ get:
                 $ref: ../../../components/schemas/scoped-variables/ScopedVariable.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
+
 patch:
   operationId: "updateScopedVariable"
   summary: Update Scoped Variable
   description: Requires the `scoped-variables-manage` capability.
   tags:
     - Environments
+    - Scoped Variables
   parameters:
     - name: environmentId
       description: The ID of the requested endpointnvironment.
@@ -89,12 +92,14 @@ patch:
                 $ref: ../../../components/schemas/scoped-variables/ScopedVariable.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
+
 delete:
   operationId: "deleteScopedVariable"
   summary: Delete Scoped Variable
   description: Requires the `scoped-variables-manage` capability.
   tags:
     - Environments
+    - Scoped Variables
   parameters:
     - name: environmentId
       description: The ID of the requested Environment.

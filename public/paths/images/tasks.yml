@@ -1,7 +1,12 @@
 post:
+  operationId: "createImageJob"
+  summary: Image Jobs
+  description: |
+    Used to perform different actions on a given Image. 
+
+    Requires the `images-import` capability.
   tags:
     - Images
-  operationId: "createImageJob"
   parameters:
     - name: imageId
       description: The ID of the requested Image.
@@ -9,11 +14,6 @@ post:
       required: true
       schema:
         type: string
-  summary: Image Jobs
-  description: |
-    Used to perform different actions on a given Image. 
-
-    Requires the `images-import` capability.
   requestBody:
     description: Parameters for creating a new Image job.
     content:

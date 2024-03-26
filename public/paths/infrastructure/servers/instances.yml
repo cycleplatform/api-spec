@@ -4,6 +4,7 @@ get:
   description: Requires the `containers-view` capability.
   tags:
     - Infrastructure
+    - Instances
     - Servers
   parameters:
     - name: serverId

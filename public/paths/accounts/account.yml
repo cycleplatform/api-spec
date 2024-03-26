@@ -1,11 +1,11 @@
 get:
   operationId: "getAccount"
+  summary: Get Account
+  description: Gets the Account associated with the authenticated bearer token.
   security:
     - bearerAuth: []
   tags:
     - Accounts
-  summary: Get Account
-  description: Gets the Account associated with the authenticated bearer token.
   responses:
     200:
       description: Returns the Account.

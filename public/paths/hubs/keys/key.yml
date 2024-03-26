@@ -18,7 +18,6 @@ get:
       content:
         application/json:
           schema:
-            title: "FetchApiKeyResponse"
             type: object
             properties:
               data:
@@ -86,6 +85,8 @@ patch:
 
 delete:
   operationId: "deleteAPIKey"
+  summary: Delete API Key
+  description: Requires the 'api-keys-manage' capability.
   tags:
     - Hubs
     - API Keys
@@ -96,8 +97,6 @@ delete:
       required: true
       schema:
         type: string
-  summary: Delete API Key
-  description: Requires the 'api-keys-manage' capability.
   responses:
     200:
       description: Returns an API Key.
