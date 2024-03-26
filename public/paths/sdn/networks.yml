@@ -1,5 +1,7 @@
 get:
   operationId: "getNetworks"
+  summary: List Networks
+  description: Requires the `sdn-networks-view` capability.
   tags:
     - SDN
   parameters:
@@ -32,24 +34,22 @@ get:
           search:
             type: string
             description: |
-              `filter[search]=value` search for a value associated with a field on the given network(s).
+              `filter[search]=value` search for a value associated with a field on the given Network(s).
           state:
             type: string
             description: |
-              `filter[state]=value1,value2` state filtering will allow you to filter by the network's current state.
+              `filter[state]=value1,value2` state filtering will allow you to filter by the Network's current state.
     - $ref: ../../../components/parameters/SortParam.yml
     - $ref: ../../../components/parameters/PageParam.yml
-  summary: List SDN Network
-  description: Requires the `sdn-networks-view` capability.
   responses:
     200:
-      description: Returns a collection of network resources.
+      description: Returns a list of Networks.
       content:
         application/json:
           schema:
             title: "ListNetworksResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
@@ -61,7 +61,9 @@ get:
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
 post:
-  operationId: "createSDNNetwork"
+  operationId: "createNetwork"
+  summary: Create Network
+  description: Requires the `sdn-networks-manage` capability.
   tags:
     - SDN
   parameters:
@@ -80,10 +82,8 @@ post:
           enum:
             - creators
             - environments
-  summary: Create SDN Network
-  description: Requires the `sdn-networks-manage` capability.
   requestBody:
-    description: Parameters for creating a new network.
+    description: Parameters for creating a new Network.
     content:
       application/json:
         schema:
@@ -96,27 +96,26 @@ post:
           properties:
             name:
               type: string
-              description: The name of the network.
+              description: The name of the Network.
             identifier:
               type: string
-              description: A network identifier used to construct http calls that specifically use this network over another.
+              description: A Network identifier used to construct http calls that specifically use this Network over another.
             cluster:
               type: string
-              description: The infrastructure cluster the environments belonging to this network belong to.
+              description: The infrastructure Cluster the Environments belonging to this Network belong to.
             environments:
-              description: An array of environment Ids
+              description: An array of Environment Ids
               type: array
               items:
                 type: string
   responses:
     201:
-      description: Returns a network resource.
+      description: Returns a Network.
       content:
         application/json:
           schema:
-            title: "CreateNetworkResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

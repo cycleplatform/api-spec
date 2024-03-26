@@ -1,7 +1,7 @@
 get:
   operationId: "getJob"
   summary: Get Job
-  description: Requires the `jobs-view` permission.
+  description: Requires the `apionly-jobs-view` permission.
   tags:
     - Jobs
   parameters:

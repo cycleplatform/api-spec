@@ -1,12 +1,14 @@
 get:
   operationId: "getNetwork"
+  summary: Get Network
+  description: Requires the `sdn-networks-view` capability.
   tags:
     - SDN
   parameters:
     - name: networkId
       in: path
       required: true
-      description: The ID of the network.
+      description: The ID of the Network.
       schema:
         type: string
     - name: include
@@ -24,15 +26,12 @@ get:
           enum:
             - creators
             - environments
-  summary: Fetch SDN Network
-  description: Requires the `sdn-networks-view` capability.
   responses:
     200:
-      description: Returns a single network resource.
+      description: Returns a Network.
       content:
         application/json:
           schema:
-            title: "GetNetworkResponse"
             type: object
             required:
               - data
@@ -43,15 +42,18 @@ get:
                 $ref: ../../../components/schemas/sdn/networks/NetworkIncludes.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
+
 patch:
-  operationId: "updateSDNNetwork"
+  operationId: "updateNetwork"
+  summary: Update Network
+  description: Requires the `sdn-networks-manage` capability.
   tags:
     - SDN
   parameters:
     - name: networkId
       in: path
       required: true
-      description: The ID of the network.
+      description: The ID of the Network.
       schema:
         type: string
     - name: include
@@ -69,10 +71,8 @@ patch:
           enum:
             - creators
             - environments
-  summary: Update SDN Network
-  description: Requires the `sdn-networks-manage` capability.
   requestBody:
-    description: Parameters for updating a network.
+    description: Parameters for updating a Network.
     content:
       application/json:
         schema:
@@ -80,14 +80,13 @@ patch:
           properties:
             name:
               type: string
-              description: The name of the network.
+              description: The name of the Network.
   responses:
     200:
-      description: Returns a network resource.
+      description: Returns a Network.
       content:
         application/json:
           schema:
-            title: "UpdateNetworkResponse"
             type: object
             required:
               - data
@@ -99,21 +98,21 @@ patch:
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
 delete:
-  operationId: "removeSDNNetwork"
+  operationId: "deleteNetwork"
   tags:
     - SDN
   parameters:
     - name: networkId
       in: path
       required: true
-      description: The ID of the network.
+      description: The ID of the Network.
       schema:
         type: string
-  summary: Remove SDN Network
+  summary: Delete Network
   description: Requires the `sdn-networks-manage` capability.
   responses:
-    200:
-      description: Returns a task descriptor.
+    202:
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:
