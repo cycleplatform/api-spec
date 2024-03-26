@@ -53,11 +53,11 @@ properties:
     description: Configuration for what to do during container shutdown.
     properties:
       graceful_timeout:
-        allOf:
-          - type: string
-            nullable: true
-          - $ref: ../../Duration.yml
+        type: string
+        nullable: true
         description: How long the platform will wait for a container to stop gracefully.
+        allOf:
+          - $ref: ../../Duration.yml
       signals:
         type: array
         nullable: true
