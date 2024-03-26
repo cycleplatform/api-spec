@@ -21,8 +21,14 @@ get:
       schema:
         type: object
         properties:
+          resolved:
+            description: Get only Announcements that have been resolved, or only those that have not.
+            type: string
+            enum:
+              - "true"
+              - "false"
           range:
-            description: The start date from when to fetch the announcements
+            description: The start date from when to fetch the Announcements
             type: string
             enum:
               - hour
