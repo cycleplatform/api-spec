@@ -1,24 +1,25 @@
 post:
+  operationId: "createStackBuildJob"
+  summary: Create Stack Build Job
+  description: Requires the `stacks-manage` capability.
   tags:
     - Stacks
-  operationId: "createStackBuildJob"
+    - Stack Builds
   parameters:
     - name: stackId
       in: path
       required: true
-      description: The ID of the stack.
+      description: The ID of the Stack.
       schema:
         type: string
     - name: buildId
       in: path
       required: true
-      description: The ID of the build.
+      description: The ID of the Build.
       schema:
         type: string
-  summary: Create Stack Build Job
-  description: Requires the `stacks-manage` capability.
   requestBody:
-    description: Parameters for creating a new stack build job.
+    description: Parameters for creating a new Stack Build Job.
     content:
       application/json:
         schema:
@@ -32,7 +33,7 @@ post:
             - $ref: ../../../../components/schemas/stacks/builds/taskActions/DeployStackBuildAction.yml
   responses:
     202:
-      description: Returns a task descriptor.
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:

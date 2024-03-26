@@ -1,25 +1,27 @@
 get:
-  operationId: "getStackBuildLookup"
+  operationId: "lookupStackBuild"
+  summary: Look Up Stack Build
+  description: |
+    Look up a Stack Build using only the Build ID, instead of requiring a Stack ID as well.
+
+    Requires the `stacks-view` capability.
   tags:
     - Stacks
   parameters:
     - name: buildId
       in: path
       required: true
-      description: The ID of the build.
+      description: The ID of the Build.
       schema:
         type: string
-  summary: Fetch Stack Build
-  description: Requires the `stacks-view` capability.
   responses:
     200:
-      description: Returns a stack build resource.
+      description: Returns a Stack Build.
       content:
         application/json:
           schema:
-            title: "StackBuildLookupResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

@@ -1,9 +1,9 @@
 get:
   operationId: "getStacks"
-  tags:
-    - Stacks
   summary: List Stacks
   description: Requires the `stacks-view` permission.
+  tags:
+    - Stacks
   parameters:
     - name: meta
       in: query
@@ -54,20 +54,19 @@ get:
           search:
             type: string
             description: |
-              `filter[search]=value` search for a value associated with a field on the given stack(s).
+              `filter[search]=value` search for a value associated with a field on the given Stack(s).
           state:
             type: string
             description: |
-              `filter[state]=value1,value2` state filtering will allow you to filter by the stack's current state.
+              `filter[state]=value1,value2` state filtering will allow you to filter by the Stack's current state.
     - $ref: ../../../components/parameters/SortParam.yml
     - $ref: ../../../components/parameters/PageParam.yml
   responses:
     200:
-      description: A collection of stack resources.
+      description: Returns a list of Stacks.
       content:
         application/json:
           schema:
-            title: "ListStacksResponse"
             type: object
             required:
               - data
@@ -80,6 +79,7 @@ get:
                 $ref: ../../../components/schemas/stacks/StackInclude.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
+
 post:
   operationId: "createStack"
   tags:
@@ -88,7 +88,7 @@ post:
   summary: Create Stack
   description: Requires the `stacks-manage` capability.
   requestBody:
-    description: Parameters for creating a new stack.
+    description: Parameters for creating a new Stack.
     content:
       application/json:
         schema:
@@ -99,23 +99,22 @@ post:
           properties:
             name:
               type: string
-              description: A name for the stack.
+              description: A name for the Stack.
             identifier:
               $ref: ../../../components/schemas/Identifier.yml
             variables:
               type: object
-              description: A map of default variable values used when building this stack. A variable can be added anywhere in a stack using the format `{{var}}` where `var` would be a key in this map.
+              description: A map of default variable values used when building this Stack. A variable can be added anywhere in a Stack using the format `{{var}}` where `var` would be a key in this map.
               additionalProperties:
                 type: string
             source:
               $ref: ../../../components/schemas/stacks/StackSource.yml
   responses:
     201:
-      description: Returns a stack resource.
+      description: Returns a Stack.
       content:
         application/json:
           schema:
-            title: "StackCreateResponse"
             type: object
             required:
               - data

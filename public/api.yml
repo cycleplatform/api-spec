@@ -391,11 +391,11 @@ paths:
     "$ref": "./paths/stacks/tasks.yml"
   ## Stack Builds
   "/v1/stacks/builds/{buildId}":
-    "$ref": "./paths/stacks/buildLookup.yml"
+    "$ref": "./paths/stacks/builds/lookup.yml"
   "/v1/stacks/{stackId}/builds":
     "$ref": "./paths/stacks/builds/builds.yml"
   "/v1/stacks/{stackId}/builds/{buildId}":
-    "$ref": "./paths/stacks/builds/stackbuild.yml"
+    "$ref": "./paths/stacks/builds/build.yml"
   "/v1/stacks/{stackId}/builds/{buildId}/tasks":
     "$ref": "./paths/stacks/builds/tasks.yml"
 
