@@ -1,5 +1,5 @@
 post:
-  operationId: "createBillingOrderJob"
+  operationId: "createOrderJob"
   summary: Create Billing Order Job
   description: |
     Used to confirm a Billing Order.
