@@ -21,7 +21,7 @@ properties:
     description: The Role marked as root has full moderation control over all Roles.
     type: boolean
   default:
-    description: An reference to the original identifier of the default role this role was built from.  A value of null means it is a fully custom role.
+    description: A reference to the original identifier of the default Role this Role was built from.  A value of null means it is a fully custom Role.
     type: string
     nullable: true
     allOf:
