@@ -1,18 +1,19 @@
 post:
   tags:
+    - Infrastructure
     - Servers
   operationId: "createServerJob"
   parameters:
     - name: serverId
-      description: The ID for the given server.
+      description: The ID for the given Server.
       in: path
       required: true
       schema:
         type: string
   summary: Create Server Job
-  description: Used to perform different actions on a given server. Requires the `servers-state` capability.
+  description: Used to perform different actions on a given Server. Requires the `servers-manage` capability.
   requestBody:
-    description: Parameters for creating the new server job.
+    description: Parameters for creating the new Server Job.
     content:
       application/json:
         schema:
@@ -31,8 +32,8 @@ post:
             - $ref: ../../../../components/schemas/infrastructure/servers/taskActions/RestartCompute.yml
             - $ref: ../../../../components/schemas/infrastructure/servers/taskActions/RestartComputeSpawner.yml
   responses:
-    200:
-      description: Returns a task descriptor.
+    202:
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:

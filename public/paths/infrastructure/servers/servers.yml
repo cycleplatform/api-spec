@@ -1,6 +1,9 @@
 get:
-  operationId: "getServersCollection"
+  operationId: "getServers"
+  summary: List Servers
+  description: Requires the `servers-view` capability.
   tags:
+    - Infrastructure
     - Servers
   parameters:
     - name: meta
@@ -53,7 +56,7 @@ get:
           tags:
             type: string
             description: |
-              `filter[tags]=tagone,tagtwo,tagthree` filtering by server tag.  Enter one or more tags (comma separated) and the return will include servers that match any tags in the list.
+              `filter[tags]=tagone,tagtwo,tagthree` filtering by Server tag.  Enter one or more tags (comma separated) and the return will include servers that match any tags in the list.
           clusters:
             type: string
             description: |
@@ -64,15 +67,12 @@ get:
               `filter[providers]=providerone,providertwo` filtering by provider.  Enter one or more providers (commas separated) and the return will include servers that match any providers in the list.
     - $ref: "../../../../components/parameters/SortParam.yml"
     - $ref: "../../../../components/parameters/PageParam.yml"
-  summary: List Servers
-  description: Requires the `servers-view` capability.
   responses:
     200:
-      description: A collection of server resources.
+      description: Returns a list of Servers.
       content:
         application/json:
           schema:
-            title: "ServerCollectionReturn"
             type: object
             required:
               - data
@@ -85,15 +85,17 @@ get:
                 $ref: ../../../../components/schemas/infrastructure/servers/ServerIncludes.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 post:
   operationId: "createServer"
   tags:
+    - Infrastructure
     - Servers
   parameters: []
   summary: Create Server
   description: Requires the `servers-provision` capability.
   requestBody:
-    description: Parameters for creating a server.
+    description: Parameters for creating a Server.
     content:
       application/json:
         schema:
@@ -118,16 +120,16 @@ post:
                 properties:
                   integration_id:
                     $ref: ../../../../components/schemas/ID.yml
-                    description: The ID of the provider integration to use for this server.
+                    description: The ID of the provider integration to use for this Server.
                   model_id:
                     type: string
-                    description: The model ID of the server.
+                    description: The model ID of the Server.
                   location_id:
                     type: string
-                    description: The location ID of the server.
+                    description: The location ID of the Server.
                   quantity:
                     type: integer
-                    description: The number of this server at this location to deploy.
+                    description: The number of this Server at this location to deploy.
                   hostnames:
                     description: An array of hostnames for the given servers.
                     type: array
@@ -149,11 +151,10 @@ post:
                           type: string
   responses:
     202:
-      description: Returns a task descriptor.
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:
-            title: "ServerCreateResponse"
             type: object
             required:
               - data
