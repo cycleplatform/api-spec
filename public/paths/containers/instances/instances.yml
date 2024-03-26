@@ -84,8 +84,8 @@ get:
       $ref: ../../../../components/responses/errors/DefaultError.yml
 
 post:
-  operationId: "createContainerInstances"
-  summary: Create Container Instances
+  operationId: "createInstances"
+  summary: Create Instances
   description: |
     Manually create Instances of a Container.
 
