@@ -22,7 +22,7 @@ get:
           type: string
           enum:
             - capabilities
-    - $ref: includes/MembershipInlcudeParam.yml
+    - $ref: includes/MembershipIncludeParam.yml
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/FilterParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml

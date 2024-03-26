@@ -7,7 +7,7 @@ get:
   tags:
     - Accounts
   parameters:
-    - $ref: includes/MembershipInlcudeParam.yml
+    - $ref: includes/MembershipIncludeParam.yml
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/FilterParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
@@ -26,6 +26,6 @@ get:
                 items:
                   $ref: ../../../../components/schemas/hubs/HubMembership.yml
               includes:
-                $ref: includes/AccountMembershipIncludes.yml
+                $ref: ../../../../components/schemas/hubs/HubMembershipIncludes.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml

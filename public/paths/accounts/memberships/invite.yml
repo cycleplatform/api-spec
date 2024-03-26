@@ -13,7 +13,7 @@ patch:
       required: true
       schema:
         type: string
-    - $ref: includes/MembershipInlcudeParam.yml
+    - $ref: includes/MembershipIncludeParam.yml
   requestBody:
     content:
       application/json:
@@ -39,6 +39,6 @@ patch:
               data:
                 $ref: ../../../../components/schemas/hubs/HubMembership.yml
               includes:
-                $ref: includes/AccountMembershipIncludes.yml
+                $ref: ../../../../components/schemas/hubs/HubMembershipIncludes.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
