@@ -1,9 +1,9 @@
 get:
   operationId: "getSecurityReport"
-  tags:
-    - Security
   summary: Get Security Report
   description: Returns a report detailing incidents logged by the platform around security related events.
+  tags:
+    - Security
   parameters:
     - name: filter
       in: query
@@ -36,9 +36,8 @@ get:
       content:
         application/json:
           schema:
-            title: "SecurityReportResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
