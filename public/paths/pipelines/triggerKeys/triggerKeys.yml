@@ -1,12 +1,14 @@
 get:
   operationId: "getPipelineTriggerKeys"
+  summary: List Trigger Keys
+  description: Requires the `pipelines-manage` capability.
   tags:
     - Pipelines
   parameters:
     - name: pipelineId
       in: path
       required: true
-      description: The ID of the pipeline.
+      description: The ID of the Pipeline.
       schema:
         type: string
     - name: filter
@@ -23,24 +25,21 @@ get:
           search:
             type: string
             description: |
-              `filter[search]=value` search for a value associated with a field on the given trigger key(s).
+              `filter[search]=value` search for a value associated with a field on the given Trigger Key(s).
           state:
             type: string
             description: |
-              `filter[state]=value1,value2` state filtering will allow you to filter by the trigger key's current state.
+              `filter[state]=value1,value2` state filtering will allow you to filter by the Trigger Key's current state.
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
-  summary: List Trigger Keys
-  description: Requires the `pipelines-manage` capability.
   responses:
     200:
-      description: Returns a collection of trigger key resources.
+      description: Returns a list of Trigger Keys.
       content:
         application/json:
           schema:
-            title: "ListPipelineTriggerKeyResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
@@ -49,21 +48,22 @@ get:
                   $ref: ../../../../components/schemas/pipelines/trigger-keys/TriggerKey.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 post:
   operationId: "createPipelineTriggerKey"
+  summary: Create Trigger Key
+  description: Requires the `pipelines-manage` capability.
   tags:
     - Pipelines
   parameters:
     - name: pipelineId
       in: path
       required: true
-      description: The ID of the pipeline.
+      description: The ID of the Pipeline.
       schema:
         type: string
-  summary: Create Trigger Key
-  description: Requires the `pipelines-manage` capability.
   requestBody:
-    description: Parameters for creating a new pipeline trigger key.
+    description: Parameters for creating a new Pipeline Trigger Key.
     content:
       application/json:
         schema:
@@ -71,21 +71,20 @@ post:
           properties:
             name:
               type: string
-              description: A name for the trigger key.
+              description: A name for the Trigger Key.
             ips:
-              description: An array of ips this trigger key is usable from.
+              description: An array of ips this Trigger Key is usable from.
               type: array
               items:
                 type: string
   responses:
     201:
-      description: Returns a trigger key resource.
+      description: Returns a Trigger Key.
       content:
         application/json:
           schema:
-            title: "PipelineTriggerKeyCreateResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

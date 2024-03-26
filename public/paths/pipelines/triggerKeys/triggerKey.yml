@@ -1,56 +1,55 @@
 get:
   operationId: "getPipelineTriggerKey"
+  summary: Get Trigger Key
+  description: Requires the `pipelines-manage` capability.
   tags:
     - Pipelines
   parameters:
     - name: pipelineId
       in: path
       required: true
-      description: The ID of the pipeline.
+      description: The ID of the Pipeline.
       schema:
         type: string
     - name: triggerKeyId
       in: path
       required: true
-      description: The ID of the trigger key.
+      description: The ID of the Trigger Key.
       schema:
         type: string
-  summary: Fetch Trigger Key
-  description: Requires the `pipelines-manage` capability.
   responses:
     200:
-      description: Returns a trigger key resource.
+      description: Returns a Trigger Key.
       content:
         application/json:
           schema:
-            title: "FetchPipelineTriggerKeyResponse"
             type: object
             properties:
               data:
                 $ref: ../../../../components/schemas/pipelines/trigger-keys/TriggerKey.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 patch:
   operationId: "updatePipelineTriggerKey"
+  summary: Update Trigger Key
+  description: Requires the `pipelines-manage` capability.
   tags:
     - Pipelines
   parameters:
     - name: pipelineId
       in: path
       required: true
-      description: The ID of the pipeline.
+      description: The ID of the Pipeline.
       schema:
         type: string
     - name: triggerKeyId
       in: path
       required: true
-      description: The ID of the trigger key.
+      description: The ID of the Trigger Key.
       schema:
         type: string
-  summary: Update Trigger Key
-  description: Requires the `pipelines-manage` capability.
   requestBody:
-    description: Req body for updating trigger key
     content:
       application/json:
         schema:
@@ -58,16 +57,16 @@ patch:
           properties:
             name:
               type: string
-              description: Set name of trigger key
+              description: Set name of Trigger Key
             ips:
-              description: List of Ip Restrictions
+              description: List of IP Restrictions
               type: array
               items:
                 type: string
-                description: Restricted Ip String
+                description: Restricted IP String
   responses:
     200:
-      description: Returns a task descriptor.
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:
@@ -79,28 +78,29 @@ patch:
                 $ref: ../../../../components/schemas/jobs/JobDescriptor.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 delete:
-  operationId: "removePipelineTriggerKey"
+  operationId: "deletePipelineTriggerKey"
+  summary: Delete Trigger Key
+  description: Requires the `pipelines-manage` capability.
   tags:
     - Pipelines
   parameters:
     - name: pipelineId
       in: path
       required: true
-      description: The ID of the pipeline.
+      description: The ID of the Pipeline.
       schema:
         type: string
     - name: triggerKeyId
       in: path
       required: true
-      description: The ID of the trigger key.
+      description: The ID of the Trigger Key.
       schema:
         type: string
-  summary: Delete Trigger Key
-  description: Requires the `pipelines-manage` capability.
   responses:
-    200:
-      description: Returns a task descriptor.
+    202:
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:

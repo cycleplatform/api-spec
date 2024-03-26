@@ -419,9 +419,9 @@ paths:
     "$ref": "./paths/pipelines/tasks.yml"
   ## Trigger Keys
   "/v1/pipelines/{pipelineId}/keys":
-    "$ref": "./paths/pipelines/trigger-keys/trigger-keys.yml"
+    "$ref": "./paths/pipelines/triggerKeys/triggerKeys.yml"
   "/v1/pipelines/{pipelineId}/keys/{triggerKeyId}":
-    "$ref": "./paths/pipelines/trigger-keys/trigger-key.yml"
+    "$ref": "./paths/pipelines/triggerKeys/triggerKey.yml"
 
   # Notifications
   "/v1/hubs/current/notifications":
