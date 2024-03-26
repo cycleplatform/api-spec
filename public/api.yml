@@ -372,7 +372,7 @@ paths:
   "/v1/infrastructure/ips/pools/{poolId}/ips":
     "$ref": "./paths/infrastructure/ips/ips.yml"
   "/v1/infrastructure/deployment-strategies":
-    "$ref": "./paths/infrastructure/deployment-strategies.yml"
+    "$ref": "./paths/infrastructure/deploymentStrategies.yml"
 
   # Jobs
   "/v1/jobs":
