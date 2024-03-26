@@ -1,19 +1,18 @@
 get:
   operationId: "getDeploymentStrategies"
+  summary: Get Deployment Strategies
+  description: Gets the available deployment strategies that can be used to orchestrate containers.
   tags:
     - Infrastructure
   parameters: []
-  summary: Fetch Deployment Strategies
-  description: This endpoint returns available container deployment strategies.
   responses:
     200:
-      description: Deployment strategies.
+      description: Returns available deployment strategies.
       content:
         application/json:
           schema:
-            title: "DeploymentStrategiesReturn"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
