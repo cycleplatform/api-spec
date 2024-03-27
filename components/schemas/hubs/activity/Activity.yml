@@ -179,6 +179,11 @@ properties:
       - hub.apikey.delete
       - hub.apikey.create
 
+      - hub.role.update
+      - hub.role.delete
+      - hub.role.create
+      - hub.role.task.delete
+
       - hub.membership.delete
       - hub.membership.create
       - hub.membership.update
