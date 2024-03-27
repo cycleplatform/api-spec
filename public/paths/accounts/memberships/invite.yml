@@ -1,0 +1,44 @@
+patch:
+  operationId: "updateAccountInvite"
+  summary: Accept or reject an Invite to join a Hub
+  description: Accept/reject a pending Invite to join a Hub.
+  security:
+    - bearerAuth: []
+  tags:
+    - Accounts
+  parameters:
+    - name: inviteId
+      description: The ID of the given Invite.
+      in: path
+      required: true
+      schema:
+        type: string
+    - $ref: includes/MembershipIncludeParam.yml
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            accept:
+              type: boolean
+              description: If true, the Invite will be accepted and the associated Account will join the Hub.
+            decline:
+              type: boolean
+              description: If true, the Invite will be declined and the associated Account will NOT join the Hub.
+  responses:
+    200:
+      description: Returns a Hub Membership.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/hubs/HubMembership.yml
+              includes:
+                $ref: ../../../../components/schemas/hubs/HubMembershipIncludes.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml

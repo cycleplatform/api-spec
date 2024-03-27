@@ -1,18 +1,18 @@
 post:
+  operationId: "createStackJob"
+  summary: Create Stack Job
+  description: Requires the `stacks-manage` capability.
   tags:
     - Stacks
-  operationId: "createStackJob"
   parameters:
     - name: stackId
       in: path
       required: true
-      description: The ID of the stack
+      description: The ID of the Stack
       schema:
         type: string
-  summary: Create Stack Job
-  description: Requires the `stacks-manage` capability.
   requestBody:
-    description: Parameters for creating a new stack job.
+    description: Parameters for creating a new Stack Job.
     content:
       application/json:
         schema:
@@ -23,12 +23,12 @@ post:
           properties:
             action:
               type: string
-              description: The job to do.
+              description: The Job to do.
               enum:
                 - prune
   responses:
     202:
-      description: Returns a task descriptor.
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:

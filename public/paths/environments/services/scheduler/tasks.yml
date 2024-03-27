@@ -1,5 +1,7 @@
 post:
-  operationId: "reconfigureScheduler"
+  operationId: "createSchedulerServiceJob"
+  summary: Create Scheduler Service Job
+  description: Creates a task that will update the scheduler service's configuration.
   tags:
     - Environments
   parameters:
@@ -9,8 +11,6 @@ post:
       required: true
       schema:
         type: string
-  summary: Reconfigure Scheduler
-  description: Creates a task that will update the scheduler service's configuration.
   requestBody:
     description: Parameters for reconfiguring a scheduler service.
     content:
@@ -38,11 +38,10 @@ post:
                   description: A boolean where `true` represents the desire to automatically update the environment scheduler service.
   responses:
     202:
-      description: Returns a task descriptor.
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:
-            title: "TaskResponse"
             type: object
             required:
               - data

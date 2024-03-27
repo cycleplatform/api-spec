@@ -1,5 +1,7 @@
 get:
   operationId: "getHubMembership"
+  summary: Get Hub Membership
+  description: Gets the Hub Membership for the requesting Account.
   tags:
     - Hubs
   security:
@@ -40,15 +42,12 @@ get:
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/FilterParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
-  summary: List Hub Memberships
-  description: Gets the membership information for the current hub for the requesting account.
   responses:
     200:
-      description: Returns a hub membership.
+      description: Returns a Hub Membership.
       content:
         application/json:
           schema:
-            title: "HubMembershipReturn"
             type: object
             required:
               - data

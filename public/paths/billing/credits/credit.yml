@@ -1,5 +1,7 @@
 get:
   operationId: "getCredit"
+  summary: Get Billing Credit
+  description: Requires the `billing-credits-view` capability.
   tags:
     - Billing
   parameters:
@@ -9,17 +11,14 @@ get:
       required: true
       schema:
         type: string
-  summary: Fetch Billing Credit
-  description: Requires the `billing-credits-view` capability.
   responses:
     200:
       description: Returns a credit resource.
       content:
         application/json:
           schema:
-            title: FetchBillingCreditReturn
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

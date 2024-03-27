@@ -1,0 +1,42 @@
+post:
+  operationId: "recoverTwoFactorAuth"
+  summary: Recover Two-Factor Auth
+  description: Returns a new two-factor auth setup to reset the Account's two-factor auth.
+  tags:
+    - Accounts
+  parameters: []
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - email
+            - password
+            - recovery_codes
+          properties:
+            email:
+              type: string
+              description: The user's email
+            password:
+              type: string
+            recovery_codes:
+              type: array
+              items:
+                type: string
+            token:
+              type: string
+  responses:
+    200:
+      description: Returns details for setting up two-factor auth.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/accounts/twofactor/TwoFactorAuthSetup.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml

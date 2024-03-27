@@ -1,19 +1,20 @@
 get:
   operationId: getRoles
-  tags:
-    - Roles
-  parameters:
-    - $ref: ../../../../components/parameters/SortParam.yml
-    - $ref: ../../../../components/parameters/FilterParam.yml
-    - $ref: ../../../../components/parameters/PageParam.yml
-  summary: List Roles
+  summary: List Hub Roles
   description: |
     Lists the Roles that have been created for this Hub.
 
     Requires the `hubs-roles-manage` capability.
+  tags:
+    - Hubs
+    - ACLs
+  parameters:
+    - $ref: ../../../../components/parameters/SortParam.yml
+    - $ref: ../../../../components/parameters/FilterParam.yml
+    - $ref: ../../../../components/parameters/PageParam.yml
   responses:
     200:
-      description: Returns a list of Roles.
+      description: Returns a list of Hub Roles.
       content:
         application/json:
           schema:
@@ -27,18 +28,20 @@ get:
                   $ref: ../../../../components/schemas/hubs/roles/Role.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 post:
   operationId: createRole
   tags:
-    - Roles
+    - Hubs
+    - ACLs
   parameters: []
-  summary: Create Role
+  summary: Create Hub Role
   description: |
     Creates a custom Role for a Hub.
 
     Requires the `hubs-roles-manage` capability.
   requestBody:
-    description: Parameters for creating a new Role.
+    description: Parameters for creating a new Hub Role.
     content:
       application/json:
         schema:
@@ -78,7 +81,7 @@ post:
                 type: string
   responses:
     201:
-      description: Returns a Role resource.
+      description: Returns a Hub Role.
       content:
         application/json:
           schema:

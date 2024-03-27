@@ -1,25 +1,24 @@
 get:
-  operationId: "getPoolsIPs"
+  operationId: "getPoolIPs"
+  summary: List Pool IPs
+  description: Requires the `infrastructure-ips-manage` capability.
   tags:
-    - InfrastructureIPs
+    - Infrastructure
   parameters:
     - name: poolId
-      description: The ID for the given pool.
+      description: The ID of the IP Pool to fetch the IPs of.
       in: path
       required: true
       schema:
         type: string
-  summary: List Pool IP's
-  description: Requires the `infrastructure-ips-manage` capability.
   responses:
     200:
-      description: A collection of IPs.
+      description: A list of IPs.
       content:
         application/json:
           schema:
-            title: "GetPoolsIPReturn"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

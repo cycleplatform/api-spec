@@ -1,13 +1,14 @@
 get:
   operationId: "getApiKeys"
+  summary: List API Keys
+  description: Requires the `api-keys-manage` capability.
   tags:
-    - ApiKeys
+    - Hubs
+    - API Keys
   parameters:
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/FilterParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
-  summary: List API Keys
-  description: Requires the `api-keys-manage` capability.
   responses:
     200:
       description: Returns a collection of API Key resources.
@@ -16,7 +17,7 @@ get:
           schema:
             title: "ListApiKeysResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
@@ -25,13 +26,15 @@ get:
                   $ref: ../../../../components/schemas/hubs/ApiKey.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 post:
   operationId: "createApiKey"
-  tags:
-    - ApiKeys
-  parameters: []
   summary: Create API Key
   description: Requires the `api-keys-manage` capability.
+  tags:
+    - Hubs
+    - API Keys
+  parameters: []
   requestBody:
     description: Parameters for creating an API Key.
     content:
@@ -67,13 +70,12 @@ post:
                 type: string
   responses:
     201:
-      description: Returns an API Key resource.
+      description: Returns an API Key.
       content:
         application/json:
           schema:
-            title: "CreateApiKeyResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

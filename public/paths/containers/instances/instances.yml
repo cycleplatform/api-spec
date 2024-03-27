@@ -1,6 +1,9 @@
 get:
   operationId: "getInstances"
+  summary: List Instances
+  description: Requires the `containers-view` capability.
   tags:
+    - Containers
     - Instances
   parameters:
     - name: containerId
@@ -61,15 +64,12 @@ get:
             $ref: ../../../../components/schemas/DateTime.yml
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
-  summary: List Instances
-  description: Requires the `containers-view` capability.
   responses:
     200:
-      description: Returns a collection of contianer instance resources.
+      description: Returns a list of Container Instances.
       content:
         application/json:
           schema:
-            title: ContainerInstanceListResponse
             type: object
             required:
               - data
@@ -82,21 +82,25 @@ get:
                 $ref: ../../../../components/schemas/containers/instances/InstanceIncludes.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 post:
-  operationId: "createContainerInstance"
+  operationId: "createInstances"
+  summary: Create Instances
+  description: |
+    Manually create Instances of a Container.
+
+    Requires the `containers-update` capability.
   tags:
     - Containers
+    - Instances
   parameters:
     - name: containerId
-      description: The ID of the container this instance is created from.
+      description: The ID of the Container this Instance is created from.
       in: path
       required: true
       schema:
         type: string
-  summary: Create Instance(s)
-  description: Requires the `containers-update` capability.
   requestBody:
-    description: Parameters for creating a container instance.
     content:
       application/json:
         schema:
@@ -109,14 +113,14 @@ post:
             properties:
               server_id:
                 type: string
-                description: The ID of the server the new instance(s) should be deployed to.
+                description: The ID of the Server the new Instance(s) should be deployed to.
               new_instances:
                 type: integer
-                description: The number of new instances to be created on the given server.
+                description: The number of new Instances to be created on the given Server.
 
   responses:
     202:
-      description: Returns a task descriptor.
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:
@@ -128,8 +132,14 @@ post:
                 $ref: ../../../../components/schemas/jobs/JobDescriptor.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 delete:
-  operationId: "removeMultipleContainerInstances"
+  operationId: "deleteContainerInstances"
+  summary: Delete Container Instance(s)
+  description: |
+    Manually delete Instances of a Container.
+
+    Requires the `containers-update` capability.
   tags:
     - Instances
   parameters:
@@ -139,11 +149,9 @@ delete:
       required: true
       schema:
         type: string
-  summary: Delete Instance(s)
-  description: Requires the `containers-update` capability.
   responses:
-    200:
-      description: Returns a task descriptor.
+    202:
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:

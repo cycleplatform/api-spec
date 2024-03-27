@@ -1,6 +1,8 @@
 ---
 get:
-  operationId: "getEnvironmentById"
+  operationId: "getEnvironment"
+  summary: Get Environment
+  description: Requires the `environments-view` capability.
   tags:
     - Environments
   parameters:
@@ -42,15 +44,12 @@ get:
           enum:
             - creators
             - stacks
-  summary: Fetch Environment
-  description: Requires the `environments-view` capability.
   responses:
     200:
-      description: Returns an environment resource.
+      description: Returns an Environment.
       content:
         application/json:
           schema:
-            title: "EnvironmentResponse"
             type: object
             required:
               - data
@@ -64,21 +63,25 @@ get:
                     $ref: ../../../components/schemas/includes/CreatorInclude.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
+
 patch:
   operationId: "updateEnvironment"
+  summary: Update Environment
+  description: |
+    Updates the specificed Environment.
+
+    Requires the `environments-manage` capability.
   tags:
     - Environments
   parameters:
     - name: environmentId
-      description: The ID of the requested environment.
+      description: The ID of the requested Environment.
       in: path
       required: true
       schema:
         type: string
-  summary: Update Environment
-  description: Updates the specificed environment, setting the values of the parameters passed. If any parameters are omitted, they will be left unchanged. Requires the `environments-manage` capability.
   requestBody:
-    description: Parameters for updating an environment.
+    description: Parameters for updating an Environment.
     content:
       application/json:
         schema:
@@ -98,11 +101,10 @@ patch:
               $ref: ../../../components/schemas/environments/EnvironmentAbout.yml
   responses:
     200:
-      description: Returns an environment resource.
+      description: Returns an Environment.
       content:
         application/json:
           schema:
-            title: "EnvironmentResponse"
             type: object
             required:
               - data
@@ -111,22 +113,23 @@ patch:
                 $ref: ../../../components/schemas/environments/Environment.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
+
 delete:
-  operationId: "removeEnvironment"
+  operationId: "deleteEnvironment"
   tags:
     - Environments
   parameters:
     - name: environmentId
-      description: The ID of the requested environment.
+      description: The ID of the requested Environment.
       in: path
       required: true
       schema:
         type: string
-  summary: Remove Environment
+  summary: Delete Environment
   description: Requires the `environments-manage` capability.
   responses:
     202:
-      description: Returns a task descriptor.
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:

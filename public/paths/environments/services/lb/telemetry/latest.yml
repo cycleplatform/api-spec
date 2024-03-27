@@ -1,5 +1,11 @@
 get:
   operationId: "getLoadBalancerLatestTelemetryReport"
+  summary: Get the latest load balancer v1 telemetry.
+  description: |
+    Fetches the latest telemetry report for Cycle's native load balancer. Provides detailed information on a per-instance basis.
+
+    ## Permissions
+    Requires the `environments-view` capability. Also requires the user to have access specifically to the requested Environment.
   tags:
     - Environments
   parameters:
@@ -27,22 +33,14 @@ get:
             description: |
               `filter[controller]=port-123` filter for a specific controller to load telemetry for. THIS FILTER IS REQUIRED.
 
-  summary: Fetch the latest load balancer v1 telemetry.
-  description: |
-    ## Permissions
-    Requires the `environments-view` capability. Also requires the user to have access specifically to the requested environment.
-
-    ## Details
-    Fetches the latest telemetry report for Cycle's native load balancer. Provides detailed information on a per-instance basis.
   responses:
     200:
       description: Returns the latest load balancer telemetry
       content:
         application/json:
           schema:
-            title: "GetLoadBalancerTelemetryReportReturn"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

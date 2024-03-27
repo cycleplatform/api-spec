@@ -1,6 +1,6 @@
 title: Announcement
 type: object
-description: An announcement from the Cycle team that has something to do with the current or future state of the platform.
+description: An announcement from the Cycle team.
 required:
   - id
   - title
@@ -22,11 +22,13 @@ properties:
   updates:
     type: array
     items:
-      "$ref": "./Update.yml"
+      "$ref": "./AnnouncementUpdate.yml"
   affected_integrations:
     type: array
     items:
       type: string
+  creator:
+    "$ref": "../creators/CreatorScope.yml"
   state:
     allOf:
       - required:

@@ -1,5 +1,7 @@
 get:
-  operationId: "getZonesCollection"
+  operationId: "getDNSZones"
+  summary: List DNS Zones
+  description: Requires the `dns-view` capability.
   tags:
     - DNS
   parameters:
@@ -31,20 +33,17 @@ get:
           state:
             type: string
             description: |
-              `filter[state]=value1,value2` state filtering will allow you to filter by the DNS zone's current state.
+              `filter[state]=value1,value2` state filtering will allow you to filter by the DNS Zone's current state.
     - $ref: ../../../components/parameters/SortParam.yml
     - $ref: ../../../components/parameters/PageParam.yml
-  summary: List DNS Zones
-  description: Requires the `dns-view` capability.
   responses:
     200:
-      description: Returns a collection of DNS zone resources.
+      description: Returns a collection of DNS Zones.
       content:
         application/json:
           schema:
-            title: "DNSZoneListReturn"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
@@ -63,7 +62,7 @@ post:
   summary: Create DNS Zone
   description: Requires the `dns-manage` capability.
   requestBody:
-    description: Parameters for creating a new DNS zone.
+    description: Parameters for creating a new DNS Zone.
     content:
       application/json:
         schema:
@@ -81,13 +80,12 @@ post:
 
   responses:
     201:
-      description: Returns the DNS zone resource.
+      description: Returns the DNS Zone resource.
       content:
         application/json:
           schema:
-            title: "DNSZoneCreateResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

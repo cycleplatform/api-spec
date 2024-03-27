@@ -1,12 +1,14 @@
 get:
-  operationId: "getSource"
+  operationId: "getImageSource"
+  summary: Get Image Source
+  description: Requires the `images-sources-view` capability.
   tags:
-    - ImageSources
+    - Image Sources
   parameters:
     - name: sourceId
       in: path
       required: true
-      description: The ID of the image source.
+      description: The ID of the Image Source.
       schema:
         type: string
     - name: meta
@@ -39,15 +41,12 @@ get:
           enum:
             - creators
             - integrations
-  summary: Fetch Source
-  description: Requires the `images-view` capability.
   responses:
     200:
-      description: Returns a single image source.
+      description: Returns an Image Source.
       content:
         application/json:
           schema:
-            title: "ImageSourceFetchResponse"
             type: object
             required:
               - data
@@ -58,19 +57,20 @@ get:
                 $ref: ../../../../components/schemas/images/sources/SourceIncludes.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 patch:
   operationId: "updateImageSource"
+  summary: Update Image Source
+  description: Requires the `images-sources-manage` capability.
   tags:
-    - ImageSources
+    - Image Sources
   parameters:
     - name: sourceId
       in: path
       required: true
-      description: The ID of the image source.
+      description: The ID of the Image Source.
       schema:
         type: string
-  summary: Update Source
-  description: Requires the `images-import` capability.
   requestBody:
     description: Parameters for updating an image source.
     content:
@@ -102,11 +102,10 @@ patch:
                   description: A description of the image source.
   responses:
     200:
-      description: Returns an image source resource.
+      description: Returns an Image Source.
       content:
         application/json:
           schema:
-            title: "ImageSourceCreateResponse"
             type: object
             required:
               - data
@@ -115,22 +114,23 @@ patch:
                 $ref: ../../../../components/schemas/images/sources/ImageSource.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 delete:
-  operationId: "removeImageSource"
+  operationId: "deleteImageSource"
+  summary: Delete Image Source
+  description: Requires the `images-sources-manage` capability.
   tags:
-    - Images
+    - Image Sources
   parameters:
     - name: sourceId
       in: path
       required: true
-      description: The ID of the image source.
+      description: The ID of the Image Source.
       schema:
         type: string
-  summary: Remove a given image source
-  description: Requires the `images-import` capability.
   responses:
     202:
-      description: Returns a task descriptor.
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:

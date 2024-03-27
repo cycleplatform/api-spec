@@ -1,5 +1,10 @@
 get:
   operationId: "getCredits"
+  summary: List Billing Credits
+  description: |
+    Lists the Billing Credits associated with the current Hub.
+
+    Requires the `billing-credits-view` capability.
   tags:
     - Billing
   parameters:
@@ -20,24 +25,18 @@ get:
             type: string
             description: |
               `filter[state]=value1,value2` state filtering will allow you to filter by the credit's current state.
-          range-start:
-            description: The start date from when to pull the credits
-            $ref: ../../../../components/schemas/DateTime.yml
-          range-end:
-            description: The end date from when to pull the credits
-            $ref: ../../../../components/schemas/DateTime.yml
+          search:
+            type: string
+            description: Use a text-based search to filter the credits.
     - $ref: ../../../../components/parameters/PageParam.yml
-  summary: List Billing Credits
-  description: Requires the `billing-credits-view` capability.
   responses:
     200:
       description: Returns a collection of credit resources.
       content:
         application/json:
           schema:
-            title: "ListBillingCreditsReturn"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

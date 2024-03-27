@@ -1,25 +1,23 @@
 get:
   operationId: "getProviderLocations"
+  summary: List Provider Locations
   tags:
-    - Providers
+    - Infrastructure
   parameters:
     - name: providerVendor
-      description: The vendor for the given provider. Example `gcp`, `equinix-metal`, `abstraction`, etc.  Can also provider provider id.
+      description: The vendor for the given Provider Integration. Example `gcp`, `equinix-metal`, `abstraction`, etc. Can also use the Integration ID.
       in: path
       required: true
       schema:
         type: string
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
-  summary: List Provider Locations
-  description: No capability required, public information (datacenter locations).
   responses:
     200:
-      description: Returns a list of provider locations.
+      description: A list of locations this Provider Integration supports.
       content:
         application/json:
           schema:
-            title: "ProviderLocationsReturn"
             type: object
             required:
               - data

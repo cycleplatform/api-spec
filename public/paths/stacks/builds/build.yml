@@ -1,0 +1,69 @@
+get:
+  operationId: "getStackBuild"
+  summary: Get Stack Build
+  description: Requires the `stacks-view` capability.
+  tags:
+    - Stacks
+    - Stack Builds
+  parameters:
+    - name: stackId
+      in: path
+      required: true
+      description: The ID of the Stack.
+      schema:
+        type: string
+    - name: buildId
+      in: path
+      required: true
+      description: The ID of the Build.
+      schema:
+        type: string
+  responses:
+    200:
+      description: Returns a Stack Build.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/stacks/builds/StackBuild.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
+
+delete:
+  operationId: "deleteStackBuild"
+  summary: Delete Stack Build
+  description: Requires the `stacks-manage` capability.
+  tags:
+    - Stacks
+    - Stack Builds
+  parameters:
+    - name: stackId
+      in: path
+      required: true
+      description: The ID of the Stack.
+      schema:
+        type: string
+    - name: buildId
+      in: path
+      required: true
+      description: The ID of the Build.
+      schema:
+        type: string
+  responses:
+    200:
+      description: Returns a Job Descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/jobs/JobDescriptor.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml

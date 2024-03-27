@@ -1,5 +1,7 @@
 get:
-  operationId: "getRecordsCollection"
+  operationId: "getDNSZoneRecords"
+  summary: List DNS Zone Records
+  description: Requires the `dns-view` capability.
   tags:
     - DNS
   parameters:
@@ -25,8 +27,9 @@ get:
             - creators
             - containers
     - name: filter
-      in: query
-       # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706
+      in:
+        query
+        # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706
       style: deepObject
       required: false
       description: |
@@ -41,17 +44,15 @@ get:
               `filter[state]=value1,value2` state filtering will allow you to filter by the DNS record's current state.
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
-  summary: List Records
-  description: Requires the `dns-view` capability.
   responses:
     200:
-      description: Returns a collection of DNS zone resources.
+      description: Returns a collection of DNS Zone Records.
       content:
         application/json:
           schema:
             title: "DNSZoneRecordListReturn"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
@@ -62,21 +63,22 @@ get:
                 $ref: ../../../../components/schemas/dns/records/RecordIncludes.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 post:
-  operationId: "createDNSRecord"
+  operationId: "createDNSZoneRecord"
+  summary: Create DNS Zone Record
+  description: Requires the `dns-manage` capability.
   tags:
     - DNS
   parameters:
     - name: zoneId
-      description: The ID of the zone.
+      description: The ID of the Zone.
       in: path
       required: true
       schema:
         type: string
-  summary: Create Record
-  description: Requires the `dns-manage` capability.
   requestBody:
-    description: Parameters for creating a new DNS record.
+    description: Parameters for creating a new DNS Zone Record.
     content:
       application/json:
         schema:
@@ -98,7 +100,7 @@ post:
           schema:
             title: "DNSZoneCreateResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

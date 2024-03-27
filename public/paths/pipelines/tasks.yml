@@ -1,29 +1,28 @@
 post:
+  operationId: "createPipelineJob"
+  summary: Create Pipeline Job
+  description: Requires the `pipelines-manage` capability.
   tags:
     - Pipelines
-  operationId: "createPipelineJob"
   parameters:
     - name: pipelineId
       in: path
       required: true
-      description: The ID of the pipeline.
+      description: The ID of the Pipeline.
       schema:
         type: string
-  summary: Create Pipeline Job
-  description: Requires the `pipelines-manage` capability.
   requestBody:
-    description: Parameters for creating a new pipeline job.
+    description: Parameters for creating a new Pipeline job.
     content:
       application/json:
         schema:
-          title: TriggerPipeline
           type: object
           required:
             - action
           properties:
             action:
               type: string
-              description: The job to do.
+              description: The requested action to perform.
               enum:
                 - trigger
             contents:
@@ -31,13 +30,12 @@ post:
               properties:
                 variables:
                   type: object
-                  description: A map of variables to pass into the pipeline when it runs.
+                  description: A map of variables to pass into the Pipeline when it runs.
                   additionalProperties:
                     type: string
-
   responses:
     202:
-      description: Returns a task descriptor.
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:

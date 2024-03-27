@@ -1,6 +1,12 @@
 get:
   operationId: "GetServerConsole"
+  summary: Get Server Console
+  description: |
+    Gets the authorization information required to connect to a Server console websocket.
+
+    Requires the `servers-console` capability.
   tags:
+    - Infrastructure
     - Servers
   parameters:
     - name: serverId
@@ -9,29 +15,25 @@ get:
       required: true
       schema:
         type: string
-  summary: Get the credentials to connect to a server's console.
-  description: Requires the `servers-console` capability.
   responses:
     200:
-      description: A successful credentials response.
+      description: Returns console credentials for the Server.
       content:
         application/json:
           schema:
-            title: "GetServerConsoleResponse"
             type: object
             required:
               - data
             properties:
               data:
                 type: object
-                title: ServerConsoleCredentials
                 required:
                   - address
                   - token
                 properties:
                   address:
                     type: string
-                    description: The URL to open a websocket to.
+                    description: The websocket target URL.
                   token:
                     type: string
                     description: The authentication token for the console socket. It should be appended as the URL parameter "token" to the address.

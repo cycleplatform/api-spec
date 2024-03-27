@@ -1,5 +1,7 @@
 get:
-  operationId: "getVpnLogins"
+  operationId: "getVPNLogins"
+  summary: Get VPN Logins
+  description: Requires the `environments-vpn` capability.
   tags:
     - Environments
   parameters:
@@ -11,8 +13,6 @@ get:
         type: string
     - $ref: ../../../../../components/parameters/SortParam.yml
     - $ref: ../../../../../components/parameters/PageParam.yml
-  summary: Fetch VPN Info
-  description: Requires the `environments-vpn` capability.
   responses:
     200:
       description: Returns a VPNInfo resource.
@@ -21,7 +21,7 @@ get:
           schema:
             title: "VPNInfoEnvironmentService"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

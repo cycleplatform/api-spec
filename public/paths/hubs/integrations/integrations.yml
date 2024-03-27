@@ -1,11 +1,15 @@
 get:
   operationId: getIntegrations
+  summary: List Integrations
+  description: |
+    Lists all integrations associated with the current Hub, with optional filtering.
+
+    Requires the `hubs-integrations-view` capability.
   tags:
     - Hubs
+    - Integrations
   security:
     - bearerAuth: []
-  summary: Retrieve a list of integrations for the current hub
-  description: Lists all integrations associated with the current hub, with optional filtering.
   parameters:
     - $ref: ../../../../components/parameters/PageParam.yml
     - name: meta
@@ -55,7 +59,6 @@ get:
       content:
         application/json:
           schema:
-            title: GetIntegrationsReturn
             type: object
             required:
               - data
@@ -66,10 +69,14 @@ get:
                   $ref: ../../../../components/schemas/hubs/integrations/Integration.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 post:
   operationId: createIntegration
+  summary: Create Integration
+  description: Create an Integration resource within a hub. If the Integration definition specifies that it requires verification, then you must submit a verify task to enable it.
   tags:
     - Hubs
+    - Integrations
   security:
     - bearerAuth: []
   parameters:
@@ -88,10 +95,8 @@ post:
           type: string
           enum:
             - definition
-  summary: Create Integration
-  description: Create an Integration resource within a hub.  If the Integration definition specifies that it requires verification, then you must submit a verify task to enable it.
   requestBody:
-    description: Parameters for creating an integration.
+    description: Parameters for creating an Integration.
     required: true
     content:
       application/json:
@@ -103,10 +108,10 @@ post:
             name:
               type: string
               nullable: true
-              description: A name for the integration.
+              description: A name for the Integration.
             vendor:
               type: string
-              description: Unique vendor for the integration, subject to validation.
+              description: Unique vendor for the Integration, subject to validation.
             identifier:
               $ref: ../../../../components/schemas/Identifier.yml
             auth:
@@ -144,20 +149,19 @@ post:
                   type: string
                   nullable: true
                   description: Base64 encoded configuration for the Integration.
-              description: Authentication information for the integration.
+              description: Authentication information for the Integration.
             extra:
               type: object
               additionalProperties:
                 type: string
-              description: Additional key-value pairs associated with the integration.
+              description: Additional key-value pairs associated with the Integration.
 
   responses:
-    200:
-      description: Successfully created an integration resource.
+    201:
+      description: Returns the new Integration.
       content:
         application/json:
           schema:
-            title: "IntegrationCreateResponse"
             type: object
             required:
               - data

@@ -4,16 +4,15 @@ get:
     - Jobs
   parameters: []
   summary: List Latest Jobs
-  description: Requires the `jobs-view` permission.
+  description: Requires the `apionly-jobs-view` permission.
   responses:
     200:
-      description: A collection of job resources.
+      description: Returns a list of Jobs.
       content:
         application/json:
           schema:
-            title: "ListJobsReturn"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

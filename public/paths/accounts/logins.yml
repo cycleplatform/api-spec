@@ -1,31 +1,31 @@
 get:
   operationId: "getAccountLogins"
+  summary: Get Account Logins
+  description: Lists logins associated with a given account.
   security:
     - bearerAuth: []
   tags:
     - Accounts
-  summary: List Account Logins
   parameters:
     - $ref: ../../../components/parameters/SortParam.yml
     - $ref: ../../../components/parameters/FilterParam.yml
     - $ref: ../../../components/parameters/PageParam.yml
-  description: Lists logins associated with a given account.
   responses:
     200:
-      description: Returns a collection of logins.
+      description: Returns a list of login records associated with this Account.
       content:
         application/json:
           schema:
             title: "AccountLoginsResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
                 type: array
                 items:
                   oneOf:
-                    - $ref: ../../../components/schemas/accounts/EmployeeLogin.yml
-                    - $ref: ../../../components/schemas/accounts/PasswordLogin.yml
+                    - $ref: ../../../components/schemas/accounts/AccountEmployeeLogin.yml
+                    - $ref: ../../../components/schemas/accounts/AccountPasswordLogin.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml

@@ -1,6 +1,7 @@
----
 get:
   operationId: "getEnvironments"
+  summary: List Environments
+  description: Requires the `environments-view` capability.
   tags:
     - Environments
   parameters:
@@ -69,15 +70,12 @@ get:
               `filter[stack_build]=ID` stack build filtering by ID.  Submit the ID of the stack build you wish to filter for and the return sill be any environments that have the stack build deployed to them.
     - $ref: ../../../components/parameters/SortParam.yml
     - $ref: ../../../components/parameters/PageParam.yml
-  summary: List Environments
-  description: Requires the `environments-view` capability.
   responses:
     200:
-      description: Returns a collection of environment resources.
+      description: Returns a list of Environments.
       content:
         application/json:
           schema:
-            title: "EnvironmentListResponse"
             type: object
             required:
               - data
@@ -93,13 +91,14 @@ get:
                     $ref: ../../../components/schemas/includes/CreatorInclude.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
+
 post:
   operationId: "createEnvironment"
+  summary: Create Environment
+  description: Requires the `environments-create` capability.
   tags:
     - Environments
   parameters: []
-  summary: Create Environment
-  description: Requires the `environments-create` capability.
   requestBody:
     content:
       application/json:
@@ -114,32 +113,31 @@ post:
           properties:
             name:
               type: string
-              description: A user defined name for the environment resource.
+              description: A user defined name for the Environment.
             identifier:
               $ref: ../../../components/schemas/Identifier.yml
             cluster:
               type: string
-              description: The cluster this environment is associated with.
+              description: The cluster this Environment is associated with.
             about:
               type: object
-              description: Contains details regarding the environment.
+              description: Contains details regarding the Environment.
               required:
                 - description
               properties:
                 description:
                   type: string
-                  description: A custom description for this environment.
+                  description: A custom description for this Environment.
             features:
               $ref: ../../../components/schemas/environments/Features.yml
   responses:
     201:
-      description: Returns an environment resource.
+      description: Returns an Environment.
       content:
         application/json:
           schema:
-            title: "EnvironmentResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

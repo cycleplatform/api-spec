@@ -1,23 +1,22 @@
 get:
   operationId: "getStack"
+  summary: Get Stack
+  description: Requires the `stacks-view` capability.
   tags:
     - Stacks
-  summary: Fetch Stack
-  description: Requires the `stacks-view` capability.
   parameters:
     - name: stackId
       in: path
       required: true
-      description: The ID of the stack
+      description: The ID of the Stack
       schema:
         type: string
   responses:
     200:
-      description: Returns a stack resource.
+      description: Returns a Stack resource.
       content:
         application/json:
           schema:
-            title: "StackFetchResponse"
             type: object
             required:
               - data
@@ -26,6 +25,7 @@ get:
                 $ref: ../../../components/schemas/stacks/Stack.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
+
 patch:
   operationId: "updateStack"
   tags:
@@ -34,13 +34,13 @@ patch:
     - name: stackId
       in: path
       required: true
-      description: The ID of the stack
+      description: The ID of the Stack
       schema:
         type: string
   summary: Update Stack
   description: Requires the `stacks-manage` capability.
   requestBody:
-    description: Parameters for updating a stack.
+    description: Parameters for updating a Stack.
     content:
       application/json:
         schema:
@@ -48,21 +48,20 @@ patch:
           properties:
             name:
               type: string
-              description: A name for the stack.
+              description: A name for the Stack.
             variables:
               type: object
-              description: A map of default variable values used when building this stack. A variable can be added anywhere in a stack using the format `{{var}}` where `var` would be a key in this map.
+              description: A map of default variable values used when building this Stack. A variable can be added anywhere in a Stack using the format `{{var}}` where `var` would be a key in this map.
               additionalProperties:
                 type: string
             source:
               $ref: ../../../components/schemas/stacks/StackSource.yml
   responses:
     200:
-      description: Returns an updated stack resource.
+      description: Returns the updated Stack.
       content:
         application/json:
           schema:
-            title: "UpdateStackResponse"
             type: object
             required:
               - data
@@ -71,22 +70,23 @@ patch:
                 $ref: ../../../components/schemas/stacks/Stack.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
+
 delete:
-  operationId: "removeStack"
+  operationId: "deleteStack"
+  summary: Delete Stack
+  description: Requires the `stacks-manage` capability.
   tags:
     - Stacks
   parameters:
     - name: stackId
       in: path
       required: true
-      description: The ID of the stack
+      description: The ID of the Stack
       schema:
         type: string
-  summary: Remove Stack
-  description: Requires the `stacks-manage` capability.
   responses:
-    200:
-      description: Returns a task descriptor.
+    202:
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:
