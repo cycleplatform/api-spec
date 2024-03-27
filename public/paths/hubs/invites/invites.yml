@@ -1,5 +1,7 @@
 get:
   operationId: "getHubInvites"
+  summary: List Hub Invites
+  description: Requires the `hubs-invites-manage` capability.
   tags:
     - Hubs
   security:
@@ -39,15 +41,12 @@ get:
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/FilterParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
-  summary: List Hub Invites
-  description: Requires the `hubs-invites-manage` capability.
   responses:
     200:
-      description: Returns a list of membership resources.
+      description: Returns a list of Memberships.
       content:
         application/json:
           schema:
-            title: "ListHubInvitesReturn"
             type: object
             required:
               - data
@@ -60,15 +59,16 @@ get:
                 $ref: ../../../../components/schemas/hubs/HubMembershipIncludes.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 post:
   operationId: "createHubInvite"
+  summary: Create Hub Invite
+  description: Requires the `hubs-invites-send` capability.
   tags:
     - Hubs
   parameters: []
-  summary: Create Hub Invite
-  description: Requires the `hubs-invites-send` capability.
   requestBody:
-    description: Parameters for creating a hub invite.
+    description: Parameters for creating a Hub invite.
     content:
       application/json:
         schema:
@@ -82,14 +82,14 @@ post:
               $ref: ../../../../components/schemas/ID.yml
             permissions:
               type: object
-              description: The environment permissions the invitee will have
+              description: The Environment permissions the invitee will have
               required:
                 - all_environments
                 - environments
               properties:
                 all_environments:
                   type: boolean
-                  description: Boolean value that indicates the user has access to all environments
+                  description: Boolean value that indicates the user has access to all Environments
                 environments:
                   type: array
                   description: A list of objects that describe the specific environments the invitee will have access to
@@ -101,17 +101,16 @@ post:
                     properties:
                       id:
                         type: string
-                        description: The ID of the environment
+                        description: The ID of the Environment
                       manage:
                         type: boolean
-                        description: Boolean indicating the invitee has manage rights to environment
+                        description: Boolean indicating the invitee has manage rights to Environment
   responses:
     201:
-      description: Returns a hub membership resource.
+      description: Returns a Hub Membership.
       content:
         application/json:
           schema:
-            title: "CreateHubInviteReturn"
             type: object
             required:
               - data

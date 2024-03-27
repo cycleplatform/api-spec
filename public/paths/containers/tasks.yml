@@ -1,7 +1,18 @@
 post:
+  operationId: "createContainerJob"
+  summary: Create Container Job
+  description: |
+    Used to perform different actions on a given Container. 
+
+    Requires the following capabilities based on the task: 
+    `start`: `containers-manage`
+    `stop`: `containers-manage`
+    `reconfigure`: `containers-manage`
+    `volumes.reconfigure`: `containers-volumes-manage`
+    `reimage`: `containers-manage`
+    `scale`: `containers-manage`
   tags:
     - Containers
-  operationId: "createContainerJob"
   parameters:
     - name: containerId
       description: The ID of the requested container.
@@ -9,8 +20,6 @@ post:
       required: true
       schema:
         type: string
-  summary: Create Container Job
-  description: Used to perform different actions on a given container. Requires the `containers-state`, `containers-update`, or `containers-volumes-manage` capability (respectively).
   requestBody:
     description: Parameters for creating a new container job.
     content:
@@ -34,7 +43,7 @@ post:
             - $ref: ../../../components/schemas/containers/taskActions/Scale.yml
   responses:
     202:
-      description: Returns a task descriptor.
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:

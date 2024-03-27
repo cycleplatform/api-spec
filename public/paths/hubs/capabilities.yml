@@ -1,18 +1,16 @@
 get:
   operationId: "getHubCapabilities"
+  summary: List Hub Capabilities
   tags:
     - Hubs
   parameters: []
   security: []
-  summary: List Hub Capabilities
-  description: Does not require a capability.
   responses:
     200:
       description: Returns a list of capabilities.
       content:
         application/json:
           schema:
-            title: "HubCapabilitiesReturn"
             type: object
             required:
               - data

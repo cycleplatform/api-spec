@@ -1,10 +1,16 @@
 get:
   operationId: "getServerTelemetry"
+  summary: Get Server Telemetry
+  description: |
+    This call requires the filter query parameter to be used.
+
+    Requires the `servers-view` capability.
   tags:
+    - Infrastructure
     - Servers
   parameters:
     - name: serverId
-      description: The ID for the given server.
+      description: The ID for the given Server.
       in: path
       required: true
       schema:
@@ -21,24 +27,21 @@ get:
         type: object
         properties:
           range-start:
-            description: The start date from when to pull server telemetry data
+            description: The start date from when to pull Server telemetry data
             $ref: ../../../../components/schemas/DateTime.yml
           range-end:
-            description: The end date from when to pull server telemetry data
+            description: The end date from when to pull Server telemetry data
             $ref: ../../../../components/schemas/DateTime.yml
     - $ref: "../../../../components/parameters/SortParam.yml"
     - $ref: "../../../../components/parameters/PageParam.yml"
-  summary: List Server Telemetry
-  description: Requires the `servers-view` capability. This call requires the filter query be used.
   responses:
     200:
-      description: A list of telemetry points.
+      description: Returns a list of telemetry points.
       content:
         application/json:
           schema:
-            title: "ServerTelemetryReturn"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

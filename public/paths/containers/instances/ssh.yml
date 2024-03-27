@@ -1,6 +1,13 @@
 get:
-  operationId: "getSSHConnection"
+  operationId: "generateInstanceSSHCredentials"
+  summary: Generate Instance SSH Credentials
+  description: |
+    Generates credentials for connecting to an Instance via SSH. The generated endpoint/secret can be used to log in via SSH
+    into the Instance without exposing ports on the container or host.
+
+    Requires the `containers-ssh` capability.
   tags:
+    - Containers
     - Instances
   parameters:
     - name: containerId
@@ -15,26 +22,25 @@ get:
       required: true
       schema:
         type: string
-  summary: Fetch SSH Credentials
-  description: Requires the `containers-ssh` capability.
   responses:
     200:
-      description: Returns a SSH connection response.
+      description: Returns an SSH connection response.
       content:
         application/json:
           schema:
-            title: ContainerInstanceSSHResponse
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
                 $ref: ../../../../components/schemas/containers/instances/returns/SSHResponse.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 delete:
-  operationId: "expireInstanceSSHTokens"
+  operationId: "expireInstanceSSHCredentials"
   tags:
+    - Containers
     - Instances
   parameters:
     - name: containerId
@@ -50,16 +56,19 @@ delete:
       schema:
         type: string
   summary: Expire SSH Credentials
-  description: Requires the `containers-ssh` capability.
+  description: |
+    Instantly expires any SSH credentials generated for this Instance.
+
+    Requires the `containers-ssh` capability.
   responses:
     200:
-      description: Returns a data object holding the amount of tokens removed.
+      description: Returns the number of tokens removed.
       content:
         application/json:
           schema:
             title: ExpireSSHTokenResponse
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

@@ -1,0 +1,49 @@
+get:
+  operationId: "getInstanceConsoleStreamAuth"
+  summary: Instance Console Stream Authorization
+  description: |
+    Returns the authorization information necessary to connect to a Container Instance's console.
+    To connect via WebSocket, use the returned address, and append the returned token as a URL parameter: `<address>?token=<token>`.
+
+    Requires the `containers-console` capability.
+  tags:
+    - Containers
+    - Instances
+  parameters:
+    - name: containerId
+      in: path
+      required: true
+      description: The ID for the Container
+      schema:
+        type: string
+    - name: instanceId
+      in: path
+      required: true
+      description: The ID of the Instance.
+      schema:
+        type: string
+  responses:
+    200:
+      description: Returns authorization information necessary for accessing a Container Instance's console.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                title: InstanceConsoleAuth
+                type: object
+                required:
+                  - token
+                  - address
+                properties:
+                  token:
+                    type: string
+                    description: A token used for connecting to the Instance console.
+                  address:
+                    type: string
+                    description: The protocol and url for connecting to the Instance console.
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml

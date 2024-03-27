@@ -1,0 +1,70 @@
+get:
+  operationId: "getCompatibleServers"
+  tags:
+    - Containers
+    - Infrastructure
+    - Servers
+  summary: List Compatible Servers
+  description: |
+    Gets a list of servers that are compatible with the specified Container and its restrictions (tags, etc).
+
+    Requires the `containers-view` capability.
+  parameters:
+    - name: containerId
+      description: The ID of the requested container.
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: meta
+      in: query
+      required: false
+      description:
+        A comma separated list of meta values. Meta values will show up under a resource's
+        `meta` field. In the case of applying a meta to a collection of resources, each
+        resource will have it's own relevant meta data. In some rare cases, meta may not
+        apply to individual resources, and may appear in the root document. These will be
+        clearly labeled.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - node
+            - instances_count
+    - name: include
+      in: query
+      required: false
+      description:
+        A comma separated list of include values. Included resources will show
+        up under the root document's `include` field, with the key being the id of the included
+        resource. In the case of applying an include to a collection of resources, if two
+        resources share the same include, it will only appear once in the return.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - location
+            - models
+            - integrations
+    - $ref: ../../../components/parameters/SortParam.yml
+    - $ref: ../../../components/parameters/PageParam.yml
+  responses:
+    200:
+      description: Returns a list of Servers.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: ../../../components/schemas/infrastructure/servers/Server.yml
+              includes:
+                $ref: ../../../components/schemas/infrastructure/servers/ServerIncludes.yml
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml

@@ -1,5 +1,7 @@
 get:
   operationId: "getDNSZone"
+  summary: Get DNS Zone
+  description: Requires the `dns-view` capability.
   tags:
     - DNS
   parameters:
@@ -9,8 +11,6 @@ get:
       required: true
       schema:
         type: string
-  summary: Fetch DNS Zone
-  description: Requires the `dns-view` capability.
   responses:
     200:
       description: Returns a DNS zone resource.
@@ -27,6 +27,8 @@ get:
       $ref: ../../../components/responses/errors/DefaultError.yml
 patch:
   operationId: "updateDNSZone"
+  summary: Update DNS Zone
+  description: Requires the `dns-manage` capability.
   tags:
     - DNS
   parameters:
@@ -50,8 +52,6 @@ patch:
           type: string
           enum:
             - creators
-  summary: Update DNS Zone
-  description: Requires the `dns-manage` capability.
   requestBody:
     description: Parameters for updating a DNS Zone.
     content:
@@ -82,7 +82,9 @@ patch:
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
 delete:
-  operationId: "removeDNSZone"
+  operationId: "deleteDNSZone"
+  summary: Delete DNS Zone
+  description: Requires the `dns-manage` capability.
   tags:
     - DNS
   parameters:
@@ -92,11 +94,9 @@ delete:
       required: true
       schema:
         type: string
-  summary: Remove DNS Zone
-  description: Requires the `dns-manage` capability.
   responses:
     202:
-      description: Returns a task descriptor.
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:

@@ -1,0 +1,22 @@
+title: ContainerBackupTarget
+type: object
+description: A target for the given Container Backup.
+required:
+  - destination
+  - path
+  - size
+  - file_id
+properties:
+  destination:
+    type: string
+    description: The target service to be used for a Container Backup.
+    enum:
+      - backblaze-b2
+  path:
+    type: string
+    description: The target for where to store the Container Backup on the destination service.
+  file_id:
+    type: string
+  size:
+    type: integer
+    description: The total size of the backup.

@@ -1,0 +1,37 @@
+get:
+  operationId: "getHubNotificationSocketAuth"
+  tags:
+    - Hubs
+    - Notifications
+  parameters: []
+  summary: Hub Notification Pipeline Auth
+  description: |
+    Initializes authorization for the Hub notification pipeline. The Hub notification pipeline is a one-way streaming websocket that
+    sends real-time 'notifications' as things are happening on the Hub. These notifications tell some basic information about an event,
+    and it is up to the user to fetch additional details, if deemed necessary.
+
+    Requesting this endpoint without a `?token=<token>` URL parameter will result in receiving a short lived token in the response body. That 
+    token can then be applied to the URL parameter to the same endpoint to upgrade the connection to a websocket.
+
+    Requires the `hubs-notifications-listen` capability.
+  responses:
+    200:
+      description: Returns the credentials necessary for upgrading this connection into a web socket.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                title: HubNotificationPipelineAuthResponse
+                type: object
+                required:
+                  - token
+                properties:
+                  token:
+                    type: string
+                    description: A token used for connecting to the Hub notification pipeline websocket API.
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml

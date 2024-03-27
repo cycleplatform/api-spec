@@ -1,6 +1,6 @@
 title: Instance
 type: object
-description: A container instance resource.
+description: An instance of a Container.
 required:
   - id
   - hub_id

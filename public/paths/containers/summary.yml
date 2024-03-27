@@ -1,5 +1,7 @@
 get:
   operationId: "getContainerSummary"
+  summary: Get Container Summary
+  description: Requires the `containers-view` capability.
   tags:
     - Containers
   parameters:
@@ -9,17 +11,14 @@ get:
       required: true
       schema:
         type: string
-        #TODO can this be filtered and sorted  - is there a meta or includes?
-  summary: Fetch Container Summary
-  description: Requires the `containers-view` capability.
   responses:
     200:
-      description: Returns an container summary resource.
+      description: Returns an Container summary resource.
       content:
         application/json:
           schema:
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

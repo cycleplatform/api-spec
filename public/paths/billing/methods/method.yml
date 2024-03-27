@@ -1,5 +1,7 @@
 get:
   operationId: "getBillingMethod"
+  summary: Get Billing Method
+  description: Requires the `billing-methods-manage` capability.
   tags:
     - Billing
   parameters:
@@ -9,15 +11,12 @@ get:
       required: true
       schema:
         type: string
-  summary: Fetch Billing Method
-  description: Requires the `billing-methods-manage` capability.
   responses:
     200:
       description: Returns a billing method resource.
       content:
         application/json:
           schema:
-            title: FetchBillingMethodReturn
             type: object
             required:
               - data
@@ -26,8 +25,11 @@ get:
                 $ref: ../../../../components/schemas/billing/methods/Method.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 patch:
   operationId: "updateBillingMethod"
+  summary: Update Billing Invoice
+  description: Requires the `billing-methods-manage` capability.
   tags:
     - Billing
   parameters:
@@ -37,10 +39,7 @@ patch:
       required: true
       schema:
         type: string
-  summary: Update Billing Invoice
-  description: Requires the `billing-methods-manage` capability.
   requestBody:
-    description: Parameters for updating a billing method.
     content:
       application/json:
         schema:
@@ -62,7 +61,6 @@ patch:
       content:
         application/json:
           schema:
-            title: UpdateBillingMethodReturn
             type: object
             required:
               - data
@@ -71,8 +69,13 @@ patch:
                 $ref: ../../../../components/schemas/billing/methods/Method.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 delete:
-  operationId: "removeBillingMethod"
+  operationId: "deleteBillingMethod"
+  summary: Delete Biilling Method
+  description: |
+    Deletes the Billing Method. However, the primary payment method may not be deleted.
+    Requires the `billing-methods-manage` capability.
   tags:
     - Billing
   parameters:
@@ -82,11 +85,9 @@ delete:
       required: true
       schema:
         type: string
-  summary: Delete Biilling Method
-  description: Requires the `billing-methods-manage` capability.
   responses:
-    200:
-      description: Returns a task descriptor.
+    202:
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:

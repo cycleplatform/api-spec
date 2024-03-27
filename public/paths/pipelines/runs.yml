@@ -1,5 +1,10 @@
 get:
   operationId: "getPipelineRuns"
+  summary: List Pipeline Runs
+  description: |
+    List information about times this Pipeline has run.
+
+    Requires the `pipelines-view` capability.
   tags:
     - Pipelines
   parameters:
@@ -24,15 +29,12 @@ get:
           type: string
           enum:
             - creators
-  summary: List Pipeline Runs
-  description: Requires the `pipelines-view` capability.
   responses:
     200:
-      description: Returns a list of pipeline run resources.
+      description: Returns a list of Pipeline runs.
       content:
         application/json:
           schema:
-            title: "ListPipelineRunsResponse"
             type: object
             required:
               - data
@@ -46,6 +48,5 @@ get:
                 properties:
                   creators:
                     "$ref": "../../../components/schemas/includes/CreatorInclude.yml"
-
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml

@@ -1,6 +1,10 @@
 get:
   operationId: "getServerInstances"
+  summary: List Server Instances
+  description: Requires the `containers-view` capability.
   tags:
+    - Infrastructure
+    - Instances
     - Servers
   parameters:
     - name: serverId
@@ -29,17 +33,15 @@ get:
             - integrations
             - containers
             - environments
-  summary: List Server Instances
-  description: Requires the `containers-view` capability.
   responses:
     200:
-      description: A list of instance resources.
+      description: Returns a list of Instances present on this Server.
       content:
         application/json:
           schema:
             title: "GetServerInstancesReturn"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

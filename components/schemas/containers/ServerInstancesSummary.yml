@@ -1,0 +1,11 @@
+title: ServerInstancesSummary
+type: object
+description: A Server ID and number of Instances of a specific Container it hosts.
+required:
+  - server_id
+  - instances
+properties:
+  server_id:
+    $ref: "../ID.yml"
+  instances:
+    type: integer

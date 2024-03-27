@@ -1,12 +1,15 @@
 get:
   operationId: "getStackBuilds"
+  summary: List Builds
+  description: Requires the `stacks-view` capability.
   tags:
     - Stacks
+    - Stack Builds
   parameters:
     - name: stackId
       in: path
       required: true
-      description: The ID of the stack
+      description: The ID of the Stack.
       schema:
         type: string
     - name: meta
@@ -38,24 +41,21 @@ get:
           search:
             type: string
             description: |
-              `filter[search]=value` search for a value associated with a field on the given stack build(s).
+              `filter[search]=value` search for a value associated with a field on the given Stack Build(s).
           state:
             type: string
             description: |
-              `filter[state]=value1,value2` state filtering will allow you to filter by the stack build's current state.
+              `filter[state]=value1,value2` state filtering will allow you to filter by the Stack Build's current state.
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
-  summary: List Builds
-  description: Requires the `stacks-view` capability.
   responses:
     200:
-      description: Returns a collection of stack builds.
+      description: Returns a list of Stack Builds.
       content:
         application/json:
           schema:
-            title: "StackBuildsCollectionResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
@@ -64,21 +64,23 @@ get:
                   $ref: ../../../../components/schemas/stacks/builds/StackBuild.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 post:
   operationId: "createStackBuild"
+  summary: Create Build
+  description: Requires the `stacks-manage` capability.
   tags:
     - Stacks
+    - Stack Builds
   parameters:
     - name: stackId
       in: path
       required: true
-      description: The ID of the stack
+      description: The ID of the Stack
       schema:
         type: string
-  summary: Create Stack Build
-  description: Requires the `stacks-manage` capability.
   requestBody:
-    description: Parameters for creating a new stack build.
+    description: Parameters for creating a new Stack Build.
     content:
       application/json:
         schema:
@@ -90,13 +92,12 @@ post:
               $ref: ../../../../components/schemas/stacks/builds/StackBuildInstructions.yml
   responses:
     201:
-      description: Returns a stack build resource.
+      description: Returns a Stack Build.
       content:
         application/json:
           schema:
-            title: "StackBuildCreateResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

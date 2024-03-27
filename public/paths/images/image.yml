@@ -1,9 +1,9 @@
 get:
   operationId: "getImage"
+  summary: Get Image
+  description: Requires the `images-view` capability.
   tags:
     - Images
-  summary: Fetch Image
-  description: Requires the `images-view` capability.
   parameters:
     - name: imageId
       in: path
@@ -48,11 +48,10 @@ get:
     - $ref: ../../../components/parameters/PageParam.yml
   responses:
     200:
-      description: Returns a image resource.
+      description: Returns a Image.
       content:
         application/json:
           schema:
-            title: "ImagesFetchResponse"
             type: object
             required:
               - data
@@ -63,8 +62,11 @@ get:
                 $ref: ../../../components/schemas/images/ImageIncludes.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
+
 patch:
   operationId: "updateImage"
+  summary: Update Image
+  description: Requires the `images-manage` capability.
   tags:
     - Images
   parameters:
@@ -74,8 +76,6 @@ patch:
       description: The ID of the image.
       schema:
         type: string
-  summary: Update Image
-  description: Requires the `images-updae` capability.
   requestBody:
     description: Parameters for creating a new image.
     content:
@@ -88,11 +88,10 @@ patch:
               description: A name for the image.
   responses:
     200:
-      description: Returns an image resource.
+      description: Returns an Image.
       content:
         application/json:
           schema:
-            title: "ImagesCreateResponse"
             type: object
             required:
               - data
@@ -101,8 +100,11 @@ patch:
                 $ref: ../../../components/schemas/images/Image.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
+
 delete:
-  operationId: "removeImage"
+  operationId: "deleteImage"
+  summary: Delete Image
+  description: Requires the `images-manage` capability.
   tags:
     - Images
   parameters:
@@ -112,11 +114,9 @@ delete:
       description: The ID of the image.
       schema:
         type: string
-  summary: Delete Image
-  description: Requires the `images-updae` capability.
   responses:
     200:
-      description: Returns a task descriptor.
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:

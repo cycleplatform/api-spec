@@ -1,0 +1,14 @@
+title: ContainerBackupState
+allOf:
+  - required:
+      - current
+    properties:
+      current:
+        description: The current state of the Container Backup.
+        type: string
+        enum:
+          - saving
+          - live
+          - deleting
+          - deleted
+  - "$ref": "../../State.yml"

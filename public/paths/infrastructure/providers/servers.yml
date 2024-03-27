@@ -1,10 +1,11 @@
 get:
   operationId: "getProviderServers"
+  summary: List Provider Servers
   tags:
-    - Providers
+    - Infrastructure
   parameters:
     - name: providerVendor
-      description: The vendor for the given provider. Example `gcp`, `equinix-metal`, `abstraction`, etc. Can also provider provider id.
+      description: The vendor for the given provider. Example `gcp`, `equinix-metal`, `abstraction`, etc. Can also use a Provider Integration ID.
       in: path
       required: true
       schema:
@@ -27,11 +28,9 @@ get:
             type: string
             description: |
               `filter[location_ids]=value` List only those provider servers matching this location. May return multiple results.
-  summary: List Provider Servers
-  description: Requires the `infrastructure-providers-view` capability.
   responses:
     200:
-      description: A list of currently provisioned servers from a provider.
+      description: A list of currently provisioned servers associated with a Provider Integration.
       content:
         application/json:
           schema:

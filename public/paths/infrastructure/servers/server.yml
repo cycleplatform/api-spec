@@ -1,10 +1,13 @@
 get:
-  operationId: "getSingleServer"
+  operationId: "getServer"
+  summary: Get Server
+  description: Requires the `servers-view` capability.
   tags:
+    - Infrastructure
     - Servers
   parameters:
     - name: serverId
-      description: The ID for the given server.
+      description: The ID for the given Server.
       in: path
       required: true
       schema:
@@ -41,15 +44,12 @@ get:
           enum:
             - node
             - instances_count
-  summary: Fetch Server
-  description: Requires the `servers-view` capability.
   responses:
     200:
-      description: A single server resource.
+      description: Returns a Server.
       content:
         application/json:
           schema:
-            title: "ServerFetchReturn"
             type: object
             required:
               - data
@@ -60,21 +60,23 @@ get:
                 $ref: ../../../../components/schemas/infrastructure/servers/ServerIncludes.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 patch:
   operationId: "updateServer"
+  summary: Update Server
+  description: Requires the `servers-manage` capability.
   tags:
+    - Infrastructure
     - Servers
   parameters:
     - name: serverId
-      description: The ID for the given server.
+      description: The ID for the given Server.
       in: path
       required: true
       schema:
         type: string
-  summary: Update Server
-  description: Requires the `servers-manage` capability.
   requestBody:
-    description: Parameters for updating a server.
+    description: Parameters for updating a Server.
     content:
       application/json:
         schema:
@@ -87,13 +89,13 @@ patch:
               description: Server constriants.
               properties:
                 tags:
-                  description: A list of server tags.
+                  description: A list of Server tags.
                   type: array
                   items:
                     type: string
                 allow:
                   type: object
-                  description: Server constraints for the given server.
+                  description: Server constraints for the given Server.
                   required:
                     - pool
                     - services
@@ -101,20 +103,19 @@ patch:
                   properties:
                     pool:
                       type: boolean
-                      description: A boolean where true represents the server can accept containers with no tags set.
+                      description: A boolean where true represents the Server can accept containers with no tags set.
                     services:
                       type: boolean
-                      description: A boolean where true represents the server being a target for service containers.
+                      description: A boolean where true represents the Server being a target for service containers.
                     overcommit:
                       type: boolean
-                      description: A boolean where true represents the desire for the server to allow the overcommitting of shares.
+                      description: A boolean where true represents the desire for the Server to allow the overcommitting of shares.
   responses:
     200:
-      description: A server resource.
+      description: Returns a Server.
       content:
         application/json:
           schema:
-            title: "ServerUpdateReturn"
             type: object
             required:
               - data
@@ -123,15 +124,16 @@ patch:
                 $ref: ../../../../components/schemas/infrastructure/servers/Server.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 delete:
-  summary: Remove Server
+  operationId: "deleteServer"
+  summary: Delete Server
   description: Requires the `servers-manage` capability.
-  operationId: "removeServer"
   tags:
     - Servers
   parameters:
     - name: serverId
-      description: The ID for the given server.
+      description: The ID of the Server.
       in: path
       required: true
       schema:
@@ -139,7 +141,7 @@ delete:
     - $ref: ../../../../components/parameters/OptionParam.yml
   responses:
     200:
-      description: Returns a task descriptor.
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:

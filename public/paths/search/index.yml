@@ -1,23 +1,26 @@
 get:
   operationId: "getSearchIndex"
+  summary: Get Search Index
+  description: |
+    Gets a pre-built search index, containing IDs and basic information for many commonly used resources on the Hub.
+    Can be used to build a 'quick search' functionality for referencing the most frequently used resources.
+
+    Requires the `view` capability for each returned segment, i.e. to retrieve Containers, you must have `containers-view`.
   tags:
-    - Index
+    - Search
   security:
     - bearerAuth: []
-  summary: Get Search Index
-  description: Requires the view capability for each returned segment
   responses:
     200:
-      description: Returns the index resources.
+      description: Returns an indexed search matrix.
       content:
         application/json:
           schema:
-            title: "IndexResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
-                  $ref: ../../../components/schemas/search/Index.yml
+                $ref: ../../../components/schemas/search/Index.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml

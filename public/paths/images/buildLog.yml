@@ -1,0 +1,27 @@
+get:
+  operationId: "getImageBuildLog"
+  summary: Get Image Build Log
+  description: Requires the `images-view` capability.
+  tags:
+    - Images
+  parameters:
+    - name: imageId
+      in: path
+      required: true
+      description: The ID of the Image.
+      schema:
+        type: string
+  responses:
+    200:
+      description: Returns an Image's build log.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../components/schemas/images/BuildLog.yml
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml

@@ -13,20 +13,20 @@ properties:
     "$ref": "../ID.yml"
   name:
     type: object
-    description: The first and last name associated with the account.
+    description: The first and last name associated with the Account.
     required:
       - first
       - last
     properties:
       first:
         type: string
-        description: The first name of the account owner.
+        description: The first name of the Account owner.
       last:
         type: string
-        description: The last name of the account owner.
+        description: The last name of the Account owner.
   email:
     type: object
-    description: Information about the email address associated with the account.
+    description: Information about the email address associated with the Account.
     required:
       - address
       - verified
@@ -37,9 +37,9 @@ properties:
         description: The email address.
       verified:
         type: boolean
-        description: If true, the email has been verified and the account is active.
+        description: If true, the email has been verified and the Account is active.
       added:
-        description: The date the email was added to the account
+        description: The date the email was added to the Account
         "$ref": "../DateTime.yml"
   two_factor_auth:
     type: object
@@ -50,16 +50,16 @@ properties:
     properties:
       verified:
         type: boolean
-        description: A boolean representing if the account has verified with TwoFA.
+        description: A boolean representing if the Account has verified with two-factor authentication.
   allow_support_login:
-    description: Indicates whether or not Cycle employees have authorization to log in to this account in a support capacity.
+    description: Indicates whether or not Cycle employees have authorization to log in to this Account in a support capacity.
     type: boolean
   state:
     "$ref": "./AccountState.yml"
   events:
     title: AccountEvents
     type: object
-    description: A collection of timestamps for each event in the account's lifetime.
+    description: A collection of timestamps for each event in the Account's lifetime.
     required:
       - created
       - updated
@@ -76,5 +76,5 @@ properties:
         description: The timestamp of when the image was deleted.
         "$ref": "../DateTime.yml"
       last_login:
-        description: The timestamp of when the account was last accessed.
+        description: The timestamp of when the Account was last accessed.
         "$ref": "../DateTime.yml"

@@ -1,25 +1,24 @@
 get:
   operationId: "getJob"
+  summary: Get Job
+  description: Requires the `apionly-jobs-view` permission.
   tags:
     - Jobs
   parameters:
     - name: jobId
-      description: The ID for the given job.
+      description: The ID for the given Job.
       in: path
       required: true
       schema:
         type: string
-  summary: Fetch Job
-  description: Requires the `jobs-view` permission.
   responses:
     200:
-      description: A job resources.
+      description: A Job resources.
       content:
         application/json:
           schema:
-            title: "ListJobsReturn"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

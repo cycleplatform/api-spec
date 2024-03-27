@@ -1,15 +1,41 @@
 get:
-  operationId: "getAnnouncementsList"
+  operationId: "getAnnouncements"
+  summary: Get Announcements
+  description: Lists any important updates posted by the Cycle team.
   security:
     - bearerAuth: []
   tags:
     - Announcements
   parameters:
     - $ref: "../../../components/parameters/SortParam.yml"
-    - $ref: "../../../components/parameters/FilterParam.yml"
     - $ref: "../../../components/parameters/PageParam.yml"
-  summary: List Announcements
-  description: Lists any important updates posted by the Cycle team
+    - name: filter
+      in: query
+      required:
+        false
+        # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706
+      style: deepObject
+      description: |
+        ## Filter Field 
+        The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
+      schema:
+        type: object
+        properties:
+          resolved:
+            description: Get only Announcements that have been resolved, or only those that have not.
+            type: string
+            enum:
+              - "true"
+              - "false"
+          range:
+            description: The start date from when to fetch the Announcements
+            type: string
+            enum:
+              - hour
+              - day
+              - week
+              - month
+              - year
   responses:
     200:
       description: List of announcements.
@@ -18,7 +44,7 @@ get:
           schema:
             title: "AnnouncementsListResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

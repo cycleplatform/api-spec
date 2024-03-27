@@ -1,6 +1,6 @@
 title: SSHToken
 type: object
-description: An SSH token resource.
+description: An Instance SSH token.
 required:
   - id
   - instance_id

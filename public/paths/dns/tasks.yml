@@ -1,5 +1,10 @@
 post:
-  operationId: "DNSZoneTask"
+  operationId: "createDNSZoneJob"
+  summary: Create DNS Zone Job
+  description: |
+    Used to perform different actions on a given DNS zone. 
+
+    Requires the `dns-manage` capability.
   tags:
     - DNS
   parameters:
@@ -9,8 +14,6 @@ post:
       required: true
       schema:
         type: string
-  summary: Create DNS Zone Job
-  description: Used to perform different actions on a given DNS zone, requires the `dns-manage` capability.
   requestBody:
     description: Parameters for creating a new DNS zone job.
     content:
@@ -27,7 +30,7 @@ post:
                 - verify
   responses:
     202:
-      description: Returns a task descriptor.
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:
