@@ -1,0 +1,14 @@
+title: SchedulerConfig
+description: Configuration options for the scheduler Environment service.
+type: object
+required:
+  - public
+properties:
+  public:
+    type: boolean
+    description: |
+      If true, the scheduler service API will be exposed publicly via the load balancer. This is useful for allowing external services spin up function containers using custom logic.
+  access_keys:
+    type: array
+    items:
+      $ref: SchedulerAccessKey.yml
