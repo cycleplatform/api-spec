@@ -1,7 +1,10 @@
 get:
-  operationId: "getApiKey"
+  operationId: "getAPIKey"
+  summary: Get API Key
+  description: Requries the `api-keys-manage` capability.
   tags:
-    - ApiKey
+    - Hubs
+    - API Keys
   parameters:
     - name: apikeyId
       description: The ID of the API Key.
@@ -9,25 +12,26 @@ get:
       required: true
       schema:
         type: string
-  summary: Fetch API Key
-  description: Requries the `api-keys-manage` capability.
   responses:
     200:
       description: Returns an API Key resource.
       content:
         application/json:
           schema:
-            title: "FetchApiKeyResponse"
             type: object
             properties:
               data:
                 $ref: ../../../../components/schemas/hubs/ApiKey.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 patch:
-  operationId: "updateApiKey"
+  operationId: "updateAPIKey"
+  summary: Update API Key
+  description: Requires the `api-keys-manage` capability.
   tags:
-    - ApiKeys
+    - Hubs
+    - API Keys
   parameters:
     - name: apikeyId
       description: The ID of the API Key.
@@ -35,8 +39,6 @@ patch:
       required: true
       schema:
         type: string
-  summary: Update API Key
-  description: Requires the `api-keys-manage` capability.
   requestBody:
     description: Parameters for updating an API Key.
     content:
@@ -68,13 +70,12 @@ patch:
                 type: string
   responses:
     200:
-      description: Returns and API Key resource.
+      description: Returns an API Key.
       content:
         application/json:
           schema:
-            title: "UpdateApiKeyReturn"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
@@ -83,9 +84,12 @@ patch:
       $ref: ../../../../components/responses/errors/DefaultError.yml
 
 delete:
-  operationId: "removeApiKey"
+  operationId: "deleteAPIKey"
+  summary: Delete API Key
+  description: Requires the 'api-keys-manage' capability.
   tags:
-    - ApiKeys
+    - Hubs
+    - API Keys
   parameters:
     - name: apikeyId
       description: The ID of the API Key.
@@ -93,17 +97,14 @@ delete:
       required: true
       schema:
         type: string
-  summary: remove Api Key
-  description: Requires the 'api-keys-delete' capability.
   responses:
     200:
-      description: Returns an API Key resource
+      description: Returns an API Key.
       content:
         application/json:
           schema:
-            title: "ServerDeleteReturn"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

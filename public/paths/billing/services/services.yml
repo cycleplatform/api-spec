@@ -1,22 +1,21 @@
 get:
   operationId: "getBillingServices"
+  summary: List Billing Services
+  description: Requries the `billing-services-view` capability.
   tags:
     - Billing
   parameters:
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/FilterParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
-  summary: List Billing Services
-  description: Requries the `billing-services-view` capability.
   responses:
     200:
-      description: Returns a collection of billing service resources.
+      description: Returns a list of Billing Services.
       content:
         application/json:
           schema:
-            title: "ListBillingServicesResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

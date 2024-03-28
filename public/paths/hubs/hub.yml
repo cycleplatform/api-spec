@@ -1,5 +1,7 @@
 get:
   operationId: "getHub"
+  summary: Get Hub
+  description: Requires the `hubs-view` capability.
   tags:
     - Hubs
   security:
@@ -20,28 +22,26 @@ get:
           type: string
           enum:
             - memberships
-  summary: Fetch Hub
-  description: Requires the `hubs-view` capability.
   responses:
     200:
       description: Returns an hub resource.
       content:
         application/json:
           schema:
-            title: "HubFetchReturn"
             type: object
             properties:
               data:
                 $ref: ../../../components/schemas/hubs/Hub.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
+
 patch:
   operationId: "updateHub"
+  summary: Update Hub
+  description: Updates the specified hub, setting the values of the parameters passed.
   tags:
     - Hubs
   parameters: []
-  summary: Update Hub
-  description: Updates the specified hub, setting the values of the parameters passed.
   requestBody:
     description: Parameters for updating a hub.
     content:
@@ -70,13 +70,13 @@ patch:
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
 delete:
-  operationId: "removeHub"
+  operationId: "deleteHub"
   tags:
     - Hubs
   security:
     - bearerAuth: []
   parameters: []
-  summary: Remove Hub
+  summary: Delete Hub
   description: Requires the `hubs-delete` capability. This can only be aquired by being the hub owner.
   responses:
     202:

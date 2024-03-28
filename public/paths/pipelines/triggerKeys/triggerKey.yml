@@ -1,0 +1,114 @@
+get:
+  operationId: "getPipelineTriggerKey"
+  summary: Get Trigger Key
+  description: Requires the `pipelines-manage` capability.
+  tags:
+    - Pipelines
+  parameters:
+    - name: pipelineId
+      in: path
+      required: true
+      description: The ID of the Pipeline.
+      schema:
+        type: string
+    - name: triggerKeyId
+      in: path
+      required: true
+      description: The ID of the Trigger Key.
+      schema:
+        type: string
+  responses:
+    200:
+      description: Returns a Trigger Key.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: ../../../../components/schemas/pipelines/trigger-keys/TriggerKey.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
+
+patch:
+  operationId: "updatePipelineTriggerKey"
+  summary: Update Trigger Key
+  description: Requires the `pipelines-manage` capability.
+  tags:
+    - Pipelines
+  parameters:
+    - name: pipelineId
+      in: path
+      required: true
+      description: The ID of the Pipeline.
+      schema:
+        type: string
+    - name: triggerKeyId
+      in: path
+      required: true
+      description: The ID of the Trigger Key.
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: Set name of Trigger Key
+            ips:
+              description: List of IP Restrictions
+              type: array
+              items:
+                type: string
+                description: Restricted IP String
+  responses:
+    200:
+      description: Returns a Job Descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/jobs/JobDescriptor.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
+
+delete:
+  operationId: "deletePipelineTriggerKey"
+  summary: Delete Trigger Key
+  description: Requires the `pipelines-manage` capability.
+  tags:
+    - Pipelines
+  parameters:
+    - name: pipelineId
+      in: path
+      required: true
+      description: The ID of the Pipeline.
+      schema:
+        type: string
+    - name: triggerKeyId
+      in: path
+      required: true
+      description: The ID of the Trigger Key.
+      schema:
+        type: string
+  responses:
+    202:
+      description: Returns a Job Descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/jobs/JobDescriptor.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml

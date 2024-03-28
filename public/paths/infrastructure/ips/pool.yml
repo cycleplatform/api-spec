@@ -1,7 +1,9 @@
 get:
-  operationId: "getInfrastructureIPPool"
+  operationId: "getIPPool"
+  summary: Get IP Pool
+  description: Requires the `infrastructure-ips-manage` capability.
   tags:
-    - InfrastructureIPs
+    - Infrastructure
   parameters:
     - name: poolId
       description: The ID for the given pool.
@@ -22,19 +24,15 @@ get:
         items:
           type: string
           enum:
-            - creators
             - servers
             - integrations
             - locations
-  summary: Fetch Pool IP
-  description: Requires the `infrastructure-ips-manage` capability.
   responses:
     200:
-      description: A single pool resource.
+      description: An IP Pool.
       content:
         application/json:
           schema:
-            title: "IPPoolReturn"
             type: object
             required:
               - data
@@ -45,22 +43,23 @@ get:
                 $ref: ../../../../components/schemas/infrastructure/ips/PoolIncludes.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
+
 delete:
-  operationId: "removeIpPool"
+  operationId: "deleteIPPool"
+  summary: Delete IP Pool
+  description: Requires the `infrastructure-ips-manage` capability.
   tags:
-    - InfrastructureIPs
+    - Infrastructure
   parameters:
     - name: poolId
-      description: The ID for the given pool.
+      description: The ID for the given IP Pool.
       in: path
       required: true
       schema:
         type: string
-  summary: Remove Pool IP
-  description: Requires the `infrastructure-ips-manage` capability.
   responses:
     202:
-      description: Returns a task descriptor.
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:

@@ -1,27 +1,26 @@
 delete:
-  operationId: "removeHubInvite"
+  operationId: "deleteHubInvite"
+  summary: Delete Hub Invite
+  description: Requires the `hub-invites-manage` capability.
   tags:
     - Hubs
   security:
     - bearerAuth: []
   parameters:
     - name: inviteId
-      description: The ID of the hub invite.
+      description: The ID of the Hub Invite.
       in: path
       required: true
       schema:
         type: string
-  summary: Remove Hub Invite
-  description: Requires the `hub-invites-manage` capability.
   responses:
     200:
-      description: Returns a hub membership resource.
+      description: Returns a Hub Membership.
       content:
         application/json:
           schema:
-            title: "RemoveHubInviteReturn"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

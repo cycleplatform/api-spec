@@ -1,6 +1,12 @@
 get:
-  operationId: "getInstanceResourcesTelemetryReport"
+  operationId: "getInstanceTelemetryReport"
+  summary: Get Instance Telemetry Report
+  description: |
+    Retrieves a point-in-time report of an Instance's resource usage (CPU, RAM, Network, Storage, etc).
+
+    Requires the `containers-view` capability.
   tags:
+    - Containers
     - Instances
   parameters:
     - name: containerId
@@ -17,8 +23,9 @@ get:
         type: string
     - name: filter
       in: query
-      required: false
-       # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706
+      required:
+        false
+        # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706
       style: deepObject
       description: |
         ## Filter Field 
@@ -32,17 +39,14 @@ get:
           range-end:
             description: The end date from when to pull instance telemetry data
             $ref: ../../../../../components/schemas/DateTime.yml
-  summary: Fetch Instance Telemetry Report
-  description: Requires the `containers-view` capability.
   responses:
     200:
-      description: Returns an instance telemetry report.
+      description: Returns an Instance telemetry report.
       content:
         application/json:
           schema:
-            title: InstaceTelemetryReportReturn
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

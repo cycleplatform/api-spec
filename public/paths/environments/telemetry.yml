@@ -1,10 +1,15 @@
 get:
   operationId: "getEnvironmentInstancesTelemetry"
+  summary: Get Environment Instances Telemetry
+  description: |
+    Get telemetry points on the number of instances and their states over a range of time.
+
+    Requires the `environments-view` capability.
   tags:
     - Environments
   parameters:
     - name: environmentId
-      description: The ID of the desired environment
+      description: The ID of the desired Environment
       in: path
       required: true
       schema:
@@ -26,17 +31,14 @@ get:
           range-end:
             description: The end date from when to pull instance telemetry data
             $ref: ../../../components/schemas/DateTime.yml
-  summary: List Telemetry Data
-  description: Requires the `environments-view` capability.
   responses:
     200:
-      description: Returns a collection of telemetry data points.
+      description: Returns a list of telemetry data points.
       content:
         application/json:
           schema:
-            title: "EnvironmentInstanceTelemetry"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

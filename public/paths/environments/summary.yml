@@ -1,8 +1,12 @@
----
 get:
+  operationId: "getEnvironmentSummary"
+  summary: Get Environment Summary
+  description: |
+    Gets the summary of an Environment. Contains useful and relevant data/statistics that would otherwise be several separate API calls.  
+
+    Requires the `environments-view` capability.
   tags:
     - Environments
-  operationId: "getEnvironmentSummary"
   parameters:
     - name: environmentId
       description: The ID of the requested environment.
@@ -10,17 +14,14 @@ get:
       required: true
       schema:
         type: string
-  summary: Fetch Environment Summary
-  description: Fetches a single summary object for a specific environment. Contains useful and relevant data/statistics that would otherwise be several separate API calls.  Requires the `environments-view` capability.
   responses:
     200:
       description: Returns an environment summary object.
       content:
         application/json:
           schema:
-            title: "EnvironmentSummaryResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

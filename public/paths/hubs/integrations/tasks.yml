@@ -1,7 +1,14 @@
 post:
-  operationId: "createHubIntegrationJob"
+  operationId: "createIntegrationJob"
+  description: |
+    Creates a new Job targeted at the provided Hub Integration. 
+
+    ## Required Permissions
+      - Requires a valid hub membership to the target hub.
+      - Requires the `hubs-integrations-manage` capability.
   tags:
-    - Hub
+    - Hubs
+    - Integrations
   parameters:
     - name: integrationId
       description: The ID of the Hub Integration.
@@ -10,14 +17,8 @@ post:
       schema:
         type: string
   summary: Create a new Hub Integration Job.
-  description: |
-    Creates a new job targeted at the provided Hub Integration. 
-
-    ## Required Permissions
-      - Requires a valid hub membership to the target hub
-      - Requires the `hubs-integrations-manage` capability.
   requestBody:
-    description: Parameters for creating a new Hub Integration job.
+    description: Parameters for creating a new Hub Integration Job.
     content:
       application/json:
         schema:
@@ -32,7 +33,7 @@ post:
                 - verify
   responses:
     202:
-      description: Returns a Job Descriptor, which contains relevant information about the new Job.
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:

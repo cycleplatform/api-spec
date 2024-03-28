@@ -1,12 +1,14 @@
 get:
   operationId: "getPipeline"
+  summary: Get Pipeline
+  description: Requires the `pipelines-view` capability.
   tags:
     - Pipelines
   parameters:
     - name: pipelineId
       in: path
       required: true
-      description: The ID of the pipeline.
+      description: The ID of the Pipeline.
       schema:
         type: string
     - name: include
@@ -25,15 +27,12 @@ get:
             - creators
             - name
             - components
-  summary: List Pipelines
-  description: Requires the `pipelines-view` capability.
   responses:
     200:
-      description: Returns a pipeline resource.
+      description: Returns a Pipeline.
       content:
         application/json:
           schema:
-            title: "FetchPipelineResponse"
             type: object
             required:
               - data
@@ -44,21 +43,22 @@ get:
                 $ref: ../../../components/schemas/pipelines/PipelineIncludes.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
+
 patch:
   operationId: "updatePipeline"
+  summary: Update Pipeline
+  description: Requires the `pipelines-manage` capability.
   tags:
     - Pipelines
   parameters:
     - name: pipelineId
       in: path
       required: true
-      description: The ID of the pipeline.
+      description: The ID of the Pipeline.
       schema:
         type: string
-  summary: Update Pipeline
-  description: Requires the `pipelines-manage` capability.
   requestBody:
-    description: Parameters for updating a pipeline.
+    description: Parameters for updating a Pipeline.
     content:
       application/json:
         schema:
@@ -66,10 +66,10 @@ patch:
           properties:
             name:
               type: string
-              description: A name for the pipeline.
+              description: A name for the Pipeline.
             dynamic:
               type: boolean
-              description: Setting to true enables variable and other advanced logic support on this pipeline. This is a one-way toggle. Once set to true, it cannot be set back to false.
+              description: Setting to true enables variable and other advanced logic support on this Pipeline. This is a one-way toggle. Once set to true, it cannot be set back to false.
             stages:
               description: An array of stages.
               type: array
@@ -77,14 +77,13 @@ patch:
                 $ref: ../../../components/schemas/pipelines/PipelineStage.yml
             disable:
               type: boolean
-              description: A boolean where true signifies the pipeline is disabled.
+              description: A boolean where true signifies the Pipeline is disabled.
   responses:
     200:
-      description: Returns a pipeline resource.
+      description: Returns a Pipeline resource.
       content:
         application/json:
           schema:
-            title: "FetchPipelineResource"
             type: object
             required:
               - data
@@ -93,22 +92,23 @@ patch:
                 $ref: ../../../components/schemas/pipelines/Pipeline.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
+
 delete:
-  operationId: "removePipeline"
+  operationId: "deletePipeline"
+  summary: Delete Pipeline
+  description: Requires the `pipelines-manage` capability.
   tags:
     - Pipelines
   parameters:
     - name: pipelineId
       in: path
       required: true
-      description: The ID of the pipeline.
+      description: The ID of the Pipeline.
       schema:
         type: string
-  summary: Remove Pipeline
-  description: Requires the `pipelines-manage` capability.
   responses:
     200:
-      description: Returns a task descriptor.
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:

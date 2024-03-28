@@ -1,16 +1,16 @@
-title: SSHConnectionResponse 
-type: object 
-description: SSH connection information for a given container instance. 
-required: 
-  - token 
-  - secret 
-  - address 
-properties: 
-  token: 
-    "$ref": "../SSHToken.yml" 
-  secret: 
-    type: string 
-    description: The SSH connection response secret. 
-  address: 
-    type: string 
-    description: The SSH connection response address. 
+title: SSHConnectionResponse
+type: object
+description: SSH connection information for a given container instance.
+required:
+  - token
+  - secret
+  - address
+properties:
+  token:
+    $ref: "../SSHToken.yml"
+  secret:
+    type: string
+    description: The SSH connection response secret.
+  address:
+    type: string
+    description: The SSH connection response address.

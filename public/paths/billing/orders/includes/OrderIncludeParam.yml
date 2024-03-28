@@ -1,0 +1,10 @@
+name: include
+in: query
+style: form
+required: false
+schema:
+  type: array
+  items:
+    type: string
+    enum:
+      - promo_codes

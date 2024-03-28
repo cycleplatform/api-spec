@@ -1,6 +1,9 @@
 get:
   operationId: "GetServerUsage"
+  summary: Get Server Usage
+  description: Requires the `servers-view` capability.
   tags:
+    - Infrastructure
     - Servers
   parameters:
     - name: serverId
@@ -9,17 +12,14 @@ get:
       required: true
       schema:
         type: string
-  summary: Fetch Server Usage
-  description: Requires the `servers-view` capability.
   responses:
     200:
-      description: Server data usage collection.
+      description: Returns usage data for the Server.
       content:
         application/json:
           schema:
-            title: "ServerUsageReturn"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

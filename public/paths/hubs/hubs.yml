@@ -1,11 +1,11 @@
 get:
   operationId: "getHubs"
+  summary: List Hubs
+  description: Lists all associated Hubs.
   tags:
     - Hubs
   security:
     - bearerAuth: []
-  summary: List Hubs
-  description: Lists all associated hubs.
   parameters:
     - $ref: "../../../components/parameters/PageParam.yml"
     - name: filter
@@ -26,14 +26,14 @@ get:
           search:
             type: string
             description: |
-              `filter[search]=value` search hubs for a value associated with a field on the given hub(s).
+              `filter[search]=value` search hubs for a value associated with a field on the given Hub(s).
           state:
             type: string
             description: |
-              `filter[state]=value1,value2` state filtering will allow you to filter by the hub's current state.
+              `filter[state]=value1,value2` state filtering will allow you to filter by the Hub's current state.
   responses:
     200:
-      description: Returns a list of hub resources.
+      description: Returns a list of Hubs.
       content:
         application/json:
           schema:
@@ -48,17 +48,18 @@ get:
                   $ref: ../../../components/schemas/hubs/Hub.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
+
 post:
   operationId: "createHub"
+  summary: Create Hub
+  description: Create a Hub.
   tags:
     - Hubs
   security:
     - bearerAuth: []
   parameters: []
-  summary: Create Hub
-  description: Create a hub resource.
   requestBody:
-    description: Parameters for creating a hub.
+    description: Parameters for creating a Hub.
     content:
       application/json:
         schema:
@@ -66,7 +67,7 @@ post:
           properties:
             name:
               type: string
-              description: A name for the hub.
+              description: A name for the Hub.
             identifier:
               $ref: ../../../components/schemas/Identifier.yml
             webhooks:
@@ -74,11 +75,10 @@ post:
 
   responses:
     200:
-      description: Returns a hub resource.
+      description: Returns a Hub resource.
       content:
         application/json:
           schema:
-            title: "HubCreateResponse"
             type: object
             required:
               - data

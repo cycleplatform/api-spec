@@ -1,5 +1,6 @@
 get:
   operationId: "getHubActivity"
+  summary: List Hub Activity
   tags:
     - Hubs
   parameters:
@@ -75,15 +76,12 @@ get:
                 `2` - Full activity, can be useful in debugging problems.
     - $ref: ../../../components/parameters/SortParam.yml
     - $ref: ../../../components/parameters/PageParam.yml
-  summary: List Activity
-  description: Doesn't require a specific capability.
   responses:
     200:
-      description: Returns a collection of activity resources.
+      description: Returns a list of Hub Activity entries.
       content:
         application/json:
           schema:
-            title: "ListActivityResponse"
             type: object
             required:
               - data

@@ -1,6 +1,9 @@
 get:
   operationId: "getServerTags"
+  summary: List Server Tags
+  description: Requires the `servers-view` capability.
   tags:
+    - Infrastructure
     - Servers
   parameters:
     - name: filter
@@ -18,11 +21,9 @@ get:
             type: string
             description: |
               `filter[cluster]=clusterone,clustertwo` filtering by cluster.  Enter one or more clusters (commas separated) and the return will include tags from servers that match any cluster(s) in the list.
-  summary: List Server Tags
-  description: Requires the `servers-view` capability.
   responses:
     200:
-      description: Returns a list of server tags.
+      description: Returns a list of Server Tags.
       content:
         application/json:
           schema:

@@ -1,18 +1,18 @@
 get:
-  operationId: "GetServersClusters"
-  tags:
-    - Servers
-  summary: List Servers Clusters
+  operationId: "GetClusters"
+  summary: List Clusters
   description: Requires the `servers-view` capability.
+  tags:
+    - Infrastructure
   responses:
     200:
-      description: A collection of cluster identifiers.
+      description: Returns a list of Clusters on this Hub.
       content:
         application/json:
           schema:
             title: "ServerClustersReturn"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

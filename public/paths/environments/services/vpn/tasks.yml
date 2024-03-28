@@ -1,18 +1,18 @@
 post:
-  operationId: "createEnvironmentVpnTask"
+  operationId: "createVPNServiceJob"
+  summary: Create VPN Service Job
+  description: Used to reconfigure or reset the Environment VPN. Requires the `environments-vpn-manage` capability.
   tags:
     - Environments
   parameters:
     - name: environmentId
-      description: The ID of the environment the VPN service resides in.
+      description: The ID of the Environment the VPN service resides in.
       in: path
       required: true
       schema:
         type: string
-  summary: Create Environment VPN Job
-  description: Used to reconfigure or reset the environment VPN. Requires the `environments-vpn-manage` capability.
   requestBody:
-    description: The task contents used to build the environment VPN job.
+    description: The task contents used to build the Environment VPN Job.
     content:
       application/json:
         schema:
@@ -26,11 +26,10 @@ post:
             - $ref: ../../../../../components/schemas/environments/services/vpn/taskActions/VpnReconfigureTask.yml
   responses:
     202:
-      description: Returns a task descriptor.
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:
-            title: "TaskResponse"
             type: object
             required:
               - data

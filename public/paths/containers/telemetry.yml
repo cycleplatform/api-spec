@@ -1,10 +1,15 @@
 get:
   operationId: "getContainerInstancesTelemetry"
+  summary: List Telemetry Data
+  description: |
+    Gets a list of telemetry points describing the number and state of all Instances of this Container at a point in time.
+
+    Requires the `containers-view` capability.
   tags:
     - Containers
   parameters:
     - name: containerId
-      description: The ID of the desired container
+      description: The ID of the desired Container
       in: path
       required: true
       schema:
@@ -26,17 +31,14 @@ get:
           range-end:
             description: The end date from when to pull instance telemetry data
             $ref: ../../../components/schemas/DateTime.yml
-  summary: List Telemetry Data
-  description: Requires the `containers-view` capability.
   responses:
     200:
-      description: Returns a collection of telemetry data points.
+      description: Returns a list of telemetry data points.
       content:
         application/json:
           schema:
-            title: "ContainerInstancesTelemetry"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

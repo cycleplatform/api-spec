@@ -1,0 +1,27 @@
+get:
+  operationId: "getVPNService"
+  summary: Get VPN Service
+  description: Requires the `environments-vpn` capability.
+  tags:
+    - Environments
+  parameters:
+    - name: environmentId
+      description: The environmentId where the VPN resides.
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    200:
+      description: Returns the VPN service.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../../components/schemas/environments/returns/VPNInfoReturn.yml
+    default:
+      $ref: ../../../../../components/responses/errors/DefaultError.yml

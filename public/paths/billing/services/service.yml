@@ -1,25 +1,24 @@
 get:
   operationId: "getBillingService"
+  summary: Get Billing Service
+  description: Requries the `billing-services-view` capability.
   tags:
     - Billing
   parameters:
     - name: servicesId
-      description: The ID of the billing service.
+      description: The ID of the Billing Service.
       in: path
       required: true
       schema:
         type: string
-  summary: Fetch Billing Service
-  description: Requries the `billing-services-view` capability.
   responses:
     200:
-      description: Returns a billing service resources.
+      description: Returns the Hub's specified Billing Service.
       content:
         application/json:
           schema:
-            title: "ListBillingServicesResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

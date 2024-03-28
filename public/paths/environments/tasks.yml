@@ -1,19 +1,21 @@
----
 post:
+  operationId: "createEnvironmentJob"
+  summary: Create Environment Job
+  description: |
+    Create a job for an Environment, such as 'start' or 'stop'. 
+
+    Requires the `environments-manage` capability.
   tags:
     - Environments
-  operationId: "createEnvironmentJob"
   parameters:
     - name: environmentId
-      description: The ID of the requested environment.
+      description: The ID of the requested Environment.
       in: path
       required: true
       schema:
         type: string
-  summary: Create Environment Job
-  description: Create a job for an environment, such as 'start' or 'stop'. Requires the `environments-state` capability.
   requestBody:
-    description: Parameters for creating a new environment job.
+    description: Parameters for creating a new Environment job.
     content:
       application/json:
         schema:
@@ -31,7 +33,7 @@ post:
             - $ref: ../../../components/schemas/environments/taskActions/EnvironmentReconfigureDeploymentsAction.yml
   responses:
     202:
-      description: Returns a task descriptor.
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:

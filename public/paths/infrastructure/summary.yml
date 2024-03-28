@@ -1,5 +1,7 @@
 get:
   operationId: "getInfrastructureSummary"
+  summary: Get Infrastructure Summary
+  description: Requires the `infrastructure-servers-view` capability.
   tags:
     - Infrastructure
   parameters:
@@ -18,8 +20,6 @@ get:
             type: string
             description: |
               `filter[cluster]=value` return an infrastructure summary only for the specified cluster.
-  summary: Fetch Infrastructure Summary
-  description: Requires the `infrastructure-servers-view` capability.
   responses:
     200:
       description: Returns an infrastructure summary.

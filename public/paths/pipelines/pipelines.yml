@@ -1,5 +1,7 @@
 get:
   operationId: "getPipelines"
+  summary: List Pipelines
+  description: Requires the `pipelines-view` capability.
   tags:
     - Pipelines
   parameters:
@@ -41,20 +43,17 @@ get:
           state:
             type: string
             description: |
-              `filter[state]=value1,value2` state filtering will allow you to filter by the pipeline's current state.
+              `filter[state]=value1,value2` state filtering will allow you to filter by the Pipeline's current state.
     - $ref: ../../../components/parameters/SortParam.yml
     - $ref: ../../../components/parameters/PageParam.yml
-  summary: List Pipelines
-  description: Requires the `pipelines-view` capability.
   responses:
     200:
-      description: Returns a collection of pipeline resources.
+      description: Returns a list of Pipelines.
       content:
         application/json:
           schema:
-            title: "ListPipelineResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
@@ -66,15 +65,16 @@ get:
 
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
+
 post:
   operationId: "createPipeline"
+  summary: Create Pipeline
+  description: Requires the `pipelines-manage` capability.
   tags:
     - Pipelines
   parameters: []
-  summary: Create Pipeline
-  description: Requires the `pipelines-manage` capability.
   requestBody:
-    description: Parameters for creating a new pipeline.
+    description: Parameters for creating a new Pipeline.
     content:
       application/json:
         schema:
@@ -84,12 +84,12 @@ post:
           properties:
             name:
               type: string
-              description: A name for the pipeline.
+              description: A name for the Pipeline.
             identifier:
               $ref: ../../../components/schemas/Identifier.yml
             dynamic:
               type: boolean
-              description: Setting to true enables variable and other advanced logic support on this pipeline. This is a one-way toggle. Once set to true, it cannot be set back to false.
+              description: Setting to true enables variable and other advanced logic support on this Pipeline. This is a one-way toggle. Once set to true, it cannot be set back to false.
             stages:
               description: An array of stages.
               type: array
@@ -97,16 +97,15 @@ post:
                 $ref: ../../../components/schemas/pipelines/PipelineStage.yml
             disable:
               type: boolean
-              description: A boolean where true signifies the pipeline is disabled.
+              description: A boolean where true signifies the Pipeline is disabled.
   responses:
     201:
-      description: Returns a pipeline resource.
+      description: Returns a Pipeline.
       content:
         application/json:
           schema:
-            title: "PipelineCreateResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

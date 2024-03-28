@@ -1,18 +1,18 @@
 post:
+  operationId: "createNetworkJob"
+  summary: Create Network Job
+  description: Requires the `sdn-networks-manage` capability.
   tags:
     - SDN
-  operationId: "createNetworkJob"
   parameters:
     - name: networkId
       in: path
       required: true
-      description: The ID of the network.
+      description: The ID of the Network.
       schema:
         type: string
-  summary: Create SDN Job
-  description: Requires the `sdn-networks-manage` capability.
   requestBody:
-    description: Parameters for creating a new sdn job.
+    description: Parameters for creating a new Network Job.
     content:
       application/json:
         schema:
@@ -24,23 +24,23 @@ post:
           properties:
             action:
               type: string
-              description: The job to do.
+              description: The Job to do.
               enum:
                 - reconfigure
             contents:
               type: object
-              description: Additional information needed for the job.
+              description: Additional information needed for the Job.
               required:
                 - environment_ids
               properties:
                 environment_ids:
-                  description: An array of environment identifiers for the network.
+                  description: An array of environment identifiers for the Network.
                   type: array
                   items:
                     type: string
   responses:
-    200:
-      description: Returns a task descriptor.
+    202:
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:

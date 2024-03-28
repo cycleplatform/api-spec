@@ -1,0 +1,12 @@
+title: TwoFactorAuthRecovery
+type: object
+required:
+  - recovery_codes
+  - totp_passcode
+properties:
+  recovery_codes:
+    type: array
+    items:
+      type: string
+  totp_passcode:
+    type: string

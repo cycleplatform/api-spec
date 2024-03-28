@@ -1,8 +1,15 @@
 get:
-  operationId: "getInstanceResourcesTelemetryStream"
+  operationId: "getInstanceTelemetryStreamAuth"
+  summary: Instance Telemetry Stream Authorization
+  description: |
+    Retrieves an access token and URL to open a websocket to for streaming instance telemetry live.
+    This connects directly to the compute layer on the server the instance is hosted on, and streams telemetry in real time.
+
+    Requires the `containers-view` capability.
   tags:
+    - Containers
     - Instances
-    - WebsocketAuth
+    - Stream
   parameters:
     - name: containerId
       description: The ID of the requested container.
@@ -11,28 +18,22 @@ get:
       schema:
         type: string
     - name: instanceId
-      description: The ID for the container instance.
+      description: The ID for the Container Instance.
       in: path
       required: true
       schema:
         type: string
-  summary: Instance Telemetry Stream Credentials
-  description:
-    Requires the `containers-view` capability. Retrieves an access token and URL to open a websocket to for streaming instance telemetry live.
-    This connects directly to the compute layer on the server the instance is hosted on, and streams telemetry in real time.
   responses:
     200:
       description: Returns credentials for connecting to an instance telemetry stream.
       content:
         application/json:
           schema:
-            title: InstanceTelemetryStreamCredentialsReturn
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
-                title: InstanceTelemetryStreamCredentials
                 type: object
                 description: Credentials for connecting to the instance telemetry stream on compute.
                 required:

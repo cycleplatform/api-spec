@@ -1,22 +1,20 @@
 get:
   operationId: "getBillingOverages"
+  summary: List Billing Overages
   tags:
     - Billing
   parameters:
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/FilterParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
-  summary: List Billing Overages
-  description: Doesn't require a specific capability.
   responses:
     200:
-      description: Returns a billing overage resource.
+      description: Returns Billing Overages.
       content:
         application/json:
           schema:
-            title: ListBillingOveragesResponse
             type: object
-            required: 
+            required:
               - data
             properties:
               data:

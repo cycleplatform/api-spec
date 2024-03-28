@@ -1,10 +1,12 @@
 get:
-  operationId: "getHubMembersAccount"
+  operationId: "getHubMemberAccount"
+  summary: Get Hub Member Account
+  description: Requires the `hubs-members-view` capability.
   tags:
     - Hubs
   parameters:
     - name: accountId
-      description: The ID of the member account.
+      description: The ID of the member's Account.
       in: path
       required: true
       schema:
@@ -41,15 +43,12 @@ get:
             - hubs
             - accounts
             - roles
-  summary: Fetch Members Account
-  description: Requires the `hubs-members-view` capability.
   responses:
     200:
-      description: Returns a membership resource.
+      description: Returns a Hub Membership.
       content:
         application/json:
           schema:
-            title: "FetchHubMembersAccountReturn"
             type: object
             required:
               - data
