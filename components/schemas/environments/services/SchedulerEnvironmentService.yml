@@ -16,6 +16,7 @@ properties:
     description: Whether or not the scheduler service is enabled.
   container_id:
     type: string
+    nullable: true
     description: The ID of the scheduler service container.
   high_availability:
     type: boolean
@@ -26,7 +27,8 @@ properties:
   auto_update:
     type: boolean
     description: A boolean where `true` represents the desire to automatically update the environment scheduler service.
-  # config:
-  #   nullable: true
-  #   description: The config object for the scheduler service.
-  #   type: object
+  config:
+    nullable: true
+    type: object
+    allOf:
+      - $ref: scheduler/SchedulerConfig.yml
