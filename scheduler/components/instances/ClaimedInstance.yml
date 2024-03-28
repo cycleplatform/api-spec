@@ -1,0 +1,14 @@
+title: ClaimedInstance
+description: Details about a claim on a function Instance.
+type: object
+required:
+  - instance_id
+  - environment
+  - token
+properties:
+  instance_id:
+    $ref: ../../../components/schemas/ID.yml
+  environment:
+    $ref: ../../../components/schemas/containers/instances/InstanceEnvironmentSummary.yml
+  token:
+    type: string

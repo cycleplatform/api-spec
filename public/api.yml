@@ -5,8 +5,8 @@ servers:
     url: https://api.cycle.io
 info:
   license:
-    name: CC-BY-3.0
-    url: https://creativecommons.org/licenses/by/3.0/
+    name: CC-BY-4.0
+    url: https://creativecommons.org/licenses/by/4.0/
   description: |
     The Cycle API is a [REST-based](http://en.wikipedia.org/wiki/Representational_state_transfer), resource-oriented API
     designed to be easy to use and understand. Using this API, you are able to fully interact with the Cycle Platform. 

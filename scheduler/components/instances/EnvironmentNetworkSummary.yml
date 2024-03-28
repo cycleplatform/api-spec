@@ -1,0 +1,45 @@
+# Needed to pull this over from the main instance type because we're migrating to 3.1.0 and the existing 3.0.0 version is not
+# compatible.
+title: EnvironmentNetworkSummary
+type: object
+description: Details about the Environment network this Instance is a member of.
+required:
+  - id
+  - network_subnet
+  - subnet
+  - ipv6
+  - legacy
+  - mac_addr
+  - vxlan_tag
+properties:
+  id:
+    $ref: ../../../components/schemas/ID.yml
+  network_subnet:
+    type: string
+  subnet:
+    type: string
+  ipv6:
+    anyOf:
+      - type: null
+      - $ref: ../../../components/schemas/environments/IPNet.yml
+  legacy:
+    type:
+      - object
+      - null
+    required:
+      - host
+      - subnet
+      - ipv4
+    properties:
+      host:
+        type: integer
+      subnet:
+        type: integer
+      ipv4:
+        anyOf:
+          - type: null
+          - $ref: ../../../components/schemas/environments/IPNet.yml
+  mac_addr:
+    type: string
+  vxlan_tag:
+    type: integer

@@ -1,0 +1,36 @@
+post:
+  operationId: "claimInstance"
+  summary: Claim Instance
+  description: |
+    Reserves an instance of the target function Container. The scheduler will release the claim back into the pool if the Instance is not claimed
+    within ten seconds.
+  tags:
+    - Functions
+  parameters:
+    - name: containerId
+      description: The ID of the requested Container.
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            token:
+              type: string
+              description: A custom token used for identifying a claim. Useful for retry requests. Can be any valid string.
+  responses:
+    200:
+      description: Returns details about the claimed Instance.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: ../../components/instances/ClaimedInstance.yml
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml

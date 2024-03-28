@@ -1,0 +1,26 @@
+post:
+  operationId: "spawnInstance"
+  summary: Spawn Instance
+  description: |
+    Spawns a previously claimed Instance.
+  tags:
+    - Functions
+  parameters:
+    - name: containerId
+      description: The ID of the requested Container.
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    200:
+      description: Returns details about the claimed Instance.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: ../../components/instances/ClaimedInstance.yml
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
