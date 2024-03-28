@@ -9,6 +9,6 @@ properties:
   instance_id:
     $ref: ../../../components/schemas/ID.yml
   environment:
-    $ref: ../../../components/schemas/containers/instances/InstanceEnvironmentSummary.yml
+    $ref: EnvironmentNetworkSummary.yml
   token:
     type: string

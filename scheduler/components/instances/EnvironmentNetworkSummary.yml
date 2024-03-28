@@ -20,12 +20,12 @@ properties:
     type: string
   ipv6:
     anyOf:
-      - type: null
+      - type: "null"
       - $ref: ../../../components/schemas/environments/IPNet.yml
   legacy:
     type:
       - object
-      - null
+      - "null"
     required:
       - host
       - subnet
@@ -37,7 +37,7 @@ properties:
         type: integer
       ipv4:
         anyOf:
-          - type: null
+          - type: "null"
           - $ref: ../../../components/schemas/environments/IPNet.yml
   mac_addr:
     type: string
