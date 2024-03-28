@@ -39,7 +39,7 @@ get:
           schema:
             title: "ListHubsResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
@@ -69,8 +69,6 @@ post:
               description: A name for the hub.
             identifier:
               $ref: ../../../components/schemas/Identifier.yml
-            integrations:
-              $ref: ../../../components/schemas/hubs/HubIntegrations.yml
             webhooks:
               $ref: ../../../components/schemas/hubs/HubWebhooks.yml
 
@@ -82,7 +80,7 @@ post:
           schema:
             title: "HubCreateResponse"
             type: object
-            required: 
+            required:
               - data
             properties:
               data:
