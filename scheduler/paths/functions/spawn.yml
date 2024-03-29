@@ -1,0 +1,49 @@
+post:
+  operationId: "spawnInstance"
+  summary: Spawn Instance
+  description: |
+    Spawns a previously claimed Instance.
+  tags:
+    - Functions
+  parameters:
+    - name: containerId
+      description: The ID of the requested Container.
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - token
+            - instance_id
+          properties:
+            token:
+              type: string
+              description: A custom token used for identifying and managing a claim. Should be the same token used when claiming the Instance.
+            instance_id:
+              $ref: ../../../components/schemas/ID.yml
+            arguments:
+              type: array
+              description: Arguments to pass to the Instance.
+              items:
+                type: string
+            environment_variables:
+              type: object
+              additionalProperties:
+                type: string
+  responses:
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns details about the spawned Instance.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: ../../components/instances/SpawnedInstance.yml

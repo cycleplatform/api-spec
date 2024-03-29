@@ -1,5 +1,4 @@
----
 title: DateTime
 type: string
 format: date-time
-example: '2021-01-30T08:30:00Z'
+example: "2021-01-30T08:30:00Z"

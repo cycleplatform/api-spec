@@ -1,0 +1,37 @@
+openapi: 3.1.0
+servers:
+  - description: Cycle Scheduler Service
+    url: "http://env-scheduler"
+info:
+  version: 1.0.0
+  title: Cycle Scheduler API
+  contact:
+    email: support@cycle.io
+  license:
+    name: CC-BY-4.0
+    url: https://creativecommons.org/licenses/by/4.0/
+
+security:
+  - accessKey: []
+
+tags:
+  - name: Functions
+    description: "Containers configured to be pre-allocated and started on demand - useful for batch processing and tasks with elastic demand. Managed by a scheduler service (this API) on a per-environment basis."
+
+paths:
+  # v1
+  ## functions
+  /v1/functions/{containerId}/claim:
+    $ref: paths/functions/claim.yml
+  /v1/functions/{containerId}/spawn:
+    $ref: paths/functions/spawn.yml
+  /v1/functions/{containerId}/release:
+    $ref: paths/functions/release.yml
+
+components:
+  securitySchemes:
+    accessKey:
+      name: X-CYCLE-ACCESS-KEY
+      in: header
+      type: apiKey
+      description: Access key that has been set in the scheduler config.

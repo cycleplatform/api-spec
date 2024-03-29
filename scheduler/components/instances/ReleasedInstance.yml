@@ -1,0 +1,21 @@
+title: ReleasedInstance
+description: Details about a released function Instance.
+type: object
+required:
+  - instance_id
+properties:
+  instance_id:
+    description: The ID of the released Instance.
+    $ref: ../../../components/schemas/ID.yml
+  claimed:
+    anyOf:
+      - $ref: ../../../components/schemas/DateTime.yml
+      - "null"
+  spawned:
+    anyOf:
+      - $ref: ../../../components/schemas/DateTime.yml
+      - "null"
+  released:
+    anyOf:
+      - $ref: ../../../components/schemas/DateTime.yml
+      - "null"
