@@ -1,0 +1,6 @@
+title: ContainerBackupIncludes
+description: All includable resources linkable to the given Zone.
+type: object
+properties:
+  integrations:
+    "$ref": "../../includes/IntegrationsIncludes.yml"

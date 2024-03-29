@@ -20,6 +20,20 @@ get:
       required: true
       schema:
         type: string
+    - name: include
+      in: query
+      required: false
+      description:
+        A comma separated list of include values. Included resources will show
+        up under the root document's `include` field, with the key being the id of the included
+        resource. In the case of applying an include to a collection of resources, if two
+        resources share the same include, it will only appear once in the return.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - integrations
   responses:
     200:
       description: Returns a Container Backup.
@@ -32,6 +46,8 @@ get:
             properties:
               data:
                 $ref: ../../../../components/schemas/containers/backups/ContainerBackup.yml
+              includes:
+                $ref: ../../../../components/schemas/containers/backups/ContainerBackupIncludes.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
 
