@@ -20,8 +20,8 @@ properties:
     type: string
   ipv6:
     anyOf:
-      - type: "null"
       - $ref: ../../../components/schemas/environments/IPNet.yml
+      - type: "null"
   legacy:
     type:
       - object
@@ -37,8 +37,8 @@ properties:
         type: integer
       ipv4:
         anyOf:
-          - type: "null"
           - $ref: ../../../components/schemas/environments/IPNet.yml
+          - type: "null"
   mac_addr:
     type: string
   vxlan_tag:

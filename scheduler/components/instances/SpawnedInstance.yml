@@ -1,0 +1,19 @@
+title: SpawnedInstance
+description: Details about a spawned function Instance.
+type: object
+required:
+  - instance_id
+  - server_id
+  - environment
+  - token
+properties:
+  instance_id:
+    description: The ID of the spawned Instance.
+    $ref: ../../../components/schemas/ID.yml
+  server_id:
+    description: The ID of the Server this Instance spawned on.
+    $ref: ../../../components/schemas/ID.yml
+  environment:
+    $ref: EnvironmentNetworkSummary.yml
+  token:
+    type: string

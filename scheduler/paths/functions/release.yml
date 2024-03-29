@@ -1,8 +1,8 @@
 post:
-  operationId: "spawnInstance"
-  summary: Spawn Instance
+  operationId: "releaseInstance"
+  summary: Release Instance
   description: |
-    Spawns a previously claimed Instance.
+    Releases a previously spawned Instance.
   tags:
     - Functions
   parameters:
@@ -23,23 +23,14 @@ post:
           properties:
             token:
               type: string
-              description: A custom token used for identifying and managing a claim. Should be the same token used when claiming the Instance.
+              description: A custom token used for identifying/managing a claim. Should be the same token used when claiming the Instance.
             instance_id:
               $ref: ../../../components/schemas/ID.yml
-            arguments:
-              type: array
-              description: Arguments to pass to the Instance.
-              items:
-                type: string
-            environment_variables:
-              type: object
-              additionalProperties:
-                type: string
   responses:
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
     200:
-      description: Returns details about the spawned Instance.
+      description: Returns details about the released Instance.
       content:
         application/json:
           schema:
