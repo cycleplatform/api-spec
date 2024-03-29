@@ -22,8 +22,8 @@ post:
             - instance_id
           properties:
             token:
-              type: string
-              description: A custom token used for identifying/managing a claim. Should be the same token used when claiming the Instance.
+              description: The claim token previously used to claim the Instance.
+              $ref: ../../components/ClaimToken.yml
             instance_id:
               $ref: ../../../components/schemas/ID.yml
   responses:

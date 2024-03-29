@@ -1,0 +1,4 @@
+title: ClaimToken
+type: string
+minLength: 5
+description: A custom token used for identifying and managing a function Instance claim. Can be any valid string, and must be used with spawning and releasing the Instance.
