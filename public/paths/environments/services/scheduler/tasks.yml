@@ -32,6 +32,8 @@ post:
                 config:
                   nullable: true
                   type: object
+                  allOf:
+                    - $ref: ../../../../../components/schemas/environments/services/scheduler/SchedulerConfig.yml
                 auto_update:
                   type: boolean
                   nullable: true
