@@ -52,8 +52,6 @@ patch:
             name:
               type: string
               description: A name for the hub.
-            integrations:
-              $ref: ../../../components/schemas/hubs/HubIntegrations.yml
             webhooks:
               $ref: ../../../components/schemas/hubs/HubWebhooks.yml
   responses:
