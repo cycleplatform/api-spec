@@ -26,4 +26,4 @@ properties:
       - integration_id
     properties:
       integration_id:
-        $ref: ../../../../components/schemas/HybridIdentifer.yml
+        $ref: ../../../../components/schemas/HybridIdentifier.yml
