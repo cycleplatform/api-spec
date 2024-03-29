@@ -1,14 +1,15 @@
 ---
 openapi: 3.0.0
 servers:
-  - description: Cycle Public API
+  - description: Cycle Platform API
     url: https://api.cycle.io
 info:
   license:
-    name: CC-BY-4.0
-    url: https://creativecommons.org/licenses/by/4.0/
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0
+
   description: |
-    The Cycle API is a [REST-based](http://en.wikipedia.org/wiki/Representational_state_transfer), resource-oriented API
+    The Cycle Platform API is a [REST-based](http://en.wikipedia.org/wiki/Representational_state_transfer), resource-oriented API
     designed to be easy to use and understand. Using this API, you are able to fully interact with the Cycle Platform. 
 
     All API responses return JSON, including errors. There is also support for cross-origin resource sharing, so this API can be used
@@ -60,7 +61,7 @@ info:
     **Filter** - The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
 
   version: 1.0.0
-  title: Cycle API
+  title: Cycle Platform API
   contact:
     email: support@cycle.io
 tags:
@@ -102,6 +103,7 @@ tags:
 security:
   - bearerAuth: []
     hubAuth: []
+
 paths:
   # Accounts
   "/v1/account":
@@ -226,10 +228,10 @@ paths:
     "$ref": "./paths/containers/instances/tasks.yml"
   "/v1/containers/{containerId}/instances/{instanceId}/volumes":
     "$ref": "./paths/containers/instances/volumes.yml"
-  "/v1/containers/{containerId}/instances/{instanceId}/telemetry/resources/report":
-    "$ref": paths/containers/instances/telemetry/report.yml
-  "/v1/containers/{containerId}/instances/{instanceId}/telemetry/resources/stream":
-    "$ref": paths/containers/instances/telemetry/stream.yml
+  ? "/v1/containers/{containerId}/instances/{instanceId}/telemetry/resources/report"
+  : "$ref": paths/containers/instances/telemetry/report.yml
+  ? "/v1/containers/{containerId}/instances/{instanceId}/telemetry/resources/stream"
+  : "$ref": paths/containers/instances/telemetry/stream.yml
   "/v1/containers/{containerId}/servers":
     "$ref": "./paths/containers/servers.yml"
   "/v1/containers/{containerId}/servers/usable":

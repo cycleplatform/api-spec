@@ -1,7 +1,6 @@
----
-openapi: 3.0.0
+openapi: 3.1.0
 servers:
-  - description: Cycle Public API
+  - description: Cycle Internal API
     # https://github.com/whatwg/url/issues/577
     # https://github.com/OAI/OpenAPI-Specification/issues/3011
     url: "/var/run/cycle/api/api.sock"
@@ -9,8 +8,8 @@ servers:
     #  TODO This is probably wrong
 info:
   license:
-    name: CC-BY-3.0
-    url: https://creativecommons.org/licenses/by/3.0/
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0
   title: Cycle Internal API
   description:
     Inside every container running on Cycle, there is a Unix socket mounted at /var/run/cycle/api/api.sock. You can send HTTP requests over this socket to access information about the local environment, access secrets, and much more.
