@@ -1,5 +1,5 @@
----
 title: InstanceState
+description: Information about the state of an instance.
 allOf:
   - required:
       - current
@@ -38,5 +38,5 @@ allOf:
               - `null`: The instance has not yet reported its health, or a health check has not yet been performed.
           updated:
             description: A timestamp of the last time the instance health was updated.
-            "$ref": "../../DateTime.yml"
-  - "$ref": "../../State.yml"
+            $ref: "../../DateTime.yml"
+  - $ref: "../../State.yml"

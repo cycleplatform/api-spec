@@ -1,22 +1,24 @@
 get:
   operationId: "getEnvironmentInstances"
+  summary: List Environment Instances
+  description: Lists all Instances present in this Instance's Environment.
   tags:
     - Environments
+    - Instances
   parameters: []
-  summary: List Environment Instances
-  description: Doesn't require a specific capability.
   responses:
-    "200":
-      description: Returns a collection of container instance resources.
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns a list of Instances.
       content:
         application/json:
           schema:
-            title: ListEnvironmentInstancesReturn
             type: object
+            required:
+              - data
             properties:
               data:
                 type: array
                 items:
                   "$ref": "../../../components/schemas/containers/instances/Instance.yml"
-    default:
-      $ref: ../../../components/responses/errors/DefaultError.yml

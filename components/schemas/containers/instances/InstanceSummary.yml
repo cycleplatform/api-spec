@@ -1,6 +1,6 @@
-title: Instance
+title: InstanceSummary
 type: object
-description: An instance of a Container.
+description: A summary of an instance of a Container.
 required:
   - id
   - creator
@@ -43,15 +43,10 @@ properties:
       base_hostname:
         type: string
         description: The base hostname for the given instance.
-  function:
-    type: object
-    description: If the instance is a function, additional details relating to its function properties
-    required:
-      - seed
-    properties:
-      seed:
-        type: integer
-        description: The seed used for this function.
+  autoscale:
+    anyOf:
+      - $ref: InstanceAutoScale.yml
+      - type: "null"
   provider:
     $ref: InstanceProvider.yml
   server_id:
@@ -59,20 +54,20 @@ properties:
     description: An identifier for the server this instance is deployed to.
   ready_state:
     type: string
-    description: The state as it relates to the following.
-      * `active` - instance can be started or stopped.
-      * `purge` - instance should be deleted.
-      * `hibernate` - instance is active but not allowed to run.
-      * `configuring` - this instance is not allowed to start yet
+    description: |
+      The state as it relates to the following:
+        - `active` - instance can be started or stopped.
+        - `purge` - instance should be deleted.
+        - `hibernate` - instance is active but not allowed to run.
+        - `configuring` - this instance is not allowed to start yet
     enum:
       - active
       - purge
       - hibernate
       - configuring
-  purge_time:
-    description: The timestamp of when the instance was purged.
+  deployment:
     anyOf:
-      - $ref: ../../DateTime.yml
+      - $ref: ../Deployment.yml
       - type: "null"
   hostname:
     type: string
@@ -82,32 +77,3 @@ properties:
     description: The type of service this instance is within the environment, if any.
   state:
     $ref: InstanceState.yml
-  autoscale:
-    anyOf:
-      - $ref: InstanceAutoScale.yml
-      - type: "null"
-  migration:
-    anyOf:
-      - $ref: InstanceMigration.yml
-      - type: "null"
-  deployment:
-    anyOf:
-      - $ref: ../Deployment.yml
-      - type: "null"
-  events:
-    title: InstanceEvents
-    description: A collection of timestamps for each event in the instnaces lifetime.
-    required:
-      - created
-      - updated
-      - deleted
-    properties:
-      created:
-        description: The timestamp of when the instance was created.
-        $ref: ../../DateTime.yml
-      updated:
-        description: The timestamp of when the instance was updated.
-        $ref: ../../DateTime.yml
-      deleted:
-        description: The timestamp of when the instance was deleted.
-        $ref: ../../DateTime.yml

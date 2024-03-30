@@ -3,13 +3,7 @@ description: A summary of the stack this container was created format.
 type: object
 properties:
   id:
-    "$ref": "../../ID.yml"
-  image:
-    type: object
-    properties:
-      id:
-        type: string
-        description: "The ID of the image used for this container."
+    $ref: "../../ID.yml"
   build_id:
     type: string
     description: The ID of the stack build this container is associated with.

@@ -1,22 +1,25 @@
 get:
   operationId: "getEnvironmentContainers"
+  summary: List Environment Containers
+  description: Lists all Containers that are part of the same Environment as this Instance.
   tags:
     - Environments
+    - Containers
   parameters: []
-  summary: List Environment Containers
-  description: Doesn't require specific capability.
   responses:
-    "200":
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
       description: Returns a collection of container resources.
       content:
         application/json:
           schema:
             title: ListEnvironmentContainerReturn
             type: object
+            required:
+              - data
             properties:
               data:
                 type: array
                 items:
                   "$ref": "../../../components/schemas/containers/Container.yml"
-    default:
-      $ref: ../../../components/responses/errors/DefaultError.yml

@@ -1,22 +1,23 @@
 get:
   operationId: "getEnvironmentIPs"
+  summary: List Environment IPs
+  description: Lists the IPs associated with this Instance's Environment.
   tags:
     - Environments
   parameters: []
-  summary: List Environment IPs
-  description: Doesn't require a specific capability.
   responses:
-    "200":
-      description: Returns a collection of IP resources.
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns a list of detailed IP objects.
       content:
         application/json:
           schema:
-            title: ListEnvironmentIPsReturn
             type: object
+            required:
+              - data
             properties:
               data:
                 type: array
                 items:
-                  "$ref": ../../../components/schemas/infrastructure/ips/Ip.yml
-    default:
-      $ref: ../../../components/responses/errors/DefaultError.yml
+                  $ref: ../../../components/schemas/infrastructure/ips/Ip.yml

@@ -4,8 +4,6 @@ type: object
 required:
   - id
   - cluster
-  - container_subnet
-  - ipv6
   - legacy
 properties:
   id:
@@ -14,12 +12,14 @@ properties:
     type: string
     description: The cluster this environment is associated with.
   container_subnet:
-    type: string
+    type:
+      - string
+      - "null"
     description: The private network subnet ID for this container and its instances.
   ipv6:
-    allOf:
-      - description: The IPv6 interface.
-      - "$ref": "../../environments/IPNet.yml"
+    anyOf:
+      - $ref: "../../environments/IPNet.yml"
+      - type: "null"
   legacy:
     anyOf:
       - $ref: "../../environments/LegacyNetwork.yml"

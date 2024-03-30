@@ -1,10 +1,10 @@
----
 title: ResourceCountSummary
 type: object
 description: A summary of resources by state
 required:
-- state
-- total
+  - state
+  - total
+  - available
 properties:
   state:
     title: CountsByState

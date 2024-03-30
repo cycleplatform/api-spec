@@ -22,6 +22,20 @@ get:
               - data
             properties:
               data:
-                $ref: ../../../components/schemas/containers/summaries/ContainerSummary.yml
+                type: object
+                description: Contains useful and relevant data/statistics for a container that would otherwise be several separate API calls.
+                required:
+                  - id
+                  - state
+                properties:
+                  id:
+                    $ref: ../../../components/schemas/ID.yml
+                  state:
+                    $ref: ../../../components/schemas/containers/ContainerState.yml
+                  stats:
+                    anyOf:
+                      - $ref: ../../../components/schemas/StateCountSummary.yml
+                      - type: "null"
+
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml

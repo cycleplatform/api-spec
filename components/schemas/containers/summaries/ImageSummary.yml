@@ -21,11 +21,7 @@ properties:
       identifier:
         $ref: ../../Identifier.yml
   service:
-    type:
-      - string
-      - "null"
+    anyOf:
+      - $ref: ../ServiceContainerIdentifier.yml
+      - type: "null"
     description: If a service container, the identifier specifying which service it is.
-    enum:
-      - "loadbalancer"
-      - "discovery"
-      - "vpn"

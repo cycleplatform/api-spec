@@ -1,0 +1,14 @@
+title: ServiceContainer
+description: Details about a service container and its instances.
+type: object
+required:
+  - container
+properties:
+  container:
+    $ref: ../../../components/schemas/containers/summaries/ContainerSummary.yml
+  instances:
+    type:
+      - array
+      - "null"
+    items:
+      $ref: ../../../components/schemas/containers/instances/InstanceSummary.yml

@@ -1,6 +1,6 @@
-title: Ip
+title: IP
 type: object
-description: An IP resource.
+description: Details about an IP.
 required:
   - id
   - hub_id

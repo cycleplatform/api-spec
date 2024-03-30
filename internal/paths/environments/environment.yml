@@ -1,20 +1,23 @@
 get:
   operationId: "getEnvironment"
+  summary: Get Environment
+  description: |
+    Gets the Environment that this instance is a part of.
   tags:
     - Environments
   parameters: []
-  summary: Fetch Environment
-  description: Doesn't require specific capability.
   responses:
-    "200":
-      description: Returns an environment resource.
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns an Environment.
       content:
         application/json:
           schema:
             title: FetchENvironmentReturn
             type: object
+            required:
+              - data
             properties:
               data:
                 "$ref": "../../../components/schemas/environments/Environment.yml"
-    default:
-      $ref: ../../../components/responses/errors/DefaultError.yml
