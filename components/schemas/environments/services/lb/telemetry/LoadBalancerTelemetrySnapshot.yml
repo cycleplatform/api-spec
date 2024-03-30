@@ -2,16 +2,25 @@ title: LoadBalancerTelemetrySnapshot
 type: object
 required:
   - time
+  - started
   - dataset_id
   - metrics
 properties:
   time:
     $ref: ../../../../DateTime.yml
+  started:
+    $ref: ../../../../DateTime.yml
+  version:
+    type: string
   dataset_id:
     type: integer
   router:
-    $ref: LoadBalancerTelemetryRouterMetrics.yml
+    anyOf:
+      - $ref: LoadBalancerTelemetryRouterMetrics.yml
+      - type: "null"
   urls:
-    $ref: LoadBalancerTelemetryUrlMetrics.yml
+    anyOf:
+      - $ref: LoadBalancerTelemetryUrlMetrics.yml
+      - type: "null"
   metrics:
     $ref: LoadBalancerTelemetryControllerMetrics.yml

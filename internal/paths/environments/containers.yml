@@ -14,7 +14,6 @@ get:
       content:
         application/json:
           schema:
-            title: ListEnvironmentContainerReturn
             type: object
             required:
               - data
