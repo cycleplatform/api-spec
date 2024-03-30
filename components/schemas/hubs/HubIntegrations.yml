@@ -1,38 +1,37 @@
-title: HubIntegrations 
-description: Integration information for a given hub. 
-type: object 
-required: 
-  - letsencrypt 
+title: HubIntegrations
+description: Integration information for a given hub.
+type: object
+required:
+  - letsencrypt
   - backblaze_b2
-properties: 
-  letsencrypt: 
-    type: object 
-    description: A hub integration with Lets Encrypt service. 
-    required: 
-      - email 
-    nullable: true
-    properties: 
-      email: 
-        type: string 
-        description: An email address to assocaite with Lets Encrypt certificates generated for DNS records on this hub. 
-  backblaze_b2: 
-    type: object 
-    description: Information about the Backblaze account and bucket assocaited with the given hub. 
-    required: 
+properties:
+  letsencrypt:
+    type:
+      - object
+      - "null"
+    description: A hub integration with Lets Encrypt service.
+    required:
+      - email
+    properties:
+      email:
+        type: string
+        description: An email address to assocaite with Lets Encrypt certificates generated for DNS records on this hub.
+  backblaze_b2:
+    type:
+      - object
+      - "null"
+    description: Information about the Backblaze account and bucket assocaited with the given hub.
+    required:
       - bucket
-      - key_id 
-      - key 
-    nullable: true
-    properties: 
-      bucket: 
-        type: string 
-        description: The bucket name. 
-      key_id: 
-        type: string 
-        description: The `key_id` from Backblaze for a given key ( the one used for this integration ). 
-      key: 
-        type: string 
-        description: The key associated with the bucket. 
-  
-
-    
+      - key_id
+      - key
+    properties:
+      bucket:
+        type: string
+        description: The bucket name.
+      key_id:
+        type: string
+        description: The `key_id` from Backblaze for a given key ( the one used for this integration ).
+      key:
+        type: string
+        description: The key associated with the bucket.

@@ -1,6 +1,6 @@
 get:
   operationId: "getLoadBalancerTelemetryReport"
-  summary: Get load balancer v1 telemetry report
+  summary: Get Load Balancer Telemetry Report
   description: |
     Fetches a telemetry report for Cycle's native load balancer for the specified range.
 

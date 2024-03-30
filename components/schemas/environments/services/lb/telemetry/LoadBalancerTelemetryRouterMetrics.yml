@@ -14,8 +14,9 @@ properties:
         - container_id
       properties:
         connections:
-          nullable: true
-          type: object
+          type:
+            - object
+            - "null"
           required:
             - success
             - unavailable
@@ -33,8 +34,9 @@ properties:
             bytes_received:
               type: integer
         requests:
-          nullable: true
-          type: object
+          type:
+            - object
+            - "null"
           required:
             - total
           properties:

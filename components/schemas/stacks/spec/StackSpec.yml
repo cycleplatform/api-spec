@@ -8,8 +8,9 @@ properties:
     type: string
     description: A string defining the version of the stack spec.
   about:
-    nullable: true
-    type: object
+    type:
+      - object
+      - "null"
     description: Information about the stack.
     required:
       - description
@@ -22,44 +23,53 @@ properties:
         type: string
         description: Information describing the stack.
   tests:
-    type: array
-    nullable: true
+    type:
+      - array
+      - "null"
     items:
       $ref: StackSpecTestContainer.yml
   scoped_variables:
-    nullable: true
-    type: array
+    type:
+      - array
+      - "null"
     items:
       $ref: ./StackSpecScopedVariable.yml
   containers:
     $ref: ./StackContainer.yml
   services:
     title: StackSpecServices
-    nullable: true
-    type: object
+    type:
+      - object
+      - "null"
     properties:
       discovery:
-        type: object
-        nullable: true
+        type:
+          - object
+          - "null"
         properties:
           hosts:
-            nullable: true
-            type: object
+            type:
+              - object
+              - "null"
             additionalProperties:
               type: object
               properties:
                 ipv4:
-                  nullable: true
-                  type: array
+                  type:
+                    - array
+                    - "null"
                   items:
                     type: string
                 ipv6:
-                  nullable: true
-                  type: array
+                  type:
+                    - array
+                    - "null"
                   items:
                     type: string
       loadbalancer:
-        $ref: services/loadbalancer/StackSpecLoadBalancerConfig.yml
+        anyOf:
+          - $ref: services/loadbalancer/StackSpecLoadBalancerConfig.yml
+          - type: "null"
       vpn:
         type: object
         required:

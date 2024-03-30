@@ -1,4 +1,3 @@
----
 title: Environment
 type: object
 description:
@@ -59,13 +58,13 @@ properties:
   services:
     $ref: ./EnvironmentServices.yml
   private_network:
-    type: object
-    nullable: true
-    allOf:
+    anyOf:
       - $ref: ./PrivateNetwork.yml
+      - type: "null"
   deployments:
-    type: object
-    nullable: true
+    type:
+      - object
+      - "null"
     description: |
       A map of custom tags to deployment versions.
     required:

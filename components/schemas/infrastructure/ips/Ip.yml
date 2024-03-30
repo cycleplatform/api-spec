@@ -23,9 +23,10 @@ properties:
       - ipv4
       - ipv6
   assignment:
-    type: object
+    type:
+      - object
+      - "null"
     description: Information about the assignment of this IP.
-    nullable: true
     required:
       - container_id
       - instance_id

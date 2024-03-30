@@ -28,13 +28,13 @@ properties:
         type: string
         description: The url to submit a POST request to.
       headers:
-        type: object
-        nullable: true
+        type:
+          - object
+          - "null"
         description: An optional map of headers to send with the request.
         additionalProperties:
           type: string
       options:
-        type: object
-        nullable: true
-        allOf:
+        anyOf:
           - $ref: WebhookStepOptions.yml
+          - type: "null"

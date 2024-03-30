@@ -28,7 +28,9 @@ properties:
   creator:
     "$ref": "../creators/CreatorScope.yml"
   environment:
-    "$ref": "./summaries/ContainerEnvironmentSummary.yml"
+    anyOf:
+      - $ref: "./summaries/ContainerEnvironmentSummary.yml"
+      - type: "null"
   hub_id:
     "$ref": "../HubID.yml"
   image:
@@ -38,10 +40,9 @@ properties:
   config:
     "$ref": "./config/Config.yml"
   deployment:
-    type: object
-    nullable: true
-    allOf:
+    anyOf:
       - $ref: ./Deployment.yml
+      - type: "null"
   instances:
     type: integer
     description: The number of instances for a given container.
@@ -50,16 +51,18 @@ properties:
     items:
       $ref: ./summaries/VolumeSummary.yml
   annotations:
-    type: object
+    type:
+      - object
+      - "null"
     description: Custom meta data for a given container
-    nullable: true
     additionalProperties: {}
   role:
-    type: string
+    type:
+      - string
+      - "null"
     description: The role of a given container if it has one.
     enum:
       - orchestrator
-    nullable: true
   stateful:
     type: boolean
     description: A boolean where true signifies the container is stateful.

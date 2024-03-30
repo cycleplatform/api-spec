@@ -30,11 +30,13 @@ post:
               type: object
               properties:
                 config:
-                  nullable: true
-                  type: object
+                  type:
+                    - boolean
+                    - "null"
                 auto_update:
-                  type: boolean
-                  nullable: true
+                  type:
+                    - boolean
+                    - "null"
                   description: A boolean where `true` represents the desire to automatically update the environment scheduler service.
   responses:
     202:

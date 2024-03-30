@@ -11,8 +11,9 @@ properties:
         - requests
       properties:
         requests:
-          nullable: true
-          type: object
+          type:
+            - object
+            - "null"
           required:
             - host
             - method

@@ -30,7 +30,9 @@ get:
                   - default_type
                 properties:
                   default_config:
-                    $ref: ../../../../../components/schemas/environments/services/lb/LoadBalancerConfig.yml
+                    anyOf:
+                      - $ref: ../../../../../components/schemas/environments/services/lb/LoadBalancerConfig.yml
+                      - type: "null"
                   default_type:
                     type: string
                     enum:
@@ -47,6 +49,8 @@ get:
                       v1:
                         $ref: ../../../../../components/schemas/stacks/spec/services/loadbalancer/types/v1/V1LbConfig.yml
                   service:
-                    $ref: ../../../../../components/schemas/environments/services/LoadBalancerEnvironmentService.yml
+                    anyOf:
+                      - $ref: ../../../../../components/schemas/environments/services/LoadBalancerEnvironmentService.yml
+                      - type: "null"
     default:
       $ref: ../../../../../components/responses/errors/DefaultError.yml

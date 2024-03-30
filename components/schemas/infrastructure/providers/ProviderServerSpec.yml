@@ -11,10 +11,9 @@ properties:
     type: string
     description: A provider identifier
   integration_id:
-    type: string
-    nullable: true
-    allOf:
+    anyOf:
       - $ref: "../../ID.yml"
+      - type: "null"
   category:
     type: string
     description: A category for the server.

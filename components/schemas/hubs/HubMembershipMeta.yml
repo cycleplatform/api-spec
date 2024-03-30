@@ -10,7 +10,8 @@ properties:
       all:
         type: boolean
       specific:
-        nullable: true
-        type: array
+        type:
+          - array
+          - "null"
         items:
           $ref: "../common/Capability.yml"

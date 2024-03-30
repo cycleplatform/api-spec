@@ -1,4 +1,3 @@
----
 title: Order
 type: object
 description: An order is a resource that describes a billing order
@@ -18,8 +17,9 @@ properties:
   creator:
     "$ref": "../../common/UserScope.yml"
   promo_code_id:
-    type: string
-    nullable: true
+    type:
+      - string
+      - "null"
   term:
     "$ref": "../Term.yml"
   approved:

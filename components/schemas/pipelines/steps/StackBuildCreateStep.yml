@@ -26,8 +26,9 @@ properties:
       stack:
         $ref: ../FluidIdentifier.yml
       instructions:
-        type: object
-        nullable: true
+        type:
+          - object
+          - "null"
         description: Additional instructions used when generating this stack build.
         properties:
           git:
@@ -53,8 +54,9 @@ properties:
             additionalProperties:
               type: string
       about:
-        type: object
-        nullable: true
+        type:
+          - object
+          - "null"
         description: Information about the stack build.
         required:
           - version

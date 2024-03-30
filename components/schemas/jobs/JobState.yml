@@ -18,8 +18,9 @@ properties:
   changed:
     $ref: "../DateTime.yml"
   error:
-    type: object
-    nullable: true
+    type:
+      - object
+      - "null"
     description: An error, if any, that has occurred for this job.
     required:
       - message

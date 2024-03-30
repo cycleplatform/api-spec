@@ -2,34 +2,42 @@ title: IntegrationAuth
 type: object
 properties:
   region:
-    type: string
-    nullable: true
+    type:
+      - string
+      - "null"
     description: The region associated with the Integration.
   namespace:
-    type: string
-    nullable: true
+    type:
+      - string
+      - "null"
     description: The namespace associated with the Integration.
   api_key:
-    type: string
-    nullable: true
+    type:
+      - string
+      - "null"
     description: API key for accessing the Integration.
   key_id:
-    type: string
-    nullable: true
+    type:
+      - string
+      - "null"
     description: Key ID for accessing the Integration.
   secret:
-    type: string
-    nullable: true
+    type:
+      - string
+      - "null"
     description: Secret for accessing the Integration.
   subscription_id:
-    type: string
-    nullable: true
+    type:
+      - string
+      - "null"
     description: Subscription ID for the Integration.
   client_id:
-    type: string
-    nullable: true
+    type:
+      - string
+      - "null"
     description: Client ID for the Integration.
   base64_config:
-    type: string
-    nullable: true
+    type:
+      - string
+      - "null"
     description: Base64 encoded configuration for the Integration.

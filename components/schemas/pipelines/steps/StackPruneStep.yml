@@ -26,8 +26,9 @@ properties:
       stack:
         $ref: ../FluidIdentifier.yml
       criteria:
-        nullable: true
-        type: object
+        type:
+          - object
+          - "null"
         properties:
           expire:
             nullable: true

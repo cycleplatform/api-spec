@@ -1,8 +1,6 @@
----
 title: ContainerEnvironmentSummary
 description: A summary of supplemental environment and network information specific to a container.
 type: object
-nullable: true
 required:
   - id
   - cluster
@@ -23,4 +21,6 @@ properties:
       - description: The IPv6 interface.
       - "$ref": "../../environments/IPNet.yml"
   legacy:
-    $ref: "../../environments/LegacyNetwork.yml"
+    anyOf:
+      - $ref: "../../environments/LegacyNetwork.yml"
+      - type: "null"

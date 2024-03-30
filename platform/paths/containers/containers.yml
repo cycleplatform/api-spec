@@ -147,10 +147,9 @@ post:
               type: string
               description: A user defined name for the Container.
             identifier:
-              type: string
-              nullable: true
-              allOf:
+              anyOf:
                 - $ref: ../../../components/schemas/Identifier.yml
+                - type: "null"
             environment_id:
               type: string
               description: An identifier for the Environment this Container will be deployed to.
@@ -166,17 +165,17 @@ post:
               type: boolean
               description: When set to true, prevents this Container from being deleted.
             deployment:
-              type: object
-              nullable: true
-              allOf:
+              anyOf:
                 - $ref: ../../../components/schemas/containers/Deployment.yml
+                - type: "null"
             volumes:
               type: array
               items:
                 $ref: ../../../components/schemas/containers/config/ContainerVolume.yml
             annotations:
-              type: object
-              nullable: true
+              type:
+                - object
+                - "null"
               description: Custom meta data. Not utilized by Cycle.
               additionalProperties: {}
 

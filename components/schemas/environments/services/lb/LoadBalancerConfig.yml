@@ -1,7 +1,6 @@
 title: LoadBalancerConfig
 type: object
 description: The config object for the loadbalancer service.
-nullable: true
 discriminator:
   propertyName: type
   mapping:

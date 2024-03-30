@@ -65,9 +65,8 @@ properties:
   webhooks:
     $ref: HubWebhooks.yml
   billing:
-    allOf:
-      - type: object
-        nullable: true
+    anyOf:
       - $ref: "./HubBillingProfile.yml"
+      - type: "null"
   meta:
     "$ref": "./HubMeta.yml"

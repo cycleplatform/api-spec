@@ -1,24 +1,26 @@
 title: DiscoveryConfig
 type: object
 description: The config object for the discovery service.
-nullable: true
 properties:
   hosts:
-    type: object
+    type:
+      - object
+      - "null"
     description: A mapping of hostnames to IP addresses for custom internal resolutions. Acts as a custom /etc/resolv.conf file that works environment wide.
-    nullable: true
     additionalProperties:
       type: object
       properties:
         ipv4:
           description: The IPv4 address the discovery server should return to any container instance requesting this hostname.
-          nullable: true
-          type: array
+          type:
+            - array
+            - "null"
           items:
             type: string
         ipv6:
           description: The IPv6 address the discovery server should return to any container instance requesting this hostname.
-          nullable: true
-          type: array
+          type:
+            - array
+            - "null"
           items:
             type: string

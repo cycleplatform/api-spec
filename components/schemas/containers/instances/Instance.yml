@@ -31,16 +31,16 @@ properties:
     type: string
     description: A location identifier that's associated with the server this instance is deployed to.
   deployment:
-    type: object
-    nullable: true
-    allOf:
+    anyOf:
       - $ref: ../Deployment.yml
+      - type: "null"
   environment:
     $ref: EnvironmentNetworkSummary.yml
   stateful:
-    type: object
+    type:
+      - object
+      - "null"
     description: Additional information about the instance relating to its setting as being stateful.
-    nullable: true
     required:
       - id
       - base_hostname
@@ -69,9 +69,10 @@ properties:
     type: string
     description: The hostname of the instance.
   migration:
-    type: object
+    type:
+      - object
+      - "null"
     description: If this instance is scheduled to be migrated or has been migrated in the past, there will be information populating this field with the server that the instance came from or the server that the instance was moved to and the instance ID.
-    nullable: true
     required:
       - key
       - copy_volumes
@@ -93,15 +94,15 @@ properties:
         type: boolean
         description: A boolean where true represents the volumes for the instance should be copied to the new server as well.
   purge_time:
-    nullable: true
-    type: string
     description: If the instance was purged, the timestamp of when that happened.
-    allOf:
+    anyOf:
       - $ref: ../../DateTime.yml
+      - type: "null"
   service:
-    type: string
+    type:
+      - string
+      - "null"
     description: If the instance is an instance of a service container that will be denoted here.
-    nullable: true
     enum:
       - discovery
       - vpn
@@ -109,10 +110,9 @@ properties:
   state:
     $ref: InstanceState.yml
   autoscale:
-    type: object
-    nullable: true
-    allOf:
+    anyOf:
       - $ref: InstanceAutoScale.yml
+      - type: "null"
   events:
     title: InstanceEvents
     description: A collection of timestamps for each event in the instnaces lifetime.

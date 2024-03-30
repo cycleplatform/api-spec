@@ -13,6 +13,8 @@ get:
       schema:
         type: string
   responses:
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
     200:
       description: Returns an API Key resource.
       content:
@@ -22,8 +24,6 @@ get:
             properties:
               data:
                 $ref: ../../../../components/schemas/hubs/ApiKey.yml
-    default:
-      $ref: ../../../../components/responses/errors/DefaultError.yml
 
 patch:
   operationId: "updateAPIKey"
@@ -63,12 +63,15 @@ patch:
                   items:
                     $ref: ../../../../components/schemas/common/Capability.yml
             ips:
-              type: array
-              nullable: true
+              type:
+                - array
+                - "null"
               description: An array of approved IPs from which this API Key can be used.
               items:
                 type: string
   responses:
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
     200:
       description: Returns an API Key.
       content:
@@ -80,8 +83,6 @@ patch:
             properties:
               data:
                 $ref: ../../../../components/schemas/hubs/ApiKey.yml
-    default:
-      $ref: ../../../../components/responses/errors/DefaultError.yml
 
 delete:
   operationId: "deleteAPIKey"
@@ -98,6 +99,8 @@ delete:
       schema:
         type: string
   responses:
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
     200:
       description: Returns an API Key.
       content:
@@ -109,5 +112,3 @@ delete:
             properties:
               data:
                 $ref: ../../../../components/schemas/hubs/ApiKey.yml
-    default:
-      $ref: ../../../../components/responses/errors/DefaultError.yml

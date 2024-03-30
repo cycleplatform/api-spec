@@ -29,8 +29,9 @@ properties:
   origin:
     $ref: "../origins/ImageOrigin.yml"
   builder:
-    type: object
-    nullable: true
+    type:
+      - object
+      - "null"
     description: Configuration options regarding the builder used to create/import Images using this Image Source.
     properties:
       integration_id:

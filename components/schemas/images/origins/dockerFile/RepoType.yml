@@ -11,8 +11,9 @@ properties:
     type: string
     description: An optional branch arguement.  Default value is `master`.
   auth:
-    type: object
-    nullable: true
+    type:
+      - object
+      - "null"
     description: Authentication information for the repository.
     discriminator:
       propertyName: type
@@ -23,8 +24,9 @@ properties:
       - $ref: ../CredentialsHTTP.yml
       - $ref: ../CredentialsSSH.yml
   ref:
-    type: object
-    nullable: true
+    type:
+      - object
+      - "null"
     description: Repository reference information.
     required:
       - type

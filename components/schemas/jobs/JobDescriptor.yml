@@ -35,13 +35,15 @@ properties:
           - tasks
         properties:
           sub_queue:
-            nullable: true
-            type: string
+            type:
+              - string
+              - "null"
           tasks:
             type: boolean
       tasks:
-        type: array
-        nullable: true
+        type:
+          - array
+          - "null"
         items:
           title: NewTask
           type: object
@@ -59,8 +61,9 @@ properties:
               description: The API function called.
             steps:
               description: An array of job task steps.
-              nullable: true
-              type: array
+              type:
+                - array
+                - "null"
               items:
                 $ref: ./TaskStep.yml
             input:

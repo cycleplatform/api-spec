@@ -34,6 +34,8 @@ get:
           enum:
             - definition
   responses:
+    default:
+      $ref: "../../../../components/responses/errors/DefaultError.yml"
     200:
       description: Details of the specified Integration
       content:
@@ -45,8 +47,6 @@ get:
             properties:
               data:
                 $ref: "../../../../components/schemas/hubs/integrations/Integration.yml"
-    default:
-      $ref: "../../../../components/responses/errors/DefaultError.yml"
 
 patch:
   operationId: updateIntegration
@@ -88,23 +88,26 @@ patch:
           type: object
           properties:
             name:
-              type: string
-              nullable: true
+              type:
+                - string
+                - "null"
               description: A new name for the Integration.
             identifier:
               $ref: ../../../../components/schemas/Identifier.yml
             auth:
-              type: object
-              nullable: true
-              allOf:
+              anyOf:
                 - $ref: "../../../../components/schemas/hubs/integrations/IntegrationAuth.yml"
+                - type: "null"
             extra:
-              type: object
+              type:
+                - object
+                - "null"
+              description: Updated key-value pairs associated with the Integration.
               additionalProperties:
                 type: string
-              nullable: true
-              description: Updated key-value pairs associated with the Integration.
   responses:
+    default:
+      $ref: "../../../../components/responses/errors/DefaultError.yml"
     200:
       description: Returns the updated Integration.
       content:
@@ -116,8 +119,6 @@ patch:
             properties:
               data:
                 $ref: "../../../../components/schemas/hubs/integrations/Integration.yml"
-    default:
-      $ref: "../../../../components/responses/errors/DefaultError.yml"
 
 delete:
   operationId: deleteIntegration
@@ -137,6 +138,8 @@ delete:
         pattern: "^[a-f0-9]{24}$"
       description: The ID of the Integration to delete.
   responses:
+    default:
+      $ref: "../../../../components/responses/errors/DefaultError.yml"
     202:
       description: Returns a Job Descriptor.
       content:
@@ -148,5 +151,3 @@ delete:
             properties:
               data:
                 $ref: ../../../../components/schemas/jobs/JobDescriptor.yml
-    default:
-      $ref: "../../../../components/responses/errors/DefaultError.yml"

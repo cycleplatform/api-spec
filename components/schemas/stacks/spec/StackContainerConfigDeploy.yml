@@ -6,8 +6,9 @@ properties:
   instances:
     type: integer
   strategy:
-    type: string
-    nullable: true
+    type:
+      - string
+      - "null"
     enum:
       - resource-density
       - manual
@@ -17,25 +18,30 @@ properties:
       - edge
       - function
   stateful:
-    type: object
-    nullable: true
+    type:
+      - object
+      - "null"
     required:
       - options
     properties:
       options:
-        nullable: true
-        type: object
+        type:
+          - object
+          - "null"
         properties:
           use_base_hostname:
-            type: boolean
-            nullable: true
+            type:
+              - boolean
+              - "null"
   constraints:
-    type: object
-    nullable: true
+    type:
+      - object
+      - "null"
     properties:
       node:
-        type: object
-        nullable: true
+        type:
+          - object
+          - "null"
         required:
           - tags
         properties:
@@ -51,53 +57,56 @@ properties:
                 items:
                   type: string
       secrets:
-        nullable: true
-        type: array
+        type:
+          - array
+          - "null"
         items:
           type: string
       containers:
-        nullable: true
-        type: array
+        type:
+          - array
+          - "null"
         items:
           type: string
   shutdown:
-    type: object
-    nullable: true
+    type:
+      - object
+      - "null"
     properties:
       graceful_timeout:
-        type: string
-        nullable: true
         description: How long the platform will wait for a container to stop gracefully.
-        allOf:
+        anyOf:
           - $ref: ../../Duration.yml
+          - type: "null"
       signals:
         type: array
         items:
           type: string
   startup:
-    type: object
-    nullable: true
+    type:
+      - object
+      - "null"
     properties:
       delay:
-        nullable: true
-        type: string
         description: How long the platform will wait before sending the start signal to the given container.
-        allOf:
+        anyOf:
           - $ref: ../../Duration.yml
+          - type: "null"
   update:
-    type: object
-    nullable: true
+    type:
+      - object
+      - "null"
     description: Configurations for container updates.
     properties:
       stagger:
-        type: string
-        nullable: true
-        allOf:
+        anyOf:
           - $ref: ../../Duration.yml
+          - type: "null"
         description: When set, Cycle will pick a random time from `0 - this duration`, and stagger the instances so they all start at different times (up to the time specified here).
   restart:
-    type: object
-    nullable: true
+    type:
+      - object
+      - "null"
     required:
       - condition
       - delay
@@ -115,8 +124,9 @@ properties:
       max_attempts:
         type: integer
       notify:
-        type: object
-        nullable: true
+        type:
+          - object
+          - "null"
         properties:
           emails:
             type: array
@@ -125,8 +135,9 @@ properties:
           web_hook:
             type: string
   health_check:
-    type: object
-    nullable: true
+    type:
+      - object
+      - "null"
     required:
       - command
       - retries
@@ -151,32 +162,31 @@ properties:
         type: boolean
         description: A boolean where true represents the desire for the container to restart if any instance is unhealthy.
       delay:
-        type: string
-        nullable: true
-        allOf:
+        anyOf:
           - $ref: ../../Duration.yml
+          - type: "null"
         description: How long to wait after a container start event before starting health checks.
   telemetry:
-    type: object
-    nullable: true
+    type:
+      - object
+      - "null"
     required:
       - disable
     properties:
       retention:
-        type: string
-        nullable: true
-        allOf:
+        anyOf:
           - $ref: ../../Duration.yml
+          - type: "null"
         description: How long telemetry data should be retained.
       interval:
-        type: string
-        nullable: true
-        allOf:
+        anyOf:
           - $ref: ../../Duration.yml
+          - type: "null"
         description: The duration between samples.
       web_hook:
-        type: string
-        nullable: true
+        type:
+          - string
+          - "null"
         description: A URL where Cycle will send telemetry data to.
       disable:
         type: boolean

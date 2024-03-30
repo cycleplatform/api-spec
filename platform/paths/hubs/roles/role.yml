@@ -16,6 +16,8 @@ get:
       schema:
         type: string
   responses:
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
     200:
       description: Returns a Role.
       content:
@@ -26,8 +28,6 @@ get:
             properties:
               data:
                 $ref: ../../../../components/schemas/hubs/roles/Role.yml
-    default:
-      $ref: ../../../../components/responses/errors/DefaultError.yml
 
 patch:
   operationId: updateRole
@@ -56,15 +56,17 @@ patch:
             - rank
           properties:
             name:
-              nullable: true
-              type: string
+              type:
+                - string
+                - "null"
               description: A name given to the Role.
             identifier:
               type: string
             capabilities:
-              nullable: true
+              type:
+                - object
+                - "null"
               description: The list of platform level capabilities assigned to this Role.
-              type: object
               required:
                 - all
                 - specific
@@ -79,12 +81,15 @@ patch:
             rank:
               type: integer
             extra:
-              nullable: true
-              type: object
+              type:
+                - object
+                - "null"
               description: Custom user-defined properties for storing extra information on the Role. Not utilized by Cycle.
               additionalProperties:
                 type: string
   responses:
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
     200:
       description: Returns the updated Hub Role.
       content:
@@ -96,8 +101,6 @@ patch:
             properties:
               data:
                 $ref: ../../../../components/schemas/hubs/roles/Role.yml
-    default:
-      $ref: ../../../../components/responses/errors/DefaultError.yml
 
 delete:
   operationId: deleteRole
@@ -117,6 +120,8 @@ delete:
       schema:
         type: string
   responses:
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
     202:
       description: Returns a Job Descriptor.
       content:
@@ -128,5 +133,3 @@ delete:
             properties:
               data:
                 $ref: ../../../../components/schemas/jobs/JobDescriptor.yml
-    default:
-      $ref: ../../../../components/responses/errors/DefaultError.yml

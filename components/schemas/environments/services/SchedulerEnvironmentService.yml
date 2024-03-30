@@ -1,7 +1,5 @@
----
 title: SchedulerEnvironmentService
 type: object
-nullable: true
 description:
   Information about the environments scheduler service. The scheduler is used by containers with a
   function deployment strategy to route requests to the correct instances.
@@ -15,8 +13,9 @@ properties:
     type: boolean
     description: Whether or not the scheduler service is enabled.
   container_id:
-    type: string
-    nullable: true
+    type:
+      - string
+      - "null"
     description: The ID of the scheduler service container.
   high_availability:
     type: boolean
@@ -28,7 +27,6 @@ properties:
     type: boolean
     description: A boolean where `true` represents the desire to automatically update the environment scheduler service.
   config:
-    nullable: true
-    type: object
-    allOf:
+    anyOf:
       - $ref: scheduler/SchedulerConfig.yml
+      - type: "null"

@@ -23,13 +23,15 @@ properties:
         type: boolean
         description: A boolean where true represents the text the user is entering will be multi line.
       secret:
-        nullable: true
-        type: object
+        type:
+          - object
+          - "null"
         properties:
           iv:
             type: string
             description: A string describing the IV Hex associated with the encryption of the variable
           hint:
-            nullable: true
-            type: string
+            type:
+              - string
+              - "null"
             description: A user specified hint that will suggest what the encryption key might be

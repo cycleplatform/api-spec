@@ -15,17 +15,17 @@ properties:
   id:
     type: string
   name:
-    nullable: true
-    type: string
+    type:
+      - string
+      - "null"
   root:
     description: The Role marked as root has full moderation control over all Roles.
     type: boolean
   default:
     description: A reference to the original identifier of the default Role this Role was built from.  A value of null means it is a fully custom Role.
-    type: string
-    nullable: true
-    allOf:
+    anyOf:
       - $ref: ../../Identifier.yml
+      - type: "null"
   rank:
     description: An integer between 0 and 10 that indicates the Role hierarchy. An account can only edit a Role that is less than their rank. The 'owner' Role is rank 10.
     type: integer

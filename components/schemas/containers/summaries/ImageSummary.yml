@@ -7,22 +7,23 @@ required:
   - extension
 properties:
   id:
-    type: string
-    nullable: true
-    allOf:
+    anyOf:
       - $ref: "../../ID.yml"
+      - type: "null"
   extension:
-    type: object
+    type:
+      - object
+      - "null"
     description: An image that is packaged with Cycle directly, such as the global load balancer.
-    nullable: true
     required:
       - identifier
     properties:
       identifier:
         $ref: ../../Identifier.yml
   service:
-    type: string
-    nullable: true
+    type:
+      - string
+      - "null"
     description: If a service container, the identifier specifying which service it is.
     enum:
       - "loadbalancer"

@@ -29,12 +29,10 @@ properties:
       environment:
         $ref: ../FluidIdentifier.yml
       update:
-        nullable: true
-        type: object
-        allOf:
+        anyOf:
           - $ref: "../../stacks/builds/StackBuildDeploymentUpdates.yml"
+          - type: "null"
       deployment:
-        nullable: true
-        type: object
-        allOf:
+        anyOf:
           - $ref: ../../containers/Deployment.yml
+          - type: "null"

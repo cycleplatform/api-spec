@@ -61,6 +61,8 @@ get:
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
   responses:
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
     200:
       description: Returns a list of Image Sources.
       content:
@@ -76,8 +78,6 @@ get:
                   $ref: ../../../../components/schemas/images/sources/ImageSource.yml
               includes:
                 $ref: ../../../../components/schemas/images/sources/SourceIncludes.yml
-    default:
-      $ref: ../../../../components/responses/errors/DefaultError.yml
 
 post:
   operationId: "createImageSource"
@@ -102,8 +102,9 @@ post:
             identifier:
               $ref: ../../../../components/schemas/Identifier.yml
             builder:
-              type: object
-              nullable: true
+              type:
+                - object
+                - "null"
               required:
                 - integration_id
               properties:
@@ -120,10 +121,13 @@ post:
                 - description
               properties:
                 description:
-                  type: string
-                  nullable: true
+                  type:
+                    - string
+                    - "null"
                   description: A description of the Image Source.
   responses:
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
     201:
       description: Returns an Image Source.
       content:
@@ -135,5 +139,3 @@ post:
             properties:
               data:
                 $ref: ../../../../components/schemas/images/sources/ImageSource.yml
-    default:
-      $ref: ../../../../components/responses/errors/DefaultError.yml

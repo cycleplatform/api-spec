@@ -1,7 +1,5 @@
----
 title: VpnEnvironmentService
 type: object
-nullable: true
 description: Information about the environments vpn service(s).
 required:
   - enable
@@ -19,8 +17,9 @@ properties:
     type: boolean
     description: A boolean representing if this service container is set to autoupdate or not
   config:
-    type: object
-    nullable: true
+    type:
+      - object
+      - "null"
     description: The config object for the VPN service.
     required:
       - allow_internet
@@ -37,8 +36,9 @@ properties:
           - cycle_accounts
         properties:
           webhook:
-            type: string
-            nullable: true
+            type:
+              - string
+              - "null"
             description:
               A webhook endpoint to hit. Will be passed the login credentials
               provided to the user, and should return a 200 status if the login is

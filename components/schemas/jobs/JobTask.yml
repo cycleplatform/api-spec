@@ -40,8 +40,9 @@ properties:
         $ref: "../DateTime.yml"
   steps:
     description: An array of job task steps.
-    nullable: true
-    type: array
+    type:
+      - array
+      - "null"
     items:
       $ref: ./TaskStep.yml
   state:
@@ -51,14 +52,16 @@ properties:
     description: Input information used for the job tasks.
     additionalProperties: {}
   output:
-    type: object
-    nullable: true
+    type:
+      - object
+      - "null"
     description: Output informaiton used for the job tasks.
     additionalProperties:
       type: string
   error:
-    type: object
-    nullable: true
+    type:
+      - object
+      - "null"
     description: An error object describing issues with the job.
     required:
       - message

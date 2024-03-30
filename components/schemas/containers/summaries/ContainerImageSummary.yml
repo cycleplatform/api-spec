@@ -6,13 +6,14 @@ required:
   - id
   - service
 properties:
-  id: 
+  id:
     $ref: "../../ID.yml"
   service:
-    type: string
-    nullable: true
+    type:
+      - string
+      - "null"
     description: If this image is a service container this will say either `discovery` | `loadbalancer` | `vpn`.
-    enum: 
+    enum:
       - discovery
       - loadbalancer
       - vpn

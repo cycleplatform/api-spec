@@ -1,6 +1,6 @@
 get:
   operationId: "getLoadBalancerLatestTelemetryReport"
-  summary: Get the latest load balancer v1 telemetry.
+  summary: Get Latest Load Balancer Telemetry Report.
   description: |
     Fetches the latest telemetry report for Cycle's native load balancer. Provides detailed information on a per-instance basis.
 

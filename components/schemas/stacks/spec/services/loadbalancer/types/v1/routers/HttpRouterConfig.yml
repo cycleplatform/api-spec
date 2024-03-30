@@ -13,8 +13,9 @@ properties:
     type: object
     properties:
       redirect:
-        nullable: true
-        type: object
+        type:
+          - object
+          - "null"
         required:
           - auto_https_redirect
           - remove_www
@@ -27,33 +28,40 @@ properties:
             description: If true, any request comes in with "www" prefix will be permanently redirected to the same path without www.
             type: boolean
           port:
-            nullable: true
-            type: integer
+            type:
+              - integer
+              - "null"
             description: The port to redirect traffic to.
           scheme:
-            nullable: true
-            type: string
+            type:
+              - string
+              - "null"
             description: The scheme to redirect to. (i.e. `https`)
           url:
-            nullable: true
-            type: string
+            type:
+              - string
+              - "null"
             description: A specific URL to redirect to.
       forward:
-        nullable: true
-        type: object
+        type:
+          - object
+          - "null"
         properties:
           scheme:
-            nullable: true
-            type: string
+            type:
+              - string
+              - "null"
           content_mod:
             description: Allows the load balancer to modify content before it reaches the user.
-            nullable: true
-            type: object
+            type:
+              - object
+              - "null"
             properties:
               replace:
                 description: An array that describes a list of replacement match/value pairs.
-                nullable: true
-                type: array
+                type:
+                  - array
+                  - "null"
                 items:
                   type: object
                   required:
@@ -67,22 +75,26 @@ properties:
                       description: Replacement value.
                       type: string
       proxy:
-        nullable: true
-        type: object
+        type:
+          - object
+          - "null"
         properties:
           domain:
-            nullable: true
-            type: string
+            type:
+              - string
+              - "null"
             description: The proxy domain for this router.
           content_mod:
             description: Allows the load balancer to modify content before it reaches the user.
-            nullable: true
-            type: object
+            type:
+              - object
+              - "null"
             properties:
               replace:
                 description: An array that describes a list of replacement match/value pairs.
-                nullable: true
-                type: array
+                type:
+                  - array
+                  - "null"
                 items:
                   type: object
                   required:
@@ -96,12 +108,14 @@ properties:
                       description: Replacement value.
                       type: string
       caching:
-        nullable: true
-        type: object
+        type:
+          - object
+          - "null"
         properties:
           files:
-            nullable: true
-            type: array
+            type:
+              - array
+              - "null"
             items:
               type: object
               required:

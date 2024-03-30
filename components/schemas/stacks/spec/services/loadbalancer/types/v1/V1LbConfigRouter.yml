@@ -14,20 +14,23 @@ properties:
       - internal_port
     properties:
       domains:
-        nullable: true
-        type: array
+        type:
+          - array
+          - "null"
         description: The specific domains to match against.
         items:
           type: string
       internal_port:
-        nullable: true
-        type: array
+        type:
+          - array
+          - "null"
         description: The specific ports to match against.
         items:
           type: integer
       path:
-        nullable: true
-        type: string
+        type:
+          - string
+          - "null"
   mode:
     type: string
     description: |
@@ -51,26 +54,31 @@ properties:
         type: integer
         description: If a destination is unavailable, retry up to [x] times, instead of immediately failing with a 503/504 error.
       tls:
-        nullable: true
-        type: object
+        type:
+          - object
+          - "null"
         description: TLS termination configuration. If null, the platform will use the default configuration. Port 443 by default has TLS termination enabled.
         properties:
           server_name:
-            type: string
-            nullable: true
+            type:
+              - string
+              - "null"
             description: |
               [Advanced] Change the domain the controller listens on.
           allow_insecure:
-            type: boolean
-            nullable: true
+            type:
+              - boolean
+              - "null"
             description: If enabled, accept TLS traffic with an invalid certificate. This is usually done for development/testing, and is not recommended for production use.
           client_cert_auth:
-            nullable: true
             description: A PEM encoded string of certificates.
-            type: string
+            type:
+              - string
+              - "null"
           client_auth:
-            type: string
-            nullable: true
+            type:
+              - string
+              - "null"
             enum:
               - none
               - request

@@ -30,14 +30,18 @@ post:
               type: object
               properties:
                 config:
-                  $ref: ../../../../../components/schemas/environments/services/discovery/DiscoveryConfig.yml
+                  anyOf:
+                    - $ref: ../../../../../components/schemas/environments/services/discovery/DiscoveryConfig.yml
+                    - type: "null"
                 high_availability:
-                  type: boolean
-                  nullable: true
+                  type:
+                    - boolean
+                    - "null"
                   description: A boolean where `true` represents the desire to run the environment discovery service in high availability mode.
                 auto_update:
-                  type: boolean
-                  nullable: true
+                  type:
+                    - boolean
+                    - "null"
                   description: A boolean where `true` represents the desire to automatically update the environment discovery service.
 
   responses:

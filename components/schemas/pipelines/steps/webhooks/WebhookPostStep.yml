@@ -30,22 +30,24 @@ properties:
         type: string
         description: The url to submit a POST request to.
       headers:
-        type: object
-        nullable: true
+        type:
+          - object
+          - "null"
         description: An optional map of headers to send with the request.
         additionalProperties:
           type: string
       options:
-        type: object
-        nullable: true
-        allOf:
+        anyOf:
           - $ref: WebhookStepOptions.yml
+          - type: "null"
       body:
-        nullable: true
-        type: string
+        type:
+          - string
+          - "null"
         description: An optional POST body to send with the request. Cannot be used with `from``.
       from:
-        type: string
-        nullable: true
+        type:
+          - string
+          - "null"
         description: Takes the output from a previous step and uses it as the body for the POST request. Cannot be used with `body`. String format is <stageIdentifier/stepIdentifier>
         example: "init/image-create"

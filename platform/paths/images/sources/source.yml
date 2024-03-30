@@ -42,6 +42,8 @@ get:
             - creators
             - integrations
   responses:
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
     200:
       description: Returns an Image Source.
       content:
@@ -55,8 +57,6 @@ get:
                 $ref: ../../../../components/schemas/images/sources/ImageSource.yml
               includes:
                 $ref: ../../../../components/schemas/images/sources/SourceIncludes.yml
-    default:
-      $ref: ../../../../components/responses/errors/DefaultError.yml
 
 patch:
   operationId: "updateImageSource"
@@ -84,8 +84,9 @@ patch:
             origin:
               $ref: "../../../../components/schemas/images/origins/ImageOrigin.yml"
             builder:
-              type: object
-              nullable: true
+              type:
+                - object
+                - "null"
               properties:
                 integration_id:
                   nullable: true
@@ -97,10 +98,13 @@ patch:
                 - description
               properties:
                 description:
-                  type: string
-                  nullable: true
+                  type:
+                    - string
+                    - "null"
                   description: A description of the image source.
   responses:
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
     200:
       description: Returns an Image Source.
       content:
@@ -112,8 +116,6 @@ patch:
             properties:
               data:
                 $ref: ../../../../components/schemas/images/sources/ImageSource.yml
-    default:
-      $ref: ../../../../components/responses/errors/DefaultError.yml
 
 delete:
   operationId: "deleteImageSource"
@@ -129,6 +131,8 @@ delete:
       schema:
         type: string
   responses:
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
     202:
       description: Returns a Job Descriptor.
       content:
@@ -140,5 +144,3 @@ delete:
             properties:
               data:
                 $ref: ../../../../components/schemas/jobs/JobDescriptor.yml
-    default:
-      $ref: ../../../../components/responses/errors/DefaultError.yml

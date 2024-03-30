@@ -30,15 +30,19 @@ post:
               type: object
               properties:
                 high_availability:
-                  nullable: true
-                  type: boolean
+                  type:
+                    - boolean
+                    - "null"
                   description: A boolean where `true` represents the desire to run the environment load balancer service in high availability mode.
                 auto_update:
-                  nullable: true
-                  type: boolean
+                  type:
+                    - boolean
+                    - "null"
                   description: A boolean representing if this service container is set to autoupdate or not
                 config:
-                  $ref: ../../../../../components/schemas/environments/services/lb/LoadBalancerConfig.yml
+                  anyOf:
+                    - $ref: ../../../../../components/schemas/environments/services/lb/LoadBalancerConfig.yml
+                    - type: "null"
   responses:
     202:
       description: Returns a Job Descriptor.

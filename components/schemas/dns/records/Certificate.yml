@@ -5,7 +5,6 @@ required:
   - id
   - generated
   - wildcard_child
-nullable: true
 properties:
   id:
     "$ref": "../../ID.yml"

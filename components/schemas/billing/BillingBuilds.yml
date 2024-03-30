@@ -16,6 +16,7 @@ properties:
     type: number
     description: The amount of RAM availiable for builds
   max_daily_builds:
-    type: number
-    nullable: true
+    type:
+      - integer
+      - "null"
     description: The maximum number of builds processed per day

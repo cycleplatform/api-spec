@@ -18,4 +18,6 @@ properties:
       - description: The IPv6 interface.
       - "$ref": "./IPNet.yml"
   legacy:
-    $ref: "./LegacyNetwork.yml"
+    anyOf:
+      - $ref: "./LegacyNetwork.yml"
+      - type: "null"

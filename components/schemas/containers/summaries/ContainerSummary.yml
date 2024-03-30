@@ -19,5 +19,6 @@ properties:
   image:
     $ref: "./ContainerImageSummary.yml"
   environment:
-    $ref: "./ContainerEnvironmentSummary.yml"
-  
+    anyOf:
+      - $ref: "./ContainerEnvironmentSummary.yml"
+      - type: "null"

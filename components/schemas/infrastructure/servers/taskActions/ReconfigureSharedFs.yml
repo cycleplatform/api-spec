@@ -13,8 +13,9 @@ properties:
     type: object
     properties:
       mounts:
-        nullable: true
-        type: object
+        type:
+          - object
+          - "null"
         additionalProperties:
           type: object
           required:
@@ -33,7 +34,8 @@ properties:
               type: string
               description: String describing the server mount source.
       directories:
-        nullable: true
-        type: object
+        type:
+          - object
+          - "null"
         description: An object describing directory identifiers with value {}.
         additionalProperties: {}

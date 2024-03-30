@@ -88,14 +88,17 @@ patch:
           type: object
           properties:
             name:
-              nullable: true
-              type: string
+              type:
+                - string
+                - "null"
             identifier:
-              nullable: true
-              type: string
+              type:
+                - string
+                - "null"
             version:
-              nullable: true
-              type: string
+              type:
+                - string
+                - "null"
             about:
               nullable: true
               $ref: ../../../components/schemas/environments/EnvironmentAbout.yml

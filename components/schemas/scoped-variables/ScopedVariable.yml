@@ -1,4 +1,3 @@
----
 title: ScopedVariable
 type: object
 description: Scoped variables are a way for users to dynamically allocate runtime specific environment variables across any number of containers in an environment.
@@ -30,8 +29,9 @@ properties:
   access:
     $ref: ./ScopedVariableAccess.yml
   source:
-    nullable: true
-    type: object
+    type:
+      - object
+      - "null"
     description: The source or value of the scoped variable.
     discriminator:
       propertyName: type

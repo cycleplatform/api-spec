@@ -3,6 +3,7 @@ type: object
 description: Information about the image source resource.
 properties:
   description:
-    nullable: true
-    type: string
+    type:
+      - string
+      - "null"
     description: Some information about the image source resource.

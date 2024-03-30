@@ -29,8 +29,9 @@ properties:
       - description
     properties:
       description:
-        type: string
-        nullable: true
+        type:
+          - string
+          - "null"
         description: A description of the image.
   backend:
     type: object
@@ -60,8 +61,9 @@ properties:
       nvidia_gpu:
         type: boolean
   build:
-    type: object
-    nullable: true
+    type:
+      - object
+      - "null"
     description: Any additional build details for this image
     properties:
       args:
@@ -70,13 +72,14 @@ properties:
         additionalProperties:
           type: string
   builder:
-    type: object
-    nullable: true
+    type:
+      - object
+      - "null"
     description: Configuration options regarding the builder used to create/import this Image.
     required:
       - integration_id
-    properties: 
-      integration_id: 
+    properties:
+      integration_id:
         description: The ID of the Integration used to do the build.
         $ref: ../ID.yml
   config:
@@ -170,8 +173,9 @@ properties:
   creator:
     "$ref": "../creators/CreatorScope.yml"
   factory:
-    type: object
-    nullable: true
+    type:
+      - object
+      - "null"
     description: Information about the Factory service that built/imported the Image into Cycle.
     required:
       - node_id

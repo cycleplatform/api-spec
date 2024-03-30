@@ -10,6 +10,8 @@ get:
     - $ref: ../../../../components/parameters/FilterParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
   responses:
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
     200:
       description: Returns a collection of API Key resources.
       content:
@@ -24,8 +26,6 @@ get:
                 type: array
                 items:
                   $ref: ../../../../components/schemas/hubs/ApiKey.yml
-    default:
-      $ref: ../../../../components/responses/errors/DefaultError.yml
 
 post:
   operationId: "createApiKey"
@@ -63,12 +63,15 @@ post:
                   items:
                     $ref: ../../../../components/schemas/common/Capability.yml
             ips:
-              type: array
-              nullable: true
+              type:
+                - array
+                - "null"
               description: An array of approved IPs from which this API Key can be used.
               items:
                 type: string
   responses:
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
     201:
       description: Returns an API Key.
       content:
@@ -80,5 +83,3 @@ post:
             properties:
               data:
                 $ref: ../../../../components/schemas/hubs/ApiKey.yml
-    default:
-      $ref: ../../../../components/responses/errors/DefaultError.yml

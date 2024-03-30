@@ -21,19 +21,22 @@ properties:
   supports_multiple:
     type: boolean
   features:
-    type: array
+    type:
+      - array
+      - "null"
     description: A list of additional features supported by this Integration.
-    nullable: true
     items:
       type: string
   extended_configuration:
-    type: object
-    nullable: true
+    type:
+      - object
+      - "null"
     description: Additional configuration options that are available when using this Integration. These describe additional functionality that Cycle may utilize.
     properties:
       options:
-        type: array
-        nullable: true
+        type:
+          - array
+          - "null"
         items:
           type: object
           properties:
@@ -47,7 +50,9 @@ properties:
     type: object
     properties:
       extra:
-        type: object
+        type:
+          - object
+          - "null"
         additionalProperties:
           type: object
           required:
@@ -55,15 +60,17 @@ properties:
             - required
           properties:
             regex:
-              type: string
-              nullable: true
+              type:
+                - string
+                - "null"
             required:
               type: boolean
             description:
               type: string
-        nullable: true
       auth:
-        type: object
+        type:
+          - object
+          - "null"
         additionalProperties:
           type: object
           required:
@@ -71,13 +78,13 @@ properties:
             - required
           properties:
             regex:
-              type: string
-              nullable: true
+              type:
+                - string
+                - "null"
             required:
               type: boolean
             description:
               type: string
-        nullable: true
   url:
     type: string
     format: uri

@@ -17,7 +17,5 @@ properties:
     enum:
       - "v1"
   details:
-    type: object
-    nullable: true
-    allOf:
+    anyOf:
       - $ref: V1LbConfig.yml

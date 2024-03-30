@@ -26,8 +26,10 @@ properties:
       environment:
         $ref: ../FluidIdentifier.yml
       tag:
-        type: string
-        nullable: true
+        type:
+          - string
+          - "null"
       version:
-        type: string
-        nullable: true
+        type:
+          - string
+          - "null"

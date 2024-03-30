@@ -54,6 +54,8 @@ get:
             description: |
               `filter[category]=value` Filters integrations by their category. For example, `filter[category]=infrastructure-provider` would return only integrations that are capable of provisioning infrastructure.
   responses:
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
     200:
       description: A list of integrations
       content:
@@ -67,8 +69,6 @@ get:
                 type: array
                 items:
                   $ref: ../../../../components/schemas/hubs/integrations/Integration.yml
-    default:
-      $ref: ../../../../components/responses/errors/DefaultError.yml
 
 post:
   operationId: createIntegration
@@ -106,8 +106,9 @@ post:
             - vendor
           properties:
             name:
-              type: string
-              nullable: true
+              type:
+                - string
+                - "null"
               description: A name for the Integration.
             vendor:
               type: string
@@ -118,36 +119,44 @@ post:
               type: object
               properties:
                 region:
-                  type: string
-                  nullable: true
+                  type:
+                    - string
+                    - "null"
                   description: The region associated with the Integration.
                 namespace:
-                  type: string
-                  nullable: true
+                  type:
+                    - string
+                    - "null"
                   description: The namespace associated with the Integration.
                 api_key:
-                  type: string
-                  nullable: true
+                  type:
+                    - string
+                    - "null"
                   description: API key for accessing the Integration.
                 key_id:
-                  type: string
-                  nullable: true
+                  type:
+                    - string
+                    - "null"
                   description: Key ID for accessing the Integration.
                 secret:
-                  type: string
-                  nullable: true
+                  type:
+                    - string
+                    - "null"
                   description: Secret for accessing the Integration.
                 subscription_id:
-                  type: string
-                  nullable: true
+                  type:
+                    - string
+                    - "null"
                   description: Subscription ID for the Integration.
                 client_id:
-                  type: string
-                  nullable: true
+                  type:
+                    - string
+                    - "null"
                   description: Client ID for the Integration.
                 base64_config:
-                  type: string
-                  nullable: true
+                  type:
+                    - string
+                    - "null"
                   description: Base64 encoded configuration for the Integration.
               description: Authentication information for the Integration.
             extra:
@@ -155,8 +164,9 @@ post:
               additionalProperties:
                 type: string
               description: Additional key-value pairs associated with the Integration.
-
   responses:
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
     201:
       description: Returns the new Integration.
       content:
@@ -168,5 +178,3 @@ post:
             properties:
               data:
                 $ref: ../../../../components/schemas/hubs/integrations/Integration.yml
-    default:
-      $ref: ../../../../components/responses/errors/DefaultError.yml

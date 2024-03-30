@@ -9,6 +9,7 @@ properties:
     type: boolean
     description: A boolean where true means the server accepts incoming SFTP connections through the remote volume integration.
   base_volume_gb:
-    nullable: true
-    type: integer
+    type:
+      - integer
+      - "null"
     description: The size of the base volume (where Cycle stores container images on this server).

@@ -108,11 +108,13 @@ properties:
                   - offline
                 properties:
                   new:
-                    nullable: true
-                    type: boolean
+                    type:
+                      - boolean
+                      - "null"
                   offline:
-                    nullable: true
-                    type: boolean
+                    type:
+                      - boolean
+                      - "null"
   state:
     $ref: "./MembershipState.yml"
   invitation:

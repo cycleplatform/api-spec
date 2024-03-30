@@ -9,7 +9,8 @@ properties:
   controller:
     $ref: ../../../../Identifier.yml
   instances:
-    type: array
-    nullable: true
+    type:
+      - array
+      - "null"
     items:
       $ref: ./LoadBalancerLatestTelemetryInstance.yml

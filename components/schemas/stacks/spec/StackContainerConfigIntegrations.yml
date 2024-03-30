@@ -2,51 +2,64 @@ title: StackContainerConfigIntegrations
 type: object
 properties:
   webhooks:
-    type: object
-    nullable: true
+    type:
+      - object
+      - "null"
     properties:
       events:
-        type: object
-        nullable: true
+        type:
+          - object
+          - "null"
         properties:
           deploy:
-            nullable: true
-            type: string
+            type:
+              - string
+              - "null"
           start:
-            nullable: true
-            type: string
+            type:
+              - string
+              - "null"
           stop:
-            nullable: true
-            type: string
+            type:
+              - string
+              - "null"
       config:
-        nullable: true
-        type: string
+        type:
+          - string
+          - "null"
   lets_encrypt:
-    type: object
-    nullable: true
+    type:
+      - object
+      - "null"
     required:
       - enable
     properties:
       enable:
         type: boolean
       certificate_path:
-        nullable: true
-        type: string
+        type:
+          - string
+          - "null"
       chain_path:
-        nullable: true
-        type: string
+        type:
+          - string
+          - "null"
       key_path:
-        nullable: true
-        type: string
+        type:
+          - string
+          - "null"
       bundle_path:
-        nullable: true
-        type: string
+        type:
+          - string
+          - "null"
       additional_certs_path:
-        nullable: true
-        type: string
+        type:
+          - string
+          - "null"
   files:
-    type: array
-    nullable: true
+    type:
+      - array
+      - "null"
     items:
       type: object
       required:
@@ -58,8 +71,9 @@ properties:
         destination:
           type: string
   backups:
-    type: object
-    nullable: true
+    type:
+      - object
+      - "null"
     required:
       - destination
       - backup
@@ -78,17 +92,18 @@ properties:
           command:
             type: string
           timeout:
-            type: string
-            nullable: true
             description: How long the backup will attempt to run before timing out.
-            allOf:
+            anyOf:
               - $ref: ../../Duration.yml
+              - type: "null"
           cron_string:
-            nullable: true
-            type: string
+            type:
+              - string
+              - "null"
       restore:
-        nullable: true
-        type: object
+        type:
+          - object
+          - "null"
         required:
           - command
           - timeout
@@ -96,21 +111,20 @@ properties:
           command:
             type: string
           timeout:
-            type: string
-            nullable: true
             description: The time in seconds for the restore to attempt to complete before timing out.
-            allOf:
+            anyOf:
               - $ref: ../../Duration.yml
+              - type: "null"
       retention:
-        type: string
-        nullable: true
         description: How long the platform will keep backups. Default is 1 year.
-        allOf:
+        anyOf:
           - $ref: ../../Duration.yml
+          - type: "null"
         default: "365d"
   shared_file_systems:
-    nullable: true
-    type: object
+    type:
+      - object
+      - "null"
     additionalProperties:
       type: object
       required:

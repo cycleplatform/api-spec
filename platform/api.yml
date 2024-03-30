@@ -1,5 +1,4 @@
----
-openapi: 3.0.0
+openapi: 3.1.0
 servers:
   - description: Cycle Platform API
     url: https://api.cycle.io
@@ -85,18 +84,8 @@ tags:
     description: "A subgroup of infrastructure, servers call deal specificially with server resources."
   - name: SDN
     description: "Software defined networking. Includes networks that can be created when a user needs to create a new private network spanning multiple environments, and global load balancers for balancing traffic across multiple environments."
-  - name: WebsocketAuth
-    description: "A collection of calls used to create resources necessary to connect to a websocket based resource. "
-  - name: Backups
-    description: "A subgroup of containers, backups refers to calls that have to do with automated backups managed through a Cycle integration."
   - name: Instances
     description: "A subgroup of containers, instances refers to calls that work with container instance resources. "
-  - name: ApiKeys
-    description: "A subgroup of Hubs, ApiKeys refers to calls that have to do with creating and managing API key resources."
-  - name: ImageSources
-    description: "A subgroup of images, ImageSources refers to calls that have to do with creating and managing image source resources. "
-  - name: InfrastructureIPs
-    description: "A subgroup of infrastructure which refers to calls that have to do with managing IPs for infrastructure providers."
   - name: Jobs
     description: "Jobs are calls which refer to managing job resources. "
 

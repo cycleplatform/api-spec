@@ -6,6 +6,8 @@ get:
     - Hubs
     - Integrations
   responses:
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
     200:
       description: A map of categories to lists of integration definitions.
       content:
@@ -19,29 +21,32 @@ get:
                 type: object
                 properties:
                   image-builders:
-                    type: array
+                    type:
+                      - array
+                      - "null"
                     items:
                       $ref: ../../../../components/schemas/hubs/integrations/IntegrationDefinition.yml
-                    nullable: true
                   object-storage:
-                    type: array
+                    type:
+                      - array
+                      - "null"
                     items:
                       $ref: ../../../../components/schemas/hubs/integrations/IntegrationDefinition.yml
-                    nullable: true
                   tls-certificate-generation:
-                    type: array
+                    type:
+                      - array
+                      - "null"
                     items:
                       $ref: ../../../../components/schemas/hubs/integrations/IntegrationDefinition.yml
-                    nullable: true
                   infrastructure-provider:
-                    type: array
+                    type:
+                      - array
+                      - "null"
                     items:
                       $ref: ../../../../components/schemas/hubs/integrations/IntegrationDefinition.yml
-                    nullable: true
                   billing:
-                    type: array
+                    type:
+                      - array
+                      - "null"
                     items:
                       $ref: ../../../../components/schemas/hubs/integrations/IntegrationDefinition.yml
-                    nullable: true
-    default:
-      $ref: ../../../../components/responses/errors/DefaultError.yml
