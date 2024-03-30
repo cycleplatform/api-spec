@@ -13,6 +13,7 @@ post:
       schema:
         type: string
   requestBody:
+    required: true
     content:
       application/json:
         schema:
@@ -44,6 +45,8 @@ post:
         application/json:
           schema:
             type: object
+            required:
+              - data
             properties:
               data:
                 $ref: ../../components/instances/SpawnedInstance.yml
