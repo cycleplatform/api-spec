@@ -74,6 +74,10 @@ paths:
   /v1/conductor/tasks:
     $ref: paths/conductor/tasks.yml
 
+  # VPN
+  /v1/vpn/login:
+    $ref: paths/vpn/login.yml
+
   # Notifications
   "/v1/notifications":
     $ref: "./paths/hubs/notifications.yml"
@@ -85,3 +89,7 @@ components:
       in: header
       type: apiKey
       description: The authentication header for every request on the internal API. Take the value of the CYCLE_API_TOKEN environment variable present in the instance, and pass it as the value to this header to authenticate.
+    # Used for VPN login validation
+    basicAuth:
+      type: http
+      scheme: basic

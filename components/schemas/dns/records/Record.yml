@@ -40,7 +40,7 @@ properties:
     properties:
       certificate:
         anyOf:
-          - $ref: Certificate.yml
+          - $ref: TlsCertificateSummary.yml
           - type: "null"
   state:
     $ref: RecordState.yml
