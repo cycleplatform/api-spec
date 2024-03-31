@@ -45,6 +45,19 @@ components:
         topic:
           type: string
           description: The topic of the notification.
+          enum:
+            - dns.zone.certificate.ready
+            - dns.zone.reconfigured
+            - dns.zone.records.reconfigured
+            - dns.zone.verified
+            - container.instances.reconfigured
+            - container.state.changed
+            - container.reconfigured
+            - environment.services.reconfigured
+            - environment.deployments.reconfigured
+            - environment.services.lb.ips.modified
+            - sdn.network.reconfigured
+            - sdn.network.created
         object:
           type: object
           properties:
