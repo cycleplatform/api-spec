@@ -1,51 +1,23 @@
 title: PublicHub
 description: A hub with sensitive information stripped out.
 type: object
+required:
+  - id
+  - name
+  - events
+  - creator
+  - state
 properties:
   id:
-    "$ref": "../ID.yml"
+    $ref: "../ID.yml"
   name:
     type: string
     description: A name for the hub.
-  creator:
-    "$ref": "../creators/CreatorScope.yml"
   events:
-    title: HubEvents
-    type: object
-    description: A collection of timestamps for each event in the hub's lifetime.
-    required:
-      - created
-      - updated
-      - deleted
-    properties:
-      created:
-        description: The timestamp of when the hub was created.
-        "$ref": "../DateTime.yml"
-      updated:
-        description: The timestamp of when the hub was updated.
-        "$ref": "../DateTime.yml"
-      deleted:
-        description: The timestamp of when the hub was deleted.
-        "$ref": "../DateTime.yml"
-      converted:
-        description: The timestamp of when the hub had the first converted
-        "$ref": "../DateTime.yml"
-      first_provider:
-        description: The timestamp of when the hub had the first provider added.
-        "$ref": "../DateTime.yml"
-      first_server:
-        description: The timestamp of when the hub had the first_server deployed.
-        "$ref": "../DateTime.yml"
-      first_environment:
-        description: The timestamp of when the hub had the first environment deployed.
-        "$ref": "../DateTime.yml"
-      first_image:
-        description: The timestamp of when the hub had the first image deployed.
-        "$ref": "../DateTime.yml"
-      first_container:
-        description: The timestamp of when the hub had the first container deployed.
-        "$ref": "../DateTime.yml"
+    $ref: "HubEvents.yml"
+  creator:
+    $ref: "../creators/CreatorScope.yml"
   state:
-    "$ref": "./HubState.yml"
+    $ref: "./HubState.yml"
   meta:
-    "$ref": "./HubMeta.yml"
+    $ref: "./HubMeta.yml"

@@ -1,22 +1,24 @@
 get:
-  operationId: "getServersInstances"
+  operationId: "getServerInstances"
+  summary: Get Server Instances
+  description: Gets a list of instances that are on the same server as this instance.
   tags:
     - Servers
+    - Instances
   parameters: []
-  summary: Fetch Server Instances
-  description: Internal API, no capabilities needed.
   responses:
-    "200":
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
       description: Returns a list of instances.
       content:
         application/json:
           schema:
-            title: "ListServerInstancesResponse"
             type: object
+            required:
+              - data
             properties:
               data:
                 type: array
                 items:
                   "$ref": "../../../components/schemas/containers/instances/Instance.yml"
-    default:
-      $ref: ../../../components/responses/errors/DefaultError.yml

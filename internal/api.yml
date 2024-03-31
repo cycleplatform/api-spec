@@ -26,31 +26,35 @@ security:
 paths:
   # Environments
   /v1/environment:
-    $ref: "./paths/environments/environment.yml"
+    $ref: paths/environments/environment.yml
   /v1/environment/containers:
-    $ref: "./paths/environments/containers.yml"
+    $ref: paths/environments/containers.yml
   /v1/environment/instances:
-    $ref: "./paths/environments/instances.yml"
+    $ref: paths/environments/instances.yml
   /v1/environment/ips:
-    $ref: "./paths/environments/ips.yml"
+    $ref: paths/environments/ips.yml
   /v1/environment/services:
-    $ref: "./paths/environments/services.yml"
+    $ref: paths/environments/services.yml
   /v1/environment/services/lb/telemetry/snapshots:
-    $ref: "./paths/environments/lbtelemetry.yml"
+    $ref: paths/environments/lbtelemetry.yml
   /v1/environment/scoped-variables:
     $ref: paths/environments/scopedVariables.yml
 
   # Hubs
-  "/v1/hub":
-    $ref: "./paths/hubs/hub.yml"
+  /v1/hub:
+    $ref: paths/hubs/hub.yml
+  /v1/hub/integrations:
+    $ref: paths/hubs/integration.yml
 
   # Servers
-  "/v1/server":
-    $ref: "./paths/servers/server.yml"
-  "/v1/server/containers":
-    $ref: "./paths/servers/containers.yml"
-  "/v1/server/instances":
-    $ref: "./paths/servers/instances.yml"
+  /v1/server:
+    $ref: paths/servers/server.yml
+  /v1/server/instances:
+    $ref: paths/servers/instances.yml
+  /v1/server/instances/telemetry:
+    $ref: paths/servers/instanceTelemetry.yml
+  /v1/server/containers:
+    $ref: paths/servers/containers.yml
 
   # Containers
   "/v1/container":

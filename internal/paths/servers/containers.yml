@@ -1,22 +1,24 @@
 get:
-  operationId: "getServersContainers"
+  operationId: "getServerContainers"
   tags:
     - Servers
+    - Containers
   parameters: []
   summary: List Server Containers
-  description: Doesn't require specific capability.
+  description: Lists all containers present on the same server as this instance.
   responses:
-    "200":
-      description: Returns a collection of container resources
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns a list of containers.
       content:
         application/json:
           schema:
-            title: ListServersContainerReturn
             type: object
+            required:
+              - data
             properties:
               data:
                 type: array
                 items:
-                  "$ref": "../../../components/schemas/containers/Container.yml"
-    default:
-      $ref: ../../../components/responses/errors/DefaultError.yml
+                  $ref: ../../../components/schemas/containers/Container.yml

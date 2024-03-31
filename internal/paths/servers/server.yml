@@ -1,22 +1,21 @@
 get:
-  operationId: "getServers"
+  operationId: "getServer"
   tags:
     - Servers
   parameters: []
-  summary: Fetch Server
-  description: Internal API, no capabilities needed.
+  summary: Get Server
+  description: Gets the server this instance is running on.
   responses:
-    "200":
-      description: Returns a list of server resources.
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns a server.
       content:
         application/json:
           schema:
-            title: ListEnvironmentContainerReturn
             type: object
+            required:
+              - data
             properties:
               data:
-                type: array
-                items:
-                  "$ref": "../../../components/schemas/infrastructure/servers/Server.yml"
-    default:
-      $ref: ../../../components/responses/errors/DefaultError.yml
+                $ref: "../../../components/schemas/infrastructure/servers/Server.yml"

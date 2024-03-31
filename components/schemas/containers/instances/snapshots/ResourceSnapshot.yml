@@ -10,18 +10,31 @@ required:
 properties:
   time:
     description: A timestamp of the time this snapshot was captured at.
-    "$ref": "../../../DateTime.yml"
+    $ref: "../../../DateTime.yml"
   hub_id:
-    "$ref": "../../../HubID.yml"
+    anyOf:
+      - $ref: "../../../HubID.yml"
+      - type: "null"
   container_id:
-    type: string
-    description: An ID for an associated container.
+    anyOf:
+      - $ref: "../../../ID.yml"
+      - type: "null"
   instance_id:
-    type: string
-    description: An ID for an associated instance.
+    anyOf:
+      - $ref: "../../../ID.yml"
+      - type: "null"
   environment_id:
-    type: string
-    description: An ID for an associated environment.
+    anyOf:
+      - $ref: "../../../ID.yml"
+      - type: "null"
+  server_id:
+    anyOf:
+      - $ref: "../../../ID.yml"
+      - type: "null"
+  cluster:
+    anyOf:
+      - $ref: "../../../Identifier.yml"
+      - type: "null"
   cpu:
     $ref: CPUSnapshot.yml
   memory:
@@ -31,4 +44,4 @@ properties:
   network:
     $ref: NetworkSnapshot.yml
   hugetlb:
-    "$ref": "HugeTLB.yml"
+    $ref: "HugeTLB.yml"

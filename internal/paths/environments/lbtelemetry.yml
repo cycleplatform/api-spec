@@ -1,6 +1,6 @@
 post:
-  operationId: "postLoadBalancerTelemetry"
-  summary: Post Environment Load Balancer Telemetry
+  operationId: "submitLoadBalancerTelemetry"
+  summary: Submit Environment Load Balancer Telemetry
   description: Submit load balancer telemetry data.
   tags:
     - Environments

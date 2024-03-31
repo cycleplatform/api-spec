@@ -1,20 +1,21 @@
 get:
   operationId: "getHub"
+  summary: Get Hub
+  description: Gets the hub that this instance is a member of.
   tags:
     - Hubs
   parameters: []
-  summary: Fetch Hub
-  description: Doesn't require a specific capability.
   responses:
-    "200":
-      description: Returns a Hub resource.
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns a hub.
       content:
         application/json:
           schema:
-            title: FetchHubReturn
             type: object
+            required:
+              - data
             properties:
               data:
-                "$ref": "../../../components/schemas/hubs/Hub.yml"
-    default:
-      $ref: ../../../components/responses/errors/DefaultError.yml
+                $ref: "../../../components/schemas/hubs/PublicHub.yml"
