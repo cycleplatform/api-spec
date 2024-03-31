@@ -15,7 +15,7 @@ get:
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
     200:
-      description: Returns a list of TLS certificates.
+      description: Returns a list of domains.
       content:
         application/json:
           schema:
@@ -26,4 +26,13 @@ get:
               data:
                 type: array
                 items:
-                  $ref: ../../components/Certificate.yml
+                  type: object
+                  description: Any associated Linked Records for this container, and their fully-qualified domain name (fqdn)
+                  required:
+                    - fqdn
+                  properties:
+                    fqdn:
+                      type: string
+                      description: The fully qualified domain name.
+                    record:
+                      $ref: ../../../components/schemas/dns/records/Record.yml

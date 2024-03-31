@@ -67,6 +67,12 @@ paths:
     $ref: paths/containers/instances.yml
   /v1/containers/certificates:
     $ref: paths/containers/certificates.yml
+  /v1/containers/domains:
+    $ref: paths/containers/domains.yml
+
+  # Conductor
+  /v1/conductor/tasks:
+    $ref: paths/conductor/tasks.yml
 
   # Notifications
   "/v1/notifications":

@@ -1,0 +1,29 @@
+title: StartInstanceTask
+description: Properties for creating a job to start an instance.
+type: object
+required:
+  - action
+  - contents
+properties:
+  action:
+    type: string
+    enum:
+      - container.instance.start
+  contents:
+    type: object
+    required:
+      - instance_id
+      - container_id
+    properties:
+      instance_id:
+        $ref: ../../../../components/schemas/ID.yml
+      container_id:
+        $ref: ../../../../components/schemas/ID.yml
+      arguments:
+        type: array
+        items:
+          type: string
+      environment_variables:
+        type: object
+        additionalProperties:
+          type: string
