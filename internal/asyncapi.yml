@@ -18,6 +18,13 @@ channels:
     messages:
       notification:
         $ref: "#/components/messages/notification"
+    bindings:
+      ws:
+        headers:
+          type: object
+          properties:
+            x-cycle-token:
+              type: string
 
 operations:
   notificationListener:

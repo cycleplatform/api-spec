@@ -1,0 +1,24 @@
+get:
+  operationId: "getNetworkInstances"
+  summary: List Network Instances
+  description: Lists all instances present in this instance's SDN networks.
+  tags:
+    - SDN
+    - Instances
+  parameters: []
+  responses:
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns a list of instances.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  "$ref": "../../../components/schemas/containers/instances/Instance.yml"

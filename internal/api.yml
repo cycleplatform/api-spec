@@ -26,49 +26,49 @@ security:
 paths:
   # Environments
   /v1/environment:
-    $ref: paths/environments/environment.yml
+    $ref: paths/environment/environment.yml
   /v1/environment/containers:
-    $ref: paths/environments/containers.yml
+    $ref: paths/environment/containers.yml
   /v1/environment/instances:
-    $ref: paths/environments/instances.yml
+    $ref: paths/environment/instances.yml
   /v1/environment/ips:
-    $ref: paths/environments/ips.yml
+    $ref: paths/environment/ips.yml
   /v1/environment/services:
-    $ref: paths/environments/services.yml
+    $ref: paths/environment/services.yml
   /v1/environment/services/lb/telemetry/snapshots:
-    $ref: paths/environments/lbtelemetry.yml
+    $ref: paths/environment/lbtelemetry.yml
   /v1/environment/scoped-variables:
-    $ref: paths/environments/scopedVariables.yml
+    $ref: paths/environment/scopedVariables.yml
 
   # Hubs
   /v1/hub:
-    $ref: paths/hubs/hub.yml
+    $ref: paths/hub/hub.yml
   /v1/hub/integrations:
-    $ref: paths/hubs/integration.yml
+    $ref: paths/hub/integration.yml
 
   # Servers
   /v1/server:
-    $ref: paths/servers/server.yml
+    $ref: paths/server/server.yml
   /v1/server/instances:
-    $ref: paths/servers/instances.yml
+    $ref: paths/server/instances.yml
   /v1/server/instances/telemetry:
-    $ref: paths/servers/instanceTelemetry.yml
+    $ref: paths/server/instanceTelemetry.yml
   /v1/server/containers:
-    $ref: paths/servers/containers.yml
+    $ref: paths/server/containers.yml
   /v1/server/images:
-    $ref: paths/servers/images.yml
+    $ref: paths/server/images.yml
   /v1/server/images/download:
-    $ref: paths/servers/imageDownload.yml
+    $ref: paths/server/imageDownload.yml
 
   # Containers
   /v1/container:
-    $ref: paths/containers/container.yml
+    $ref: paths/container/container.yml
   /v1/container/instances:
-    $ref: paths/containers/instances.yml
+    $ref: paths/container/instances.yml
   /v1/containers/certificates:
-    $ref: paths/containers/certificates.yml
+    $ref: paths/container/certificates.yml
   /v1/containers/domains:
-    $ref: paths/containers/domains.yml
+    $ref: paths/container/domains.yml
 
   # Conductor
   /v1/conductor/tasks:
@@ -78,9 +78,13 @@ paths:
   /v1/vpn/login:
     $ref: paths/vpn/login.yml
 
-  # Notifications
-  "/v1/notifications":
-    $ref: "./paths/hubs/notifications.yml"
+  # SDN
+  /v1/sdn/networks:
+    $ref: paths/sdn/networks.yml
+  /v1/sdn/networks/instances:
+    $ref: paths/sdn/instances.yml
+  /v1/sdn/networks/environments:
+    $ref: paths/sdn/environments.yml
 
 components:
   securitySchemes:

@@ -9,8 +9,6 @@ required:
   - creator
   - hub_id
   - state
-  - private_network
-  - environments
   - events
 properties:
   id:
@@ -31,10 +29,14 @@ properties:
   state:
     $ref: NetworkState.yml
   private_network:
-    $ref: NetworkPrivacySettings.yml
+    anyOf:
+      - $ref: NetworkPrivacySettings.yml
+      - type: "null"
   environments:
     description: An array of environments and timestamps.
-    type: array
+    type:
+      - array
+      - "null"
     items:
       type: object
       required:
