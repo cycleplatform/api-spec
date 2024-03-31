@@ -1,5 +1,5 @@
-title: InternalDnsTlsCertificate
-description: A certificate resource accessible from inside a container.
+title: Certificate
+description: A DNS TLS certificate.
 type: object
 required:
   - id
@@ -11,7 +11,7 @@ required:
   - hub_id
 properties:
   id:
-    $ref: ../../ID.yml
+    $ref: ../../components/schemas/ID.yml
   domains:
     type: array
     description: An array of domains associated with the certificate.
@@ -30,4 +30,4 @@ properties:
     type: string
     description: The issuer's certificate.
   hub_id:
-    $ref: ../../HubID.yml
+    $ref: ../../components/schemas/HubID.yml

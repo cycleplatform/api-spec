@@ -1,4 +1,4 @@
----
 title: HubID
 type: string
 description: The unique ID of the Hub this resource was created in.
+example: 651586fca6078e98982dbd90

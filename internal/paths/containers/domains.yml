@@ -1,14 +1,14 @@
 get:
-  operationId: "getContainerCertificates"
-  summary: List Container Certificates
-  description: Get the TLS certificates associated with the domains pointed at this container.
+  operationId: "getContainerDomains"
+  summary: List Container Domains
+  description: Get the domains pointed at a container.
   tags:
     - Containers
   parameters:
     - name: container-id
       in: query
       required: false
-      description: Specify which container to get certificates for. If not provided, will use the container of the current instance.
+      description: Specify which container to get domains for. If not provided, will use the container of the current instance.
       schema:
         type: string
   responses:

@@ -1,40 +1,27 @@
 get:
   operationId: "getContainer"
+  summary: Get Container
+  description: Gets a container. By default will grab the container of this instance, but a `container-id`` parameter can be passed to grab any other container in the same environment.
   tags:
     - Containers
   parameters:
-    - name: meta
+    - name: container-id
       in: query
       required: false
-      description:
-        A comma separated list of meta values. Meta values will show up under a resource's
-        `meta` field. In the case of applying a meta to a collection of resources, each
-        resource will have it's own relevant meta data. In some rare cases, meta may not
-        apply to individual resources, and may appear in the root document. These will be
-        clearly labeled.
+      description: Specify which container to fetch. If not provided, will use the container of the current instance.
       schema:
-        type: array
-        items:
-          type: string
-          enum:
-            - instances_count
-            - domain
-            - domains
-            - ips
-  summary: Fetch Container
-  description: Internal API, no capabilities needed.
+        type: string
   responses:
-    "200":
-      description: Returns an container resource.
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns a container.
       content:
         application/json:
           schema:
-            title: "ContainerResponse"
             type: object
+            required:
+              - data
             properties:
               data:
-                "$ref": "../../../components/schemas/containers/Container.yml"
-              includes:
-                "$ref": "../../../components/schemas/containers/instances/InstanceIncludes.yml"
-    default:
-      $ref: ../../../components/responses/errors/DefaultError.yml
+                $ref: ../../../components/schemas/containers/Container.yml

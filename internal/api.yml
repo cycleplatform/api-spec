@@ -55,14 +55,18 @@ paths:
     $ref: paths/servers/instanceTelemetry.yml
   /v1/server/containers:
     $ref: paths/servers/containers.yml
+  /v1/server/images:
+    $ref: paths/servers/images.yml
+  /v1/server/images/download:
+    $ref: paths/servers/imageDownload.yml
 
   # Containers
-  "/v1/container":
-    $ref: "./paths/containers/container.yml"
-  "/v1/container/instances":
-    $ref: "./paths/containers/instances.yml"
-  "/v1/containers/certificates":
-    $ref: "./paths/containers/certificates.yml"
+  /v1/container:
+    $ref: paths/containers/container.yml
+  /v1/container/instances:
+    $ref: paths/containers/instances.yml
+  /v1/containers/certificates:
+    $ref: paths/containers/certificates.yml
 
   # Notifications
   "/v1/notifications":

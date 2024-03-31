@@ -21,7 +21,7 @@ post:
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
     200:
-      description: Returns a list of image details (id, time accessed).
+      description: Returns the details of the downloaded image.
       content:
         application/json:
           schema:
