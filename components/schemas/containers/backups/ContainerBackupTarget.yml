@@ -2,16 +2,13 @@ title: ContainerBackupTarget
 type: object
 description: A target for the given Container Backup.
 required:
-  - destination
+  - integration_id
   - path
   - size
   - file_id
 properties:
-  destination:
-    type: string
-    description: The target service to be used for a Container Backup.
-    enum:
-      - backblaze-b2
+  integration_id:
+    $ref: ../../HybridIdentifier.yml
   path:
     type: string
     description: The target for where to store the Container Backup on the destination service.

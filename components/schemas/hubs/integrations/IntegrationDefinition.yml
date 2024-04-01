@@ -27,6 +27,12 @@ properties:
     description: A list of additional features supported by this Integration.
     items:
       type: string
+  extends:
+    type: array
+    description: A list of functionality that this integration extends. i.e. ["backups"]
+    nullable: true
+    items:
+      type: string
   extended_configuration:
     type:
       - object

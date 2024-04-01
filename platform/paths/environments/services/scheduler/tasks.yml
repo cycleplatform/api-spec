@@ -30,9 +30,9 @@ post:
               type: object
               properties:
                 config:
-                  type:
-                    - boolean
-                    - "null"
+                  anyOf:
+                    - $ref: ../../../../../components/schemas/environments/services/scheduler/SchedulerConfig.yml
+                    - type: "null"
                 auto_update:
                   type:
                     - boolean

@@ -109,7 +109,7 @@ post:
                 - integration_id
               properties:
                 integration_id:
-                  $ref: ../../../../components/schemas/HybridIdentifer.yml
+                  $ref: ../../../../components/schemas/HybridIdentifier.yml
             type:
               $ref: ../../../../components/schemas/images/sources/ImageSourceType.yml
             origin:

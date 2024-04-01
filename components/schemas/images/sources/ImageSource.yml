@@ -37,7 +37,7 @@ properties:
       integration_id:
         nullable: true
         description: The ID or Identifier of the Integration used to do the build.
-        $ref: ../../HybridIdentifer.yml
+        $ref: ../../HybridIdentifier.yml
   creator:
     "$ref": "../../creators/CreatorScope.yml"
   state:

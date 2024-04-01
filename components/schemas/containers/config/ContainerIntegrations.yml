@@ -71,11 +71,8 @@ properties:
       - restore
       - retention
     properties:
-      destination:
-        type: string
-        description: The storage provider to use for backups.
-        enum:
-          - "backblaze-b2"
+      integration_id:
+        $ref: ../../HybridIdentifier.yml
       backup:
         type: object
         description: Configuration settings for each backup.
