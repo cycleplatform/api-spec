@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint": "npm run lint:platform && npm run lint:internal",
+    "lint": "npx @redocly/cli@latest lint  --format json --lint-config=off",
     "lint:platform": "npx @redocly/cli lint ./platform/api.yml",
     "lint:internal": "npx @redocly/cli lint ./internal/api.yml",
+    "lint:scheduler": "npx @redocly/cli lint ./scheduler/api.yml",
     "build": "npm run build:platform && npm run build:internal",
     "build:platform": "npx @redocly/cli@1.9.0 bundle platform/api.yml --output dist/platform.yml",
     "build:internal": "npx @redocly/cli@1.9.0 bundle internal/api.yml --output dist/internal.yml",
@@ -18,6 +19,6 @@
   "author": "Petrichor Holdings, Inc.",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@redocly/cli": "1.9.0"
+    "@redocly/cli": "1.10.6"
   }
 }
