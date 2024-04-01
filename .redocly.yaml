@@ -4,6 +4,8 @@ apis:
     root: ./platform/api.yml
   cycle-internal-api@1.0.0:
     root: ./internal/api.yml
+  cycle-scheduler-api@1.0.0:
+    root: ./scheduler/api.yml
 
 extends:
   - recommended
