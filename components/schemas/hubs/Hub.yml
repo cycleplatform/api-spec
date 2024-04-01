@@ -26,8 +26,6 @@ properties:
     $ref: "HubEvents.yml"
   state:
     $ref: "./HubState.yml"
-  integrations:
-    $ref: "./HubIntegrations.yml"
   webhooks:
     $ref: HubWebhooks.yml
   billing:

@@ -1,7 +1,7 @@
 # See https://redocly.com/docs/cli/configuration/
 apis:
-  cycle-public-api@1.0.0:
-    root: ./public/api.yml
+  cycle-platform-api@1.0.0:
+    root: ./platform/api.yml
   cycle-internal-api@1.0.0:
     root: ./internal/api.yml
 

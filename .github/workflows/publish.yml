@@ -22,8 +22,8 @@ jobs:
           sshpass -p "$sftp_password" sftp -oStrictHostKeyChecking=no -P 2022 \
           6361f607716e770edcf653b7.60120f91b180486dfd1b6a59@zzwyt-aws-us-east-2.s.5a6b6f3df231a50001c2317c.cycle.io  -y <<EOF
           cd api-spec
-          put ./dist/public-api.yml
-          put ./dist/internal-api.yml
+          put ./dist/platform.yml
+          put ./dist/internal.yml
           bye
           EOF
       - name: Deploy API Docs

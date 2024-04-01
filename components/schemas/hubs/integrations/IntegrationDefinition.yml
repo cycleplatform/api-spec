@@ -28,9 +28,10 @@ properties:
     items:
       type: string
   extends:
-    type: array
+    type:
+      - array
+      - "null"
     description: A list of functionality that this integration extends. i.e. ["backups"]
-    nullable: true
     items:
       type: string
   extended_configuration:
