@@ -6,6 +6,28 @@ apis:
     root: ./internal/api.yml
   cycle-scheduler-api@1.0.0:
     root: ./scheduler/api.yml
+    theme:
+      openapi:
+        htmlTemplate: ./docs/scheduler.html
+        theme:
+          colors:
+            accent:
+              main: rgb(42, 167, 255)
+              contrastText: rgb(42, 167, 255)
+            http:
+              post: rgb(42, 167, 255)
+          typography:
+            fontFamily: "Source Sans 3, sans-serif"
+            links:
+              color: rgb(42, 167, 255)
+          sidebar:
+            backgroundColor: "rgb(18, 18, 21)"
+            textColor: "ivory"
+          rightPanel:
+            textColor: "ivory"
+            backgroundColor: "rgb(18, 18, 21)"
+          logo:
+            gutter: 16px
 
 extends:
   - recommended
@@ -28,3 +50,24 @@ rules:
 #       - lang: curl
 #       - lang: Node.js
 #       - lang: Python
+theme:
+  openapi:
+    theme:
+      colors:
+        accent:
+          main: rgb(42, 167, 255)
+          contrastText: rgb(42, 167, 255)
+        http:
+          post: rgb(42, 167, 255)
+      typography:
+        fontFamily: "Source Sans 3, sans-serif"
+        links:
+          color: rgb(42, 167, 255)
+      sidebar:
+        backgroundColor: "rgb(18, 18, 21)"
+        textColor: "ivory"
+      rightPanel:
+        textColor: "ivory"
+        backgroundColor: "rgb(18, 18, 21)"
+      logo:
+        gutter: 16px
