@@ -1,5 +1,7 @@
 title: LoadBalancerConfig
-type: object
+type:
+  - object
+  - "null"
 description: The config object for the loadbalancer service.
 discriminator:
   propertyName: type
