@@ -1,0 +1,30 @@
+title: "ServerModelProvider"
+type: object
+description: "Identifies the provider details, including the category, class, model ID, available locations, and availability zones for a server, plan, or model."
+required:
+  - category
+  - model_id
+properties:
+  category:
+    type: string
+    description: "The category of the server model."
+  class:
+    type:
+      - "string"
+      - "null"
+    description: "The class of the provider's server model, optional."
+  model_id:
+    type: string
+    description: "The primary ID used to reference this server model."
+  locations:
+    type:
+      - "array"
+      - "null"
+    items:
+      type: string
+    description: "A list of locations where this server model is available."
+  availability_zones:
+    type:
+      - object
+      - "null"
+    description: "Details the availability zones where the server model is offered."

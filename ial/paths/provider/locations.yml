@@ -1,0 +1,28 @@
+get:
+  operationId: "listLocations"
+  summary: List Locations
+  description: Cycle will utilize this call to learn which locations it is able to deploy servers to.
+  tags:
+    - Provider
+  responses:
+    200:
+      description: Returns a list of available server locations for this IAL.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - locations
+              - extra
+            properties:
+              locations:
+                type:
+                  - array
+                  - "null"
+                items:
+                  $ref: ../../components/schemas/provider/location/Location.yml
+              extra:
+                type:
+                  - object
+                  - "null"
+                additionalProperties: {}

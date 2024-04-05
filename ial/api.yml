@@ -1,0 +1,48 @@
+openapi: 3.1.0
+servers:
+  - description: Cycle Infrastructure Abstraction Layer
+    url: https://api.cycle.io
+info:
+  license:
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0
+  version: 1.0.0
+  title: Cycle Infrastructure Abstraction Layer
+  contact:
+    email: support@cycle.io
+  description: |
+    Cycle's Infrastructure Abstract Layer (IAL) API. Endpoints listed here should be implemented by the customer, and Cycle will call the various endpoints over the lifecycle of provisioning and decommissioning servers.
+    For more information, check out the official [Infrastructure Abstraction Layer Documentation](https://docs.cycle.io/reference/hubs/integrations/providers/ial/).
+
+    For a Go implementation of the types, see the repo available here: https://github.com/cycleplatform/integrations
+  x-logo:
+    url: https://static.cycle.io/icons/logo/logo-white.svg
+
+security: []
+
+paths:
+  # Auth
+  /v1/auth/verify:
+    $ref: paths/auth/auth.yml
+  # Provider
+  /v1/infrastructure/provider/locations:
+    $ref: paths/provider/locations.yml
+  /v1/infrastructure/provider/server-models:
+    $ref: paths/provider/server-models.yml
+  # Location
+  /v1/location/configure:
+    $ref: paths/location/configure.yml
+  # Server
+  /v1/infrastructure/server/provision:
+    $ref: paths/server/provision.yml
+  /v1/infrastructure/server/provision-status:
+    $ref: paths/server/provision-status.yml
+  /v1/infrastructure/server/decommission:
+    $ref: paths/server/decommission.yml
+  /v1/infrastructure/server/restart:
+    $ref: paths/server/restart.yml
+  # IP
+  /v1/infrastructure/ip/allocate:
+    $ref: paths/ip/allocate.yml
+  /v1/infrastructure/ip/release:
+    $ref: paths/ip/release.yml

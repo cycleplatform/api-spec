@@ -1,0 +1,10 @@
+title: "CycleServerMeta"
+type: object
+description: "Metadata about a location, provided by Cycle."
+required:
+  - location_id
+properties:
+  location_id:
+    type: string
+    format: "uuid"
+    description: "The unique identifier of the location at Cycle."

@@ -1,0 +1,31 @@
+title: Auth
+description: The authorization object configured as part of the IAL integration on Cycle. All of these fields are custom, and can be interpreted by your API in any way desired.
+type: object
+properties:
+  client_id:
+    type: string
+  subscription_id:
+    type: string
+  namespace:
+    type: string
+  region:
+    type: string
+  api_key:
+    type: string
+  secret:
+    type: string
+  config:
+    type: string
+    format: base64
+    description: If a provider needs a far more complex config, sent via base64.
+  cycle:
+    type: object
+    description: Meta information sent from Cycle about the hub the IAL integration is configured for.
+    required:
+      - hub_name
+      - hub_id
+    properties:
+      hub_name:
+        type: string
+      hub_id:
+        type: string

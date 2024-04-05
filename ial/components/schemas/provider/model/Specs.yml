@@ -1,0 +1,32 @@
+title: Specs
+description: Detailed specs for a server model (CPU, RAM, etc.)
+type: object
+required:
+  - cpu
+  - memory
+  - features
+properties:
+  cpu:
+    $ref: "CPU.yml"
+  gpu:
+    oneOf:
+      - $ref: "GPU.yml"
+      - type: "null"
+  memory:
+    $ref: "Memory.yml"
+  storage:
+    type:
+      - array
+      - "null"
+    items:
+      $ref: "Storage.yml"
+  network:
+    type:
+      - array
+      - "null"
+    items:
+      $ref: "NIC.yml"
+    description: "A list of Network Interface Card (NIC) specifications."
+  features:
+    $ref: "SpecFeatures.yml"
+    description: "The set of additional features."

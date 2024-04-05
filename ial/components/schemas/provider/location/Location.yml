@@ -1,0 +1,27 @@
+title: Location
+description: A location offered by this IAL integration where servers can be deployed.
+type: object
+required:
+  - name
+properties:
+  name:
+    type: string
+    description: The name of the location.
+  geographic:
+    oneOf:
+      - $ref: Geographic.yml
+      - type: "null"
+  provider:
+    $ref: LocationProvider.yml
+  features:
+    $ref: Features.yml
+  annotations:
+    type:
+      - object
+      - "null"
+    additionalProperties:
+      type: string
+  compatible:
+    type:
+      - boolean
+      - "null"

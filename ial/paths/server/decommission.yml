@@ -1,0 +1,58 @@
+post:
+  operationId: "decommissionServer"
+  summary: Decommission Server
+  description: Cycle will begin a decommission once a user initiates a 'delete' within the portal / API. This call will only occur after a server no longer has any IPs or instances assigned to it.
+  tags:
+    - Server
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - request
+          properties:
+            auth:
+              $ref: ../../components/schemas/Auth.yml
+            request:
+              type: object
+              description: "Represents a request to decommission a server, including server identification details, location, and any extra information required by the provider or for internal processes."
+              required:
+                - server_id
+                - hostname
+                - model_id
+                - location_id
+                - cycle
+              properties:
+                server_id:
+                  type: string
+                  description: "The unique identifier of the server at the provider."
+                hostname:
+                  type: string
+                  description: "The hostname of the server."
+                model_id:
+                  type: string
+                  description: "The ID of the server model."
+                location_id:
+                  type: string
+                  description: "The ID of the location where the server is deployedg."
+                zone_id:
+                  type:
+                    - "string"
+                    - "null"
+                  description: "The ID of the specific zone within the location, if applicable."
+                extra:
+                  type: "object"
+                  description: "Additional, unspecified information associated with the server that might be relevant for the decommissioning process. This is an open map to accommodate various types of values."
+                  additionalProperties: true
+                cycle:
+                  $ref: ../../components/schemas/server/CycleServerMeta.yml
+  responses:
+    200:
+      description: Returns a boolean of the success of the decommission.
+      content:
+        application/json:
+          schema:
+            type: boolean
+            description: "Will be true if the decommission is successful."

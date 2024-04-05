@@ -1,0 +1,58 @@
+post:
+  operationId: "restartServer"
+  summary: Restart Server
+  description: Cycle will call this endpoint whenever a request has been made via the platform to restart a server.
+  tags:
+    - Server
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - request
+          properties:
+            auth:
+              $ref: ../../components/schemas/Auth.yml
+            request:
+              type: object
+              description: "Describes a request to restart a server."
+              required:
+                - server_id
+                - hostname
+                - model_id
+                - location_id
+                - cycle
+              properties:
+                server_id:
+                  type: string
+                  description: "The unique identifier of the server at the provider."
+                hostname:
+                  type: string
+                  description: "The hostname of the server."
+                model_id:
+                  type: string
+                  description: "The model ID of the server."
+                location_id:
+                  type: string
+                  description: "The ID of the location where the server is stationed, pertinent to the restart operation."
+                zone_id:
+                  type:
+                    - "string"
+                    - "null"
+                  description: "The zone ID within the location, if applicable. This field is optional and may be necessary for specific restart procedures."
+                extra:
+                  type: "object"
+                  description: "Additional information associated with the server that might be required for the restart process. This allows for a flexible structure to include any extraneous data not covered by standard fields."
+                  additionalProperties: true
+                cycle:
+                  $ref: ../../components/schemas/server/CycleServerMeta.yml
+  responses:
+    200:
+      description: Returns a boolean of the success of the restart.
+      content:
+        application/json:
+          schema:
+            type: boolean
+            description: "Will be true if the restart is successful."

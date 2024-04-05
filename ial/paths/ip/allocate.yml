@@ -1,0 +1,84 @@
+post:
+  operationId: "allocateIP"
+  summary: Allocate IP Address
+  description: Cycle will call this endpoint to allocate an IP address. Generally this is done when a new load balancer is created (during environment create, or scaling up).
+  tags:
+    - IP
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - request
+          properties:
+            auth:
+              $ref: ../../components/schemas/Auth.yml
+            request:
+              type: object
+              description: "Represents a request to allocate an IP address, detailing the kind of IP, relevant server and location identifiers, and configuration details."
+              required:
+                - kind
+                - server_id
+                - location_id
+                - location_configuration
+                - cycle
+              properties:
+                kind:
+                  $ref: ../../components/schemas/ip/IPKind.yml
+                server_id:
+                  type: string
+                  description: "The unique identifier of the server for which the IP is being allocated."
+                location_id:
+                  type: string
+                  description: "The identifier of the location where the server is situated and where the IP allocation is requested."
+                zone_id:
+                  type:
+                    - "string"
+                    - "null"
+                  description: "The identifier of the zone within the location, if applicable. This field is optional and can be null."
+                location_configuration:
+                  type: object
+                  description: "Configuration details specific to the location, relevant to the IP allocation process."
+                  additionalProperties: true
+                cycle:
+                  $ref: ../../components/schemas/ip/CycleIPMeta.yml
+  responses:
+    200:
+      description: Returns information about the allocated IP address.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - ip_id
+              - ip_assignment_id
+              - cidr
+              - gateway
+              - netmask
+              - network
+            properties:
+              ip_id:
+                type: string
+                description: "The unique identifier of the IP at the provider."
+              ip_assignment_id:
+                type: string
+                description: "The unique identifier of the IP assignment at the provider."
+              cidr:
+                type: string
+                description: "The CIDR notation of the allocated IP address."
+              gateway:
+                type: string
+                description: "The gateway address for the allocated IP."
+              netmask:
+                type: string
+                description: "The netmask associated with the allocated IP address."
+              network:
+                type: string
+                description: "The network segment to which the allocated IP belongs."
+              nat_private_ip:
+                type:
+                  - "string"
+                  - "null"
+                description: "The private IP address for NAT (Network Address Translation), if applicable."

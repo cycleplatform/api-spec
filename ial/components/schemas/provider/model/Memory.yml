@@ -1,0 +1,20 @@
+title: Memory
+type: object
+required:
+  - size_gb
+  - type
+properties:
+  size_gb:
+    type: integer
+    format: int64
+    description: "The size of the memory in gigabytes."
+  type:
+    type: string
+    description: "The type of memory."
+  extra:
+    type:
+      - "object"
+      - "null"
+    additionalProperties:
+      type: string
+    description: "Extra information about the memory, optional."

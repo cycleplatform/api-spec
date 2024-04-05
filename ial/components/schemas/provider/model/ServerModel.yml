@@ -1,0 +1,37 @@
+title: "ServerModel"
+type: object
+description: "Represents a server model, detailing its name, drivers, description, specifications, provider, pricing, and compatibility."
+required:
+  - name
+  - description
+  - specs
+  - provider
+  - pricing
+properties:
+  name:
+    type: string
+    description: "The name of the server model."
+  drivers:
+    type:
+      - "array"
+      - "null"
+    items:
+      type: string
+    description: "A list of drivers supported by the server model. This field can be null to represent cases where drivers are not specified or applicable."
+  description:
+    type: string
+    description: "A detailed description of the server model."
+  specs:
+    $ref: "Specs.yml"
+    description: "The specifications of the server model, including CPU, GPU, memory, and other components."
+  provider:
+    $ref: "ServerModelProvider.yml"
+    description: "The provider of the server model."
+  pricing:
+    $ref: "Pricing.yml"
+    description: "Pricing information for the server model."
+  compatible:
+    type:
+      - "boolean"
+      - "null"
+    description: "Indicates whether the server model is compatible with a specific environment or requirement. This field can be null to represent cases where compatibility has not been determined."

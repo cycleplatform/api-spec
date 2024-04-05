@@ -1,0 +1,19 @@
+title: Features
+description: Features supported by a location.
+type: object
+required:
+  - available
+  - supported
+properties:
+  available:
+    type:
+      - array
+      - "null"
+    items:
+      type: string
+  supported:
+    type:
+      - array
+      - "null"
+    items:
+      type: string
