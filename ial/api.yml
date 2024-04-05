@@ -1,0 +1,19 @@
+openapi: 3.1.0
+servers:
+  - description: Cycle Infrastructure Abstraction Layer
+    url: https://api.cycle.io
+info:
+  license:
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0
+  version: 1.0.0
+  title: Cycle Infrastructure Abstraction Layer
+  contact:
+    email: support@cycle.io
+  description: ""
+
+security: []
+
+paths:
+  "/v1/auth/verify":
+    "$ref": paths/auth/auth.yml
