@@ -1,0 +1,73 @@
+post:
+  operationId: "provisionServer"
+  summary: Provision Server
+  description: Cycle will utilize this endpoint to start the provision of a server.
+  tags:
+    - Server
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - request
+          properties:
+            auth:
+              $ref: ../../components/schemas/Auth.yml
+            request:
+              type: object
+              description: "Properties for initiating a server provision."
+              required:
+                - hostname
+                - model_id
+                - location_id
+                - model_features
+                - location_configuration
+                - cycle
+              properties:
+                hostname:
+                  type: string
+                  description: "The hostname for the server being provisioned."
+                model_id:
+                  type: string
+                  description: "The ID of the server model to provision."
+                location_id:
+                  type: string
+                  description: "The ID of the location where the server is to be provisioned."
+                zone_id:
+                  type:
+                    - "string"
+                    - "null"
+                  description: "The ID of the specific zone within the location for server provisioning."
+                model_features:
+                  $ref: ../../components/schemas/provider/model/SpecFeatures.yml
+                  description: "The features associated with the server model being provisioned."
+                provision_options:
+                  type: "object"
+                  description: "Extra provisioning options specified from the platform."
+                  additionalProperties: true
+                location_configuration:
+                  type: object
+                  description: "Configuration details specific to the server's location."
+                  additionalProperties: true
+                cycle:
+                  $ref: ../../components/schemas/server/CycleServerMeta.yml
+  responses:
+    200:
+      description: Returns details about the server being provisioned.
+      content:
+        application/json:
+          schema:
+            type: object
+            description: "The response received by Cycle after provisioning a server, including the unique server ID at the provider and any additional information."
+            required:
+              - server_id
+            properties:
+              server_id:
+                type: string
+                description: "The unique identifier of the server at the provider."
+              extra:
+                type: "object"
+                description: "A map containing additional, unspecified information related to the server provisioning. This allows for a flexible structure to include any extra data that doesn't fit into the standard response fields."
+                additionalProperties: true

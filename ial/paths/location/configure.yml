@@ -1,0 +1,62 @@
+post:
+  operationId: "configureLocation"
+  summary: Configure Location
+  description: Cycle will call this endpoint before every server provision to enable an IAL integration to make location-specific customizations prior to starting servers. For example, with Cycle's native integration with AWS, we utilize this call to configure subnets and VPCs.
+  tags:
+    - Location
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - request
+          properties:
+            auth:
+              $ref: ../../components/schemas/Auth.yml
+            request:
+              type: object
+              description: "A request to update or configure the settings for a specific location."
+              required:
+                - location_id
+                - version
+                - configuration_current
+                - cycle
+              properties:
+                location_id:
+                  type: string
+                  description: "The unique identifier of the location to be configured."
+                version:
+                  type: string
+                  description: "The current version of the configuration being used at the location."
+                configuration_current:
+                  type: object
+                  description: "Details of the current configuration settings for the location."
+                  additionalProperties: true
+                cycle:
+                  $ref: ../../components/schemas/location/CycleLocationMeta.yml
+  responses:
+    200:
+      description: Returns the updated location configuration.
+      content:
+        application/json:
+          schema:
+            type: object
+            description: "The response provided after a request to configure a location, indicating whether the configuration was successful, and including details of the latest configuration."
+            required:
+              - configured
+              - configuration_latest
+            properties:
+              configured:
+                type: boolean
+                description: "Indicates whether the location was successfully configured."
+              version:
+                type:
+                  - "string"
+                  - "null"
+                description: "The version of the configuration that was applied. This field can be null if the version is not applicable or not provided."
+              configuration_latest:
+                type: object
+                description: "Details of the latest configuration settings for the location."
+                additionalProperties: true

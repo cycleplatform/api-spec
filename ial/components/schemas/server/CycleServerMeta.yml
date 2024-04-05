@@ -1,0 +1,28 @@
+title: "CycleServerMeta"
+type: object
+description: "Metadata about a server, provided by Cycle."
+required:
+  - server_id
+  - model_class
+  - model_category
+  - model_id
+  - location_id
+properties:
+  server_id:
+    type: string
+    format: "uuid"
+    description: "The unique identifier of the server at Cycle."
+  model_class:
+    type: string
+    description: "The class of the server at Cycle,"
+  model_category:
+    type: string
+    description: "The category of the server at Cycle."
+  model_id:
+    type: string
+    format: "uuid"
+    description: "The unique identifier of the model at Cycle."
+  location_id:
+    type: string
+    format: "uuid"
+    description: "The unique identifier of the location at Cycle."

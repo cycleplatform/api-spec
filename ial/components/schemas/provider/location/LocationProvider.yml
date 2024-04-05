@@ -1,0 +1,19 @@
+title: LocationProvider
+description: Provider details for a location.
+type: object
+required:
+  - location_id
+  - code
+  - availability_zones
+properties:
+  location_id:
+    type: string
+    description: The primary ID of how Cycle references this location
+  code:
+    type: string
+  availability_zones:
+    type:
+      - array
+      - "null"
+    items:
+      type: string

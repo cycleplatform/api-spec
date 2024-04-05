@@ -1,7 +1,7 @@
 post:
   operationId: "verifyAuth"
   summary: Verify Auth
-  description: Cycle will post to this endpoint to verify the credentials provided for the IAL integration.
+  description: Cycle will utilize this endpoint to verify that user-specified credentials can properly authorize with the IAL integration.
   tags:
     - Auth
   requestBody:
@@ -17,7 +17,6 @@ post:
               $ref: ../../components/schemas/Auth.yml
             request:
               type: "null"
-
   responses:
     200:
       description: Returns an object with a `valid` property. Should be true if the authorization is successful.

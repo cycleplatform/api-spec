@@ -1,0 +1,49 @@
+get:
+  operationId: "getProvisionServerStatus"
+  summary: Get Provision Server Status
+  description: Cycle will use this endpoint to track the status of a provision and, when complete, authorize a server to pull CycleOS via IPXE.
+  tags:
+    - Server
+  responses:
+    200:
+      description: "Returns the status of a server provisioning request, including server ID, provisioning status, authentication details, and any additional extra information."
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - server_id
+              - provisioned
+              - auth
+            properties:
+              server_id:
+                type: string
+                description: "The unique identifier of the server at the provider."
+              provisioned:
+                type: boolean
+                description: "Indicates whether the server has been successfully provisioned."
+              auth:
+                type: object
+                description: "Authentication details for the provisioned server."
+                properties:
+                  uuid:
+                    type:
+                      - "string"
+                      - "null"
+                    description: "The UUID associated with the server for authentication purposes. Nullable if not yet assigned or applicable."
+                  initial_ips:
+                    type:
+                      - "array"
+                      - "null"
+                    items:
+                      type: "string"
+                    description: "List of initial IP addresses assigned to the server."
+                  mac_addr:
+                    type:
+                      - "string"
+                      - "null"
+                    description: "The MAC address of the server's primary network interface. Nullable if not yet assigned or applicable."
+              extra:
+                type: "object"
+                description: "A map containing additional, unspecified information related to the server provisioning. This allows for flexible inclusion of any extra data outside the standard response fields."
+                additionalProperties: true

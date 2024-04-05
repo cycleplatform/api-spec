@@ -12,9 +12,11 @@
     "build:platform": "npx @redocly/cli@1.9.0 bundle platform/api.yml --output dist/platform.yml",
     "build:internal": "npx @redocly/cli@1.9.0 bundle internal/api.yml --output dist/internal.yml",
     "build:scheduler": "npx @redocly/cli@1.9.0 bundle scheduler/api.yml --output dist/scheduler.yml",
+    "build:ial": "npx @redocly/cli@1.9.0 bundle ial/api.yml --output dist/ial.yml",
     "preview:platform": "npm run build:platform && npx @redocly/cli preview-docs dist/platform.yml",
     "preview:internal": "npm run build:internal && npx @redocly/cli preview-docs dist/internal.yml",
-    "preview:scheduler": "npm run build:scheduler && npx @redocly/cli preview-docs cycle-scheduler-api@1.0.0"
+    "preview:scheduler": "npm run build:scheduler && npx @redocly/cli preview-docs cycle-scheduler-api@1.0.0",
+    "preview:ial": "npm run build:ial && npx @redocly/cli preview-docs cycle-ial@1.0.0"
   },
   "author": "Petrichor Holdings, Inc.",
   "license": "Apache-2.0",

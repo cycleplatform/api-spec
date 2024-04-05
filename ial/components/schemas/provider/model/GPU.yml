@@ -1,0 +1,38 @@
+title: GPU
+type: object
+description: Describes an available GPU on a server model.
+required:
+  - count
+  - type
+properties:
+  count:
+    type: integer
+    format: int64
+    description: "The total number of GPUs."
+  cores:
+    type:
+      - "integer"
+      - "null"
+    format: int64
+    description: "The number of cores per GPU, optional."
+  vram_gb:
+    type:
+      - "integer"
+      - "null"
+    format: int64
+    description: "The amount of VRAM in GB per GPU, optional."
+  type:
+    type: string
+    description: "The type of the GPU."
+  shared:
+    type:
+      - "boolean"
+      - "null"
+    description: "Indicates if the GPU is shared among multiple tenants, optional."
+  extra:
+    type:
+      - "object"
+      - "null"
+    additionalProperties:
+      type: string
+    description: "Extra information about the GPU, optional."

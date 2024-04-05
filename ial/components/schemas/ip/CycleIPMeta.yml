@@ -1,0 +1,29 @@
+title: "CycleIPMeta"
+type: object
+description: "Metadata associated with an IP within Cycle."
+required:
+  - server_id
+  - server_model_class
+  - server_model_category
+  - location_id
+properties:
+  pool_id:
+    type:
+      - "string"
+      - "null"
+    format: "uuid"
+    description: "The unique identifier of the IP pool. Nullable if not applicable."
+  server_id:
+    type: "string"
+    format: "uuid"
+    description: "The unique identifier of the server associated with the IP."
+  server_model_class:
+    type: "string"
+    description: "The class of the server, categorizing the server based on its specifications or purpose at Cycle."
+  server_model_category:
+    type: "string"
+    description: "The category of the server, providing a broader classification than the class at Cycle."
+  location_id:
+    type: "string"
+    format: "uuid"
+    description: "The unique identifier of the location associated with the server."

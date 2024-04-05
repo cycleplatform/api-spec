@@ -1,0 +1,38 @@
+title: CPU
+description: Details about the CPU for a given server model.
+type: object
+required:
+  - count
+  - type
+properties:
+  count:
+    type: integer
+    format: int64
+    description: "The total number of CPUs."
+  cores:
+    type:
+      - "integer"
+      - "null"
+    format: int64
+    description: "The number of cores per CPU."
+  threads:
+    type:
+      - "integer"
+      - "null"
+    format: int64
+    description: "The number of threads per core."
+  type:
+    type: string
+    description: "The type of the CPU."
+  shared:
+    type:
+      - "boolean"
+      - "null"
+    description: "Indicates if the CPU is shared among multiple tenants."
+  extra:
+    type:
+      - "object"
+      - "null"
+    additionalProperties:
+      type: string
+    description: "Extra information about the CPU."
