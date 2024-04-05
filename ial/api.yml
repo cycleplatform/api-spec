@@ -13,6 +13,8 @@ info:
   description: |
     Cycle's Infrastructure Abstract Layer (IAL) API. Endpoints listed here should be implemented by the customer, and Cycle will call the various endpoints over the lifecycle of provisioning and decommissioning servers.
     For more information, check out the official [Infrastructure Abstraction Layer Documentation](https://docs.cycle.io/reference/hubs/integrations/providers/ial/).
+
+    For a Go implementation of the types, see the repo available here: https://github.com/cycleplatform/integrations
   x-logo:
     url: https://static.cycle.io/icons/logo/logo-white.svg
 
