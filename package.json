@@ -16,7 +16,7 @@
     "preview:platform": "npm run build:platform && npx @redocly/cli preview-docs dist/platform.yml",
     "preview:internal": "npm run build:internal && npx @redocly/cli preview-docs dist/internal.yml",
     "preview:scheduler": "npm run build:scheduler && npx @redocly/cli preview-docs cycle-scheduler-api@1.0.0",
-    "preview:ial": "npm run build:ial && npx @redocly/cli preview-docs cycle-ial@1.0.0"
+    "preview:ial": "npm run build:ial && npx @redocly/cli preview-docs cycle-ial"
   },
   "author": "Petrichor Holdings, Inc.",
   "license": "Apache-2.0",

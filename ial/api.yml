@@ -10,7 +10,11 @@ info:
   title: Cycle Infrastructure Abstraction Layer
   contact:
     email: support@cycle.io
-  description: ""
+  description: |
+    Cycle's Infrastructure Abstract Layer (IAL) API. Endpoints listed here should be implemented by the customer, and Cycle will call the various endpoints over the lifecycle of provisioning and decommissioning servers.
+    For more information, check out the official [Infrastructure Abstraction Layer Documentation](https://docs.cycle.io/reference/hubs/integrations/providers/ial/).
+  x-logo:
+    url: https://static.cycle.io/icons/logo/logo-white.svg
 
 security: []
 
