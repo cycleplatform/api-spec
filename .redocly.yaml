@@ -35,21 +35,50 @@ apis:
         htmlTemplate: ./docs/ial.html
         theme:
           colors:
+            primary:
+              main: rgb(42, 167, 255)
+              contrastText: ivory
             accent:
               main: rgb(42, 167, 255)
               contrastText: rgb(42, 167, 255)
             http:
+              get: rgb(34, 211, 104)
               post: rgb(42, 167, 255)
+              patch: rgb(174, 55, 255)
           typography:
             fontFamily: "Source Sans 3, sans-serif"
             links:
               color: rgb(42, 167, 255)
+            code:
+              color: rgb(42, 167, 255)
+          schema:
+            requireLabelColor: rgb(255, 198, 41)
+          codeBlock:
+            tokens:
+              property:
+                color: rgb(32, 121, 184) !important
+              string:
+                color: rgb(34, 211, 104)
+              boolean:
+                color: rgb(174, 55, 255)
           sidebar:
-            backgroundColor: "rgb(18, 18, 21)"
+            backgroundColor: "rgb(30, 30, 33)"
             textColor: "ivory"
+            activeBgColor: white
+            activeTextColor: rgb(42, 167, 255)
+            borderRadius: 8px
+            rightLineColor: white
+            fontSize: 15px
+            caretColor: rgb(42, 167, 255)
+            spacing:
+              unit: 8
+              paddingVertical: 16
+              paddingHorizontal: 8
           rightPanel:
             textColor: "ivory"
             backgroundColor: "rgb(18, 18, 21)"
+            panelBackgroundColor: rgb(30, 30, 33)
+            panelControlsBackgroundColor: rgb(18, 18, 21)
           logo:
             gutter: 16px
 
