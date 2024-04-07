@@ -12,7 +12,7 @@ properties:
       - "string"
       - "null"
     format: "uuid"
-    description: "The unique identifier of the IP pool. Nullable if not applicable."
+    description: "The unique identifier of the IP pool."
   server_id:
     type: "string"
     format: "uuid"

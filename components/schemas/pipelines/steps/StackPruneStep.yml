@@ -31,5 +31,6 @@ properties:
           - "null"
         properties:
           expire:
-            nullable: true
-            $ref: ../../Duration.yml
+            anyOf:
+              - $ref: ../../Duration.yml
+              - type: "null"

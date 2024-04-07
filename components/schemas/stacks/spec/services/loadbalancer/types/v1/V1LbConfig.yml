@@ -9,5 +9,6 @@ properties:
     items:
       $ref: ./V1LbController.yml
   controller_template:
-    nullable: true
-    $ref: ./V1LbController.yml
+    anyOf:
+      - $ref: ./V1LbController.yml
+      - type: "null"

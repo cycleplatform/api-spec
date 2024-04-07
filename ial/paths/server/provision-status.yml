@@ -30,7 +30,7 @@ get:
                     type:
                       - "string"
                       - "null"
-                    description: "The UUID associated with the server for authentication purposes. Nullable if not yet assigned or applicable."
+                    description: "The UUID associated with the server for authentication purposes. Null if not yet assigned or applicable."
                   initial_ips:
                     type:
                       - "array"
@@ -42,7 +42,7 @@ get:
                     type:
                       - "string"
                       - "null"
-                    description: "The MAC address of the server's primary network interface. Nullable if not yet assigned or applicable."
+                    description: "The MAC address of the server's primary network interface. Null if not yet assigned or applicable."
               extra:
                 type: "object"
                 description: "A map containing additional, unspecified information related to the server provisioning. This allows for flexible inclusion of any extra data outside the standard response fields."

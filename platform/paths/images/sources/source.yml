@@ -89,8 +89,9 @@ patch:
                 - "null"
               properties:
                 integration_id:
-                  nullable: true
-                  $ref: ../../../../components/schemas/HybridIdentifier.yml
+                  anyOf:
+                    - $ref: ../../../../components/schemas/HybridIdentifier.yml
+                    - type: "null"
             about:
               type: object
               description: User defined information about the image source.

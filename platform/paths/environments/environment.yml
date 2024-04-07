@@ -100,8 +100,9 @@ patch:
                 - string
                 - "null"
             about:
-              nullable: true
-              $ref: ../../../components/schemas/environments/EnvironmentAbout.yml
+              anyOf:
+                - $ref: ../../../components/schemas/environments/EnvironmentAbout.yml
+                - type: "null"
   responses:
     200:
       description: Returns an Environment.
