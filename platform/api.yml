@@ -6,6 +6,8 @@ info:
   license:
     name: Apache-2.0
     url: http://www.apache.org/licenses/LICENSE-2.0
+  x-logo:
+    url: https://static.cycle.io/icons/logo/logo-white.svg
 
   description: |
     The Cycle Platform API is a [REST-based](http://en.wikipedia.org/wiki/Representational_state_transfer), resource-oriented API

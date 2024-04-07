@@ -16,6 +16,9 @@ info:
   version: 1.0.0
   contact:
     email: support@cycle.io
+  x-logo:
+    url: https://static.cycle.io/icons/logo/logo-white.svg
+
 # tags:
 #   - name: Environments
 #     description: "env tag"
