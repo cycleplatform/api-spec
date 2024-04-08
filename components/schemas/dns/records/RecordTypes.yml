@@ -130,8 +130,7 @@ properties:
           - type: object
             properties:
               container_id:
-                type:
-                  - string
+                type: string
                 description: The ID of the container this record is related to.
           - type: object
             properties:

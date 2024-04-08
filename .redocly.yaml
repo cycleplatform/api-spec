@@ -32,11 +32,11 @@ rules:
 #       - lang: Python
 theme:
   openapi:
-    htmlTemplate: ./docs/index.html
+    htmlTemplate: ./template/index.html
     theme:
       colors:
         primary:
-          main: rgb(42, 167, 255)
+          main: "rgb(42, 167, 255)"
           contrastText: ivory
         accent:
           main: rgb(42, 167, 255)
@@ -80,4 +80,4 @@ theme:
         panelBackgroundColor: rgb(30, 30, 33)
         panelControlsBackgroundColor: rgb(18, 18, 21)
       logo:
-        gutter: 16px
+        gutter: 36px

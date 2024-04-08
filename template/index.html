@@ -2,12 +2,10 @@
 <html>
 
 <head>
-    <!-- needed for adaptive design -->
+    <meta charset="utf8" />
+    {{{title}}}
+    <link rel="icon" type="image/png" href="{{favicon}}">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!--
-    ReDoc uses font options from the parent element
-    So override default browser styles
-    -->
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
 
@@ -23,7 +21,7 @@
 </head>
 
 <body>
-    {{redocBody}}
+    <div id="redocly_root">{{{redocHTML}}}</div>
 </body>
 
 </html>
