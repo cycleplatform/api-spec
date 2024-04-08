@@ -16,7 +16,8 @@ properties:
     properties:
       destination:
         type: object
-        server_id:
-          anyOf:
-            - $ref: ../../../ID.yml
-            - type: "null"
+        properties:
+          server_id:
+            anyOf:
+              - $ref: ../../../ID.yml
+              - type: "null"
