@@ -21,3 +21,8 @@ properties:
     nullable: true
     allOf:
       - $ref: V1LbConfig.yml
+  bind_host:
+    description: |
+      Binds the load balancer to the host server IP address. Doing so allows direct ingress into a server via its own IP address.
+    type: boolean
+    nullable: true
