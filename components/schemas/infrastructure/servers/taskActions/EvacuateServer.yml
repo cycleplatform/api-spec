@@ -11,8 +11,11 @@ properties:
       - infrastructure.server.evacuate
   contents:
     type: object
+    required:
+      - destination
     properties:
       destination:
+        type: object
         server_id:
           anyOf:
             - $ref: ../../../ID.yml
