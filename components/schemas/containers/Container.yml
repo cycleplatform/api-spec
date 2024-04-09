@@ -57,12 +57,12 @@ properties:
     description: Custom meta data for a given container
     additionalProperties: {}
   role:
-    type:
-      - string
-      - "null"
     description: The role of a given container if it has one.
-    enum:
-      - orchestrator
+    oneOf:
+      - type: string
+        enum:
+          - orchestrator
+      - type: "null"
   stateful:
     type: boolean
     description: A boolean where true signifies the container is stateful.

@@ -13,11 +13,11 @@ properties:
     description: A timestamp describing the end of a billing term.
     "$ref": "../DateTime.yml"
   renew:
-    type:
-      - string
-      - "null"
     description: The term renewal period.
-    enum:
-      - once
-      - monthly
-      - yearly
+    oneOf:
+      - type: string
+        enum:
+          - once
+          - monthly
+          - yearly
+      - type: "null"
