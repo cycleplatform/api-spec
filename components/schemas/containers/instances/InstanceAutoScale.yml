@@ -1,5 +1,5 @@
 title: InstanceAutoScale
-description: Auto-scale details for instances created by auto-scale events
+description: Auto-scale details for instances created by auto-scale events.
 type: object
 required:
   - sibling_id

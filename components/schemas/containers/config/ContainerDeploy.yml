@@ -14,12 +14,14 @@ properties:
     type: object
     properties:
       options:
-        type: object
-        nullable: true
+        type:
+          - object
+          - "null"
         properties:
           use_base_hostname:
-            type: boolean
-            nullable: true
+            type:
+              - boolean
+              - "null"
   constraints:
     type: object
     description: Settings that give more granular control over deployment targets and conditions.
@@ -53,14 +55,14 @@ properties:
     description: Configuration for what to do during container shutdown.
     properties:
       graceful_timeout:
-        type: string
-        nullable: true
-        description: How long the platform will wait for a container to stop gracefully.
-        allOf:
+        anyOf:
           - $ref: ../../Duration.yml
+          - type: "null"
+        description: How long the platform will wait for a container to stop gracefully.
       signals:
-        type: array
-        nullable: true
+        type:
+          - array
+          - "null"
         items:
           type: string
           enum:
@@ -124,11 +126,10 @@ properties:
         type: integer
         description: The number of times the platform will retry the command before marking the container unhealthy.
       delay:
-        type: string
-        nullable: true
-        description: How long to wait before performing an initial health check when the instance starts. The `state.health.healthy` field of the instance will be `null`` until the first check is performed.
-        allOf:
+        anyOf:
           - $ref: ../../Duration.yml
+          - type: "null"
+        description: How long to wait before performing an initial health check when the instance starts. The `state.health.healthy` field of the instance will be `null`` until the first check is performed.
       interval:
         $ref: ../../Duration.yml
         description: How long to wait between restarts.

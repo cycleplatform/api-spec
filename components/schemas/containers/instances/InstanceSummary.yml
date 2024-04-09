@@ -1,0 +1,79 @@
+title: InstanceSummary
+type: object
+description: A summary of an instance of a Container.
+required:
+  - id
+  - creator
+  - hub_id
+  - container_id
+  - location_id
+  - environment
+  - provider
+  - server_id
+  - ready_state
+  - hostname
+  - state
+  - events
+properties:
+  id:
+    $ref: "../../ID.yml"
+  creator:
+    $ref: "../../creators/CreatorScope.yml"
+  hub_id:
+    $ref: "../../HubID.yml"
+  container_id:
+    type: string
+    description: A container identifier for the container that is associated with this instance.
+  location_id:
+    type: string
+    description: A location identifier that's associated with the server this instance is deployed to.
+  environment:
+    $ref: EnvironmentNetworkSummary.yml
+  stateful:
+    type:
+      - object
+      - "null"
+    description: If the instance is stateful, additional details relating to its stateful properties.
+    required:
+      - id
+      - base_hostname
+    properties:
+      id:
+        $ref: ../../ID.yml
+      base_hostname:
+        type: string
+        description: The base hostname for the given instance.
+  autoscale:
+    anyOf:
+      - $ref: InstanceAutoScale.yml
+      - type: "null"
+  provider:
+    $ref: InstanceProvider.yml
+  server_id:
+    $ref: ../../ID.yml
+    description: An identifier for the server this instance is deployed to.
+  ready_state:
+    type: string
+    description: |
+      The state as it relates to the following:
+        - `active` - instance can be started or stopped.
+        - `purge` - instance should be deleted.
+        - `hibernate` - instance is active but not allowed to run.
+        - `configuring` - this instance is not allowed to start yet
+    enum:
+      - active
+      - purge
+      - hibernate
+      - configuring
+  deployment:
+    anyOf:
+      - $ref: ../Deployment.yml
+      - type: "null"
+  hostname:
+    type: string
+    description: The hostname of the instance.
+  service:
+    $ref: ../ServiceContainerIdentifier.yml
+    description: The type of service this instance is within the environment, if any.
+  state:
+    $ref: InstanceState.yml

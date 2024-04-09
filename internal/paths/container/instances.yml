@@ -1,0 +1,30 @@
+get:
+  operationId: "getContainerInstances"
+  summary: Get Container Instances
+  description: Gets the instances of a container. By default will grab the instances of the same container, but a `container-id`` parameter can be passed to grab any other container instances in the same environment.
+  tags:
+    - Containers
+    - Instances
+  parameters:
+    - name: container-id
+      in: query
+      required: false
+      description: Specify which container to fetch instances of. If not provided, will use the container of the current instance.
+      schema:
+        type: string
+  responses:
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns a list of instances.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: "../../../components/schemas/containers/instances/Instance.yml"

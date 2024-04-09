@@ -1,7 +1,5 @@
----
 title: LoadBalancerEnvironmentService
 type: object
-nullable: true
 description: Information about the environments loadbalancer service(s).
 required:
   - enable
@@ -13,8 +11,9 @@ properties:
     type: boolean
     description: Whether or not the loadbalancer service is enabled.
   container_id:
-    type: string
-    nullable: true
+    type:
+      - string
+      - "null"
     description: The ID of the loadbalancer service container
   high_availability:
     type: boolean

@@ -1,0 +1,8 @@
+title: ServiceContainerIdentifier
+type: string
+description: Identifier of a service Container within an Environment.
+enum:
+  - discovery
+  - vpn
+  - loadbalancer
+  - scheduler

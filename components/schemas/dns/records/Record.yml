@@ -31,14 +31,17 @@ properties:
   type:
     $ref: RecordTypes.yml
   features:
-    type: object
+    type:
+      - object
+      - "null"
     description: TLS features for the record.
     required:
       - certificate
-    nullable: true
     properties:
       certificate:
-        $ref: Certificate.yml
+        anyOf:
+          - $ref: TlsCertificateSummary.yml
+          - type: "null"
   state:
     $ref: RecordState.yml
   events:

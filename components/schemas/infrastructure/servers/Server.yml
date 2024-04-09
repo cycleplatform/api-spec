@@ -49,8 +49,9 @@ properties:
   constraints:
     $ref: "./ServerConstraints.yml"
   autoscale:
-    nullable: true
-    type: object
+    type:
+      - object
+      - "null"
     required:
       - group_id
     properties:
@@ -60,9 +61,10 @@ properties:
     type: boolean
     description: Set to true when a server is created as part of an auto-scale event.
   evacuate:
-    nullable: true
+    type:
+      - object
+      - "null"
     description: Details about a server's evacuation status. When an evacuation is in progress, no new container instances will be permitted on the server.
-    type: object
     required:
       - started
     properties:

@@ -1,0 +1,111 @@
+asyncapi: "3.0.0"
+
+info:
+  title: Cycle Internal Async API
+  version: "1.0.0"
+  description: |
+    Internal notifications documentation over the internal API socket running inside all container instances on the Cycle platform at /var/run/cycle/api/api.sock.
+
+servers:
+  socket:
+    host: /var/run/cycle/api/api.sock
+    protocol: ws+unix
+    description: Cycle's internal API socket
+
+channels:
+  root:
+    address: /
+    messages:
+      notification:
+        $ref: "#/components/messages/notification"
+    bindings:
+      ws:
+        headers:
+          type: object
+          properties:
+            x-cycle-token:
+              type: string
+
+operations:
+  notificationListener:
+    action: receive
+    channel:
+      $ref: "#/channels/root"
+    messages:
+      - $ref: "#/channels/root/messages/notification"
+
+components:
+  messages:
+    notification:
+      summary: A notification object sent from the platform.
+      payload:
+        $ref: "#/components/schemas/notification"
+
+  schemas:
+    notification:
+      type: object
+      required:
+        - topic
+        - object
+        - context
+      properties:
+        topic:
+          type: string
+          description: The topic of the notification.
+          enum:
+            - dns.zone.certificate.ready
+            - dns.zone.reconfigured
+            - dns.zone.records.reconfigured
+            - dns.zone.verified
+            - container.instances.reconfigured
+            - container.state.changed
+            - container.reconfigured
+            - environment.services.reconfigured
+            - environment.deployments.reconfigured
+            - environment.services.lb.ips.modified
+            - sdn.network.reconfigured
+            - sdn.network.created
+        object:
+          type: object
+          properties:
+            id:
+              type: string
+            state:
+              type: string
+            previous_state:
+              type: string
+            error:
+              type: string
+        context:
+          type: object
+          properties:
+            label:
+              type: string
+            hub_id:
+              type: string
+            account_id:
+              type: string
+            environments:
+              type: array
+              items:
+                type: string
+            dns_zones:
+              type: array
+              items:
+                type: string
+            clusters:
+              type: array
+              items:
+                type: string
+            containers:
+              type: array
+              items:
+                type: string
+        flags:
+          type: object
+          additionalProperties:
+            type: string
+        annotations:
+          type: object
+          additionalProperties:
+            type: string

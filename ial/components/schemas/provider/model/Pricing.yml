@@ -1,0 +1,13 @@
+title: "Pricing"
+type: object
+description: "Details the pricing structure for a service or product, specifying costs on an hourly and monthly basis. Prices are represented in mils (1/1000th of a dollar), allowing for precise cost specification."
+required:
+  - hourly
+  - monthly
+properties:
+  hourly:
+    type: integer
+    description: "The cost per hour in mils."
+  monthly:
+    type: integer
+    description: "The cost per month in mils."

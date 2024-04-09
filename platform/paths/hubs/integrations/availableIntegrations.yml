@@ -1,0 +1,52 @@
+get:
+  operationId: getAvailableIntegrations
+  summary: Get Available Integrations
+  description: Returns a map of available integrations categorized by their type.
+  tags:
+    - Hubs
+    - Integrations
+  responses:
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
+    200:
+      description: A map of categories to lists of integration definitions.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: object
+                properties:
+                  image-builders:
+                    type:
+                      - array
+                      - "null"
+                    items:
+                      $ref: ../../../../components/schemas/hubs/integrations/IntegrationDefinition.yml
+                  object-storage:
+                    type:
+                      - array
+                      - "null"
+                    items:
+                      $ref: ../../../../components/schemas/hubs/integrations/IntegrationDefinition.yml
+                  tls-certificate-generation:
+                    type:
+                      - array
+                      - "null"
+                    items:
+                      $ref: ../../../../components/schemas/hubs/integrations/IntegrationDefinition.yml
+                  infrastructure-provider:
+                    type:
+                      - array
+                      - "null"
+                    items:
+                      $ref: ../../../../components/schemas/hubs/integrations/IntegrationDefinition.yml
+                  billing:
+                    type:
+                      - array
+                      - "null"
+                    items:
+                      $ref: ../../../../components/schemas/hubs/integrations/IntegrationDefinition.yml

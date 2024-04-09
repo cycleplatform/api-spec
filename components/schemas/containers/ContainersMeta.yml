@@ -5,8 +5,9 @@ properties:
   instances_count:
     "$ref": "../StateCountSummary.yml"
   domains:
-    type: array
-    nullable: true
+    type:
+      - array
+      - "null"
     items:
       type: object
       description: Any associated Linked Records for this container, and their fully-qualified domain name (fqdn)

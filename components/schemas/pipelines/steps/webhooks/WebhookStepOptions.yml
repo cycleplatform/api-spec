@@ -3,17 +3,18 @@ description: Options for configuring webhook pipeline steps.
 type: object
 properties:
   max_attempts:
-    type: integer
-    nullable: true
+    type:
+      - integer
+      - "null"
   interval:
     description: How long to wait between retries on wait.
-    type: string
-    nullable: true
-    allOf:
+    anyOf:
       - $ref: ../../../Duration.yml
+      - type: "null"
   fail_on:
-    nullable: true
-    type: object
+    type:
+      - object
+      - "null"
     required:
       - not
     properties:
@@ -21,14 +22,16 @@ properties:
         type: boolean
         description: If true, will fail on any codes NOT defined in the http_codes array.
       http_codes:
-        type: array
-        nullable: true
+        type:
+          - array
+          - "null"
         description: A list of http response codes that will trigger a failure.
         items:
           type: integer
   retry_on:
-    nullable: true
-    type: object
+    type:
+      - object
+      - "null"
     required:
       - not
     properties:
@@ -36,8 +39,9 @@ properties:
         type: boolean
         description: If true, will retry on any codes NOT defined in the http_codes array.
       http_codes:
-        type: array
-        nullable: true
+        type:
+          - array
+          - "null"
         description: A list of http response codes that will trigger a retry.
         items:
           type: integer

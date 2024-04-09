@@ -1,0 +1,16 @@
+title: "NIC"
+type: object
+description: "Describes the properties of a Network Interface Card (NIC), including its scope, type, and throughput capabilities."
+required:
+  - scope
+  - type
+  - throughput
+properties:
+  scope:
+    type: string
+    description: "Defines the operational scope of the NIC, such as 'local' or 'global'."
+  type:
+    type: string
+  throughput:
+    type: string
+    description: "The maximum data transfer rate of the NIC, typically measured in Gbps (Gigabits per second)."

@@ -28,10 +28,9 @@ properties:
       name:
         type: string
       about:
-        type: object
-        nullable: true
-        allOf:
+        anyOf:
           - $ref: "../../environments/EnvironmentAbout.yml"
+          - type: "null"
       cluster:
         type: string
       features:

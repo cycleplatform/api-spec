@@ -1,0 +1,38 @@
+get:
+  operationId: "getServerInstancesTelemetry"
+  summary: Get Server Instances Telemetry
+  description: Gets resource telemetry for this instance.
+  tags:
+    - Servers
+    - Instances
+  parameters: []
+  responses:
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns a list of resource telemetry snapshots.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  type: object
+                  required:
+                    - instance_id
+                    - container_id
+                    - environment_id
+                    - stats
+                  properties:
+                    instance_id:
+                      $ref: ../../../components/schemas/ID.yml
+                    container_id:
+                      $ref: ../../../components/schemas/ID.yml
+                    environment_id:
+                      $ref: ../../../components/schemas/ID.yml
+                    stats:
+                      $ref: "../../../components/schemas/containers/instances/snapshots/ResourceSnapshot.yml"

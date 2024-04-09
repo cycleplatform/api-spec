@@ -1,0 +1,98 @@
+get:
+  operationId: getRoles
+  summary: List Hub Roles
+  description: |
+    Lists the Roles that have been created for this Hub.
+
+    Requires the `hubs-roles-manage` capability.
+  tags:
+    - Hubs
+    - ACLs
+  parameters:
+    - $ref: ../../../../components/parameters/SortParam.yml
+    - $ref: ../../../../components/parameters/FilterParam.yml
+    - $ref: ../../../../components/parameters/PageParam.yml
+  responses:
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns a list of Hub Roles.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: ../../../../components/schemas/hubs/roles/Role.yml
+
+post:
+  operationId: createRole
+  tags:
+    - Hubs
+    - ACLs
+  parameters: []
+  summary: Create Hub Role
+  description: |
+    Creates a custom Role for a Hub.
+
+    Requires the `hubs-roles-manage` capability.
+  requestBody:
+    description: Parameters for creating a new Hub Role.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - identifier
+            - rank
+          properties:
+            name:
+              type:
+                - string
+                - "null"
+              description: A name given to the Role.
+            identifier:
+              type: string
+            capabilities:
+              type:
+                - object
+                - "null"
+              description: The list of platform level capabilities assigned to this Role.
+              required:
+                - all
+                - specific
+              properties:
+                all:
+                  type: boolean
+                specific:
+                  type: array
+                  items:
+                    $ref: ../../../../components/schemas/common/Capability.yml
+            rank:
+              type: integer
+              description: An integer between 0 and 10 that indicates the Role hierarchy. An account can only edit a Role that is less than their rank. The 'owner' Role is rank 10.
+            extra:
+              type:
+                - object
+                - "null"
+              description: Custom user-defined properties for storing extra information on the Role. Not utilized by Cycle.
+              additionalProperties:
+                type: string
+  responses:
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
+    201:
+      description: Returns a Hub Role.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/hubs/roles/Role.yml

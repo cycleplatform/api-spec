@@ -79,8 +79,9 @@ properties:
               success:
                 type: boolean
               error:
-                type: object
-                nullable: true
+                type:
+                  - object
+                  - "null"
                 description: An error, if any, that has occurred for this step.
                 required:
                   - message

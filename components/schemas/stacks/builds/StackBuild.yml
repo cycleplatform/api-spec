@@ -18,10 +18,9 @@ properties:
     type: string
     description: An identifier for the stack related to this build.
   spec:
-    type: object
-    nullable: true
-    allOf:
+    anyOf:
       - $ref: ../spec/StackSpec.yml
+      - type: "null"
   about:
     x-ogen-name: StackBuildAboutDetails
     type: object

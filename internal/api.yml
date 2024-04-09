@@ -1,16 +1,13 @@
----
-openapi: 3.0.0
+openapi: 3.1.0
 servers:
-  - description: Cycle Public API
+  - description: Cycle Internal API
     # https://github.com/whatwg/url/issues/577
     # https://github.com/OAI/OpenAPI-Specification/issues/3011
-    url: "/var/run/cycle/api/api.sock"
-    # unix://var/run/cycle/api/api.sock
-    #  TODO This is probably wrong
+    url: "http+unix:/var/run/cycle/api/api.sock"
 info:
   license:
-    name: CC-BY-3.0
-    url: https://creativecommons.org/licenses/by/3.0/
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0
   title: Cycle Internal API
   description:
     Inside every container running on Cycle, there is a Unix socket mounted at /var/run/cycle/api/api.sock. You can send HTTP requests over this socket to access information about the local environment, access secrets, and much more.
@@ -19,45 +16,87 @@ info:
   version: 1.0.0
   contact:
     email: support@cycle.io
-tags:
-  - name: Environments
-    description: "env tag"
+  x-logo:
+    url: https://static.cycle.io/icons/logo/logo-white.svg
+
+# tags:
+#   - name: Environments
+#     description: "env tag"
+
 security:
-  - bearerAuth: []
+  - tokenAuth: []
+
 paths:
-  "/v1/environment":
-    "$ref": "./paths/environments/environment.yml"
-  "/v1/environment/containers":
-    "$ref": "./paths/environments/containers.yml"
-  "/v1/environment/instances":
-    "$ref": "./paths/environments/instances.yml"
-  "/v1/environment/ips":
-    "$ref": "./paths/environments/ips.yml"
-  # "/v1/environment/services":
-  #   "$ref": "./paths/environments/services.yml"
-  # HUB
-  "/v1/hub":
-    "$ref": "./paths/hubs/hub.yml"
-  # Server
-  "/v1/server":
-    "$ref": "./paths/servers/server.yml"
-  "/v1/server/containers":
-    "$ref": "./paths/servers/containers.yml"
-  "/v1/server/instances":
-    "$ref": "./paths/servers/instances.yml"
-  # Container
-  "/v1/container":
-    "$ref": "./paths/containers/container.yml"
-  "/v1/container/instances":
-    "$ref": "./paths/containers/instances.yml"
-  "/v1/containers/certificates":
-    "$ref": "./paths/containers/certificates.yml"
-  "/v1/notifications":
-    "$ref": "./paths/hubs/notifications.yml"
+  # Environments
+  /v1/environment:
+    $ref: paths/environment/environment.yml
+  /v1/environment/containers:
+    $ref: paths/environment/containers.yml
+  /v1/environment/instances:
+    $ref: paths/environment/instances.yml
+  /v1/environment/ips:
+    $ref: paths/environment/ips.yml
+  /v1/environment/services:
+    $ref: paths/environment/services.yml
+  /v1/environment/services/lb/telemetry/snapshots:
+    $ref: paths/environment/lbtelemetry.yml
+  /v1/environment/scoped-variables:
+    $ref: paths/environment/scopedVariables.yml
+
+  # Hubs
+  /v1/hub:
+    $ref: paths/hub/hub.yml
+  /v1/hub/integrations:
+    $ref: paths/hub/integration.yml
+
+  # Servers
+  /v1/server:
+    $ref: paths/server/server.yml
+  /v1/server/instances:
+    $ref: paths/server/instances.yml
+  /v1/server/instances/telemetry:
+    $ref: paths/server/instanceTelemetry.yml
+  /v1/server/containers:
+    $ref: paths/server/containers.yml
+  /v1/server/images:
+    $ref: paths/server/images.yml
+  /v1/server/images/download:
+    $ref: paths/server/imageDownload.yml
+
+  # Containers
+  /v1/container:
+    $ref: paths/container/container.yml
+  /v1/container/instances:
+    $ref: paths/container/instances.yml
+  /v1/containers/certificates:
+    $ref: paths/container/certificates.yml
+  /v1/containers/domains:
+    $ref: paths/container/domains.yml
+
+  # Conductor
+  /v1/conductor/tasks:
+    $ref: paths/conductor/tasks.yml
+
+  # VPN
+  /v1/vpn/login:
+    $ref: paths/vpn/login.yml
+
+  # SDN
+  /v1/sdn/networks:
+    $ref: paths/sdn/networks.yml
+  /v1/sdn/networks/instances:
+    $ref: paths/sdn/instances.yml
+  /v1/sdn/networks/environments:
+    $ref: paths/sdn/environments.yml
+
 components:
   securitySchemes:
-    bearerAuth:
-      name: X-Cycle-Token
+    tokenAuth:
+      name: X-CYCLE-TOKEN
       in: header
       type: apiKey
-      description: Defines the scope of the request to a specific Container / Environment.
+      description: The authentication header for every request on the internal API. Take the value of the CYCLE_API_TOKEN environment variable present in the instance, and pass it as the value to this header to authenticate.
+    # Used for VPN login validation
+    basicAuth:
+      type: http
+      scheme: basic

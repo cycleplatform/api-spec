@@ -1,0 +1,61 @@
+post:
+  operationId: "createDiscoveryServiceJob"
+  summary: Create Discovery Service Job
+  description: Creates a task that will update the discovery service's configuration.
+  tags:
+    - Environments
+  parameters:
+    - name: environmentId
+      description: The ID of the environment where this discovery service resides.
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    description: Parameters for reconfiguring a discovery service.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - action
+            - contents
+          properties:
+            action:
+              type: string
+              enum:
+                - reconfigure
+              description: The name of the action to perform.
+            contents:
+              type: object
+              properties:
+                config:
+                  anyOf:
+                    - $ref: ../../../../../components/schemas/environments/services/discovery/DiscoveryConfig.yml
+                    - type: "null"
+                high_availability:
+                  type:
+                    - boolean
+                    - "null"
+                  description: A boolean where `true` represents the desire to run the environment discovery service in high availability mode.
+                auto_update:
+                  type:
+                    - boolean
+                    - "null"
+                  description: A boolean where `true` represents the desire to automatically update the environment discovery service.
+
+  responses:
+    202:
+      description: Returns a Job Descriptor.
+      content:
+        application/json:
+          schema:
+            title: "TaskResponse"
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../../components/schemas/jobs/JobDescriptor.yml
+    default:
+      $ref: ../../../../../components/responses/errors/DefaultError.yml

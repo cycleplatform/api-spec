@@ -23,8 +23,9 @@ properties:
         type: boolean
         description: A boolean where true represents the text the user is entering will be multi line.
       secret:
-        nullable: true
-        type: object
+        type:
+          - object
+          - "null"
         properties:
           iv:
             type: string

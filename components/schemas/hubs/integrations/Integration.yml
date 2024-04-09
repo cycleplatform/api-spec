@@ -12,8 +12,9 @@ properties:
   id:
     $ref: ../../ID.yml
   name:
-    type: string
-    nullable: true
+    type:
+      - string
+      - "null"
     description: Name of the Integration.
   vendor:
     type: string
@@ -21,16 +22,16 @@ properties:
   identifier:
     $ref: ../../Identifier.yml
   auth:
-    type: object
-    nullable: true
     description: Authentication information for the Integration, can be null.
-    allOf:
+    anyOf:
       - $ref: IntegrationAuth.yml
+      - type: "null"
   extra:
-    type: object
+    type:
+      - object
+      - "null"
     additionalProperties:
       type: string
-    nullable: true
     description: Additional key-value pairs associated with the Integration.
   creator:
     $ref: ../../creators/CreatorScope.yml
@@ -58,7 +59,6 @@ properties:
         description: The timestamp of when the Integration was deleted.
         $ref: ../../DateTime.yml
   meta:
-    type: object
-    nullable: true
-    allOf:
+    anyOf:
       - $ref: IntegrationMeta.yml
+      - type: "null"

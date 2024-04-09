@@ -23,7 +23,8 @@ post:
             - token
           properties:
             token:
-              $ref: ../../components/ClaimToken.yml
+              type: string
+              description: A custom token used for identifying and managing a claim. Can be any valid string, and must be used with spawning and releasing the Instance.
   responses:
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml

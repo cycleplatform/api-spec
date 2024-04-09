@@ -17,13 +17,13 @@ properties:
   subnet:
     type: string
   ipv6:
-    type: object
-    nullable: true
-    allOf:
+    anyOf:
       - $ref: ../../environments/IPNet.yml
+      - type: "null"
   legacy:
-    nullable: true
-    type: object
+    type:
+      - object
+      - "null"
     required:
       - host
       - subnet
@@ -34,8 +34,9 @@ properties:
       subnet:
         type: integer
       ipv4:
-        nullable: true
-        $ref: ../../environments/IPNet.yml
+        anyOf:
+          - $ref: ../../environments/IPNet.yml
+          - type: "null"
   mac_addr:
     type: string
   vxlan_tag:

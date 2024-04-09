@@ -5,17 +5,20 @@ required:
   - privileged
 properties:
   command:
-    type: object
-    nullable: true
+    type:
+      - object
+      - "null"
     description: A command that will be run in place of the images defined startup command.
     properties:
       path:
-        type: string
-        nullable: true
+        type:
+          - string
+          - "null"
         description: System path for the command.
       args:
-        type: string
-        nullable: true
+        type:
+          - string
+          - "null"
         description: Arguments to pass to the command.
   namespaces:
     type: array
@@ -103,8 +106,9 @@ properties:
           type: integer
           description: The soft limit for the rlimit.
   seccomp:
-    nullable: true
-    type: object
+    type:
+      - object
+      - "null"
     properties:
       disable:
         type: boolean
@@ -113,12 +117,14 @@ properties:
         items:
           $ref: seccomp/SeccompRule.yml
   host:
-    nullable: true
-    type: object
+    type:
+      - object
+      - "null"
     properties:
       expose_proc:
-        nullable: true
-        type: boolean
+        type:
+          - boolean
+          - "null"
   rootfs:
     type: object
     properties:

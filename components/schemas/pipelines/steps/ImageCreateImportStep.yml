@@ -24,8 +24,9 @@ properties:
       - source
     properties:
       name:
-        nullable: true
-        type: string
+        type:
+          - string
+          - "null"
       source:
         $ref: ../FluidIdentifier.yml
       build:
@@ -33,21 +34,25 @@ properties:
         description: Optional build-time options for when this image is built on pipeline run.
         properties:
           args:
-            type: object
+            type:
+              - object
+              - "null"
             description: Build args passed into the container image build process during pipeline run.
-            nullable: true
             additionalProperties:
               type: string
       override:
-        nullable: true
-        type: object
+        type:
+          - object
+          - "null"
         description: An override object to be used for a single image create request.
         properties:
           target:
             description: For image sources with `docker-hub` or `docker-registry` origin types. A target to be used for overridding the default target - should include an image and a tag.
-            nullable: true
-            type: string
+            type:
+              - string
+              - "null"
           targz_url:
             description: For image sources with `docker-file` origin types. A URL pointing to a .tar.gz file of a repo with a Dockerfile in it - can be used instead of linking Cycle directly to a repository.
-            nullable: true
-            type: string
+            type:
+              - string
+              - "null"

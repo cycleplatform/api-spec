@@ -1,0 +1,64 @@
+post:
+  operationId: "releaseIP"
+  summary: Release IP Address
+  description: When an IP is no longer needed, Cycle will release it using this API endpoint.
+  tags:
+    - IP
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          description: "Represents a request to release an allocated IP address back to the provider, including detailed information about the IP and its assignment."
+          required:
+            - kind
+            - ip_id
+            - ip_assignment_id
+            - cidr
+            - server_id
+            - location_id
+            - location_configuration
+            - cycle
+          properties:
+            kind:
+              $ref: ../../components/schemas/ip/IPKind.yml
+            ip_id:
+              type: string
+              description: "The unique identifier of the IP at the provider."
+            ip_assignment_id:
+              type: string
+              description: "The unique identifier of the IP assignment at the provider."
+            cidr:
+              type: string
+              description: "The CIDR notation of the IP address being released."
+            nat_private_ip:
+              type:
+                - "string"
+                - "null"
+              description: "The private IP address used for NAT (Network Address Translation), if applicable."
+            zone_id:
+              type:
+                - "string"
+                - "null"
+              description: "The identifier of the zone within the location, if applicable."
+            server_id:
+              type: string
+              description: "The unique identifier of the server associated with the IP."
+            location_id:
+              type: string
+              description: "The identifier of the location where the IP was used."
+            location_configuration:
+              type: object
+              description: "Configuration details specific to the location from which the IP is being released."
+              additionalProperties: true
+            cycle:
+              $ref: ../../components/schemas/ip/CycleIPMeta.yml
+  responses:
+    200:
+      description: Returns a boolean of the success of the release.
+      content:
+        application/json:
+          schema:
+            type: boolean
+            description: "Will be true if the release is successful."

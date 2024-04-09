@@ -19,23 +19,27 @@ properties:
     type: boolean
     description: A boolean where true represents the invoice is approved for collection.
   services:
-    type: array
-    nullable: true
+    type:
+      - array
+      - "null"
     items:
       "$ref": "../BillingSummary.yml"
   payments:
-    type: array
-    nullable: true
+    type:
+      - array
+      - "null"
     items:
       "$ref": "./Payment.yml"
   credits:
-    type: array
-    nullable: true
+    type:
+      - array
+      - "null"
     items:
       "$ref": "./InvoiceCredit.yml"
   late_fees:
-    type: array
-    nullable: true
+    type:
+      - array
+      - "null"
     items:
       "$ref": "./LateFee.yml"
   charges:

@@ -1,0 +1,25 @@
+get:
+  operationId: "getEnvironmentScopedVariables"
+  summary: Get Environment Scoped Variables
+  description: |
+    Gets the scoped variables that are accessible to this instance via internal API.
+  tags:
+    - Environments
+    - Scoped Variables
+  parameters: []
+  responses:
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns a map of variable values, keyed by their identifier.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: object
+                additionalProperties:
+                  type: string

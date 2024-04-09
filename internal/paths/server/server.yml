@@ -1,0 +1,21 @@
+get:
+  operationId: "getServer"
+  tags:
+    - Servers
+  parameters: []
+  summary: Get Server
+  description: Gets the server this instance is running on.
+  responses:
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns a server.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: "../../../components/schemas/infrastructure/servers/Server.yml"

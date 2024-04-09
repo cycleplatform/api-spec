@@ -1,0 +1,26 @@
+title: Storage
+type: object
+description: "Represents a storage device or system, detailing its capacity, type, and additional metadata."
+required:
+  - count
+  - size_gb
+  - type
+properties:
+  count:
+    type: integer
+    format: int64
+    description: "The total number of storage devices."
+  size_gb:
+    type: integer
+    format: int64
+    description: "The storage capacity of each device in gigabytes."
+  type:
+    type: string
+    description: "The type of storage, such as SSD or HDD."
+  extra:
+    type:
+      - "object"
+      - "null"
+    additionalProperties:
+      type: string
+    description: "Extra, optional information about the storage, allowing for additional, unspecified properties."

@@ -1,0 +1,21 @@
+get:
+  operationId: "getHub"
+  summary: Get Hub
+  description: Gets the hub that this instance is a member of.
+  tags:
+    - Hubs
+  parameters: []
+  responses:
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns a hub.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: "../../../components/schemas/hubs/PublicHub.yml"

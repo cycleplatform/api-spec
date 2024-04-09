@@ -29,14 +29,16 @@ properties:
   origin:
     $ref: "../origins/ImageOrigin.yml"
   builder:
-    type: object
-    nullable: true
+    type:
+      - object
+      - "null"
     description: Configuration options regarding the builder used to create/import Images using this Image Source.
     properties:
       integration_id:
-        nullable: true
+        anyOf:
+          - $ref: ../../HybridIdentifier.yml
+          - type: "null"
         description: The ID or Identifier of the Integration used to do the build.
-        $ref: ../../HybridIdentifier.yml
   creator:
     "$ref": "../../creators/CreatorScope.yml"
   state:

@@ -20,8 +20,9 @@ properties:
   creator:
     "$ref": "../creators/CreatorScope.yml"
   promo_code_id:
-    type: string
-    nullable: true
+    type:
+      - string
+      - "null"
     description: An ID associated with a promo code used with the order.
   term:
     "$ref": "./Term.yml"

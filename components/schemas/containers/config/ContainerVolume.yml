@@ -42,8 +42,9 @@ properties:
         type: string
         description: Call out to a webhook to authenticate usernames/passwords if an organization manages their own accounts
       password:
-        type: object
-        nullable: true
+        type:
+          - object
+          - "null"
         description: Password configuration settings for the remote access of the container volume.
         required:
           - algorithm

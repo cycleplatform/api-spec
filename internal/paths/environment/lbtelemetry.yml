@@ -1,0 +1,29 @@
+post:
+  operationId: "submitLoadBalancerTelemetry"
+  summary: Submit Environment Load Balancer Telemetry
+  description: Submit load balancer telemetry data.
+  tags:
+    - Environments
+  parameters: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          additionalProperties:
+            $ref: ../../../components/schemas/environments/services/lb/telemetry/LoadBalancerTelemetrySnapshot.yml
+  responses:
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns a list of Instances.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: boolean

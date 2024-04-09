@@ -1,0 +1,23 @@
+get:
+  operationId: "getNetworks"
+  summary: List Networks
+  description: Lists all networks attached to this instance.
+  tags:
+    - SDN
+  parameters: []
+  responses:
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns a list of networks.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  "$ref": "../../../components/schemas/sdn/networks/Network.yml"

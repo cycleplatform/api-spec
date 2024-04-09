@@ -1,0 +1,43 @@
+post:
+  operationId: "downloadImage"
+  summary: Download Image
+  description: Downloads the specified image to the server.
+  tags:
+    - Servers
+    - Images
+  parameters: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - image_id
+          properties:
+            image_id:
+              $ref: ../../../components/schemas/ID.yml
+  responses:
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns the details of the downloaded image.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  type: object
+                  required:
+                    - id
+                    - access_time
+                  properties:
+                    id:
+                      $ref: ../../../components/schemas/ID.yml
+                    access_time:
+                      $ref: ../../../components/schemas/DateTime.yml

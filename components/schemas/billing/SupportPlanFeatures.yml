@@ -13,6 +13,7 @@ properties:
     type: boolean
     description: A boolean where true represents the contract has an uptime SLA agreement.
   guaranteed_response_time:
-    nullable: true
-    type: string
+    type:
+      - string
+      - "null"
     description: The time in which this support contract guarantees response time.

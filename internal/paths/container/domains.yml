@@ -1,0 +1,38 @@
+get:
+  operationId: "getContainerDomains"
+  summary: List Container Domains
+  description: Get the domains pointed at a container.
+  tags:
+    - Containers
+  parameters:
+    - name: container-id
+      in: query
+      required: false
+      description: Specify which container to get domains for. If not provided, will use the container of the current instance.
+      schema:
+        type: string
+  responses:
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns a list of domains.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  type: object
+                  description: Any associated Linked Records for this container, and their fully-qualified domain name (fqdn)
+                  required:
+                    - fqdn
+                  properties:
+                    fqdn:
+                      type: string
+                      description: The fully qualified domain name.
+                    record:
+                      $ref: ../../../components/schemas/dns/records/Record.yml

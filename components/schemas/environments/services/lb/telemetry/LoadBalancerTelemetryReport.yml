@@ -11,8 +11,9 @@ properties:
   range:
     $ref: ../../../../Range.yml
   snapshots:
-    type: array
-    nullable: true
+    type:
+      - array
+      - "null"
     items:
       type: object
       title: LoadBalancerTelemetryReportMergedSnapshot

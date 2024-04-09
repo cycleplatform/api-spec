@@ -19,12 +19,10 @@ properties:
         type: string
         description: The ID for the environment this stack build will be deployed to.
       deployment:
-        type: object
-        nullable: true
-        allOf:
+        anyOf:
           - $ref: ../../../containers/Deployment.yml
+          - type: "null"
       update:
-        nullable: true
-        type: object
-        allOf:
+        anyOf:
           - $ref: "../StackBuildDeploymentUpdates.yml"
+          - type: "null"

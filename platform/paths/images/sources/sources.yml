@@ -1,0 +1,141 @@
+get:
+  operationId: "getImageSources"
+  summary: List Image Sources
+  description: Requires the `images-sources-view` capability.
+  tags:
+    - Image Sources
+  parameters:
+    - name: meta
+      in: query
+      required: false
+      description:
+        A comma separated list of meta values. Meta values will show up under a resource's
+        `meta` field. In the case of applying a meta to a collection of resources, each
+        resource will have it's own relevant meta data. In some rare cases, meta may not
+        apply to individual resources, and may appear in the root document. These will be
+        clearly labeled.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - images_count
+    - name: include
+      in: query
+      required: false
+      description:
+        A comma separated list of include values. Included resources will show
+        up under the root document's `include` field, with the key being the id of the included
+        resource. In the case of applying an include to a collection of resources, if two
+        resources share the same include, it will only appear once in the return.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - creators
+            - integrations
+    - name: filter
+      in: query
+      # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706
+      style: deepObject
+      required: false
+      description: |
+        ## Filter Field 
+        The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
+      schema:
+        type: object
+        properties:
+          identifier:
+            type: string
+            description: |
+              `filter[identifier]=value` List only those image sources matching this identifier. May return multiple results.
+          search:
+            type: string
+            description: |
+              `filter[search]=value` search for a value associated with a field on the given Image Source(s).
+          state:
+            type: string
+            description: |
+              `filter[state]=value1,value2` state filtering will allow you to filter by the Image Source's current state.
+    - $ref: ../../../../components/parameters/SortParam.yml
+    - $ref: ../../../../components/parameters/PageParam.yml
+  responses:
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns a list of Image Sources.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: ../../../../components/schemas/images/sources/ImageSource.yml
+              includes:
+                $ref: ../../../../components/schemas/images/sources/SourceIncludes.yml
+
+post:
+  operationId: "createImageSource"
+  summary: Create Image Source
+  description: Requires the `images-sources-manage` capability.
+  tags:
+    - Image Sources
+  parameters: []
+  requestBody:
+    description: Parameters for creating an Image Source.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - type
+            - origin
+          properties:
+            name:
+              type: string
+              description: A name for the Image Source.
+            identifier:
+              $ref: ../../../../components/schemas/Identifier.yml
+            builder:
+              type:
+                - object
+                - "null"
+              required:
+                - integration_id
+              properties:
+                integration_id:
+                  $ref: ../../../../components/schemas/HybridIdentifier.yml
+            type:
+              $ref: ../../../../components/schemas/images/sources/ImageSourceType.yml
+            origin:
+              $ref: "../../../../components/schemas/images/origins/ImageOrigin.yml"
+            about:
+              type: object
+              description: User defined information about the Image Source.
+              required:
+                - description
+              properties:
+                description:
+                  type:
+                    - string
+                    - "null"
+                  description: A description of the Image Source.
+  responses:
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
+    201:
+      description: Returns an Image Source.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/images/sources/ImageSource.yml

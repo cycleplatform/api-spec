@@ -31,8 +31,9 @@ properties:
       name:
         type: string
       identifier:
-        type: string
-        nullable: true
+        type:
+          - string
+          - "null"
       environment:
         $ref: ../FluidIdentifier.yml
       image:
@@ -40,8 +41,9 @@ properties:
       stateful:
         type: boolean
       annotations:
-        type: object
-        nullable: true
+        type:
+          - object
+          - "null"
         description: Additional information about a container
         additionalProperties: {}
       config:
@@ -51,7 +53,6 @@ properties:
         items:
           $ref: "../../containers/config/ContainerVolume.yml"
       deployment:
-        type: object
-        nullable: true
-        allOf:
+        anyOf:
           - $ref: ../../containers/Deployment.yml
+          - type: "null"

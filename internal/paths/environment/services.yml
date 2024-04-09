@@ -1,0 +1,32 @@
+get:
+  operationId: "getEnvironmentServices"
+  summary: List Environment Services
+  description: Lists the services containers/instances that are in the same environment as this instance.
+  tags:
+    - Environments
+  parameters: []
+  responses:
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns a list of environment services (a combination of container and instance details).
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: object
+                properties:
+                  discovery:
+                    $ref: ../../../components/schemas/containers/ServiceContainer.yml
+                  vpn:
+                    $ref: ../../../components/schemas/containers/ServiceContainer.yml
+                  loadbalancer:
+                    $ref: ../../../components/schemas/containers/ServiceContainer.yml
+                  scheduler:
+                    $ref: ../../../components/schemas/containers/ServiceContainer.yml
+                additionalProperties:
+                  $ref: ../../../components/schemas/containers/ServiceContainer.yml

@@ -1,6 +1,6 @@
 title: MigrationInstance
 type: object
-description: Information about an instances migration.
+description: Information about a migrated instance.
 required:
   - instance_id
   - server_id
@@ -9,5 +9,5 @@ properties:
     type: string
     description: The ID of the instance.
   server_id:
-    type: string 
-    description: The ID of the server in the context its represented.
+    type: string
+    description: The ID of the server.

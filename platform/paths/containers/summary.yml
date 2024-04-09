@@ -1,0 +1,41 @@
+get:
+  operationId: "getContainerSummary"
+  summary: Get Container Summary
+  description: Requires the `containers-view` capability.
+  tags:
+    - Containers
+  parameters:
+    - name: containerId
+      description: The ID of the requested container.
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    200:
+      description: Returns an Container summary resource.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: object
+                description: Contains useful and relevant data/statistics for a container that would otherwise be several separate API calls.
+                required:
+                  - id
+                  - state
+                properties:
+                  id:
+                    $ref: ../../../components/schemas/ID.yml
+                  state:
+                    $ref: ../../../components/schemas/containers/ContainerState.yml
+                  stats:
+                    anyOf:
+                      - $ref: ../../../components/schemas/StateCountSummary.yml
+                      - type: "null"
+
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml

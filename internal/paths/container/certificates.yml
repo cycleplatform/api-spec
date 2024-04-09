@@ -1,0 +1,29 @@
+get:
+  operationId: "getContainerCertificates"
+  summary: List Container Certificates
+  description: Get the TLS certificates associated with the domains pointed at this container.
+  tags:
+    - Containers
+  parameters:
+    - name: container-id
+      in: query
+      required: false
+      description: Specify which container to get certificates for. If not provided, will use the container of the current instance.
+      schema:
+        type: string
+  responses:
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns a list of TLS certificates.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: ../../components/Certificate.yml

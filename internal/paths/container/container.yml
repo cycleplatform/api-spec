@@ -1,0 +1,27 @@
+get:
+  operationId: "getContainer"
+  summary: Get Container
+  description: Gets a container. By default will grab the container of this instance, but a `container-id`` parameter can be passed to grab any other container in the same environment.
+  tags:
+    - Containers
+  parameters:
+    - name: container-id
+      in: query
+      required: false
+      description: Specify which container to fetch. If not provided, will use the container of the current instance.
+      schema:
+        type: string
+  responses:
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns a container.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../components/schemas/containers/Container.yml

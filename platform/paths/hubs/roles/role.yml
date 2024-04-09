@@ -1,0 +1,135 @@
+get:
+  operationId: getRole
+  summary: Get Hub Role
+  description: |
+    Retrieves the specified Role.
+
+    Requries the `hubs-roles-manage` capability.
+  tags:
+    - Hubs
+    - ACLs
+  parameters:
+    - name: roleId
+      description: The ID of the Role.
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns a Role.
+      content:
+        application/json:
+          schema:
+            title: "GetRoleResponse"
+            type: object
+            properties:
+              data:
+                $ref: ../../../../components/schemas/hubs/roles/Role.yml
+
+patch:
+  operationId: updateRole
+  summary: Update Hub Role
+  description: |
+    Updates various properties of a specific Role.
+
+    Requires the `hubs-roles-manage` capability.
+  tags:
+    - Hubs
+    - ACLs
+  parameters:
+    - name: roleId
+      description: The ID of the Role.
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - identifier
+            - rank
+          properties:
+            name:
+              type:
+                - string
+                - "null"
+              description: A name given to the Role.
+            identifier:
+              type: string
+            capabilities:
+              type:
+                - object
+                - "null"
+              description: The list of platform level capabilities assigned to this Role.
+              required:
+                - all
+                - specific
+              properties:
+                all:
+                  type: boolean
+                  description: If true, the Role has all capabilities.
+                specific:
+                  type: array
+                  items:
+                    $ref: ../../../../components/schemas/common/Capability.yml
+            rank:
+              type: integer
+            extra:
+              type:
+                - object
+                - "null"
+              description: Custom user-defined properties for storing extra information on the Role. Not utilized by Cycle.
+              additionalProperties:
+                type: string
+  responses:
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns the updated Hub Role.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/hubs/roles/Role.yml
+
+delete:
+  operationId: deleteRole
+  summary: Delete Hub Role
+  description: |
+    Marks a Role as 'deleted'. 
+
+    Requires the 'hubs-roles-manage' capability.
+  tags:
+    - Hubs
+    - ACLs
+  parameters:
+    - name: roleId
+      description: The ID of the Role.
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
+    202:
+      description: Returns a Job Descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/jobs/JobDescriptor.yml

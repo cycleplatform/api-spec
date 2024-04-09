@@ -1,7 +1,5 @@
----
 title: DiscoveryEnvironmentService
 type: object
-nullable: true
 description: Information about the environments discovery service(s).
 required:
   - enable
@@ -25,4 +23,6 @@ properties:
     description: A boolean where `true` represents the desire to automatically update the environment discovery service.
   config:
     description: The config object for the discovery service.
-    $ref: ./discovery/DiscoveryConfig.yml
+    anyOf:
+      - $ref: ./discovery/DiscoveryConfig.yml
+      - type: "null"

@@ -5,13 +5,15 @@ required:
   - origin
 properties:
   name:
-    nullable: true
-    type: string
+    type:
+      - string
+      - "null"
   origin:
     $ref: "../../images/origins/ImageOrigin.yml"
   build:
-    nullable: true
-    type: object
+    type:
+      - object
+      - "null"
     required:
       - args
     properties:
@@ -20,8 +22,9 @@ properties:
         additionalProperties:
           type: string
   builder:
-    type: object
-    nullable: true
+    type:
+      - object
+      - "null"
     required:
       - integration_id
     properties:

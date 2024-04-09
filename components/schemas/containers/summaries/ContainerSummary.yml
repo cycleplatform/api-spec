@@ -1,23 +1,79 @@
----
 title: ContainerSummary
 type: object
-description: Contains useful and relevant data/statistics for a container that would otherwise be several separate API calls.
+description: A summary of a Container.
 required:
   - id
   - name
-  - state
-  - image
+  - creator
   - environment
+  - hub_id
+  - image
+  - state
+  - deprecate
+  - lock
+  - events
 properties:
   id:
-    "$ref": "../../ID.yml"
+    $ref: "../../ID.yml"
   name:
     type: string
-    description: A user defined name for the container resource.
+    description: A user defined name for the Container resource.
+  creator:
+    $ref: "../../creators/CreatorScope.yml"
+  environment:
+    $ref: "ContainerEnvironmentSummary.yml"
+  hub_id:
+    $ref: "../../HubID.yml"
+  stack:
+    anyOf:
+      - $ref: "StackSummary.yml"
+      - type: "null"
+  image:
+    $ref: "ImageSummary.yml"
+  annotations:
+    type:
+      - object
+      - "null"
+    description: Custom meta data for a given Container. Not utilized by the platform.
+    additionalProperties: {}
   state:
     $ref: "../ContainerState.yml"
-  image:
-    $ref: "./ContainerImageSummary.yml"
-  environment:
-    $ref: "./ContainerEnvironmentSummary.yml"
-  
+  role:
+    type:
+      - string
+      - "null"
+    description: The role of a given Container if it has one.
+    enum:
+      - contductor
+  deprecate:
+    type: boolean
+    description: A boolean where true signifies the Container is marked as deprecated.
+  deployment:
+    anyOf:
+      - $ref: ../Deployment.yml
+      - type: "null"
+  lock:
+    type: boolean
+    description: When set to true, prevents this Container from being deleted.
+  events:
+    title: ContainerEvents
+    type: object
+    description: A collection of timestamps for each event in the Container's lifetime.
+    required:
+      - created
+      - updated
+      - deleted
+      - started
+    properties:
+      created:
+        description: The timestamp of when the Container was created.
+        $ref: "../../DateTime.yml"
+      updated:
+        description: The timestamp of when the Container was updated.
+        $ref: "../../DateTime.yml"
+      deleted:
+        description: The timestamp of when the Container was deleted.
+        $ref: "../../DateTime.yml"
+      started:
+        description: The timestamp of when the Container was started.
+        $ref: "../../DateTime.yml"

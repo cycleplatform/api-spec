@@ -42,8 +42,9 @@ properties:
         description: The date the email was added to the Account
         "$ref": "../DateTime.yml"
   two_factor_auth:
-    type: object
-    nullable: true
+    type:
+      - object
+      - "null"
     description: Two factor auth verification information.
     required:
       - verified

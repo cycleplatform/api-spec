@@ -131,13 +131,13 @@ properties:
             properties:
               container_id:
                 type: string
-                nullable: true
                 description: The ID of the container this record is related to.
           - type: object
             properties:
               deployment:
-                type: object
-                nullable: true
+                type:
+                  - object
+                  - "null"
                 description: Information about the deployment this record points to.
                 required:
                   - environment_id
@@ -156,8 +156,7 @@ properties:
                         $ref: ../../Identifier.yml
                         description: The identifier of the container in the environment this record should point to.
                       tag:
-                        type: string
-                        nullable: true
                         description: The deployment tag that this record should point to. The tags are set on the root of an environment and map to a deployment version.
-                        allOf:
+                        anyOf:
                           - $ref: ../../Identifier.yml
+                          - type: "null"

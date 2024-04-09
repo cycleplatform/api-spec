@@ -1,0 +1,28 @@
+get:
+  operationId: "listServerModels"
+  summary: List Server Models
+  description: Cycle will use this endpoint to learn which server types / models it is able to deploy (and which locations those servers can be deployed to).
+  tags:
+    - Provider
+  responses:
+    200:
+      description: Returns a list of available server models available via this IAL integration.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - models
+              - extra
+            properties:
+              models:
+                type:
+                  - array
+                  - "null"
+                items:
+                  $ref: ../../components/schemas/provider/model/ServerModel.yml
+              extra:
+                type:
+                  - object
+                  - "null"
+                additionalProperties: {}

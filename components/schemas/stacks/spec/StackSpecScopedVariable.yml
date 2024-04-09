@@ -23,14 +23,16 @@ properties:
             type: boolean
             description: A boolean where true represents the scoped variables is globally assigned to all current and future containers in the environment.
           ids:
-            nullable: true
-            type: array
+            type:
+              - array
+              - "null"
             description: An array of container IDs, where each container identified will have access to the scoped variable.
             items:
               type: string
           identifiers:
-            nullable: true
-            type: array
+            type:
+              - array
+              - "null"
             description: An array of container identifiers, where each container identfied will have access to the scoped variable.
             items:
               type: string
@@ -40,8 +42,9 @@ properties:
       - env_variable
     properties:
       env_variable:
-        nullable: true
-        type: object
+        type:
+          - object
+          - "null"
         required:
           - key
         properties:
@@ -49,20 +52,21 @@ properties:
             description: The name of the environment variable set on the target container.
             type: string
       internal_api:
-        nullable: true
         description: If set, this scoped variable will be available over the internal API. Contains settings for accessing this variable over the internal API.
-        type: object
+        type:
+          - object
+          - "null"
         properties:
           duration:
-            type: string
             description: Duration is a time string that the internal API will serve that variable after runtime starts.
-            nullable: true
-            allOf:
+            anyOf:
               - $ref: ../../Duration.yml
+              - type: "null"
       file:
-        nullable: true
         description: File is an object that describes a path to mount the file to inside the container.
-        type: object
+        type:
+          - object
+          - "null"
         required:
           - decode
           - path
@@ -75,13 +79,15 @@ properties:
             description: When true, Cycle will interpret this variable as a base-64 encoded string, and decode it before passing it into the container.
             type: boolean
           path:
-            nullable: true
+            type:
+              - string
+              - "null"
             example: /var/run/cycle/variables/<myVariable>
             description: The path to mount the file to inside the container.
-            type: string
   source:
-    type: object
-    nullable: true
+    type:
+      - object
+      - "null"
     description: The source or value of the scoped variable.
     discriminator:
       propertyName: type

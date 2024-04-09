@@ -31,12 +31,12 @@ properties:
   controller:
     $ref: ../../../../Identifier.yml
   latest:
-    type: object
-    nullable: true
-    allOf:
+    anyOf:
       - $ref: LoadBalancerTelemetrySnapshot.yml
+      - type: "null"
   snapshots:
-    type: array
-    nullable: true
+    type:
+      - array
+      - "null"
     items:
       $ref: LoadBalancerTelemetrySnapshot.yml

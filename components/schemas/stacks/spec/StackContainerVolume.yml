@@ -40,8 +40,9 @@ properties:
             read_only:
               type: boolean
             password:
-              nullable: true
-              type: object
+              type:
+                - object
+                - "null"
               required:
                 - algorithm
                 - data

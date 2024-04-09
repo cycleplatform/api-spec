@@ -1,0 +1,42 @@
+post:
+  operationId: "validateVPNLogin"
+  summary: Validate VPN Login
+  description: |
+    Validates a username/password pair for logging into the VPN service of the environment of this instance.
+    You must pass a basic Authorization header with the desired username/password combination to validate.
+  tags:
+    - Environments
+    - VPN
+  security:
+    - tokenAuth: []
+    - basicAuth: []
+  parameters: []
+  responses:
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns true on success
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: boolean
+                enum:
+                  - true
+    403:
+      description: Returns false on verification failure
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: boolean
+                enum:
+                  - false

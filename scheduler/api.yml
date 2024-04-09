@@ -8,8 +8,10 @@ info:
   contact:
     email: support@cycle.io
   license:
-    name: CC-BY-4.0
-    url: https://creativecommons.org/licenses/by/4.0/
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0
+  x-logo:
+    url: https://static.cycle.io/icons/logo/logo-white.svg
 
 security:
   - accessKey: []

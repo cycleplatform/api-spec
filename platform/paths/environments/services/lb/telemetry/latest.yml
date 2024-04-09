@@ -1,0 +1,49 @@
+get:
+  operationId: "getLoadBalancerLatestTelemetryReport"
+  summary: Get Latest Load Balancer Telemetry Report.
+  description: |
+    Fetches the latest telemetry report for Cycle's native load balancer. Provides detailed information on a per-instance basis.
+
+    ## Permissions
+    Requires the `environments-view` capability. Also requires the user to have access specifically to the requested Environment.
+  tags:
+    - Environments
+  parameters:
+    - name: environmentId
+      description: The environmentId where the load balancer resides.
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: filter
+      in: query
+      # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706
+      style: deepObject
+      required: true
+      description: |
+        ## Filter Field
+        The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
+        ### Required Filter
+        On this endpoint, you MUST pass filter[controller].
+      schema:
+        type: object
+        properties:
+          controller:
+            type: string
+            description: |
+              `filter[controller]=port-123` filter for a specific controller to load telemetry for. THIS FILTER IS REQUIRED.
+
+  responses:
+    200:
+      description: Returns the latest load balancer telemetry
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../../../components/schemas/environments/services/lb/telemetry/LoadBalancerLatestTelemetry.yml
+    default:
+      $ref: ../../../../../../components/responses/errors/DefaultError.yml

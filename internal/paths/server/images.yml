@@ -1,0 +1,32 @@
+get:
+  operationId: "getServerImages"
+  summary: List Server Images
+  description: Lists all images downloaded onto the server this instance is on.
+  tags:
+    - Servers
+    - Containers
+  parameters: []
+  responses:
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns a list of image details (id, time accessed).
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  type: object
+                  required:
+                    - id
+                    - access_time
+                  properties:
+                    id:
+                      $ref: ../../../components/schemas/ID.yml
+                    access_time:
+                      $ref: ../../../components/schemas/DateTime.yml

@@ -34,8 +34,9 @@ properties:
     type: string
     description: The log.
   error:
-    type: object
-    nullable: true
+    type:
+      - object
+      - "null"
     required:
       - message
     properties:

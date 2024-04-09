@@ -1,0 +1,13 @@
+title: "SpecFeatures"
+type: object
+description: "Details specific features available for the system, including RAID configuration and provider-specific features."
+properties:
+  raid:
+    type:
+      - "string"
+      - "null"
+    description: "Specifies the RAID (Redundant Array of Independent Disks) configuration, if any."
+  extra:
+    type: "object"
+    description: "Provider specific features, allowing for additional, unspecified properties. This is an open map for any key-value pairs, accommodating various types of values."
+    additionalProperties: true

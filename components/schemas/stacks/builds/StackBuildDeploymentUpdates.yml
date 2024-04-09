@@ -12,8 +12,9 @@ properties:
       $ref: "../StackDeployContainersObject.yml"
     minProperties: 1
   scoped_variables:
-    nullable: true
-    type: object
+    type:
+      - object
+      - "null"
     description: An object that describes configuration options for scoped variables on stack build.
     required:
       - add_new

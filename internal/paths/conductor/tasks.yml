@@ -1,0 +1,32 @@
+post:
+  operationId: "createInstanceJob"
+  summary: Create Instance Job
+  description: |
+    Used to perform different actions on a given instance.
+  tags:
+    - Containers
+    - Instances
+  parameters: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          discriminator:
+            propertyName: action
+            mapping:
+              container.instance.start: ../../components/instances/tasks/StartInstanceTask.yml
+              container.instance.stop: ../../components/instances/tasks/StopInstanceTask.yml
+          oneOf:
+            - $ref: ../../components/instances/tasks/StartInstanceTask.yml
+            - $ref: ../../components/instances/tasks/StopInstanceTask.yml
+  responses:
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns nothing on success.
+      content:
+        application/json:
+          schema:
+            type: object
+            additionalProperties: false

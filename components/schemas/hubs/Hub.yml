@@ -13,7 +13,7 @@ required:
   - billing
 properties:
   id:
-    "$ref": "../ID.yml"
+    $ref: "../ID.yml"
   identifier:
     $ref: ../Identifier.yml
     description: A human readable slugged identifier for this hub.
@@ -21,51 +21,16 @@ properties:
     type: string
     description: A name for the hub.
   creator:
-    "$ref": "../creators/CreatorScope.yml"
+    $ref: "../creators/CreatorScope.yml"
   events:
-    title: HubEvents
-    type: object
-    description: A collection of timestamps for each event in the hub's lifetime.
-    required:
-      - created
-      - updated
-      - deleted
-    properties:
-      created:
-        description: The timestamp of when the hub was created.
-        "$ref": "../DateTime.yml"
-      updated:
-        description: The timestamp of when the hub was updated.
-        "$ref": "../DateTime.yml"
-      deleted:
-        description: The timestamp of when the hub was deleted.
-        "$ref": "../DateTime.yml"
-      converted:
-        description: The timestamp of when the hub had the first converted
-        "$ref": "../DateTime.yml"
-      first_provider:
-        description: The timestamp of when the hub had the first provider added.
-        "$ref": "../DateTime.yml"
-      first_server:
-        description: The timestamp of when the hub had the first_server deployed.
-        "$ref": "../DateTime.yml"
-      first_environment:
-        description: The timestamp of when the hub had the first environment deployed.
-        "$ref": "../DateTime.yml"
-      first_image:
-        description: The timestamp of when the hub had the first image deployed.
-        "$ref": "../DateTime.yml"
-      first_container:
-        description: The timestamp of when the hub had the first container deployed.
-        "$ref": "../DateTime.yml"
+    $ref: "HubEvents.yml"
   state:
-    "$ref": "./HubState.yml"
+    $ref: "./HubState.yml"
   webhooks:
     $ref: HubWebhooks.yml
   billing:
-    allOf:
-      - type: object
-        nullable: true
+    anyOf:
       - $ref: "./HubBillingProfile.yml"
+      - type: "null"
   meta:
-    "$ref": "./HubMeta.yml"
+    $ref: "./HubMeta.yml"

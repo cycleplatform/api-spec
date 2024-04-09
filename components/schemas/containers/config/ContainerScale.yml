@@ -8,8 +8,9 @@ required:
   - thresholds
 properties:
   autoscale_group:
-    type: string
-    nullable: true
+    type:
+      - string
+      - "null"
     description: The autoscaling group describes which servers should be deployed
   instances:
     type: object

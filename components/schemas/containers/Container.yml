@@ -3,7 +3,6 @@ type: object
 description: Containers are a way to package together your application along with it's dependencies, and run in a resource isolated process. They provide consistency across different hosts, efficiency over traditional hosting methods, and facilitate a micro-service based approach, where each logical piece of your application is split into multiple, easily testable parts (such as API, Backend, Frontend, etc).
 required:
   - id
-  - identifier
   - name
   - identifier
   - creator
@@ -12,13 +11,14 @@ required:
   - image
   - config
   - instances
-  - annotations
   - stateful
   - state
+  - deprecate
+  - lock
   - events
 properties:
   id:
-    "$ref": "../ID.yml"
+    $ref: "../ID.yml"
   identifier:
     $ref: ../Identifier.yml
     description: A human readable slugged identifier for this container. Usually used as a key in a stack file.
@@ -26,22 +26,23 @@ properties:
     type: string
     description: A user defined name for the container resource.
   creator:
-    "$ref": "../creators/CreatorScope.yml"
+    $ref: "../creators/CreatorScope.yml"
   environment:
-    "$ref": "./summaries/ContainerEnvironmentSummary.yml"
+    $ref: "./summaries/ContainerEnvironmentSummary.yml"
   hub_id:
-    "$ref": "../HubID.yml"
+    $ref: "../HubID.yml"
   image:
-    "$ref": "./summaries/ImageSummary.yml"
+    $ref: "./summaries/ImageSummary.yml"
   stack:
-    "$ref": "./summaries/StackSummary.yml"
+    anyOf:
+      - $ref: "./summaries/StackSummary.yml"
+      - type: "null"
   config:
-    "$ref": "./config/Config.yml"
+    $ref: "./config/Config.yml"
   deployment:
-    type: object
-    nullable: true
-    allOf:
+    anyOf:
       - $ref: ./Deployment.yml
+      - type: "null"
   instances:
     type: integer
     description: The number of instances for a given container.
@@ -50,16 +51,18 @@ properties:
     items:
       $ref: ./summaries/VolumeSummary.yml
   annotations:
-    type: object
+    type:
+      - object
+      - "null"
     description: Custom meta data for a given container
-    nullable: true
     additionalProperties: {}
   role:
-    type: string
     description: The role of a given container if it has one.
-    enum:
-      - orchestrator
-    nullable: true
+    oneOf:
+      - type: string
+        enum:
+          - orchestrator
+      - type: "null"
   stateful:
     type: boolean
     description: A boolean where true signifies the container is stateful.
@@ -70,7 +73,7 @@ properties:
     type: boolean
     description: When set to true, prevents this container from being deleted.
   state:
-    "$ref": "./ContainerState.yml"
+    $ref: "./ContainerState.yml"
   events:
     title: ContainerEvents
     type: object
@@ -83,15 +86,15 @@ properties:
     properties:
       created:
         description: The timestamp of when the container was created.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
       updated:
         description: The timestamp of when the container was updated.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
       deleted:
         description: The timestamp of when the container was deleted.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
       started:
         description: The timestamp of when the container was started.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
   meta:
-    "$ref": "./ContainersMeta.yml"
+    $ref: "./ContainersMeta.yml"

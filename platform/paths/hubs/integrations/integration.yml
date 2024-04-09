@@ -1,0 +1,153 @@
+get:
+  operationId: getIntegration
+  summary: Get Integration
+  description: |
+    Retrieves details of a single Integration associated with the current hub.
+
+    Requires the `hubs-integrations-view` capability.
+  tags:
+    - Hubs
+    - Integrations
+  security:
+    - bearerAuth: []
+  parameters:
+    - name: integrationId
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: "^[a-f0-9]{24}$"
+      description: The ID of the Integration to retrieve.
+    - name: meta
+      in: query
+      required: false
+      description:
+        A comma separated list of meta values. Meta values will show up under a resource's
+        `meta` field. In the case of applying a meta to a collection of resources, each
+        resource will have it's own relevant meta data. In some rare cases, meta may not
+        apply to individual resources, and may appear in the root document. These will be
+        clearly labeled.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - definition
+  responses:
+    default:
+      $ref: "../../../../components/responses/errors/DefaultError.yml"
+    200:
+      description: Details of the specified Integration
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: "../../../../components/schemas/hubs/integrations/Integration.yml"
+
+patch:
+  operationId: updateIntegration
+  tags:
+    - Hubs
+    - Integrations
+  security:
+    - bearerAuth: []
+  summary: Update Integration
+  description: Updates the specified Integration within the current hub. If the Integration definition specifies that it requires verification, then you must submit a verify task to enable it.
+  parameters:
+    - name: integrationId
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: "^[a-f0-9]{24}$"
+      description: The ID of the Integration to update.
+    - name: meta
+      in: query
+      required: false
+      description:
+        A comma separated list of meta values. Meta values will show up under a resource's
+        `meta` field. In the case of applying a meta to a collection of resources, each
+        resource will have it's own relevant meta data. In some rare cases, meta may not
+        apply to individual resources, and may appear in the root document. These will be
+        clearly labeled.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - definition
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type:
+                - string
+                - "null"
+              description: A new name for the Integration.
+            identifier:
+              $ref: ../../../../components/schemas/Identifier.yml
+            auth:
+              anyOf:
+                - $ref: "../../../../components/schemas/hubs/integrations/IntegrationAuth.yml"
+                - type: "null"
+            extra:
+              type:
+                - object
+                - "null"
+              description: Updated key-value pairs associated with the Integration.
+              additionalProperties:
+                type: string
+  responses:
+    default:
+      $ref: "../../../../components/responses/errors/DefaultError.yml"
+    200:
+      description: Returns the updated Integration.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: "../../../../components/schemas/hubs/integrations/Integration.yml"
+
+delete:
+  operationId: deleteIntegration
+  tags:
+    - Hubs
+    - Integrations
+  security:
+    - bearerAuth: []
+  summary: Delete an Integration
+  description: Deletes the specified Integration from the current hub, marking it as deleted and returning the updated Integration.
+  parameters:
+    - name: integrationId
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: "^[a-f0-9]{24}$"
+      description: The ID of the Integration to delete.
+  responses:
+    default:
+      $ref: "../../../../components/responses/errors/DefaultError.yml"
+    202:
+      description: Returns a Job Descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/jobs/JobDescriptor.yml

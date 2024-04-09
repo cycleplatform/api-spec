@@ -80,15 +80,17 @@ properties:
                   count:
                     type: number
                   locations:
-                    type: object
-                    nullable: true
+                    type:
+                      - object
+                      - "null"
                     additionalProperties:
-                      type: number
+                      type: integer
                   models:
-                    type: object
-                    nullable: true
+                    type:
+                      - object
+                      - "null"
                     additionalProperties:
-                      type: number
+                      type: integer
                   resources:
                     $ref: InfrastructureResourceSummary.yml
             server_ids:
