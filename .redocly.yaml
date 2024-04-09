@@ -1,10 +1,10 @@
 # See https://redocly.com/docs/cli/configuration/
 apis:
-  cycle-platform-api@1.0.0:
+  cycle-platform-api:
     root: ./platform/api.yml
-  cycle-internal-api@1.0.0:
+  cycle-internal-api:
     root: ./internal/api.yml
-  cycle-scheduler-api@1.0.0:
+  cycle-scheduler-api:
     root: ./scheduler/api.yml
   cycle-ial:
     root: ./ial/api.yml
