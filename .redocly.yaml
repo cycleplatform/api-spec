@@ -46,11 +46,13 @@ theme:
           post: rgb(42, 167, 255)
           patch: rgb(174, 55, 255)
       typography:
-        fontFamily: "Source Sans 3, sans-serif"
+        fontFamily: "'Source Sans 3', sans-serif"
         links:
           color: rgb(42, 167, 255)
         code:
           color: rgb(42, 167, 255)
+        headings:
+          fontFamily: "'Source Sans 3', sans-serif"
       schema:
         requireLabelColor: rgb(255, 198, 41)
       codeBlock:
