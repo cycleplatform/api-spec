@@ -12,7 +12,7 @@ required:
   - events
 properties:
   id:
-    "$ref": "../ID.yml"
+    $ref: "../ID.yml"
   identifier:
     $ref: ../Identifier.yml
     description: A human readable slugged identifier for this stack.
@@ -20,13 +20,13 @@ properties:
     type: string
     description: A user defined name for the stack resource.
   hub_id:
-    "$ref": "../HubID.yml"
+    $ref: "../HubID.yml"
   creator:
-    "$ref": "../common/UserScope.yml"
+    $ref: "../common/UserScope.yml"
   source:
-    "$ref": "./StackSource.yml"
+    $ref: "./StackSource.yml"
   state:
-    "$ref": "./StackState.yml"
+    $ref: "./StackState.yml"
   variables:
     type: object
     description: A map of default variable values used when building this stack. A variable can be added anywhere in a stack using the format `{{var}}` where `var` would be a key in this map.
@@ -44,15 +44,15 @@ properties:
     properties:
       created:
         description: The timestamp of when the stack was created.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
       updated:
         description: The timestamp of when the stack was updated.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
       deleted:
         description: The timestamp of when the stack was deleted.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
       last_build:
         description: The timestamp for the last build of the stack.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
   meta:
-    "$ref": "./StackMeta.yml"
+    $ref: "./StackMeta.yml"
