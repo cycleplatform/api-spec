@@ -1,0 +1,19 @@
+title: UdpTransportConfig
+description: Additional configuration options for the UDP transport mode.
+type: object
+required:
+  - type
+  - details
+properties:
+  type:
+    type: string
+    enum:
+      - udp
+  details:
+    type: object
+    required:
+      - connections
+    properties:
+      connections:
+        type: object
+        additionalProperties: {}

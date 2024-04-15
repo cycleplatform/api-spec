@@ -107,7 +107,9 @@ properties:
           propertyName: type
           mapping:
             tcp: routers/TcpRouterConfig.yml
+            udp: routers/UdpRouterConfig.yml
             http: routers/HttpRouterConfig.yml
         oneOf:
           - $ref: routers/TcpRouterConfig.yml
           - $ref: routers/HttpRouterConfig.yml
+          - $ref: routers/UdpRouterConfig.yml

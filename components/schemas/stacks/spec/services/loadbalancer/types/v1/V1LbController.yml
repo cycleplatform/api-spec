@@ -25,9 +25,10 @@ properties:
         description: When true, this controller is disabled and will not be used.
       mode:
         type: string
-        description: The kind of traffic (http/tcp) that will be sent to the load balancer.
+        description: The kind of traffic (http/tcp/udp) that will be sent to the load balancer.
         enum:
           - tcp
+          - udp
           - http
       config:
         type: object
@@ -87,9 +88,11 @@ properties:
               mapping:
                 tcp: transports/TcpTransportConfig.yml
                 http: transports/HttpTransportConfig.yml
+                udp: transports/UdpTransportConfig.yml
             oneOf:
               - $ref: transports/TcpTransportConfig.yml
               - $ref: transports/HttpTransportConfig.yml
+              - $ref: transports/UdpTransportConfig.yml
       routers:
         type: array
         description: Defines where traffic is sent. Many can be defined per controller.
