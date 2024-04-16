@@ -15,14 +15,14 @@ properties:
     type:
       - object
       - "null"
-    description: An object that describes configuration options for scoped variables on stack build.
+    description: An object that describes configuration options for scoped variables on stack build. If null, scoped variables will be ignored during deployment events.
     required:
       - add_new
       - replace_existing
     properties:
       add_new:
-        description: Add new scoped variables defined in the stack.
+        description: When deploying to the environment, any scoped variables that are new to the environment will be created if this is set to true. 
         type: boolean
       replace_existing:
-        description: Replace all scoped variables with those defined in the stack.
+        description: When deploying to the environment, any scoped variables defined in the build that match an existing scoped variable in the environment will cause the existing scoped variable to be updated to the new value. 
         type: boolean
