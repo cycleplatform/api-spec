@@ -14,6 +14,11 @@ properties:
     required:
       - url
     properties:
+      stack_file:
+        type:
+          - string
+          - "null"
+        description: Specify which file in the repo contains the stack spec. By default, it is `cycle.json` in the root of the repo.
       url:
         type: string
         description: The URL of the repository.
