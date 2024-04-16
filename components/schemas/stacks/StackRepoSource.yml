@@ -26,11 +26,11 @@ properties:
         discriminator:
           propertyName: type
           mapping:
-            http: ../../images/origins/CredentialsHTTP.yml
-            ssh: ../../images/origins/CredentialsSSH.yml
+            http: ../images/origins/CredentialsHTTP.yml
+            ssh: ../images/origins/CredentialsSSH.yml
         oneOf:
-          - $ref: ../../images/origins/CredentialsHTTP.yml
-          - $ref: ../../images/origins/CredentialsSSH.yml
+          - $ref: ../images/origins/CredentialsHTTP.yml
+          - $ref: ../images/origins/CredentialsSSH.yml
       ref:
         type: object
         description: Repository reference information.

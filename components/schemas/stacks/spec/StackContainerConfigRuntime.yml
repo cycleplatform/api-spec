@@ -1,10 +1,13 @@
 title: StackContainerConfigRuntime
+description: Configuration options related to how the container behaves while it is running (environment variables, command overrides, kernel capabilities, etc. )
 type: object
 properties:
   workdir:
     type: string
+    description: The working directory to execute the command in.
   command:
     type: object
+    description: The command to execute when this container starts. Will override the default specified in the container.
     properties:
       path:
         type: string
@@ -12,10 +15,12 @@ properties:
         type: string
   environment_vars:
     type: object
+    description: A map of environment variables that will be injected into the container.
     additionalProperties:
       type: string
   namespaces:
     type: array
+    description: Container namespaces to apply. By default, all are applied. Removing/changing this can have security implications.
     items:
       type: string
       enum:
@@ -28,10 +33,12 @@ properties:
         - cgroup
   sysctl:
     type: object
+    description: Sysctl options to apply.
     additionalProperties:
       type: string
   rlimits:
     type: object
+    description: RLIMIT options to apply.
     additionalProperties:
       type: object
       required:
@@ -44,6 +51,7 @@ properties:
           type: integer
   seccomp:
     type: object
+    description: Configuration options for seccomp. Cycle enables seccomp by default.
     required:
       - disable
       - rules
@@ -118,18 +126,22 @@ properties:
                           - SCMP_CMP_GT
                           - SCMP_CMP_MASKED_EQ
   host:
+    description: "Configuration options regarding the underlying host."
     type:
       - object
       - "null"
     properties:
       expose_proc:
+        description: If true, Cycle will mount the `/proc` directory into the container, giving it access to the host metrics. This is useful if you're running i.e. a monitoring agent.
         type:
           - boolean
           - "null"
   privileged:
+    description: If true, the container process will run in fully-privileged mode. **WARNING** This is considered insecure, and should only be done if you know what you're doing.
     type: boolean
   capabilities:
     type: array
+    description: Additional Linux kernel capabilities to apply to this container process.
     items:
       type: string
       enum:
@@ -173,8 +185,10 @@ properties:
         - CAP_WAKE_ALARM
   rootfs:
     type: object
+    description: Configuration options for the root filesystem.
     required:
       - readonly
     properties:
       readonly:
+        description: If true, the container's filesystem will be read-only.
         type: boolean

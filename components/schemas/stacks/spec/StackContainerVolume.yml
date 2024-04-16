@@ -1,73 +1,63 @@
-title: StackContainerVolume.yml
+title: StackContainerVolume
+description: A container volume configuration.
 type: object
 required:
-  - read_only
   - destination
+  - read_only
 properties:
-  read_only:
-    type: boolean
   local:
+    description: Configuration options for local volumes.
     type: object
     required:
       - max_size
-      - storage_pool
     properties:
       max_size:
+        description: The maximum size this volume can grow to. Container volumes on Cycle are thinly provisioned, meaning this isn't an allocation - the volume will only use the space it needs up to this size.
         type: string
+        examples:
+          - 5G
+          - 500M
       storage_pool:
+        description: A boolean where true signifies using the largest drive over 2TB for the target server.
         type: boolean
   destination:
+    description: The path this volume should be mounted at inside the container.
     type: string
+  read_only:
+    description: If true, the container will be unable to write data to the volume.
+    type: boolean
   remote_access:
+    description: Configuration options for setting up remote access to this volume via SFTP.
     type: object
     required:
       - enable
       - password
     properties:
       enable:
+        description: If true, this volume will be accessible over SFTP.
         type: boolean
       ips:
+        description: A list of IPs that SFTP access will be limited to.
         type: array
         items:
-          type: object
-          required:
-            - ip
-            - read_only
-            - password
-          properties:
-            ip:
-              type: string
-            read_only:
-              type: boolean
-            password:
-              type:
-                - object
-                - "null"
-              required:
-                - algorithm
-                - data
-              properties:
-                algorithm:
-                  type: string
-                  enum:
-                    - raw
-                    - sha512
-                    - md5
-                data:
-                  type: string
+          type: string
       web_hook:
+        description: If set, Cycle will call out to this URL for authentication. Anything other than a 200 response will be considered a validation failure.
         type: string
       password:
         type: object
+        description: The password used for logging in to this volume via SFTP.
         required:
           - algorithm
           - data
         properties:
           algorithm:
             type: string
+            description: The algorithm the password is encoded with. `raw` means the password is plain-text.
             enum:
               - raw
               - sha512
               - md5
           data:
+            description: The password string.
             type: string

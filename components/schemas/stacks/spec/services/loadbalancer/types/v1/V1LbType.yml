@@ -17,8 +17,7 @@ properties:
     enum:
       - "v1"
   details:
-    anyOf:
-      - $ref: V1LbConfig.yml
+    $ref: V1LbConfig.yml
   bind_host:
     description: |
       Binds the load balancer to the host server IP address. 

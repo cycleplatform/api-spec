@@ -1,13 +1,13 @@
-title: StackSpecScopedVaribaleUrlSource
+title: StackSpecScopedVariableUrlSource
 type: object
-description: The `URL` type of scoped variable `value`, referred to as a source. This means the value of this variable is the result of calling the given URL. It is dynamic, in that Cycle will refetch the contents on every start.
+description: A variable who's value is fetched from a URL when the container starts.
 required:
   - type
   - details
 properties:
   type:
     type: string
-    description: The type of source value, can be either `raw` or `url`.
+    description: The type of scoped variable.
     enum:
       - url
   details:
@@ -19,10 +19,10 @@ properties:
     properties:
       url:
         type: string
-        description: The URL to call to produce the value.
+        description: The URL to call to fetch the value.
       headers:
         type: object
-        description: Additional headers that can be attached to the URL request. Useful for adding metadata to third-party services.
+        description: Additional headers that can be attached to the URL request. Useful for adding meta-data to third-party services.
         additionalProperties: {}
       auth_token_url:
         type:

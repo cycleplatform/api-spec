@@ -1,6 +1,6 @@
 title: StackContainerScaleThresholdCpu
 type: object
-description: Describes the CPU threshold at which scaling will occur
+description: Describes the CPU threshold at which scaling will occur.
 required:
   - type
   - details
