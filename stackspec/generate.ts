@@ -11,7 +11,7 @@ async function bundleStackSpecSchema() {
       "../components/schemas/stacks/spec/StackSpec.yml"
     );
 
-    const output = path.join(__dirname, "../dist/stackspec.json");
+    const output = path.join(__dirname, "./stackspec.json");
 
     const schema = await parser.bundle(input, { mutateInputSchema: false });
     fs.writeFileSync(output, JSON.stringify(schema));
