@@ -33,19 +33,26 @@ properties:
           - disable_url_tracking
           - disable_router_metrics
         properties:
+          persist_restarts:
+            type:
+              - boolean
+              - "null"
+            description: If true, Cycle will maintain telemetry/metrics across load balancer restarts.
           disable_url_tracking:
             description: "Determines if the load balancer will track url metrics. Defaults to false."
             type: boolean
+            default: false
           disable_router_metrics:
             description: "Determines if the load balancer will track router metrics. Defaults to false."
             type: boolean
+            default: false
           max_trackable_urls:
             description: "Determines how many URLs the load balancer will track at one time. Defaults to 150."
             type:
               - integer
               - "null"
           tracking_window:
-            description: "Determines how long the load balancer will track a URL from its last hit. Helps reduce noise by not tracking URLs that are occasionally hit. Defaults to 8h."
+            description: "Determines how long the load balancer will track a URL from its last hit. If there is zero activity for this duration, the metrics will be dropped. Helps reduce noise by not tracking URLs that are occasionally hit. Defaults to 8h."
             anyOf:
               - $ref: ../../../../../../../Duration.yml
               - type: "null"
