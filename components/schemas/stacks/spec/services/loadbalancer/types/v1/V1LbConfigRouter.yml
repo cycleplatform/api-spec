@@ -53,6 +53,19 @@ properties:
       destination_retries:
         type: integer
         description: If a destination is unavailable, retry up to [x] times, instead of immediately failing with a 503/504 error.
+      destination_prioritization:
+        default: "null"
+        oneOf:
+          - type: string
+            description: >
+              Hints to the load balancer how to prioritize traffic to instances.
+
+              **random**: Chooses a random instance.
+              **latency**: Prioritizes lower latency instances. 
+            enum:
+              - latency
+              - random
+          - type: "null"
       tls:
         type:
           - object
