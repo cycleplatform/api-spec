@@ -1,6 +1,6 @@
 title: StackContainerScaleThresholdNetworkRequests
 type: object
-description: Describes the network requests threshold at which scaling will occur
+description: Describes the network requests threshold at which scaling will occur.
 
 required:
   - type

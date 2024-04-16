@@ -4,7 +4,6 @@ required:
   - identifier
   - scope
   - access
-  - source
 properties:
   identifier:
     $ref: ../../../../components/schemas/Identifier.yml
@@ -15,33 +14,32 @@ properties:
     properties:
       containers:
         type: object
-        description: Information about the assignment of the scoped variable to different containers in the environment.
+        description: Describes the containers that have access to this scoped variable.
         required:
           - global
         properties:
           global:
             type: boolean
-            description: A boolean where true represents the scoped variables is globally assigned to all current and future containers in the environment.
+            description: If true, all containers in the environment will have access to this variable.
           ids:
             type:
               - array
               - "null"
-            description: An array of container IDs, where each container identified will have access to the scoped variable.
+            description: A list of container IDs that are granted access to this variable.
             items:
               type: string
           identifiers:
             type:
               - array
               - "null"
-            description: An array of container identifiers, where each container identfied will have access to the scoped variable.
+            description: A list of container identifiers that are granted access to this variable.
             items:
-              type: string
+              $ref: ../../../../components/schemas/Identifier.yml
   access:
     type: object
-    required:
-      - env_variable
     properties:
       env_variable:
+        description: Grants access to this variable from within a container as an environment variable.
         type:
           - object
           - "null"
@@ -49,21 +47,21 @@ properties:
           - key
         properties:
           key:
-            description: The name of the environment variable set on the target container.
+            description: The environment variable inside the container that stores the value of the variable.
             type: string
       internal_api:
-        description: If set, this scoped variable will be available over the internal API. Contains settings for accessing this variable over the internal API.
+        description: Grants access to this variable over the Internal API.
         type:
           - object
           - "null"
         properties:
           duration:
-            description: Duration is a time string that the internal API will serve that variable after runtime starts.
+            description: Sets the duration that this variable can be accessed over the Internal API, after container start. Provides additional security as sensitive data can only be accessed for a limited time.
             anyOf:
               - $ref: ../../Duration.yml
               - type: "null"
       file:
-        description: File is an object that describes a path to mount the file to inside the container.
+        description: Grants access to this variable as a file inside the container.
         type:
           - object
           - "null"
@@ -76,19 +74,23 @@ properties:
             name: "DecodeBase64"
         properties:
           decode:
-            description: When true, Cycle will interpret this variable as a base-64 encoded string, and decode it before passing it into the container.
+            description: When true, Cycle will interpret this variable as a base-64 encoded string, and decode it before writing it to the file inside the container.
             type: boolean
           path:
             type:
               - string
               - "null"
             example: /var/run/cycle/variables/<myVariable>
-            description: The path to mount the file to inside the container.
+            description: The absolute path to write the variable to (including file name). If `null`, it will be written to `/var/run/cycle/variables/{variable-identifier}`.
   source:
     type:
       - object
       - "null"
-    description: The source or value of the scoped variable.
+    description: >
+      Describes the source/value of the variable.
+
+      - **raw**: Directly set the value of the variable in the stack.
+      - **url**: Cycle will fetch the variable content from a remote source when the container starts.
     discriminator:
       propertyName: type
       mapping:

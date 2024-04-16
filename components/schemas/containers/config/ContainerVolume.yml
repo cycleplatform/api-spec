@@ -16,7 +16,7 @@ properties:
     properties:
       max_size:
         type: string
-        description: The maximum size the volume can grow to. A number followed by a size. `10G` would be 10 gigabytes.
+        description: The maximum size this volume can grow to. Container volumes on Cycle are thinly provisioned, meaning this isn't an allocation - the volume will only use the space it needs up to this size.
         example: "10G"
       storage_pool:
         type: boolean

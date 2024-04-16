@@ -1,6 +1,6 @@
 title: ImageOrigin
 type: object
-description: The origin of the given image source.
+description: The origin of the image.
 discriminator:
   propertyName: type
   mapping:

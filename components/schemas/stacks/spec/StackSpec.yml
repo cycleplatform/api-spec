@@ -1,5 +1,8 @@
 $schema: "https://json-schema.org/draft/2020-12/schema"
 title: StackSpec
+description: |
+  A Cycle stack file is an "environment as code". Anything that can be done in an environment on Cycle can be described in a stack file and deployed as a new environment.
+  Stack files can list multiple containers and their configurations, load balancer settings, scoped variables, and much more.
 type: object
 required:
   - version
@@ -7,36 +10,46 @@ required:
 properties:
   version:
     type: string
-    description: A string defining the version of the stack spec.
+    description: The version of the Cycle stack file used.
+    enum:
+      - "1.0"
   about:
+    description: Various properties describing this stack.
     type:
       - object
       - "null"
-    description: Information about the stack.
     required:
       - description
       - version
     properties:
       version:
         type: string
-        description: Internal version information set by the user.
+        description: A custom, user-defined version of the stack.
       description:
         type: string
-        description: Information describing the stack.
-  tests:
-    type:
-      - array
-      - "null"
-    items:
-      $ref: StackSpecTestContainer.yml
+        description: Custom, user-defined details about this stack.
+  # tests:
+  #   description: |
+  #     An array of containers that are deployed as part of a stack. Test containers run once and should exit with 0 on success. If all exit successfully, the stack is considered deployed.
+
+  #     **Not currently implemented.**
+  #   type:
+  #     - array
+  #     - "null"
+  #   items:
+  #     $ref: StackSpecTestContainer.yml
   scoped_variables:
+    description: Describes variables that are assigned to one or more containers at runtime. Can be assigned as an environment variable, written as a file inside the container(s), or accessed over the internal API.
     type:
       - array
       - "null"
     items:
       $ref: ./StackSpecScopedVariable.yml
   containers:
-    $ref: ./StackContainer.yml
+    type: object
+    description: A mapping of containers that will be deployed as a part of this stack. The key is used as the container's identifier.
+    additionalProperties:
+      $ref: ./StackContainer.yml
   services:
     title: StackSpecServices
     type:

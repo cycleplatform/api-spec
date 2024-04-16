@@ -1,6 +1,6 @@
 title: StackContainerConfigScaling.yml
 type: object
-description: Network configuration for a container.
+description: Stack configuration options for auto-scaling.
 required:
   - autoscale_group
   - instances
@@ -8,13 +8,13 @@ required:
   - thresholds
 properties:
   autoscale_group:
-    type:
-      - string
-      - "null"
-    description: The autoscaling group describes which servers should be deployed
+    anyOf:
+      - $ref: ../../Identifier.yml
+      - type: "null"
+    description: The identifier of the auto-scaling group assigned to this container. The auto-scale group determines which infrastructure this container can spin up if it needs more resources to meet demand. Setting it to `null` will limit auto-scaling to only instances.
   instances:
     type: object
-    description: Describes how many instances should be running
+    description: Describes the criteria for deploying new instances when an auto-scale criteria is met.
     required:
       - delta
       - max
@@ -23,21 +23,21 @@ properties:
     properties:
       delta:
         type: integer
-        description: Number of additional instances the auto-scaler will add/subtract per scaling event
+        description: Number of additional instances the auto-scaler will add/subtract per scaling event.
       max:
         type: integer
-        description: Maximum additional instances the auto-scaler will run at any time
+        description: Maximum additional instances the auto-scaler will run at any time.
       max_server:
         type: integer
-        description: Minimum number of instances per server
+        description: Minimum number of instances per server.
       min_ttl:
         $ref: ../../Duration.yml
-        description: Minimum amount of time an instance will live
+        description: Minimum amount of time an instance will live.
   window:
-    description: Duration in which the auto-scaler will watch for changes
+    description: Duration in which the auto-scaler will watch for changes.
     $ref: ../../Duration.yml
   thresholds:
-    description: An array of rules that dictate when a scaling event will be triggered
+    description: An array of rules that dictate when a scaling event will be triggered.
     type: array
     items:
       $ref: ./scale/StackContainerScaleThreshold.yml

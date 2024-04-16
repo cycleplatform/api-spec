@@ -1,11 +1,23 @@
 title: StackContainerConfigDeploy.yml
 type: object
+description: Stack configuration options related to how the container behaves over its lifecycle (startup, shutdown, health checks, etc).
 required:
   - instances
 properties:
   instances:
+    description: The number of desired instances to deploy.
     type: integer
   strategy:
+    description: >
+      The strategy Cycle will apply when deploying instances of this container.
+
+      - ** resource-density **: Cycle will distribute instances across servers to maintain balanced resource usage.
+      - ** high-availability **: Cycle will deploy instances over servers with an emphasis on geographic and physical separation
+      - ** first-available **: Cycle will deploy one instance to every node that matches the specified criteria. (default)
+      - ** node **: Cycle will deploy one instance to every node that matches the specified criteria.
+      - ** edge **: Cycle will prioritize geographic distribution of instances.
+      - ** function **: Every ingress request/connection receives its own instance. 
+      - ** manual **: Cycle will not make any decisions on where instances are deployed. Instead, instances must be deployed manually using the portal or API.
     type:
       - string
       - "null"
@@ -17,7 +29,9 @@ properties:
       - node
       - edge
       - function
+    default: first-available
   stateful:
+    description: Configuration options for stateful containers.
     type:
       - object
       - "null"
@@ -25,15 +39,18 @@ properties:
       - options
     properties:
       options:
+        description: Stateful container options.
         type:
           - object
           - "null"
         properties:
           use_base_hostname:
+            description: When enabled, instances will utilize stateless base hostnames instead of being prefixed with a unique ID.
             type:
               - boolean
               - "null"
   constraints:
+    description: Configuration options that provide the ability to set restrictions on which nodes instances of this container are able to be deployed to. (i.e. if you have a GPU container, it should only go on nodes with a GPU).
     type:
       - object
       - "null"
@@ -46,29 +63,34 @@ properties:
           - tags
         properties:
           tags:
+            description: Tags applied to a node. Cycle generates some automatically, but additional, custom tags can be applied on a per-node basis.
             type: object
             properties:
               any:
+                description: If a node has at least one of these tags, it is considered a valid deployment target for this container.
                 type: array
                 items:
                   type: string
               all:
+                description: A node must have **ALL** of these tags to be considered a valid deployment target for this container.
                 type: array
                 items:
                   type: string
-      secrets:
-        type:
-          - array
-          - "null"
-        items:
-          type: string
-      containers:
-        type:
-          - array
-          - "null"
-        items:
-          type: string
+      # Not yet implemented.
+      # secrets:
+      #   type:
+      #     - array
+      #     - "null"
+      #   items:
+      #     type: string
+      # containers:
+      #   type:
+      #     - array
+      #     - "null"
+      #   items:
+      #     type: string
   shutdown:
+    description: Configuration options for how this container behaves during shutdown.
     type:
       - object
       - "null"
@@ -80,9 +102,19 @@ properties:
           - type: "null"
       signals:
         type: array
+        description: Signals that should be sent to the container on shutdown.
         items:
           type: string
+          enum:
+            - SIGTERM
+            - SIGINT
+            - SIGUSR1
+            - SIGUSR2
+            - SIGHUB
+            - SIGKILL
+            - SIGQUIT
   startup:
+    description: Configuration options for how this container behaves during startup.
     type:
       - object
       - "null"
@@ -96,7 +128,7 @@ properties:
     type:
       - object
       - "null"
-    description: Configurations for container updates.
+    description: Configurations for how the container behaves during updates.
     properties:
       stagger:
         anyOf:
@@ -104,6 +136,7 @@ properties:
           - type: "null"
         description: When set, Cycle will pick a random time from `0 - this duration`, and stagger the instances so they all start at different times (up to the time specified here).
   restart:
+    description: Configuration options for how Cycle should handle restarting this container (i.e. in case the process inside the container dies).
     type:
       - object
       - "null"
@@ -113,6 +146,7 @@ properties:
       - max_attempts
     properties:
       condition:
+        description: Under what circumstances Cycle should try to restart this container.
         type: string
         enum:
           - always
@@ -120,21 +154,38 @@ properties:
           - failure
       delay:
         $ref: ../../Duration.yml
-        description: How long the platform will wait before trying to restart the container.
+        description: How long the platform will wait between restart attempts.
       max_attempts:
         type: integer
+        description: The maximum number of restart attempts Cycle will make.
       notify:
+        description: Configuration options for notifying on container restart.
         type:
           - object
           - "null"
         properties:
           emails:
+            description: A list of emails Cycle will attempt to notify when a container restarts.
             type: array
             items:
               type: string
           web_hook:
+            description: >
+              An endpoint Cycle will make a request to.
+
+              The post body will contain an object that looks like:
+              ```
+              {
+                "instance_id": <the instance ID>,
+                "container_id": <the container ID>,
+                "environment_id": <the environment ID>,
+                "error": <a string of the error Cycle received from this container>,
+                "time": <a timestamp of when the restart happend>
+              }
+              ```
             type: string
   health_check:
+    description: Configuration options for automated container health checks.
     type:
       - object
       - "null"
@@ -147,11 +198,11 @@ properties:
     properties:
       command:
         type: string
-        description: The command to run as your health check
+        description: The command to run as the health check. Cycle executes this command within your container. A 0 exit code means success, and anything else means failure.
         example: /bin/sh healthcheck.sh
       retries:
         type: integer
-        description: The number of times to retry the command before marking an instance unhealthy
+        description: The number of times to retry the command before marking an instance unhealthy.
       interval:
         $ref: ../../Duration.yml
         description: How long to wait between running health checks.
@@ -165,8 +216,9 @@ properties:
         anyOf:
           - $ref: ../../Duration.yml
           - type: "null"
-        description: How long to wait after a container start event before starting health checks.
+        description: How long to wait after a container start event before running health checks.
   telemetry:
+    description: Configuration options for how the instance telemetry (CPU usage, etc) is handled.
     type:
       - object
       - "null"
@@ -187,6 +239,7 @@ properties:
         type:
           - string
           - "null"
-        description: A URL where Cycle will send telemetry data to.
+        description: A URL where Cycle will send telemetry data to. The payload will be an instance resource snapshot.
       disable:
         type: boolean
+        description: If true, Cycle will not aggregate telemetry for this container's instances.

@@ -1,6 +1,6 @@
 title: StackContainerScaleThresholdRam
 type: object
-description: Describes the RAM threshold at which scaling will occur
+description: Describes the RAM threshold at which scaling will occur.
 required:
   - type
   - details
@@ -17,4 +17,6 @@ properties:
       used:
         type: string
         description: The limit (maximum) amount of RAM each instance of the given container can use before triggering a scaling event.
-        example: "1G, 2M"
+        examples:
+          - "1G"
+          - "50M"

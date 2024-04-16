@@ -1,12 +1,13 @@
 title: StackSpecScopedVariableRawSource
 type: object
-description: A stack spec resource.
+description: A variable with a hard-coded value.
 required:
   - type
   - details
 properties:
   type:
     type: string
+    description: The type of scoped variable.
     enum:
       - raw
   details:
@@ -29,7 +30,7 @@ properties:
         properties:
           iv:
             type: string
-            description: A string describing the IV Hex associated with the encryption of the variable
+            description: A string describing the IV Hex associated with the encryption of the variable.
           hint:
             type: string
             description: A user specified hint that will suggest what the encryption key might be

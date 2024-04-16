@@ -1,33 +1,41 @@
 title: StackContainerConfigIntegrations
 type: object
+description: Configuration options for additional integrations/features that Cycle provides.
 properties:
   webhooks:
+    description: Enable additional webhooks that Cycle will call out to during the course of a container's lifetime. All webhooks send a payload as an object containing the instance, container, server, and environment IDs.
     type:
       - object
       - "null"
     properties:
       events:
+        description: Webhooks that are triggered during a container event.
         type:
           - object
           - "null"
         properties:
           deploy:
+            description: Cycle will call this endpoint when the container is deployed.
             type:
               - string
               - "null"
           start:
+            description: Cycle will call this endpoint when the container is started.
             type:
               - string
               - "null"
           stop:
+            description: Cycle will call this endpoint when the container is stopped.
             type:
               - string
               - "null"
       config:
+        description: The webhook to hit when the container's configuration is changed.
         type:
           - string
           - "null"
   lets_encrypt:
+    description: When enabled, this integration will configure Let's Encrypt certificates that will be injected into the container at runtime. The certificates will be managed by the platform and renewed automatically.
     type:
       - object
       - "null"
@@ -57,6 +65,7 @@ properties:
           - string
           - "null"
   files:
+    description: When enabled, Cycle will fetch and inject remote files into the container at the specified destination during runtime.
     type:
       - array
       - "null"
@@ -71,6 +80,7 @@ properties:
         destination:
           type: string
   backups:
+    description: When enabled, Cycle will automatically manage backups of this container. This is only available for stateful containers.
     type:
       - object
       - "null"
@@ -80,16 +90,19 @@ properties:
       - restore
       - retention
     properties:
-      destination:
-        type: string
+      integration_id:
+        $ref: ../../HybridIdentifier.yml
+        description: An identifier of an integration that supports backups. All backups will be sent to this destination.
       backup:
         type: object
+        description: Configuration options for how the container should be backed up.
         required:
           - command
           - timeout
           - cron_string
         properties:
           command:
+            description: The command to run to capture a backup. The output sent to `STDOUT` will be captured and sent to the specified integration.
             type: string
           timeout:
             description: How long the backup will attempt to run before timing out.
@@ -97,10 +110,12 @@ properties:
               - $ref: ../../Duration.yml
               - type: "null"
           cron_string:
+            description: A cron string describing how often to run the backup command.
             type:
               - string
               - "null"
       restore:
+        description: Configuration options for how the backup should be restored.
         type:
           - object
           - "null"
@@ -122,6 +137,7 @@ properties:
           - type: "null"
         default: "365d"
   shared_file_systems:
+    description: When enabled, Cycle will mount a shared host directory into this container. The directory will be shared with all other containers that mount it.
     type:
       - object
       - "null"
