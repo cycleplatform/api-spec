@@ -21,7 +21,7 @@ properties:
       - replace_existing
     properties:
       add_new:
-        description: When deploying to the environment, any scoped variables that are new to the environment will be created if this is set to true. 
+        description: If set to true, any scoped variables that are new to the environment will be created when deployed.
         type: boolean
       replace_existing:
         description: When deploying to the environment, any scoped variables defined in the build that match an existing scoped variable in the environment will cause the existing scoped variable to be updated to the new value. 
