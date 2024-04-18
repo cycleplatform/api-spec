@@ -30,6 +30,24 @@ properties:
       - edge
       - function
     default: first-available
+  function:
+    description: Configuration options for containers using the 'function' deployment strategy.
+    type: 
+      - object
+      - "null"
+    properties: 
+      max_pool_size:
+        description: The maximum number of instances that Cycle can pre-allocate (includes auto-scaled instances).
+        type: integer
+      max_shard_concurrency:
+        description: For each shard (scheduler), the maximum number of tasks it can run in parallel.
+        type: integer
+      max_runtime:
+        description: The maximum amount of time a function instance can run before timing out.
+        $ref: ../../Duration.yml
+      max_queue_time:
+        description: The maximum amount of time Cycle will wait for an instance to be available.
+        $ref: ../../Duration.yml
   stateful:
     description: Configuration options for stateful containers.
     type:
