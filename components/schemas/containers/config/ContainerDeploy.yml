@@ -18,12 +18,15 @@ properties:
     properties:
       max_pool_size:
         description: The maximum number of instances that Cycle can pre-allocate (includes auto-scaled instances).
-        type: integer
+        type:
+          - integer
+          - "null"
         nullable: true
       max_shard_concurrency:
         description: For each shard (scheduler), the maximum number of tasks it can run in parallel.
-        type: integer
-        nullable: true
+        type:
+          - integer
+          - "null"
       max_runtime:
         anyOf:
           - $ref: ../../Duration.yml
