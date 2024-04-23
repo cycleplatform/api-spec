@@ -22,6 +22,7 @@ get:
             - instances_count
             - domains
             - ips
+            - deployment_strategy
     - name: include
       in: query
       required: false
@@ -186,8 +187,8 @@ post:
         application/json:
           schema:
             type: object
-            required: 
-              -  data
+            required:
+              - data
             properties:
               data:
                 $ref: ../../../components/schemas/containers/Container.yml
