@@ -15,6 +15,7 @@ discriminator:
     container.delete: steps/ContainerDeleteStep.yml
     container.reimage: steps/ContainerReimageStep.yml
     container.restart: steps/ContainerRestartStep.yml
+    container.function.trigger: steps/ContainerFunctionTriggerStep.yml
 
     environment.create: steps/EnvironmentCreateStep.yml
     environment.start: steps/EnvironmentStartStep.yml
@@ -50,6 +51,7 @@ oneOf:
   - $ref: steps/ContainerDeleteStep.yml
   - $ref: steps/ContainerReimageStep.yml
   - $ref: steps/ContainerRestartStep.yml
+  - $ref: steps/ContainerFunctionTriggerStep.yml
 
   # environment steps
   - $ref: steps/EnvironmentCreateStep.yml

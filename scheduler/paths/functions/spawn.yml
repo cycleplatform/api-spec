@@ -27,15 +27,19 @@ post:
               $ref: ../../components/ClaimToken.yml
             instance_id:
               $ref: ../../../components/schemas/ID.yml
-            arguments:
-              type: array
-              description: Arguments to pass to the Instance.
-              items:
-                type: string
-            environment_variables:
-              type: object
-              additionalProperties:
-                type: string
+            runtime_variables:
+              description: Optional variables that affect the runtime of the container.
+              type: 
+                - object
+                - "null"
+              properties:
+                environment_variables:
+                  description: Environment variables to inject into the container.
+                  type: 
+                    - object
+                    - "null"
+                  additionalProperties: 
+                    type: string
   responses:
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml

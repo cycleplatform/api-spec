@@ -101,6 +101,10 @@ get:
           range-end:
             description: The end date from when to pull the containers
             $ref: ../../../components/schemas/DateTime.yml
+          deployment_strategy:
+            type: string
+            description: |
+              `filter[deployment_strategy]=strategy` deployment strategy filtering by strategy string.  Submit the deployment strategy (example: "function") of the strategy you wish to filter for and the return will be any containers matching that description.
 
     - $ref: ../../../components/parameters/SortParam.yml
     - $ref: ../../../components/parameters/PageParam.yml
@@ -186,8 +190,8 @@ post:
         application/json:
           schema:
             type: object
-            required: 
-              -  data
+            required:
+              - data
             properties:
               data:
                 $ref: ../../../components/schemas/containers/Container.yml

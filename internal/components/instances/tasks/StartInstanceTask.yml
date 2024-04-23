@@ -19,11 +19,8 @@ properties:
         $ref: ../../../../components/schemas/ID.yml
       container_id:
         $ref: ../../../../components/schemas/ID.yml
-      arguments:
-        type: array
-        items:
-          type: string
-      environment_variables:
-        type: object
-        additionalProperties:
-          type: string
+      function:
+        anyOf: 
+          - $ref: ../../../../components/schemas/containers/functions/FunctionInitOpts.yml
+          - type: "null"
+          

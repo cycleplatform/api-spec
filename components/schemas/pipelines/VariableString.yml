@@ -1,0 +1,4 @@
+title: VariableString
+description: >
+  A string value for a pipeline that supports a variable. To use as a variable, set this string to `{{variable}}` where `variable` is a custom name.
+type: string

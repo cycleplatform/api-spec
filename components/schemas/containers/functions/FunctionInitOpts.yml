@@ -1,0 +1,12 @@
+title: FunctionInitOpts
+description: Initialization options used when starting a function instance.
+type: object
+required:
+  - token
+  - runtime_variables
+properties:
+  token: 
+    type: string
+    description: A custom token used for identifying and managing a claim. Can be any valid string.
+  runtime_variables:
+    $ref: FunctionRuntimeVariables.yml
