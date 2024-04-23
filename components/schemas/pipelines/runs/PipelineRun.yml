@@ -67,6 +67,7 @@ properties:
                   - container.stop
                   - container.restart
                   - container.delete
+                  - container.function.trigger
                   - stack.build.create
                   - stack.build.deploy
                   - stack.build.generate
