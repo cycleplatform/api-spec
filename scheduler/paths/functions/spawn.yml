@@ -33,13 +33,6 @@ post:
                 - object
                 - "null"
               properties:
-                arguments:
-                  description: Arguments to append to the end of the container's startup command.
-                  type:
-                    - array
-                    - "null"
-                  items:
-                    type: string
                 environment_variables:
                   description: Environment variables to inject into the container.
                   type: 
