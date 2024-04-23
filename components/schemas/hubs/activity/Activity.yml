@@ -201,6 +201,7 @@ properties:
       - container.task.reconfigure
       - container.reconfigure
       - container.task.volumes.reconfigure
+      - container.function.trigger
       - container.volumes.reconfigure
       - container.create
       - container.restart
