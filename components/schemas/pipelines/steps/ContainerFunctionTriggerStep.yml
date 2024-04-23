@@ -1,0 +1,36 @@
+title: ContainerFunctionTriggerStep
+type: object
+description: Settings for triggering a function in a pipeline.
+required:
+  - action
+  - details
+properties:
+  identifier:
+    type: string
+    description: An identifier for the step.
+  options:
+    type: object
+    properties:
+      skip:
+        type: boolean
+  action:
+    type: string
+    description: The action that the step takes.
+    enum:
+      - container.function.trigger
+  details:
+    type: object
+    required:
+      - container
+      - runtime_variables
+    properties:
+      container:
+        description: The container to trigger.
+        $ref: ../FluidIdentifier.yml
+      token: 
+        description: A custom token used for identifying and managing a claim. Can be any valid string.
+        anyOf: 
+          - $ref: ../VariableString.yml
+          - type: "null"
+      runtime_variables:
+        $ref: ../../containers/functions/FunctionRuntimeVariables.yml

@@ -1,0 +1,18 @@
+title: FunctionRuntimeVariables
+description: Variables that affect the runtime of a function container.
+type: object
+properties:
+  arguments:
+    description: Arguments to append to the end of the container's startup command.
+    type:
+      - array
+      - "null"
+    items:
+      type: string
+  environment_variables:
+    description: Environment variables to inject into the container.
+    type: 
+      - object
+      - "null"
+    additionalProperties: 
+      type: string

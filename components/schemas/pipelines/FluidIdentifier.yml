@@ -7,7 +7,7 @@ description: |
   - `id:<mongo id>`: A raw resource ID
   - `resource:<a resource identifier>`: A compound identifier pointing to a resource.
   - `from:<stage/step>`: For referencing a previous pipeline step.
-example: |
+examples:
   - id:6515098637b66c233ed164e7
   - resource:cluster:dev,env:demo,container:api
   - from:/image-create
