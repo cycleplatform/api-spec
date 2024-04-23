@@ -67,8 +67,8 @@ info:
     email: support@cycle.io
 
 tags:
-  - name: Accounts  
-    description: Your Cycle account. Endpoints related to managing your account, setting up two-factor auth, or inviting other members to a hub.
+  - name: Accounts
+    description: Endpoints related to managing your account, setting up two-factor auth, or inviting other members to a hub.
 
   - name: Environments
     description: "Environments are logical groupings of containers. All containers deployed inside an environment automatically have a private network built between them, enabling seamless communication."
@@ -94,7 +94,6 @@ tags:
     description: "A subgroup of containers, instances refers to calls that work with container instance resources. "
   - name: Jobs
     description: "Jobs are calls which refer to managing job resources."
-  
 
 security:
   - bearerAuth: []
@@ -224,10 +223,10 @@ paths:
     "$ref": "./paths/containers/instances/tasks.yml"
   "/v1/containers/{containerId}/instances/{instanceId}/volumes":
     "$ref": "./paths/containers/instances/volumes.yml"
-  ? "/v1/containers/{containerId}/instances/{instanceId}/telemetry/resources/report"
-  : "$ref": paths/containers/instances/telemetry/report.yml
-  ? "/v1/containers/{containerId}/instances/{instanceId}/telemetry/resources/stream"
-  : "$ref": paths/containers/instances/telemetry/stream.yml
+  "/v1/containers/{containerId}/instances/{instanceId}/telemetry/resources/report":
+    "$ref": paths/containers/instances/telemetry/report.yml
+  "/v1/containers/{containerId}/instances/{instanceId}/telemetry/resources/stream":
+    "$ref": paths/containers/instances/telemetry/stream.yml
   "/v1/containers/{containerId}/servers":
     "$ref": "./paths/containers/servers.yml"
   "/v1/containers/{containerId}/servers/usable":
