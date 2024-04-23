@@ -68,7 +68,7 @@ info:
 
 tags:
   - name: Accounts  
-    description: Your Cycle account. Endpoints related to managing your account, setting up two-factor auth, or inviting other members to a hub.
+    description: Endpoints related to managing your account, setting up two-factor auth, or inviting other members to a hub.
 
   - name: Environments
     description: "Environments are logical groupings of containers. All containers deployed inside an environment automatically have a private network built between them, enabling seamless communication."
