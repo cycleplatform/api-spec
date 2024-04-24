@@ -3,7 +3,7 @@ get:
   summary: List Billing Tiers
   description: Returns list of availiable Billing Tiers.
   tags:
-    - Billing
+    - Plans
   parameters: []
   responses:
     200:

@@ -3,7 +3,7 @@ get:
   summary: List Trigger Keys
   description: Requires the `pipelines-manage` capability.
   tags:
-    - Pipelines
+    - Trigger Keys
   parameters:
     - name: pipelineId
       in: path
@@ -54,7 +54,7 @@ post:
   summary: Create Trigger Key
   description: Requires the `pipelines-manage` capability.
   tags:
-    - Pipelines
+    - Trigger Keys
   parameters:
     - name: pipelineId
       in: path

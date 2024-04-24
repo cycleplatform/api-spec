@@ -6,7 +6,7 @@ post:
 
     Requires the `billing-services-manage` capability.
   tags:
-    - Billing
+    - Orders
   parameters:
     - name: orderId
       description: The ID of the requested Order

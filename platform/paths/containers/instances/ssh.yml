@@ -7,7 +7,6 @@ get:
 
     Requires the `containers-ssh` capability.
   tags:
-    - Containers
     - Instances
   parameters:
     - name: containerId

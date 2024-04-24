@@ -3,7 +3,7 @@ get:
   summary: List Clusters
   description: Requires the `servers-view` capability.
   tags:
-    - Infrastructure
+    - Servers
   responses:
     200:
       description: Returns a list of Clusters on this Hub.

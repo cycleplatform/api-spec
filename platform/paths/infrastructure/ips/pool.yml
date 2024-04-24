@@ -3,7 +3,7 @@ get:
   summary: Get IP Pool
   description: Requires the `infrastructure-ips-manage` capability.
   tags:
-    - Infrastructure
+    - IPs
   parameters:
     - name: poolId
       description: The ID for the given pool.
@@ -49,7 +49,7 @@ delete:
   summary: Delete IP Pool
   description: Requires the `infrastructure-ips-manage` capability.
   tags:
-    - Infrastructure
+    - IPs
   parameters:
     - name: poolId
       description: The ID for the given IP Pool.

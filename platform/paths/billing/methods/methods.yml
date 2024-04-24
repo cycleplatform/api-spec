@@ -1,7 +1,7 @@
 get:
   operationId: "getBillingMethods"
   tags:
-    - Billing
+    - Methods
   parameters:
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/FilterParam.yml
@@ -30,7 +30,7 @@ get:
 post:
   operationId: "createBillingMethod"
   tags:
-    - Billing
+    - Methods
   parameters: []
   summary: Create Billing Method
   description: Requires the `billing-methods-manage` capability.

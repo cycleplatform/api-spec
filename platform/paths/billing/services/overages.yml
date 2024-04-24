@@ -2,7 +2,7 @@ get:
   operationId: "getBillingOverages"
   summary: List Billing Overages
   tags:
-    - Billing
+    - Services
   parameters:
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/FilterParam.yml

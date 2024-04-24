@@ -3,7 +3,6 @@ get:
   summary: List Scoped Variables
   description: Requires the `scoped-variables-view` capability.
   tags:
-    - Environments
     - Scoped Variables
   parameters:
     - name: environmentId
@@ -57,7 +56,6 @@ post:
   summary: Create Scoped Variable
   description: Requires the `scoped-variables-manage` capability.
   tags:
-    - Environments
     - Scoped Variables
   parameters:
     - name: environmentId

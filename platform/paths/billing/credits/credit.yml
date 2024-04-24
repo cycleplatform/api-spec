@@ -3,7 +3,7 @@ get:
   summary: Get Billing Credit
   description: Requires the `billing-credits-view` capability.
   tags:
-    - Billing
+    - Credits
   parameters:
     - name: creditsId
       description: The ID for a given credit.

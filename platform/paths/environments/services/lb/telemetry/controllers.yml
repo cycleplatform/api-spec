@@ -7,7 +7,7 @@ get:
     ## Permissions
     Requires the `environments-view` capability. Also requires the user to have access specifically to the requested Environment.
   tags:
-    - Environments
+    - Services/Load Balancer
   parameters:
     - name: environmentId
       description: The ID of the environment of the desired load balancer.

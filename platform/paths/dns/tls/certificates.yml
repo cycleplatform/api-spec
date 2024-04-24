@@ -6,7 +6,7 @@ get:
 
     Requires the `dns-view` capability.
   tags:
-    - DNS
+    - TLS
   parameters:
     - name: domain
       in: query

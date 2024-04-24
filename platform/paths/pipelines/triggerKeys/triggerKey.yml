@@ -3,7 +3,7 @@ get:
   summary: Get Trigger Key
   description: Requires the `pipelines-manage` capability.
   tags:
-    - Pipelines
+    - Trigger Keys
   parameters:
     - name: pipelineId
       in: path
@@ -84,7 +84,7 @@ delete:
   summary: Delete Trigger Key
   description: Requires the `pipelines-manage` capability.
   tags:
-    - Pipelines
+    - Trigger Keys
   parameters:
     - name: pipelineId
       in: path

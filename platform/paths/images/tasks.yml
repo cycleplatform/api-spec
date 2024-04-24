@@ -1,6 +1,6 @@
 post:
   operationId: "createImageJob"
-  summary: Image Jobs
+  summary: Create Image Job
   description: |
     Used to perform different actions on a given Image. 
 

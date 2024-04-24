@@ -3,7 +3,7 @@ get:
   summary: Get DNS Zone
   description: Requires the `dns-view` capability.
   tags:
-    - DNS
+    - Zones
   parameters:
     - name: zoneId
       description: The ID of the zone.
@@ -30,7 +30,7 @@ patch:
   summary: Update DNS Zone
   description: Requires the `dns-manage` capability.
   tags:
-    - DNS
+    - Zones
   parameters:
     - name: zoneId
       description: The ID of the zone.
@@ -86,7 +86,7 @@ delete:
   summary: Delete DNS Zone
   description: Requires the `dns-manage` capability.
   tags:
-    - DNS
+    - Zones
   parameters:
     - name: zoneId
       description: The ID of the zone.

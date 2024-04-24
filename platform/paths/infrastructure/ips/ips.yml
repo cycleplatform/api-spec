@@ -3,7 +3,7 @@ get:
   summary: List Pool IPs
   description: Requires the `infrastructure-ips-manage` capability.
   tags:
-    - Infrastructure
+    - IPs
   parameters:
     - name: poolId
       description: The ID of the IP Pool to fetch the IPs of.

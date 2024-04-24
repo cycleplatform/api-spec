@@ -1,11 +1,11 @@
 patch:
   operationId: "updateAccountInvite"
-  summary: Accept or reject an Invite to join a Hub
+  summary: Accept or Reject an Invite
   description: Accept/reject a pending Invite to join a Hub.
   security:
     - bearerAuth: []
   tags:
-    - Accounts
+    - Memberships
   parameters:
     - name: inviteId
       description: The ID of the given Invite.

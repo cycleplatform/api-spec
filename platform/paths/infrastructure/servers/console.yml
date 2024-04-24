@@ -6,7 +6,6 @@ get:
 
     Requires the `servers-console` capability.
   tags:
-    - Infrastructure
     - Servers
   parameters:
     - name: serverId

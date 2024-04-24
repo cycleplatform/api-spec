@@ -3,7 +3,7 @@ post:
   summary: Create Scheduler Service Job
   description: Creates a task that will update the scheduler service's configuration.
   tags:
-    - Environments
+    - Services/Scheduler
   parameters:
     - name: environmentId
       description: The ID of the environment where this scheduler service resides.

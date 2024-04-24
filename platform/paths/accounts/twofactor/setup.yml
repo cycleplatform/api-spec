@@ -3,7 +3,7 @@ get:
   summary: Get Two-Factor Auth Setup
   description: Gets the barcode and secret required for setting up two-factor authentication for the Account.
   tags:
-    - Accounts
+    - Two-Factor Auth
   parameters: []
   responses:
     200:

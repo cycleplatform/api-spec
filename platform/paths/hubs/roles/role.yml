@@ -6,8 +6,7 @@ get:
 
     Requries the `hubs-roles-manage` capability.
   tags:
-    - Hubs
-    - ACLs
+    - Roles
   parameters:
     - name: roleId
       description: The ID of the Role.
@@ -110,8 +109,7 @@ delete:
 
     Requires the 'hubs-roles-manage' capability.
   tags:
-    - Hubs
-    - ACLs
+    - Roles
   parameters:
     - name: roleId
       description: The ID of the Role.

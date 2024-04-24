@@ -3,7 +3,7 @@ get:
   summary: Get Load Balancer Service
   description: Requires the `environments-view` capability.
   tags:
-    - Environments
+    - Services/Load Balancer
   parameters:
     - name: environmentId
       description: The environmentId where the load balancer resides.

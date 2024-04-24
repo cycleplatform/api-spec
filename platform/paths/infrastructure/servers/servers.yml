@@ -3,7 +3,6 @@ get:
   summary: List Servers
   description: Requires the `servers-view` capability.
   tags:
-    - Infrastructure
     - Servers
   parameters:
     - name: meta
@@ -91,7 +90,6 @@ post:
   summary: Create Server
   description: Requires the `servers-provision` capability.
   tags:
-    - Infrastructure
     - Servers
   parameters: []
   requestBody:

@@ -3,7 +3,6 @@ get:
   summary: List API Keys
   description: Requires the `api-keys-manage` capability.
   tags:
-    - Hubs
     - API Keys
   parameters:
     - $ref: ../../../../components/parameters/SortParam.yml
@@ -32,7 +31,6 @@ post:
   summary: Create API Key
   description: Requires the `api-keys-manage` capability.
   tags:
-    - Hubs
     - API Keys
   parameters: []
   requestBody:

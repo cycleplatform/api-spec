@@ -3,7 +3,6 @@ post:
   summary: Create Server Job
   description: Used to perform different actions on a given Server. Requires the `servers-manage` capability.
   tags:
-    - Infrastructure
     - Servers
   parameters:
     - name: serverId

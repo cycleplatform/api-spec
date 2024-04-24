@@ -3,7 +3,7 @@ get:
   summary: List Container Backups
   description: Requires the `containers-backups-view` capability.
   tags:
-    - Containers
+    - Backups
   parameters:
     - name: containerId
       description: The ID of the requested Container.

@@ -2,7 +2,7 @@ get:
   operationId: "getBillingSupportPlans"
   summary: List Support Plans
   tags:
-    - Billing
+    - Plans
   parameters:
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/FilterParam.yml

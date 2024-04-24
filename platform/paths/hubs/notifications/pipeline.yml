@@ -11,8 +11,7 @@ get:
 
     Requires the `apionly-notifications-listen` capability.
   tags:
-    - Hubs
-    - Notifications
+    - Hub Notifications
   parameters: []
   responses:
     101:

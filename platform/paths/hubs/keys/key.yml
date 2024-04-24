@@ -3,7 +3,6 @@ get:
   summary: Get API Key
   description: Requries the `api-keys-manage` capability.
   tags:
-    - Hubs
     - API Keys
   parameters:
     - name: apikeyId
@@ -30,7 +29,6 @@ patch:
   summary: Update API Key
   description: Requires the `api-keys-manage` capability.
   tags:
-    - Hubs
     - API Keys
   parameters:
     - name: apikeyId
@@ -89,7 +87,6 @@ delete:
   summary: Delete API Key
   description: Requires the 'api-keys-manage' capability.
   tags:
-    - Hubs
     - API Keys
   parameters:
     - name: apikeyId

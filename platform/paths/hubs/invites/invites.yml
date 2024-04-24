@@ -3,7 +3,7 @@ get:
   summary: List Hub Invites
   description: Requires the `hubs-invites-manage` capability.
   tags:
-    - Hubs
+    - Hub Members
   security:
     - bearerAuth: []
   parameters:
@@ -65,7 +65,7 @@ post:
   summary: Create Hub Invite
   description: Requires the `hubs-invites-send` capability.
   tags:
-    - Hubs
+    - Hub Members
   parameters: []
   requestBody:
     description: Parameters for creating a Hub invite.

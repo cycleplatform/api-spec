@@ -6,7 +6,6 @@ post:
 
     Requires the `containers-instance-migrate` capability.
   tags:
-    - Containers
     - Instances
   parameters:
     - name: containerId

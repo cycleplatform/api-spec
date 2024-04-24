@@ -3,7 +3,7 @@ get:
   summary: Get VPN Service
   description: Requires the `environments-vpn` capability.
   tags:
-    - Environments
+    - Services/VPN
   parameters:
     - name: environmentId
       description: The environmentId where the VPN resides.

@@ -3,7 +3,7 @@ get:
   summary: Get Billing Method
   description: Requires the `billing-methods-manage` capability.
   tags:
-    - Billing
+    - Methods
   parameters:
     - name: methodId
       description: The ID of the billing method.
@@ -31,7 +31,7 @@ patch:
   summary: Update Billing Invoice
   description: Requires the `billing-methods-manage` capability.
   tags:
-    - Billing
+    - Methods
   parameters:
     - name: methodId
       description: The ID of the billing method.

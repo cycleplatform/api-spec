@@ -3,7 +3,6 @@ get:
   summary: List Server Tags
   description: Requires the `servers-view` capability.
   tags:
-    - Infrastructure
     - Servers
   parameters:
     - name: filter

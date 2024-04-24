@@ -1,6 +1,6 @@
 post:
   operationId: "createImagesJob"
-  summary: Images Prune
+  summary: Prune Images
   description: |
     Used to perform different actions on a given image. 
 

@@ -3,7 +3,6 @@ get:
   summary: Get Scoped Variable
   description: Requires the `scoped-variables-view` capability.
   tags:
-    - Environments
     - Scoped Variables
   parameters:
     - name: environmentId
@@ -38,7 +37,6 @@ patch:
   summary: Update Scoped Variable
   description: Requires the `scoped-variables-manage` capability.
   tags:
-    - Environments
     - Scoped Variables
   parameters:
     - name: environmentId
@@ -98,7 +96,6 @@ delete:
   summary: Delete Scoped Variable
   description: Requires the `scoped-variables-manage` capability.
   tags:
-    - Environments
     - Scoped Variables
   parameters:
     - name: environmentId

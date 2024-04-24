@@ -3,7 +3,7 @@ patch:
   summary: Update DNS Zone Record
   description: Requires the `dns-manage` capability.
   tags:
-    - DNS
+    - Records
   parameters:
     - name: zoneId
       description: The ID of the Zone.
@@ -48,7 +48,7 @@ delete:
   summary: Delete DNS Zone Record
   description: Requires the `dns-manage` capability.
   tags:
-    - DNS
+    - Records
   parameters:
     - name: zoneId
       description: The ID of the Zone.

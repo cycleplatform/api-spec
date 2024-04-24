@@ -3,7 +3,6 @@ post:
   summary: Create Stack Build Job
   description: Requires the `stacks-manage` capability.
   tags:
-    - Stacks
     - Stack Builds
   parameters:
     - name: stackId

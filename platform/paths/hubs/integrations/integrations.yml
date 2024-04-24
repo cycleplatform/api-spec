@@ -6,7 +6,6 @@ get:
 
     Requires the `hubs-integrations-view` capability.
   tags:
-    - Hubs
     - Integrations
   security:
     - bearerAuth: []
@@ -75,7 +74,6 @@ post:
   summary: Create Integration
   description: Create an Integration resource within a hub. If the Integration definition specifies that it requires verification, then you must submit a verify task to enable it.
   tags:
-    - Hubs
     - Integrations
   security:
     - bearerAuth: []

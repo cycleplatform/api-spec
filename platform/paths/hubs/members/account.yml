@@ -3,7 +3,7 @@ get:
   summary: Get Hub Member Account
   description: Requires the `hubs-members-view` capability.
   tags:
-    - Hubs
+    - Hub Members
   parameters:
     - name: accountId
       description: The ID of the member's Account.

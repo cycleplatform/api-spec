@@ -3,7 +3,7 @@ get:
   summary: List Billing Orders
   description: Requires the `billing-services-manage` capability.
   tags:
-    - Billing
+    - Orders
   parameters:
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/FilterParam.yml
@@ -42,7 +42,7 @@ post:
   summary: Create Billing Order
   description: Requires the `billing-orders-manage` capability.
   tags:
-    - Billing
+    - Orders
   parameters:
     - name: meta
       in: query

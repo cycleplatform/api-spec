@@ -7,7 +7,6 @@ post:
       - Requires a valid hub membership to the target hub.
       - Requires the `hubs-integrations-manage` capability.
   tags:
-    - Hubs
     - Integrations
   parameters:
     - name: integrationId

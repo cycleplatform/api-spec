@@ -2,7 +2,7 @@ get:
   operationId: "getProviderLocations"
   summary: List Provider Locations
   tags:
-    - Infrastructure
+    - Providers
   parameters:
     - name: providerVendor
       description: The vendor for the given Provider Integration. Example `gcp`, `equinix-metal`, `abstraction`, etc. Can also use the Integration ID.

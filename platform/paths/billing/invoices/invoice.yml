@@ -3,7 +3,7 @@ get:
   summary: Get Billing Invoice
   description: Requires the `billing-invoices-view` capability.
   tags:
-    - Billing
+    - Invoices
   parameters:
     - name: invoiceId
       description: The ID of the invoice.
