@@ -3,7 +3,7 @@ get:
   summary: Get Billing Service
   description: Requries the `billing-services-view` capability.
   tags:
-    - Billing
+    - Services
   parameters:
     - name: servicesId
       description: The ID of the Billing Service.

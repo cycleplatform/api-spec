@@ -6,7 +6,7 @@ post:
 
     Requires the `billing-invoices-pay` capability.
   tags:
-    - Billing
+    - Invoices
   parameters:
     - name: invoiceId
       description: The ID of the invoice.

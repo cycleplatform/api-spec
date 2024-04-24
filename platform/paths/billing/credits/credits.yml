@@ -6,7 +6,7 @@ get:
 
     Requires the `billing-credits-view` capability.
   tags:
-    - Billing
+    - Credits
   parameters:
     - $ref: ../../../../components/parameters/SortParam.yml
     - name: filter

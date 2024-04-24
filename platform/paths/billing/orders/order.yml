@@ -3,7 +3,7 @@ get:
   summary: Get Billing Order
   description: Requires the `billing-services-manage` capability.
   tags:
-    - Billing
+    - Orders
   parameters:
     - name: orderId
       description: The ID of the billing order.
@@ -43,7 +43,7 @@ patch:
   summary: Update Billing Order
   description: Requires the `billing-services-manage` capability.
   tags:
-    - Billing
+    - Orders
   parameters:
     - name: orderId
       description: The ID of the billing order.

@@ -66,9 +66,39 @@ info:
   contact:
     email: support@cycle.io
 
+x-tagGroups:
+  - name: Accounts
+    tags: 
+      - Accounts
+  - name: Billing
+    tags:
+      - Credits
+      - Invoices
+      - Methods
+      - Orders
+      - Plans
+      - Services
+
 tags:
   - name: Accounts
     description: Endpoints related to managing your account, setting up two-factor auth, or inviting other members to a hub.
+  - name: Announcements
+    description: Endpoints for reading announcements posted by the Cycle team.
+
+    # Billing
+  - name: Credits
+    description: Endpoints related to credits applied to a hub.
+  - name: Invoices
+    description: Endpoints related to hub invoices, including the ability to pay an invoice.
+  - name: Methods
+    description: Endpoints related to managing payment methods associated with a hubs.
+  - name: Orders
+    description: Endpoints related to orders placed on a hub.
+  - name: Plans
+    description: Endpoints for fetching the available billing plans for a hub.
+  - name: Services
+    description: Endpoints related to the active services used by a hub.
+
 
   - name: Environments
     description: "Environments are logical groupings of containers. All containers deployed inside an environment automatically have a private network built between them, enabling seamless communication."
@@ -93,7 +123,7 @@ tags:
   - name: Instances
     description: "A subgroup of containers, instances refers to calls that work with container instance resources. "
   - name: Jobs
-    description: "Jobs are calls which refer to managing job resources."
+    description: "Jobs are calls which refer to managing job resources."  
 
 security:
   - bearerAuth: []
