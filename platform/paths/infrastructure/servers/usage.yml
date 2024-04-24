@@ -3,7 +3,6 @@ get:
   summary: Get Server Usage
   description: Requires the `servers-view` capability.
   tags:
-    - Infrastructure
     - Servers
   parameters:
     - name: serverId

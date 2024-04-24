@@ -3,7 +3,7 @@ get:
   summary: Get Hub Member
   description: Requires the `hubs-members-view` capability.
   tags:
-    - Hubs
+    - Hub Members
   security:
     - bearerAuth: []
   parameters:
@@ -52,7 +52,7 @@ patch:
   summary: "Update Hub Member"
   description: Requires the `hubs-members-manage` capability.
   tags:
-    - Hubs
+    - Hub Members
   security:
     - bearerAuth: []
   parameters:
@@ -94,7 +94,7 @@ delete:
   summary: Delete Hub Member
   description: Requires the `hubs-members-manage` capability.
   tags:
-    - Hubs
+    - Hub Members
   security:
     - bearerAuth: []
   parameters:

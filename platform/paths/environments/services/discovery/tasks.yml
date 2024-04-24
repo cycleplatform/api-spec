@@ -3,7 +3,7 @@ post:
   summary: Create Discovery Service Job
   description: Creates a task that will update the discovery service's configuration.
   tags:
-    - Environments
+    - Services/Discovery
   parameters:
     - name: environmentId
       description: The ID of the environment where this discovery service resides.

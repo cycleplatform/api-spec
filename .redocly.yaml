@@ -76,6 +76,9 @@ theme:
           unit: 8
           paddingVertical: 16
           paddingHorizontal: 8
+        groupItems:
+          textTransform: uppercase
+          fontWeight: bold
       rightPanel:
         textColor: "ivory"
         backgroundColor: "rgb(18, 18, 21)"

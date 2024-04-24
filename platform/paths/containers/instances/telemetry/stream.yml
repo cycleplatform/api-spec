@@ -7,9 +7,7 @@ get:
 
     Requires the `containers-view` capability.
   tags:
-    - Containers
     - Instances
-    - Stream
   parameters:
     - name: containerId
       description: The ID of the requested container.

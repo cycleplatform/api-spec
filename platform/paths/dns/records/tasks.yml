@@ -6,7 +6,7 @@ post:
 
     Requires the `dns-manage` capability.
   tags:
-    - DNS
+    - Records
   parameters:
     - name: zoneId
       description: The ID of the zone.

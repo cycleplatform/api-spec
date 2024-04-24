@@ -3,7 +3,6 @@ get:
   summary: List Instances
   description: Requires the `containers-view` capability.
   tags:
-    - Containers
     - Instances
   parameters:
     - name: containerId

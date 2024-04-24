@@ -3,7 +3,6 @@ get:
   summary: Get Server
   description: Requires the `servers-view` capability.
   tags:
-    - Infrastructure
     - Servers
   parameters:
     - name: serverId
@@ -66,7 +65,6 @@ patch:
   summary: Update Server
   description: Requires the `servers-manage` capability.
   tags:
-    - Infrastructure
     - Servers
   parameters:
     - name: serverId

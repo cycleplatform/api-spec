@@ -5,7 +5,7 @@ get:
   security:
     - bearerAuth: []
   tags:
-    - Accounts
+    - Memberships
   parameters:
     - name: meta
       in: query

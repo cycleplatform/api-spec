@@ -3,7 +3,7 @@ post:
   summary: Create Network Job
   description: Requires the `sdn-networks-manage` capability.
   tags:
-    - SDN
+    - Networks
   parameters:
     - name: networkId
       in: path

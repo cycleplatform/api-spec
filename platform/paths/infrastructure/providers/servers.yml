@@ -2,7 +2,7 @@ get:
   operationId: "getProviderServers"
   summary: List Provider Servers
   tags:
-    - Infrastructure
+    - Providers
   parameters:
     - name: providerVendor
       description: The vendor for the given provider. Example `gcp`, `equinix-metal`, `abstraction`, etc. Can also use a Provider Integration ID.

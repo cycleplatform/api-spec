@@ -8,7 +8,6 @@ get:
     Requires the `containers-view` capability.
   tags:
     - Containers
-    - Images
   parameters:
     - name: containerId
       description: The ID of the requested Container.

@@ -2,8 +2,6 @@ get:
   operationId: "getCompatibleServers"
   tags:
     - Containers
-    - Infrastructure
-    - Servers
   summary: List Compatible Servers
   description: |
     Gets a list of servers that are compatible with the specified Container and its restrictions (tags, etc).

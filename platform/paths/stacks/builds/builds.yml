@@ -3,7 +3,6 @@ get:
   summary: List Builds
   description: Requires the `stacks-view` capability.
   tags:
-    - Stacks
     - Stack Builds
   parameters:
     - name: stackId
@@ -70,7 +69,6 @@ post:
   summary: Create Build
   description: Requires the `stacks-manage` capability.
   tags:
-    - Stacks
     - Stack Builds
   parameters:
     - name: stackId

@@ -3,7 +3,7 @@ post:
   summary: Create Load Balancer Service Job
   description: Creates a task that will update the load balancer's configuration.
   tags:
-    - Environments
+    - Services/Load Balancer
   parameters:
     - name: environmentId
       description: The ID of the environment where this load balancer resides.

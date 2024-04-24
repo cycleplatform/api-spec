@@ -3,7 +3,7 @@ post:
   summary: Create VPN Service Job
   description: Used to reconfigure or reset the Environment VPN. Requires the `environments-vpn-manage` capability.
   tags:
-    - Environments
+    - Services/VPN
   parameters:
     - name: environmentId
       description: The ID of the Environment the VPN service resides in.

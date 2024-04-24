@@ -3,7 +3,7 @@ get:
   summary: List TLS Generation Attempts
   description: Requires the `dns-view` capability.
   tags:
-    - DNS
+    - TLS
   parameters:
     - name: filter
       in: query

@@ -3,7 +3,7 @@ get:
   summary: List DNS Zones
   description: Requires the `dns-view` capability.
   tags:
-    - DNS
+    - Zones
   parameters:
     - name: include
       in: query
@@ -57,7 +57,7 @@ get:
 post:
   operationId: "createDNSZone"
   tags:
-    - DNS
+    - Zones
   parameters: []
   summary: Create DNS Zone
   description: Requires the `dns-manage` capability.

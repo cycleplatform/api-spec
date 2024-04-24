@@ -3,7 +3,6 @@ get:
   summary: Get Available Integrations
   description: Returns a map of available integrations categorized by their type.
   tags:
-    - Hubs
     - Integrations
   responses:
     default:

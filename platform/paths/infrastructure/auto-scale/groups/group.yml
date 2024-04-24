@@ -3,8 +3,7 @@ get:
   summary: Get Auto-Scale Group
   description: Requires the `autoscale-groups-view` capability.
   tags:
-    - Infrastructure
-    - Auto-Scale
+    - Auto-Scale Groups
   parameters:
     - name: groupId
       description: The ID for the given Auto-Scale Group.
@@ -50,8 +49,7 @@ patch:
   summary: Update Auto-Scale Group
   description: Requires the `autoscale-groups-manage` capability.
   tags:
-    - Infrastructure
-    - Auto-Scale
+    - Auto-Scale Groups
   parameters:
     - name: groupId
       description: The ID for the given Auto-Scale Group.
@@ -102,8 +100,7 @@ delete:
   summary: Delete Auto-Scale Group
   description: Requires the `autoscale-group-manage` capability.
   tags:
-    - Infrastructure
-    - Auto-Scale
+    - Auto-Scale Groups
   parameters:
     - name: groupId
       description: The ID for the given autoscale group.

@@ -3,7 +3,7 @@ get:
   summary: List DNS Zone Records
   description: Requires the `dns-view` capability.
   tags:
-    - DNS
+    - Records
   parameters:
     - name: zoneId
       description: The ID of the zone.
@@ -69,7 +69,7 @@ post:
   summary: Create DNS Zone Record
   description: Requires the `dns-manage` capability.
   tags:
-    - DNS
+    - Records
   parameters:
     - name: zoneId
       description: The ID of the Zone.

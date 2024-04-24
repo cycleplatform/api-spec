@@ -7,8 +7,6 @@ get:
     Requires the `containers-view` capability.
   tags:
     - Containers
-    - Infrastructure
-    - Servers
   parameters:
     - name: containerId
       description: The ID of the requested container.

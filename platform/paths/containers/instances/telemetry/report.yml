@@ -6,7 +6,6 @@ get:
 
     Requires the `containers-view` capability.
   tags:
-    - Containers
     - Instances
   parameters:
     - name: containerId

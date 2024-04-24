@@ -3,7 +3,7 @@ get:
   summary: List VPN Users
   description: Requires the `environments-vpn-manage` capability.
   tags:
-    - Environments
+    - Services/VPN
   parameters:
     - name: environmentId
       description: The environmentId where the VPN service resides.
@@ -34,7 +34,7 @@ post:
   summary: Create VPN User
   description: Requires the `environments-vpn-manage` capability.
   tags:
-    - Environments
+    - Services/VPN
   parameters:
     - name: environmentId
       description: The environmentId where the VPN service resides.

@@ -6,7 +6,6 @@ get:
 
     Requires the `hubs-integrations-view` capability.
   tags:
-    - Hubs
     - Integrations
   security:
     - bearerAuth: []
@@ -51,7 +50,6 @@ get:
 patch:
   operationId: updateIntegration
   tags:
-    - Hubs
     - Integrations
   security:
     - bearerAuth: []
@@ -123,7 +121,6 @@ patch:
 delete:
   operationId: deleteIntegration
   tags:
-    - Hubs
     - Integrations
   security:
     - bearerAuth: []

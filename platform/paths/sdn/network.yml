@@ -3,7 +3,7 @@ get:
   summary: Get Network
   description: Requires the `sdn-networks-view` capability.
   tags:
-    - SDN
+    - Networks
   parameters:
     - name: networkId
       in: path
@@ -48,7 +48,7 @@ patch:
   summary: Update Network
   description: Requires the `sdn-networks-manage` capability.
   tags:
-    - SDN
+    - Networks
   parameters:
     - name: networkId
       in: path
@@ -103,7 +103,7 @@ delete:
   summary: Delete Network
   description: Requires the `sdn-networks-manage` capability.
   tags:
-    - SDN
+    - Networks
   parameters:
     - name: networkId
       in: path

@@ -7,7 +7,7 @@ get:
 
     Requires the `environments-view` capability.
   tags:
-    - Environments
+    - Deployments
   parameters:
     - name: environmentId
       description: The ID of the Environment to get the list of deployments for.
