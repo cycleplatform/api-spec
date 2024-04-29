@@ -1,0 +1,11 @@
+title: StackSpecVpnService
+description: Configuration options for the VPN service.
+type: object
+allOf:
+  - $ref: ../StackService.yml
+  - type: object
+    required:
+      - config
+    properties:
+      config:
+        $ref: ./StackSpecVpnConfig.yml

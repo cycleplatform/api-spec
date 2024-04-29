@@ -7,7 +7,7 @@ properties:
   public:
     type: boolean
     description: |
-      If true, the scheduler service API will be exposed publicly via the load balancer. This is useful for allowing external services spin up function containers using custom logic.
+      If true, this scheduler will be accessible over the public internet. It will enable a LINKED record to be pointed to the scheduler container, and inbound requests to trigger function containers.
   access_keys:
     type: array
     items:

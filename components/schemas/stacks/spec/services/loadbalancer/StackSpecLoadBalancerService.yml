@@ -1,0 +1,13 @@
+title: StackSpecLoadBalancerService
+description: Configuration options for the load balancer service.
+type: object
+allOf:
+  - $ref: ../StackService.yml
+  - type: object
+    required:
+      - config
+    properties:
+      config:
+        anyOf:
+          - $ref: ./StackSpecLoadBalancerConfig.yml
+          - type: "null"

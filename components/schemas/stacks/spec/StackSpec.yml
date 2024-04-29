@@ -51,59 +51,28 @@ properties:
     additionalProperties:
       $ref: ./StackContainer.yml
   services:
+    description: Settings for any auxillary services deployed as part of the environment, such as load balancer and discovery services.
     title: StackSpecServices
     type:
       - object
       - "null"
     properties:
       discovery:
-        type:
-          - object
-          - "null"
-        properties:
-          hosts:
-            type:
-              - object
-              - "null"
-            additionalProperties:
-              type: object
-              properties:
-                ipv4:
-                  type:
-                    - array
-                    - "null"
-                  items:
-                    type: string
-                ipv6:
-                  type:
-                    - array
-                    - "null"
-                  items:
-                    type: string
+        anyOf: 
+          - type: "null"
+          - $ref: services/discovery/StackSpecDiscoveryService.yml
       loadbalancer:
         anyOf:
-          - $ref: services/loadbalancer/StackSpecLoadBalancerConfig.yml
           - type: "null"
+          - $ref: services/loadbalancer/StackSpecLoadBalancerService.yml
+      scheduler:
+        anyOf: 
+          - type: "null"
+          - $ref: services/scheduler/StackSpecSchedulerService.yml
       vpn:
-        type: object
-        required:
-          - auth
-          - allow_internet
-        properties:
-          auth:
-            type: object
-            required:
-              - cycle_accounts
-              - vpn_accounts
-            properties:
-              webhook:
-                type: string
-              cycle_accounts:
-                type: boolean
-              vpn_accounts:
-                type: boolean
-          allow_internet:
-            type: boolean
+        anyOf: 
+          - type: "null"
+          - $ref: services/vpn/StackSpecVpnService.yml
   annotations:
     type: object
     description: Additional meta info about the stack.

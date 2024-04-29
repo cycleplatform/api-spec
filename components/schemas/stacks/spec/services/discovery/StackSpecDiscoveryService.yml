@@ -1,0 +1,11 @@
+title: StackSpecDiscoveryService
+description: Configuration options for the discovery service.
+type: object
+allOf:
+  - $ref: ../StackService.yml
+  - type: object
+    required:
+      - config
+    properties:
+      config:
+        $ref: ./StackSpecDiscoveryConfig.yml

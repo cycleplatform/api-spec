@@ -1,0 +1,21 @@
+# Technically all of these are required, but the schema to allow that was verbose and downstream tooling was having issues making that work.
+# For now, we're going to keep it simple, but if implementing a stack, you MUST include all three of these if any one is defined.
+title: StackService 
+description: Stack spec configuration options common to all environment services. If one of these properties is defined, all must be.
+type: object
+properties:
+  enable:
+    description: Whether or not this service should be enabled.
+    type: 
+      - boolean
+      - "null"
+  high_availability:
+    description: Whether or not Cycle should run multiple instances of this service for high availability.
+    type: 
+      - boolean
+      - "null"
+  auto_update:
+    description: Whether or not Cycle should automatically update this service when a new version is released.
+    type: 
+      - boolean
+      - "null"

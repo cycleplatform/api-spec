@@ -1,0 +1,51 @@
+title: StackSpecSchedulerService
+description: Configuration options for the scheduler service.
+type: object
+allOf:
+  - $ref: ../StackService.yml
+  - type: object
+    required:
+      - config
+    properties:
+      config:
+        $ref: ./StackSpecSchedulerConfig.yml
+
+
+# The below is accurate, but ended up being overly complex and tools had trouble with it.
+# Going with a simpler version, with a note about making sure all three 'Stack Service' properties are defined.
+# oneOf:
+#   - allOf:
+#       - $ref: ../StackService.yml
+#       - type: object
+#         required:
+#           - config
+#         properties:
+#           config:
+#             $ref: ./StackSpecSchedulerConfig.yml
+#   - type:
+#       - object
+#       - "null"
+#     additionalProperties: false
+#     required:
+#       - config
+#     properties:
+#       config:
+#         $ref: ./StackSpecSchedulerConfig.yml
+#     # must copy in the properties manually to add additionalProperties false here...:(    
+#   - type: object
+#     additionalProperties: false
+#     required:
+#       - enable
+#       - high_availability
+#       - auto_update
+#     properties:
+#       enable:
+#         description: Whether or not this service should be enabled.
+#         type: boolean
+#       high_availability:
+#         description: Whether or not Cycle should run multiple instances of this service for high availability.
+#         type: boolean
+#       auto_update:
+#         description: Whether or not Cycle should automatically update this service when a new version is released.
+#         type: boolean
+      
