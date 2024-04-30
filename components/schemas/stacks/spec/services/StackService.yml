@@ -1,0 +1,13 @@
+title: StackService 
+description: Stack spec configuration options common to all environment services. If one of these properties is defined, all must be.
+type: object
+properties:
+  enable:
+    description: Whether or not this service should be enabled.
+    type: boolean
+  high_availability:
+    description: Whether or not Cycle should run multiple instances of this service for high availability.
+    type: boolean
+  auto_update:
+    description: Whether or not Cycle should automatically update this service when a new version is released.
+    type: boolean

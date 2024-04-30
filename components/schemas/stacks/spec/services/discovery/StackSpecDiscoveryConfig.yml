@@ -1,0 +1,22 @@
+type: object
+properties:
+  hosts:
+    description: A custom mapping of hosts - for forced resolution of specific IPs for a domain.
+    type:
+      - object
+      - "null"
+    additionalProperties:
+      type: object
+      properties:
+        ipv4:
+          type:
+            - array
+            - "null"
+          items:
+            type: string
+        ipv6:
+          type:
+            - array
+            - "null"
+          items:
+            type: string
