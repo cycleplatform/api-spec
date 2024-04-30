@@ -31,13 +31,15 @@ properties:
         $ref: ../../Identifier.yml
       
       deployment:
-        type: object
-        properties:
-          version:
-            anyOf:
-              - $ref: ../../Version.yml
-              - type: "null"
-          tag:
-            anyOf:
-              - $ref: ../../Version.yml
-              - type: "null"
+        description: The selector for which deployment to apply the new tag to.
+        oneOf:
+          - type: object
+            properties:
+              version: 
+                description: Targets the deployment with this exact version.
+                $ref: ../../Version.yml
+          - type: object
+            properties:
+              tag:
+                description: Targets the deployment with this exact tag applied to it.
+                type: string
