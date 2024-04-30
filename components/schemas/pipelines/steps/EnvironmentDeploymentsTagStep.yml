@@ -29,10 +29,15 @@ properties:
         $ref: ../FluidIdentifier.yml
       tag:
         $ref: ../../Identifier.yml
+      
       deployment:
         type: object
-        required:
-          - version
         properties:
           version:
-            $ref: ../../Version.yml
+            anyOf:
+              - $ref: ../../Version.yml
+              - type: "null"
+          tag:
+            anyOf:
+              - $ref: ../../Version.yml
+              - type: "null"
