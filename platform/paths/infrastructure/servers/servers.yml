@@ -139,14 +139,29 @@ post:
                       type: object
                       properties:
                         provision_options:
-                          type: object
+                          type:
+                            - object
+                            - "null"
                           properties:
                             attached_storage_size:
-                              type: number
+                              type:
+                                - integer
+                                - "null"
+                              description: For providers that support setting this value dynamically; A number representing the GB size of the volume to be attached to the server.
                             reservation_id:
-                              type: string
+                              type:
+                                - string
+                                - "null"
+                              description: A reservation ID to be used to provision a server that has been reserved at the provider.
+                            encrypt_storage:
+                              type:
+                                - boolean
+                                - "null"
+                              description: For providers that support this setting, this option will encrypt storage for server.
                         zone:
-                          type: string
+                          type:
+                            - string
+                            - "null"
   responses:
     202:
       description: Returns a Job Descriptor.
