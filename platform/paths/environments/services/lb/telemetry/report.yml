@@ -19,18 +19,23 @@ get:
       in: query
       # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706
       style: deepObject
-      required: false
+      required: true
       description: |
         ## Filter Field 
         The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
       schema:
         type: object
+        required:
+          - controller
         properties:
           range-start:
             description: The start date from when to pull load balancer telemetry data
             $ref: ../../../../../../components/schemas/DateTime.yml
           range-end:
             description: The end date from when to pull load balancer telemetry data
+            $ref: ../../../../../../components/schemas/DateTime.yml
+          controller:
+            description: The specific controller to fetch telemetry for
             $ref: ../../../../../../components/schemas/DateTime.yml
   responses:
     200:
