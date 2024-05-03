@@ -4,7 +4,8 @@ required:
   - time
   - started
   - dataset_id
-  - metrics
+  - current
+  - cumulative
 properties:
   time:
     $ref: ../../../../DateTime.yml
@@ -14,13 +15,33 @@ properties:
     type: string
   dataset_id:
     type: integer
-  router:
-    anyOf:
-      - $ref: LoadBalancerTelemetryRouterMetrics.yml
-      - type: "null"
-  urls:
-    anyOf:
-      - $ref: LoadBalancerTelemetryUrlMetrics.yml
-      - type: "null"
-  metrics:
-    $ref: LoadBalancerTelemetryControllerMetrics.yml
+  current:
+    type: object
+    required:
+      - metrics
+    properties:
+      router:
+        anyOf:
+          - $ref: LoadBalancerTelemetryRouterMetrics.yml
+          - type: "null"
+      urls:
+        anyOf:
+          - $ref: LoadBalancerTelemetryUrlMetrics.yml
+          - type: "null"
+      metrics:
+        $ref: LoadBalancerTelemetryControllerMetrics.yml
+  cumulative:
+    type: object
+    required:
+      - metrics
+    properties:
+      router:
+        anyOf:
+          - $ref: LoadBalancerTelemetryRouterMetrics.yml
+          - type: "null"
+      urls:
+        anyOf:
+          - $ref: LoadBalancerTelemetryUrlMetrics.yml
+          - type: "null"
+      metrics:
+        $ref: LoadBalancerTelemetryControllerMetrics.yml

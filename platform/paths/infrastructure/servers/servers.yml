@@ -142,6 +142,7 @@ post:
                           type:
                             - object
                             - "null"
+                          description: Advanced options to apply to the provisioning of a server.
                           properties:
                             attached_storage_size:
                               type:
