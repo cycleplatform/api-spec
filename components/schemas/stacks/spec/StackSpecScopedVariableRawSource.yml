@@ -15,7 +15,6 @@ properties:
     required:
       - value
       - blob
-      - secret
     properties:
       value:
         type: string
