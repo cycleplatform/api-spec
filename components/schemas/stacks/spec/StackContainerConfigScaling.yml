@@ -1,4 +1,4 @@
-title: StackContainerConfigScaling.yml
+title: StackContainerConfigScaling
 type: object
 description: Stack configuration options for auto-scaling.
 required:

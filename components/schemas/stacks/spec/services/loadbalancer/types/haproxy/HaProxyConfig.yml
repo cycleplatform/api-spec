@@ -1,3 +1,4 @@
+title: HaProxyConfig
 type: object
 description: Describes settings that are passed to HAProxy within the load
   balancer.

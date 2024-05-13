@@ -1,4 +1,4 @@
-title: HAProxyConfig
+title: HAProxyConfigSet
 type: object
 required:
   - frontend
