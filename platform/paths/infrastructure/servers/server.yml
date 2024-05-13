@@ -108,6 +108,11 @@ patch:
                     overcommit:
                       type: boolean
                       description: A boolean where true represents the desire for the Server to allow the overcommitting of shares.
+                    overcommit_multiple:
+                      type:
+                        - integer
+                        - "null"
+                      description: An integer that describes the capability of a server to overcommit shares.  This will allow more containers to run on a given server based on the servers available CPU cores. 1 CPU core = 10 shares by default.
   responses:
     200:
       description: Returns a Server.
