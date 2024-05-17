@@ -1,0 +1,41 @@
+post:
+  operationId: "createFunctionJob"
+  summary: Create Function Job
+  description: |
+    Used to perform different actions on a given Function Container.
+
+    Requires the `containers-functions-trigger` capability.
+  tags:
+    - Functions
+  parameters:
+    - name: containerId
+      description: The ID of the requested container.
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    description: Parameters for creating a new container function job.
+    content:
+      application/json:
+        schema:
+          discriminator:
+            propertyName: action
+            mapping:
+              trigger: ../../../../components/schemas/containers/functions/taskActions/trigger.yml
+          oneOf:
+            - $ref: ../../../../components/schemas/containers/functions/taskActions/trigger.yml
+  responses:
+    202:
+      description: Returns a Job Descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/jobs/JobDescriptor.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml

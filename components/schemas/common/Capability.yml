@@ -30,6 +30,7 @@ enum:
   - containers-ssh
   - containers-manage
   - containers-view
+  - containers-functions-trigger
   - containers-volumes-manage
   - containers-volumes-view
 
