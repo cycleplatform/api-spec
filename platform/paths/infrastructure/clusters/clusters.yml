@@ -1,0 +1,57 @@
+get:
+  operationId: "getClusters"
+  summary: List Clusters
+  description: Requires the `clusters-view` capability.
+  tags:
+    - Clusters
+  parameters:
+    - $ref: ../../../../components/parameters/PageParam.yml
+  responses:
+    200:
+      description: Returns a list of Clusters.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: ../../../../components/schemas/infrastructure/clusters/Cluster.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
+
+post:
+  operationId: "createCluster"
+  summary: Create Cluster
+  description: Requires the `clusters-manage` capability.
+  tags:
+    - Clusters
+  parameters: []
+  requestBody:
+    description: Parameters for creating a new Cluster.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - identifier
+          properties:
+            identifier:
+              $ref: ../../../../components/schemas/Identifier.yml
+  responses:
+    201:
+      description: Returns a Cluster.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/infrastructure/clusters/Cluster.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
