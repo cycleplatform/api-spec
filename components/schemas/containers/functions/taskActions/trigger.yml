@@ -12,7 +12,6 @@ properties:
   contents:
     type: object
     required:
-      - container
       - runtime_variables
     properties:
       token:
