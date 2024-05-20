@@ -1,0 +1,23 @@
+title: TriggerAction
+type: object
+required:
+  - action
+  - contents
+properties:
+  action:
+    type: string
+    enum:
+      - trigger
+    description: The name of the action to perform.
+  contents:
+    type: object
+    required:
+      - runtime_variables
+    properties:
+      token:
+        description: A custom token used for identifying and managing a claim. Can be any valid string.
+        type:
+          - string
+          - "null"
+      runtime_variables:
+        $ref: ../../../containers/functions/FunctionRuntimeVariables.yml
