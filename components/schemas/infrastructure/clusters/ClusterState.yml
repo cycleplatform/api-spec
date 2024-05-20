@@ -1,0 +1,14 @@
+---
+title: ClusterState
+allOf:
+  - required:
+      - current
+    properties:
+      current:
+        description: The current state of the cluster.
+        type: string
+        enum:
+          - live
+          - deleting
+          - deleted
+  - "$ref": "../../State.yml"

@@ -1,0 +1,58 @@
+get:
+  operationId: "getCluster"
+  summary: Get Cluster
+  description: |
+    Gets a Cluster.
+    Requires the `clusters-view` capability.
+  tags:
+    - Cluster
+  parameters:
+    - name: clusterId
+      description: The ID of the requested Cluster.
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    200:
+      description: Returns a Cluster.
+      content:
+        application/json:
+          schema:
+            title: "GetClusterReturn"
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/infrastructure/clusters/Cluster.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
+
+delete:
+  operationId: "deleteCluster"
+  summary: Delete Cluster
+  description: Requires the `clusters-manage` capability.
+  tags:
+    - Clusters
+  parameters:
+    - name: clusterId
+      description: The ID of the requested Cluster.
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    202:
+      description: Returns a Job Descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/jobs/JobDescriptor.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml

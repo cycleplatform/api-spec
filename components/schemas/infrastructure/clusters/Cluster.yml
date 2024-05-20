@@ -1,0 +1,40 @@
+title: Cluster
+type: object
+description: Clusters are groups of servers that al
+required:
+  - id
+  - identifier
+  - creator
+  - hub_id
+  - state
+  - events
+properties:
+  id:
+    type: string
+  identifier:
+    $ref: ../../Identifier.yml
+    description: A human readable slugged identifier for this cluster.
+  creator:
+    $ref: ../../creators/CreatorScope.yml
+  hub_id:
+    $ref: ../../HubID.yml
+  state:
+    $ref: ./ClusterState.yml
+  events:
+    title: ClusterEvents
+    type: object
+    description: A collection of timestamps for each event in the cluster's lifetime.
+    required:
+      - created
+      - updated
+      - deleted
+    properties:
+      created:
+        description: The timestamp of when the cluster was created.
+        $ref: ../../DateTime.yml
+      updated:
+        description: The timestamp of when the cluster was updated.
+        $ref: ../../DateTime.yml
+      deleted:
+        description: The timestamp of when the cluster was deleted.
+        $ref: ../../DateTime.yml
