@@ -73,6 +73,8 @@ enum:
   - servers-console
   - servers-decommission
   - servers-login
+  - clusters-manage
+  - clusters-view
   - servers-provision
   - servers-manage
   - servers-view
