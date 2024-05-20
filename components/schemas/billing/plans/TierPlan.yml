@@ -51,6 +51,7 @@ properties:
       - ial
       - autoscale
       - deployments
+      - geo_dns
     properties:
       gpu:
         type: boolean
@@ -59,6 +60,8 @@ properties:
       deployments:
         type: boolean
       autoscale:
+        type: boolean
+      geo_dns:
         type: boolean
   max_daily_api_requests:
     type:
