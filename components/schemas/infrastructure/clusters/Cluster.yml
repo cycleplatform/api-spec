@@ -1,6 +1,6 @@
 title: Cluster
 type: object
-description: Clusters are groups of servers that al
+description: Clusters are groups of servers that allow physical separation of resources
 required:
   - id
   - identifier
