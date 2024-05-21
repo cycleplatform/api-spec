@@ -99,6 +99,10 @@ patch:
               type:
                 - string
                 - "null"
+            acl:
+              anyOf:
+                - $ref: ../../../components/schemas/common/ACL.yml 
+                - type: "null"
             about:
               anyOf:
                 - $ref: ../../../components/schemas/environments/EnvironmentAbout.yml

@@ -8,7 +8,7 @@ get:
     - $ref: ../../../../components/parameters/PageParam.yml
   responses:
     200:
-      description: Returns a list of Clusters.
+      description: Returns a list of clusters.
       content:
         application/json:
           schema:
@@ -31,7 +31,7 @@ post:
     - Clusters
   parameters: []
   requestBody:
-    description: Parameters for creating a new Cluster.
+    description: Parameters for creating a new cluster.
     content:
       application/json:
         schema:
@@ -41,9 +41,13 @@ post:
           properties:
             identifier:
               $ref: ../../../../components/schemas/Identifier.yml
+            acl:
+              anyOf:
+                - $ref: ../../../../components/schemas/common/ACL.yml 
+                - type: "null"
   responses:
     201:
-      description: Returns a Cluster.
+      description: Returns a cluster.
       content:
         application/json:
           schema:
