@@ -40,32 +40,6 @@ properties:
   role_id:
     definition: The ID of the Role assigned to this Hub Membership.
     $ref: ../ID.yml
-  permissions:
-    type: object
-    title: "HubMembershipPermissions"
-    description: Information about this member's permissions for a given hub.
-    required:
-      - all_environments
-      - environments
-    properties:
-      all_environments:
-        type: boolean
-        description: A boolean where true represents the member has access to view and manage all environments for the hub.
-      environments:
-        description: An array of environments this membership has access to.
-        type: array
-        items:
-          type: object
-          description: Environment membership resources.
-          required:
-            - id
-            - manage
-          properties:
-            id:
-              "$ref": "../ID.yml"
-            manage:
-              type: boolean
-              description: A boolean where true represents this environment can be managed by the membership (i.e. its not just read-only).
   preferences:
     type: object
     title: HubMembershipPreferences
@@ -128,5 +102,3 @@ properties:
       employee_id:
         type: string
         description: The ID of the employee this membership is associated with.
-  meta:
-    $ref: "./HubMembershipMeta.yml"
