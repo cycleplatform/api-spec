@@ -8,18 +8,17 @@ get:
     - Clusters
   parameters:
     - name: clusterId
-      description: The ID of the requested Cluster.
+      description: The ID of the requested cluster.
       in: path
       required: true
       schema:
         type: string
   responses:
     200:
-      description: Returns a Cluster.
+      description: Returns a cluster.
       content:
         application/json:
           schema:
-            title: "GetClusterReturn"
             type: object
             required:
               - data
@@ -28,7 +27,46 @@ get:
                 $ref: ../../../../components/schemas/infrastructure/clusters/Cluster.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
-
+  
+patch:
+  operationId: updateCluster
+  summary: Update Cluster
+  description: Requires the `clusters-manage` capability.
+  tags:
+    - Clusters
+  parameters:
+    - name: clusterId
+      description: The ID of the requested cluster.
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    description: Parameters for updating a cluster.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            acl:
+              anyOf:
+                - $ref: ../../../../components/schemas/common/ACL.yml 
+                - type: "null"
+  responses:
+    200:
+      description: Returns a cluster.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/infrastructure/clusters/Cluster.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
+              
 delete:
   operationId: "deleteCluster"
   summary: Delete Cluster
@@ -37,14 +75,14 @@ delete:
     - Clusters
   parameters:
     - name: clusterId
-      description: The ID of the requested Cluster.
+      description: The ID of the requested cluster.
       in: path
       required: true
       schema:
         type: string
   responses:
     202:
-      description: Returns a Job Descriptor.
+      description: Returns a job descriptor.
       content:
         application/json:
           schema:

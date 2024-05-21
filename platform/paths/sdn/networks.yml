@@ -101,6 +101,10 @@ post:
             identifier:
               type: string
               description: A Network identifier used to construct http calls that specifically use this Network over another.
+            acl:
+              anyOf:
+                - $ref: ../../../components/schemas/common/ACL.yml 
+                - type: "null"
             cluster:
               type: string
               description: The infrastructure Cluster the Environments belonging to this Network belong to.

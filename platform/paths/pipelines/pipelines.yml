@@ -95,6 +95,10 @@ post:
               type: array
               items:
                 $ref: ../../../components/schemas/pipelines/PipelineStage.yml
+            acl:
+              anyOf:
+                - $ref: ../../../components/schemas/common/ACL.yml
+                - type: "null"
             disable:
               type: boolean
               description: A boolean where true signifies the Pipeline is disabled.

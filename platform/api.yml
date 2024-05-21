@@ -553,7 +553,7 @@ paths:
   "/v1/infrastructure/clusters":
     $ref: "./paths/infrastructure/clusters/clusters.yml"
   "/v1/infrastructure/clusters/{clusterId}":
-    $ref: "./paths/infrastructure/clusters/clusterSingle.yml"
+    $ref: "./paths/infrastructure/clusters/cluster.yml"
 
   ## Servers
   "/v1/infrastructure/servers":
