@@ -4,7 +4,7 @@ description: A membership resource that is scoped to an individual hub.
 required:
   - id
   - hub_id
-  - role
+  - role_id
   - events
   - state
   - invitation
