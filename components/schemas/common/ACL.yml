@@ -1,0 +1,24 @@
+title: ACL
+description: An access control list. Defines which roles have which permissions on specific resources.
+type: object 
+properties:
+  roles:
+    type: object
+    additionalProperties:
+      type: object
+      title: ACLEntry
+      description: Permissions for an ACL entry.
+      required:
+        - view
+        - modify
+        - manage
+      properties:
+        view:
+          type: boolean
+          description: Can the user see / use this resource?
+        modify:
+          type: boolean
+          description: Can the user edit the state / name / identifier of this resource?
+        manage:
+          type: boolean
+          description: Can the user delete / update ACLs for this resource?

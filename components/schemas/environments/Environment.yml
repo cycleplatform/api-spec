@@ -57,6 +57,10 @@ properties:
     $ref: ./Features.yml
   services:
     $ref: ./EnvironmentServices.yml
+  acl:
+    anyOf:
+      - $ref: ../common/ACL.yml 
+      - type: "null"
   private_network:
     anyOf:
       - $ref: ./PrivateNetwork.yml

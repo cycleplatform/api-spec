@@ -33,6 +33,10 @@ properties:
     type: array
     items:
       $ref: ./PipelineStage.yml
+  acl:
+    anyOf:
+      - $ref: ../common/ACL.yml 
+      - type: "null"
   events:
     title: PipelineEvents
     type: object

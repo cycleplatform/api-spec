@@ -48,6 +48,10 @@ properties:
         added:
           description: A timestamp of when the environment was added.
           $ref: ../../DateTime.yml
+  acl:
+    anyOf:
+      - $ref: ../../common/ACL.yml 
+      - type: "null"
   events:
     title: NetworkEvents
     type: object

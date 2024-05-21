@@ -22,6 +22,10 @@ properties:
   hosted:
     type: boolean
     description: A boolean where true represents this zone is a hosted zone.
+  acl:
+    anyOf:
+      - $ref: ../common/ACL.yml 
+      - type: "null"
   state:
     "$ref": "./ZoneState.yml"
   events:
