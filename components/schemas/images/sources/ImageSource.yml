@@ -41,6 +41,10 @@ properties:
         description: The ID or Identifier of the Integration used to do the build.
   creator:
     "$ref": "../../creators/CreatorScope.yml"
+  acl:
+    anyOf:
+      - $ref: ../../common/ACL.yml 
+      - type: "null"
   state:
     "$ref": "./ImageSourceState.yml"
   events:

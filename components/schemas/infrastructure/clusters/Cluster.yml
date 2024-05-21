@@ -1,6 +1,6 @@
 title: Cluster
 type: object
-description: Clusters are groups of servers that allow physical separation of resources
+description: Clusters are groups of servers that allow physical separation of resources.
 required:
   - id
   - identifier
@@ -18,6 +18,10 @@ properties:
     $ref: ../../creators/CreatorScope.yml
   hub_id:
     $ref: ../../HubID.yml
+  acl:
+    anyOf:
+      - $ref: ../../common/ACL.yml 
+      - type: "null"
   state:
     $ref: ./ClusterState.yml
   events:

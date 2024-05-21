@@ -32,6 +32,10 @@ properties:
     description: A map of default variable values used when building this stack. A variable can be added anywhere in a stack using the format `{{var}}` where `var` would be a key in this map.
     additionalProperties:
       type: string
+  acl:
+    anyOf:
+      - $ref: ../common/ACL.yml 
+      - type: "null"
   events:
     title: StackEvents
     type: object
