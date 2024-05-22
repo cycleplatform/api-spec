@@ -36,20 +36,20 @@ properties:
   state:
     $ref: ./ApiKeyState.yml
   events:
-    title: HubEvents
+    title: ApiKeyEvents
     type: object
-    description: A collection of timestamps for each event in the hub's lifetime.
+    description: A collection of timestamps for each event in the API key's lifetime.
     required:
       - created
       - updated
       - deleted
     properties:
       created:
-        description: The timestamp of when the hub was created.
+        description: The timestamp of when the API key was created.
         $ref: ../DateTime.yml
       updated:
-        description: The timestamp of when the hub was updated.
+        description: The timestamp of when the API key was updated.
         $ref: ../DateTime.yml
       deleted:
-        description: The timestamp of when the hub was deleted.
+        description: The timestamp of when the API key was deleted.
         $ref: ../DateTime.yml
