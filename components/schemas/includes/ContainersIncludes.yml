@@ -1,5 +1,5 @@
 title: ContainersIncludes
 type: object
-description: A resource thats associated with a contianer.
+description: A resource that is associated with a container.
 additionalProperties:
   "$ref": "../containers/Container.yml"

@@ -1,0 +1,14 @@
+title: ApiKeyIncludes
+type: object
+description: A resource that is associated with an API key.
+properties:
+  roles:
+    type: object
+    description: A map of roles relevant to this API key, keyed by the role ID.
+    additionalProperties:
+      $ref: roles/Role.yml
+  roles:identifiers:
+    type: object
+    description: A map of roles relevant to this API key, keyed by the role ID.
+    additionalProperties:
+      $ref: ../ID.yml
