@@ -1,6 +1,6 @@
 title: HubMembershipsIncludes
 type: object
-description: A resource thats associated with a hub membershp.
+description: A resource that is associated with a hub membershp.
 properties:
   senders:
     type: object

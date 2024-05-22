@@ -1,6 +1,6 @@
 title: ComponentIncludes
 type: object
-description: A resource thats assocaited with activity.
+description: A resource that is associated with activity.
 additionalProperties:
   oneOf:
     - $ref: ../containers/Container.yml

@@ -1,5 +1,5 @@
 title: ServerIncludes
-description: A resource thats associated with a server.
+description: A resource that is associated with a server.
 type: object
 additionalProperties:
   "$ref": "../infrastructure/servers/Server.yml"
