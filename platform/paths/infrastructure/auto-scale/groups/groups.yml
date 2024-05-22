@@ -92,6 +92,10 @@ post:
               type: string
             identifier:
               type: string
+            acl:
+              anyOf:
+                - $ref: ../../../../../components/schemas/common/ACL.yml 
+                - type: "null"
             cluster:
               type: string
             scale:

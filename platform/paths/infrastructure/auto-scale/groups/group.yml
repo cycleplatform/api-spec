@@ -63,23 +63,27 @@ patch:
       application/json:
         schema:
           type: object
-          required:
-            - name
-            - identifier
-            - cluster
-            - scale
-            - infrastructure
           properties:
             name:
-              type: string
+              type: 
+                - string
+                - "null"
             identifier:
-              type: string
-            cluster:
-              type: string
+              type: 
+                - string
+                - "null"
+            acl:
+              anyOf:
+                - $ref: ../../../../../components/schemas/common/ACL.yml 
+                - type: "null"
             scale:
-              $ref: ../../../../../components/schemas/infrastructure/auto-scale/groups/AutoScaleGroupScale.yml
+              anyOf:
+                - $ref: ../../../../../components/schemas/infrastructure/auto-scale/groups/AutoScaleGroupScale.yml
+                - type: "null"
             infrastructure:
-              $ref: ../../../../../components/schemas/infrastructure/auto-scale/groups/AutoScaleGroupInfrastructure.yml
+              anyOf:
+                - $ref: ../../../../../components/schemas/infrastructure/auto-scale/groups/AutoScaleGroupInfrastructure.yml
+                - type: "null"
   responses:
     200:
       description: Returns an Auto-Scale Group.
