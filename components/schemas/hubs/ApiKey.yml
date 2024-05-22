@@ -7,64 +7,25 @@ required:
   - name
   - creator
   - secret
-  - permissions
-  - capabilities
+  - role_id
   - ips
   - state
   - events
 properties:
   id:
-    "$ref": "../ID.yml"
+    $ref: ../ID.yml
   hub_id:
-    "$ref": "../HubID.yml"
+    $ref: ../HubID.yml
   name:
     type: string
     description: A name for the API key.
   creator:
-    "$ref": "../creators/CreatorScope.yml"
+    $ref: ../creators/CreatorScope.yml
   secret:
     type: string
     description: The API key secret.
-  permissions:
-    type: object
-    description: Information about this members permissions for a given resource.
-    required:
-      - all_environments
-      - environments
-    properties:
-      all_environments:
-        type: boolean
-        description: A boolean where true represents the member has access to view and manage all environments for the resource.
-      environments:
-        description: An array of environments this resource has access to.
-        type: array
-        items:
-          type: object
-          description: Environment resource resources.
-          required:
-            - id
-            - manage
-          properties:
-            id:
-              "$ref": "../ID.yml"
-            manage:
-              type: boolean
-              description: A boolean where true represents this environment can be managed by the resource (i.e. its not just read-only).
-  capabilities:
-    type: object
-    description: An object holding information about the capabilities of this API key.
-    required:
-      - all
-      - specific
-    properties:
-      all:
-        type: boolean
-        description: A boolean where true represents this key has all available capabilities.
-      specific:
-        description: An array a capabilities this key has.
-        type: array
-        items:
-          "$ref": "../common/Capability.yml"
+  role_id:
+    $ref: ../ID.yml
   ips:
     type:
       - array
@@ -73,22 +34,22 @@ properties:
     items:
       type: string
   state:
-    "$ref": "./ApiKeyState.yml"
+    $ref: ./ApiKeyState.yml
   events:
-    title: HubEvents
+    title: ApiKeyEvents
     type: object
-    description: A collection of timestamps for each event in the hub's lifetime.
+    description: A collection of timestamps for each event in the API key's lifetime.
     required:
       - created
       - updated
       - deleted
     properties:
       created:
-        description: The timestamp of when the hub was created.
-        "$ref": "../DateTime.yml"
+        description: The timestamp of when the API key was created.
+        $ref: ../DateTime.yml
       updated:
-        description: The timestamp of when the hub was updated.
-        "$ref": "../DateTime.yml"
+        description: The timestamp of when the API key was updated.
+        $ref: ../DateTime.yml
       deleted:
-        description: The timestamp of when the hub was deleted.
-        "$ref": "../DateTime.yml"
+        description: The timestamp of when the API key was deleted.
+        $ref: ../DateTime.yml
