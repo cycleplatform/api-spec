@@ -83,3 +83,5 @@ properties:
       deleted:
         description: The timestamp of when the Role source was deleted.
         $ref: "../../DateTime.yml"
+  meta:
+    $ref: RoleMeta.yml
