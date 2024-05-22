@@ -1,14 +1,14 @@
-title: HubMembershipsIncludes
+title: ApiKeyIncludes
 type: object
 description: A resource thats associated with a hub membershp.
 properties:
   roles:
     type: object
-    description: A map of Roles relevant to this Hub Membership, keyed by the Role ID.
+    description: A map of Roles relevant to this API Key, keyed by the Role ID.
     additionalProperties:
       $ref: roles/Role.yml
   roles:identifiers:
     type: object
-    description: A map of Roles relevant to this Hub Membership, keyed by the Role ID.
+    description: A map of Roles relevant to this API Key, keyed by the Role ID.
     additionalProperties:
       $ref: ../ID.yml

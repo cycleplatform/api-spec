@@ -38,7 +38,7 @@ get:
               data:
                 $ref: ../../../../components/schemas/hubs/ApiKey.yml
               includes:
-                $ref: ../../../../components/schemas/hubs/HubMembershipIncludes.yml
+                $ref: ../../../../components/schemas/hubs/ApiKeyIncludes.yml
 
 patch:
   operationId: "updateAPIKey"
