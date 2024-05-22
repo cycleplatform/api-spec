@@ -39,27 +39,16 @@ post:
       application/json:
         schema:
           type: object
+          required:
+            - name
+            - role_id
           properties:
             name:
               type: string
               description: A name given to the API Key.
-            permissions:
-              $ref: ../../../../components/schemas/creators/Permissions.yml
-            capabilities:
-              type: object
-              description: An object defining the capabilities of the given API key.
-              required:
-                - all
-                - specific
-              properties:
-                all:
-                  type: boolean
-                  description: A boolean where true is giving the key all grantable capabilities.
-                specific:
-                  type: array
-                  description: An array of capabilites.
-                  items:
-                    $ref: ../../../../components/schemas/common/Capability.yml
+            role_id:
+              $ref: ../../../../components/schemas/ID.yml
+              description: The ID of the role this API Key is a member of.
             ips:
               type:
                 - array
