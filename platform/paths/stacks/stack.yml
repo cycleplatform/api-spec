@@ -49,6 +49,10 @@ patch:
             name:
               type: string
               description: A name for the Stack.
+            acl:
+              anyOf:
+                - $ref: ../../../components/schemas/common/ACL.yml
+                - type: "null"
             variables:
               type: object
               description: A map of default variable values used when building this Stack. A variable can be added anywhere in a Stack using the format `{{var}}` where `var` would be a key in this map.
