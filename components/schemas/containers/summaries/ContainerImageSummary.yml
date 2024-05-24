@@ -9,11 +9,11 @@ properties:
   id:
     $ref: "../../ID.yml"
   service:
-    type:
-      - string
-      - "null"
-    description: If this image is a service container this will say either `discovery` | `loadbalancer` | `vpn`.
-    enum:
-      - discovery
-      - loadbalancer
-      - vpn
+    anyOf:
+      - type: string
+        description: If this image is a service container this will say either `discovery` | `loadbalancer` | `vpn`.
+        enum:
+          - discovery
+          - loadbalancer
+          - vpn
+      - type: "null"
