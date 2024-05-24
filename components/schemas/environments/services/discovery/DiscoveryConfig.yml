@@ -2,6 +2,10 @@ title: DiscoveryConfig
 type: object
 description: The config object for the discovery service.
 properties:
+  empty_set_delay:
+    anyOf:
+      - $ref: ../../../Duration.yml
+      - type: "null"
   hosts:
     type:
       - object
