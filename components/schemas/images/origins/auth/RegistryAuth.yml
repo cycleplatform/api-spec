@@ -11,3 +11,4 @@ oneOf:
   - $ref: RegistryAuthUser.yml
   - $ref: RegistryAuthProvider.yml
   - $ref: RegistryAuthWebhook.yml
+  - type: "null"
