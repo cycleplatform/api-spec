@@ -8,3 +8,4 @@ enum:
   - edge
   - manual
   - function
+  - "null"

@@ -18,9 +18,7 @@ properties:
       - ** edge **: Cycle will prioritize geographic distribution of instances.
       - ** function **: Every ingress request/connection receives its own instance. 
       - ** manual **: Cycle will not make any decisions on where instances are deployed. Instead, instances must be deployed manually using the portal or API.
-    type:
-      - string
-      - "null"
+    type: string
     enum:
       - resource-density
       - manual
@@ -29,6 +27,7 @@ properties:
       - node
       - edge
       - function
+      - "null"
     default: first-available
   function:
     description: Configuration options for containers using the 'function' deployment strategy.
