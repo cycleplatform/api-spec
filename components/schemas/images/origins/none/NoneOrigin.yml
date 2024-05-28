@@ -8,5 +8,4 @@ properties:
     type: string
     enum:
       - none
-  details:
-    type: object
+
