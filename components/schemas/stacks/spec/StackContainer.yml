@@ -53,11 +53,11 @@ properties:
           - type: "null"
   role:
     description: The role applied to this container. **Not yet implemented**
-    type:
-      - string
-      - "null"
-    enum:
-      - "conductor"
+    anyOf: 
+      - type: string
+        enum:
+          - "conductor"
+      - type: "null"
   # pod:
   #   description: Pod settings. **Not yet implemented**
   #   type:
