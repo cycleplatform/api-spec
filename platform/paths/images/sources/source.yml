@@ -85,10 +85,6 @@ patch:
               anyOf:
                 - $ref: ../../../../components/schemas/Identifier.yml
                 - type: "null"
-            acl:
-              anyOf:
-                - $ref: ../../../../components/schemas/common/ACL.yml 
-                - type: "null"
             origin:
               $ref: "../../../../components/schemas/images/origins/ImageOrigin.yml"
             builder:

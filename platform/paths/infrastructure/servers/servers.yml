@@ -56,10 +56,10 @@ get:
             type: string
             description: |
               `filter[tags]=tagone,tagtwo,tagthree` filtering by Server tag.  Enter one or more tags (comma separated) and the return will include servers that match any tags in the list.
-          clusters:
+          cluster:
             type: string
             description: |
-              `filter[clusters]=clusterone,clustertwo` filtering by cluster.  Enter one or more clusters (commas separated) and the return will include servers that match any clusters in the list.
+              `filter[cluster]=clusterIdentifier` filtering by cluster.  Enter the cluster identifier and the return will include servers belonging to the specified cluster.
           providers:
             type: string
             description: |

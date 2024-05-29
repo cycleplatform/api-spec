@@ -534,6 +534,8 @@ paths:
     $ref: "./paths/images/sources/sources.yml"
   "/v1/images/sources/{sourceId}":
     $ref: "./paths/images/sources/source.yml"
+  "/v1/images/sources/{sourceId}/access":
+    $ref: "./paths/images/sources/access.yml"
 
   # --Infrastructure
   "/v1/infrastructure/summary":
