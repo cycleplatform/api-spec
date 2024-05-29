@@ -1,0 +1,31 @@
+get:
+  operationId: "getActiveInstances"
+  summary: Get Active Instances
+  description: |
+    Retrieves instances of the function container that are currently running.
+  tags:
+    - Functions
+  parameters:
+    - name: containerId
+      description: The ID of the requested container.
+      in: path
+      required: true
+      schema:
+        type: string
+
+  responses:
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns a map of active instances by ID.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: object
+                additionalProperties: 
+                  $ref: ../../../components/schemas/containers/instances/Instance.yml
