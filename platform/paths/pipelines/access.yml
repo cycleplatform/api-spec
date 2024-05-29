@@ -1,0 +1,25 @@
+patch:
+  operationId: "updatePipelineAccess"
+  summary: Update Pipeline Access
+  description: Requires the `pipelines-manage` capability. If an ACL is present, requires the `manage` privilege.
+  tags:
+    - Pipelines
+  parameters:
+    - name: pipelineId
+      in: path
+      required: true
+      description: The ID of the Pipeline.
+      schema:
+        type: string
+  requestBody:
+    description: Parameters for updating a Pipeline.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            acl:
+              anyOf:
+                - $ref: ../../../components/schemas/common/ACL.yml 
+                - type: "null"
+                

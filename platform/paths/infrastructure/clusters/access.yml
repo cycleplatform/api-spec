@@ -1,0 +1,24 @@
+patch:
+  operationId: updateClusterAccess
+  summary: Update Cluster Access
+  description: Requires the `clusters-manage` capability. If an ACL is present, requires the `manage` privilege.
+  tags:
+    - Clusters
+  parameters:
+    - name: clusterId
+      description: The ID of the requested cluster.
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    description: Parameters for updating a cluster.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            acl:
+              anyOf:
+                - $ref: ../../../../components/schemas/common/ACL.yml 
+                - type: "null"

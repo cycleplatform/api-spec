@@ -1,0 +1,55 @@
+patch:
+  operationId: "updateNetworkAccess"
+  summary: Update Network Access
+  description: Requires the `sdn-networks-manage` capability. If an ACL is present, requires the `manage` privilege.
+  tags:
+    - Networks
+  parameters:
+    - name: networkId
+      in: path
+      required: true
+      description: The ID of the Network.
+      schema:
+        type: string
+    - name: include
+      in: query
+      required: false
+      description:
+        A comma separated list of include values. Included resources will show
+        up under the root document's `include` field, with the key being the id of the included
+        resource. In the case of applying an include to a collection of resources, if two
+        resources share the same include, it will only appear once in the return.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - creators
+            - environments
+  requestBody:
+    description: Parameters for updating a Network.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            acl:
+              anyOf:
+                - $ref: ../../../components/schemas/common/ACL.yml 
+                - type: "null"
+  responses:
+    200:
+      description: Returns a Network.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../components/schemas/sdn/networks/Network.yml
+              includes:
+                $ref: ../../../components/schemas/sdn/networks/NetworkIncludes.yml
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml

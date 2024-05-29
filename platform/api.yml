@@ -390,6 +390,8 @@ paths:
     $ref: "./paths/dns/zones.yml"
   "/v1/dns/zones/{zoneId}":
     $ref: "./paths/dns/zone.yml"
+  "/v1/dns/zones/{zoneId}/access":
+    $ref: "./paths/dns/access.yml"
   "/v1/dns/zones/{zoneId}/tasks":
     $ref: "./paths/dns/tasks.yml"
 
@@ -412,6 +414,8 @@ paths:
     $ref: "./paths/environments/environments.yml"
   "/v1/environments/{environmentId}":
     $ref: "./paths/environments/environment.yml"
+  "/v1/environments/{environmentId}/access":
+    $ref: "./paths/environments/access.yml"
   "/v1/environments/{environmentId}/tasks":
     $ref: "./paths/environments/tasks.yml"
   "/v1/environments/{environmentId}/summary":
@@ -542,6 +546,8 @@ paths:
     $ref: "./paths/infrastructure/auto-scale/groups/groups.yml"
   "/v1/infrastructure/auto-scale/groups/{groupId}":
     $ref: "./paths/infrastructure/auto-scale/groups/group.yml"
+  "/v1/infrastructure/auto-scale/groups/{groupId}/access":
+    $ref: "./paths/infrastructure/auto-scale/groups/access.yml"
 
   ## Providers
   "/v1/infrastructure/providers/{providerVendor}/servers":
@@ -554,6 +560,8 @@ paths:
     $ref: "./paths/infrastructure/clusters/clusters.yml"
   "/v1/infrastructure/clusters/{clusterId}":
     $ref: "./paths/infrastructure/clusters/cluster.yml"
+  "/v1/infrastructure/clusters/{clusterId}/access":
+    $ref: "./paths/infrastructure/clusters/access.yml"
 
   ## Servers
   "/v1/infrastructure/servers":
@@ -594,6 +602,8 @@ paths:
     $ref: "./paths/pipelines/pipelines.yml"
   "/v1/pipelines/{pipelineId}":
     $ref: "./paths/pipelines/pipeline.yml"
+  "/v1/pipelines/{pipelineId}/access":
+    $ref: "./paths/pipelines/access.yml"
   "/v1/pipelines/{pipelineId}/runs":
     $ref: "./paths/pipelines/runs.yml"
   "/v1/pipelines/{pipelineId}/tasks":
@@ -612,6 +622,8 @@ paths:
     $ref: "./paths/sdn/networks.yml"
   "/v1/sdn/networks/{networkId}":
     $ref: "./paths/sdn/network.yml"
+  "/v1/sdn/networks/{networkId}/access":
+    $ref: "./paths/sdn/access.yml"
   "/v1/sdn/networks/{networkId}/tasks":
     $ref: "./paths/sdn/tasks.yml"
 
@@ -628,6 +640,8 @@ paths:
     $ref: "./paths/stacks/stacks.yml"
   "/v1/stacks/{stackId}":
     $ref: "./paths/stacks/stack.yml"
+  "/v1/stacks/{stackId}/access":
+    $ref: "./paths/stacks/access.yml"
   "/v1/stacks/{stackId}/tasks":
     $ref: "./paths/stacks/tasks.yml"
 
