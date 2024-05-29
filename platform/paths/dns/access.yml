@@ -1,0 +1,54 @@
+patch:
+  operationId: "updateDNSZoneAccess"
+  summary: Update DNS Zone Access
+  description: Requires the `dns-manage` capability, and if an ACL is present, the `manage` privilege.
+  tags:
+    - Zones
+  parameters:
+    - name: zoneId
+      description: The ID of the zone.
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: include
+      in: query
+      required: false
+      description:
+        A comma separated list of include values. Included resources will show
+        up under the root document's `include` field, with the key being the id of the included
+        resource. In the case of applying an include to a collection of resources, if two
+        resources share the same include, it will only appear once in the return.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - creators
+  requestBody:
+    description: Parameters for updating a DNS Zone.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            acl:
+              anyOf:
+                - $ref: ../../../components/schemas/common/ACL.yml
+                - type: "null"
+  responses:
+    200:
+      description: Returns a DNS zone.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../components/schemas/dns/Zone.yml
+              includes:
+                $ref: ../../../components/schemas/dns/ZoneIncludes.yml
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml

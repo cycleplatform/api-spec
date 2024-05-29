@@ -64,10 +64,6 @@ patch:
                 - boolean
                 - "null"
               description: A boolean where true represents the desire for the origin to be of the type `hosted`.
-            acl:
-              anyOf:
-                - $ref: ../../../components/schemas/common/ACL.yml 
-                - type: "null"
   responses:
     200:
       description: Returns a DNS zone resource.

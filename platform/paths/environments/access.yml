@@ -1,0 +1,41 @@
+patch:
+  operationId: "updateEnvironmentAccess"
+  summary: Update Environment Access
+  description: |
+    Updates the specificed Environment.
+
+    Requires the `environments-manage` capability. If an ACL is present, requires the `manage` privilege.
+  tags:
+    - Environments
+  parameters:
+    - name: environmentId
+      description: The ID of the requested Environment.
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    description: Parameters for updating an Environment.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            acl:
+              anyOf:
+                - $ref: ../../../components/schemas/common/ACL.yml 
+                - type: "null"
+  responses:
+    200:
+      description: Returns an Environment.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../components/schemas/environments/Environment.yml
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml

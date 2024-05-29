@@ -1,0 +1,38 @@
+patch:
+  operationId: "updateImageSourceAccess"
+  summary: Update Image Source Access
+  description: Requires the `images-sources-manage` capability. If an ACL is present, requires the `manage` privilege.
+  tags:
+    - Image Sources
+  parameters:
+    - name: sourceId
+      in: path
+      required: true
+      description: The ID of the Image Source.
+      schema:
+        type: string
+  requestBody:
+    description: Parameters for updating an image source.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            acl:
+              anyOf:
+                - $ref: ../../../../components/schemas/common/ACL.yml 
+                - type: "null"
+  responses:
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns an Image Source.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/images/sources/ImageSource.yml
