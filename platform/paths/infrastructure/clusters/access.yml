@@ -22,3 +22,17 @@ patch:
               anyOf:
                 - $ref: ../../../../components/schemas/common/ACL.yml 
                 - type: "null"
+  responses:
+    200:
+      description: Returns a cluster.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/infrastructure/clusters/Cluster.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
