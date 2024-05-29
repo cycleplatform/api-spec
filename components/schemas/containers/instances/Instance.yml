@@ -96,7 +96,7 @@ properties:
       - type: "null"
   events:
     title: InstanceEvents
-    description: A collection of timestamps for each event in the instnaces lifetime.
+    description: A collection of timestamps for each event in the instance's lifetime.
     required:
       - created
       - updated

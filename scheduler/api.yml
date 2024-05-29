@@ -29,6 +29,8 @@ paths:
     $ref: paths/functions/spawn.yml
   /v1/functions/{containerId}/release:
     $ref: paths/functions/release.yml
+  /v1/functions/{containerId}/active:
+    $ref: paths/functions/active.yml
 
 components:
   securitySchemes:
