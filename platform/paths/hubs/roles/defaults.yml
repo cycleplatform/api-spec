@@ -1,0 +1,51 @@
+get:
+  operationId: "getDefaultHubRoles"
+  summary: List Default Hub Roles
+  tags:
+    - Hubs
+  parameters: []
+  security: []
+  responses:
+    200:
+      description: Returns a list of the default roles/capabilities for a hub.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+              - meta
+            properties:
+              data:
+                type: array
+                items:
+                  type: object
+                  title: DefaultRole
+                  required:
+                    - name
+                    - identifier
+                    - root
+                    - capabilities
+                  properties:
+                    name:
+                      type: string
+                    identifier:
+                      $ref: ../../../../components/schemas/Identifier.yml
+                    root:
+                      description: The role marked as root has full moderation control over all roles.
+                      type: boolean
+                    capabilities:
+                      type: object
+                      required:
+                        - all
+                        - specific
+                      properties:
+                        all:
+                          type: boolean
+                          description: If true, the role has all capabilities.
+                        specific:
+                          type: array
+                          items:
+                            $ref: ../../../../components/schemas/common/Capability.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
