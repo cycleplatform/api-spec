@@ -122,7 +122,6 @@ properties:
       - environment.services.discovery.reconfigure
       - environment.services.lb.reconfigure
       - environment.services.vpn.reconfigure
-      - environment.services.scheduler.reconfigure
       - environment.delete
       - environment.initialize
       - environment.start
@@ -133,7 +132,6 @@ properties:
       - environment.services.discovery.task.reconfigure
       - environment.services.lb.task.reconfigure
       - environment.services.vpn.task.reconfigure
-      - environment.services.scheduler.task.reconfigure
       - environment.services.vpn.user.create
       - environment.services.vpn.login
       - environment.services.vpn.reset
@@ -296,6 +294,10 @@ properties:
       - infrastructure.autoscale.group.update
       - infrastructure.autoscale.group.task.delete
       - infrastructure.autoscale.group.delete
+
+      - infrastructure.cluster.create
+      - infrastructure.cluster.update
+      - infrastructure.cluster.delete
 
       - infrastructure.ips.pool.task.delete
 
