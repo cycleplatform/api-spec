@@ -290,6 +290,10 @@ properties:
       - infrastructure.server.services.sftp.lockdown
       - infrastructure.server.services.internal-api.throttle
 
+      - infrastructure.cluster.create
+      - infrastructure.cluster.update
+      - infrastructure.cluster.delete
+
       - infrastructure.autoscale.group.create
       - infrastructure.autoscale.group.update
       - infrastructure.autoscale.group.task.delete
