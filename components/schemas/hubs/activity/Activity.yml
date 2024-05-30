@@ -122,6 +122,7 @@ properties:
       - environment.services.discovery.reconfigure
       - environment.services.lb.reconfigure
       - environment.services.vpn.reconfigure
+      - environment.services.scheduler.reconfigure
       - environment.delete
       - environment.initialize
       - environment.start
@@ -132,6 +133,7 @@ properties:
       - environment.services.discovery.task.reconfigure
       - environment.services.lb.task.reconfigure
       - environment.services.vpn.task.reconfigure
+      - environment.services.scheduler.task.reconfigure
       - environment.services.vpn.user.create
       - environment.services.vpn.login
       - environment.services.vpn.reset
