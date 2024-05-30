@@ -48,4 +48,4 @@ get:
                           items:
                             $ref: ../../../../components/schemas/common/Capability.yml
     default:
-      $ref: ../../../components/responses/errors/DefaultError.yml
+      $ref: ../../../../components/responses/errors/DefaultError.yml
