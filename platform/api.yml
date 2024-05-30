@@ -516,6 +516,8 @@ paths:
     $ref: "./paths/hubs/roles/roles.yml"
   "/v1/hubs/current/roles/{roleId}":
     $ref: "./paths/hubs/roles/role.yml"
+  "/v1/hubs/current/roles/defaults":
+    $ref: "./paths/hubs/roles/defaults.yml"
 
   # --Images
   "/v1/images":
