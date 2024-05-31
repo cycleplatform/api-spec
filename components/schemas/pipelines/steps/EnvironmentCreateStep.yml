@@ -34,4 +34,4 @@ properties:
       cluster:
         type: string
       features:
-        $ref: "../../environments/Features.yml"
+        $ref: "../../environments/EnvironmentFeatures.yml"
