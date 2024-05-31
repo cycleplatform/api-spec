@@ -54,12 +54,12 @@ properties:
         description: The timestamp of when the environment was deleted.
         $ref: ../DateTime.yml
   features:
-    $ref: ./Features.yml
+    $ref: ./EnvironmentFeatures.yml
   services:
     $ref: ./EnvironmentServices.yml
   acl:
     anyOf:
-      - $ref: ../common/ACL.yml 
+      - $ref: ../common/ACL.yml
       - type: "null"
   private_network:
     anyOf:
