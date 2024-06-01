@@ -1,0 +1,32 @@
+post:
+  operationId: "postMetric"
+  summary: Post Metric
+  description: |
+    Post data to Cycle's monitoring system.
+  tags:
+    - Monitoring
+  parameters: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: ../../components/monitoring/Metric.yml
+  responses:
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns true on success
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: boolean
+                enum:
+                  - true
