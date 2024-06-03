@@ -1,0 +1,76 @@
+get:
+  operationId: "getMetrics"
+  summary: Get Metrics
+  description: |
+    A basic query for retrieving metrics. For a more complex and granular report, see the `/v1/monitoring/metrics/aggregate` endpoint.
+
+    This endpoint will never return more than 100 metric data points.
+
+    Requires the `monitor-view` capability.
+  tags:
+    - Monitoring
+  parameters:
+    - name: filter
+      in: query
+      style: deepObject
+      required: false
+      description: |
+        ## Filter Field 
+        The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
+
+        To search via labels, use `label:<label key>` as the filter. For example in URL parameters, `filter[label:test]=abc`.
+      schema:
+        type: object
+        additionalProperties: true
+        properties:
+          environment_id:
+            description: Specify the environment associated with the metrics.
+            $ref: ../../../components/schemas/ID.yml
+          pipeline_id:
+            description: Specify the pipeline associated with the metrics.
+            $ref: ../../../components/schemas/ID.yml
+          stack_id:
+            description: Specify the stack associated with the metrics.
+            $ref: ../../../components/schemas/ID.yml
+          cluster:
+            description: Specify the cluster associated with the metrics.
+            type: string
+          metric:
+            description: Specify the metric to filter by.
+            type: string
+          type:
+            description: Filter by the type of metric.
+            type: string
+            enum:
+              - gauge
+              - count
+              - counter
+              - rate
+              - histogram
+              - distribution
+              - set
+          tags:
+            description: Filter by tags associated with the metrics
+            type: string
+          range-start:
+            description: The start date from when to pull metrics. Providing 'time' in the post-body criteria field will override this filter.
+            $ref: ../../../components/schemas/DateTime.yml
+          range-end:
+            description: The end date from when to pull metrics. Providing 'time' in the post-body criteria field will override this filter.
+            $ref: ../../../components/schemas/DateTime.yml
+  responses:
+    200:
+      description: Returns an array of metrics.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: ../../../components/schemas/monitoring/Metric.yml
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml

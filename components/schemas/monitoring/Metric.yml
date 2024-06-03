@@ -1,0 +1,125 @@
+title: Metric
+description: A granular point-in-time measurement of a value, and its associated metadata. Metrics may contain multiple data points collected between submission to the platform.
+type: object
+required:
+  - time
+  - metadata
+  - points
+properties:
+  time:
+    description: When the metric was submitted to the platform.
+    $ref: ../DateTime.yml
+  labels:
+    type: object
+    description: Additional key-values that can be used for querying in an aggregation pipeline. Often useful for filtering.
+    additionalProperties:
+      type: string
+  tags:
+    description: Additional tags associated with the metric.
+    type: array
+    items:
+      type: string
+  points:
+    description: An array of recorded data points for this metric.
+    type: array
+    items:
+      type: array
+      items:
+        anyOf:
+          - $ref: ../DateTime.yml
+          - type: integer
+  metadata:
+    description: Information about this metric, such as the type of metric, the data it represents, and critical common information such as hub ID and associated cluster.
+    type: object
+    required:
+      - metric
+      - type
+      - origin
+    properties:
+      metric:
+        description: |
+          The data this metric represents. Cycle provides several built-in metrics, and, tier allowing, hubs can submit custom metrics as well.
+
+          Here is a non-exhaustive list of some of the metrics provided by the platform automatically:
+            - container.instances.num
+            - discovery.resolutions.cache_hits
+            - discovery.resolutions.lookups
+            - discovery.resolutions.not-founds
+            - environment.containers.num
+            - environment.instances.num
+            - environments.num
+            - images.num
+            - images.storage_kb
+            - infrastructure.resources.cpu.cores
+            - infrastructure.resources.cpu.usage.idle
+            - infrastructure.resources.cpu.usage.iowait
+            - infrastructure.resources.cpu.usage.nice
+            - infrastructure.resources.cpu.usage.soft_irq
+            - infrastructure.resources.cpu.usage.steal
+            - infrastructure.resources.cpu.usage.system
+            - infrastructure.resources.cpu.usage.user
+            - infrastructure.resources.ram.available_kb
+            - infrastructure.resources.ram.free_kb
+            - infrastructure.resources.ram.total_kb
+            - infrastructure.servers.num
+            - lb.controller.connections
+            - lb.controller.disconnects.destination_unavailable
+            - lb.controller.disconnects.no_error
+            - lb.controller.disconnects.timeout_idle
+            - lb.controller.disconnects.timeout_init
+            - lb.controller.disconnects.total
+            - lb.controller.disconnects.unknown_error
+            - lb.controller.received_kb
+            - lb.controller.requests
+            - lb.controller.requests.total
+            - lb.controller.requests.url.handlers.forward.hits
+            - lb.controller.requests.url.handlers.forward.timing_ms
+            - lb.controller.requests.url.handlers.redirect.hits
+            - lb.controller.requests.url.handlers.redirect.timing_ms
+            - lb.controller.router.destinations.connections.invalid
+            - lb.controller.router.destinations.connections.received_kb
+            - lb.controller.router.destinations.connections.success
+            - lb.controller.router.destinations.connections.transmitted_kb
+            - lb.controller.router.destinations.connections.unavailable
+            - lb.controller.router.destinations.latency
+            - lb.controller.router.destinations.requests.total
+            - lb.controller.transmitted_kb
+            - memberships.num
+            - pipeline.runs.num
+            - stack.builds.num
+        type: string
+      type:
+        description: |
+          The type of data represented by the metric.
+            - **gauge**: represents a single numerical value that can arbitrarily go up and down.
+            - **count**: represents a counter that resets periodically.
+            - **counter**: represents a counter that only increases.
+            - **rate**: represents the rate of change of a counter per second.
+            - **histogram**: tracks the statistical distribution of a set of values.
+            - **distribution**: aggregates data across multiple hosts and applications.
+            - **set**: tracks the number of unique elements in a group.
+        type: string
+        enum:
+          - gauge
+          - count
+          - counter
+          - rate
+          - histogram
+          - distribution
+          - set
+      origin:
+        description: The originator of this metric.
+        type: string
+      hub_id:
+        $ref: ../ID.yml
+      component:
+        description: The specific resource ID and type associated with this metric.
+        type: object
+        required:
+          - id
+          - type
+        properties:
+          id:
+            $ref: ../ID.yml
+          type:
+            type: string

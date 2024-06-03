@@ -51,8 +51,7 @@ patch:
 
     Requires the `hubs-roles-manage` capability.
   tags:
-    - Hubs
-    - ACLs
+    - Roles
   parameters:
     - name: roleId
       description: The ID of the Role.
