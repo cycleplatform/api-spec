@@ -6,7 +6,7 @@ post:
 
     Requires the `containers-functions-trigger` capability.
   tags:
-    - Functions
+    - Containers
   parameters:
     - name: containerId
       description: The ID of the requested container.

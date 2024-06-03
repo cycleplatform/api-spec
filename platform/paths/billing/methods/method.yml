@@ -77,7 +77,7 @@ delete:
     Deletes the Billing Method. However, the primary payment method may not be deleted.
     Requires the `billing-methods-manage` capability.
   tags:
-    - Billing
+    - Methods
   parameters:
     - name: methodId
       description: The ID of the billing method.

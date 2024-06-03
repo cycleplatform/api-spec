@@ -118,12 +118,16 @@ x-tagGroups:
     tags:
       - Infrastructure
       - Auto-Scale Groups
+      - Clusters
       - Providers
       - Servers
       - IPs
   - name: Jobs
     tags:
       - Jobs
+  - name: Monitoring
+    tags:
+      - Monitoring
   - name: Pipelines
     tags:
       - Pipelines
@@ -227,6 +231,8 @@ tags:
     description: Endpoints related to managing physical/virtual infrastructure on Cycle.
   - name: Auto-Scale Groups
     description: Endpoints for managing groups of infrastructure that can be used for auto-scaling.
+  - name: Clusters
+    description: Endpoints related to managing infrastructure clusters.
   - name: Providers
     description: Endpoints related to providers configured for a hub.
   - name: Servers
@@ -236,6 +242,9 @@ tags:
 
   - name: Jobs
     description: Endpoints related to managing long-running tasks, known as jobs, on Cycle.
+
+  - name: Monitoring
+    description: Endpoints related to gathered metrics for building dashboards, charts, and graphs.
 
   - name: Pipelines
     description: Endpoints related to pipelines, used for integrating with CI/CD solutions and automating deployments or other tasks.
@@ -600,6 +609,12 @@ paths:
     $ref: "./paths/jobs/job.yml"
   "/v1/jobs/latest":
     $ref: "./paths/jobs/latest.yml"
+
+  # -- Monitoring
+  "/v1/monitoring/metrics":
+    $ref: paths/monitoring/metrics.yml
+  "/v1/monitoring/metrics/aggregate":
+    $ref: paths/monitoring/aggregate.yml
 
   # --Pipelines
   "/v1/pipelines":

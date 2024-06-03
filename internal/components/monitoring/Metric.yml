@@ -1,0 +1,44 @@
+title: Metric
+description: A data point submitted to the monitoring system.
+type: object
+required:
+  - metric
+  - type
+properties:
+  metric:
+    type: string
+    description: The title of the metric this data point refers to.
+  type:
+    type: string
+    description: The type of metric
+    enum:
+      - gauge
+      - count
+      - counter
+      - rate
+      - histogram
+      - distribution
+      - set
+  labels:
+    type: object
+    description: Any associated labels for the data, which can be used in querying.
+    additionalProperties:
+      type: string
+  tags:
+    type: array
+    description: Additional tags for the data point.
+    items:
+      type: string
+  points:
+    type: array
+    items:
+      type: object
+      required:
+        - time
+      properties:
+        time:
+          $ref: ../../../components/schemas/DateTime.yml
+        values:
+          type: array
+          items:
+            type: integer

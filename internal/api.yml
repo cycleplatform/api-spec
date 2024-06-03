@@ -77,6 +77,10 @@ paths:
   /v1/conductor/tasks:
     $ref: paths/conductor/tasks.yml
 
+  # Monitoring
+  /v1/monitoring/metrics:
+    $ref: paths/monitoring/metrics.yml
+
   # VPN
   /v1/vpn/login:
     $ref: paths/vpn/login.yml
