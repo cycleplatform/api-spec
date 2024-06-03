@@ -4,7 +4,7 @@ get:
   description: |
     A basic query for retrieving metrics. For a more complex and granular report, see the `/v1/monitoring/metrics/aggregate` endpoint.
 
-    This endpoint will never return more than 100 metric data points.
+    This endpoint will never return more than 250 metric data points.
 
     Requires the `monitor-view` capability.
   tags:
