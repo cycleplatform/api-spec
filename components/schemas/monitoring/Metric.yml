@@ -114,7 +114,9 @@ properties:
         $ref: ../ID.yml
       component:
         description: The specific resource ID and type associated with this metric.
-        type: object
+        type: 
+          - object
+          - "null"
         required:
           - id
           - type
@@ -123,3 +125,8 @@ properties:
             $ref: ../ID.yml
           type:
             type: string
+      cluster:
+        description: "The cluster associated with this metric"
+        type: 
+          - string
+          - "null"
