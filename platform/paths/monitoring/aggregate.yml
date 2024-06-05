@@ -55,7 +55,9 @@ post:
               - data
             properties:
               data:
-                type: object
-                additionalProperties: true
+                type: array
+                items:
+                  type: object
+                  additionalProperties: true
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
