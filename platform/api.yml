@@ -374,10 +374,10 @@ paths:
     $ref: "./paths/containers/instances/tasks.yml"
   "/v1/containers/{containerId}/instances/{instanceId}/volumes":
     $ref: "./paths/containers/instances/volumes.yml"
-  "/v1/containers/{containerId}/instances/{instanceId}/telemetry/resources/report":
-    $ref: paths/containers/instances/telemetry/report.yml
-  "/v1/containers/{containerId}/instances/{instanceId}/telemetry/resources/stream":
-    $ref: paths/containers/instances/telemetry/stream.yml
+  ? "/v1/containers/{containerId}/instances/{instanceId}/telemetry/resources/report"
+  : $ref: paths/containers/instances/telemetry/report.yml
+  ? "/v1/containers/{containerId}/instances/{instanceId}/telemetry/resources/stream"
+  : $ref: paths/containers/instances/telemetry/stream.yml
   "/v1/containers/{containerId}/instances/{instanceId}/console":
     $ref: "paths/containers/instances/console.yml"
   "/v1/containers/{containerId}/functions/tasks":
@@ -612,9 +612,13 @@ paths:
 
   # -- Monitoring
   "/v1/monitoring/metrics":
-    $ref: paths/monitoring/metrics.yml
+    $ref: paths/monitoring/metrics/metrics.yml
   "/v1/monitoring/metrics/aggregate":
-    $ref: paths/monitoring/aggregate.yml
+    $ref: paths/monitoring/metrics/aggregate.yml
+  "/v1/monitoring/events":
+    $ref: paths/monitoring/events/events.yml
+  "/v1/monitoring/events/aggregate":
+    $ref: paths/monitoring/metrics/aggregate.yml
 
   # --Pipelines
   "/v1/pipelines":
