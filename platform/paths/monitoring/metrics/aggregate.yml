@@ -5,7 +5,7 @@ post:
     Generate a metric report using an aggregated pipeline query with Mongo. This endpoint provides ultimate
     flexibility in generating data for dashboards, charts, graphs, etc. 
 
-    This endpoint will never return more than 250 metric data points.
+    You should always provide a time range filter to this call, either through the filter parameter or in the critera body. The aggregate is limited to 25,000 input documents, so a time frame will give the best results. 
 
     Requires the `monitor-view` capability.
   tags:
@@ -23,10 +23,10 @@ post:
         properties:
           range-start:
             description: The start date from when to pull metrics. Providing 'time' in the post-body criteria field will override this filter.
-            $ref: ../../../components/schemas/DateTime.yml
+            $ref: ../../../../components/schemas/DateTime.yml
           range-end:
             description: The end date from when to pull metrics. Providing 'time' in the post-body criteria field will override this filter.
-            $ref: ../../../components/schemas/DateTime.yml
+            $ref: ../../../../components/schemas/DateTime.yml
   requestBody:
     description: The mongo syntax aggregate pipeline for querying metrics and formulating a report.
     content:
@@ -60,4 +60,4 @@ post:
                   type: object
                   additionalProperties: true
     default:
-      $ref: ../../../components/responses/errors/DefaultError.yml
+      $ref: ../../../../components/responses/errors/DefaultError.yml

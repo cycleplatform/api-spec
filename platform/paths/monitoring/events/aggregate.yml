@@ -1,0 +1,63 @@
+post:
+  operationId: "generateAggregatedEvents"
+  summary: Generate Aggregated Events
+  description: |
+    Generate an events report using an aggregated pipeline query with Mongo. This endpoint provides ultimate
+    flexibility in generating data for dashboards, charts, graphs, etc. 
+
+    You should always provide a time range filter to this call, either through the filter parameter or in the critera body. The aggregate is limited to 25,000 input documents, so a time frame will give the best results. 
+
+    Requires the `monitor-view` capability.
+  tags:
+    - Monitoring
+  parameters:
+    - name: filter
+      in: query
+      style: deepObject
+      required: false
+      description: |
+        ## Filter Field 
+        The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
+      schema:
+        type: object
+        properties:
+          range-start:
+            description: The start date from when to pull events. Providing 'time' in the post-body criteria field will override this filter.
+            $ref: ../../../../components/schemas/DateTime.yml
+          range-end:
+            description: The end date from when to pull events. Providing 'time' in the post-body criteria field will override this filter.
+            $ref: ../../../../components/schemas/DateTime.yml
+  requestBody:
+    description: The mongo syntax aggregate pipeline for querying events and formulating a report.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            criteria:
+              type: object
+              description: The criteria to add to the first match. Cycle will automatically provide the hub ID.
+              additionalProperties: true
+            pipeline:
+              type: array
+              description: The aggregation pipeline. Supports Mongo-style syntax and operators.
+              items:
+                type: object
+                additionalProperties: true
+  responses:
+    200:
+      description: Returns an object matching the shape of the output of the aggregated pipeline output.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  type: object
+                  additionalProperties: true
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
