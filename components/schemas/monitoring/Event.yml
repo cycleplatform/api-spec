@@ -1,0 +1,87 @@
+title: Event
+description: A platform-generated event. Describes something happening on the platform at a specific time. Can be informational, security related, or a notice of something important.
+type: object
+required:
+  - time
+  - metadata
+properties:
+  time:
+    description: When the event was submitted to the platform.
+    $ref: ../DateTime.yml
+  labels:
+    type: object
+    description: Additional key-values that can be used for querying in an aggregation pipeline. Often useful for filtering.
+    additionalProperties:
+      type: string
+  tags:
+    description: Additional tags associated with the event.
+    type: array
+    items:
+      type: string
+  text:
+    description: A message describing what happened.
+    type: string
+  metadata:
+    description: Information about this event, such as the type of event, the data it represents, and critical common information such as hub ID and associated cluster.
+    type: object
+    required:
+      - event
+      - type
+      - priority
+      - origin
+    properties:
+      event:
+        description: |
+          Describes what this event is.
+        type: string
+      type:
+        description: |
+          The type of event.
+            - **info**: represents an informational message.
+            - **warning**: represents a warning message indicating a potential issue.
+            - **error**: represents an error message indicating a failure or critical issue.
+            - **success**: represents a success message indicating a successful operation.
+            - **alert**: represents a critical message indicating a severe issue.
+            - **notice**: represents a notice message indicating a noteworthy event.
+            - **audit**: represents a notice message indicating a message that would be needed for audits
+        type: string
+        enum:
+          - info
+          - warning
+          - error
+          - success
+          - alert
+          - notice
+          - audit
+      priority:
+        description: Describes how important this event is.
+        type: string
+        enum:
+          - critical
+          - high
+          - medium
+          - normal
+          - low
+      origin:
+        description: The originator of this event.
+        type: string
+      hub_id:
+        $ref: ../ID.yml
+      component:
+        description: The specific resource ID and type associated with this event.
+        type:
+          - object
+          - "null"
+        required:
+          - id
+          - type
+        properties:
+          id:
+            $ref: ../ID.yml
+          type:
+            type: string
+      cluster:
+        description: "The cluster associated with this event"
+        type:
+          - string
+          - "null"

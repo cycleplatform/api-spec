@@ -36,20 +36,20 @@ get:
           cluster:
             description: Specify the cluster associated with the events.
             type: string
-          metric:
-            description: Specify the metric to filter by.
+          event:
+            description: Specify the event to filter by.
             type: string
           type:
-            description: Filter by the type of metric.
+            description: Filter by the type of event.
             type: string
             enum:
-              - gauge
-              - count
-              - counter
-              - rate
-              - histogram
-              - distribution
-              - set
+              - info
+              - warning
+              - error
+              - success
+              - alert
+              - notice
+              - audit
           tags:
             description: Filter by tags associated with the events.
             type: string
@@ -72,6 +72,6 @@ get:
               data:
                 type: array
                 items:
-                  $ref: ../../../../components/schemas/monitoring/Metric.yml
+                  $ref: ../../../../components/schemas/monitoring/Event.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
