@@ -1,0 +1,17 @@
+title: StackImageOrigin
+type: object
+description: The origin of the image.
+discriminator:
+  propertyName: type
+  mapping:
+    docker-hub: ../../images/origins/dockerHub/DockerHubOrigin.yml
+    docker-file: ../../images/origins/dockerFile/DockerFileOrigin.yml
+    docker-registry: ../../images/origins/dockerRegistry/DockerRegistryOrigin.yml
+    oci-registry: ../../images/origins/ociRegistry/OciRegistryOrigin.yml
+    cycle-source: ../../images/origins/cycleSource/CycleSourceOrigin.yml
+oneOf:
+  - $ref: ../../images/origins/dockerHub/DockerHubOrigin.yml
+  - $ref: ../../images/origins/dockerFile/DockerFileOrigin.yml
+  - $ref: ../../images/origins/dockerRegistry/DockerRegistryOrigin.yml
+  - $ref: ../../images/origins/ociRegistry/OciRegistryOrigin.yml
+  - $ref: ../../images/origins/cycleSource/CycleSourceOrigin.yml

@@ -8,6 +8,7 @@ discriminator:
     docker-file: dockerFile/DockerFileOrigin.yml
     docker-registry: dockerRegistry/DockerRegistryOrigin.yml
     oci-registry: ociRegistry/OciRegistryOrigin.yml
+    cycle-upload: cycleUpload/CycleUploadOrigin.yml
     cycle-source: cycleSource/CycleSourceOrigin.yml
     none: none/NoneOrigin.yml
 oneOf:
@@ -15,5 +16,6 @@ oneOf:
   - $ref: dockerFile/DockerFileOrigin.yml
   - $ref: dockerRegistry/DockerRegistryOrigin.yml
   - $ref: ociRegistry/OciRegistryOrigin.yml
+  - $ref: cycleUpload/CycleUploadOrigin.yml
   - $ref: cycleSource/CycleSourceOrigin.yml
   - $ref: none/NoneOrigin.yml
