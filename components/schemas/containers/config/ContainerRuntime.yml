@@ -131,7 +131,6 @@ properties:
       readonly:
         description: Enabling this option will set the containers filesystem to readonly. Volumes associated with the container will not be affected by this.
         type: boolean
-
   devices:
     type:
       - object
