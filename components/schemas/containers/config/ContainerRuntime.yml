@@ -131,3 +131,15 @@ properties:
       readonly:
         description: Enabling this option will set the containers filesystem to readonly. Volumes associated with the container will not be affected by this.
         type: boolean
+
+  devices:
+    type:
+      - object
+      - "null"
+    properties:
+      shm_size:
+        type:
+          - string
+          - "null"
+        description: The size of the shared host memory device (/dev/shm).
+        example: "1G, 2M"
