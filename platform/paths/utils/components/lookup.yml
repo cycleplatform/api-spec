@@ -1,0 +1,65 @@
+post:
+  operationId: "lookupComponents"
+  summary: Look up a component.
+  tags:
+    - Utility
+  requestBody:
+    description: ABC
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - components
+          properties:
+            components:
+              type: array
+              items:
+                type: object
+                required:
+                  - type
+                  - id
+                properties:
+                  type:
+                    type: string
+                    enum:
+                      - image.source
+                      - image
+                      - container
+                      - container.instance
+                      - hub
+                      - hub.api_key
+                      - hub.membership
+                      - hub.role
+                      - sdn.network
+                      - dns.zone
+                      - dns.zone.record
+                      - pipeline
+                      - pipeline.run
+                      - stack
+                      - stack.build
+                      - infrastructure.provider
+                      - infrastructure.autoscale.group
+                      - infrastructure.server
+                      - infrastructure.cluster
+                      - infrastructure.ips.pool
+                      - billing.invoice
+                      - billing.method
+                      - environment
+                      - environment.scoped-variable
+                  id:
+                    type: string
+  responses:
+    200:
+      description: Returns an array of components requested.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/includes/ComponentsIncludes.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
