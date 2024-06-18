@@ -7,7 +7,7 @@ required:
 properties:
   time:
     description: When the event was submitted to the platform.
-    $ref: ../DateTime.yml
+    $ref: ../../DateTime.yml
   labels:
     type: object
     description: Additional key-values that can be used for querying in an aggregation pipeline. Often useful for filtering.
@@ -33,7 +33,7 @@ properties:
       event:
         description: |
           Describes what this event is.
-        type: string
+        $ref: EventType.yml
       type:
         description: |
           The type of event.
@@ -66,7 +66,7 @@ properties:
         description: The originator of this event.
         type: string
       hub_id:
-        $ref: ../ID.yml
+        $ref: ../../ID.yml
       component:
         description: The specific resource ID and type associated with this event.
         type:
@@ -77,7 +77,7 @@ properties:
           - type
         properties:
           id:
-            $ref: ../ID.yml
+            $ref: ../../ID.yml
           type:
             type: string
       cluster:

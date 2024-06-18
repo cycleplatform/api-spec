@@ -38,7 +38,7 @@ get:
             type: string
           event:
             description: Specify the event to filter by.
-            type: string
+            $ref: ../../../../components/schemas/monitoring/events/EventType.yml
           type:
             description: Filter by the type of event.
             type: string
@@ -72,6 +72,6 @@ get:
               data:
                 type: array
                 items:
-                  $ref: ../../../../components/schemas/monitoring/Event.yml
+                  $ref: ../../../../components/schemas/monitoring/events/Event.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
