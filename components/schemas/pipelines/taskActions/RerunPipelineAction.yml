@@ -12,5 +12,5 @@ properties:
     type: object
     properties:
       run_id:
-        description: The ID of the run to retry
+        description: The ID of the run to retry.
         $ref: ../../ID.yml
