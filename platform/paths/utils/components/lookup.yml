@@ -23,6 +23,7 @@ post:
                   type:
                     type: string
                     enum:
+                      - account
                       - image.source
                       - image
                       - container

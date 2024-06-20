@@ -27,17 +27,10 @@ properties:
     type: object
     required:
       - address
-      - verified
-      - added
     properties:
       address:
         type: string
-        description: The email address
-      verified:
-        type: boolean
-        description: A boolean representing if the email has been verified
-      added:
-        $ref: "../DateTime.yml"
+        description: The email address associated with the account.
   id:
     title: AccountId
     description: Id information for an account
