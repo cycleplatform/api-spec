@@ -1,7 +1,7 @@
 title: EventType
 type: string
 enum: 
-  - api.security-violation
+  - api.security_violation
   - console.ssh.login
   - console.ssh.login.failed
   - container.instance.backup.completed
@@ -30,7 +30,7 @@ enum:
   - infrastructure.server.compute.sharedfs.mounts.mount
   - infrastructure.server.compute.soft_restart
   - infrastructure.server.image.download.failed
-  - infrastructure.server.internal-api.throttled
+  - infrastructure.server.internal_api.throttled
   - infrastructure.server.manifest.sync.failed
   - infrastructure.server.neighbor.reachable
   - infrastructure.server.neighbor.rebuild
@@ -38,7 +38,7 @@ enum:
   - infrastructure.server.neighbor.upgrade
   - infrastructure.server.resources.load.high
   - infrastructure.server.resources.ram.full
-  - infrastructure.server.resources.storage.base_volume.full
+  - infrastructure.server.resources.storage.base.full
   - infrastructure.server.resources.storage.cycle_pool.full
   - infrastructure.server.sftp.lockdown
   - infrastructure.server.sftp.login
