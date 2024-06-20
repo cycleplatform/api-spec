@@ -25,7 +25,7 @@ enum:
   - container.reconfigured
   - container.service.auto_update
   - infrastructure.cluster.resources.ram.full
-  - infrastructure.server.compute.base_volume.reconfigured
+  - infrastructure.server.compute.volumes.base.reconfigured
   - infrastructure.server.compute.full_restart
   - infrastructure.server.compute.sharedfs.mounts.mount
   - infrastructure.server.compute.soft_restart
@@ -38,7 +38,7 @@ enum:
   - infrastructure.server.neighbor.upgrade
   - infrastructure.server.resources.load.high
   - infrastructure.server.resources.ram.full
-  - infrastructure.server.resources.storage.base.full
+  - infrastructure.server.resources.storage.volumes.base.full
   - infrastructure.server.resources.storage.cycle_pool.full
   - infrastructure.server.sftp.lockdown
   - infrastructure.server.sftp.login
