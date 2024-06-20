@@ -117,6 +117,7 @@ patch:
                     - limited
                     - standard
                     - premium
+                    - enterprise
   responses:
     200:
       description: Returns an Environment.
