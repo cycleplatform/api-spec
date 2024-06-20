@@ -103,6 +103,20 @@ patch:
               anyOf:
                 - $ref: ../../../components/schemas/environments/EnvironmentAbout.yml
                 - type: "null"
+            monitoring:
+              description: The level of monitoring to enable for this environment. There is a cost associated with higher levels of monitoring.
+              type:
+                - object
+                - "null"
+              required:
+                - tier
+              properties:
+                tier:
+                  type: string
+                  enum:
+                    - limited
+                    - standard
+                    - premium
   responses:
     200:
       description: Returns an Environment.
