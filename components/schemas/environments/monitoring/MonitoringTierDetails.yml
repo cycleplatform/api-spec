@@ -1,0 +1,67 @@
+---
+title: MonitoringTierDetails
+type: object
+description: Detailed information about a monitoring tier's features.
+required:
+  - enabled
+  - metrics
+  - events
+  - logs
+  - tracking_interval
+  - cost_mills
+properties:
+  enabled:
+    type: boolean
+    description: Whether or not this tier is a selectable monitoring tier for an environment. A disabled tier may be either one coming in the future, or a legacy tier that is no longer available, but saved for historical reasons.
+  metrics:
+    type: object
+    description: Details on how metrics are handled for this tier.
+    required:
+      - service_granularity
+      - container_telemetry_granularity
+      - retention_period
+      - custom
+    properties:
+      service_granularity:
+        $ref: ../../Duration.yml
+      container_telemetry_granularity:
+        $ref: ../../Duration.yml
+      retention_period:
+        $ref: ../../Duration.yml
+      custom:
+        type: boolean
+        description: Whether or not custom user-submitted metrics are supported on this tier.
+  events:
+    type: object
+    description: Details on how events are handled for this tier.
+    required:
+      - retention_period
+      - custom
+    properties:
+      retention_period:
+        $ref: ../../Duration.yml
+      custom:
+        type: boolean
+        description: Whether or not custom user-submitted events are supported on this tier.
+  logs:
+    type: object
+    description: Details on how logs are handled for this tier.
+    required:
+      - analysis
+      - aggregation
+      - custom
+    properties:
+      analysis:
+        type: boolean
+        description: Whether or not log analysis is enabled on this tier.
+      aggregation:
+        type: boolean
+        description: Whether or not log aggregation is enabled on this tier.
+      custom:
+        type: boolean
+        description: Whether or not custom user-submitted logs are supported on this tier.
+  tracking_interval:
+    $ref: ../../Duration.yml
+  cost_mills:
+    type: integer
+    description: The monthly cost (in mills) of enabling this tier on an environment.
