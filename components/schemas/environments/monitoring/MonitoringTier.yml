@@ -1,0 +1,9 @@
+---
+type: string
+title: MonitoringTier
+description: The tier of monitoring, that determines the frequency that metrics are aggregated by the platform, on a per-environment basis.
+enum:
+  - limited
+  - basic
+  - premium
+  - enterprise
