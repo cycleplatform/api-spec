@@ -19,6 +19,10 @@ properties:
       - 415
       - 422
       - 500
+      - 501
+      - 502
+      - 503
+      - 504
   code:
     type: string
     description: A Cycle standard error code.
@@ -135,6 +139,9 @@ properties:
       - 503.not_ready
       - 503.not_enabled
       - 503.dependency_not_enabled
+
+      # 504
+      - 504.not_available
 
   title:
     type: string
