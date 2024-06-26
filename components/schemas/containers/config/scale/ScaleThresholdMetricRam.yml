@@ -1,6 +1,6 @@
 title: ScaleThresholdMetricRam
 type: object
-description: Describes the RAM threshold at which scaling will occur
+description: Describes the RAM threshold at which scaling will occur.
 required:
   - type
   - details
@@ -12,9 +12,11 @@ properties:
   details:
     type: object
     required:
-      - used
+      - usage_per_instance
     properties:
-      used:
+      usage_per_instance:
         type: string
-        description: The limit (maximum) amount of RAM each instance of the given container can use before triggering a scaling event.
-        example: "1G, 2M"
+        description: The limit (maximum) amount of RAM each instance of the given container can use before triggering a scaling event. This threshold must be greater than 25MB.
+        examples:
+          - "2G"
+          - "25MB"

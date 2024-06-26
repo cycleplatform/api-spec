@@ -12,11 +12,11 @@ properties:
   details:
     type: object
     required:
-      - used
+      - usage_per_instance
     properties:
-      used:
+      usage_per_instance:
         type: string
-        description: The limit (maximum) amount of RAM each instance of the given container can use before triggering a scaling event.
+        description: The limit (maximum) amount of RAM each instance of the given container can use before triggering a scaling event. This threshold must be greater than 25MB.
         examples:
-          - "1G"
-          - "50M"
+          - "2G"
+          - "25MB"
