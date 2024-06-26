@@ -1,0 +1,18 @@
+title: StackContainerScaleThresholdCustom
+type: object
+description: A custom threshold for defining a scaling event.
+required:
+  - type
+  - details
+properties:
+  type:
+    type: string
+    enum:
+      - custom
+  details:
+    type: object
+    required:
+      - webhook
+    properties:
+      webhook:
+        $ref: ../../../WebhookURL.yml
