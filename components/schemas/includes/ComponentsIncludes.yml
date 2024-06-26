@@ -27,4 +27,4 @@ additionalProperties:
     - $ref: ../infrastructure/auto-scale/groups/AutoScaleGroup.yml
     - $ref: ../pipelines/runs/PipelineRun.yml
     - $ref: ../hubs/roles/Role.yml
-    - $ref: ../accounts/Account.yml
+    - $ref: ../creators/PublicAccount.yml
