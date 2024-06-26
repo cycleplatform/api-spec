@@ -6,6 +6,7 @@ discriminator:
   mapping:
     ram: ./ScaleThresholdMetricRam.yml
     cpu: ./ScaleThresholdMetricCpu.yml
+    custom: ./ScaleThresholdMetricCustom.yml
     network-connections: ./ScaleThresholdMetricNetworkConnections.yml
     network-requests: ./ScaleThresholdMetricNetworkRequests.yml
     network-throughput: ./ScaleThresholdMetricNetworkThroughput.yml

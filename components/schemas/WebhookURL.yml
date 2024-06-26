@@ -1,0 +1,5 @@
+title: WebhookURL
+type: string
+description: |
+  A URL describing the destination Cycle should send a POST webhook payload to.
+example: https://example.com/cycle/autoscale
