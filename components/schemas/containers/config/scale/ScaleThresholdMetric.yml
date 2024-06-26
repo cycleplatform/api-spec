@@ -16,3 +16,4 @@ oneOf:
   - $ref: ./ScaleThresholdMetricNetworkConnections.yml
   - $ref: ./ScaleThresholdMetricNetworkRequests.yml
   - $ref: ./ScaleThresholdMetricNetworkThroughput.yml
+  - $ref: ./ScaleThresholdMetricCustom.yml
