@@ -6,6 +6,7 @@ discriminator:
   mapping:
     ram: ./StackContainerScaleThresholdRam.yml
     cpu: ./StackContainerScaleThresholdCpu.yml
+    custom: ./StackContainerScaleThresholdCustom.yml
     network-connections: ./StackContainerScaleThresholdNetworkConnections.yml
     network-requests: ./StackContainerScaleThresholdNetworkRequests.yml
     network-throughput: ./StackContainerScaleThresholdNetworkThroughput.yml
