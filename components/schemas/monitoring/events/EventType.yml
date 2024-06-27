@@ -1,6 +1,6 @@
 title: EventType
 type: string
-enum: 
+enum:
   - api.security_violation
   - console.ssh.login
   - console.ssh.login.failed
@@ -27,7 +27,7 @@ enum:
   - infrastructure.cluster.resources.ram.full
   - infrastructure.server.compute.volumes.base.reconfigured
   - infrastructure.server.compute.full_restart
-  - infrastructure.server.compute.sharedfs.mounts.mount
+  - infrastructure.server.compute.sharedfs.mounts.mount.failed
   - infrastructure.server.compute.soft_restart
   - infrastructure.server.image.download.failed
   - infrastructure.server.internal_api.throttled
