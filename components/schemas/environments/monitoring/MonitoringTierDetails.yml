@@ -20,6 +20,7 @@ properties:
       - service_granularity
       - container_telemetry_granularity
       - retention_period
+      - downsample_period
       - custom
     properties:
       service_granularity:
@@ -27,6 +28,8 @@ properties:
       container_telemetry_granularity:
         $ref: ../../Duration.yml
       retention_period:
+        $ref: ../../Duration.yml
+      downsample_period:
         $ref: ../../Duration.yml
       custom:
         type: boolean
