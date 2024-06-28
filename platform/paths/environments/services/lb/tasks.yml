@@ -40,9 +40,7 @@ post:
                     - "null"
                   description: A boolean representing if this service container is set to autoupdate or not
                 config:
-                  anyOf:
-                    - $ref: ../../../../../components/schemas/environments/services/lb/LoadBalancerConfig.yml
-                    - type: "null"
+                  $ref: ../../../../../components/schemas/environments/services/lb/LoadBalancerConfig.yml
   responses:
     202:
       description: Returns a Job Descriptor.
