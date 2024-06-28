@@ -36,6 +36,11 @@ get:
                     enum:
                       - haproxy
                       - v1
+                  current_type:
+                    type: string
+                    enum:
+                      - haproxy
+                      - v1
                   base_configs:
                     type: object
                     required:
