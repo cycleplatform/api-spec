@@ -1,0 +1,37 @@
+title: WafConfig
+type: object
+description: Additional configuration options for the web application firewall.
+required:
+  - rules
+properties:
+  rules:
+    type: array
+    items:
+      type: object
+      required:
+        - description
+        - skip
+        - type
+        - conditions
+      properties:
+        description:
+          type: string
+        skip:
+          type: boolean
+        type:
+          type: string
+        conditions:
+          type: array
+          items:
+            type: object
+            required:
+              - type
+              - operator
+              - value
+            properties:
+              type:
+                type: string
+              operator:
+                type: string
+              value:
+                type: string

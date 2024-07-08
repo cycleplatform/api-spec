@@ -10,6 +10,10 @@ properties:
   identifier:
     type: string
     description: A human-readable identifier for this controller. It will default to the port, i.e. `port-443`, but can be renamed to anything, such as the service this controller represents.
+  waf:
+    anyOf:
+      - $ref: ./WafConfig.yml
+      - type: "null"
   transport:
     title: V1LbControllerTransport
     description: Defines how traffic comes in to the load balancer, and how the load balancer handles it.

@@ -12,3 +12,7 @@ properties:
     anyOf:
       - $ref: ./V1LbController.yml
       - type: "null"
+  waf:
+    anyOf:
+      - $ref: ./WafConfig.yml
+      - type: "null"
