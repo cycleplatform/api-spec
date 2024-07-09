@@ -17,18 +17,4 @@ properties:
       telemetry:
         type: object
         description: Configuration options for how telemetry is handled on the load balancer.
-        properties:
-          persist_restarts:
-            type:
-              - boolean
-              - "null"
-            description: If true, Cycle will maintain telemetry/metrics across load balancer restarts.
-          disable_router_metrics:
-            description: "Determines if the load balancer will track router metrics. Defaults to false."
-            type: boolean
-            default: false
-          tracking_window:
-            description: "Determines how long the load balancer will track a URL from its last hit. If there is zero activity for this duration, the metrics will be dropped. Helps reduce noise by not tracking URLs that are occasionally hit. Defaults to 8h."
-            anyOf:
-              - $ref: ../../../../../../../Duration.yml
-              - type: "null"
+        additionalProperties: {}
