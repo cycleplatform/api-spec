@@ -31,6 +31,12 @@ properties:
         type:
           - string
           - "null"
+  destination:
+    type: object
+    description: Specify the destination of the traffic matching this routers/TcpRouterConfig.yml
+    properties:
+      container_id:
+        $ref: ../../../../../../HybridIdentifier.yml
   mode:
     type: string
     description: |
@@ -61,7 +67,7 @@ properties:
               Hints to the load balancer how to prioritize traffic to instances.
 
               **random**: Chooses a random instance.
-              **latency**: Prioritizes lower latency instances. 
+              **latency**: Prioritizes lower latency instances.
             enum:
               - latency
               - random
