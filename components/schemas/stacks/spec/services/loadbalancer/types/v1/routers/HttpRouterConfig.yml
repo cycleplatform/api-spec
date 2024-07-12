@@ -74,6 +74,9 @@ properties:
                     value:
                       description: Replacement value.
                       type: string
+          url:
+            type: string
+            description: The URL to forward the request to.
       proxy:
         type:
           - object
