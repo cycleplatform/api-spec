@@ -33,7 +33,7 @@ properties:
           - "null"
   destination:
     type: object
-    description: Specify the destination of the traffic matching this routers/TcpRouterConfig.yml
+    description: Specify the destination of the traffic matching this router.
     properties:
       container_id:
         $ref: ../../../../../../HybridIdentifier.yml
