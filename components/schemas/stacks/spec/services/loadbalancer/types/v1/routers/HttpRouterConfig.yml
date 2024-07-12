@@ -74,6 +74,14 @@ properties:
                     value:
                       description: Replacement value.
                       type: string
+          url:
+            type: string
+            description: |
+              The URL to forward the request to.
+
+              Given a path match of `^/example/(.*)$`, a route such as `/example/wow.jpg` would be forwarded as /wow.jpg.
+            examples:
+              - /$$1
       proxy:
         type:
           - object
