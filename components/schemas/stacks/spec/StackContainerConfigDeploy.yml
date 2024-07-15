@@ -184,32 +184,6 @@ properties:
       max_attempts:
         type: integer
         description: The maximum number of restart attempts Cycle will make.
-      notify:
-        description: Configuration options for notifying on container restart.
-        type:
-          - object
-          - "null"
-        properties:
-          emails:
-            description: A list of emails Cycle will attempt to notify when a container restarts.
-            type: array
-            items:
-              type: string
-          web_hook:
-            description: >
-              An endpoint Cycle will make a request to.
-
-              The post body will contain an object that looks like:
-              ```
-              {
-                "instance_id": <the instance ID>,
-                "container_id": <the container ID>,
-                "environment_id": <the environment ID>,
-                "error": <a string of the error Cycle received from this container>,
-                "time": <a timestamp of when the restart happend>
-              }
-              ```
-            type: string
   health_check:
     description: Configuration options for automated container health checks.
     type:
@@ -267,7 +241,7 @@ properties:
           - $ref: ../../Duration.yml
           - type: "null"
         description: The duration between samples.
-      web_hook:
+      webhook:
         type:
           - string
           - "null"

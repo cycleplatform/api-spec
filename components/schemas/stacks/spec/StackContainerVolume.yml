@@ -41,7 +41,7 @@ properties:
         type: array
         items:
           type: string
-      web_hook:
+      webhook:
         description: If set, Cycle will call out to this URL for authentication. Anything other than a 200 response will be considered a validation failure.
         type: string
       password:
