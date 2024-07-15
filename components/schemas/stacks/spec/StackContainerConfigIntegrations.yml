@@ -151,3 +151,16 @@ properties:
           type: boolean
         mount_point:
           type: string
+  logs:
+    description: When enabled, allows more customization to be applied to logging for the container.
+    type:
+      - object
+      - "null"
+    properties:
+      groups:
+        description: A tag used for applying log filters and analytics.
+        type:
+          - array
+          - "null"
+        items:
+          $ref: ../../Identifier.yml

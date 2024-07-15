@@ -38,7 +38,7 @@ properties:
         type: array
         items:
           type: string
-      web_hook:
+      webhook:
         type: string
         description: Call out to a webhook to authenticate usernames/passwords if an organization manages their own accounts
       password:
