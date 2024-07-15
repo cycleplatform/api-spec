@@ -159,4 +159,8 @@ properties:
     properties:
       group:
         description: A tag used for applying log filters and analytics.
-        $ref: ../../Identifier.yml
+        type:
+          - array
+          - "null"
+        items:
+          $ref: ../../Identifier.yml
