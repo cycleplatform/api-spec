@@ -58,11 +58,6 @@ properties:
       - "null"
     enum:
       - "conductor"
-  # pod:
-  #   description: Pod settings. **Not yet implemented**
-  #   type:
-  #     - string
-  #     - "null"
   volumes:
     description: A list of configurations for volumes that will be attached to the container. Only applicable if the container is set to `stateful`.
     type:
