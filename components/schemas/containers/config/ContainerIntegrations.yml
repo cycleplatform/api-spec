@@ -132,7 +132,7 @@ properties:
       - object
       - "null"
     properties:
-      group:
+      groups:
         description: A tag used for applying log filters and analytics.
         type:
           - array
