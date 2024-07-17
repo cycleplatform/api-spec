@@ -26,7 +26,7 @@ enum:
   - container.reconfigured.privileged
   - container.volumes.base.create.failed
   - container.volumes.create.failed
-  - container.service.auto_update
+  - environment.service.auto_update
   - environment.service.lb.ips.sync.failed
   - environment.service.vpn.login.failed
   - infrastructure.cluster.resources.ram.full
