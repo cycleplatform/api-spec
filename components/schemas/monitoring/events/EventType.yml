@@ -8,7 +8,7 @@ enum:
   - container.instance.backup.failed
   - container.instance.delete.failed
   - container.instance.error
-  - container.instance.failure.max_restarts
+  - container.instance.restart.max_restarts
   - container.instance.function.max_runtime
   - container.instance.healthcheck.failed
   - container.instance.healthcheck.recovered
@@ -16,26 +16,33 @@ enum:
   - container.instance.migrate.failed
   - container.instance.migration.completed
   - container.instance.migration.failed
+  - container.instance.network.interfaces.create.failed
   - container.instance.restart.failed
   - container.instance.start.failed
   - container.instance.start.privileged
   - container.instance.stop.failed
   - container.instances.autoscale.down
   - container.instances.autoscale.up
-  - container.reconfigured
+  - container.reconfigured.privileged
+  - container.volumes.base.create.failed
+  - container.volumes.create.failed
   - container.service.auto_update
+  - environment.service.lb.ips.sync.failed
+  - environment.service.vpn.login.failed
   - infrastructure.cluster.resources.ram.full
   - infrastructure.server.compute.volumes.base.reconfigured
   - infrastructure.server.compute.full_restart
+  - infrastructure.server.compute.sharedfs.mounts.mount
   - infrastructure.server.compute.sharedfs.mounts.mount.failed
   - infrastructure.server.compute.soft_restart
   - infrastructure.server.image.download.failed
   - infrastructure.server.internal_api.throttled
   - infrastructure.server.manifest.sync.failed
+  - infrastructure.server.mesh.connect.failed
   - infrastructure.server.neighbor.reachable
   - infrastructure.server.neighbor.rebuild
   - infrastructure.server.neighbor.unreachable
-  - infrastructure.server.neighbor.upgrade
+  - infrastructure.server.neighbor.upgraded
   - infrastructure.server.resources.load.high
   - infrastructure.server.resources.ram.full
   - infrastructure.server.resources.storage.volumes.base.full
@@ -43,4 +50,3 @@ enum:
   - infrastructure.server.sftp.lockdown
   - infrastructure.server.sftp.login
   - infrastructure.server.sftp.login.failed
-  - services.vpn.login.failed
