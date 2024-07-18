@@ -32,6 +32,11 @@ properties:
         type: object
         required:
           - allow_incompatible
+          - overwrite_runtime_config
         properties:
           allow_incompatible:
             type: boolean
+            description: A boolean where true signifies the image being used to reimage does not have to have compatibility with the image being replaced.
+          overwrite_runtime_config:
+            type: boolean
+            description: A boolean where true signifies the user wishes to overwrite the current runtime configuration for the given container during the reimage process.
