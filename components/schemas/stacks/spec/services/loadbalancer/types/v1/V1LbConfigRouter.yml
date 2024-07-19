@@ -31,12 +31,26 @@ properties:
         type:
           - string
           - "null"
-  destination:
-    type: object
-    description: Specify the destination of the traffic matching this router.
-    properties:
-      container_id:
-        $ref: ../../../../../../HybridIdentifier.yml
+      containers:
+        type:
+          - object
+          - "null"
+        description: Match traffic destined (or not destined) for a particular container.
+        properties:
+          include:
+            description: Match any traffic that would be routed to one of these containers.
+            type:
+              - array
+              - "null"
+            items:
+              $ref: ../../../../../../HybridIdentifier.yml
+          exclude:
+            description: Match any traffic that would NOT be routed to one of these containers.
+            type:
+              - array
+              - "null"
+            items:
+              $ref: ../../../../../../HybridIdentifier.yml
   mode:
     type: string
     description: |
