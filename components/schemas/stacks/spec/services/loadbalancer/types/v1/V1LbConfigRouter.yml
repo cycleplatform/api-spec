@@ -11,7 +11,7 @@ properties:
     description: The ruleset for this router to be selected. If both `domains`` and `internal_port` are null, then this match acts as a wildcard and will match all.
     required:
       - domains
-      - internal_port
+      - internal_ports
     properties:
       domains:
         type:
@@ -20,7 +20,7 @@ properties:
         description: The specific domains to match against.
         items:
           type: string
-      internal_port:
+      internal_ports:
         type:
           - array
           - "null"
