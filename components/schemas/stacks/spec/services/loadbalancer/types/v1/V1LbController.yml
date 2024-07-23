@@ -1,12 +1,8 @@
 title: V1LbController
 type: object
 required:
-  - default
   - identifier
-  - transport
 properties:
-  default:
-    type: boolean
   identifier:
     type: string
     description: A human-readable identifier for this controller. It will default to the port, i.e. `port-443`, but can be renamed to anything, such as the service this controller represents.
@@ -17,7 +13,9 @@ properties:
   transport:
     title: V1LbControllerTransport
     description: Defines how traffic comes in to the load balancer, and how the load balancer handles it.
-    type: object
+    type: 
+      - object
+      - "null"
     required:
       - mode
       - config
