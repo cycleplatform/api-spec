@@ -83,19 +83,19 @@ properties:
             example: /var/run/cycle/variables/<myVariable>
             description: The absolute path to write the variable to (including file name). If `null`, it will be written to `/var/run/cycle/variables/{variable-identifier}`.
   source:
-    type:
-      - object
-      - "null"
-    description: >
-      Describes the source/value of the variable.
+    anyOf:
+      - type: "null"
+      - type: object
+        description: >
+          Describes the source/value of the variable.
 
-      - **raw**: Directly set the value of the variable in the stack.
-      - **url**: Cycle will fetch the variable content from a remote source when the container starts.
-    discriminator:
-      propertyName: type
-      mapping:
-        url: ./StackSpecScopedVariableUrlSource.yml
-        raw: ./StackSpecScopedVariableRawSource.yml
-    oneOf:
-      - $ref: ./StackSpecScopedVariableUrlSource.yml
-      - $ref: ./StackSpecScopedVariableRawSource.yml
+          - **raw**: Directly set the value of the variable in the stack.
+          - **url**: Cycle will fetch the variable content from a remote source when the container starts.
+        discriminator:
+          propertyName: type
+          mapping:
+            url: ./StackSpecScopedVariableUrlSource.yml
+            raw: ./StackSpecScopedVariableRawSource.yml
+        oneOf:
+          - $ref: ./StackSpecScopedVariableUrlSource.yml
+          - $ref: ./StackSpecScopedVariableRawSource.yml

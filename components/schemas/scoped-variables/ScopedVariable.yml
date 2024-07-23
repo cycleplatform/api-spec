@@ -29,18 +29,18 @@ properties:
   access:
     $ref: ./ScopedVariableAccess.yml
   source:
-    type:
-      - object
-      - "null"
-    description: The source or value of the scoped variable.
-    discriminator:
-      propertyName: type
-      mapping:
-        url: ./URLSource.yml
-        raw: ./RawSource.yml
-    oneOf:
-      - $ref: ./URLSource.yml
-      - $ref: ./RawSource.yml
+    anyOf:
+      - type: "null"
+      - type: object
+        description: The source or value of the scoped variable.
+        discriminator:
+          propertyName: type
+          mapping:
+            url: ./URLSource.yml
+            raw: ./RawSource.yml
+        oneOf:
+          - $ref: ./URLSource.yml
+          - $ref: ./RawSource.yml
   state:
     "$ref": "./ScopedVariableState.yml"
   events:
