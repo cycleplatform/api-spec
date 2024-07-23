@@ -24,4 +24,6 @@ properties:
     type: boolean
     description: A boolean representing if this service container is set to autoupdate or not
   config:
-    $ref: ./lb/LoadBalancerConfig.yml
+    anyOf:
+      - $ref: ./lb/LoadBalancerConfig.yml
+      - type: "null"
