@@ -2,10 +2,14 @@ title: V1LbController
 type: object
 required:
   - identifier
+  - port
 properties:
   identifier:
     type: string
     description: A human-readable identifier for this controller. It will default to the port, i.e. `port-443`, but can be renamed to anything, such as the service this controller represents.
+  port:
+    type: integer
+    description: The port inbound trafic is accepted on.
   waf:
     anyOf:
       - $ref: ./WafConfig.yml
@@ -13,7 +17,7 @@ properties:
   transport:
     title: V1LbControllerTransport
     description: Defines how traffic comes in to the load balancer, and how the load balancer handles it.
-    type: 
+    type:
       - object
       - "null"
     required:
@@ -49,12 +53,7 @@ properties:
           ingress:
             type: object
             description: Defines how traffic gets into the load balancer.
-            required:
-              - port
             properties:
-              port:
-                type: integer
-                description: The port inbound trafic is accepted on.
               tls:
                 type:
                   - object
