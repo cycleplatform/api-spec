@@ -134,15 +134,17 @@ properties:
             $ref: ../../../../../../Duration.yml
             description: The duration the load balancer will wait before timing out while attempting to connect to the destination.
       extension:
-        type: object
-        description: Additional configuration options specific to the selected mode (tcp/http).
-        discriminator:
-          propertyName: type
-          mapping:
-            tcp: routers/TcpRouterConfig.yml
-            udp: routers/UdpRouterConfig.yml
-            http: routers/HttpRouterConfig.yml
-        oneOf:
-          - $ref: routers/TcpRouterConfig.yml
-          - $ref: routers/HttpRouterConfig.yml
-          - $ref: routers/UdpRouterConfig.yml
+        anyOf:
+          - type: "null"
+          - type: object
+            description: Additional configuration options specific to the selected mode (tcp/http).
+            discriminator:
+              propertyName: type
+              mapping:
+                tcp: routers/TcpRouterConfig.yml
+                udp: routers/UdpRouterConfig.yml
+                http: routers/HttpRouterConfig.yml
+            oneOf:
+              - $ref: routers/TcpRouterConfig.yml
+              - $ref: routers/HttpRouterConfig.yml
+              - $ref: routers/UdpRouterConfig.yml
