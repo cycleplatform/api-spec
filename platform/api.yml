@@ -354,8 +354,6 @@ paths:
     $ref: paths/containers/compatibleServers.yml
   "/v1/containers/{containerId}/compatible-images":
     $ref: "./paths/containers/compatibleImages.yml"
-  "/v1/containers/{containerId}/telemetry/instances":
-    $ref: paths/containers/telemetry.yml
 
   ## Instances
   "/v1/containers/{containerId}/instances":
@@ -425,8 +423,6 @@ paths:
     $ref: "./paths/environments/tasks.yml"
   "/v1/environments/{environmentId}/summary":
     $ref: "./paths/environments/summary.yml"
-  "/v1/environments/{environmentId}/telemetry/instances":
-    $ref: "./paths/environments/telemetry.yml"
 
   ## Deployments
   "/v1/environments/{environmentId}/deployments":
