@@ -1,6 +1,6 @@
 title: RepoSourceType
 type: object
-description: Information about the repostiory.
+description: Information about the repository.
 required:
   - url
 properties:
@@ -11,18 +11,18 @@ properties:
     type: string
     description: An optional branch arguement.  Default value is `master`.
   auth:
-    type:
-      - object
-      - "null"
-    description: Authentication information for the repository.
-    discriminator:
-      propertyName: type
-      mapping:
-        http: ../CredentialsHTTP.yml
-        ssh: ../CredentialsSSH.yml
-    oneOf:
-      - $ref: ../CredentialsHTTP.yml
-      - $ref: ../CredentialsSSH.yml
+    anyOf:
+      - type: "null"
+      - type: object
+        description: Authentication information for the repository.
+        discriminator:
+          propertyName: type
+          mapping:
+            http: ../CredentialsHTTP.yml
+            ssh: ../CredentialsSSH.yml
+        oneOf:
+          - $ref: ../CredentialsHTTP.yml
+          - $ref: ../CredentialsSSH.yml
   ref:
     type:
       - object
