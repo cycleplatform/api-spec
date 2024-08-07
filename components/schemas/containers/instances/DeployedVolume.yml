@@ -1,45 +1,48 @@
 title: DeployedVolume
-type: object 
-description: A deployed volume resource. 
-required: 
+type: object
+description: A deployed volume resource.
+required:
+  - id
   - server_id
-  - container_id 
-  - container_volume_id 
-  - instance_id 
-  - hash 
-  - path 
-  - storage 
-  - last_updated 
-properties: 
-  server_id: 
-    type: string 
-    description: The ID of the server the instance is deployed to. 
-  container_id: 
-    type: string 
-    description: The ID of the container the instance was created from. 
-  container_volume_id: 
-    type: string 
-    description: The ID for the volume withing the context of the container. 
-  instance_id: 
-    type: string 
-    description: The ID for the container instance this volume is attached to. 
-  hash: 
-    type: string 
-    description: A hash used as part of the identification mechanisms for the platform and API. 
-  path: 
-    type: string 
-    description: The path where the volume is mounted on the instnace filesystem. 
-  storage: 
-    type: object 
-    description: Storage information for the volume. 
-    required: 
-      - used 
-      - total 
-    properties: 
-      used: 
-        type: integer 
+  - container_id
+  - container_volume_id
+  - instance_id
+  - hash
+  - path
+  - storage
+  - last_updated
+properties:
+  id:
+    type: string
+    description: The ID of the deployed volume.
+  server_id:
+    type: string
+    description: The ID of the server the instance is deployed to.
+  container_id:
+    type: string
+    description: The ID of the container the instance was created from.
+  container_volume_id:
+    type: string
+    description: The ID for the volume withing the context of the container.
+  instance_id:
+    type: string
+    description: The ID for the container instance this volume is attached to.
+  hash:
+    type: string
+    description: A hash used as part of the identification mechanisms for the platform and API.
+  path:
+    type: string
+    description: The path where the volume is mounted on the instnace filesystem.
+  storage:
+    type: object
+    description: Storage information for the volume.
+    required:
+      - used
+      - total
+    properties:
+      used:
+        type: integer
         description: The amount of volume storage used, in MB's
-      total: 
-        type: integer 
-        description: The total amount of volume storage available, in MB's. 
-        
+      total:
+        type: integer
+        description: The total amount of volume storage available, in MB's.
