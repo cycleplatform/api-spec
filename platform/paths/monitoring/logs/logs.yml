@@ -1,14 +1,17 @@
 post:
-  operationId: "getLogs"
-  summary: Get Logs
+  operationId: "aggregateLogs"
+  summary: Aggregate Logs
   description: |
-    A basic query for retrieving logs. 
+    A query for retrieving container instance logs.  
+    Allows aggregate narrowing through filtering, searching, and scope parameters.
+    If 'local' is set to true, only cached logs will be queried, and logs in object storage will be ignored.  This leads to much faster performance.
+
     Requires the `monitor-view` capability.
   tags:
     - Monitoring
   parameters: []
   requestBody:
-    description: Parameters for querying logs.
+    description: Parameters for aggregating logs.
     content:
       application/json:
         schema:
@@ -17,24 +20,67 @@ post:
             - scope
           properties:
             scope:
-              $ref: ../../../../components/schemas/monitoring/logs/LogsScope.yml
+              type: object
+              required:
+                - type
+              properties:
+                type:
+                  description: The type of resource used to narrow log aggregation.
+                  type: string
+                  enum:
+                    - container
+                    - instance
+                    - environment
+                ids:
+                  description: The ID or IDs used to narrow log aggregation.
+                  type:
+                    - array
+                    - "null"
+                  items:
+                    $ref: ../../../../components/schemas/ID.yml
+                date_range:
+                  description: The date range used to narrow log aggregation.
+                  anyOf:
+                    - type: "null"
+                    - type: object
+                      properties:
+                        start:
+                          description: The start date from when to fetch logs.
+                          $ref: ../../../../components/schemas/DateTime.yml
+                        end:
+                          description: The end date from when to fetch logs.
+                          $ref: ../../../../components/schemas/DateTime.yml
             search:
               type: array
               items:
-                $ref: ../../../../components/schemas/monitoring/logs/LogsSearch.yml
+                type: object
+                required:
+                  - type
+                  - match
+                properties:
+                  type:
+                    description: The input type used to query logs. When set to regexp, a regex expression will be used to find a log line with a message matching the expression.  When set to 'raw', the aggregate will look for an exact string match.
+                    type: string
+                    enum:
+                      - raw
+                      - regexp
+                  match:
+                    description: The search input is a string input that is used to in the aggregate to narrow the log line results.
+                    type: string
             local:
-              description: Indicates that only locally cached logs should be queried.
+              description: Indicates that only locally cached log lines should be queried.  If true, logs in object storage will not be returned.
               type:
                 - boolean
                 - "null"
             limit:
-              description: Describes the maximum number of logs the query will return.
+              description: Describes the maximum number of log lines the query will return.
+              example: 1000
               type:
                 - integer
                 - "null"
   responses:
     200:
-      description: Returns an array of logs.
+      description: Returns an array of log lines.
       content:
         application/json:
           schema:

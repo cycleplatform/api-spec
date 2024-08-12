@@ -1,22 +1,22 @@
 title: LogLine
-description: Describes an individual log.
+description: A log line is point in time data output from a container instance.
 required:
   - time
   - source
   - message
 properties:
   time:
-    description: The time the log occurred.
+    description: The time the log line occurred.
     $ref: ../../../../components/schemas/DateTime.yml
   source:
-    description: The source that generated the log.
+    description: The source that generated the log line.
     example: stdout
     type: string
   message:
-    description: The message associated with the log.
+    description: The message associated with the log line.
     type: string
   instance_id:
-    description: The container instance that the log originated from.
+    description: The container instance that the log line originated from.
     type:
       - string
       - "null"
