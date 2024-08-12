@@ -1,0 +1,44 @@
+post:
+  operationId: "exportStack"
+  summary: Export As Stack
+  description: |
+    Exports an environment as a stack file for reuse.
+
+    Requires the `environments-manage` capability. You must also have management permissions on the target environment ACL.
+  tags:
+    - Environments
+  parameters:
+    - name: environmentId
+      description: The ID of the target environment.
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            deployment_tags:
+              type: array
+              description: |
+                Defines which deployment containers to include in the stack export. By default, no containers tagged in a deployment are exported.
+                This option includes all containers with the specific, comma separated deployment tags in the final output in addition to the
+                containers that are not part of any deployment.
+              items:
+                type: string
+  responses:
+    200:
+      description: Returns a stack spec file.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/stacks/spec/StackSpec.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
