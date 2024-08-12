@@ -1,0 +1,14 @@
+title: LogsSearch
+required:
+  - type
+  - match
+properties:
+  type:
+    description: The input type to be used to query logs.
+    type: string
+    enum:
+      - raw
+      - regexp
+  match:
+    description: The search input used to query logs.
+    type: string

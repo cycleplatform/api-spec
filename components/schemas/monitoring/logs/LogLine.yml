@@ -1,0 +1,22 @@
+title: LogLine
+description: Describes an individual log.
+required:
+  - time
+  - source
+  - message
+properties:
+  time:
+    description: The time the log occurred.
+    $ref: ../../../../components/schemas/DateTime.yml
+  source:
+    description: The source that generated the log.
+    example: stdout
+    type: string
+  message:
+    description: The message associated with the log.
+    type: string
+  instance_id:
+    description: The container instance that the log originated from.
+    type:
+      - string
+      - "null"

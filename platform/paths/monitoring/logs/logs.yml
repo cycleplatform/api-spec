@@ -1,0 +1,48 @@
+post:
+  operationId: "getLogs"
+  summary: Get Logs
+  description: |
+    A basic query for retrieving logs. 
+    Requires the `monitor-view` capability.
+  tags:
+    - Monitoring
+  parameters: []
+  requestBody:
+    description: Parameters for updating a Container.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - scope
+          properties:
+            scope:
+              $ref: ../../../../components/schemas/monitoring/logs/LogsScope.yml
+            search:
+              type: array
+              items:
+                $ref: ../../../../components/schemas/monitoring/logs/LogsSearch.yml
+            local:
+              type:
+                - boolean
+                - "null"
+            limit:
+              type:
+                - integer
+                - "null"
+  responses:
+    200:
+      description: Returns an array of metrics.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: ../../../../components/schemas/monitoring/logs/LogLine.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
