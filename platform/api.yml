@@ -355,7 +355,7 @@ paths:
   "/v1/containers/{containerId}/compatible-images":
     $ref: "./paths/containers/compatibleImages.yml"
 
-  ## Instances
+  ## -- Instances
   "/v1/containers/{containerId}/instances":
     $ref: "./paths/containers/instances/instances.yml"
   "/v1/containers/{containerId}/instances/{instanceId}":
@@ -366,10 +366,10 @@ paths:
     $ref: "./paths/containers/instances/tasks.yml"
   "/v1/containers/{containerId}/instances/{instanceId}/volumes":
     $ref: "./paths/containers/instances/volumes.yml"
-  "/v1/containers/{containerId}/instances/{instanceId}/telemetry/resources/report":
-    $ref: paths/containers/instances/telemetry/report.yml
-  "/v1/containers/{containerId}/instances/{instanceId}/telemetry/resources/stream":
-    $ref: paths/containers/instances/telemetry/stream.yml
+  ? "/v1/containers/{containerId}/instances/{instanceId}/telemetry/resources/report"
+  : $ref: paths/containers/instances/telemetry/report.yml
+  ? "/v1/containers/{containerId}/instances/{instanceId}/telemetry/resources/stream"
+  : $ref: paths/containers/instances/telemetry/stream.yml
   "/v1/containers/{containerId}/instances/{instanceId}/console":
     $ref: "paths/containers/instances/console.yml"
   "/v1/containers/{containerId}/functions/tasks":
