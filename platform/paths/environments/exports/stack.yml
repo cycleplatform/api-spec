@@ -14,26 +14,20 @@ post:
       required: true
       schema:
         type: string
-    - name: filter
-      in: query
-      # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706
-      style: deepObject
-      required: false
-      description: |
-        ## Filter Field 
-        The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
-      schema:
-        type: object
-        properties:
-          deployment_tags:
-            type: string
-            examples:
-              - prod,dev
-              - prod
-            description: |
-              Defines which deployment containers to include in the stack export. By default, no containers tagged in a deployment are exported.
-              This option includes all containers with the specific, comma separated deployment tags in the final output in addition to the
-              containers that are not part of any deployment.
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            deployment_tags:
+              type: array
+              description: |
+                Defines which deployment containers to include in the stack export. By default, no containers tagged in a deployment are exported.
+                This option includes all containers with the specific, comma separated deployment tags in the final output in addition to the
+                containers that are not part of any deployment.
+              items:
+                type: string
   responses:
     200:
       description: Returns a stack spec file.
