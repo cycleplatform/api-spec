@@ -8,7 +8,7 @@ post:
     - Monitoring
   parameters: []
   requestBody:
-    description: Parameters for updating a Container.
+    description: Parameters for querying logs.
     content:
       application/json:
         schema:
@@ -23,16 +23,18 @@ post:
               items:
                 $ref: ../../../../components/schemas/monitoring/logs/LogsSearch.yml
             local:
+              description: Indicates that only locally cached logs should be queried.
               type:
                 - boolean
                 - "null"
             limit:
+              description: Describes the maximum number of logs the query will return.
               type:
                 - integer
                 - "null"
   responses:
     200:
-      description: Returns an array of metrics.
+      description: Returns an array of logs.
       content:
         application/json:
           schema:

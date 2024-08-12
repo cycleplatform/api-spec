@@ -4,7 +4,7 @@ required:
   - match
 properties:
   type:
-    description: The input type to be used to query logs.
+    description: The input type used to query logs.
     type: string
     enum:
       - raw

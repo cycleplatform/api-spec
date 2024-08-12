@@ -3,28 +3,28 @@ required:
   - type
 properties:
   type:
-    description: The type of resource that will be used to filter log scope.
+    description: The type of resource used to filter log scope.
     type: string
     enum:
       - container
       - instance
       - environment
   ids:
-    description: The ID or IDs that will be used to filter log scope.
+    description: The ID or IDs used to filter log scope.
     type:
       - array
       - "null"
     items:
       $ref: ../../ID.yml
   date_range:
-    description: The date range that will be used to filter log scope.
+    description: The date range used to filter log scope.
     anyOf:
       - type: "null"
       - type: object
         properties:
           start:
-            description: The start date from when to pull logs.
+            description: The start date from when to fetch logs.
             $ref: ../../../../components/schemas/DateTime.yml
           end:
-            description: The end date from when to pull logs.
+            description: The end date from when to fetch logs.
             $ref: ../../../../components/schemas/DateTime.yml
