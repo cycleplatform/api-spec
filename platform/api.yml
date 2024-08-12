@@ -355,7 +355,7 @@ paths:
   "/v1/containers/{containerId}/compatible-images":
     $ref: "./paths/containers/compatibleImages.yml"
 
-  ## Instances
+  ## -- Instances
   "/v1/containers/{containerId}/instances":
     $ref: "./paths/containers/instances/instances.yml"
   "/v1/containers/{containerId}/instances/{instanceId}":
@@ -615,6 +615,8 @@ paths:
     $ref: paths/monitoring/events/events.yml
   "/v1/monitoring/events/aggregate":
     $ref: paths/monitoring/events/aggregate.yml
+  "/v1/monitoring/logs/fetch":
+    $ref: paths/monitoring/logs/logs.yml
 
   # --Pipelines
   "/v1/pipelines":
