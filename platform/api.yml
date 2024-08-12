@@ -427,6 +427,10 @@ paths:
   ## Deployments
   "/v1/environments/{environmentId}/deployments":
     $ref: "./paths/environments/deployments.yml"
+  
+  ## Export
+  "/v1/environments/{environmentId}/export/stack":
+    $ref: "./paths/environments/exports/stack.yml"
 
   ## Scoped Variables
   "/v1/environments/{environmentId}/scoped-variables":
