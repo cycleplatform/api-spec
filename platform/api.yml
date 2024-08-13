@@ -427,7 +427,7 @@ paths:
   ## Deployments
   "/v1/environments/{environmentId}/deployments":
     $ref: "./paths/environments/deployments.yml"
-  
+
   ## Export
   "/v1/environments/{environmentId}/export/stack":
     $ref: "./paths/environments/exports/stack.yml"
@@ -615,8 +615,8 @@ paths:
     $ref: paths/monitoring/events/events.yml
   "/v1/monitoring/events/aggregate":
     $ref: paths/monitoring/events/aggregate.yml
-  "/v1/monitoring/logs/fetch":
-    $ref: paths/monitoring/logs/logs.yml
+  "/v1/monitoring/logs/aggregate":
+    $ref: paths/monitoring/logs/aggregate.yml
 
   # --Pipelines
   "/v1/pipelines":
