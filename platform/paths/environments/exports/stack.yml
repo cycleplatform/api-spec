@@ -28,6 +28,13 @@ post:
                 containers that are not part of any deployment.
               items:
                 type: string
+            resolve_origins:
+              type: boolean
+              default: false
+              description: |
+                When set to true, Cycle will resolve image origins and inline them into the stack, essentially making this stack portable outside the hub it's currently used in.
+                By default, this is set to false, and the export will just reference existing image sources used by this stack in your hub by ID.
+
   responses:
     200:
       description: Returns a stack spec file.
