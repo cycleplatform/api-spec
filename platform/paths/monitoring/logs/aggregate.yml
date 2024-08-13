@@ -53,7 +53,8 @@ post:
                 context_window:
                   description: |
                     Context window indicates how many log lines after a match to return in the response. 
-                    This allows greater context around the matched lines. The platform default is 5.
+                    This allows greater context around the matched lines.
+                  default: 5
                   type:
                     - integer
                     - "null"
