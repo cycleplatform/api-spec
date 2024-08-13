@@ -136,6 +136,17 @@ properties:
                   enable:
                     type: boolean
                     description: If enabled, Cycle will attempt to match inbound requests to the closest load balancer geographically.
+              wildcard:
+                type:
+                  - object
+                  - "null"
+                required:
+                  - resolve_sub_domains
+                properties:
+                  resolve_sub_domains:
+                    description: If enabled, subdomains will resolve for wildcard records. If disabled, only the primary domain will resolve.
+                    default: false
+                    type: boolean
       - oneOf:
           - type: object
             properties:
