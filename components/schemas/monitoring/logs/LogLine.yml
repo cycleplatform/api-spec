@@ -20,3 +20,9 @@ properties:
     type:
       - string
       - "null"
+  context_window:
+    description: |
+      A randomly generated ID that is assigned to all lines in the same context window.
+      The first line with a specific ID is the log line that matches the query, and the following
+      log lines are included due to the the set context window in the aggregate.
+    type: string
