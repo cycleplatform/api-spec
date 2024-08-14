@@ -24,7 +24,8 @@ properties:
   term:
     "$ref": "./Term.yml"
   price:
-    type: string
-    description: 1/10th of a cent.
+    type: number
+    description: 1/10th of a cent (mills).
   discount:
-    type: string
+    type: number
+    description: 1/10th of a cent (mills).
