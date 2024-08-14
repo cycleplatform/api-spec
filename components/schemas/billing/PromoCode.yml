@@ -15,13 +15,11 @@ properties:
       - object
       - "null"
     description: The amount of credit the promo code offers.
-    additionalProperties:
-      type: object
-      properties:
-        amount:
-          "$ref": "./BillingAmount.yml"
-        expires:
-          "$ref": "../DateTime.yml"
+    properties:
+      amount:
+        "$ref": "./BillingAmount.yml"
+      expires:
+        "$ref": "../DateTime.yml"
   state:
     title: PromoCodeState
     allOf:
