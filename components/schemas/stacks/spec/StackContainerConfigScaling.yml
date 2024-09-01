@@ -1,4 +1,5 @@
 title: StackContainerConfigScaling
+x-ogen-name: StackSpecContainerConfigScaling
 type: object
 description: Stack configuration options for auto-scaling.
 required:

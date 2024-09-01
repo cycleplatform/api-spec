@@ -1,4 +1,5 @@
 title: StackContainerConfigDeploy
+x-ogen-name: StackSpecContainerConfigDeploy
 type: object
 description: Stack configuration options related to how the container behaves over its lifecycle (startup, shutdown, health checks, etc).
 required:

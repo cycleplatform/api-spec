@@ -16,3 +16,4 @@ oneOf:
   - $ref: ./StackContainerScaleThresholdNetworkConnections.yml
   - $ref: ./StackContainerScaleThresholdNetworkRequests.yml
   - $ref: ./StackContainerScaleThresholdNetworkThroughput.yml
+  - $ref: ./StackContainerScaleThresholdCustom.yml
