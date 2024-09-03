@@ -92,16 +92,7 @@ export function downconvertOpenAPI31To30(spec: OpenAPISpec31): OpenAPISpec30 {
   return convertedSpec;
 }
 
-function resolveRefType(ref: string, schemaMap: Record<string, SchemaObject>): string | undefined {
-    const refKey = ref.replace(/^#\/components\/schemas\//, '');
-    const referencedSchema = schemaMap[refKey];
-    if (referencedSchema && referencedSchema.type) {
-      return referencedSchema.type;
-    }
-    return undefined;
-  }
-  
-  function adjustSchema(schema: SchemaObject, schemaMap: Record<string, SchemaObject>): void {
+function adjustSchema(schema: SchemaObject, schemaMap: Record<string, SchemaObject>): void {
     // Remove unsupported properties
     delete schema.$schema;
     delete schema.$id;
@@ -117,7 +108,43 @@ function resolveRefType(ref: string, schemaMap: Record<string, SchemaObject>): s
       delete schema.const;
     }
   
-    // Handle 'type' as an array including 'null'
+    // Handle anyOf/oneOf
+    ['anyOf', 'oneOf'].forEach(keyword => {
+      if (schema[keyword]) {
+        let hasNullType = false;
+  
+        const filteredSchemas = schema[keyword].map(entry => {
+          if (entry.$ref) {
+            return entry; // Keep the $ref as-is, no need for allOf if there's no null handling
+          } else if (entry.type === 'null') {
+            hasNullType = true;
+            return undefined; // We'll handle null types separately
+          }
+          return entry;
+        }).filter(Boolean);
+  
+        if (hasNullType) {
+          schema.nullable = true;
+        }
+  
+        if (filteredSchemas.length === 1) {
+          // If there's only one schema left, use it directly
+          Object.assign(schema, filteredSchemas[0]);
+          delete schema[keyword];
+        } else if (filteredSchemas.length > 1) {
+          schema[keyword] = filteredSchemas;
+          delete schema.type; // Remove the base type if using anyOf/oneOf
+        }
+      }
+    });
+  
+    // Handle standalone $ref with nullable
+    if (schema.$ref && schema.nullable) {
+      schema.allOf = [{ $ref: schema.$ref }];
+      delete schema.$ref;
+    }
+  
+    // Handle type as an array including 'null'
     if (Array.isArray(schema.type)) {
       if (schema.type.includes('null')) {
         const nonNullTypes = schema.type.filter(t => t !== 'null');
@@ -126,6 +153,7 @@ function resolveRefType(ref: string, schemaMap: Record<string, SchemaObject>): s
           schema.nullable = true;
         } else {
           schema.anyOf = nonNullTypes.map(type => ({ type }));
+          schema.anyOf.push({ type: nonNullTypes[0], nullable: true });
           delete schema.type;
         }
       } else if (schema.type.length === 1) {
@@ -140,39 +168,6 @@ function resolveRefType(ref: string, schemaMap: Record<string, SchemaObject>): s
     if (schema.default === null && !schema.nullable && schema.type !== 'null' && !schema.anyOf?.some(entry => entry.type === 'null')) {
       delete schema.default;
     }
-  
-    // Handle merging of anyOf/oneOf with $ref and nullable object/type
-    ['anyOf', 'oneOf'].forEach(keyword => {
-      if (schema[keyword]) {
-        let hasRef = false;
-        let refType: string | undefined;
-  
-        const filteredSchemas = schema[keyword].filter(entry => {
-          if (entry.$ref) {
-            hasRef = true;
-            refType = resolveRefType(entry.$ref, schemaMap) || refType;
-            return true;
-          } else if (entry.type === 'null') {
-            return false; // Ignore null type, do not include in anyOf/oneOf
-          }
-          return true;
-        });
-  
-        if (filteredSchemas.length === 1) {
-          // If there's only one schema left, use it directly
-          Object.assign(schema, filteredSchemas[0]);
-          delete schema[keyword];
-        } else if (filteredSchemas.length > 0) {
-          schema[keyword] = filteredSchemas;
-          // Ensure type isn't added unnecessarily
-          if (keyword === 'items' && (schema.oneOf || schema.anyOf)) {
-            delete schema.type;
-          }
-        } else {
-          delete schema[keyword];
-        }
-      }
-    });
   
     // Ensure type is not reintroduced as an array
     if (Array.isArray(schema.type)) {
