@@ -43,14 +43,14 @@ properties:
               - array
               - "null"
             items:
-              $ref: ../../../../../../HybridIdentifier.yml
+              $ref: ../../../../../../components/schemas/HybridIdentifier.yml
           exclude:
             description: Match any traffic that would NOT be routed to one of these containers.
             type:
               - array
               - "null"
             items:
-              $ref: ../../../../../../HybridIdentifier.yml
+              $ref: ../../../../../../components/schemas/HybridIdentifier.yml
   mode:
     type: string
     description: |
@@ -131,7 +131,7 @@ properties:
           - destination_connection
         properties:
           destination_connection:
-            $ref: ../../../../../../Duration.yml
+            $ref: ../../../../../../components/schemas/Duration.yml
             description: The duration the load balancer will wait before timing out while attempting to connect to the destination.
       extension:
         anyOf:

@@ -136,4 +136,4 @@ properties:
                   type: string
                 ttl:
                   description: Time string that describes the time to live.
-                  $ref: ../../../../../../../Duration.yml
+                  $ref: ../../../../../../../components/schemas/Duration.yml

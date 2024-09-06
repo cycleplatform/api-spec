@@ -19,7 +19,7 @@ properties:
     description: An identifier for the stack related to this build.
   spec:
     anyOf:
-      - $ref: ../spec/StackSpec.yml
+      - $ref: ../../../../stackspec/schema/StackSpec.yml
       - type: "null"
   about:
     x-ogen-name: StackBuildAboutDetails
