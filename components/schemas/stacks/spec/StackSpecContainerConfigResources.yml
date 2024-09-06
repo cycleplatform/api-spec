@@ -1,4 +1,4 @@
-title: StackContainerConfigResources
+title: StackSpecContainerConfigResources
 description: Configuration options for container resource limits and reserves.
 type: object
 required:

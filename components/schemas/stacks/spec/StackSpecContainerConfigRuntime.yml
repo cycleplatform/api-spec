@@ -1,4 +1,4 @@
-title: StackContainerConfigRuntime
+title: StackSpecContainerConfigRuntime
 description: Configuration options related to how the container behaves while it is running (environment variables, command overrides, kernel capabilities, etc. )
 type: object
 properties:

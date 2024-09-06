@@ -1,4 +1,4 @@
-title: StackContainerScaleThresholdRam
+title: StackSpecContainerScaleThresholdRam
 type: object
 description: Describes the RAM threshold at which scaling will occur.
 required:

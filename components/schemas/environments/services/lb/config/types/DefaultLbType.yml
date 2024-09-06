@@ -18,6 +18,6 @@ properties:
       - "default"
   details:
     oneOf:
-      - $ref: ../../../../../../../components/schemas/stacks/spec/services/loadbalancer/types/haproxy/HaProxyConfig.yml
-      - $ref: ../../../../../../../components/schemas/stacks/spec/services/loadbalancer/types/v1/V1LbConfig.yml
+      - $ref: ./haproxy/HaProxyConfig.yml
+      - $ref: ./v1/V1LbConfig.yml
       - type: "null"

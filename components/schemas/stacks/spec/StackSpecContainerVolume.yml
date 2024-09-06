@@ -1,4 +1,4 @@
-title: StackContainerVolume
+title: StackSpecContainerVolume
 description: A container volume configuration.
 type: object
 required:

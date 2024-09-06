@@ -10,7 +10,7 @@ properties:
       - "null"
   origin:
     description: Instructions on how to fetch or build this image.
-    $ref: "./StackImageOrigin.yml"
+    $ref: "./StackSpecImageOrigin.yml"
   build:
     description: Additional details applied when building an image.
     type:

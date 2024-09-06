@@ -48,9 +48,9 @@ get:
                       - v1
                     properties:
                       haproxy:
-                        $ref: ../../../../../components/schemas/stacks/spec/services/loadbalancer/types/haproxy/HaProxyConfig.yml
+                        $ref: ../../../../../components/schemas/environments/services/lb/config/types/haproxy/HaProxyConfig.yml
                       v1:
-                        $ref: ../../../../../components/schemas/stacks/spec/services/loadbalancer/types/v1/V1LbConfig.yml
+                        $ref: ../../../../../components/schemas/environments/services/lb/config/types/v1/V1LbConfig.yml
                   service:
                     anyOf:
                       - $ref: ../../../../../components/schemas/environments/services/LoadBalancerEnvironmentService.yml

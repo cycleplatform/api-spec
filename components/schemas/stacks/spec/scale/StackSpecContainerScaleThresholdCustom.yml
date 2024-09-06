@@ -1,4 +1,4 @@
-title: StackContainerScaleThresholdCustom
+title: StackSpecContainerScaleThresholdCustom
 type: object
 description: A custom threshold for defining a scaling event.
 required:

@@ -1,4 +1,4 @@
-title: StackContainerConfigNetwork
+title: StackSpecContainerConfigNetwork
 description: Stack configuration options related to the container's network.
 type: object
 required:

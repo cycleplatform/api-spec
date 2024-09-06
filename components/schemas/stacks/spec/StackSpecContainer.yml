@@ -1,4 +1,4 @@
-title: StackContainer
+title: StackSpecContainer
 description: A container template defined within a stack.
 type: object
 required:
@@ -31,25 +31,25 @@ properties:
       - deploy
     properties:
       network:
-        $ref: ./StackContainerConfigNetwork.yml
+        $ref: ./StackSpecContainerConfigNetwork.yml
       deploy:
-        $ref: ./StackContainerConfigDeploy.yml
+        $ref: ./StackSpecContainerConfigDeploy.yml
       scaling:
         description: Configuration options for auto-scaling.
         anyOf:
-          - $ref: ./StackContainerConfigScaling.yml
+          - $ref: ./StackSpecContainerConfigScaling.yml
           - type: "null"
       runtime:
         anyOf:
-          - $ref: ./StackContainerConfigRuntime.yml
+          - $ref: ./StackSpecContainerConfigRuntime.yml
           - type: "null"
       resources:
         anyOf:
-          - $ref: ./StackContainerConfigResources.yml
+          - $ref: ./StackSpecContainerConfigResources.yml
           - type: "null"
       integrations:
         anyOf:
-          - $ref: ./StackContainerConfigIntegrations.yml
+          - $ref: ./StackSpecContainerConfigIntegrations.yml
           - type: "null"
   role:
     description: The role applied to this container. **Not yet implemented**
@@ -64,7 +64,7 @@ properties:
       - array
       - "null"
     items:
-      $ref: StackContainerVolume.yml
+      $ref: StackSpecContainerVolume.yml
   deprecate:
     description: If true, the container is marked as `deprecated`, and cannot be started anymore. Deprecated containers also don't count toward resource utilization.
     type: boolean

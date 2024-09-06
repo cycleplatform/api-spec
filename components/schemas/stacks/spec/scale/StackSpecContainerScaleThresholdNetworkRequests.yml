@@ -1,4 +1,4 @@
-title: StackContainerScaleThresholdNetworkRequests
+title: StackSpecContainerScaleThresholdNetworkRequests
 type: object
 description: Describes the network requests threshold at which scaling will occur.
 

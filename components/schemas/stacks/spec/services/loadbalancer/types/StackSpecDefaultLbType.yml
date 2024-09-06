@@ -1,0 +1,23 @@
+title: StackSpecDefaultLbType
+type: object
+required:
+  - type
+  - details
+  - ipv4
+  - ipv6
+properties:
+  ipv4:
+    type: boolean
+    description: Allow / disallow traffic to be routed via IPv4.
+  ipv6:
+    type: boolean
+    description: Allow / disallow traffic to be routed via IPv6.
+  type:
+    type: string
+    enum:
+      - "default"
+  details:
+    oneOf:
+      - $ref: ../../../../../../../components/schemas/stacks/spec/services/loadbalancer/types/haproxy/StackSpecHaProxyConfig.yml
+      - $ref: ../../../../../../../components/schemas/stacks/spec/services/loadbalancer/types/v1/StackSpecV1LbConfig.yml
+      - type: "null"

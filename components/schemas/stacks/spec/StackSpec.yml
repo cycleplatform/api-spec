@@ -49,7 +49,7 @@ properties:
     type: object
     description: A mapping of containers that will be deployed as a part of this stack. The key is used as the container's identifier.
     additionalProperties:
-      $ref: ./StackContainer.yml
+      $ref: ./StackSpecContainer.yml
   services:
     description: Settings for any auxillary services deployed as part of the environment, such as load balancer and discovery services.
     title: StackSpecServices
@@ -58,7 +58,7 @@ properties:
       - "null"
     properties:
       discovery:
-        anyOf: 
+        anyOf:
           - type: "null"
           - $ref: services/discovery/StackSpecDiscoveryService.yml
       loadbalancer:
@@ -66,11 +66,11 @@ properties:
           - type: "null"
           - $ref: services/loadbalancer/StackSpecLoadBalancerService.yml
       scheduler:
-        anyOf: 
+        anyOf:
           - type: "null"
           - $ref: services/scheduler/StackSpecSchedulerService.yml
       vpn:
-        anyOf: 
+        anyOf:
           - type: "null"
           - $ref: services/vpn/StackSpecVpnService.yml
   annotations:

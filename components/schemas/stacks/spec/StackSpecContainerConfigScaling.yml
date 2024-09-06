@@ -1,4 +1,4 @@
-title: StackContainerConfigScaling
+title: StackSpecContainerConfigScaling
 type: object
 description: Stack configuration options for auto-scaling.
 required:
@@ -36,4 +36,4 @@ properties:
     description: An array of rules that dictate when a scaling event will be triggered.
     type: array
     items:
-      $ref: ./scale/StackContainerScaleThreshold.yml
+      $ref: ./scale/StackSpecContainerScaleThreshold.yml

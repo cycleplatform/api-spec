@@ -1,4 +1,4 @@
-title: StackContainerConfigIntegrations
+title: StackSpecContainerConfigIntegrations
 type: object
 description: Configuration options for additional integrations/features that Cycle provides.
 properties:
