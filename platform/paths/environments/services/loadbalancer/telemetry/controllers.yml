@@ -42,7 +42,7 @@ get:
               - data
             properties:
               data:
-                $ref: ../../../../../../components/schemas/environments/services/lb/telemetry/LoadBalancerLatestControllers.yml
+                $ref: ../../../../../../components/schemas/environments/services/loadbalancer/telemetry/LoadBalancerLatestControllers.yml
               includes:
                 $ref: includes/controllers.yml
     default:

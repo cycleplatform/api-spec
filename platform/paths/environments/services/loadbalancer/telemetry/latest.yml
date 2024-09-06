@@ -1,8 +1,8 @@
 get:
-  operationId: "getLoadBalancerTelemetryReport"
-  summary: Get Load Balancer Telemetry Report
+  operationId: "getLoadBalancerLatestTelemetryReport"
+  summary: Get Latest Load Balancer Telemetry Report.
   description: |
-    Fetches a telemetry report for Cycle's native load balancer for the specified range.
+    Fetches the latest telemetry report for Cycle's native load balancer. Provides detailed information on a per-instance basis.
 
     ## Permissions
     Requires the `environments-view` capability. Also requires the user to have access specifically to the requested Environment.
@@ -21,25 +21,21 @@ get:
       style: deepObject
       required: true
       description: |
-        ## Filter Field 
+        ## Filter Field
         The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
+        ### Required Filter
+        On this endpoint, you MUST pass filter[controller].
       schema:
         type: object
-        required:
-          - controller
         properties:
-          range-start:
-            description: The start date from when to pull load balancer telemetry data
-            $ref: ../../../../../../components/schemas/DateTime.yml
-          range-end:
-            description: The end date from when to pull load balancer telemetry data
-            $ref: ../../../../../../components/schemas/DateTime.yml
           controller:
-            description: The specific controller to fetch telemetry for
-            $ref: ../../../../../../components/schemas/DateTime.yml
+            type: string
+            description: |
+              `filter[controller]=port-123` filter for a specific controller to load telemetry for. THIS FILTER IS REQUIRED.
+
   responses:
     200:
-      description: Returns the load balancer telemetry report
+      description: Returns the latest load balancer telemetry
       content:
         application/json:
           schema:
@@ -48,6 +44,6 @@ get:
               - data
             properties:
               data:
-                $ref: ../../../../../../components/schemas/environments/services/lb/telemetry/LoadBalancerTelemetryReport.yml
+                $ref: ../../../../../../components/schemas/environments/services/loadbalancer/telemetry/LoadBalancerLatestTelemetry.yml
     default:
       $ref: ../../../../../../components/responses/errors/DefaultError.yml

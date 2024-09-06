@@ -41,7 +41,7 @@ post:
                   description: A boolean representing if this service container is set to autoupdate or not
                 config:
                   anyOf:
-                    - $ref: ../../../../../components/schemas/environments/services/lb/LoadBalancerConfig.yml
+                    - $ref: ../../../../../components/schemas/environments/services/loadbalancer/LoadBalancerConfig.yml
                     - type: "null"
   responses:
     202:

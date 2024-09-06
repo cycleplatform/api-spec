@@ -366,10 +366,10 @@ paths:
     $ref: "./paths/containers/instances/tasks.yml"
   "/v1/containers/{containerId}/instances/{instanceId}/volumes":
     $ref: "./paths/containers/instances/volumes.yml"
-  ? "/v1/containers/{containerId}/instances/{instanceId}/telemetry/resources/report"
-  : $ref: paths/containers/instances/telemetry/report.yml
-  ? "/v1/containers/{containerId}/instances/{instanceId}/telemetry/resources/stream"
-  : $ref: paths/containers/instances/telemetry/stream.yml
+  "/v1/containers/{containerId}/instances/{instanceId}/telemetry/resources/report":
+    $ref: paths/containers/instances/telemetry/report.yml
+  "/v1/containers/{containerId}/instances/{instanceId}/telemetry/resources/stream":
+    $ref: paths/containers/instances/telemetry/stream.yml
   "/v1/containers/{containerId}/instances/{instanceId}/console":
     $ref: "paths/containers/instances/console.yml"
   "/v1/containers/{containerId}/functions/tasks":
@@ -443,16 +443,16 @@ paths:
     $ref: "./paths/environments/services/discovery/tasks.yml"
 
   ## Services/Load Balancer
-  "/v1/environments/{environmentId}/services/lb":
-    $ref: "./paths/environments/services/lb/lb.yml"
-  "/v1/environments/{environmentId}/services/lb/tasks":
-    $ref: "./paths/environments/services/lb/tasks.yml"
-  "/v1/environments/{environmentId}/services/lb/telemetry/report":
-    $ref: "./paths/environments/services/lb/telemetry/report.yml"
-  "/v1/environments/{environmentId}/services/lb/telemetry/latest":
-    $ref: "./paths/environments/services/lb/telemetry/latest.yml"
-  "/v1/environments/{environmentId}/services/lb/telemetry/latest-controllers":
-    $ref: "./paths/environments/services/lb/telemetry/controllers.yml"
+  "/v1/environments/{environmentId}/services/loadbalancer":
+    $ref: "./paths/environments/services/loadbalancer/loadbalancer.yml"
+  "/v1/environments/{environmentId}/services/loadbalancer/tasks":
+    $ref: "./paths/environments/services/loadbalancer/tasks.yml"
+  "/v1/environments/{environmentId}/services/loadbalancer/telemetry/report":
+    $ref: "./paths/environments/services/loadbalancer/telemetry/report.yml"
+  "/v1/environments/{environmentId}/services/loadbalancer/telemetry/latest":
+    $ref: "./paths/environments/services/loadbalancer/telemetry/latest.yml"
+  "/v1/environments/{environmentId}/services/loadbalancer/telemetry/latest-controllers":
+    $ref: "./paths/environments/services/loadbalancer/telemetry/controllers.yml"
 
   ## Services/Scheduler
   "/v1/environments/{environmentId}/services/scheduler/tasks":
