@@ -1,0 +1,14 @@
+title: StackSpecUdpRouterConfig
+description: Additional configuration options for UDP mode routers
+type: object
+required:
+  - type
+  - details
+properties:
+  type:
+    type: string
+    enum:
+      - udp
+  details:
+    type: object
+    additionalProperties: {}

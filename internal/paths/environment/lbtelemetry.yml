@@ -12,7 +12,7 @@ post:
         schema:
           type: object
           additionalProperties:
-            $ref: ../../../components/schemas/environments/services/lb/telemetry/LoadBalancerTelemetrySnapshot.yml
+            $ref: ../../../components/schemas/environments/services/loadbalancer/telemetry/LoadBalancerTelemetrySnapshot.yml
   responses:
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml

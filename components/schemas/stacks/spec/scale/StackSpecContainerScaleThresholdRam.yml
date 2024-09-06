@@ -1,0 +1,22 @@
+title: StackSpecContainerScaleThresholdRam
+type: object
+description: Describes the RAM threshold at which scaling will occur.
+required:
+  - type
+  - details
+properties:
+  type:
+    type: string
+    enum:
+      - ram
+  details:
+    type: object
+    required:
+      - usage
+    properties:
+      usage:
+        type: string
+        description: The target average RAM usage of all instances of this container. Going above this threshold will trigger a scaling event. This threshold must be greater than 25MB.
+        examples:
+          - "2G"
+          - "25MB"

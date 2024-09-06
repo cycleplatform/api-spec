@@ -4,10 +4,10 @@ description: The config object for the loadbalancer service.
 discriminator:
   propertyName: type
   mapping:
-    haproxy: types/haproxy/HaProxyLbType.yml
-    v1: types/v1/V1LbType.yml
-    default: types/DefaultLbType.yml
+    haproxy: types/haproxy/StackSpecHaProxyLbType.yml
+    v1: types/v1/StackSpecV1LbType.yml
+    default: types/StackSpecDefaultLbType.yml
 oneOf:
-  - $ref: ./types/haproxy/HaProxyLbType.yml
-  - $ref: ./types/v1/V1LbType.yml
-  - $ref: ./types/DefaultLbType.yml
+  - $ref: ./types/haproxy/StackSpecHaProxyLbType.yml
+  - $ref: ./types/v1/StackSpecV1LbType.yml
+  - $ref: ./types/StackSpecDefaultLbType.yml

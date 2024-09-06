@@ -1,0 +1,23 @@
+title: DefaultLbType
+type: object
+required:
+  - type
+  - details
+  - ipv4
+  - ipv6
+properties:
+  ipv4:
+    type: boolean
+    description: Allow / disallow traffic to be routed via IPv4.
+  ipv6:
+    type: boolean
+    description: Allow / disallow traffic to be routed via IPv6.
+  type:
+    type: string
+    enum:
+      - "default"
+  details:
+    oneOf:
+      - $ref: ./haproxy/HaProxyConfig.yml
+      - $ref: ./v1/V1LbConfig.yml
+      - type: "null"

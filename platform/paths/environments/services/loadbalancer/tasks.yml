@@ -1,0 +1,59 @@
+post:
+  operationId: "createLoadBalancerServiceJob"
+  summary: Create Load Balancer Service Job
+  description: Creates a task that will update the load balancer's configuration.
+  tags:
+    - Services/Load Balancer
+  parameters:
+    - name: environmentId
+      description: The ID of the environment where this load balancer resides.
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    description: Parameters for reconfiguring a load balancer.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - action
+            - contents
+          properties:
+            action:
+              type: string
+              enum:
+                - reconfigure
+              description: The name of the action to perform.
+            contents:
+              type: object
+              properties:
+                high_availability:
+                  type:
+                    - boolean
+                    - "null"
+                  description: A boolean where `true` represents the desire to run the environment load balancer service in high availability mode.
+                auto_update:
+                  type:
+                    - boolean
+                    - "null"
+                  description: A boolean representing if this service container is set to autoupdate or not
+                config:
+                  anyOf:
+                    - $ref: ../../../../../components/schemas/environments/services/loadbalancer/LoadBalancerConfig.yml
+                    - type: "null"
+  responses:
+    202:
+      description: Returns a Job Descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../../components/schemas/jobs/JobDescriptor.yml
+    default:
+      $ref: ../../../../../components/responses/errors/DefaultError.yml

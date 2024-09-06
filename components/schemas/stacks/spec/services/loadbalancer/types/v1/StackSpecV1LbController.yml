@@ -1,0 +1,101 @@
+title: StackSpecV1LbController
+type: object
+required:
+  - identifier
+  - port
+properties:
+  identifier:
+    type: string
+    description: A human-readable identifier for this controller. It will default to the port, i.e. `port-443`, but can be renamed to anything, such as the service this controller represents.
+  port:
+    type: integer
+    description: The port inbound trafic is accepted on.
+  waf:
+    anyOf:
+      - $ref: ./StackSpecWafConfig.yml
+      - type: "null"
+  transport:
+    title: V1LbControllerTransport
+    description: Defines how traffic comes in to the load balancer, and how the load balancer handles it.
+    type:
+      - object
+      - "null"
+    required:
+      - mode
+      - config
+      - routers
+      - disable
+    properties:
+      disable:
+        type: boolean
+        description: When true, this controller is disabled and will not be used.
+      mode:
+        type: string
+        description: The kind of traffic (http/tcp/udp) that will be sent to the load balancer.
+        enum:
+          - tcp
+          - udp
+          - http
+      config:
+        type: object
+        description: Defines how the transport for this controller operates.
+        required:
+          - performance
+          - ingress
+          - timeouts
+          - verbosity
+        properties:
+          performance:
+            type: boolean
+            description: |
+              Enable/disable performance mode. If enabled, some telemetry will be disabled to dedicate full processing to handling requests.
+              You will not see per-request breakdowns or URL logging if performance mode is enabled.
+          ingress:
+            type: object
+            description: Defines how traffic gets into the load balancer.
+            properties:
+              tls:
+                type:
+                  - object
+                  - "null"
+                required:
+                  - enable
+                properties:
+                  enable:
+                    type: boolean
+                    description: Enables or disables TLS.
+          timeouts:
+            type: object
+            description: Defines settings for various types of timeouts.
+            required:
+              - idle
+            properties:
+              idle:
+                description: The total amount of time a connection can be idle before being killed.
+                $ref: ../../../../../../Duration.yml
+          verbosity:
+            type: string
+            description: Verbosity describes the level of logging detail for the controller
+            enum:
+              - low
+              - normal
+              - high
+              - debug
+          extension:
+            type: object
+            description: Extended configurations for the specified transport mode (http/tcp)
+            discriminator:
+              propertyName: type
+              mapping:
+                tcp: transports/StackSpecTcpTransportConfig.yml
+                http: transports/StackSpecHttpTransportConfig.yml
+                udp: transports/StackSpecUdpTransportConfig.yml
+            oneOf:
+              - $ref: transports/StackSpecTcpTransportConfig.yml
+              - $ref: transports/StackSpecHttpTransportConfig.yml
+              - $ref: transports/StackSpecUdpTransportConfig.yml
+      routers:
+        type: array
+        description: Defines where traffic is sent. Many can be defined per controller.
+        items:
+          $ref: StackSpecV1LbConfigRouter.yml

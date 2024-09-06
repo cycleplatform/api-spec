@@ -1,0 +1,18 @@
+title: StackSpecContainerScaleThresholdNetworkConnections
+type: object
+description: Describes the network connections threshold at which scaling will occur.
+required:
+  - type
+  - details
+properties:
+  type:
+    type: string
+    enum:
+      - network-connections
+  details:
+    type: object
+    required:
+      - connections_total
+    properties:
+      connections_total:
+        type: integer

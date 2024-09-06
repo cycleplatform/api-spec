@@ -1,0 +1,73 @@
+title: StackSpecContainer
+description: A container template defined within a stack.
+type: object
+required:
+  - name
+  - image
+  - config
+  - stateful
+properties:
+  name:
+    type: string
+    description: The human-readable name of this container.
+  image:
+    description: Details about the image used for this container.
+    $ref: StackSpecContainerImage.yml
+  annotations:
+    type:
+      - object
+      - "null"
+    description: Additional user-provided meta data about the container.
+    additionalProperties: {}
+  stateful:
+    type: boolean
+    description: Whether or not to mark the container as stateful when deployed. Stateful containers can utilize volumes (stateful data) and are generally used for running databases or other data management applications.
+  config:
+    type: object
+    description: Configuration options for this container that will be applied when deployed as part of the stack.
+    title: StackContainerConfig
+    required:
+      - network
+      - deploy
+    properties:
+      network:
+        $ref: ./StackSpecContainerConfigNetwork.yml
+      deploy:
+        $ref: ./StackSpecContainerConfigDeploy.yml
+      scaling:
+        description: Configuration options for auto-scaling.
+        anyOf:
+          - $ref: ./StackSpecContainerConfigScaling.yml
+          - type: "null"
+      runtime:
+        anyOf:
+          - $ref: ./StackSpecContainerConfigRuntime.yml
+          - type: "null"
+      resources:
+        anyOf:
+          - $ref: ./StackSpecContainerConfigResources.yml
+          - type: "null"
+      integrations:
+        anyOf:
+          - $ref: ./StackSpecContainerConfigIntegrations.yml
+          - type: "null"
+  role:
+    description: The role applied to this container. **Not yet implemented**
+    type:
+      - string
+      - "null"
+    enum:
+      - "conductor"
+  volumes:
+    description: A list of configurations for volumes that will be attached to the container. Only applicable if the container is set to `stateful`.
+    type:
+      - array
+      - "null"
+    items:
+      $ref: StackSpecContainerVolume.yml
+  deprecate:
+    description: If true, the container is marked as `deprecated`, and cannot be started anymore. Deprecated containers also don't count toward resource utilization.
+    type: boolean
+  lock:
+    description: If true, the container is marked as `locked` and cannot be deleted in any way until the lock is lifted.
+    type: boolean
