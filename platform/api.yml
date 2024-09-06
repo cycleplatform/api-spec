@@ -443,15 +443,15 @@ paths:
     $ref: "./paths/environments/services/discovery/tasks.yml"
 
   ## Services/Load Balancer
-  "/v1/environments/{environmentId}/services/loadbalancer":
+  "/v1/environments/{environmentId}/services/lb":
     $ref: "./paths/environments/services/loadbalancer/loadbalancer.yml"
-  "/v1/environments/{environmentId}/services/loadbalancer/tasks":
+  "/v1/environments/{environmentId}/services/lb/tasks":
     $ref: "./paths/environments/services/loadbalancer/tasks.yml"
-  "/v1/environments/{environmentId}/services/loadbalancer/telemetry/report":
+  "/v1/environments/{environmentId}/services/lb/telemetry/report":
     $ref: "./paths/environments/services/loadbalancer/telemetry/report.yml"
-  "/v1/environments/{environmentId}/services/loadbalancer/telemetry/latest":
+  "/v1/environments/{environmentId}/services/lb/telemetry/latest":
     $ref: "./paths/environments/services/loadbalancer/telemetry/latest.yml"
-  "/v1/environments/{environmentId}/services/loadbalancer/telemetry/latest-controllers":
+  "/v1/environments/{environmentId}/services/lb/telemetry/latest-controllers":
     $ref: "./paths/environments/services/loadbalancer/telemetry/controllers.yml"
 
   ## Services/Scheduler
