@@ -6,26 +6,42 @@ required:
   - ram
 properties:
   cpu:
-    type: object
-    properties:
-      shares:
-        type: object
-        required:
-          - limit
-          - reserve
+    oneOf:
+      - type: object
+        properties:
+          shares:
+            oneOf:
+              - type: object
+                required:
+                  - limit
+                  - reserve
+                properties:
+                  limit:
+                    oneOf:
+                      - type: integer
+                      - $ref: StackVariable.yml
+                  reserve:
+                    oneOf:
+                      - type: integer
+                      - $ref: StackVariable.yml
+              - $ref: StackVariable.yml
+          cpus:
+            type: string
+      - $ref: StackVariable.yml
+  ram:
+    oneOf:
+      - type: object
         properties:
           limit:
-            type: integer
+            oneOf:
+              - type: string
+              - $ref: StackVariable.yml
           reserve:
-            type: integer
-      cpus:
-        type: string
-  ram:
-    type: object
-    properties:
-      limit:
-        type: string
-      reserve:
-        type: string
-      swappiness:
-        type: number
+            oneOf:
+              - type: string
+              - $ref: StackVariable.yml
+          swappiness:
+            oneOf:
+              - type: number
+              - $ref: StackVariable.yml
+      - $ref: StackVariable.yml
