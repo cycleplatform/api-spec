@@ -15,4 +15,4 @@ properties:
       - webhook
     properties:
       webhook:
-        $ref: ../../../WebhookURL.yml
+        $ref: ../../../components/schemas/WebhookURL.yml

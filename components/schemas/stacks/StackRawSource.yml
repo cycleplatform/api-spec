@@ -11,5 +11,5 @@ properties:
       - raw
   details:
     anyOf:
-      - $ref: ./spec/StackSpec.yml
+      - $ref: ../../../stackspec/schema/StackSpec.yml
       - type: "null"

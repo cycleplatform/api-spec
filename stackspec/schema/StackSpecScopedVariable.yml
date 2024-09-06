@@ -6,7 +6,7 @@ required:
   - access
 properties:
   identifier:
-    $ref: ../../../../components/schemas/Identifier.yml
+    $ref: ../../components/schemas/Identifier.yml
   scope:
     type: object
     required:
@@ -34,7 +34,7 @@ properties:
               - "null"
             description: A list of container identifiers that are granted access to this variable.
             items:
-              $ref: ../../../../components/schemas/Identifier.yml
+              $ref: ../../components/schemas/Identifier.yml
   access:
     type: object
     properties:
@@ -58,7 +58,7 @@ properties:
           duration:
             description: Sets the duration that this variable can be accessed over the Internal API, after container start. Provides additional security as sensitive data can only be accessed for a limited time.
             anyOf:
-              - $ref: ../../Duration.yml
+              - $ref: ../../components/schemas/Duration.yml
               - type: "null"
       file:
         description: Grants access to this variable as a file inside the container.

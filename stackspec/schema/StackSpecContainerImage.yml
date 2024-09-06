@@ -34,4 +34,4 @@ properties:
     properties:
       integration_id:
         description: The ID of the integration to use when building the image. The integration must support image building to be compatible.
-        $ref: ../../../../components/schemas/HybridIdentifier.yml
+        $ref: ../../components/schemas/HybridIdentifier.yml

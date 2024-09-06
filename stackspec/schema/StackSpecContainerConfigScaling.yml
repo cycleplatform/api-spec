@@ -9,7 +9,7 @@ required:
 properties:
   autoscale_group:
     anyOf:
-      - $ref: ../../Identifier.yml
+      - $ref: ../../components/schemas/Identifier.yml
       - type: "null"
     description: The identifier of the auto-scaling group assigned to this container. The auto-scale group determines which infrastructure this container can spin up if it needs more resources to meet demand. Setting it to `null` will limit auto-scaling to only instances.
   instances:
@@ -27,11 +27,11 @@ properties:
         type: integer
         description: Minimum number of instances per server.
       min_ttl:
-        $ref: ../../Duration.yml
+        $ref: ../../components/schemas/Duration.yml
         description: Minimum amount of time an instance will live.
   window:
     description: Duration in which the auto-scaler will watch for changes.
-    $ref: ../../Duration.yml
+    $ref: ../../components/schemas/Duration.yml
   thresholds:
     description: An array of rules that dictate when a scaling event will be triggered.
     type: array
