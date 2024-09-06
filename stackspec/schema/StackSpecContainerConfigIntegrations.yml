@@ -91,7 +91,7 @@ properties:
       - retention
     properties:
       integration_id:
-        $ref: ../../HybridIdentifier.yml
+        $ref: ../../components/schemas/HybridIdentifier.yml
         description: An identifier of an integration that supports backups. All backups will be sent to this destination.
       backup:
         type: object
@@ -107,7 +107,7 @@ properties:
           timeout:
             description: How long the backup will attempt to run before timing out.
             anyOf:
-              - $ref: ../../Duration.yml
+              - $ref: ../../components/schemas/Duration.yml
               - type: "null"
           cron_string:
             description: A cron string describing how often to run the backup command.
@@ -128,12 +128,12 @@ properties:
           timeout:
             description: The time in seconds for the restore to attempt to complete before timing out.
             anyOf:
-              - $ref: ../../Duration.yml
+              - $ref: ../../components/schemas/Duration.yml
               - type: "null"
       retention:
         description: How long the platform will keep backups. Default is 1 year.
         anyOf:
-          - $ref: ../../Duration.yml
+          - $ref: ../../components/schemas/Duration.yml
           - type: "null"
         default: "365d"
   shared_file_systems:
@@ -163,4 +163,4 @@ properties:
           - array
           - "null"
         items:
-          $ref: ../../Identifier.yml
+          $ref: ../../components/schemas/Identifier.yml

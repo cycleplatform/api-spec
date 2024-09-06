@@ -3,7 +3,7 @@ type: object
 properties:
   empty_set_delay:
     anyOf:
-      - $ref: ../../../../Duration.yml
+      - $ref: ../../../../components/schemas/Duration.yml
       - type: "null"
   hosts:
     description: A custom mapping of hosts - for forced resolution of specific IPs for a domain.

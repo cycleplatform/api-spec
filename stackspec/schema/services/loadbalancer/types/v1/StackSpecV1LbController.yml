@@ -72,7 +72,7 @@ properties:
             properties:
               idle:
                 description: The total amount of time a connection can be idle before being killed.
-                $ref: ../../../../../../Duration.yml
+                $ref: ../../../../../../components/schemas/Duration.yml
           verbosity:
             type: string
             description: Verbosity describes the level of logging detail for the controller

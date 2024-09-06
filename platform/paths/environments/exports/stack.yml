@@ -46,6 +46,6 @@ post:
               - data
             properties:
               data:
-                $ref: ../../../../components/schemas/stacks/spec/StackSpec.yml
+                $ref: ../../../../stackspec/schema/StackSpec.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml

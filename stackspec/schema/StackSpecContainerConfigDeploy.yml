@@ -49,12 +49,12 @@ properties:
       max_runtime:
         description: The maximum amount of time a function instance can run before timing out.
         anyOf:
-          - $ref: ../../Duration.yml
+          - $ref: ../../components/schemas/Duration.yml
           - type: "null"
       max_queue_time:
         description: The maximum amount of time Cycle will wait for an instance to be available.
         anyOf:
-          - $ref: ../../Duration.yml
+          - $ref: ../../components/schemas/Duration.yml
           - type: "null"
   stateful:
     description: Configuration options for stateful containers.
@@ -124,7 +124,7 @@ properties:
       graceful_timeout:
         description: How long the platform will wait for a container to stop gracefully.
         anyOf:
-          - $ref: ../../Duration.yml
+          - $ref: ../../components/schemas/Duration.yml
           - type: "null"
       signals:
         type: array
@@ -148,7 +148,7 @@ properties:
       delay:
         description: How long the platform will wait before sending the start signal to the given container.
         anyOf:
-          - $ref: ../../Duration.yml
+          - $ref: ../../components/schemas/Duration.yml
           - type: "null"
   update:
     type:
@@ -158,7 +158,7 @@ properties:
     properties:
       stagger:
         anyOf:
-          - $ref: ../../Duration.yml
+          - $ref: ../../components/schemas/Duration.yml
           - type: "null"
         description: When set, Cycle will pick a random time from `0 - this duration`, and stagger the instances so they all start at different times (up to the time specified here).
   restart:
@@ -179,7 +179,7 @@ properties:
           - never
           - failure
       delay:
-        $ref: ../../Duration.yml
+        $ref: ../../components/schemas/Duration.yml
         description: How long the platform will wait between restart attempts.
       max_attempts:
         type: integer
@@ -210,17 +210,17 @@ properties:
         type: integer
         description: The number of times to retry the command before marking an instance unhealthy.
       interval:
-        $ref: ../../Duration.yml
+        $ref: ../../components/schemas/Duration.yml
         description: How long to wait between running health checks.
       timeout:
-        $ref: ../../Duration.yml
+        $ref: ../../components/schemas/Duration.yml
         description: How long before a health check attempt times out.
       restart:
         type: boolean
         description: A boolean where true represents the desire for the container to restart if any instance is unhealthy.
       delay:
         anyOf:
-          - $ref: ../../Duration.yml
+          - $ref: ../../components/schemas/Duration.yml
           - type: "null"
         description: How long to wait after a container start event before running health checks.
   telemetry:
@@ -233,12 +233,12 @@ properties:
     properties:
       retention:
         anyOf:
-          - $ref: ../../Duration.yml
+          - $ref: ../../components/schemas/Duration.yml
           - type: "null"
         description: How long telemetry data should be retained.
       interval:
         anyOf:
-          - $ref: ../../Duration.yml
+          - $ref: ../../components/schemas/Duration.yml
           - type: "null"
         description: The duration between samples.
       webhook:
