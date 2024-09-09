@@ -6,19 +6,29 @@ required:
   - allow_internet
 properties:
   auth:
-    type: object
-    required:
-      - cycle_accounts
-      - vpn_accounts
-    properties:
-      webhook:
-        description: The endpoint to hit when attempting to authorize a VPN account. If the endpoint returns a 200 response, access is granted. Otherwise it is denied.
-        type: string
-      cycle_accounts:
-        description: If true, any account with access to this environment on Cycle can use their Cycle credentials to log in to this VPN.
-        type: boolean
-      vpn_accounts:
-        description: If true, Cycle will allow custom accounts to be created for logging into this VPN.
-        type: boolean
+    oneOf:
+      - type: object
+        required:
+          - cycle_accounts
+          - vpn_accounts
+        properties:
+          webhook:
+            description: The endpoint to hit when attempting to authorize a VPN account. If the endpoint returns a 200 response, access is granted. Otherwise it is denied.
+            oneOf:
+              - type: string
+              - $ref: ../../StackVariable.yml
+          cycle_accounts:
+            description: If true, any account with access to this environment on Cycle can use their Cycle credentials to log in to this VPN.
+            oneOf:
+              - type: boolean
+              - $ref: ../../StackVariable.yml
+          vpn_accounts:
+            description: If true, Cycle will allow custom accounts to be created for logging into this VPN.
+            oneOf:
+              - type: boolean
+              - $ref: ../../StackVariable.yml
+      - $ref: ../../StackVariable.yml
   allow_internet:
-    type: boolean
+    oneOf:
+      - type: boolean
+      - $ref: ../../StackVariable.yml

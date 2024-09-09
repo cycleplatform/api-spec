@@ -5,33 +5,43 @@ required:
 properties:
   name:
     description: The human-readable name of this image.
-    type:
-      - string
-      - "null"
+    oneOf:
+      - type:
+          - string
+          - "null"
+      - $ref: StackVariable.yml
   origin:
     description: Instructions on how to fetch or build this image.
-    $ref: "./StackSpecImageOrigin.yml"
+    oneOf:
+      - $ref: "./StackSpecImageOrigin.yml"
+      - $ref: StackVariable.yml
   build:
     description: Additional details applied when building an image.
-    type:
-      - object
-      - "null"
-    required:
-      - args
-    properties:
-      args:
-        type: object
-        description: A map of build arguments applied to the image at build time.
-        additionalProperties:
-          type: string
+    oneOf:
+      - type:
+          - object
+          - "null"
+        required:
+          - args
+        properties:
+          args:
+            description: A map of build arguments applied to the image at build time.
+            oneOf:
+              - type: object
+                additionalProperties:
+                  type: string
+              - $ref: StackVariable.yml
+      - $ref: StackVariable.yml
   builder:
     description: A specific builder to use. By default, Cycle uses its factory service and a standard build command to build images, but this can be enhanced by using an image builder integration.
-    type:
-      - object
-      - "null"
-    required:
-      - integration_id
-    properties:
-      integration_id:
-        description: The ID of the integration to use when building the image. The integration must support image building to be compatible.
-        $ref: ../../components/schemas/HybridIdentifier.yml
+    oneOf:
+      - type:
+          - object
+          - "null"
+        required:
+          - integration_id
+        properties:
+          integration_id:
+            description: The ID of the integration to use when building the image. The integration must support image building to be compatible.
+            $ref: ../../components/schemas/HybridIdentifier.yml
+      - $ref: StackVariable.yml

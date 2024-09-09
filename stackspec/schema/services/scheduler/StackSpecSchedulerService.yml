@@ -2,12 +2,14 @@ title: StackSpecSchedulerService
 description: Configuration options for the scheduler service.
 type: object
 additionalProperties: false
-properties: 
+properties:
   service:
     anyOf:
       - $ref: ../StackService.yml
+      - $ref: ../../StackVariable.yml
       - type: "null"
   config:
     anyOf:
       - $ref: ./StackSpecSchedulerConfig.yml
+      - $ref: ../../StackVariable.yml
       - type: "null"

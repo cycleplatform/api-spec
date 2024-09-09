@@ -1,6 +1,6 @@
 title: StackSpecSchedulerConfig
 description: Scheduler specific configuration options.
-type: 
+type:
   - object
   - "null"
 required:
@@ -8,8 +8,12 @@ required:
 properties:
   public:
     description: If true, this scheduler will be accessible over the public internet. It will enable a LINKED record to be pointed to the scheduler container, and inbound requests to trigger function containers.
-    type: boolean
+    oneOf:
+      - type: boolean
+      - $ref: ../../StackVariable.yml
   access_keys:
-    type: array
-    items:
-      $ref: StackSpecSchedulerAccessKey.yml
+    oneOf:
+      - type: array
+        items:
+          $ref: StackSpecSchedulerAccessKey.yml
+      - $ref: ../../StackVariable.yml

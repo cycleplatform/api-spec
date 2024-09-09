@@ -4,24 +4,31 @@ properties:
   empty_set_delay:
     anyOf:
       - $ref: ../../../../components/schemas/Duration.yml
+      - $ref: ../../StackVariable.yml
       - type: "null"
   hosts:
     description: A custom mapping of hosts - for forced resolution of specific IPs for a domain.
-    type:
-      - object
-      - "null"
-    additionalProperties:
-      type: object
-      properties:
-        ipv4:
-          type:
-            - array
-            - "null"
-          items:
-            type: string
-        ipv6:
-          type:
-            - array
-            - "null"
-          items:
-            type: string
+    oneOf:
+      - type:
+          - object
+          - "null"
+        additionalProperties:
+          type: object
+          properties:
+            ipv4:
+              oneOf:
+                - type:
+                    - array
+                    - "null"
+                  items:
+                    type: string
+                - $ref: ../../StackVariable.yml
+            ipv6:
+              oneOf:
+                - type:
+                    - array
+                    - "null"
+                  items:
+                    type: string
+                - $ref: ../../StackVariable.yml
+      - $ref: ../../StackVariable.yml

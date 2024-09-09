@@ -7,20 +7,26 @@ required:
 properties:
   public:
     description: The level of public network access this container should have.
-    type: string
-    enum:
-      - enable
-      - disable
-      - egress-only
+    oneOf:
+      - type: string
+        enum:
+          - enable
+          - disable
+          - egress-only
+      - $ref: StackVariable.yml
   hostname:
     description: The hostname of the container. This is how it can be referenced by other containers in the same environment.
-    type: string
+    oneOf:
+      - type: string
+      - $ref: StackVariable.yml
   ports:
     description: A list of port mappings on this container.
-    type: array
-    items:
-      type: string
-    examples:
-      - "80:80"
-      - "443:80"
-      - "3000"
+    oneOf:
+      - type: array
+        items:
+          type: string
+        examples:
+          - "80:80"
+          - "443:80"
+          - "3000"
+      - $ref: StackVariable.yml

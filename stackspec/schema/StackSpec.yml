@@ -14,20 +14,22 @@ properties:
     enum:
       - "1.0"
   about:
-    description: Various properties describing this stack.
-    type:
-      - object
-      - "null"
-    required:
-      - description
-      - version
-    properties:
-      version:
-        type: string
-        description: A custom, user-defined version of the stack.
-      description:
-        type: string
-        description: Custom, user-defined details about this stack.
+    oneOf:
+      - type:
+          - object
+          - "null"
+        required:
+          - description
+          - version
+        properties:
+          version:
+            type: string
+            description: A custom, user-defined version of the stack.
+          description:
+            type: string
+            description: Custom, user-defined details about this stack.
+      - $ref: StackVariable.yml
+
   # tests:
   #   description: |
   #     An array of containers that are deployed as part of a stack. Test containers run once and should exit with 0 on success. If all exit successfully, the stack is considered deployed.
@@ -40,40 +42,52 @@ properties:
   #     $ref: StackSpecTestContainer.yml
   scoped_variables:
     description: Describes variables that are assigned to one or more containers at runtime. Can be assigned as an environment variable, written as a file inside the container(s), or accessed over the internal API.
-    type:
-      - array
-      - "null"
-    items:
-      $ref: ./StackSpecScopedVariable.yml
+    oneOf:
+      - type:
+          - array
+          - "null"
+        items:
+          $ref: ./StackSpecScopedVariable.yml
+      - $ref: StackVariable.yml
   containers:
-    type: object
-    description: A mapping of containers that will be deployed as a part of this stack. The key is used as the container's identifier.
-    additionalProperties:
-      $ref: ./StackSpecContainer.yml
+    oneOf:
+      - type: object
+        description: A mapping of containers that will be deployed as a part of this stack. The key is used as the container's identifier.
+        additionalProperties:
+          $ref: ./StackSpecContainer.yml
+      - $ref: StackVariable.yml
   services:
     description: Settings for any auxillary services deployed as part of the environment, such as load balancer and discovery services.
-    title: StackSpecServices
-    type:
-      - object
-      - "null"
-    properties:
-      discovery:
-        anyOf:
-          - type: "null"
-          - $ref: services/discovery/StackSpecDiscoveryService.yml
-      loadbalancer:
-        anyOf:
-          - type: "null"
-          - $ref: services/loadbalancer/StackSpecLoadBalancerService.yml
-      scheduler:
-        anyOf:
-          - type: "null"
-          - $ref: services/scheduler/StackSpecSchedulerService.yml
-      vpn:
-        anyOf:
-          - type: "null"
-          - $ref: services/vpn/StackSpecVpnService.yml
+    oneOf:
+      - title: StackSpecServices
+        type:
+          - object
+          - "null"
+        properties:
+          discovery:
+            anyOf:
+              - $ref: StackVariable.yml
+              - $ref: services/discovery/StackSpecDiscoveryService.yml
+              - type: "null"
+          loadbalancer:
+            anyOf:
+              - $ref: StackVariable.yml
+              - $ref: services/loadbalancer/StackSpecLoadBalancerService.yml
+              - type: "null"
+          scheduler:
+            anyOf:
+              - $ref: StackVariable.yml
+              - type: "null"
+              - $ref: services/scheduler/StackSpecSchedulerService.yml
+          vpn:
+            anyOf:
+              - $ref: services/vpn/StackSpecVpnService.yml
+              - $ref: StackVariable.yml
+              - type: "null"
+      - $ref: StackVariable.yml
   annotations:
-    type: object
     description: Additional meta info about the stack.
-    additionalProperties: {}
+    oneOf:
+      - type: object
+        additionalProperties: {}
+      - $ref: StackVariable.yml

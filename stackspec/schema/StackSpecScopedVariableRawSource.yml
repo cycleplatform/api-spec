@@ -6,30 +6,42 @@ required:
   - details
 properties:
   type:
-    type: string
     description: The type of scoped variable.
+    type: string
     enum:
       - raw
   details:
-    type: object
-    required:
-      - value
-      - blob
-    properties:
-      value:
-        type: string
-        description: The value of the variable.
-      blob:
-        type: boolean
-        description: A boolean where true represents the text the user is entering will be multi line.
-      secret:
-        type:
-          - object
-          - "null"
+    oneOf:
+      - type: object
+        required:
+          - value
+          - blob
         properties:
-          iv:
-            type: string
-            description: A string describing the IV Hex associated with the encryption of the variable.
-          hint:
-            type: string
-            description: A user specified hint that will suggest what the encryption key might be
+          value:
+            description: The value of the variable.
+            oneOf:
+              - type: string
+              - $ref: StackVariable.yml
+          blob:
+            description: A boolean where true represents the text the user is entering will be multi line.
+            oneOf:
+              - type: boolean
+              - $ref: StackVariable.yml
+          secret:
+            oneOf:
+              - type:
+                  - object
+                  - "null"
+                properties:
+                  iv:
+                    description: A string describing the IV Hex associated with the encryption of the variable.
+                    oneOf:
+                      - type: string
+                      - $ref: StackVariable.yml
+                  hint:
+                    description: A user specified hint that will suggest what the encryption key might be
+                    oneOf:
+                      - type: string
+                      - $ref: StackVariable.yml
+              - $ref: StackVariable.yml
+      - $ref: StackVariable.yml
