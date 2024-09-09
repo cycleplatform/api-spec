@@ -10,11 +10,15 @@ properties:
     enum:
       - udp
   details:
-    type: object
-    required:
-      - telemetry
-    properties:
-      telemetry:
-        type: object
-        description: Configuration options for how telemetry is handled on the load balancer.
-        additionalProperties: {}
+    oneOf:
+      - type: object
+        required:
+          - telemetry
+        properties:
+          telemetry:
+            description: Configuration options for how telemetry is handled on the load balancer.
+            oneOf:
+              - type: object
+                additionalProperties: {}
+              - $ref: ../../../../../StackVariable.yml
+      - $ref: ../../../../../StackVariable.yml

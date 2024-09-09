@@ -6,21 +6,28 @@ required:
   - config
 properties:
   name:
-    type: string
+    oneOf:
+      - type: string
+      - $ref: StackVariable.yml
   image:
     anyOf:
       - $ref: StackSpecContainerImage.yml
+      - $ref: StackVariable.yml
       - type: "null"
   config:
-    type:
-      - object
-      - "null"
-    properties:
-      runtime:
-        anyOf:
-          - $ref: StackContainerConfigRuntime.yml
-          - type: "null"
-      resources:
-        anyOf:
-          - $ref: StackContainerConfigResources.yml
-          - type: "null"
+    oneOf:
+      - type:
+          - object
+          - "null"
+        properties:
+          runtime:
+            anyOf:
+              - $ref: StackContainerConfigRuntime.yml
+              - $ref: StackVariable.yml
+              - type: "null"
+          resources:
+            anyOf:
+              - $ref: StackContainerConfigResources.yml
+              - $ref: StackVariable.yml
+              - type: "null"
+      - $ref: StackVariable.yml

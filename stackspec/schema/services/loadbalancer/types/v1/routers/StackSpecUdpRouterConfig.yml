@@ -10,5 +10,7 @@ properties:
     enum:
       - udp
   details:
-    type: object
-    additionalProperties: {}
+    oneOf:
+      - type: object
+        additionalProperties: {}
+      - $ref: ../../../../../StackVariable.yml

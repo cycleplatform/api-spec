@@ -4,15 +4,19 @@ required:
   - controllers
 properties:
   controllers:
-    type: array
     description: A configuration for a specific port.
-    items:
-      $ref: ./StackSpecV1LbController.yml
+    oneOf:
+      - type: array
+        items:
+          $ref: ./StackSpecV1LbController.yml
+      - $ref: ../../../../StackVariable.yml
   controller_template:
     anyOf:
       - $ref: ./StackSpecV1LbController.yml
+      - $ref: ../../../../StackVariable.yml
       - type: "null"
   waf:
     anyOf:
       - $ref: ./StackSpecWafConfig.yml
+      - $ref: ../../../../StackVariable.yml
       - type: "null"

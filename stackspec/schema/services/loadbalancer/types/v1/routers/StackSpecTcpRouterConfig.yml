@@ -10,5 +10,7 @@ properties:
     enum:
       - tcp
   details:
-    type: object
-    additionalProperties: {}
+    oneOf:
+      - type: object
+        additionalProperties: {}
+      - $ref: ../../../../../StackVariable.yml

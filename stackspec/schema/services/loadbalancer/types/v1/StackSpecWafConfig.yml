@@ -5,49 +5,69 @@ required:
   - rules
 properties:
   rules:
-    type: array
-    items:
-      type: object
-      required:
-        - description
-        - skip
-        - type
-        - conditions
-      properties:
-        description:
-          type: string
-        skip:
-          type: boolean
-        type:
-          type: string
-          enum:
-            - allow
-            - deny
-        conditions:
-          type: array
-          items:
-            type: object
-            required:
-              - type
-              - operator
-              - value
-            properties:
-              type:
-                type: string
-                enum:
-                  - ip-match
-                  - geo-match
-                  - url-match
-                  - method-match
-                  - header-match
-              operator:
-                type: string
-                enum:
-                  - "=="
-                  - "!="
-                  - ">"
-                  - "<"
-                  - ">="
-                  - "<="
-              value:
-                type: string
+    oneOf:
+      - type: array
+        items:
+          oneOf:
+            - type: object
+              required:
+                - description
+                - skip
+                - type
+                - conditions
+              properties:
+                description:
+                  oneOf:
+                    - type: string
+                    - $ref: ../../../../StackVariable.yml
+                skip:
+                  oneOf:
+                    - type: boolean
+                    - $ref: ../../../../StackVariable.yml
+                type:
+                  oneOf:
+                    - type: string
+                      enum:
+                        - allow
+                        - deny
+                    - $ref: ../../../../StackVariable.yml
+                conditions:
+                  oneOf:
+                    - type: array
+                      items:
+                        oneOf:
+                          - type: object
+                            required:
+                              - type
+                              - operator
+                              - value
+                            properties:
+                              type:
+                                oneOf:
+                                  - type: string
+                                    enum:
+                                      - ip-match
+                                      - geo-match
+                                      - url-match
+                                      - method-match
+                                      - header-match
+                                  - $ref: ../../../../StackVariable.yml
+                              operator:
+                                oneOf:
+                                  - type: string
+                                    enum:
+                                      - "=="
+                                      - "!="
+                                      - ">"
+                                      - "<"
+                                      - ">="
+                                      - "<="
+                                  - $ref: ../../../../StackVariable.yml
+                              value:
+                                oneOf:
+                                  - type: string
+                                  - $ref: ../../../../StackVariable.yml
+                          - $ref: ../../../../StackVariable.yml
+                    - $ref: ../../../../StackVariable.yml
+            - $ref: ../../../../StackVariable.yml
+      - $ref: ../../../../StackVariable.yml

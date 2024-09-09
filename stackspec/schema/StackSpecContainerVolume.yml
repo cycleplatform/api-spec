@@ -7,57 +7,81 @@ required:
 properties:
   local:
     description: Configuration options for local volumes.
-    type: object
-    required:
-      - max_size
-    properties:
-      max_size:
-        description: The maximum size this volume can grow to. Container volumes on Cycle are thinly provisioned, meaning this isn't an allocation - the volume will only use the space it needs up to this size.
-        type: string
-        examples:
-          - 5G
-          - 500M
-      storage_pool:
-        description: A boolean where true signifies using the largest drive over 2TB for the target server.
-        type: boolean
+    oneOf:
+      - type: object
+        required:
+          - max_size
+        properties:
+          max_size:
+            description: The maximum size this volume can grow to. Container volumes on Cycle are thinly provisioned, meaning this isn't an allocation - the volume will only use the space it needs up to this size.
+            oneOf:
+              - type: string
+                examples:
+                  - 5G
+                  - 500M
+              - $ref: StackVariable.yml
+          storage_pool:
+            description: A boolean where true signifies using the largest drive over 2TB for the target server.
+            oneOf:
+              - type: boolean
+              - $ref: StackVariable.yml
+      - $ref: StackVariable.yml
   destination:
     description: The path this volume should be mounted at inside the container.
-    type: string
+    oneOf:
+      - type: string
+      - $ref: StackVariable.yml
   read_only:
     description: If true, the container will be unable to write data to the volume.
-    type: boolean
+    oneOf:
+      - type: boolean
+      - $ref: StackVariable.yml
   remote_access:
     description: Configuration options for setting up remote access to this volume via SFTP.
-    type: object
-    required:
-      - enable
-      - password
-    properties:
-      enable:
-        description: If true, this volume will be accessible over SFTP.
-        type: boolean
-      ips:
-        description: A list of IPs that SFTP access will be limited to.
-        type: array
-        items:
-          type: string
-      webhook:
-        description: If set, Cycle will call out to this URL for authentication. Anything other than a 200 response will be considered a validation failure.
-        type: string
-      password:
-        type: object
-        description: The password used for logging in to this volume via SFTP.
+    oneOf:
+      - type: object
         required:
-          - algorithm
-          - data
+          - enable
+          - password
         properties:
-          algorithm:
-            type: string
-            description: The algorithm the password is encoded with. `raw` means the password is plain-text.
-            enum:
-              - raw
-              - sha512
-              - md5
-          data:
-            description: The password string.
-            type: string
+          enable:
+            description: If true, this volume will be accessible over SFTP.
+            oneOf:
+              - type: boolean
+              - $ref: StackVariable.yml
+          ips:
+            description: A list of IPs that SFTP access will be limited to.
+            oneOf:
+              - type: array
+                items:
+                  type: string
+              - $ref: StackVariable.yml
+          webhook:
+            description: If set, Cycle will call out to this URL for authentication. Anything other than a 200 response will be considered a validation failure.
+            oneOf:
+              - type: string
+              - $ref: StackVariable.yml
+          password:
+            description: The password used for logging in to this volume via SFTP.
+            oneOf:
+              - type: object
+                required:
+                  - algorithm
+                  - data
+                properties:
+                  algorithm:
+                    description: The algorithm the password is encoded with. `raw` means the password is plain-text.
+                    oneOf:
+                      - type: string
+                        enum:
+                          - raw
+                          - sha512
+                          - md5
+                      - $ref: StackVariable.yml
+                  data:
+                    description: The password string.
+                    oneOf:
+                      - type: string
+                      - $ref: StackVariable.yml
+              - $ref: StackVariable.yml
+      - $ref: StackVariable.yml

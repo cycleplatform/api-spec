@@ -10,15 +10,21 @@ properties:
     enum:
       - tcp
   details:
-    type: object
-    required:
-      - connections
-      - telemetry
-    properties:
-      connections:
-        type: object
-        additionalProperties: {}
-      telemetry:
-        type: object
-        description: Configuration options for how telemetry is handled on the load balancer.
-        additionalProperties: {}
+    oneOf:
+      - type: object
+        required:
+          - connections
+          - telemetry
+        properties:
+          connections:
+            oneOf:
+              - type: object
+                additionalProperties: {}
+              - $ref: ../../../../../StackVariable.yml
+          telemetry:
+            description: Configuration options for how telemetry is handled on the load balancer.
+            oneOf:
+              - type: object
+                additionalProperties: {}
+              - $ref: ../../../../../StackVariable.yml
+      - $ref: ../../../../../StackVariable.yml
