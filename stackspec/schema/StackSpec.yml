@@ -82,6 +82,7 @@ properties:
           vpn:
             anyOf:
               - $ref: services/vpn/StackSpecVpnService.yml
+              - $ref: StackVariable.yml
               - type: "null"
       - $ref: StackVariable.yml
   annotations:
