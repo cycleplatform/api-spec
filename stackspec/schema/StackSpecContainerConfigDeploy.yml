@@ -44,28 +44,28 @@ properties:
           max_pool_size:
             description: The maximum number of instances that Cycle can pre-allocate (includes auto-scaled instances).
             oneOf:
-              - $ref: StackVariable.yml
               - type:
                   - integer
                   - "null"
+              - $ref: StackVariable.yml
           max_shard_concurrency:
             description: For each shard (scheduler), the maximum number of tasks it can run in parallel.
             oneOf:
-              - $ref: StackVariable.yml
               - type:
                   - integer
                   - "null"
+              - $ref: StackVariable.yml
           max_runtime:
             description: The maximum amount of time a function instance can run before timing out.
             anyOf:
-              - $ref: StackVariable.yml
               - $ref: ../../components/schemas/Duration.yml
+              - $ref: StackVariable.yml
               - type: "null"
           max_queue_time:
             description: The maximum amount of time Cycle will wait for an instance to be available.
             anyOf:
-              - $ref: StackVariable.yml
               - $ref: ../../components/schemas/Duration.yml
+              - $ref: StackVariable.yml
               - type: "null"
       - $ref: StackVariable.yml
   stateful:
