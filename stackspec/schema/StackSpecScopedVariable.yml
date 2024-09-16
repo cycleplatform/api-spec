@@ -125,5 +125,5 @@ properties:
         oneOf:
           - $ref: ./StackSpecScopedVariableUrlSource.yml
           - $ref: ./StackSpecScopedVariableRawSource.yml
-      - type: "null"
       - $ref: StackVariable.yml
+      - type: "null"

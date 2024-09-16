@@ -76,9 +76,9 @@ properties:
               - type: "null"
           scheduler:
             anyOf:
-              - type: "null"
-              - $ref: StackVariable.yml
               - $ref: services/scheduler/StackSpecSchedulerService.yml
+              - $ref: StackVariable.yml
+              - type: "null"
           vpn:
             anyOf:
               - $ref: services/vpn/StackSpecVpnService.yml
