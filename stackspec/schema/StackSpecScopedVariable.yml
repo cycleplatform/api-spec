@@ -111,8 +111,6 @@ properties:
       - $ref: StackVariable.yml
   source:
     anyOf:
-      - type: "null"
-      - $ref: StackVariable.yml
       - type: object
         description: >
           Describes the source/value of the variable.
@@ -127,3 +125,5 @@ properties:
         oneOf:
           - $ref: ./StackSpecScopedVariableUrlSource.yml
           - $ref: ./StackSpecScopedVariableRawSource.yml
+      - $ref: StackVariable.yml
+      - type: "null"
