@@ -1,43 +1,41 @@
-title: InstanceTelemetryCPUSnapshot 
-type: object 
-description: A telemetry snapshot pertaining to CPU usage. 
-required: 
-  - usage 
-  - throttling 
-properties: 
-  usage: 
-    type: object 
-    description: Usage statistics. 
-    required: 
-      - total 
-      - per_core 
-      - kernel 
+title: InstanceTelemetryCPUSnapshot
+type: object
+description: A telemetry snapshot pertaining to CPU usage.
+required:
+  - num_cores
+  - usage
+  - throttling
+properties:
+  num_cores:
+    type: integer
+    description: The total number of cores on the originating node the instance is running on.
+  usage:
+    type: object
+    description: Usage statistics.
+    required:
+      - total
+      - kernel
       - user
-    properties: 
-      total: 
-        type: integer 
-        description: Total amount of VPU time since last restart. 
-      per_core: 
-        description: An array showing CPU core specific usage in nanoseconds since the last restart. 
-        type: array 
-        items: 
-          type: integer
-      kernel: 
-        type: integer 
-        description: The amount of time in nanoseconds used by the kernel since last restart. 
-      user: 
-        type: number 
-        description: The amount of time in nanoseconds taken up for user processes. 
-  throttling: 
-    type: object 
-    description: Throttling statistics. 
-    properties: 
-      periods: 
-        type: integer 
-        description: The amount of periods that have passed since the last restart. 
-      throttled_periods: 
-        type: integer 
-        description: How many times the instance has been throttled for using all its alloted CPU during a period. 
-      throttled_time: 
-        type: integer 
-        description: The amount of time in nanoseconds this instnace has spent with throttled CPU resources. 
+    properties:
+      total:
+        type: integer
+        description: Total amount of VPU time since last restart.
+      kernel:
+        type: integer
+        description: The amount of time in nanoseconds used by the kernel since last restart.
+      user:
+        type: number
+        description: The amount of time in nanoseconds taken up for user processes.
+  throttling:
+    type: object
+    description: Throttling statistics.
+    properties:
+      periods:
+        type: integer
+        description: The amount of periods that have passed since the last restart.
+      throttled_periods:
+        type: integer
+        description: How many times the instance has been throttled for using all its alloted CPU during a period.
+      throttled_time:
+        type: integer
+        description: The amount of time in nanoseconds this instnace has spent with throttled CPU resources.
