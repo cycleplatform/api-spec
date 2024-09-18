@@ -7,7 +7,7 @@ required:
   - throttling
 properties:
   num_cores:
-    type: number
+    type: integer
     description: The total number of cores on the originating node the instance is running on.
   usage:
     type: object
