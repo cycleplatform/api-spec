@@ -255,6 +255,7 @@ properties:
 
       - stack.update
       - stack.task.delete
+      - stack.delete
       - stack.create
       - stack.task.prune
       - stack.prune
