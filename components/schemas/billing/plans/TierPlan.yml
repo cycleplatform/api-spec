@@ -75,5 +75,12 @@ properties:
     "$ref": "../BillingBuilds.yml"
   hidden:
     type: boolean
+  hubs:
+    description: An array of hub IDs with access to the tier.
+    type:
+      - array
+      - "null"
+    items:
+      $ref: ../../Identifier.yml
   description:
     type: string
