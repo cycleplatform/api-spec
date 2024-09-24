@@ -56,7 +56,6 @@ properties:
                   - environment.deployment.start
                   - environment.deployment.stop
                   - environment.deployment.healthy.watch
-                  - image.source.create
                   - image.create
                   - image.import
                   - images.prune
