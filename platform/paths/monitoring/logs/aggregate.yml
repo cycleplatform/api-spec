@@ -82,7 +82,8 @@ post:
                 - "null"
             limit:
               description: Describes the maximum number of log lines the query will return.
-              example: 1000
+              examples:
+                - 1000
               type:
                 - integer
                 - "null"

@@ -10,7 +10,8 @@ properties:
     $ref: ../../../../components/schemas/DateTime.yml
   source:
     description: The source that generated the log line.
-    example: stdout
+    examples:
+      - "stdout"
     type: string
   message:
     description: The message associated with the log line.
