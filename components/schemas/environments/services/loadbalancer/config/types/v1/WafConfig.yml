@@ -12,6 +12,7 @@ properties:
         - description
         - skip
         - type
+        - match
         - conditions
       properties:
         description:
@@ -23,6 +24,11 @@ properties:
           enum:
             - allow
             - deny
+        match:
+          type: string
+          enum:
+            - any
+            - all
         conditions:
           type: array
           items:
