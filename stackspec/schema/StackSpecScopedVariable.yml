@@ -106,7 +106,8 @@ properties:
                           - string
                           - "null"
                       - $ref: StackVariable.yml
-                    example: /var/run/cycle/variables/<myVariable>
+                    examples:
+                      - "/var/run/cycle/variables/<myVariable>"
               - $ref: StackVariable.yml
       - $ref: StackVariable.yml
   source:

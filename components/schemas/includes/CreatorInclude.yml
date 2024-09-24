@@ -12,28 +12,24 @@ properties:
   employees:
     type: object
     description: Included creators that are employees of Cycle, keyed by ID.
-    example:
     additionalProperties:
       # Set the whole public account schema for each key-value.
       $ref: "../creators/PublicAccount.yml"
   visitors:
     type: object
     description: Included creators that are not Cycle accounts, keyed by ID.
-    example:
     additionalProperties:
       # Set the whole public account schema for each key-value.
       $ref: "../creators/PublicAccount.yml"
   environments:
     type: object
     description: Included creators that are Cycle environments (usually automatically created resources), keyed by ID.
-    example:
     additionalProperties:
       # Set the whole public account schema for each key-value.
       $ref: "../environments/Environment.yml"
   api_keys:
     type: object
     description: Included creators that are Cycle API Keys, keyed by ID.
-    example:
     additionalProperties:
       # Set the whole public account schema for each key-value.
       $ref: "../creators/ApiKeyCreator.yml"

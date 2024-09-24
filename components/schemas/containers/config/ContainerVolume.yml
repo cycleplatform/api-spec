@@ -17,7 +17,8 @@ properties:
       max_size:
         type: string
         description: The maximum size this volume can grow to. Container volumes on Cycle are thinly provisioned, meaning this isn't an allocation - the volume will only use the space it needs up to this size.
-        example: "10G"
+        examples:
+          - "10G"
       storage_pool:
         type: boolean
         description: A boolean where true signifies using the largest drive over 2TB for the target server.

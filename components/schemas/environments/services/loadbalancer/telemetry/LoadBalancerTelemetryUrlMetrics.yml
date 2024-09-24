@@ -25,19 +25,24 @@ properties:
             host:
               type: string
               description: The host name of the URL request.
-              example: abc.cycle.io
+              examples:
+                - "abc.cycle.io"
             method:
               type: string
               description: The HTTP method of the URL request.
-              example: GET
+              examples:
+                - "GET"
             path:
               type: string
               description: The path portion of the inbound URL request.
-              example: /pathname
+              examples:
+                - "/pathname"
             total:
               type: integer
               description: The number of requests to a this URL.
-              example: 11
+              examples:
+                - 5
+                - 10
             last_hit:
               description: The date of the most recent hit to the URL.
               $ref: ../../../../DateTime.yml
@@ -64,13 +69,15 @@ properties:
                   $ref: ./LoadBalancerTelemetryUrlRequestHandler.yml
             responses:
               type: object
-              example: { "http:404": 10 }
+              examples:
+                - { "http:404": 10 }
               description: An object where the key is the response type and the value is the number of hits with that response.
               additionalProperties:
                 type: integer
             errors:
               type: object
-              example: { "i/o timeout": 1 }
+              examples:
+                - { "i/o timeout": 1 }
               description: An object where the key is the error type and the value is the number of hits with that error.
               additionalProperties:
                 type: integer

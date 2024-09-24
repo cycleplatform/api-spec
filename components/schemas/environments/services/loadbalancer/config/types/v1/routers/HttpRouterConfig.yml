@@ -137,7 +137,8 @@ properties:
               properties:
                 match:
                   description: Regex string that describes the files to cache.
-                  example: (.*)\\.(js|jpg|css|png|svg)$
+                  examples:
+                    - "(.*)\\.(js|jpg|css|png|svg)$"
                   type: string
                 ttl:
                   description: Time string that describes the time to live.

@@ -248,7 +248,8 @@ properties:
               - The second format is an inline script.  If you need the code to execute within a shell, wrap the commands in escaped quotes like this `"\"curl -s -o /dev/console -w \"%{http_code}\" http://localhost:3000/_health | grep '200'  && exit 0 || exit 1\""`.  Do not use the `/bin/sh -c <commands>` format, this will not be accepted.
             oneOf:
               - type: string
-                example: /bin/sh healthcheck.sh
+                examples:
+                  - "/bin/sh healthcheck.sh"
               - $ref: StackVariable.yml
           retries:
             description: The number of times to retry the command before marking an instance unhealthy.

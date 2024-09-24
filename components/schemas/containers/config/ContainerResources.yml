@@ -31,7 +31,9 @@ properties:
       limit:
         type: string
         description: The limit (maximum) amount of RAM each instance of the given container can use.
-        example: "1G, 2M"
+        examples:
+          - "1G"
+          - "1M"
       reserve:
         type: string
         description: The reserve (allocation) of RAM given to each instance of the container.

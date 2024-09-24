@@ -184,7 +184,8 @@ properties:
                               properties:
                                 match:
                                   description: Regex string that describes the files to cache.
-                                  example: (.*)\\.(js|jpg|css|png|svg)$
+                                  examples:
+                                    - "(.*)\\.(js|jpg|css|png|svg)$"
                                   oneOf:
                                     - type: string
                                     - $ref: ../../../../../StackVariable.yml
