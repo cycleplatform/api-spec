@@ -118,12 +118,14 @@ properties:
                   - "null"
                 properties:
                   domain:
-                    description: The proxy domain for this router.
+                    description: The domain for this router to proxy.
                     oneOf:
                       - type:
                           - string
                           - "null"
                       - $ref: ../../../../../StackVariable.yml
+                  url:
+                    description: The full URL for this router to proxy.
                   content_mod:
                     description: Allows the load balancer to modify content before it reaches the user.
                     oneOf:
