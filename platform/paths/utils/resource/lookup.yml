@@ -11,8 +11,7 @@ get:
     - name: identifier
       in: query
       required: true
-      examples:
-        - "cltr:production/environment:654d4e848924c1c445c3635a/container:api"
+      example: "cltr:production/environment:654d4e848924c1c445c3635a/container:api"
       description: A base64 encoded resource identifier string.
       schema:
         type: string
