@@ -91,7 +91,12 @@ properties:
             type:
               - string
               - "null"
-            description: The proxy domain for this router.
+            description: The domain that this router will proxy.
+          url:
+            description: The full URL that this router will proxy.
+            type:
+              - string
+              - "null"
           content_mod:
             description: Allows the load balancer to modify content before it reaches the user.
             type:
