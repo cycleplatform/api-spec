@@ -3,7 +3,6 @@ description: A step for a pipeline stage.
 discriminator:
   propertyName: action
   mapping:
-    image.source.create: steps/ImageSourceCreateStep.yml
     image.create: steps/ImageCreateStep.yml
     image.import: steps/ImageImportStep.yml
     images.prune: steps/ImagesPruneStep.yml
@@ -38,7 +37,6 @@ discriminator:
     webhook.get: steps/webhooks/WebhookGetStep.yml
 oneOf:
   # image steps
-  - $ref: steps/ImageSourceCreateStep.yml
   - $ref: steps/ImageCreateStep.yml
   - $ref: steps/ImageImportStep.yml
   - $ref: steps/ImagesPruneStep.yml
