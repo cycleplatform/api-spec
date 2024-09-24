@@ -12,18 +12,29 @@ properties:
         - description
         - skip
         - type
+        - match
         - conditions
       properties:
         description:
+          description: Some information about the rule.
           type: string
         skip:
+          description: A boolean that indicates if the rule should be active or skipped.
           type: boolean
         type:
+          description: A string that describes if the role should allow or deny traffic based on the conditions.
           type: string
           enum:
             - allow
             - deny
+        match:
+          description: A string that describes if both attributes need to be true (match all) or if only one of the conditions needs to be true (match any).
+          type: string
+          enum:
+            - any
+            - all
         conditions:
+          description: An array of the specific conditions for the rule.
           type: array
           items:
             type: object
@@ -33,6 +44,7 @@ properties:
               - value
             properties:
               type:
+                description: A string that describes the match type for the condition.
                 type: string
                 enum:
                   - ip-match
@@ -41,6 +53,7 @@ properties:
                   - method-match
                   - header-match
               operator:
+                description: A string that indicates the range of values relative to the value property.
                 type: string
                 enum:
                   - "=="
@@ -50,4 +63,7 @@ properties:
                   - ">="
                   - "<="
               value:
+                description: The value corresponding to the condition type.
+                examples:
+                  - "0.0.0.0/0"
                 type: string
