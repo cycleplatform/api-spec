@@ -64,5 +64,6 @@ properties:
                   - "<="
               value:
                 description: The value corresponding to the condition type.
-                example: "0.0.0.0/0"
+                examples:
+                  - "0.0.0.0/0"
                 type: string
