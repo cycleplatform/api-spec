@@ -2,7 +2,7 @@ title: Environment
 type: object
 description:
   Environments are groups of containers with a private network built between
-  them. For more information on environments, see the [main docs](https://docs.cycle.io/environments/overview/).
+  them. For more information on environments, see the [main docs](https://cycle.io/docs/platform/introduction-to-environments).
 required:
   - id
   - identifier
