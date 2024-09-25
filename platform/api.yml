@@ -17,7 +17,7 @@ info:
     in a client-side web application as well.
 
     ## Auth Basics 
-    Every API request much have an accompanying API key in the Authorization header. For more informaiton on generating an API key head over to the [Portal Docs](https://docs.cycle.io/reference/hubs/API-access/api-key-generate). 
+    Every API request much have an accompanying API key in the Authorization header. For more information on generating an API key head over to the [Portal Docs](https://cycle.io/docs/portal/managing-an-api-key-and-settings#creating-an-api-key). 
 
     Your API key should never be made publicly available, published to a public repository, or used on a client side
     web app. If you would like to use the API from a web app, you should create a thin-client service that acts as a passthrough for
