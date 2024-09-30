@@ -1,0 +1,52 @@
+get:
+  operationId: "getPipelineRun"
+  summary: Get Pipeline Run
+  description: Requires the `pipelines-view` capability.
+  tags:
+    - Pipelines
+  parameters:
+    - name: pipelineId
+      in: path
+      required: true
+      description: The ID of the Pipeline.
+      schema:
+        type: string
+    - name: runId
+      description: The ID for the pipeline run.
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: include
+      in: query
+      required: false
+      description:
+        A comma separated list of include values. Included resources will show
+        up under the root document's `include` field, with the key being the id of the included
+        resource. In the case of applying an include to a collection of resources, if two
+        resources share the same include, it will only appear once in the return.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - creators
+  responses:
+    200:
+      description: Returns a Pipeline Run.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../components/schemas/pipelines/runs/PipelineRun.yml
+              includes:
+                type: object
+                properties:
+                  creators:
+                    "$ref": "../../../components/schemas/includes/CreatorInclude.yml"
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
