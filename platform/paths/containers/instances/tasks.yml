@@ -30,11 +30,11 @@ post:
             mapping:
               migrate: ../../../../components/schemas/containers/instances/taskActions/Migrate.yml
               migrate_revert: ../../../../components/schemas/containers/instances/taskActions/RevertMigration.yml
-              volume.resize: ../../../../components/schemas/containers/instances/taskActions/ResizeVolume.yml
+              volume.extend: ../../../../components/schemas/containers/instances/taskActions/ExtendVolume.yml
           oneOf:
             - $ref: ../../../../components/schemas/containers/instances/taskActions/RevertMigration.yml
             - $ref: ../../../../components/schemas/containers/instances/taskActions/Migrate.yml
-            - $ref: ../../../../components/schemas/containers/instances/taskActions/ResizeVolume.yml
+            - $ref: ../../../../components/schemas/containers/instances/taskActions/ExtendVolume.yml
   responses:
     202:
       description: Returns a Job Descriptor.

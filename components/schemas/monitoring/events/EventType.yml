@@ -12,7 +12,7 @@ enum:
   - container.instance.function.max_runtime
   - container.instance.healthcheck.failed
   - container.instance.healthcheck.recovered
-  - container.instance.volume.resize.failed
+  - container.instance.volume.extend.failed
   - container.instance.healthcheck.restarted
   - container.instance.migrate.failed
   - container.instance.migration.completed

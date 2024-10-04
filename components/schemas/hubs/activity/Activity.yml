@@ -222,8 +222,8 @@ properties:
       - container.instances.autoscale.down
 
       - container.instance.healthcheck.restarted
-      - container.instance.volume.resize
-      - container.instance.task.volume.resize
+      - container.instance.volume.extend
+      - container.instance.task.volume.extend
       - container.instance.healthcheck.failed
       - container.instance.error
       - container.instance.ssh.login
