@@ -1,0 +1,25 @@
+title: ResizeVolumeAction
+type: object
+required:
+  - action
+  - contents
+properties:
+  action:
+    type: string
+    enum:
+      - volume.resize
+    description: The name of the action to perform.
+  contents:
+    type: object
+    required:
+      - volume_id
+      - new_size
+    properties:
+      volume_id:
+        description: The ID of the volume that will be resized through this task.
+        type: string
+      new_size:
+        type: string
+        description: The maximum size this volume can grow to. Container volumes on Cycle are thinly provisioned, meaning this isn't an allocation - the volume will only use the space it needs up to this size.
+        examples:
+          - "10G"
