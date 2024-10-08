@@ -295,6 +295,8 @@ properties:
       - infrastructure.server.task.sharedfs.reconfigure
       - infrastructure.server.services.sftp.lockdown
       - infrastructure.server.services.internal-api.throttle
+      - infrasturcture.server.evacuation.start
+      - infrasturcture.server.task.evacuation.start
 
       - infrastructure.autoscale.group.create
       - infrastructure.autoscale.group.update
