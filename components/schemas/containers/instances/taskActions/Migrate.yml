@@ -1,28 +1,28 @@
 title: MigrateAction
-type: object 
-required: 
-  - action 
-  - contents 
-properties: 
-  action: 
-    type: string 
-    enum: 
-      - migrate 
-    description: The name of the action to perform. 
-  contents: 
-    type: object 
-    required: 
-      - destination_server_id 
-    properties: 
-      destination_server_id: 
-        type: string 
-        description: The ID of the server being migrated to. 
-      stateful: 
-        type: object 
-        description: Information about additonal configuration settings used when migrating a stateful instance. 
-        required: 
-          - copy_volumes 
-        properties: 
-          copy_volumes: 
-            type: boolean 
-            description: A boolean where true represents the desire to copy the contents of the volume for a given stateful instance with the migration.  
+type: object
+required:
+  - action
+  - contents
+properties:
+  action:
+    type: string
+    enum:
+      - migration.start
+    description: The name of the action to perform.
+  contents:
+    type: object
+    required:
+      - destination_server_id
+    properties:
+      destination_server_id:
+        type: string
+        description: The ID of the server being migrated to.
+      stateful:
+        type: object
+        description: Information about additonal configuration settings used when migrating a stateful instance.
+        required:
+          - copy_volumes
+        properties:
+          copy_volumes:
+            type: boolean
+            description: A boolean where true represents the desire to copy the contents of the volume for a given stateful instance with the migration.

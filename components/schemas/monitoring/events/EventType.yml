@@ -14,7 +14,7 @@ enum:
   - container.instance.healthcheck.recovered
   - container.instance.volume.extend.failed
   - container.instance.healthcheck.restarted
-  - container.instance.migrate.failed
+  - container.instance.migration.failed
   - container.instance.migration.completed
   - container.instance.migration.failed
   - container.instance.network.interfaces.create.failed
@@ -51,3 +51,5 @@ enum:
   - infrastructure.server.sftp.lockdown
   - infrastructure.server.sftp.login
   - infrastructure.server.sftp.login.failed
+  - infrastructure.server.evacuation.failed
+  - infrastructure.server.evacuation.completed

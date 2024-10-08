@@ -230,8 +230,8 @@ properties:
       - container.instance.migration.start
       - container.instance.migration.revert
       - container.instance.delete
-      - container.instance.task.migrate_revert
-      - container.instance.task.migrate
+      - container.instance.task.migration.revert
+      - container.instance.task.migration.start
       # there may be other custom-generated container.instance events
 
       - container.backup.create
@@ -281,6 +281,7 @@ properties:
       - infrastructure.server.live
       - infrastructure.server.delete
       - infrastructure.server.restart
+
       - infrastructure.server.compute.restart
       - infrastructure.server.compute.spawner.restart
       - infrastructure.server.features.reconfigure
@@ -294,6 +295,8 @@ properties:
       - infrastructure.server.task.sharedfs.reconfigure
       - infrastructure.server.services.sftp.lockdown
       - infrastructure.server.services.internal-api.throttle
+      - infrasturcture.server.evacuation.start
+      - infrasturcture.server.task.evacuation.start
 
       - infrastructure.autoscale.group.create
       - infrastructure.autoscale.group.update
