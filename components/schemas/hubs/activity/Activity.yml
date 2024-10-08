@@ -280,7 +280,7 @@ properties:
       - infrastructure.server.services.sftp.auth
       - infrastructure.server.live
       - infrastructure.server.delete
-      - infrasstructure.sever.restart
+      - infrastructure.server.restart
 
       - infrastructure.server.compute.restart
       - infrastructure.server.compute.spawner.restart
