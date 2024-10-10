@@ -7,7 +7,7 @@ required:
   - metrics
   - events
   - logs
-  - tracking_interval
+  - features
   - cost_mills
 properties:
   enabled:
@@ -63,8 +63,13 @@ properties:
       custom:
         type: boolean
         description: Whether or not custom user-submitted logs are supported on this tier.
-  tracking_interval:
-    $ref: ../../Duration.yml
+  features:
+    type: object
+    required:
+      - public_ping_monitor
+    properties:
+      public_ping_monitor:
+        type: boolean
   cost_mills:
     type: integer
     description: The monthly cost (in mills) of enabling this tier on an environment.
