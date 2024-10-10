@@ -29,7 +29,7 @@ properties:
           items:
             type: string
   custom_resolvers:
-    description: "A list of custom resolver strings.  Can specifify domains or ips."
+    description: "A list of custom DNS resolver strings.  Can specifify domains or ips."
     type: array
     items:
       type: string

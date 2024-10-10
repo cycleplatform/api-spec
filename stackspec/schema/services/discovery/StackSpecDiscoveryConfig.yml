@@ -33,7 +33,7 @@ properties:
                 - $ref: ../../StackVariable.yml
       - $ref: ../../StackVariable.yml
   custom_resolvers:
-    description: "A list of custom resolver strings.  Can specifify domains or ips."
+    description: "A list of custom DNS resolver strings.  Can specifify domains or ips."
     anyOf:
       - type: array
         items:
