@@ -28,3 +28,8 @@ properties:
             - "null"
           items:
             type: string
+  custom_resolvers:
+    description: "A list of custom resolver strings.  Can specifify domains or ips."
+    type: array
+    items:
+      type: string
