@@ -633,6 +633,8 @@ paths:
     $ref: "./paths/pipelines/tasks.yml"
   "/v1/pipelines/clone":
     $ref: "./paths/pipelines/clone.yml"
+  "/v1/pipelines/{pipelineId}/trigger":
+    $ref: "./paths/pipelines/trigger.yml"
   ## Trigger Keys
   "/v1/pipelines/{pipelineId}/keys":
     $ref: "./paths/pipelines/triggerKeys/triggerKeys.yml"
