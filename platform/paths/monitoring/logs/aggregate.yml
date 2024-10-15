@@ -33,11 +33,11 @@ post:
                     - environment
                 ids:
                   description: The ID or IDs used to narrow log aggregation.
-                  type:
-                    - array
-                    - "null"
-                  items:
-                    $ref: ../../../../components/schemas/ID.yml
+                  oneOf:
+                    - type: array
+                      items:
+                        $ref: ../../../../components/schemas/ID.yml
+                    - type: "null"
                 date_range:
                   description: The date range used to narrow log aggregation.
                   anyOf:

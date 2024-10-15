@@ -54,9 +54,7 @@ properties:
           env_variable:
             description: Grants access to this variable from within a container as an environment variable.
             oneOf:
-              - type:
-                  - object
-                  - "null"
+              - type: object
                 required:
                   - key
                 properties:
@@ -66,6 +64,7 @@ properties:
                       - type: string
                       - $ref: StackVariable.yml
               - $ref: StackVariable.yml
+              - type: "null"
           internal_api:
             description: Grants access to this variable over the Internal API.
             oneOf:

@@ -14,19 +14,19 @@ properties:
       - internal_ports
     properties:
       domains:
-        type:
-          - array
-          - "null"
         description: The specific domains to match against.
-        items:
-          type: string
+        oneOf:
+          - type: array
+            items:
+              type: string
+          - type: "null"
       internal_ports:
-        type:
-          - array
-          - "null"
         description: The specific ports to match against.
-        items:
-          type: integer
+        oneOf: 
+          - type: array
+            items:
+              type: integer
+          - type: "null"
       path:
         type:
           - string
@@ -39,18 +39,18 @@ properties:
         properties:
           include:
             description: Match any traffic that would be routed to one of these containers.
-            type:
-              - array
-              - "null"
-            items:
-              $ref: ../../../../../../HybridIdentifier.yml
+            oneOf:
+              - type: array
+                items:
+                  $ref: ../../../../../../HybridIdentifier.yml
+              - type: "null"
           exclude:
             description: Match any traffic that would NOT be routed to one of these containers.
-            type:
-              - array
-              - "null"
-            items:
-              $ref: ../../../../../../HybridIdentifier.yml
+            oneOf:
+              - type: array
+                items:
+                  $ref: ../../../../../../HybridIdentifier.yml
+              - type: "null"
   mode:
     type: string
     description: |
