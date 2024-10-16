@@ -28,3 +28,11 @@ properties:
     type: number
     format: float
     description: The longitude where this monitor is located.
+required:
+  - node_id
+  - country_short
+  - country
+  - region
+  - city
+  - latitude
+  - longitude

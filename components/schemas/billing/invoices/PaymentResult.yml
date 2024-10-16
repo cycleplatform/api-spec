@@ -3,11 +3,15 @@ type: object
 description: A billing payment result.
 required:
   - success
+  - pending
   - error
 properties:
   success:
     type: boolean
     description: A boolean where true represents the success of the payment.
+  pending:
+    type: boolean
+    description: Whether the payment is still pending or not.
   error:
     type: string
     description: A description of the error that took place.
