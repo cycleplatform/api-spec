@@ -7,7 +7,6 @@ required:
   - primary
   - address
   - creator
-  - credit_card
   - state
   - events
 properties:
@@ -20,11 +19,13 @@ properties:
     type: boolean
     description: A boolean where true represents this billing method is set to primary for a given hub.
   address:
-    "$ref": "./Address.yml"
+    $ref: "./Address.yml"
   creator:
-    "$ref": "../../creators/CreatorScope.yml"
+    $ref: "../../creators/CreatorScope.yml"
   credit_card:
-    "$ref": "./CreditCard.yml"
+    $ref: "./CreditCard.yml"
+  ach:
+    $ref: "./Ach.yml"
   state:
     allOf:
       - required:

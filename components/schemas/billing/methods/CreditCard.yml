@@ -1,6 +1,6 @@
 title: CreditCard
 type: object
-description: Information about a credit card.
+description: A credit card payment method.
 required:
   - name
   - brand
@@ -9,10 +9,10 @@ required:
 properties:
   name:
     type: string
-    description: A name associated with the credit cards usage.
+    description: The name on the credit card.
   brand:
     type: string
-    description: The brand of card - ex VISA.
+    description: The brand of card.
   expiration:
     "$ref": "./BillingMethodExpiration.yml"
   last_4:
