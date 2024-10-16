@@ -1,0 +1,30 @@
+title: Monitor
+description: >
+  A monitor used to determine latency between the public internet and a load balancer on Cycle.
+  These monitors are automatically created and managed by the platform. Information about specific monitors
+  is provided for determining the regional latencies for an environment.
+type: object
+properties:
+  node_id:
+    type: string
+    description: The ID of the node this monitor is running on.
+  country_short: 
+    type: string
+    description: The country code of where this monitor is located.
+  country:
+    type: string
+    description: The full name of the country where this monitor is located.
+  region:
+    type: string
+    description: The name of the region (state, province, prefecture, etc.) where this monitor is located.
+  city:
+    type: string
+    description: The name of the city where this monitor is located.
+  latitude:
+    type: number
+    format: float
+    description: The latitude where this monitor is located.
+  longitude:
+    type: number
+    format: float
+    description: The longitude where this monitor is located.

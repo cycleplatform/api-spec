@@ -617,6 +617,8 @@ paths:
     $ref: paths/monitoring/events/aggregate.yml
   "/v1/monitoring/logs/aggregate":
     $ref: paths/monitoring/logs/aggregate.yml
+  "/v1/monitoring/monitors":
+    $ref: paths/monitoring/monitors/monitors.yml
 
   # --Pipelines
   "/v1/pipelines":
