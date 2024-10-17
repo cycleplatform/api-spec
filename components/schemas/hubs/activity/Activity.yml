@@ -194,6 +194,7 @@ properties:
       - hub.integration.create
       - hub.integration.update
       - hub.integration.delete
+      - hub.inactive
 
       - container.initialize
       - container.task.start

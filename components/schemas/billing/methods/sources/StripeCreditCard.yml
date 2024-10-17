@@ -1,0 +1,40 @@
+title: StripeCreditCard
+type: object
+description: A payment method that utilizes a credit card via Stripe.
+required:
+  - type
+  - details
+properties:
+  type: 
+    type: string
+    enum: 
+      - stripe-credit-card
+  details:
+    type: object
+    required:
+      - name
+      - brand
+      - expiration
+      - last_4
+    properties:
+      name:
+        type: string
+        description: The name on the credit card.
+      brand:
+        type: string
+        description: The brand of card.
+      expiration:
+        type: object
+        required:
+          - month
+          - year
+        properties:
+          month:
+            type: integer
+            description: The month the billing method expires.
+          year:
+            type: integer
+            description: The year the billing method expires.
+      last_4:
+        type: string
+        description: The last 4 digits of the card.

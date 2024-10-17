@@ -1,0 +1,21 @@
+title: Mandate
+description: Information about the creator of a payment method for compliance purposes.
+type: object
+required:
+  - accepted
+  - ip
+  - user_agent
+  - email
+properties:
+  accepted:
+    description: The date when the mandate was accepted
+    $ref: "../../DateTime.yml"
+  ip:
+    type: string
+    description: The IP address at the time the mandate was accepted.
+  user_agent:
+    type: string
+    description: The user agent of the browser when the mandate was accepted.
+  email:
+    type: string 
+    description: The email associated with the account that accepted the mandate
