@@ -22,10 +22,10 @@ properties:
     $ref: "./Address.yml"
   creator:
     $ref: "../../creators/CreatorScope.yml"
-  credit_card:
-    $ref: "./CreditCard.yml"
-  ach:
-    $ref: "./Ach.yml"
+  source:
+    $ref: sources/MethodSource.yml
+  mandate:
+    $ref: Mandate.yml
   state:
     allOf:
       - required:
@@ -36,6 +36,7 @@ properties:
             type: string
             enum:
               - live
+              - pending-verification
               - deleting
               - deleted
       - "$ref": "../../State.yml"
