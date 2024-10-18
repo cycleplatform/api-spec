@@ -12,6 +12,7 @@ allOf:
           - "billed"
           - "processing"
           - "partially-paid"
+          - "awaiting-funds"
           - "paid"
           - "refunding"
           - "refunded"
