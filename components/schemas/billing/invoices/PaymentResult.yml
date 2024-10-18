@@ -6,12 +6,14 @@ required:
   - pending
   - error
 properties:
-  success:
-    type: boolean
-    description: A boolean where true represents the success of the payment.
-  pending:
-    type: boolean
-    description: Whether the payment is still pending or not.
+  status:
+    type: string
+    description: The status of a payment.
+    enum:
+      - success
+      - processing
+      - cancelled
+      - error
   error:
     type: string
-    description: A description of the error that took place.
+    description: A description of the error that took place when processing the payment.
