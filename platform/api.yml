@@ -316,6 +316,8 @@ paths:
     $ref: "./paths/billing/methods/methods.yml"
   "/v1/billing/methods/{methodId}":
     $ref: "./paths/billing/methods/method.yml"
+  "/v1/billing/methods/{methodId}/tasks":
+    $ref: "./paths/billing/methods/tasks.yml"
 
   ## Orders
   "/v1/billing/orders":
