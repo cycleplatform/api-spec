@@ -63,7 +63,6 @@ properties:
       - updated
       - deleted
       - billed
-      - awaiting-funds
       - paid
       - credited
       - voided
