@@ -1,15 +1,15 @@
 post:
-  operationId: "createInvoiceJob"
-  summary: Create Invoice Job
+  operationId: "createBillingMethodJob"
+  summary: Create Billing Method Job
   description: |
-    Creates a new job for an Invoice. Generally used to make a payment on an invoice.
+    Creates a new job for a billing method. Generally used to verify a payment method.
 
-    Requires the `billing-invoices-pay` capability.
+    Requires the `billing-methods-manage` capability.
   tags:
-    - Invoices
+    - Methods
   parameters:
-    - name: invoiceId
-      description: The ID of the invoice.
+    - name: methodId
+      description: The ID of the method.
       in: path
       required: true
       schema:
@@ -21,15 +21,25 @@ post:
           type: object
           required:
             - action
+            - contents
           properties:
             action:
               type: string
               enum:
-                - pay
+                - verify
               description: The name of the action to perform.
+            contents:
+              type: object
+              required:
+                - micro_deposits
+              properties:
+                micro_deposits:
+                  type: array
+                  items: 
+                    type: integer
   responses:
     202:
-      description: Returns a Job Descriptor.
+      description: Returns a job descriptor.
       content:
         application/json:
           schema:
