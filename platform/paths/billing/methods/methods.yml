@@ -79,7 +79,7 @@ post:
                         year:
                           type: number
                 - type: "null"
-            ach:
+            us_bank_acct:
               oneOf:
                 - type: object
                   required:
