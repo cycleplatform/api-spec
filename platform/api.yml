@@ -142,6 +142,9 @@ x-tagGroups:
     tags:
       - Stacks
       - Stack Builds
+  - name: Virtual Machines
+    tags:
+      - Virtual Machines
   - name: Utility
     tags:
       - Utility
@@ -258,6 +261,9 @@ tags:
     description: Endpoints for managing Cycle stacks.
   - name: Stack Builds
     description: Endpoints for managing builds of a Cycle stack, including deploying a stack build to an environment.
+
+  - name: Virtual Machines
+    description: Endpoints for managing virtual machines.
 
   - name: Utility
     description: Extra utility endpoints that aren't related to a specific resource.
@@ -679,6 +685,10 @@ paths:
     $ref: "./paths/stacks/builds/build.yml"
   "/v1/stacks/{stackId}/builds/{buildId}/tasks":
     $ref: "./paths/stacks/builds/tasks.yml"
+
+  # --Virtual Machines
+  "/v1/vms":
+    $ref: "./paths/vms/vms.yml"
 
   # --Utility
   "/v1/utils/resource/lookup":

@@ -1,0 +1,20 @@
+title: VirtualMachineTelemetryConfig
+type: object
+description: |
+  The telemetry configuration defines how telemetry data is handled, including retention, interval, and whether telemetry is disabled.
+properties:
+  retention:
+    anyOf:
+      - $ref: ../../../Duration.yml
+      - type: "null"
+    description: Data retention duration for telemetry.
+  interval:
+    anyOf:
+      - $ref: ../../../Duration.yml
+      - type: "null"
+    description: Telemetry collection interval.
+  disable:
+    type: boolean
+    description: Whether telemetry collection is disabled.
+required:
+  - disable

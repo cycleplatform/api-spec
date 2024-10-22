@@ -1,0 +1,25 @@
+title: VirtualMachineDeployConfig
+type: object
+description: |
+  Represents the deployment configuration for a virtual machine, including constraints, shutdown/startup policies, restart conditions, and telemetry settings.
+properties:
+  constraints:
+    anyOf:
+      - $ref: ./constraints/VirtualMachineDeployConstraints.yml
+      - type: "null"
+  shutdown:
+    anyOf:
+      - $ref: ./VirtualMachineShutdownPolicy.yml
+      - type: "null"
+  startup:
+    anyOf:
+      - $ref: ./VirtualMachineStartupPolicy.yml
+      - type: "null"
+  restart:
+    anyOf:
+      - $ref: ./VirtualMachineRestartPolicy.yml
+      - type: "null"
+  telemetry:
+    anyOf:
+      - $ref: ./VirtualMachineTelemetryConfig.yml
+      - type: "null"
