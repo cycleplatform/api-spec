@@ -1,0 +1,28 @@
+title: VirtualMachineMeta
+type: object
+description: Fields that can be included on a per-virtual machine basis, specific to that virtual machine.
+properties:
+  domains:
+    anyOf:
+      - type: array
+        items:
+          type: object
+          description: Any associated LINKED records for this virtual machine, and their fully-qualified domain name (fqdn)
+          properties:
+            fqdn:
+              type: string
+              description: The fully qualified domain name.
+            record:
+              anyOf:
+                - $ref: ../dns/records/Record.yml
+                - type: "null"
+          required:
+            - fqdn
+      - type: "null"
+  ips:
+    description: An array of IP addresses associated with this virtual machine.
+    anyOf:
+      - type: array
+        items:
+          $ref: ../infrastructure/ips/Ip.yml
+      - type: "null"

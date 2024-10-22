@@ -1,0 +1,31 @@
+title: VirtualMachineVolumeConfig
+type: object
+description: |
+  Represents the configuration for a volume attached to a virtual machine.
+properties:
+  local:
+    anyOf:
+      - type: object
+        properties:
+          max_size:
+            type: string
+            description: The maximum size allowed for the local volume.
+            examples:
+              - 100G
+          storage_pool:
+            anyOf:
+              - type: boolean
+              - type: "null"
+            description: Indicates if the volume is part of a storage pool.
+        required:
+          - max_size
+      - type: "null"
+    description: Configuration details for a local volume, if applicable.
+  identifier:
+    $ref: ../../../Identifier.yml
+  read_only:
+    type: boolean
+    description: Specifies if the volume is mounted as read-only.
+required:
+  - identifier
+  - read_only
