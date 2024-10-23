@@ -19,7 +19,7 @@ properties:
   config:
     $ref: ./config/VirtualMachineConfig.yml
   image:
-    $ref: ./VirtualMachineImage.yml
+    $ref: ./images/VirtualMachineImage.yml
   volumes:
     anyOf:
       - type: array
