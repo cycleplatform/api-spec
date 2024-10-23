@@ -1,0 +1,9 @@
+title: VirtualMachineImageSourceBase
+description: A virtual machine image sourced from a Cycle base image.
+type: object
+properties:
+  identifier:
+    type: string
+    description: The base image identifier.
+required:
+  - identifier

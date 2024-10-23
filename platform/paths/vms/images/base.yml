@@ -18,6 +18,6 @@ get:
               data:
                 type: object
                 additionalProperties:
-                  $ref: ../../../../components/schemas/vms/VirtualMachineBaseImage.yml
+                  $ref: ../../../../components/schemas/vms/images/VirtualMachineBaseImage.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml

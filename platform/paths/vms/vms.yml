@@ -139,7 +139,7 @@ post:
               type: string
               description: The ID of the environment this virtual machine will be deployed to.
             image:
-              $ref: ../../../components/schemas/vms/VirtualMachineImage.yml
+              $ref: ../../../components/schemas/vms/images/VirtualMachineImage.yml
             config:
               "$ref": ../../../components/schemas/vms/config/VirtualMachineConfig.yml
             lock:
