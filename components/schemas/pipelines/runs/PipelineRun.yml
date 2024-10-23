@@ -20,12 +20,12 @@ properties:
     type: string
     description: The ID for the pipeline this run belongs to.
   sub_queue:
-    description: Describes which sub queue was defined during pipeline trigger, if present.
+    description: Describes the sub queue defined during pipeline trigger, if present.
     type:
       - string
       - "null"
   skip_locks:
-    description: Describes which if a skip lock was defined during pipeline trigger.
+    description: Describes if a skip lock was defined during pipeline trigger.
     type: boolean
   stages:
     type: array
