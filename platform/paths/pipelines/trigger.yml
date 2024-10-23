@@ -41,7 +41,7 @@ post:
                     To enable skip locks, pass the current UNIX timestamp. Must be accurate within 10 minutes of the current UTC time. 
                     This will skip lock checks when running a pipeline - the user takes all risk of ensuring two pipeline runs won't make conflicting changes.
                   type:
-                    - int
+                    - integer
                     - "null"
   responses:
     201:
