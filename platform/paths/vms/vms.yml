@@ -93,7 +93,7 @@ get:
     - $ref: ../../../components/parameters/PageParam.yml
   responses:
     200:
-      description: Returns a list of Virtual Machines.
+      description: Returns a list of virtual machines.
       content:
         application/json:
           schema:
