@@ -19,13 +19,13 @@ properties:
       - identifier
     properties:
       identifier:
-        $ref: ../../Identifier.yml
+        type: string
+        enum:
+          - "virtual-machine-v1"
+      id:
+        $ref: ../../ID.yml
   service:
     anyOf:
       - $ref: ../ServiceContainerIdentifier.yml
       - type: "null"
-    description: If a service container, the identifier specifying which service it is.
-  virtual_machine_id:
-    anyOf:
-      - $ref: "../../ID.yml"
-      - type: "null"
+    description: If a service container, the identifier specifying which service it is
