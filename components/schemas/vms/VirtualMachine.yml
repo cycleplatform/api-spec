@@ -20,6 +20,8 @@ properties:
     $ref: ./config/VirtualMachineConfig.yml
   image:
     $ref: ./images/VirtualMachineImage.yml
+  container_id:
+    $ref: ../ID.yml
   volumes:
     anyOf:
       - type: array
