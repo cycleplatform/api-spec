@@ -7,6 +7,11 @@ properties:
       - "string"
       - "null"
     description: "Specifies the RAID (Redundant Array of Independent Disks) configuration, if any."
+  hypervisor:
+    description: Indicates if the model supports virtual machines.
+    type:
+      - boolean
+      - "null"
   extra:
     type: "object"
     description: "Provider specific features, allowing for additional, unspecified properties. This is an open map for any key-value pairs, accommodating various types of values."
