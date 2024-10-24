@@ -2,13 +2,23 @@ title: VirtualMachineImageSourceIpxe
 description: A virtual machine image sourced from an IPXE script.
 type: object
 properties:
-  chain_url:
-    type: 
-      - string
-      - "null"
-    description: A URL that points to an IPXE script.
-  script:
-    type: 
-      - string
-      - "null"
-    description: An inline IPXE script.
+  type:
+    type: string
+    enum:
+      - ipxe
+  details:
+    type: object
+    properties:
+      chain_url:
+        type:
+          - string
+          - "null"
+        description: A URL that points to an IPXE script.
+      script:
+        type:
+          - string
+          - "null"
+        description: An inline IPXE script.
+required:
+  - type
+  - details
