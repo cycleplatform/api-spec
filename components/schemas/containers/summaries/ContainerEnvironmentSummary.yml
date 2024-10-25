@@ -4,7 +4,6 @@ type: object
 required:
   - id
   - cluster
-  - legacy
 properties:
   id:
     $ref: "../../ID.yml"

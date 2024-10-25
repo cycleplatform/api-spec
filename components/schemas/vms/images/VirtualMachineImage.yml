@@ -1,0 +1,17 @@
+title: VirtualMachineImage
+type: object
+description: |
+  Represents the image used by a virtual machine. It can either reference a URL where the image is located or specify a base image provided by Cycle. The `base` field allows users to specify the name of a desired Cycle-hosted base image, removing the need for a custom image URL.
+discriminator:
+  propertyName: type
+  mapping:
+    url: types/VirtualMachineImageSourceUrl.yml
+    ipxe: types/VirtualMachineImageSourceIpxe.yml
+    base: types/VirtualMachineImageSourceBase.yml
+oneOf:
+  - $ref: types/VirtualMachineImageSourceUrl.yml
+  - $ref: types/VirtualMachineImageSourceIpxe.yml
+  - $ref: types/VirtualMachineImageSourceBase.yml
+required:
+  - type
+  - details

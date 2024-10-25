@@ -1,0 +1,10 @@
+title: VirtualMachineStartupPolicy
+type: object
+description: |
+  The startup policy defines how the virtual machine should handle startup, including a possible delay before starting the machine.
+properties:
+  delay:
+    anyOf:
+      - $ref: ../../../Duration.yml
+      - type: "null"
+    description: Delay before startup.

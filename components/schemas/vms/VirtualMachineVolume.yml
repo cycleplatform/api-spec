@@ -1,0 +1,17 @@
+title: VirtualMachineVolume
+type: object
+description: |
+  Represents a storage volume attached to a virtual machine.
+properties:
+  id:
+    $ref: ../ID.yml
+  hash:
+    type: string
+    description: A unique hash identifying the volume for the virtual machine.
+  config:
+    $ref: ./config/volumes/VirtualMachineVolumeConfig.yml
+    description: The configuration details for the virtual machine's volume.
+required:
+  - id
+  - hash
+  - config

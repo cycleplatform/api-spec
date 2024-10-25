@@ -1,0 +1,22 @@
+title: VirtualMachineRestartPolicy
+type: object
+description: |
+  The restart policy defines how the virtual machine should handle restarts, including the condition for restarting, delay between attempts, and maximum number of attempts.
+properties:
+  condition:
+    type: string
+    enum:
+      - always
+      - never
+      - failure
+    description: Specifies when to restart the virtual machine.
+  delay:
+    $ref: ../../../Duration.yml
+    description: Delay between restart attempts.
+  max_attempts:
+    type: integer
+    description: Maximum number of restart attempts.
+required:
+  - condition
+  - delay
+  - max_attempts

@@ -1,0 +1,23 @@
+get:
+  operationId: "getVirtualMachineBaseImages"
+  summary: Get Virtual Machine Base Images
+  description: |
+    Retrieves the list of available base images for virtual machines provided by Cycle.
+  tags:
+    - Virtual Machines
+  responses:
+    200:
+      description: A map of virtual machine base images provided by Cycle keyed by an identifier.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: object
+                additionalProperties:
+                  $ref: ../../../../components/schemas/vms/images/VirtualMachineBaseImage.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml

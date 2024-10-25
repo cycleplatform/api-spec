@@ -1,0 +1,17 @@
+title: VirtualMachineDeployTags
+type: object
+description: |
+  Tags that define node requirements for the deployment. The `any` tag must match at least one condition, while `all` must match all conditions.
+properties:
+  any:
+    anyOf:
+      - type: array
+        items:
+          type: string
+      - type: "null"
+  all:
+    anyOf:
+      - type: array
+        items:
+          type: string
+      - type: "null"

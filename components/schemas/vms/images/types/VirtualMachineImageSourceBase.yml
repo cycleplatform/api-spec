@@ -1,0 +1,20 @@
+title: VirtualMachineImageSourceBase
+description: A virtual machine image sourced from a Cycle base image.
+type: object
+properties:
+  type:
+    type: string
+    enum:
+      - base
+  details:
+    type: object
+    properties:
+      identifier:
+        type: string
+        description: The base image identifier.
+    required:
+      - identifier
+required:
+  - type
+  - details
+

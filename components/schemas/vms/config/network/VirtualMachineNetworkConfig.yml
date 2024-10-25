@@ -1,0 +1,25 @@
+title: VirtualMachineNetworkConfig
+type: object
+description: |
+  Defines the network settings for a virtual machine, including public access mode, hostname, and ports.
+properties:
+  public:
+    type: string
+    enum:
+      - enable
+      - disable
+      - egress-only
+    description: Controls the public network mode for the virtual machine.
+  hostname:
+    type: string
+    description: The hostname assigned to the virtual machine.
+  ports:
+    anyOf:
+      - type: array
+        items:
+          type: string
+      - type: "null"
+    description: Port configurations for the virtual machine.
+required:
+  - public
+  - hostname

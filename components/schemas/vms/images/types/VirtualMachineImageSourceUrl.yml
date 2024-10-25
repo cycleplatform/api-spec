@@ -1,0 +1,19 @@
+title: VirtualMachineImageSourceUrl
+description: A virtual machine image sourced from a URL.
+type: object
+properties:
+  type: 
+    type: string
+    enum: 
+      - url
+  details:
+    type: object
+    properties:
+      url:
+        type: string
+        description: The URL where a custom image is located.
+    required:
+      - url
+required:
+  - type
+  - details

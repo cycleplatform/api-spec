@@ -1,0 +1,12 @@
+title: VirtualMachineConfig
+type: object
+description: |
+  Defines the network and deployment configurations for a virtual machine.
+properties:
+  network:
+    $ref: network/VirtualMachineNetworkConfig.yml
+  deploy:
+    $ref: ./deploy/VirtualMachineDeployConfig.yml
+required:
+  - network
+  - deploy

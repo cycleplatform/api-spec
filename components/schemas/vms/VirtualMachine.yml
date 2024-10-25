@@ -1,0 +1,83 @@
+title: VirtualMachine
+type: object
+description: |
+  Describes a virtual machine running on the Cycle Platform.
+properties:
+  id:
+    $ref: ../ID.yml
+  name:
+    type: string
+    description: A user-defined name for the virtual machine.
+  identifier:
+    $ref: ../Identifier.yml
+  creator:
+    $ref: ../creators/CreatorScope.yml
+  environment:
+    $ref: summaries/VirtualMachineEnvironmentSummary.yml
+  hub_id:
+    $ref: ../HubID.yml
+  config:
+    $ref: ./config/VirtualMachineConfig.yml
+  image:
+    $ref: ./images/VirtualMachineImage.yml
+  container_id:
+    $ref: ../ID.yml
+  volumes:
+    anyOf:
+      - type: array
+        items:
+          $ref: ./VirtualMachineVolume.yml
+      - type: "null"
+  annotations:
+    type:
+      - object
+      - "null"
+    additionalProperties: {}
+    description: Metadata annotations for the virtual machine.
+  state:
+    $ref: ./VirtualMachineState.yml
+  events:
+    title: VirtualMachineEvents
+    type: object
+    description: A collection of timestamps for each event in the virtual machine's lifetime.
+    required:
+      - created
+      - updated
+      - deleted
+      - started
+    properties:
+      created:
+        description: The timestamp of when the virtual machine was created.
+        $ref: ../DateTime.yml
+      updated:
+        description: The timestamp of when the virtual machine was updated.
+        $ref: ../DateTime.yml
+      deleted:
+        description: The timestamp of when the virtual machine was deleted.
+        $ref: ../DateTime.yml
+      started:
+        description: The timestamp of when the virtual machine was started.
+        $ref: ../DateTime.yml
+  deprecate:
+    type: boolean
+    description: A boolean flag indicating if this virtual machine is deprecated.
+  lock:
+    type: boolean
+    description: Prevents this virtual machine from being deleted when true.
+  meta:
+    anyOf:
+      - $ref: ./VirtualMachineMeta.yml
+      - type: "null"
+required:
+  - id
+  - name
+  - identifier
+  - creator
+  - environment
+  - hub_id
+  - config
+  - image
+  - state
+  - events
+  - deprecate
+  - lock
