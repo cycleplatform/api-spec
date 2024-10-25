@@ -14,20 +14,9 @@ properties:
     type:
       - boolean
       - "null"
-  aws:
-    type: object
-    description: Features specific to AWS.
-    required:
-      - ena_support
-      - ebs_optimized
-    properties:
-      ena_support:
-        type: boolean
-        description: A boolean where true indicates this is a machine that can support a much higher networking throughput.
-      ebs_optimized:
-        type: boolean
-        description: A boolean where true indicates this is a machine that can support higher storage throughput.
   extra:
-    type: "object"
+    type: 
+      - object
+      - "null"
     description: "Provider specific features, allowing for additional, unspecified properties. This is an open map for any key-value pairs, accommodating various types of values."
     additionalProperties: true

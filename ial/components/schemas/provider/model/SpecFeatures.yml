@@ -13,6 +13,8 @@ properties:
       - boolean
       - "null"
   extra:
-    type: "object"
+    type:
+      - object
+      - "null"
     description: "Provider specific features, allowing for additional, unspecified properties. This is an open map for any key-value pairs, accommodating various types of values."
     additionalProperties: true
