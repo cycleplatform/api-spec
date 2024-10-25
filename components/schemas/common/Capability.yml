@@ -107,3 +107,5 @@ enum:
   - "vms-view"
   - "vms-manage"
   - "vms-deploy"
+  - "vms-console"
+  - "vms-lock"
