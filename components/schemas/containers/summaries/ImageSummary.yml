@@ -28,4 +28,4 @@ properties:
     anyOf:
       - $ref: ../ServiceContainerIdentifier.yml
       - type: "null"
-    description: If a service container, the identifier specifying which service it is
+    description: If a service container, the identifier specifying which service it is.

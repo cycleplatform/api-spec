@@ -27,7 +27,7 @@ get:
                 type: array
                 items:
                   type: object
-                  description: Any associated Linked Records for this container, and their fully-qualified domain name (fqdn)
+                  description: Any associated Linked Records for this container, and their fully-qualified domain name (fqdn).
                   required:
                     - fqdn
                   properties:

@@ -21,10 +21,14 @@ properties:
       properties:
         identifier:
           type: string
-          description: A unique identifier for the version (e.g., "alpine-3-19").
+          description: A unique identifier for the version.
+          examples: 
+            - alpine-3-19
         version:
           type: string
-          description: The version number of the base image (e.g., "3.19").
+          description: The version number of the base image.
+          examples:
+            - 3.19
         disk_image_url:
           type: string
           format: uri

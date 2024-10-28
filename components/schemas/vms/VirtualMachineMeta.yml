@@ -7,7 +7,7 @@ properties:
       - type: array
         items:
           type: object
-          description: Any associated LINKED records for this virtual machine, and their fully-qualified domain name (fqdn)
+          description: Any associated LINKED records for this virtual machine, and their fully-qualified domain name (fqdn).
           properties:
             fqdn:
               type: string
