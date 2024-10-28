@@ -1,0 +1,9 @@
+title: VirtualMachineNodeConstraints
+type: object
+description: |
+  Node-level constraints for the virtual machine deployment, specifying tags that must or must not be present.
+properties:
+  tags:
+    $ref: ./VirtualMachineDeployTags.yml
+required:
+  - tags

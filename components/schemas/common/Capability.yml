@@ -102,3 +102,10 @@ enum:
   - stacks-builds-manage
   - stacks-manage
   - stacks-view
+
+  # VMs
+  - "vms-view"
+  - "vms-manage"
+  - "vms-deploy"
+  - "vms-console"
+  - "vms-lock"
