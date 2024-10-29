@@ -27,7 +27,7 @@ get:
           container:
             type: string
             description: |
-              `filter[container]=value` List only those scoped variables assigned to the specified container.
+              `filter[container]=value` List only those scoped variables assigned to the specified container ID.
           search:
             type: string
             description: |
