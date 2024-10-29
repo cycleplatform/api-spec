@@ -4,6 +4,7 @@ description: A resource that is associated with activity.
 additionalProperties:
   oneOf:
     - $ref: ../containers/Container.yml
+    - $ref: ../vms/VirtualMachine.yml
     - $ref: ../containers/instances/Instance.yml
     - $ref: ../environments/Environment.yml
     - $ref: ../images/Image.yml

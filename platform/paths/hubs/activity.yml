@@ -55,6 +55,10 @@ get:
             type: string
             description: |
               `filter[container]=ID` container filtering by ID. Submit the ID of the container you wish to filter for and the return will be any activity from that container.
+          vm:
+            type: string
+            description: |
+              `filter[vm]=ID` virtual machine filtering by ID. Submit the ID of the virtual machine you wish to filter for and the return will be any activity from that virtual machine.
           instance:
             type: string
             description: |
