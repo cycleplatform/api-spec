@@ -2,8 +2,7 @@ title: PaymentResult
 type: object
 description: A billing payment result.
 required:
-  - success
-  - pending
+  - status
   - error
 properties:
   status:
