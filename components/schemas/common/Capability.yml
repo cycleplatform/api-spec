@@ -103,9 +103,9 @@ enum:
   - stacks-manage
   - stacks-view
 
-  # VMs
-  - "vms-view"
-  - "vms-manage"
-  - "vms-deploy"
-  - "vms-console"
-  - "vms-lock"
+  # Virtual Machines
+  - "virtual-machines-view"
+  - "virtual-machines-manage"
+  - "virtual-machines-deploy"
+  - "virtual-machines-console"
+  - "virtual-machines-lock"

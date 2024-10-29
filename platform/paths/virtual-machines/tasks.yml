@@ -5,12 +5,12 @@ post:
     Used to perform different actions on a virtual machine. 
 
     Requires the following capabilities based on the task: 
-    `start`: `vms-manage`
-    `stop`: `vms-manage`
+    `start`: `virtual-machines-manage`
+    `stop`: `virtual-machines-manage`
   tags:
     - Virtual Machines
   parameters:
-    - name: vmId
+    - name: virtualMachineId
       description: The ID of the virtual machine.
       in: path
       required: true

@@ -687,14 +687,14 @@ paths:
     $ref: "./paths/stacks/builds/tasks.yml"
 
   # --Virtual Machines
-  "/v1/vms":
-    $ref: "./paths/vms/vms.yml"
-  "/v1/vms/{vmId}":
-    $ref: "./paths/vms/vm.yml"
-  "/v1/vms/{vmId}/tasks":
-    $ref: "./paths/vms/tasks.yml"
-  "/v1/vms/images/base":
-    $ref: "./paths/vms/images/base.yml"
+  "/v1/virtual-machines":
+    $ref: "./paths/virtual-machines/virtual-machines.yml"
+  "/v1/virtual-machines/{virtualMachineId}":
+    $ref: "./paths/virtual-machines/virtual-machines.yml"
+  "/v1/virtual-machines/{virtualMachineId}/tasks":
+    $ref: "./paths/virtual-machines/tasks.yml"
+  "/v1/virtual-machines/images/base":
+    $ref: "./paths/virtual-machines/images/base.yml"
 
   # --Utility
   "/v1/utils/resource/lookup":

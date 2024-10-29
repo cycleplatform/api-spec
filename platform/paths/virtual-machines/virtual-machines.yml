@@ -1,7 +1,7 @@
 get:
   operationId: "getVirtualMachines"
   summary: List Virtual Machines
-  description: Requires the `vms-view` capability.
+  description: Requires the `virtual-machines-view` capability.
   tags:
     - Virtual Machines
   parameters:
@@ -113,7 +113,7 @@ get:
 post:
   operationId: "createVirtualMachine"
   summary: Create Virtual Machine
-  description: Requires the `vms-deploy` capability.
+  description: Requires the `virtual-machines-deploy` capability.
   tags:
     - Virtual Machines
   parameters:
