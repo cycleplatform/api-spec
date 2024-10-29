@@ -690,7 +690,7 @@ paths:
   "/v1/virtual-machines":
     $ref: "./paths/virtual-machines/virtual-machines.yml"
   "/v1/virtual-machines/{virtualMachineId}":
-    $ref: "./paths/virtual-machines/virtual-machines.yml"
+    $ref: "./paths/virtual-machines/virtual-machine.yml"
   "/v1/virtual-machines/{virtualMachineId}/tasks":
     $ref: "./paths/virtual-machines/tasks.yml"
   "/v1/virtual-machines/images/base":

@@ -121,7 +121,7 @@ delete:
   tags:
     - Virtual Machines
   parameters:
-    - name: vmId
+    - name: virtualMachineId
       description: The ID of the virtual machine to delete.
       in: path
       required: true
