@@ -11,7 +11,8 @@ properties:
     description: A boolean where true marks the volume as read only.
   block_device:
     type: boolean
-    description: Describes that the volume will be used as an unformatted block storage.
+    description: |
+      Indicates that the volume will be used as unformatted block storage.
   local:
     type: object
     description: Configuration for settings local to the container filesystem.

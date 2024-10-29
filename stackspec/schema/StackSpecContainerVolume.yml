@@ -40,7 +40,7 @@ properties:
       - type: boolean
       - $ref: StackVariable.yml
     description: |
-      Describes that the volume will be used as an unformatted block storage.
+      Indicates that the volume will be used as unformatted block storage.
   remote_access:
     description: Configuration options for setting up remote access to this volume via SFTP.
     oneOf:
