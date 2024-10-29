@@ -4,11 +4,11 @@ get:
   description: |
     Retrieves a single virtual machine by ID.
 
-    Requires the `vms-view` capability.
+    Requires the `virtual-machines-view` capability.
   tags:
     - Virtual Machines
   parameters:
-    - name: vmId
+    - name: virtualMachineId
       description: The ID of the virtual machine.
       in: path
       required: true
@@ -65,11 +65,11 @@ patch:
   description: |
     Updates the specified virtual machine.
 
-    Requires the `vms-manage` capability.
+    Requires the `virtual-machines-manage` capability.
   tags:
     - Virtual Machine
   parameters:
-    - name: vmId
+    - name: virtualMachineId
       description: The ID of the virtual machine.
       in: path
       required: true
@@ -117,7 +117,7 @@ patch:
 delete:
   operationId: "deleteVirtualMachine"
   summary: Delete Virtual Machine
-  description: Requires the `vms-manage` capability.
+  description: Requires the `virtual-machines-manage` capability.
   tags:
     - Virtual Machines
   parameters:
