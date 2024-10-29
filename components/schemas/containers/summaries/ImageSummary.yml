@@ -19,7 +19,11 @@ properties:
       - identifier
     properties:
       identifier:
-        $ref: ../../Identifier.yml
+        type: string
+        enum:
+          - "virtual-machine-v1"
+      id:
+        $ref: ../../ID.yml
   service:
     anyOf:
       - $ref: ../ServiceContainerIdentifier.yml

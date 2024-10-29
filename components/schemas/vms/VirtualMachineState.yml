@@ -1,0 +1,17 @@
+title: VirtualMachineState
+allOf:
+  - required:
+      - current
+    properties:
+      current:
+        description: The current state of the virtual machine.
+        type: string
+        enum:
+          - new
+          - starting
+          - running
+          - stopping
+          - stopped
+          - deleting
+          - deleted
+  - $ref: ../State.yml

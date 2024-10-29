@@ -1,0 +1,21 @@
+title: VirtualMachineDeployConstraints
+type: object
+description: |
+  Constraints define node-level and resource restrictions for the virtual machine deployment.
+properties:
+  node:
+    anyOf:
+      - $ref: ./VirtualMachineNodeConstraints.yml
+      - type: "null"
+  secrets:
+    anyOf:
+      - type: array
+        items:
+          type: string
+      - type: "null"
+  containers:
+    anyOf:
+      - type: array
+        items:
+          type: string
+      - type: "null"

@@ -3,7 +3,6 @@ description: A container volume configuration.
 type: object
 required:
   - destination
-  - read_only
 properties:
   local:
     description: Configuration options for local volumes.
@@ -36,6 +35,12 @@ properties:
     oneOf:
       - type: boolean
       - $ref: StackVariable.yml
+  block_device:
+    oneOf:
+      - type: boolean
+      - $ref: StackVariable.yml
+    description: |
+      Indicates that the volume will be used as unformatted block storage.
   remote_access:
     description: Configuration options for setting up remote access to this volume via SFTP.
     oneOf:
