@@ -328,6 +328,17 @@ properties:
       - pipeline.key.update
       - pipeline.key.delete
       - pipeline.key.create
+
+      - virtual-machine.create
+      - virtual-machine.initialize
+      - virtual-machine.task.start
+      - virtual-machine.start
+      - virtual-machine.task.stop
+      - virtual-machine.stop
+      - virtual-machine.reconfigure
+      - virtual-machine.update
+      - virtual-machine.task.delete
+      - virtual-machine.delete
   time:
     description: A timestamp for when the activity took place.
     "$ref": "../../DateTime.yml"
