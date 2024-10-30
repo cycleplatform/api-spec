@@ -23,3 +23,6 @@ properties:
   dns_zone_id:
     type: string
     description: An ID for the given resource.
+  virtual_machine_id:
+    type: string
+    description: A virtual machine ID.
