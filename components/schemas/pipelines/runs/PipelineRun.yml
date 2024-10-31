@@ -55,9 +55,6 @@ properties:
             started:
               description: The timestamp of when the pipeline stage was started.
               "$ref": "../../DateTime.yml"
-            queued:
-              description: The timestamp of when the pipeline stage was queued.
-              "$ref": "../../DateTime.yml"
             finished:
               description: The timestamp of when the pipeline stage was finished.  
               "$ref": "../../DateTime.yml"
