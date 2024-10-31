@@ -36,11 +36,15 @@ properties:
         supported:
           type: boolean
           description: A flag indicating whether the version is currently supported.
+        uefi:
+          type: boolean
+          description: Whether the image supports UEFI.
       required:
         - identifier
         - version
         - disk_image_url
         - supported
+        - uefi
 required:
   - title
   - description
