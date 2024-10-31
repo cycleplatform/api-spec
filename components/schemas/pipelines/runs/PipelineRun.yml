@@ -45,7 +45,18 @@ properties:
           items:
             $ref: ./PipelineRunStep.yml
         events:
-          $ref: ./PipelineRunEvents.yml
+          type: object
+          description: A collection of timestamps for each event in the pipeline run's lifetime.
+          required:
+            - started
+            - finished
+          properties:
+            started:
+              description: The timestamp of when the pipeline stage was started.
+              "$ref": "../../DateTime.yml"
+            finished:
+              description: The timestamp of when the pipeline stage was finished.  
+              "$ref": "../../DateTime.yml"
   state:
     "$ref": "./RunState.yml"
   events:

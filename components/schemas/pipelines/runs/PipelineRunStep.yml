@@ -39,7 +39,18 @@ properties:
       - webhook.post
       - webhook.get
   events:
-    $ref: ./PipelineRunEvents.yml
+    type: object
+    description: A collection of timestamps for each event in the pipeline run's lifetime.
+    required:
+      - started
+      - finished
+    properties:
+      started:
+        description: The timestamp of when the pipeline step was started.
+        "$ref": "../../DateTime.yml"
+      finished:
+        description: The timestamp of when the pipeline step was finished.  
+        "$ref": "../../DateTime.yml"
   success:
     type: boolean
   components:
