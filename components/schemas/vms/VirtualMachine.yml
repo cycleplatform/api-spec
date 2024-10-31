@@ -34,6 +34,11 @@ properties:
       - "null"
     additionalProperties: {}
     description: Metadata annotations for the virtual machine.
+  base_disk_size:
+    type: string
+    description: The size of the base disk. Must be between 10G and 100G.
+    examples:
+      - "10G"
   state:
     $ref: ./VirtualMachineState.yml
   events:

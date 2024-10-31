@@ -1,0 +1,22 @@
+title: VirtualMachineCpuResources
+type: object
+description: |
+  Defines the CPU configuration of a virtual machine. Set **either** `cores` or `cpus`.
+properties:
+  cores:
+    type:
+      - integer
+      - "null"
+    description: The number of cores to allocate to the virtual machine. Must be between 1 and 32.
+    examples:
+      - 1
+      - 2
+  cpus:
+    type: 
+      - string
+      - "null"
+    description: The specific cores/range of cores to allocate to the virtual machine. An 'x' indicates the maximum core for a given machine.
+    examples:
+      - "1"
+      - "1-3"
+      - "2-x"
