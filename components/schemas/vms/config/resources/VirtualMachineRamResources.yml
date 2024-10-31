@@ -9,7 +9,7 @@ properties:
     examples:
       - "1G"
       - "512M"
-  preallocate:
+  allocate:
     type:
       - boolean
       - "null"

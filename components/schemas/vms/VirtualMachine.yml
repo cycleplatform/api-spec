@@ -39,6 +39,9 @@ properties:
     description: The size of the base disk. Must be between 10G and 100G.
     examples:
       - "10G"
+  root_password:
+    type: string
+    description: The generated root password for the virtual machine. Only visible by the owner, or if it was created in the last ten minutes.
   state:
     $ref: ./VirtualMachineState.yml
   events:
