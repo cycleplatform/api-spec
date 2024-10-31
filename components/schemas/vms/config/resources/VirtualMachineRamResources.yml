@@ -1,0 +1,18 @@
+title: VirtualMachineRamResources
+type: object
+description: |
+  Defines the RAM configuration of a virtual machine.
+properties:
+  limit:
+    type: string
+    description: The limit (maximum) amount of RAM the virtual machine can consume. Must be at least 512M and less than 65GB.
+    examples:
+      - "1G"
+      - "512M"
+  preallocate:
+    type:
+      - boolean
+      - "null"
+    description: Whether or not the RAM set in limit should be preallocated.
+required:
+  - limit

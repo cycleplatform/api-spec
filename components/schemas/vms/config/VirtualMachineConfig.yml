@@ -6,7 +6,10 @@ properties:
   network:
     $ref: network/VirtualMachineNetworkConfig.yml
   deploy:
-    $ref: ./deploy/VirtualMachineDeployConfig.yml
+    $ref: deploy/VirtualMachineDeployConfig.yml
+  resources:
+    $ref: resources/VirtualMachineResourcesConfig.yml
 required:
   - network
   - deploy
+  - resources
