@@ -20,6 +20,7 @@ properties:
             description: If true, reserves the cores so they cannot be used by any other virtual machine.
         required:
           - number
+      - type: "null"
   cpus:
     type:
       - string
