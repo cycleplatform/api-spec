@@ -1,0 +1,22 @@
+title: StackSpecV1LbConfig
+type: object
+required:
+  - controllers
+properties:
+  controllers:
+    description: A configuration for a specific port.
+    oneOf:
+      - type: array
+        items:
+          $ref: ./StackSpecV1LbController.yml
+      - $ref: ../../../../StackVariable.yml
+  controller_template:
+    anyOf:
+      - $ref: ./StackSpecV1LbController.yml
+      - $ref: ../../../../StackVariable.yml
+      - type: "null"
+  waf:
+    anyOf:
+      - $ref: ./StackSpecWafConfig.yml
+      - $ref: ../../../../StackVariable.yml
+      - type: "null"

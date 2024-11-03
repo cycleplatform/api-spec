@@ -141,4 +141,7 @@ properties:
           - string
           - "null"
         description: The size of the shared host memory device (/dev/shm).
-        example: "64M, 128M, 512M"
+        examples:
+          - "64M"
+          - "128M"
+          - "512M"

@@ -24,4 +24,6 @@ properties:
         type: string
         description: The url of the remote registry.
       auth:
-        $ref: ../auth/RegistryAuth.yml
+        oneOf:
+          - $ref: ../auth/RegistryAuth.yml
+          - type: "null"

@@ -1,0 +1,24 @@
+title: StackSpecSchedulerAccessKey
+description: Custom authorization keys for the scheduler service.
+type: object
+required:
+  - name
+  - secret
+properties:
+  name:
+    description: The name given to this access key.
+    oneOf:
+      - type: string
+      - $ref: ../../StackVariable.yml
+  secret:
+    description: The access key secret. This should be submitted with requests to a publicly accessible scheduler service.
+    oneOf:
+      - type: string
+      - $ref: ../../StackVariable.yml
+  ips:
+    description: Whitelisted IPs that are allowed to make requests to the scheduler service.
+    oneOf:
+      - type: array
+        items:
+          type: string
+      - $ref: ../../StackVariable.yml

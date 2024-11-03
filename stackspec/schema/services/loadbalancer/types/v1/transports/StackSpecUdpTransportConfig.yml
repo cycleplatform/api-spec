@@ -1,0 +1,24 @@
+title: StackSpecUdpTransportConfig
+description: Additional configuration options for the UDP transport mode.
+type: object
+required:
+  - type
+  - details
+properties:
+  type:
+    type: string
+    enum:
+      - udp
+  details:
+    oneOf:
+      - type: object
+        required:
+          - telemetry
+        properties:
+          telemetry:
+            description: Configuration options for how telemetry is handled on the load balancer.
+            oneOf:
+              - type: object
+                additionalProperties: {}
+              - $ref: ../../../../../StackVariable.yml
+      - $ref: ../../../../../StackVariable.yml

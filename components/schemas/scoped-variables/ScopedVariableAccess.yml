@@ -45,4 +45,5 @@ properties:
           - string
           - "null"
         description: The path to mount the file to inside the container.
-        example: /var/run/cycle/variables/<myVariable>
+        examples:
+          - "/var/run/cycle/variables/<myVariable>"

@@ -1,0 +1,150 @@
+title: V1LbRouterConfig
+description: A specific router configuration that describes how traffic matching the rule is handled.
+type: object
+required:
+  - match
+  - mode
+  - config
+properties:
+  match:
+    type: object
+    description: The ruleset for this router to be selected. If both `domains`` and `internal_port` are null, then this match acts as a wildcard and will match all.
+    required:
+      - domains
+      - internal_ports
+    properties:
+      domains:
+        description: The specific domains to match against.
+        oneOf:
+          - type: array
+            items:
+              type: string
+          - type: "null"
+      internal_ports:
+        description: The specific ports to match against.
+        oneOf: 
+          - type: array
+            items:
+              type: integer
+          - type: "null"
+      path:
+        type:
+          - string
+          - "null"
+      containers:
+        type:
+          - object
+          - "null"
+        description: Match traffic destined (or not destined) for a particular container.
+        properties:
+          include:
+            description: Match any traffic that would be routed to one of these containers.
+            oneOf:
+              - type: array
+                items:
+                  $ref: ../../../../../../HybridIdentifier.yml
+              - type: "null"
+          exclude:
+            description: Match any traffic that would NOT be routed to one of these containers.
+            oneOf:
+              - type: array
+                items:
+                  $ref: ../../../../../../HybridIdentifier.yml
+              - type: "null"
+  mode:
+    type: string
+    description: |
+      How to route the traffic to the destination.
+      `random`: Pick a valid destination at random.
+      `round-robin`: Send each request to the 'next' destination on the list, restarting from the beginning when the last destination is used.
+    enum:
+      - random
+      - round-robin
+  config:
+    type: object
+    required:
+      - sticky_sessions
+      - destination_retries
+      - timeouts
+    properties:
+      sticky_sessions:
+        type: boolean
+        description: If a request comes in from the same origin, ensure it hits the same destination.
+      destination_retries:
+        type: integer
+        description: If a destination is unavailable, retry up to [x] times, instead of immediately failing with a 503/504 error.
+      destination_prioritization:
+        default: null
+        oneOf:
+          - type: string
+            description: >
+              Hints to the load balancer how to prioritize traffic to instances.
+
+              **random**: Chooses a random instance.
+              **latency**: Prioritizes lower latency instances.
+            enum:
+              - latency
+              - random
+          - type: "null"
+      tls:
+        type:
+          - object
+          - "null"
+        description: TLS termination configuration. If null, the platform will use the default configuration. Port 443 by default has TLS termination enabled.
+        properties:
+          server_name:
+            type:
+              - string
+              - "null"
+            description: |
+              [Advanced] Change the domain the controller listens on.
+          allow_insecure:
+            type:
+              - boolean
+              - "null"
+            description: If enabled, accept TLS traffic with an invalid certificate. This is usually done for development/testing, and is not recommended for production use.
+          client_cert_auth:
+            description: A PEM encoded string of certificates.
+            type:
+              - string
+              - "null"
+          client_auth:
+            description: |
+              Defines how to validate the connecting TLS certificate.
+              `none`: Do not require a TLS certificate to be sent
+              `request`: Asks the client to send a TLS certificate, but does not require nor validate it.
+              `require`: Requires a certificate be sent for the request to be valid, but does not validate the certificate.
+              `require-verify`: Requires both that the client send a certificate, and that the certificate is valid. This is required when using https.
+            oneOf:
+              - type: string
+                enum:
+                  - none
+                  - request
+                  - require
+                  - require-verify
+              - type: "null"
+
+      timeouts:
+        type: object
+        description: Defines how the length of various sorts of timeouts when communicating with the destination.
+        required:
+          - destination_connection
+        properties:
+          destination_connection:
+            $ref: ../../../../../../Duration.yml
+            description: The duration the load balancer will wait before timing out while attempting to connect to the destination.
+      extension:
+        anyOf:
+          - type: "null"
+          - type: object
+            description: Additional configuration options specific to the selected mode (tcp/http).
+            discriminator:
+              propertyName: type
+              mapping:
+                tcp: routers/TcpRouterConfig.yml
+                udp: routers/UdpRouterConfig.yml
+                http: routers/HttpRouterConfig.yml
+            oneOf:
+              - $ref: routers/TcpRouterConfig.yml
+              - $ref: routers/HttpRouterConfig.yml
+              - $ref: routers/UdpRouterConfig.yml

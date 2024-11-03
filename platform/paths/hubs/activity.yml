@@ -55,6 +55,10 @@ get:
             type: string
             description: |
               `filter[container]=ID` container filtering by ID. Submit the ID of the container you wish to filter for and the return will be any activity from that container.
+          virtual-machine:
+            type: string
+            description: |
+              `filter[virtual-machine]=ID` virtual machine filtering by ID. Submit the ID of the virtual machine you wish to filter for and the return will be any activity from that virtual machine.
           instance:
             type: string
             description: |
@@ -66,7 +70,9 @@ get:
           events:
             type: string
             description: |
-              `filter[events]=value` filter by event names. Example: `filter[events]=environment.services.vpn.login`
+              `filter[events]=value` filter by event names.
+            examples:
+              - "filter[events]=environment.services.vpn.login"
           verbosity:
             type: integer
             description: |

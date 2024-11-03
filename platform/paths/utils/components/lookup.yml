@@ -21,33 +21,7 @@ post:
                   - id
                 properties:
                   type:
-                    type: string
-                    enum:
-                      - account
-                      - image.source
-                      - image
-                      - container
-                      - container.instance
-                      - hub
-                      - hub.api_key
-                      - hub.membership
-                      - hub.role
-                      - sdn.network
-                      - dns.zone
-                      - dns.zone.record
-                      - pipeline
-                      - pipeline.run
-                      - stack
-                      - stack.build
-                      - infrastructure.provider
-                      - infrastructure.autoscale.group
-                      - infrastructure.server
-                      - infrastructure.cluster
-                      - infrastructure.ips.pool
-                      - billing.invoice
-                      - billing.method
-                      - environment
-                      - environment.scoped-variable
+                    $ref: ../../../../components/schemas/ResourceType.yml
                   id:
                     type: string
   responses:

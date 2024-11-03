@@ -1,0 +1,13 @@
+title: LoadBalancerConfig
+type: object
+description: The config object for the loadbalancer service.
+discriminator:
+  propertyName: type
+  mapping:
+    haproxy: ./config/types/haproxy/HaProxyLbType.yml
+    v1: ./config/types/v1/V1LbType.yml
+    default: ./config/types/DefaultLbType.yml
+oneOf:
+  - $ref: ./config/types/v1/V1LbType.yml
+  - $ref: ./config/types/haproxy/HaProxyLbType.yml
+  - $ref: ./config/types/DefaultLbType.yml

@@ -194,6 +194,7 @@ properties:
       - hub.integration.create
       - hub.integration.update
       - hub.integration.delete
+      - hub.inactive
 
       - container.initialize
       - container.task.start
@@ -222,14 +223,16 @@ properties:
       - container.instances.autoscale.down
 
       - container.instance.healthcheck.restarted
+      - container.instance.volume.extend
+      - container.instance.task.volume.extend
       - container.instance.healthcheck.failed
       - container.instance.error
       - container.instance.ssh.login
       - container.instance.migration.start
       - container.instance.migration.revert
       - container.instance.delete
-      - container.instance.task.migrate_revert
-      - container.instance.task.migrate
+      - container.instance.task.migration.revert
+      - container.instance.task.migration.start
       # there may be other custom-generated container.instance events
 
       - container.backup.create
@@ -255,6 +258,7 @@ properties:
 
       - stack.update
       - stack.task.delete
+      - stack.delete
       - stack.create
       - stack.task.prune
       - stack.prune
@@ -278,6 +282,7 @@ properties:
       - infrastructure.server.live
       - infrastructure.server.delete
       - infrastructure.server.restart
+
       - infrastructure.server.compute.restart
       - infrastructure.server.compute.spawner.restart
       - infrastructure.server.features.reconfigure
@@ -291,6 +296,10 @@ properties:
       - infrastructure.server.task.sharedfs.reconfigure
       - infrastructure.server.services.sftp.lockdown
       - infrastructure.server.services.internal-api.throttle
+      - infrastructure.server.evacuation.start
+      - infrastructure.server.task.evacuation.start
+      - infrastructure.server.evacuation.reset
+      - infrastructure.server.task.evacuation.reset
 
       - infrastructure.autoscale.group.create
       - infrastructure.autoscale.group.update
@@ -319,6 +328,17 @@ properties:
       - pipeline.key.update
       - pipeline.key.delete
       - pipeline.key.create
+
+      - virtual-machine.create
+      - virtual-machine.initialize
+      - virtual-machine.task.start
+      - virtual-machine.start
+      - virtual-machine.task.stop
+      - virtual-machine.stop
+      - virtual-machine.reconfigure
+      - virtual-machine.update
+      - virtual-machine.task.delete
+      - virtual-machine.delete
   time:
     description: A timestamp for when the activity took place.
     "$ref": "../../DateTime.yml"

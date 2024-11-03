@@ -1,0 +1,13 @@
+title: StackSpecLoadBalancerConfig
+type: object
+description: The config object for the loadbalancer service.
+discriminator:
+  propertyName: type
+  mapping:
+    haproxy: types/haproxy/StackSpecHaProxyLbType.yml
+    v1: types/v1/StackSpecV1LbType.yml
+    default: types/StackSpecDefaultLbType.yml
+oneOf:
+  - $ref: ./types/haproxy/StackSpecHaProxyLbType.yml
+  - $ref: ./types/v1/StackSpecV1LbType.yml
+  - $ref: ./types/StackSpecDefaultLbType.yml

@@ -1,0 +1,16 @@
+title: StackSpecTcpRouterConfig
+description: Additional configuration options for TCP mode routers
+type: object
+required:
+  - type
+  - details
+properties:
+  type:
+    type: string
+    enum:
+      - tcp
+  details:
+    oneOf:
+      - type: object
+        additionalProperties: {}
+      - $ref: ../../../../../StackVariable.yml

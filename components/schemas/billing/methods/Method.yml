@@ -7,7 +7,7 @@ required:
   - primary
   - address
   - creator
-  - credit_card
+  - source
   - state
   - events
 properties:
@@ -20,11 +20,13 @@ properties:
     type: boolean
     description: A boolean where true represents this billing method is set to primary for a given hub.
   address:
-    "$ref": "./Address.yml"
+    $ref: "./Address.yml"
   creator:
-    "$ref": "../../creators/CreatorScope.yml"
-  credit_card:
-    "$ref": "./CreditCard.yml"
+    $ref: "../../creators/CreatorScope.yml"
+  source:
+    $ref: sources/MethodSource.yml
+  mandate:
+    $ref: Mandate.yml
   state:
     allOf:
       - required:
@@ -35,6 +37,7 @@ properties:
             type: string
             enum:
               - live
+              - pending-verification
               - deleting
               - deleted
       - "$ref": "../../State.yml"

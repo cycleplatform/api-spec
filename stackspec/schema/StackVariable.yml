@@ -1,0 +1,6 @@
+title: StackVariable
+description: A variable specified in a stack spec.
+pattern: \"?{{(\$)?([a-z0-9\-]+)}}\"?
+type: string
+examples:
+  - "{{$stack-variable}}"

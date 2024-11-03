@@ -1,0 +1,33 @@
+title: StackSpecTestContainer
+type: object
+required:
+  - name
+  - image
+  - config
+properties:
+  name:
+    oneOf:
+      - type: string
+      - $ref: StackVariable.yml
+  image:
+    anyOf:
+      - $ref: StackSpecContainerImage.yml
+      - $ref: StackVariable.yml
+      - type: "null"
+  config:
+    oneOf:
+      - type:
+          - object
+          - "null"
+        properties:
+          runtime:
+            anyOf:
+              - $ref: StackContainerConfigRuntime.yml
+              - $ref: StackVariable.yml
+              - type: "null"
+          resources:
+            anyOf:
+              - $ref: StackContainerConfigResources.yml
+              - $ref: StackVariable.yml
+              - type: "null"
+      - $ref: StackVariable.yml

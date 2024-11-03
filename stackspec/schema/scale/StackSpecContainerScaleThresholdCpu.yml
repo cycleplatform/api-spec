@@ -1,0 +1,18 @@
+title: StackSpecContainerScaleThresholdCpu
+type: object
+description: Describes the CPU threshold at which scaling will occur.
+required:
+  - type
+  - details
+properties:
+  type:
+    type: string
+    enum:
+      - cpu
+  details:
+    type: object
+    required:
+      - utilization
+    properties:
+      utilization:
+        type: integer

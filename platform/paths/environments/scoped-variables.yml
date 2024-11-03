@@ -23,20 +23,24 @@ get:
           identifier:
             type: string
             description: |
-              `filter[identifier]=value` List only those environments matching this identifier. May return multiple results.
+              `filter[identifier]=value` List only those scoped variables matching this identifier. May return multiple results.
+          container:
+            type: string
+            description: |
+              `filter[container]=value` List only those scoped variables assigned to the specified container ID.
           search:
             type: string
             description: |
-              `filter[search]=value` search for a value associated with a field on the given Scoped Variable(s).
+              `filter[search]=value` search for a value associated with a field on the given scoped variable(s).
           state:
             type: string
             description: |
-              `filter[state]=value1,value2` state filtering will allow you to filter by the Scoped Variable's current state.
+              `filter[state]=value1,value2` state filtering will allow you to filter by the scoped variable's current state.
     - $ref: ../../../components/parameters/SortParam.yml
     - $ref: ../../../components/parameters/PageParam.yml
   responses:
     200:
-      description: Returns a list of Scoped Variables.
+      description: Returns a list of scoped variables.
       content:
         application/json:
           schema:

@@ -2,7 +2,7 @@ post:
   operationId: "createInvoiceJob"
   summary: Create Invoice Job
   description: |
-    Creates a new Job on an Invoice. Generally used to make a payment on an Invoice.
+    Creates a new job for an Invoice. Generally used to make a payment on an invoice.
 
     Requires the `billing-invoices-pay` capability.
   tags:

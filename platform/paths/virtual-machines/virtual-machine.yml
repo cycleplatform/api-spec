@@ -1,0 +1,143 @@
+get:
+  operationId: "getVirtualMachine"
+  summary: Get Virtual Machine
+  description: |
+    Retrieves a single virtual machine by ID.
+
+    Requires the `virtual-machines-view` capability.
+  tags:
+    - Virtual Machines
+  parameters:
+    - name: virtualMachineId
+      description: The ID of the virtual machine.
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: meta
+      in: query
+      required: false
+      description: |
+        A comma-separated list of meta values. Meta values will show up under a resource's `meta` field.
+        In the case of applying a meta to a collection of resources, each resource will have its own relevant meta data.
+        In some rare cases, meta may not apply to individual resources, and may appear in the root document. These will be clearly labeled.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - domains
+            - ips
+    - name: include
+      in: query
+      required: false
+      description: |
+        A comma-separated list of include values. Included resources will show up under the root document's `include` field.
+        In the case of applying an include to a collection of resources, if multiple resources share the same include, it will only appear once in the return.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - creators
+            - environments
+            - clusters
+  responses:
+    200:
+      description: Returns the requested virtual machine.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../components/schemas/vms/VirtualMachine.yml
+              includes:
+                $ref: includes/VirtualMachineIncludes.yml
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+
+patch:
+  operationId: "updateVirtualMachine"
+  summary: Update Virtual Machine
+  description: |
+    Updates the specified virtual machine.
+
+    Requires the `virtual-machines-manage` capability.
+  tags:
+    - Virtual Machine
+  parameters:
+    - name: virtualMachineId
+      description: The ID of the virtual machine.
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    description: Parameters for updating the virtual machine.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: The name of the virtual machine.
+            identifier:
+              type: string
+              description: The identifier of the virtual machine.
+            deprecate:
+              type: boolean
+              description: A boolean flag indicating if this virtual machine is deprecated.
+            lock:
+              type: boolean
+              description: Prevents this virtual machine from being deleted when true.
+            annotation:
+              type: object
+              description: Metadata annotations for the virtual machine.
+              additionalProperties:
+                type: string
+  responses:
+    200:
+      description: Returns the updated virtual machine.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../components/schemas/vms/VirtualMachine.yml
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+
+delete:
+  operationId: "deleteVirtualMachine"
+  summary: Delete Virtual Machine
+  description: Requires the `virtual-machines-manage` capability.
+  tags:
+    - Virtual Machines
+  parameters:
+    - name: virtualMachineId
+      description: The ID of the virtual machine to delete.
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    202:
+      description: Returns a job descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../components/schemas/jobs/JobDescriptor.yml
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml

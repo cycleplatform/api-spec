@@ -21,15 +21,18 @@ get:
         type: object
         additionalProperties: true
         properties:
-          environment_id:
+          environment:
             description: Specify the environment associated with the metrics.
             $ref: ../../../../components/schemas/ID.yml
-          pipeline_id:
+          pipeline:
             description: Specify the pipeline associated with the metrics.
             $ref: ../../../../components/schemas/ID.yml
-          stack_id:
+          stack:
             description: Specify the stack associated with the metrics.
             $ref: ../../../../components/schemas/ID.yml
+          container:
+            description: Specify the container associated with the metrics.
+            type: string
           cluster:
             description: Specify the cluster associated with the metrics.
             type: string

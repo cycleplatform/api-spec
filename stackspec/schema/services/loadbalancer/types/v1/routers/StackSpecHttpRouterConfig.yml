@@ -1,0 +1,200 @@
+title: StackSpecHttpRouterConfig
+description: Additional configuration options for HTTP mode routers.
+type: object
+required:
+  - type
+  - details
+properties:
+  type:
+    type: string
+    enum:
+      - http
+  details:
+    oneOf:
+      - type: object
+        properties:
+          redirect:
+            description: Defines a built-in redirect for HTTP mode routers
+            oneOf:
+              - type:
+                  - object
+                  - "null"
+                required:
+                  - auto_https_redirect
+                  - remove_www
+                properties:
+                  auto_https_redirect:
+                    description: If enabled and a sibling controller exists for port 443, requests will be auto redirected to it. Essentially sets up automatic TLS redirection for this router.
+                    oneOf:
+                      - type: boolean
+                      - $ref: ../../../../../StackVariable.yml
+                  remove_www:
+                    description: If true, any request comes in with "www" prefix will be permanently redirected to the same path without www.
+                    oneOf:
+                      - type: boolean
+                      - $ref: ../../../../../StackVariable.yml
+                  port:
+                    description: The port to redirect traffic to.
+                    oneOf:
+                      - type:
+                          - integer
+                          - "null"
+                      - $ref: ../../../../../StackVariable.yml
+                  scheme:
+                    description: The scheme to redirect to. (i.e. `https`)
+                    oneOf:
+                      - type:
+                          - string
+                          - "null"
+                      - $ref: ../../../../../StackVariable.yml
+                  url:
+                    description: A specific URL to redirect to.
+                    oneOf:
+                      - type:
+                          - string
+                          - "null"
+                      - $ref: ../../../../../StackVariable.yml
+              - $ref: ../../../../../StackVariable.yml
+          forward:
+            oneOf:
+              - type:
+                  - object
+                  - "null"
+                properties:
+                  scheme:
+                    oneOf:
+                      - type:
+                          - string
+                          - "null"
+                      - $ref: ../../../../../StackVariable.yml
+                  content_mod:
+                    description: Allows the load balancer to modify content before it reaches the user.
+                    oneOf:
+                      - type:
+                          - object
+                          - "null"
+                        properties:
+                          replace:
+                            description: An array that describes a list of replacement match/value pairs.
+                            oneOf:
+                              - type:
+                                  - array
+                                  - "null"
+                                items:
+                                  oneOf:
+                                    - type: object
+                                      required:
+                                        - match
+                                        - value
+                                      properties:
+                                        match:
+                                          description: String that will be replaced.
+                                          oneOf:
+                                            - type: string
+                                            - $ref: ../../../../../StackVariable.yml
+                                        value:
+                                          description: Replacement value.
+                                          oneOf:
+                                            - type: string
+                                            - $ref: ../../../../../StackVariable.yml
+                                    - $ref: ../../../../../StackVariable.yml
+                              - $ref: ../../../../../StackVariable.yml
+                      - $ref: ../../../../../StackVariable.yml
+                  url:
+                    description: |
+                      The URL to forward the request to.
+
+                      Given a path match of `^/example/(.*)$`, a route such as `/example/wow.jpg` would be forwarded as /wow.jpg.
+                    examples:
+                      - /$$1
+                    oneOf:
+                      - type: string
+                      - $ref: ../../../../../StackVariable.yml
+              - $ref: ../../../../../StackVariable.yml
+          proxy:
+            oneOf:
+              - type:
+                  - object
+                  - "null"
+                properties:
+                  domain:
+                    description: The domain that this router will proxy.
+                    oneOf:
+                      - type:
+                          - string
+                          - "null"
+                      - $ref: ../../../../../StackVariable.yml
+                  url:
+                    description: The full URL that this router will proxy.
+                    oneOf:
+                      - type: string
+                      - $ref: ../../../../../StackVariable.yml
+                      - type: "null"
+                  content_mod:
+                    description: Allows the load balancer to modify content before it reaches the user.
+                    oneOf:
+                      - type:
+                          - object
+                          - "null"
+                        properties:
+                          replace:
+                            description: An array that describes a list of replacement match/value pairs.
+                            oneOf:
+                              - type:
+                                  - array
+                                  - "null"
+                                items:
+                                  oneOf:
+                                    - type: object
+                                      required:
+                                        - match
+                                        - value
+                                      properties:
+                                        match:
+                                          description: String that will be replaced.
+                                          oneOf:
+                                            - type: string
+                                            - $ref: ../../../../../StackVariable.yml
+                                        value:
+                                          description: Replacement value.
+                                          oneOf:
+                                            - type: string
+                                            - $ref: ../../../../../StackVariable.yml
+                                    - $ref: ../../../../../StackVariable.yml
+                              - $ref: ../../../../../StackVariable.yml
+                      - $ref: ../../../../../StackVariable.yml
+              - $ref: ../../../../../StackVariable.yml
+          caching:
+            oneOf:
+              - type:
+                  - object
+                  - "null"
+                properties:
+                  files:
+                    oneOf:
+                      - type:
+                          - array
+                          - "null"
+                        items:
+                          oneOf:
+                            - type: object
+                              required:
+                                - match
+                                - ttl
+                              properties:
+                                match:
+                                  description: Regex string that describes the files to cache.
+                                  examples:
+                                    - "(.*)\\.(js|jpg|css|png|svg)$"
+                                  oneOf:
+                                    - type: string
+                                    - $ref: ../../../../../StackVariable.yml
+                                ttl:
+                                  description: Time string that describes the time to live.
+                                  oneOf:
+                                    - $ref: ../../../../../../../components/schemas/Duration.yml
+                                    - $ref: ../../../../../StackVariable.yml
+                            - $ref: ../../../../../StackVariable.yml
+                      - $ref: ../../../../../StackVariable.yml
+              - $ref: ../../../../../StackVariable.yml
+      - $ref: ../../../../../StackVariable.yml

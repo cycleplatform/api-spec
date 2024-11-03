@@ -12,12 +12,11 @@ properties:
   contents:
     type: object
     required:
+      - token
       - runtime_variables
     properties:
       token:
-        description: A custom token used for identifying and managing a claim. Can be any valid string.
-        type:
-          - string
-          - "null"
+        description: A custom token used for identifying and managing a claim. Can be any valid string 5 characters or more.
+        type: string
       runtime_variables:
         $ref: ../../../containers/functions/FunctionRuntimeVariables.yml

@@ -1,0 +1,83 @@
+title: LoadBalancerTelemetryUrlMetrics
+type: object
+required:
+  - destinations
+properties:
+  destinations:
+    type: object
+    additionalProperties:
+      type: object
+      required:
+        - requests
+      properties:
+        requests:
+          type:
+            - object
+            - "null"
+          required:
+            - host
+            - method
+            - path
+            - total
+            - last_hit
+            - handlers
+          properties:
+            host:
+              type: string
+              description: The host name of the URL request.
+              examples:
+                - "abc.cycle.io"
+            method:
+              type: string
+              description: The HTTP method of the URL request.
+              examples:
+                - "GET"
+            path:
+              type: string
+              description: The path portion of the inbound URL request.
+              examples:
+                - "/pathname"
+            total:
+              type: integer
+              description: The number of requests to a this URL.
+              examples:
+                - 5
+                - 10
+            last_hit:
+              description: The date of the most recent hit to the URL.
+              $ref: ../../../../DateTime.yml
+            handlers:
+              type: object
+              description: An object describing the relative breakdown of proxy, cache, forward, and redirect URL responses.
+              required:
+                - proxy
+                - cache
+                - forward
+                - redirect
+              properties:
+                proxy:
+                  description: Object containing hit count and timing data for proxy responses.
+                  $ref: ./LoadBalancerTelemetryUrlRequestHandler.yml
+                cache:
+                  description: Object containing hit count and timing data for cache responses.
+                  $ref: ./LoadBalancerTelemetryUrlRequestHandler.yml
+                forward:
+                  description: Object containing hit count and timing data for forward responses.
+                  $ref: ./LoadBalancerTelemetryUrlRequestHandler.yml
+                redirect:
+                  description: Object containing hit count and timing data for redirect responses.
+                  $ref: ./LoadBalancerTelemetryUrlRequestHandler.yml
+            responses:
+              type: object
+              examples:
+                - { "http:404": 10 }
+              description: An object where the key is the response type and the value is the number of hits with that response.
+              additionalProperties:
+                type: integer
+            errors:
+              type: object
+              examples:
+                - { "i/o timeout": 1 }
+              description: An object where the key is the error type and the value is the number of hits with that error.
+              additionalProperties:
+                type: integer

@@ -1,0 +1,33 @@
+title: StackSpecContainerConfigNetwork
+x-ogen-name: StackSpecContainerConfigNetwork
+description: Stack configuration options related to the container's network.
+type: object
+required:
+  - public
+  - hostname
+properties:
+  public:
+    description: The level of public network access this container should have.
+    oneOf:
+      - type: string
+        enum:
+          - enable
+          - disable
+          - egress-only
+      - $ref: StackVariable.yml
+  hostname:
+    description: The hostname of the container. This is how it can be referenced by other containers in the same environment.
+    oneOf:
+      - type: string
+      - $ref: StackVariable.yml
+  ports:
+    description: A list of port mappings on this container.
+    oneOf:
+      - type: array
+        items:
+          type: string
+        examples:
+          - "80:80"
+          - "443:80"
+          - "3000"
+      - $ref: StackVariable.yml

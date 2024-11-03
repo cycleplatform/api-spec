@@ -1,0 +1,45 @@
+post:
+  operationId: "createVirtualMachineJob"
+  summary: Create Virtual Machine Job
+  description: |
+    Used to perform different actions on a virtual machine. 
+
+    Requires the following capabilities based on the task: 
+    `start`: `virtual-machines-manage`
+    `stop`: `virtual-machines-manage`
+  tags:
+    - Virtual Machines
+  parameters:
+    - name: virtualMachineId
+      description: The ID of the virtual machine.
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    description: Parameters for creating a new virtual machine job.
+    content:
+      application/json:
+        schema:
+          discriminator:
+            propertyName: action
+            mapping:
+              start: ../../../components/schemas/vms/tasks/VirtualMachineStartTask.yml
+              stop: ../../../components/schemas/vms/tasks/VirtualMachineStopTask.yml
+          oneOf:
+            - $ref: ../../../components/schemas/vms/tasks/VirtualMachineStartTask.yml
+            - $ref: ../../../components/schemas/vms/tasks/VirtualMachineStopTask.yml
+  responses:
+    202:
+      description: Returns a job descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../components/schemas/jobs/JobDescriptor.yml
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml

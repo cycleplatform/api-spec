@@ -1,0 +1,39 @@
+title: StackSpecScopedVariableUrlSource
+type: object
+description: A variable who's value is fetched from a URL when the container starts.
+required:
+  - type
+  - details
+properties:
+  type:
+    type: string
+    description: The type of scoped variable.
+    enum:
+      - url
+  details:
+    oneOf:
+      - type: object
+        required:
+          - url
+          - headers
+          - auth_token_url
+        properties:
+          url:
+            description: The URL to call to fetch the value.
+            oneOf:
+              - type: string
+              - $ref: StackVariable.yml
+          headers:
+            description: Additional headers that can be attached to the URL request. Useful for adding meta-data to third-party services.
+            oneOf:
+              - type: object
+                additionalProperties: {}
+              - $ref: StackVariable.yml
+          auth_token_url:
+            description: A URL that can be provided to authenticate with a third party secret service. Cycle will make a request to this URL before fetching the secret URL, and use the response as the value of an Authorization header when requesting the secret.
+            oneOf:
+              - type:
+                  - string
+                  - "null"
+              - $ref: StackVariable.yml
+      - $ref: StackVariable.yml

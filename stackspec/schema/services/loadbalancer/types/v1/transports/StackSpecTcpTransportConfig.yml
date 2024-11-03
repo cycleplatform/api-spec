@@ -1,0 +1,30 @@
+title: StackSpecTcpTransportConfig
+description: Additional configuration options for the TCP transport mode.
+type: object
+required:
+  - type
+  - details
+properties:
+  type:
+    type: string
+    enum:
+      - tcp
+  details:
+    oneOf:
+      - type: object
+        required:
+          - connections
+          - telemetry
+        properties:
+          connections:
+            oneOf:
+              - type: object
+                additionalProperties: {}
+              - $ref: ../../../../../StackVariable.yml
+          telemetry:
+            description: Configuration options for how telemetry is handled on the load balancer.
+            oneOf:
+              - type: object
+                additionalProperties: {}
+              - $ref: ../../../../../StackVariable.yml
+      - $ref: ../../../../../StackVariable.yml

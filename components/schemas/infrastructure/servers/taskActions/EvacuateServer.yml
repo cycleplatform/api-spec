@@ -8,7 +8,7 @@ properties:
     type: string
     description: The action to take.
     enum:
-      - infrastructure.server.evacuate
+      - evacuation.start
   contents:
     type: object
     required:

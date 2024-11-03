@@ -17,7 +17,7 @@ info:
     in a client-side web application as well.
 
     ## Auth Basics 
-    Every API request much have an accompanying API key in the Authorization header. For more informaiton on generating an API key head over to the [Portal Docs](https://docs.cycle.io/reference/hubs/API-access/api-key-generate). 
+    Every API request much have an accompanying API key in the Authorization header. For more information on generating an API key head over to the [Portal Docs](https://cycle.io/docs/portal/managing-an-api-key-and-settings#creating-an-api-key). 
 
     Your API key should never be made publicly available, published to a public repository, or used on a client side
     web app. If you would like to use the API from a web app, you should create a thin-client service that acts as a passthrough for
@@ -142,6 +142,9 @@ x-tagGroups:
     tags:
       - Stacks
       - Stack Builds
+  - name: Virtual Machines
+    tags:
+      - Virtual Machines
   - name: Utility
     tags:
       - Utility
@@ -259,6 +262,9 @@ tags:
   - name: Stack Builds
     description: Endpoints for managing builds of a Cycle stack, including deploying a stack build to an environment.
 
+  - name: Virtual Machines
+    description: Endpoints for managing virtual machines.
+
   - name: Utility
     description: Extra utility endpoints that aren't related to a specific resource.
 security:
@@ -316,6 +322,8 @@ paths:
     $ref: "./paths/billing/methods/methods.yml"
   "/v1/billing/methods/{methodId}":
     $ref: "./paths/billing/methods/method.yml"
+  "/v1/billing/methods/{methodId}/tasks":
+    $ref: "./paths/billing/methods/tasks.yml"
 
   ## Orders
   "/v1/billing/orders":
@@ -366,10 +374,10 @@ paths:
     $ref: "./paths/containers/instances/tasks.yml"
   "/v1/containers/{containerId}/instances/{instanceId}/volumes":
     $ref: "./paths/containers/instances/volumes.yml"
-  ? "/v1/containers/{containerId}/instances/{instanceId}/telemetry/resources/report"
-  : $ref: paths/containers/instances/telemetry/report.yml
-  ? "/v1/containers/{containerId}/instances/{instanceId}/telemetry/resources/stream"
-  : $ref: paths/containers/instances/telemetry/stream.yml
+  "/v1/containers/{containerId}/instances/{instanceId}/telemetry/resources/report":
+    $ref: paths/containers/instances/telemetry/report.yml
+  "/v1/containers/{containerId}/instances/{instanceId}/telemetry/resources/stream":
+    $ref: paths/containers/instances/telemetry/stream.yml
   "/v1/containers/{containerId}/instances/{instanceId}/console":
     $ref: "paths/containers/instances/console.yml"
   "/v1/containers/{containerId}/functions/tasks":
@@ -444,15 +452,15 @@ paths:
 
   ## Services/Load Balancer
   "/v1/environments/{environmentId}/services/lb":
-    $ref: "./paths/environments/services/lb/lb.yml"
+    $ref: "./paths/environments/services/loadbalancer/loadbalancer.yml"
   "/v1/environments/{environmentId}/services/lb/tasks":
-    $ref: "./paths/environments/services/lb/tasks.yml"
+    $ref: "./paths/environments/services/loadbalancer/tasks.yml"
   "/v1/environments/{environmentId}/services/lb/telemetry/report":
-    $ref: "./paths/environments/services/lb/telemetry/report.yml"
+    $ref: "./paths/environments/services/loadbalancer/telemetry/report.yml"
   "/v1/environments/{environmentId}/services/lb/telemetry/latest":
-    $ref: "./paths/environments/services/lb/telemetry/latest.yml"
+    $ref: "./paths/environments/services/loadbalancer/telemetry/latest.yml"
   "/v1/environments/{environmentId}/services/lb/telemetry/latest-controllers":
-    $ref: "./paths/environments/services/lb/telemetry/controllers.yml"
+    $ref: "./paths/environments/services/loadbalancer/telemetry/controllers.yml"
 
   ## Services/Scheduler
   "/v1/environments/{environmentId}/services/scheduler/tasks":
@@ -617,6 +625,8 @@ paths:
     $ref: paths/monitoring/events/aggregate.yml
   "/v1/monitoring/logs/aggregate":
     $ref: paths/monitoring/logs/aggregate.yml
+  "/v1/monitoring/monitors":
+    $ref: paths/monitoring/monitors/monitors.yml
 
   # --Pipelines
   "/v1/pipelines":
@@ -627,10 +637,14 @@ paths:
     $ref: "./paths/pipelines/access.yml"
   "/v1/pipelines/{pipelineId}/runs":
     $ref: "./paths/pipelines/runs.yml"
+  "/v1/pipelines/{pipelineId}/runs/{runId}":
+    $ref: "./paths/pipelines/run.yml"
   "/v1/pipelines/{pipelineId}/tasks":
     $ref: "./paths/pipelines/tasks.yml"
   "/v1/pipelines/clone":
     $ref: "./paths/pipelines/clone.yml"
+  "/v1/pipelines/{pipelineId}/trigger":
+    $ref: "./paths/pipelines/trigger.yml"
   ## Trigger Keys
   "/v1/pipelines/{pipelineId}/keys":
     $ref: "./paths/pipelines/triggerKeys/triggerKeys.yml"
@@ -671,6 +685,16 @@ paths:
     $ref: "./paths/stacks/builds/build.yml"
   "/v1/stacks/{stackId}/builds/{buildId}/tasks":
     $ref: "./paths/stacks/builds/tasks.yml"
+
+  # --Virtual Machines
+  "/v1/virtual-machines":
+    $ref: "./paths/virtual-machines/virtual-machines.yml"
+  "/v1/virtual-machines/{virtualMachineId}":
+    $ref: "./paths/virtual-machines/virtual-machine.yml"
+  "/v1/virtual-machines/{virtualMachineId}/tasks":
+    $ref: "./paths/virtual-machines/tasks.yml"
+  "/v1/virtual-machines/images/base":
+    $ref: "./paths/virtual-machines/images/base.yml"
 
   # --Utility
   "/v1/utils/resource/lookup":

@@ -1,0 +1,52 @@
+title: VirtualMachineBaseImage
+type: object
+description: |
+  Represents a virtual machine base OS image provided by Cycle.
+properties:
+  title:
+    type: string
+    description: The name of the base image (e.g., "Alpine Linux").
+  description:
+    type: string
+    description: A detailed description of the base image.
+  homepage:
+    type: string
+    format: uri
+    description: The official homepage for the base image.
+  versions:
+    type: array
+    description: A list of available versions for the base image, including details like version number and disk image URL.
+    items:
+      type: object
+      properties:
+        identifier:
+          type: string
+          description: A unique identifier for the version.
+          examples: 
+            - alpine-3-19
+        version:
+          type: string
+          description: The version number of the base image.
+          examples:
+            - 3.19
+        disk_image_url:
+          type: string
+          format: uri
+          description: The URL where the disk image can be downloaded.
+        supported:
+          type: boolean
+          description: A flag indicating whether the version is currently supported.
+        uefi:
+          type: boolean
+          description: Whether the image supports UEFI.
+      required:
+        - identifier
+        - version
+        - disk_image_url
+        - supported
+        - uefi
+required:
+  - title
+  - description
+  - homepage
+  - versions

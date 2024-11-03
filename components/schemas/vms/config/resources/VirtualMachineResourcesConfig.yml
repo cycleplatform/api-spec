@@ -1,0 +1,12 @@
+title: VirtualMachineResourcesConfig
+type: object
+description: |
+  Defines the resource settings for a virtual machine, including CPU and RAM.
+properties:
+  ram:
+    $ref: VirtualMachineRamResources.yml
+  cpu:
+    $ref: VirtualMachineCpuResources.yml
+required:
+  - ram
+  - cpu

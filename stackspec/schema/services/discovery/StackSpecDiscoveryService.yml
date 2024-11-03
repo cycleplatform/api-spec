@@ -1,0 +1,15 @@
+title: StackSpecDiscoveryService
+description: Configuration options for the discovery service.
+type: object
+additionalProperties: false
+properties:
+  service:
+    anyOf:
+      - $ref: ../StackService.yml
+      - $ref: ../../StackVariable.yml
+      - type: "null"
+  config:
+    anyOf:
+      - $ref: ./StackSpecDiscoveryConfig.yml
+      - $ref: ../../StackVariable.yml
+      - type: "null"

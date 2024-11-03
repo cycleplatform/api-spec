@@ -6,10 +6,7 @@ async function bundleStackSpecSchema() {
   try {
     const parser = new $RefParser();
 
-    const input = path.join(
-      __dirname,
-      "../components/schemas/stacks/spec/StackSpec.yml"
-    );
+    const input = path.join(__dirname, "./schema/StackSpec.yml");
 
     const output = path.join(__dirname, "./stackspec.json");
 

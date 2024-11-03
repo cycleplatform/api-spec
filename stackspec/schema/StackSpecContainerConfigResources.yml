@@ -1,0 +1,47 @@
+title: StackSpecContainerConfigResources
+description: Configuration options for container resource limits and reserves.
+type: object
+required:
+  - cpu
+  - ram
+properties:
+  cpu:
+    oneOf:
+      - type: object
+        properties:
+          shares:
+            oneOf:
+              - type: object
+                required:
+                  - limit
+                  - reserve
+                properties:
+                  limit:
+                    oneOf:
+                      - type: integer
+                      - $ref: StackVariable.yml
+                  reserve:
+                    oneOf:
+                      - type: integer
+                      - $ref: StackVariable.yml
+              - $ref: StackVariable.yml
+          cpus:
+            type: string
+      - $ref: StackVariable.yml
+  ram:
+    oneOf:
+      - type: object
+        properties:
+          limit:
+            oneOf:
+              - type: string
+              - $ref: StackVariable.yml
+          reserve:
+            oneOf:
+              - type: string
+              - $ref: StackVariable.yml
+          swappiness:
+            oneOf:
+              - type: number
+              - $ref: StackVariable.yml
+      - $ref: StackVariable.yml

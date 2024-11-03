@@ -1,0 +1,93 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+title: StackSpec
+description: |
+  A Cycle stack file is an "environment as code". This allows an environment to be generated consistently based on a fixed specification. 
+  Stack files can describe multiple containers and their configurations, environment service settings, scoped variables, and important metadata.
+type: object
+required:
+  - version
+  - containers
+properties:
+  version:
+    type: string
+    description: The version of the Cycle stack file used.
+    enum:
+      - "1.0"
+  about:
+    oneOf:
+      - type:
+          - object
+          - "null"
+        required:
+          - description
+          - version
+        properties:
+          version:
+            type: string
+            description: A custom, user-defined version of the stack.
+          description:
+            type: string
+            description: Custom, user-defined details about this stack.
+      - $ref: StackVariable.yml
+
+  # tests:
+  #   description: |
+  #     An array of containers that are deployed as part of a stack. Test containers run once and should exit with 0 on success. If all exit successfully, the stack is considered deployed.
+
+  #     **Not currently implemented.**
+  #   type:
+  #     - array
+  #     - "null"
+  #   items:
+  #     $ref: StackSpecTestContainer.yml
+  scoped_variables:
+    description: Describes variables that are assigned to one or more containers at runtime. Can be assigned as an environment variable, written as a file inside the container(s), or accessed over the internal API.
+    oneOf:
+      - type:
+          - array
+          - "null"
+        items:
+          $ref: ./StackSpecScopedVariable.yml
+      - $ref: StackVariable.yml
+  containers:
+    oneOf:
+      - type: object
+        description: A mapping of containers that will be deployed as a part of this stack. The key is used as the container's identifier.
+        additionalProperties:
+          $ref: ./StackSpecContainer.yml
+      - $ref: StackVariable.yml
+  services:
+    description: Settings for any auxillary services deployed as part of the environment, such as load balancer and discovery services.
+    oneOf:
+      - title: StackSpecServices
+        type:
+          - object
+          - "null"
+        properties:
+          discovery:
+            anyOf:
+              - $ref: services/discovery/StackSpecDiscoveryService.yml
+              - $ref: StackVariable.yml
+              - type: "null"
+          loadbalancer:
+            anyOf:
+              - $ref: services/loadbalancer/StackSpecLoadBalancerService.yml
+              - $ref: StackVariable.yml
+              - type: "null"
+          scheduler:
+            anyOf:
+              - $ref: services/scheduler/StackSpecSchedulerService.yml
+              - $ref: StackVariable.yml
+              - type: "null"
+          vpn:
+            anyOf:
+              - $ref: services/vpn/StackSpecVpnService.yml
+              - $ref: StackVariable.yml
+              - type: "null"
+      - $ref: StackVariable.yml
+  annotations:
+    description: Additional meta info about the stack.
+    oneOf:
+      - type: object
+        additionalProperties: {}
+      - $ref: StackVariable.yml

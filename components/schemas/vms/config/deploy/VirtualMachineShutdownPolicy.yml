@@ -1,0 +1,17 @@
+title: VirtualMachineShutdownPolicy
+type: object
+description: |
+  The shutdown policy defines how the virtual machine should handle shutdown, including a timeout and signals to be sent during shutdown.
+properties:
+  graceful_timeout:
+    anyOf:
+      - $ref: ../../../Duration.yml
+      - type: "null"
+    description: The timeout period for graceful shutdown.
+  signals:
+    anyOf:
+      - type: array
+        items:
+          type: string
+      - type: "null"
+    description: Signals to send during the shutdown process.

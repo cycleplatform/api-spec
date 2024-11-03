@@ -1,0 +1,209 @@
+get:
+  operationId: "getVirtualMachines"
+  summary: List Virtual Machines
+  description: Requires the `virtual-machines-view` capability.
+  tags:
+    - Virtual Machines
+  parameters:
+    - name: meta
+      in: query
+      required: false
+      description: |
+        A comma-separated list of meta values. Meta values will show up under a resource's `meta` field.
+        In the case of applying a meta to a collection of resources, each resource will have its own relevant meta data.
+        In some rare cases, meta may not apply to individual resources, and may appear in the root document. These will be clearly labeled.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - domains
+            - ips
+    - name: include
+      in: query
+      required: false
+      description: |
+        A comma-separated list of include values. Included resources will show up under the root document's `include` field.
+        In the case of applying an include to a collection of resources, if multiple resources share the same include, it will only appear once in the return.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - creators
+            - environments
+            - clusters
+    - name: filter
+      in: query
+      style: deepObject
+      required: false
+      description: |
+        ## Filter Field
+        The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
+      schema:
+        type: object
+        properties:
+          identifier:
+            type: string
+            description: |
+              `filter[identifier]=value` List only those virtual machines matching this identifier. May return multiple results.
+          search:
+            type: string
+            description: |
+              `filter[search]=value` Search virtual machines for a value associated with a field.
+          creator:
+            type: string
+            description: |
+              `filter[creator]=account-ID` Filter for virtual machines matching a particular creator, such as `account-<ID>` or `environment-<ID>`.
+          environment:
+            type: string
+            description: |
+              `filter[environment]=ID` Filter virtual machines by environment ID. Submit the ID of the environment you wish to filter for.
+          state:
+            type: string
+            enum:
+              - new
+              - starting
+              - running
+              - stopping
+              - stopped
+              - deleting
+              - deleted
+            description: |
+              `filter[state]=value` Filter virtual machines by their current state.
+          range-start:
+            description: The start date from when to pull the virtual machines.
+            $ref: ../../../components/schemas/DateTime.yml
+          range-end:
+            description: The end date from when to pull the virtual machines.
+            $ref: ../../../components/schemas/DateTime.yml
+          tags:
+            type: string
+            description: |
+              `filter[tags]=value` Filter virtual machines by their tags.
+          public_network:
+            type: string
+            enum:
+              - enabled
+              - disabled
+            description: |
+              `filter[public_network]=value` Filter virtual machines by their public network status.
+
+    - $ref: ../../../components/parameters/SortParam.yml
+    - $ref: ../../../components/parameters/PageParam.yml
+  responses:
+    200:
+      description: Returns a list of virtual machines.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: ../../../components/schemas/vms/VirtualMachine.yml
+              includes:
+                $ref: includes/VirtualMachineIncludes.yml
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+
+post:
+  operationId: "createVirtualMachine"
+  summary: Create Virtual Machine
+  description: Requires the `virtual-machines-deploy` capability.
+  tags:
+    - Virtual Machines
+  parameters:
+    - name: meta
+      in: query
+      required: false
+      description: |
+        A comma-separated list of meta values. Meta values will show up under a resource's `meta` field.
+        In the case of applying a meta to a collection of resources, each resource will have its own relevant meta data.
+        In some rare cases, meta may not apply to individual resources, and may appear in the root document. These will be clearly labeled.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - domains
+            - ips
+    - name: include
+      in: query
+      required: false
+      description: |
+        A comma-separated list of include values. Included resources will show up under the root document's `include` field.
+        In the case of applying an include to a collection of resources, if multiple resources share the same include, it will only appear once in the return.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - creators
+            - environments
+            - clusters
+  requestBody:
+    description: Parameters for creating a new virtual machine.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - name
+            - environment_id
+            - image
+            - config
+            - lock
+          properties:
+            identifier:
+              $ref: ../../../components/schemas/Identifier.yml
+            name:
+              type: string
+              description: A user-defined name for the virtual machine.
+            environment_id:
+              type: string
+              description: The ID of the environment this virtual machine will be deployed to.
+            image:
+              $ref: ../../../components/schemas/vms/images/VirtualMachineImage.yml
+            config:
+              "$ref": ../../../components/schemas/vms/config/VirtualMachineConfig.yml
+            lock:
+              type: boolean
+              description: Prevents this virtual machine from being deleted when true.
+            volumes:
+              anyOf:
+                - type: array
+                  items:
+                    $ref: ../../../components/schemas/vms/config/volumes/VirtualMachineVolumeConfig.yml
+                - type: "null"
+            base_disk_size:
+              type: string
+              description: The size of the base disk. Must be between 10G and 100G.
+              examples:
+                - "10G" 
+            annotations:
+              type:
+                - object
+                - "null"
+              description: Custom meta data. Not utilized by Cycle.
+              additionalProperties: {}
+
+  responses:
+    201:
+      description: Returns the newly created virtual machine.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../components/schemas/vms/VirtualMachine.yml
+              includes:
+                $ref: includes/VirtualMachineIncludes.yml
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml

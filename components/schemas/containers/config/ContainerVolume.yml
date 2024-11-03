@@ -3,11 +3,16 @@ type: object
 description: Configuration settings for container volumes.
 required:
   - read_only
+  - block_device
   - destination
 properties:
   read_only:
     type: boolean
     description: A boolean where true marks the volume as read only.
+  block_device:
+    type: boolean
+    description: |
+      Indicates that the volume will be used as unformatted block storage.
   local:
     type: object
     description: Configuration for settings local to the container filesystem.
@@ -17,7 +22,8 @@ properties:
       max_size:
         type: string
         description: The maximum size this volume can grow to. Container volumes on Cycle are thinly provisioned, meaning this isn't an allocation - the volume will only use the space it needs up to this size.
-        example: "10G"
+        examples:
+          - "10G"
       storage_pool:
         type: boolean
         description: A boolean where true signifies using the largest drive over 2TB for the target server.

@@ -1,0 +1,47 @@
+title: StackSpecScopedVariableRawSource
+type: object
+description: A variable with a hard-coded value.
+required:
+  - type
+  - details
+properties:
+  type:
+    description: The type of scoped variable.
+    type: string
+    enum:
+      - raw
+  details:
+    oneOf:
+      - type: object
+        required:
+          - value
+          - blob
+        properties:
+          value:
+            description: The value of the variable.
+            oneOf:
+              - type: string
+              - $ref: StackVariable.yml
+          blob:
+            description: A boolean where true represents the text the user is entering will be multi line.
+            oneOf:
+              - type: boolean
+              - $ref: StackVariable.yml
+          secret:
+            oneOf:
+              - type:
+                  - object
+                  - "null"
+                properties:
+                  iv:
+                    description: A string describing the IV Hex associated with the encryption of the variable.
+                    oneOf:
+                      - type: string
+                      - $ref: StackVariable.yml
+                  hint:
+                    description: A user specified hint that will suggest what the encryption key might be
+                    oneOf:
+                      - type: string
+                      - $ref: StackVariable.yml
+              - $ref: StackVariable.yml
+      - $ref: StackVariable.yml

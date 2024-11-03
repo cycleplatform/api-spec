@@ -1,0 +1,227 @@
+title: StackSpecContainerConfigIntegrations
+type: object
+description: Configuration options for additional integrations/features that Cycle provides.
+properties:
+  webhooks:
+    description: Enable additional webhooks that Cycle will call out to during the course of a container's lifetime. All webhooks send a payload as an object containing the instance, container, server, and environment IDs.
+    oneOf:
+      - type:
+          - object
+          - "null"
+        properties:
+          events:
+            description: Webhooks that are triggered during a container event.
+            oneOf:
+              - type:
+                  - object
+                  - "null"
+                properties:
+                  deploy:
+                    description: Cycle will call this endpoint when the container is deployed.
+                    oneOf:
+                      - type:
+                          - string
+                          - "null"
+                      - $ref: StackVariable.yml
+                  start:
+                    description: Cycle will call this endpoint when the container is started.
+                    oneOf:
+                      - type:
+                          - string
+                          - "null"
+                      - $ref: StackVariable.yml
+                  stop:
+                    description: Cycle will call this endpoint when the container is stopped.
+                    oneOf:
+                      - type:
+                          - string
+                          - "null"
+                      - $ref: StackVariable.yml
+              - $ref: StackVariable.yml
+          config:
+            description: The webhook to hit when the container's configuration is changed.
+            oneOf:
+              - type:
+                  - string
+                  - "null"
+              - $ref: StackVariable.yml
+      - $ref: StackVariable.yml
+  lets_encrypt:
+    description: When enabled, this integration will configure Let's Encrypt certificates that will be injected into the container at runtime. The certificates will be managed by the platform and renewed automatically.
+    oneOf:
+      - type:
+          - object
+          - "null"
+        required:
+          - enable
+        properties:
+          enable:
+            oneOf:
+              - type: boolean
+              - $ref: StackVariable.yml
+          certificate_path:
+            oneOf:
+              - type:
+                  - string
+                  - "null"
+              - $ref: StackVariable.yml
+          chain_path:
+            oneOf:
+              - type:
+                  - string
+                  - "null"
+              - $ref: StackVariable.yml
+          key_path:
+            oneOf:
+              - type:
+                  - string
+                  - "null"
+              - $ref: StackVariable.yml
+          bundle_path:
+            oneOf:
+              - type:
+                  - string
+                  - "null"
+              - $ref: StackVariable.yml
+          additional_certs_path:
+            oneOf:
+              - type:
+                  - string
+                  - "null"
+              - $ref: StackVariable.yml
+      - $ref: StackVariable.yml
+  files:
+    description: When enabled, Cycle will fetch and inject remote files into the container at the specified destination during runtime.
+    oneOf:
+      - type:
+          - array
+          - "null"
+        items:
+          type: object
+          required:
+            - source
+            - destination
+          properties:
+            source:
+              oneOf:
+                - $ref: StackVariable.yml
+                - type: string
+            destination:
+              oneOf:
+                - type: string
+                - $ref: StackVariable.yml
+      - $ref: StackVariable.yml
+  backups:
+    description: When enabled, Cycle will automatically manage backups of this container. This is only available for stateful containers.
+    oneOf:
+      - type:
+          - object
+          - "null"
+        required:
+          - destination
+          - backup
+          - restore
+          - retention
+        properties:
+          integration_id:
+            description: An identifier of an integration that supports backups. All backups will be sent to this destination.
+            oneOf:
+              - $ref: ../../components/schemas/HybridIdentifier.yml
+              - $ref: StackVariable.yml
+          backup:
+            description: Configuration options for how the container should be backed up.
+            oneOf:
+              - type: object
+                required:
+                  - command
+                  - timeout
+                  - cron_string
+                properties:
+                  command:
+                    description: The command to run to capture a backup. The output sent to `STDOUT` will be captured and sent to the specified integration.
+                    oneOf:
+                      - type: string
+                      - $ref: StackVariable.yml
+                  timeout:
+                    description: How long the backup will attempt to run before timing out.
+                    anyOf:
+                      - $ref: ../../components/schemas/Duration.yml
+                      - $ref: StackVariable.yml
+                      - type: "null"
+                  cron_string:
+                    description: A cron string describing how often to run the backup command.
+                    oneOf:
+                      - type:
+                          - string
+                          - "null"
+                      - $ref: StackVariable.yml
+              - $ref: StackVariable.yml
+          restore:
+            description: Configuration options for how the backup should be restored.
+            oneOf:
+              - type:
+                  - object
+                  - "null"
+                required:
+                  - command
+                  - timeout
+                properties:
+                  command:
+                    oneOf:
+                      - type: string
+                      - $ref: StackVariable.yml
+                  timeout:
+                    description: The time in seconds for the restore to attempt to complete before timing out.
+                    anyOf:
+                      - $ref: ../../components/schemas/Duration.yml
+                      - $ref: StackVariable.yml
+                      - type: "null"
+              - $ref: StackVariable.yml
+          retention:
+            description: How long the platform will keep backups. Default is 1 year.
+            anyOf:
+              - $ref: ../../components/schemas/Duration.yml
+              - $ref: StackVariable.yml
+              - type: "null"
+            default: "365d"
+      - $ref: StackVariable.yml
+  shared_file_systems:
+    description: When enabled, Cycle will mount a shared host directory into this container. The directory will be shared with all other containers that mount it.
+    oneOf:
+      - type:
+          - object
+          - "null"
+        additionalProperties:
+          oneOf:
+            - type: object
+              required:
+                - writable
+                - mount_point
+              properties:
+                writable:
+                  oneOf:
+                    - type: boolean
+                    - $ref: StackVariable.yml
+                mount_point:
+                  oneOf:
+                    - $ref: StackVariable.yml
+                    - type: string
+            - $ref: StackVariable.yml
+      - $ref: StackVariable.yml
+  logs:
+    description: When enabled, allows more customization to be applied to logging for the container.
+    oneOf:
+      - type:
+          - object
+          - "null"
+        properties:
+          groups:
+            description: A tag used for applying log filters and analytics.
+            oneOf:
+              - type:
+                  - array
+                  - "null"
+                items:
+                  $ref: ../../components/schemas/Identifier.yml
+              - $ref: StackVariable.yml
+      - $ref: StackVariable.yml

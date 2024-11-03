@@ -44,7 +44,6 @@ post:
             - name
             - primary
             - address
-            - credit_card
           properties:
             name:
               type: string
@@ -55,32 +54,59 @@ post:
             address:
               $ref: ../../../../components/schemas/billing/methods/Address.yml
             credit_card:
-              type: object
-              required:
-                - name
-                - number
-                - cvv
-                - expiration
-              properties:
-                name:
-                  type: string
-                number:
-                  type: string
-                cvv:
-                  type: string
-                expiration:
-                  type: object
+              oneOf:
+                - type: object
                   required:
-                    - month
-                    - year
+                    - name
+                    - number
+                    - cvv
+                    - expiration
                   properties:
-                    month:
-                      type: number
-                    year:
-                      type: number
+                    name:
+                      type: string
+                    number:
+                      type: string
+                    cvv:
+                      type: string
+                    expiration:
+                      type: object
+                      required:
+                        - month
+                        - year
+                      properties:
+                        month:
+                          type: number
+                        year:
+                          type: number
+                - type: "null"
+            us_bank_acct:
+              oneOf:
+                - type: object
+                  required:
+                    - account_holder_name
+                    - account_holder_type
+                    - routing_number
+                    - account_number
+                  properties:
+                    account_holder_name:
+                      type: string
+                      description: The name of the account holder.
+                    account_holder_type:
+                      type: string
+                      description: Whether this account is owned by a business or an individual.
+                      enum:
+                        - individual
+                        - company
+                    routing_number:
+                      type: string
+                      description: The routing number of the bank where the account lives.
+                    account_number:
+                      type: string
+                      description: The number of the bank account.
+                - type: "null"
   responses:
     201:
-      description: Returns a Billing Method resource.
+      description: Returns a billing method.
       content:
         application/json:
           schema:

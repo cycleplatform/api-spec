@@ -28,10 +28,12 @@ properties:
         properties:
           interval:
             type: string
-            example: months
+            examples:
+              - "months"
           number:
             type: integer
-            example: 2
+            examples:
+              - 2
   state:
     title: PromoCodeState
     allOf:

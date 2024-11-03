@@ -1,0 +1,18 @@
+title: StackSpecContainerScaleThreshold
+type: object
+description: Discriminated union describing the different types of scaling threshold and their respective details
+discriminator:
+  propertyName: type
+  mapping:
+    ram: ./StackSpecContainerScaleThresholdRam.yml
+    cpu: ./StackSpecContainerScaleThresholdCpu.yml
+    custom: ./StackSpecContainerScaleThresholdCustom.yml
+    network-connections: ./StackSpecContainerScaleThresholdNetworkConnections.yml
+    network-requests: ./StackSpecContainerScaleThresholdNetworkRequests.yml
+    network-throughput: ./StackSpecContainerScaleThresholdNetworkThroughput.yml
+oneOf:
+  - $ref: ./StackSpecContainerScaleThresholdRam.yml
+  - $ref: ./StackSpecContainerScaleThresholdCpu.yml
+  - $ref: ./StackSpecContainerScaleThresholdNetworkConnections.yml
+  - $ref: ./StackSpecContainerScaleThresholdNetworkRequests.yml
+  - $ref: ./StackSpecContainerScaleThresholdNetworkThroughput.yml

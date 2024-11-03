@@ -1,0 +1,10 @@
+title: MethodSource
+description: The underlying source (credit card, bank account, etc) used by a payment method.
+discriminator:
+  propertyName: type
+  mapping:
+    stripe-credit-card: ./StripeCreditCard.yml
+    stripe-us-bank-acct: ./StripeUsBankAcct.yml
+oneOf:
+  - $ref: ./StripeCreditCard.yml
+  - $ref: ./StripeUsBankAcct.yml

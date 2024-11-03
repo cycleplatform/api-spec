@@ -1,0 +1,59 @@
+post:
+  operationId: "triggerPipeline"
+  summary: Trigger Pipeline
+  tags:
+    - Pipelines
+  parameters:
+    - name: pipelineId
+      in: path
+      required: true
+      description: The ID of the Pipeline.
+      schema:
+        type: string
+  requestBody:
+    description: Parameters for triggering a pipeline.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - secret
+            - variables
+          properties:
+            secret:
+              type: string
+              description: The trigger key secret.
+            variables:
+              type: object
+              description: A map of variables to pass into the pipeline when it runs.
+              additionalProperties:
+                type: string
+            advanced:
+              type: object
+              properties:
+                sub_queue:
+                  description: Sub queue allows multiple concurrent pipeline runs.
+                  type:
+                    - string
+                    - "null"
+                skip_locks:
+                  description: |
+                    To enable skip locks, pass the current UNIX timestamp. Must be accurate within 10 minutes of the current UTC time. 
+                    This will skip lock checks when running a pipeline - the user takes all risk of ensuring two pipeline runs won't make conflicting changes.
+                  type:
+                    - integer
+                    - "null"
+  responses:
+    201:
+      description: Returns a Pipeline.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../components/schemas/pipelines/Pipeline.yml
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml

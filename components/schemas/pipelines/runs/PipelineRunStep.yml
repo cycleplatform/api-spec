@@ -1,0 +1,80 @@
+title: PipelineRunStep
+type: object
+required:
+  - identifier
+  - action
+  - events
+  - success
+properties:
+  identifier:
+    type: string
+  action:
+    type: string
+    enum:
+      - environment.create
+      - environment.start
+      - environment.stop
+      - environment.delete
+      - environment.deployments.prune
+      - environment.deployments.tag
+      - environment.deployment.start
+      - environment.deployment.stop
+      - environment.deployment.healthy.watch
+      - image.create
+      - image.import
+      - images.prune
+      - image.create-import
+      - container.create
+      - container.reimage
+      - container.start
+      - container.stop
+      - container.restart
+      - container.delete
+      - container.function.trigger
+      - stack.build.create
+      - stack.build.deploy
+      - stack.build.generate
+      - stack.prune
+      - sleep
+      - webhook.post
+      - webhook.get
+  events:
+    type: object
+    description: A collection of timestamps for each event in the pipeline run's lifetime.
+    required:
+      - started
+      - finished
+    properties:
+      started:
+        description: The timestamp of when the pipeline step was started.
+        "$ref": "../../DateTime.yml"
+      finished:
+        description: The timestamp of when the pipeline step was finished.  
+        "$ref": "../../DateTime.yml"
+  success:
+    type: boolean
+  components:
+    type:
+      - array
+      - "null"
+    items:
+      type: object
+      required:
+        - type
+        - id
+      properties:
+        type:
+          $ref: ../../../../components/schemas/ResourceType.yml
+        id:
+          type: string
+  error:
+    description: An error, if any, that has occurred for this step.
+    type:
+      - object
+      - "null"
+    required:
+      - message
+    properties:
+      message:
+        type: string
+        description: Details about the error that has occurred.

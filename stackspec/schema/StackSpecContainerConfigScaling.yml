@@ -1,0 +1,52 @@
+title: StackSpecContainerConfigScaling
+type: object
+description: Stack configuration options for auto-scaling.
+required:
+  - autoscale_group
+  - instances
+  - window
+  - thresholds
+properties:
+  autoscale_group:
+    anyOf:
+      - $ref: ../../components/schemas/Identifier.yml
+      - $ref: StackVariable.yml
+      - type: "null"
+    description: The identifier of the auto-scaling group assigned to this container. The auto-scale group determines which infrastructure this container can spin up if it needs more resources to meet demand. Setting it to `null` will limit auto-scaling to only instances.
+  instances:
+    oneOf:
+      - type: object
+        description: Describes the criteria for deploying new instances when an auto-scale criteria is met.
+        required:
+          - max
+          - max_server
+          - min_ttl
+        properties:
+          max:
+            description: Maximum additional instances the auto-scaler will run at any time.
+            oneOf:
+              - type: integer
+              - $ref: StackVariable.yml
+          max_server:
+            description: Minimum number of instances per server.
+            oneOf:
+              - type: integer
+              - $ref: StackVariable.yml
+          min_ttl:
+            description: Minimum amount of time an instance will live.
+            oneOf:
+              - $ref: ../../components/schemas/Duration.yml
+              - $ref: StackVariable.yml
+      - $ref: StackVariable.yml
+  window:
+    description: Duration in which the auto-scaler will watch for changes.
+    oneOf:
+      - $ref: ../../components/schemas/Duration.yml
+      - $ref: StackVariable.yml
+  thresholds:
+    description: An array of rules that dictate when a scaling event will be triggered.
+    oneOf:
+      - type: array
+        items:
+          $ref: ./scale/StackSpecContainerScaleThreshold.yml
+      - $ref: StackVariable.yml

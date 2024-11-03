@@ -1,0 +1,53 @@
+post:
+  operationId: "createBillingMethodJob"
+  summary: Create Billing Method Job
+  description: |
+    Creates a new job for a billing method. Generally used to verify a payment method.
+
+    Requires the `billing-methods-manage` capability.
+  tags:
+    - Methods
+  parameters:
+    - name: methodId
+      description: The ID of the method.
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - action
+            - contents
+          properties:
+            action:
+              type: string
+              enum:
+                - verify
+              description: The name of the action to perform.
+            contents:
+              type: object
+              required:
+                - micro_deposits
+              properties:
+                micro_deposits:
+                  type: array
+                  items: 
+                    type: integer
+  responses:
+    202:
+      description: Returns a job descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/jobs/JobDescriptor.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml

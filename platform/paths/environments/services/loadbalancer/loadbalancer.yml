@@ -1,0 +1,59 @@
+get:
+  operationId: "getLoadBalancerService"
+  summary: Get Load Balancer Service
+  description: Requires the `environments-view` capability.
+  tags:
+    - Services/Load Balancer
+  parameters:
+    - name: environmentId
+      description: The environmentId where the load balancer resides.
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    200:
+      description: Returns a load balancer info resource.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: object
+                description: Information about an environments load balancer configuration, state, and availability settings.
+                required:
+                  - default_config
+                  - service
+                  - default_type
+                properties:
+                  default_config:
+                    $ref: ../../../../../components/schemas/environments/services/loadbalancer/LoadBalancerConfig.yml
+                  default_type:
+                    type: string
+                    enum:
+                      - haproxy
+                      - v1
+                  current_type:
+                    type: string
+                    enum:
+                      - haproxy
+                      - v1
+                  base_configs:
+                    type: object
+                    required:
+                      - haproxy
+                      - v1
+                    properties:
+                      haproxy:
+                        $ref: ../../../../../components/schemas/environments/services/loadbalancer/config/types/haproxy/HaProxyConfig.yml
+                      v1:
+                        $ref: ../../../../../components/schemas/environments/services/loadbalancer/config/types/v1/V1LbConfig.yml
+                  service:
+                    anyOf:
+                      - $ref: ../../../../../components/schemas/environments/services/LoadBalancerEnvironmentService.yml
+                      - type: "null"
+    default:
+      $ref: ../../../../../components/responses/errors/DefaultError.yml

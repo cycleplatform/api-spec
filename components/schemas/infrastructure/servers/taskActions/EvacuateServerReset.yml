@@ -1,0 +1,10 @@
+title: EvacuateServerReset
+type: object
+required:
+  - action
+properties:
+  action:
+    type: string
+    description: The action to take.
+    enum:
+      - evacuation.reset

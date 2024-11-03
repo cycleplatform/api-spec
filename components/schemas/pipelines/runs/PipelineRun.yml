@@ -19,6 +19,14 @@ properties:
   pipeline_id:
     type: string
     description: The ID for the pipeline this run belongs to.
+  sub_queue:
+    description: Describes the sub queue defined during pipeline trigger, if present.
+    type:
+      - string
+      - "null"
+  skip_locks:
+    description: Describes if a skip lock was defined during pipeline trigger.
+    type: boolean
   stages:
     type: array
     description: An array of pipeline stages.
@@ -35,65 +43,20 @@ properties:
         steps:
           type: array
           items:
-            type: object
-            required:
-              - identifier
-              - action
-              - events
-              - success
-            properties:
-              identifier:
-                type: string
-              action:
-                type: string
-                enum:
-                  - environment.create
-                  - environment.start
-                  - environment.stop
-                  - environment.delete
-                  - environment.deployments.prune
-                  - environment.deployments.tag
-                  - environment.deployment.start
-                  - environment.deployment.stop
-                  - environment.deployment.healthy.watch
-                  - image.source.create
-                  - image.create
-                  - image.import
-                  - images.prune
-                  - image.create-import
-                  - container.create
-                  - container.reimage
-                  - container.start
-                  - container.stop
-                  - container.restart
-                  - container.delete
-                  - container.function.trigger
-                  - stack.build.create
-                  - stack.build.deploy
-                  - stack.build.generate
-                  - stack.prune
-                  - sleep
-                  - webhook.post
-                  - webhook.get
-              events:
-                $ref: ./PipelineRunEvents.yml
-              success:
-                type: boolean
-              error:
-                type:
-                  - object
-                  - "null"
-                description: An error, if any, that has occurred for this step.
-                required:
-                  - message
-                properties:
-                  message:
-                    type: string
-                    description: Details about the error that has occurred.
-
+            $ref: ./PipelineRunStep.yml
         events:
-          $ref: ./PipelineRunEvents.yml
-
+          type: object
+          description: A collection of timestamps for each event in the pipeline run's lifetime.
+          required:
+            - started
+            - finished
+          properties:
+            started:
+              description: The timestamp of when the pipeline stage was started.
+              "$ref": "../../DateTime.yml"
+            finished:
+              description: The timestamp of when the pipeline stage was finished.  
+              "$ref": "../../DateTime.yml"
   state:
     "$ref": "./RunState.yml"
   events:

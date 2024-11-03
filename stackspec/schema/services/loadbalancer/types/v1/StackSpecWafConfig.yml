@@ -1,0 +1,90 @@
+title: StackSpecWafConfig
+type: object
+description: Additional configuration options for the web application firewall.
+required:
+  - rules
+properties:
+  rules:
+    oneOf:
+      - type: array
+        items:
+          oneOf:
+            - type: object
+              required:
+                - description
+                - skip
+                - type
+                - conditions
+              properties:
+                description:
+                  description: Some information about the rule.
+                  oneOf:
+                    - type: string
+                    - $ref: ../../../../StackVariable.yml
+                skip:
+                  description: A boolean that indicates if the rule should be active or skipped.
+                  oneOf:
+                    - type: boolean
+                    - $ref: ../../../../StackVariable.yml
+                type:
+                  description: A string that describes if the role should allow or deny traffic based on the conditions.
+                  oneOf:
+                    - type: string
+                      enum:
+                        - allow
+                        - deny
+                    - $ref: ../../../../StackVariable.yml
+                match:
+                  description: A string that describes if both attributes need to be true (match all) or if only one of the conditions needs to be true (match any).
+                  oneOf:
+                    - type: string
+                      enum:
+                        - any
+                        - all
+                    - $ref: ../../../../StackVariable.yml
+                conditions:
+                  description: An array of the specific conditions for the rule.
+                  oneOf:
+                    - type: array
+                      items:
+                        oneOf:
+                          - type: object
+                            required:
+                              - type
+                              - operator
+                              - value
+                            properties:
+                              type:
+                                description: A string that describes the match type for the condition.
+                                oneOf:
+                                  - type: string
+                                    enum:
+                                      - ip-match
+                                      - geo-match
+                                      - url-match
+                                      - method-match
+                                      - header-match
+                                  - $ref: ../../../../StackVariable.yml
+                              operator:
+                                description: A string that indicates the range of values relative to the value property.
+                                oneOf:
+                                  - type: string
+                                    enum:
+                                      - "=="
+                                      - "!="
+                                      - ">"
+                                      - "<"
+                                      - ">="
+                                      - "<="
+                                  - $ref: ../../../../StackVariable.yml
+                              value:
+                                description: The value corresponding to the condition type.
+                                examples:
+                                  - "0.0.0.0/0"
+                                oneOf:
+                                  - type: string
+                                  - $ref: ../../../../StackVariable.yml
+                          - $ref: ../../../../StackVariable.yml
+                    - $ref: ../../../../StackVariable.yml
+            - $ref: ../../../../StackVariable.yml
+      - $ref: ../../../../StackVariable.yml
