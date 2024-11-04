@@ -26,9 +26,11 @@ post:
             mapping:
               start: ../../../components/schemas/vms/tasks/VirtualMachineStartTask.yml
               stop: ../../../components/schemas/vms/tasks/VirtualMachineStopTask.yml
+              reconfigure: ../../../components/schemas/vms/tasks/VirtualMachineReconfigureTask.yml
           oneOf:
             - $ref: ../../../components/schemas/vms/tasks/VirtualMachineStartTask.yml
             - $ref: ../../../components/schemas/vms/tasks/VirtualMachineStopTask.yml
+            - $ref: ../../../components/schemas/vms/tasks/VirtualMachineReconfigureTask.yml
   responses:
     202:
       description: Returns a job descriptor.
