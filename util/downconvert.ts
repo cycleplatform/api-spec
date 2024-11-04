@@ -4,6 +4,10 @@ type SchemaObject = {
   oneOf?: SchemaObject[];
   anyOf?: SchemaObject[];
   allOf?: SchemaObject[];
+  discriminator?: {
+    propertyName: string;
+    mapping?: Record<string, string>;
+  };
   properties?: Record<string, SchemaObject>;
   items?: SchemaObject;
   [key: string]: any;
@@ -184,7 +188,12 @@ function adjustSchema(
       if (
         schema[keyword] &&
         schema[keyword]!.length >= 2 &&
-        schema[keyword]!.every((entry) => typeof entry.type === "string" && entry.type === schema[keyword]![0].type)
+        schema[keyword]!.every(
+          (entry) =>
+            typeof entry.type === "string" &&
+            entry.type === schema[keyword]![0].type
+        ) &&
+        !schema.discriminator
       ) {
         schema.type = schema[keyword]![0].type;
         delete schema[keyword];
@@ -194,12 +203,16 @@ function adjustSchema(
       if (
         schema[keyword] &&
         schema[keyword]!.length >= 2 &&
-        schema[keyword]!.every((entry) =>
-          entry.$ref &&
-          schemaMap[entry.$ref.split("/").pop()!]?.type === schemaMap[schema[keyword]![0].$ref.split("/").pop()!]?.type
-        )
+        schema[keyword]!.every(
+          (entry) =>
+            entry.$ref &&
+            schemaMap[entry.$ref.split("/").pop()!]?.type ===
+              schemaMap[schema[keyword]![0].$ref.split("/").pop()!]?.type
+        ) &&
+        !schema.discriminator
       ) {
-        schema.type = schemaMap[schema[keyword]![0].$ref.split("/").pop()!]?.type;
+        schema.type =
+          schemaMap[schema[keyword]![0].$ref.split("/").pop()!]?.type;
         delete schema[keyword];
       }
 
@@ -207,10 +220,13 @@ function adjustSchema(
       if (
         schema[keyword] &&
         schema[keyword]!.length >= 2 &&
-        schema[keyword]!.every((entry) =>
-          (entry.$ref && schemaMap[entry.$ref.split("/").pop()!]?.type === "string") ||
-          (typeof entry.type === "string" && entry.type === "string")
-        )
+        schema[keyword]!.every(
+          (entry) =>
+            (entry.$ref &&
+              schemaMap[entry.$ref.split("/").pop()!]?.type === "string") ||
+            (typeof entry.type === "string" && entry.type === "string")
+        ) &&
+        !schema.discriminator
       ) {
         schema.type = "string";
         delete schema[keyword];
