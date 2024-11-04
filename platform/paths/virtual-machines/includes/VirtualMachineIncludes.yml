@@ -16,3 +16,7 @@ properties:
     type: object
     additionalProperties:
       $ref: ../../../../components/schemas/infrastructure/clusters/Cluster.yml
+  containers:
+    type: object
+    additionalProperties:
+      $ref: ../../../../components/schemas/containers/Container.yml
