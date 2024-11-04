@@ -92,130 +92,141 @@ export function downconvertOpenAPI31To30(spec: OpenAPISpec31): OpenAPISpec30 {
   return convertedSpec;
 }
 
-function adjustSchema(schema: SchemaObject, schemaMap: Record<string, SchemaObject>): void {
-    // Remove unsupported properties
-    delete schema.$schema;
-    delete schema.$id;
-    delete schema.$comment;
-    delete schema.unevaluatedProperties;
-    delete schema.patternProperties;
-    delete schema.contentMediaType;
-    delete schema.contentEncoding;
-  
-    // Handle 'const' by converting it to 'enum'
-    if (schema.const !== undefined) {
-      schema.enum = [schema.const];
-      delete schema.const;
-    }
-  
-    // Handle anyOf/oneOf
-    ['anyOf', 'oneOf'].forEach(keyword => {
-      if (schema[keyword]) {
-        let hasNullType = false;
-  
-        const filteredSchemas = schema[keyword].map(entry => {
-          if (entry.$ref) {
-            return entry; // Keep the $ref as-is, no need for allOf if there's no null handling
-          } else if (entry.type === 'null') {
-            hasNullType = true;
-            return undefined; // We'll handle null types separately
-          }
-          return entry;
-        }).filter(Boolean);
-  
-        if (hasNullType) {
-          schema.nullable = true;
-        }
-  
-        if (filteredSchemas.length === 1) {
-          // If there's only one schema left, use it directly
-          Object.assign(schema, filteredSchemas[0]);
-          delete schema[keyword];
-        } else if (filteredSchemas.length > 1) {
-          schema[keyword] = filteredSchemas;
-          delete schema.type; // Remove the base type if using anyOf/oneOf
-        }
-      }
-    });
-  
-    // Handle standalone $ref with nullable
-    if (schema.$ref && schema.nullable) {
-      schema.allOf = [{ $ref: schema.$ref }];
-      delete schema.$ref;
-    }
-  
-    // Handle type as an array including 'null'
-    if (Array.isArray(schema.type)) {
-      if (schema.type.includes('null')) {
-        const nonNullTypes = schema.type.filter(t => t !== 'null');
-        if (nonNullTypes.length === 1) {
-          schema.type = nonNullTypes[0];
-          schema.nullable = true;
-        } else {
-          schema.anyOf = nonNullTypes.map(type => ({ type }));
-          schema.anyOf.push({ type: nonNullTypes[0], nullable: true });
-          delete schema.type;
-        }
-      } else if (schema.type.length === 1) {
-        schema.type = schema.type[0]; // Reduce single-type array to a single value
-      }
-    } else if (schema.type === 'null') {
-      schema.type = 'object';
+function adjustSchema(
+  schema: SchemaObject,
+  schemaMap: Record<string, SchemaObject>
+): void {
+  // Remove unsupported properties
+  delete schema.$schema;
+  delete schema.$id;
+  delete schema.$comment;
+  delete schema.unevaluatedProperties;
+  delete schema.patternProperties;
+  delete schema.contentMediaType;
+  delete schema.contentEncoding;
+
+  // Handle 'const' by converting it to 'enum'
+  if (schema.const !== undefined) {
+    schema.enum = [schema.const];
+    delete schema.const;
+  }
+
+  // Handle type arrays that include 'null'
+  if (Array.isArray(schema.type) && schema.type.includes("null")) {
+    const nonNullTypes = schema.type.filter((t) => t !== "null");
+    if (nonNullTypes.length === 1) {
+      schema.type = nonNullTypes[0];
       schema.nullable = true;
+    } else if (nonNullTypes.length > 1) {
+      schema.anyOf = nonNullTypes.map((type) => ({ type }));
+      schema.anyOf.push({ type: "null" });
+      delete schema.type;
     }
-  
-    // Remove default if null type is removed
-    if (schema.default === null && !schema.nullable && schema.type !== 'null' && !schema.anyOf?.some(entry => entry.type === 'null')) {
-      delete schema.default;
+  } else if (schema.type === "null") {
+    schema.type = "object"; // Default type if only 'null' is specified
+    schema.nullable = true;
+  }
+
+  // Recursively handle `oneOf` or `anyOf` and ensure proper type conversion
+  ["oneOf", "anyOf"].forEach((keyword) => {
+    if (schema[keyword]) {
+      let refEntry: SchemaObject | null = null;
+      let hasNullType = false;
+
+      schema[keyword] = schema[keyword]!.map((entry): SchemaObject => {
+        if (entry.$ref) {
+          refEntry = entry; // Keep track of the $ref entry
+        } else if (entry.type === "null") {
+          hasNullType = true; // Keep track of null type entries
+          return null; // Mark for removal
+        }
+
+        // Recursively adjust nested schemas in oneOf/anyOf
+        adjustSchema(entry, schemaMap);
+
+        return entry;
+      }).filter((entry): entry is SchemaObject => entry !== null);
+
+      // If we have a $ref and a `null` type, merge them into a single nullable reference
+      if (refEntry && hasNullType) {
+        const refSchemaName = refEntry.$ref.split("/").pop()!;
+        const refSchema = schemaMap[refSchemaName];
+
+        // Convert into a single schema with $ref, nullable, and type
+        schema.$ref = refEntry.$ref;
+        schema.nullable = true;
+
+        // Extract type from the referenced schema if available
+        if (refSchema && refSchema.type) {
+          schema.type = refSchema.type;
+        }
+
+        delete schema[keyword]; // Remove `oneOf` or `anyOf` since it's been merged
+      }
+
+      // If only one schema remains after adjustments, merge it back into the parent
+      if (schema[keyword] && schema[keyword].length === 1) {
+        const singleSchema = schema[keyword][0];
+        delete schema[keyword];
+        Object.assign(schema, singleSchema);
+      }
     }
-  
-    // Ensure type is not reintroduced as an array
-    if (Array.isArray(schema.type)) {
-      schema.type = schema.type.length === 1 ? schema.type[0] : schema.type;
-    }
-  
-    // Ensure no unnecessary 'type' in items with oneOf/anyOf
-    if (schema.items && (schema.items.oneOf || schema.items.anyOf)) {
-      delete schema.items.type;
-    }
-  
-    // Convert examples array to single example
-    if (schema.examples && Array.isArray(schema.examples)) {
-      schema.example = schema.examples.join('\n');
-      delete schema.examples;
-    }
-  
-    // Recursively adjust nested schemas
-    if (schema.properties) {
-      Object.values(schema.properties).forEach(propSchema => adjustSchema(propSchema, schemaMap));
-    }
-  
-    if (schema.additionalProperties && typeof schema.additionalProperties === 'object') {
-      adjustSchema(schema.additionalProperties, schemaMap);
-    }
-  
-    if (schema.items && typeof schema.items === 'object') {
-      adjustSchema(schema.items, schemaMap);
-    }
-  
-    // Handle `allOf` schemas
-    if (schema.allOf) {
-      schema.allOf.forEach(entry => adjustSchema(entry, schemaMap));
+  });
+
+  // Recursively adjust nested schemas in properties, additionalProperties, items, allOf
+  if (schema.properties) {
+    Object.values(schema.properties).forEach((propSchema) =>
+      adjustSchema(propSchema, schemaMap)
+    );
+  }
+
+  if (
+    schema.additionalProperties &&
+    typeof schema.additionalProperties === "object"
+  ) {
+    adjustSchema(schema.additionalProperties, schemaMap);
+  }
+
+  if (schema.items && typeof schema.items === "object") {
+    adjustSchema(schema.items, schemaMap);
+  }
+
+  if (schema.allOf) {
+    schema.allOf.forEach((entry) => adjustSchema(entry, schemaMap));
+  }
+
+  // Convert examples array to single example
+  if (schema.examples && Array.isArray(schema.examples)) {
+    schema.example = schema.examples.join("\n");
+    delete schema.examples;
+  }
+
+  // Ensure no type is an array
+  if (Array.isArray(schema.type)) {
+    if (schema.type.length === 1) {
+      schema.type = schema.type[0]; // If there's only one type, convert it to a string
+    } else {
+      schema.anyOf = schema.type.map((type) => ({ type }));
+      delete schema.type;
     }
   }
-  
-  function adjustContent(content: ContentObject, schemaMap: Record<string, SchemaObject>): void {
-    for (const contentType in content) {
-      const mediaTypeObject = content[contentType];
-      if (mediaTypeObject.schema) {
-        adjustSchema(mediaTypeObject.schema, schemaMap);
-      }
-      if (mediaTypeObject.examples && Array.isArray(mediaTypeObject.examples)) {
-        mediaTypeObject.example = mediaTypeObject.examples.join('\n');
-        delete mediaTypeObject.examples;
-      }
+}
+
+function adjustContent(
+  content: ContentObject,
+  schemaMap: Record<string, SchemaObject>
+): void {
+  for (const contentType in content) {
+    const mediaTypeObject = content[contentType];
+    if (mediaTypeObject.schema) {
+      adjustSchema(mediaTypeObject.schema, schemaMap);
+    }
+    if (mediaTypeObject.examples && Array.isArray(mediaTypeObject.examples)) {
+      mediaTypeObject.example = mediaTypeObject.examples.join("\n");
+      delete mediaTypeObject.examples;
     }
   }
+}
 
 import { promises as fs } from "fs";
 import path from "path";
