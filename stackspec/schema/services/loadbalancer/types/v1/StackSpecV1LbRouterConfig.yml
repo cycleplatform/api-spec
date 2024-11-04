@@ -95,7 +95,6 @@ properties:
               - type: integer
               - $ref: ../../../../StackVariable.yml
           destination_prioritization:
-            default: null
             oneOf:
               - type: string
                 description: >

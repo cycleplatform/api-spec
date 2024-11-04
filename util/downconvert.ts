@@ -56,7 +56,7 @@ export function downconvertOpenAPI31To30(spec: OpenAPISpec31): OpenAPISpec30 {
   const schemaMap: Record<string, SchemaObject> =
     convertedSpec.components?.schemas || {};
 
-  // Adjust schema properties
+  // Adjust schema properties in components
   if (convertedSpec.components?.schemas) {
     for (const schemaName in convertedSpec.components.schemas) {
       const schema = convertedSpec.components.schemas[schemaName];
@@ -75,15 +75,28 @@ export function downconvertOpenAPI31To30(spec: OpenAPISpec31): OpenAPISpec30 {
       const pathItem = convertedSpec.paths[path];
       for (const method in pathItem) {
         const operation = pathItem[method];
+
+        // Handle requestBody content
         if (operation.requestBody?.content) {
           adjustContent(operation.requestBody.content, schemaMap);
         }
+
+        // Handle response content
         if (operation.responses) {
           for (const response in operation.responses) {
             if (operation.responses[response]?.content) {
               adjustContent(operation.responses[response].content!, schemaMap);
             }
           }
+        }
+
+        // Handle parameters in each operation
+        if (operation.parameters) {
+          operation.parameters.forEach((parameter) => {
+            if (parameter.schema) {
+              adjustSchema(parameter.schema, schemaMap);
+            }
+          });
         }
       }
     }
@@ -104,6 +117,9 @@ function adjustSchema(
   delete schema.patternProperties;
   delete schema.contentMediaType;
   delete schema.contentEncoding;
+
+  // Remove examples property
+  delete schema.examples;
 
   // Handle 'const' by converting it to 'enum'
   if (schema.const !== undefined) {
@@ -133,11 +149,11 @@ function adjustSchema(
       let refEntry: SchemaObject | null = null;
       let hasNullType = false;
 
-      schema[keyword] = schema[keyword]!.map((entry): SchemaObject => {
+      schema[keyword] = schema[keyword]!.map((entry): SchemaObject | null => {
         if (entry.$ref) {
-          refEntry = entry; // Keep track of the $ref entry
+          refEntry = entry;
         } else if (entry.type === "null") {
-          hasNullType = true; // Keep track of null type entries
+          hasNullType = true;
           return null; // Mark for removal
         }
 
@@ -149,11 +165,11 @@ function adjustSchema(
 
       // If we have a $ref and a `null` type, merge them into a single nullable reference
       if (refEntry && hasNullType) {
-        const refSchemaName = refEntry.$ref.split("/").pop()!;
+        const refSchemaName = (refEntry as SchemaObject).$ref.split("/").pop()!;
         const refSchema = schemaMap[refSchemaName];
 
         // Convert into a single schema with $ref, nullable, and type
-        schema.$ref = refEntry.$ref;
+        schema.$ref = (refEntry as SchemaObject).$ref;
         schema.nullable = true;
 
         // Extract type from the referenced schema if available
@@ -162,6 +178,42 @@ function adjustSchema(
         }
 
         delete schema[keyword]; // Remove `oneOf` or `anyOf` since it's been merged
+      }
+
+      // Flatten if `oneOf` contains only primitive types that are identical
+      if (
+        schema[keyword] &&
+        schema[keyword]!.length >= 2 &&
+        schema[keyword]!.every((entry) => typeof entry.type === "string" && entry.type === schema[keyword]![0].type)
+      ) {
+        schema.type = schema[keyword]![0].type;
+        delete schema[keyword];
+      }
+
+      // Flatten if `oneOf` contains only `$ref` entries that resolve to the same primitive type
+      if (
+        schema[keyword] &&
+        schema[keyword]!.length >= 2 &&
+        schema[keyword]!.every((entry) =>
+          entry.$ref &&
+          schemaMap[entry.$ref.split("/").pop()!]?.type === schemaMap[schema[keyword]![0].$ref.split("/").pop()!]?.type
+        )
+      ) {
+        schema.type = schemaMap[schema[keyword]![0].$ref.split("/").pop()!]?.type;
+        delete schema[keyword];
+      }
+
+      // Flatten if `oneOf` contains mixed `$ref` and primitive types that are identical
+      if (
+        schema[keyword] &&
+        schema[keyword]!.length >= 2 &&
+        schema[keyword]!.every((entry) =>
+          (entry.$ref && schemaMap[entry.$ref.split("/").pop()!]?.type === "string") ||
+          (typeof entry.type === "string" && entry.type === "string")
+        )
+      ) {
+        schema.type = "string";
+        delete schema[keyword];
       }
 
       // If only one schema remains after adjustments, merge it back into the parent
@@ -173,11 +225,11 @@ function adjustSchema(
     }
   });
 
-  // Recursively adjust nested schemas in properties, additionalProperties, items, allOf
+  // Recursively adjust nested schemas in properties, additionalProperties, items, allOf, etc.
   if (schema.properties) {
-    Object.values(schema.properties).forEach((propSchema) =>
-      adjustSchema(propSchema, schemaMap)
-    );
+    Object.entries(schema.properties).forEach(([key, propSchema]) => {
+      adjustSchema(propSchema, schemaMap);
+    });
   }
 
   if (
@@ -195,11 +247,18 @@ function adjustSchema(
     schema.allOf.forEach((entry) => adjustSchema(entry, schemaMap));
   }
 
-  // Convert examples array to single example
-  if (schema.examples && Array.isArray(schema.examples)) {
-    schema.example = schema.examples.join("\n");
-    delete schema.examples;
-  }
+  // Adjust deeply nested `examples` in properties, items, allOf, oneOf, anyOf
+  ["properties", "items", "allOf", "oneOf", "anyOf"].forEach((keyword) => {
+    if (schema[keyword]) {
+      if (Array.isArray(schema[keyword])) {
+        schema[keyword].forEach((nestedSchema) =>
+          adjustSchema(nestedSchema, schemaMap)
+        );
+      } else if (typeof schema[keyword] === "object") {
+        adjustSchema(schema[keyword], schemaMap);
+      }
+    }
+  });
 
   // Ensure no type is an array
   if (Array.isArray(schema.type)) {
