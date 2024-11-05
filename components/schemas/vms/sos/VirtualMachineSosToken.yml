@@ -1,0 +1,41 @@
+title: VirtualMachineSosToken
+type: object
+description: A token used to connect to a virtual machine using serial-over-SSH.
+required:
+  - id
+  - virtual_machine_id
+  - hub_id
+  - creator
+  - events
+  - valid
+properties:
+  id:
+    "$ref": "../../ID.yml"
+  virtual_machine_id:
+    type: string
+    description: The ID of the virtual machine being connected to.
+  hub_id:
+    "$ref": "../../HubID.yml"
+  creator:
+    "$ref": "../../creators/CreatorScope.yml"
+  events:
+    title: SSHTokenEvents
+    type: object
+    description: A collection of timestamps for each event in the serial-over-SSH token's lifetime.
+    required:
+      - created
+      - used
+      - expires
+    properties:
+      created:
+        description: The timestamp of when the serial-over-SSH token was created.
+        "$ref": "../../DateTime.yml"
+      used:
+        description: The timestamp of when the serial-over-SSH token was used.
+        "$ref": "../../DateTime.yml"
+      expires:
+        description: The timestamp of when the serial-over-SSH token expires.
+        "$ref": "../../DateTime.yml"
+  valid:
+    type: boolean
+    description: A boolean where true represents the token as being a valid token to be used for connection.
