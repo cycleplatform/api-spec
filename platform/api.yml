@@ -695,6 +695,8 @@ paths:
     $ref: "./paths/virtual-machines/tasks.yml"
   "/v1/virtual-machines/images/base":
     $ref: "./paths/virtual-machines/images/base.yml"
+  "/v1/virtual-machines/{virtualMachineId}/sos":
+    $ref: paths/virtual-machines/sos/sos.yml
 
   # --Utility
   "/v1/utils/resource/lookup":

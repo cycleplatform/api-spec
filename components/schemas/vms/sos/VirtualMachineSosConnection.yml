@@ -1,0 +1,16 @@
+title: VirtualMachineSosConnection
+type: object
+description: Connection details for connecting to a virtual machine using serial-over-SSH.
+required:
+  - token
+  - secret
+  - address
+properties:
+  token:
+    $ref: VirtualMachineSosToken.yml
+  secret:
+    type: string
+    description: The secret used to connect.
+  address:
+    type: string
+    description: The serial-over-SSH connection address.

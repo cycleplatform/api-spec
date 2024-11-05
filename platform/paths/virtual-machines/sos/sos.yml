@@ -1,0 +1,69 @@
+get:
+  operationId: "generateVirtualMachineSosCredentials"
+  summary: Generate Virtual Machine Serial-Over-SSH Credentials
+  description: |
+    Generates credentials for connecting to the serial console of a virtual machine via SSH.
+
+    Requires the `virtual-machines-console` capability.
+  tags:
+    - Virtual Machines
+  parameters:
+    - name: virtualMachineId
+      description: The ID of the virtual machine.
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    200:
+      description: Returns a serial-over-sos connection response.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/vms/sos/VirtualMachineSosConnection.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
+
+delete:
+  operationId: "expireVirtualMachineSosCredentials"
+  tags:
+    - Virtual Machines
+  parameters:
+    - name: virtualMachineId
+      description: The ID of the virtual machine.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Expire Serial-Over-SSH Credentials
+  description: |
+    Instantly expires any serial-over-SSH credentials generated for this virtual machine.
+
+    Requires the `virtual-machines-console` capability.
+  responses:
+    200:
+      description: Returns the number of tokens removed.
+      content:
+        application/json:
+          schema:
+            title: ExpireSSHTokenResponse
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: object
+                description: The number of tokens expired.
+                required:
+                  - tokens
+                properties:
+                  tokens:
+                    type: integer
+                    description: The number of tokens expired.
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
