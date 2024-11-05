@@ -5,7 +5,6 @@ required:
   - enable
   - container_id
   - high_availability
-  - config
 properties:
   enable:
     type: boolean

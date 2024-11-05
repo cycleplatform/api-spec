@@ -20,5 +20,4 @@ properties:
     oneOf:
       - $ref: ./haproxy/StackSpecHaProxyConfig.yml
       - $ref: ./v1/StackSpecV1LbConfig.yml
-
       - type: "null"

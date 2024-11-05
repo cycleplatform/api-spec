@@ -116,7 +116,8 @@ class Schema {
   adjust(schemaMap: Record<string, Schema>) {
     this.removeUnsupportedProperties();
     this.handleConstAsEnum();
-    this.flattenAnyOfOrOneOfWithRefAndNull(schemaMap);
+    this.handleAnyOfWithNull();
+    this.handleOneOfWithNull();
     this.flattenIdenticalReferences(schemaMap);
     this.adjustNestedSchemas(schemaMap);
   }
@@ -141,40 +142,94 @@ class Schema {
     }
   }
 
-  // Handle the specific case where `anyOf` or `oneOf` contains a `$ref` and `null`
-  flattenAnyOfOrOneOfWithRefAndNull(schemaMap: Record<string, Schema>) {
-    const keywords = ["oneOf", "anyOf"] as const;
+  // Handle `anyOf` containing `null` and a reference or another type
+  handleAnyOfWithNull() {
+    if (this.anyOf) {
+      let hasNullType = false;
+      let nonNullEntry: Schema | null = null;
 
-    keywords.forEach((keyword) => {
-      if (this[keyword]) {
-        let hasNullType = false;
-        let refEntry: Schema | null = null;
-
-        // Check for `$ref` and `null` type in `oneOf` or `anyOf`
-        this[keyword]!.forEach((entry) => {
-          if (entry.type === "null") {
-            hasNullType = true;
-          } else if (entry.$ref) {
-            refEntry = entry;
-          }
-        });
-
-        // If both `$ref` and `null` are present, convert to `allOf` with `nullable: true`
-        if (refEntry && hasNullType) {
-          this.nullable = true;
-          this.allOf = [refEntry];
-          delete this[keyword];
+      // Check for `null` type in `anyOf`
+      this.anyOf.forEach((entry) => {
+        if (entry.type === "null") {
+          hasNullType = true;
+        } else {
+          nonNullEntry = entry;
         }
+      });
+
+      // If both `null` and another type are present, make the schema nullable and use `allOf` for reference
+      if (hasNullType && nonNullEntry) {
+        this.nullable = true;
+
+        if (nonNullEntry.$ref) {
+          // Convert `anyOf` to `allOf` with the reference
+          this.allOf = [{ $ref: nonNullEntry.$ref }];
+        } else {
+          // Otherwise, retain all properties of the non-null entry
+          Object.assign(this, nonNullEntry);
+        }
+
+        delete this.anyOf;
       }
-    });
+    }
+  }
+
+  // Handle `oneOf` containing `null` and another type
+  handleOneOfWithNull() {
+    // Do not modify `oneOf` if a discriminator is present
+    if (this.discriminator) {
+      return;
+    }
+
+    if (this.oneOf) {
+      let hasNullType = false;
+      let nonNullEntry: Schema | null = null;
+
+      // Iterate through the `oneOf` entries
+      this.oneOf.forEach((entry) => {
+        if (entry.type === "null") {
+          hasNullType = true;
+        } else {
+          nonNullEntry = entry;
+        }
+      });
+
+      // If both `null` and another type are present
+      if (hasNullType && nonNullEntry) {
+        // Set nullable to true
+        this.nullable = true;
+
+        // Retain all properties of the non-null entry (type, enum, description, etc.)
+        for (const key in nonNullEntry) {
+          if (key !== "type" && key !== "nullable") {
+            (this as any)[key] = nonNullEntry[key];
+          }
+        }
+
+        // Assign the type of the non-null entry
+        this.type = nonNullEntry.type;
+
+        // If there's an enum, retain it
+        if (nonNullEntry.enum) {
+          this.enum = nonNullEntry.enum;
+        }
+
+        delete this.oneOf;
+      }
+    }
   }
 
   // Flatten `oneOf` or `anyOf` if all `$ref` point to the same primitive type
   flattenIdenticalReferences(schemaMap: Record<string, Schema>) {
+    // Do not modify `oneOf` or `anyOf` if a discriminator is present
+    if (this.discriminator) {
+      return;
+    }
+
     const keywords = ["oneOf", "anyOf"] as const;
 
     keywords.forEach((keyword) => {
-      if (this[keyword] && !this.discriminator) {
+      if (this[keyword]) {
         const entries = this[keyword]!;
         let primitiveType: string | null = null;
         let hasNullType = false;
@@ -238,8 +293,11 @@ class Schema {
     keywords.forEach((keyword) => {
       if (this[keyword]) {
         this[keyword] = this[keyword]!.map((entry) => {
-          entry.adjust(schemaMap);
-          return entry;
+          // Ensure entry is converted to a Schema instance before adjustment
+          const schemaEntry =
+            entry instanceof Schema ? entry : new Schema(entry);
+          schemaEntry.adjust(schemaMap);
+          return schemaEntry;
         });
       }
     });
