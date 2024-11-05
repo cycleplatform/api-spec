@@ -11,19 +11,9 @@ properties:
       - $ref: "../../ID.yml"
       - type: "null"
   extension:
-    type:
-      - object
-      - "null"
-    description: An image that is packaged with Cycle directly, such as the global load balancer.
-    required:
-      - identifier
-    properties:
-      identifier:
-        type: string
-        enum:
-          - "virtual-machine-v1"
-      id:
-        $ref: ../../ID.yml
+    anyOf: 
+      - $ref: ../extension/ContainerExtension.yml
+      - type: "null"
   service:
     anyOf:
       - $ref: ../ServiceContainerIdentifier.yml

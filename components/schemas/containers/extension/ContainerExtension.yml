@@ -1,0 +1,14 @@
+title: ContainerExtension
+type:
+  - object
+  - "null"
+description: Reference to container functionality that is added by the Cycle platform.
+required:
+  - identifier
+properties:
+  identifier:
+    type: string
+    enum:
+      - "virtual-machine-v1"
+  id:
+    $ref: ../../ID.yml
