@@ -33,6 +33,7 @@ get:
             - creators
             - environments
             - clusters
+            - containers
     - name: filter
       in: query
       style: deepObject
@@ -183,7 +184,7 @@ post:
               type: string
               description: The size of the base disk. Must be between 10G and 100G.
               examples:
-                - "10G" 
+                - "10G"
             annotations:
               type:
                 - object
