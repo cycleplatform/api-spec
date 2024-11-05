@@ -18,9 +18,9 @@ properties:
       Basic information about the environment this virtual machine is in.
     properties:
       id:
-        $ref: ../../ID.yml
+        $ref: ../ID.yml
       cluster:
-        $ref: ../../Identifier.yml
+        $ref: ../Identifier.yml
         description: The cluster this environment is associated with.
     required:
       - id
