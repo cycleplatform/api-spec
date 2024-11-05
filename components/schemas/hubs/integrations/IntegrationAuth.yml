@@ -1,5 +1,4 @@
 title: IntegrationAuth
-x-ogen-name: HubIntegrationAuth
 type: object
 properties:
   region:

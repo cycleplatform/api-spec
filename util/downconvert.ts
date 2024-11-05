@@ -1,43 +1,3 @@
-type SchemaObject = {
-  type?: string | string[];
-  nullable?: boolean;
-  oneOf?: SchemaObject[];
-  anyOf?: SchemaObject[];
-  allOf?: SchemaObject[];
-  discriminator?: {
-    propertyName: string;
-    mapping?: Record<string, string>;
-  };
-  properties?: Record<string, SchemaObject>;
-  items?: SchemaObject;
-  [key: string]: any;
-};
-
-type MediaTypeObject = {
-  schema?: SchemaObject;
-  [key: string]: any;
-};
-
-type ContentObject = Record<string, MediaTypeObject>;
-
-type OperationObject = {
-  requestBody?: {
-    content?: ContentObject;
-    [key: string]: any;
-  };
-  responses?: Record<string, { content?: ContentObject; [key: string]: any }>;
-  [key: string]: any;
-};
-
-type PathItemObject = {
-  [method: string]: OperationObject;
-};
-
-type ComponentsObject = {
-  schemas?: Record<string, SchemaObject>;
-  [key: string]: any;
-};
-
 type OpenAPISpec31 = {
   openapi: "3.1.0";
   components?: ComponentsObject;
@@ -53,24 +13,260 @@ type OpenAPISpec30 = {
   [key: string]: any;
 };
 
+type ComponentsObject = {
+  schemas?: Record<string, SchemaObject>;
+  [key: string]: any;
+};
+
+type PathItemObject = {
+  [method: string]: OperationObject;
+};
+
+type OperationObject = {
+  requestBody?: {
+    content?: ContentObject;
+    [key: string]: any;
+  };
+  responses?: Record<string, { content?: ContentObject; [key: string]: any }>;
+  parameters?: Array<{
+    schema?: SchemaObject;
+    [key: string]: any;
+  }>;
+  [key: string]: any;
+};
+
+type ContentObject = Record<string, MediaTypeObject>;
+
+type MediaTypeObject = {
+  schema?: SchemaObject;
+  [key: string]: any;
+};
+
+type SchemaObject = {
+  type?: string | string[];
+  nullable?: boolean;
+  oneOf?: SchemaObject[];
+  anyOf?: SchemaObject[];
+  allOf?: SchemaObject[];
+  $ref?: string;
+  properties?: Record<string, SchemaObject>;
+  items?: SchemaObject;
+  required?: string[];
+  [key: string]: any;
+};
+
+class Schema {
+  type?: string;
+  nullable?: boolean;
+  oneOf?: Schema[];
+  anyOf?: Schema[];
+  allOf?: Schema[];
+  $ref?: string;
+  properties?: Record<string, Schema>;
+  items?: Schema;
+  required?: string[];
+  additionalProperties?: Schema;
+  discriminator?: {
+    propertyName: string;
+    mapping?: Record<string, string>;
+  };
+  [key: string]: any;
+
+  constructor(schema: Partial<SchemaObject>) {
+    Object.assign(this, schema);
+
+    if (Array.isArray(schema.type)) {
+      this.handleTypeArray(schema.type);
+    }
+
+    if (schema.oneOf) {
+      this.oneOf = schema.oneOf.map((entry) => new Schema(entry));
+    }
+    if (schema.anyOf) {
+      this.anyOf = schema.anyOf.map((entry) => new Schema(entry));
+    }
+    if (schema.allOf) {
+      this.allOf = schema.allOf.map((entry) => new Schema(entry));
+    }
+    if (schema.properties) {
+      this.properties = {};
+      for (const key in schema.properties) {
+        this.properties[key] = new Schema(schema.properties[key]);
+      }
+    }
+    if (schema.items) {
+      this.items = new Schema(schema.items);
+    }
+    if (schema.additionalProperties) {
+      this.additionalProperties = new Schema(schema.additionalProperties);
+    }
+  }
+
+  // Handle `type` when provided as an array
+  handleTypeArray(types: string[]) {
+    if (types.includes("null")) {
+      this.nullable = true;
+      this.type = types.filter((type) => type !== "null")[0] || "object";
+    } else {
+      this.type = types[0];
+    }
+  }
+
+  // Method to adjust the schema for OpenAPI 3.0.3 compatibility
+  adjust(schemaMap: Record<string, Schema>) {
+    this.removeUnsupportedProperties();
+    this.handleConstAsEnum();
+    this.flattenAnyOfOrOneOfWithRefAndNull(schemaMap);
+    this.flattenIdenticalReferences(schemaMap);
+    this.adjustNestedSchemas(schemaMap);
+  }
+
+  // Remove unsupported properties in OpenAPI 3.0.3
+  removeUnsupportedProperties() {
+    delete this.$schema;
+    delete this.$id;
+    delete this.$comment;
+    delete this.unevaluatedProperties;
+    delete this.patternProperties;
+    delete this.contentMediaType;
+    delete this.contentEncoding;
+    delete this.examples; // Remove the `examples` property
+  }
+
+  // Handle `const` by converting it to `enum`
+  handleConstAsEnum() {
+    if (this.const !== undefined) {
+      this.enum = [this.const];
+      delete this.const;
+    }
+  }
+
+  // Handle the specific case where `anyOf` or `oneOf` contains a `$ref` and `null`
+  flattenAnyOfOrOneOfWithRefAndNull(schemaMap: Record<string, Schema>) {
+    const keywords = ["oneOf", "anyOf"] as const;
+
+    keywords.forEach((keyword) => {
+      if (this[keyword]) {
+        let hasNullType = false;
+        let refEntry: Schema | null = null;
+
+        // Check for `$ref` and `null` type in `oneOf` or `anyOf`
+        this[keyword]!.forEach((entry) => {
+          if (entry.type === "null") {
+            hasNullType = true;
+          } else if (entry.$ref) {
+            refEntry = entry;
+          }
+        });
+
+        // If both `$ref` and `null` are present, convert to `allOf` with `nullable: true`
+        if (refEntry && hasNullType) {
+          this.nullable = true;
+          this.allOf = [refEntry];
+          delete this[keyword];
+        }
+      }
+    });
+  }
+
+  // Flatten `oneOf` or `anyOf` if all `$ref` point to the same primitive type
+  flattenIdenticalReferences(schemaMap: Record<string, Schema>) {
+    const keywords = ["oneOf", "anyOf"] as const;
+
+    keywords.forEach((keyword) => {
+      if (this[keyword] && !this.discriminator) {
+        const entries = this[keyword]!;
+        let primitiveType: string | null = null;
+        let hasNullType = false;
+
+        // Check each entry in `oneOf` or `anyOf`
+        entries.forEach((entry) => {
+          if (entry.$ref) {
+            const refSchemaName = entry.$ref.split("/").pop()!;
+            const refSchema = schemaMap[refSchemaName];
+
+            if (refSchema) {
+              if (typeof refSchema.type === "string") {
+                if (!primitiveType) {
+                  primitiveType = refSchema.type;
+                } else if (primitiveType !== refSchema.type) {
+                  primitiveType = null; // Different types found, cannot flatten
+                }
+              }
+            }
+          } else if (entry.type === "null") {
+            hasNullType = true;
+          } else if (typeof entry.type === "string") {
+            if (!primitiveType) {
+              primitiveType = entry.type;
+            } else if (primitiveType !== entry.type) {
+              primitiveType = null; // Different types found, cannot flatten
+            }
+          }
+        });
+
+        // If all references point to the same primitive type
+        if (primitiveType) {
+          this.type = primitiveType;
+          if (hasNullType) {
+            this.nullable = true;
+          }
+          delete this[keyword];
+        }
+      }
+    });
+  }
+
+  // Adjust nested schemas recursively
+  adjustNestedSchemas(schemaMap: Record<string, Schema>) {
+    if (this.properties) {
+      Object.values(this.properties).forEach((property) => {
+        property.adjust(schemaMap);
+      });
+    }
+
+    if (this.items) {
+      this.items.adjust(schemaMap);
+    }
+
+    if (this.additionalProperties) {
+      this.additionalProperties.adjust(schemaMap);
+    }
+
+    // Recursively adjust oneOf, anyOf, allOf entries
+    const keywords = ["oneOf", "anyOf", "allOf"] as const;
+    keywords.forEach((keyword) => {
+      if (this[keyword]) {
+        this[keyword] = this[keyword]!.map((entry) => {
+          entry.adjust(schemaMap);
+          return entry;
+        });
+      }
+    });
+  }
+}
+
+// Function to downconvert OpenAPI 3.1 to 3.0.3
 export function downconvertOpenAPI31To30(spec: OpenAPISpec31): OpenAPISpec30 {
   const convertedSpec: OpenAPISpec30 = { ...spec, openapi: "3.0.1" };
 
   // Map to store schemas for resolving $ref types
-  const schemaMap: Record<string, SchemaObject> =
-    convertedSpec.components?.schemas || {};
+  const schemaMap: Record<string, Schema> = convertedSpec.components?.schemas
+    ? Object.fromEntries(
+        Object.entries(convertedSpec.components.schemas).map(([key, value]) => [
+          key,
+          new Schema(value),
+        ])
+      )
+    : {};
 
   // Adjust schema properties in components
   if (convertedSpec.components?.schemas) {
     for (const schemaName in convertedSpec.components.schemas) {
-      const schema = convertedSpec.components.schemas[schemaName];
-      adjustSchema(schema, schemaMap);
+      const schema = schemaMap[schemaName];
+      schema.adjust(schemaMap);
+      convertedSpec.components.schemas[schemaName] = schema;
     }
-  }
-
-  // Remove or adjust unsupported features
-  if (convertedSpec.webhooks) {
-    delete convertedSpec.webhooks; // Webhooks are not supported in OpenAPI 3.0.1
   }
 
   // Adjust paths
@@ -82,23 +278,39 @@ export function downconvertOpenAPI31To30(spec: OpenAPISpec31): OpenAPISpec30 {
 
         // Handle requestBody content
         if (operation.requestBody?.content) {
-          adjustContent(operation.requestBody.content, schemaMap);
+          Object.values(operation.requestBody.content).forEach((mediaType) => {
+            if (mediaType.schema) {
+              const schema = new Schema(mediaType.schema);
+              schema.adjust(schemaMap);
+              mediaType.schema = schema;
+            }
+          });
         }
 
         // Handle response content
         if (operation.responses) {
           for (const response in operation.responses) {
             if (operation.responses[response]?.content) {
-              adjustContent(operation.responses[response].content!, schemaMap);
+              Object.values(operation.responses[response].content).forEach(
+                (mediaType) => {
+                  if (mediaType.schema) {
+                    const schema = new Schema(mediaType.schema);
+                    schema.adjust(schemaMap);
+                    mediaType.schema = schema;
+                  }
+                }
+              );
             }
           }
         }
 
-        // Handle parameters in each operation
+        // Handle parameters
         if (operation.parameters) {
           operation.parameters.forEach((parameter) => {
             if (parameter.schema) {
-              adjustSchema(parameter.schema, schemaMap);
+              const schema = new Schema(parameter.schema);
+              schema.adjust(schemaMap);
+              parameter.schema = schema;
             }
           });
         }
@@ -107,200 +319,6 @@ export function downconvertOpenAPI31To30(spec: OpenAPISpec31): OpenAPISpec30 {
   }
 
   return convertedSpec;
-}
-
-function adjustSchema(
-  schema: SchemaObject,
-  schemaMap: Record<string, SchemaObject>
-): void {
-  // Remove unsupported properties
-  delete schema.$schema;
-  delete schema.$id;
-  delete schema.$comment;
-  delete schema.unevaluatedProperties;
-  delete schema.patternProperties;
-  delete schema.contentMediaType;
-  delete schema.contentEncoding;
-
-  // Remove examples property
-  delete schema.examples;
-
-  // Handle 'const' by converting it to 'enum'
-  if (schema.const !== undefined) {
-    schema.enum = [schema.const];
-    delete schema.const;
-  }
-
-  // Handle type arrays that include 'null'
-  if (Array.isArray(schema.type) && schema.type.includes("null")) {
-    const nonNullTypes = schema.type.filter((t) => t !== "null");
-    if (nonNullTypes.length === 1) {
-      schema.type = nonNullTypes[0];
-      schema.nullable = true;
-    } else if (nonNullTypes.length > 1) {
-      schema.anyOf = nonNullTypes.map((type) => ({ type }));
-      schema.anyOf.push({ type: "null" });
-      delete schema.type;
-    }
-  } else if (schema.type === "null") {
-    schema.type = "object"; // Default type if only 'null' is specified
-    schema.nullable = true;
-  }
-
-  // Recursively handle `oneOf` or `anyOf` and ensure proper type conversion
-  ["oneOf", "anyOf"].forEach((keyword) => {
-    if (schema[keyword]) {
-      let refEntry: SchemaObject | null = null;
-      let hasNullType = false;
-
-      schema[keyword] = schema[keyword]!.map((entry): SchemaObject | null => {
-        if (entry.$ref) {
-          refEntry = entry;
-        } else if (entry.type === "null") {
-          hasNullType = true;
-          return null; // Mark for removal
-        }
-
-        // Recursively adjust nested schemas in oneOf/anyOf
-        adjustSchema(entry, schemaMap);
-
-        return entry;
-      }).filter((entry): entry is SchemaObject => entry !== null);
-
-      // If we have a $ref and a `null` type, merge them into a single nullable reference
-      if (refEntry && hasNullType) {
-        const refSchemaName = (refEntry as SchemaObject).$ref.split("/").pop()!;
-        const refSchema = schemaMap[refSchemaName];
-
-        // Convert into a single schema with $ref, nullable, and type
-        schema.$ref = (refEntry as SchemaObject).$ref;
-        schema.nullable = true;
-
-        // Extract type from the referenced schema if available
-        if (refSchema && refSchema.type) {
-          schema.type = refSchema.type;
-        }
-
-        delete schema[keyword]; // Remove `oneOf` or `anyOf` since it's been merged
-      }
-
-      // Flatten if `oneOf` contains only primitive types that are identical
-      if (
-        schema[keyword] &&
-        schema[keyword]!.length >= 2 &&
-        schema[keyword]!.every(
-          (entry) =>
-            typeof entry.type === "string" &&
-            entry.type === schema[keyword]![0].type
-        ) &&
-        !schema.discriminator
-      ) {
-        schema.type = schema[keyword]![0].type;
-        delete schema[keyword];
-      }
-
-      // Flatten if `oneOf` contains only `$ref` entries that resolve to the same primitive type
-      if (
-        schema[keyword] &&
-        schema[keyword]!.length >= 2 &&
-        schema[keyword]!.every(
-          (entry) =>
-            entry.$ref &&
-            schemaMap[entry.$ref.split("/").pop()!]?.type ===
-              schemaMap[schema[keyword]![0].$ref.split("/").pop()!]?.type
-        ) &&
-        !schema.discriminator
-      ) {
-        schema.type =
-          schemaMap[schema[keyword]![0].$ref.split("/").pop()!]?.type;
-        delete schema[keyword];
-      }
-
-      // Flatten if `oneOf` contains mixed `$ref` and primitive types that are identical
-      if (
-        schema[keyword] &&
-        schema[keyword]!.length >= 2 &&
-        schema[keyword]!.every(
-          (entry) =>
-            (entry.$ref &&
-              schemaMap[entry.$ref.split("/").pop()!]?.type === "string") ||
-            (typeof entry.type === "string" && entry.type === "string")
-        ) &&
-        !schema.discriminator
-      ) {
-        schema.type = "string";
-        delete schema[keyword];
-      }
-
-      // If only one schema remains after adjustments, merge it back into the parent
-      if (schema[keyword] && schema[keyword].length === 1) {
-        const singleSchema = schema[keyword][0];
-        delete schema[keyword];
-        Object.assign(schema, singleSchema);
-      }
-    }
-  });
-
-  // Recursively adjust nested schemas in properties, additionalProperties, items, allOf, etc.
-  if (schema.properties) {
-    Object.entries(schema.properties).forEach(([key, propSchema]) => {
-      adjustSchema(propSchema, schemaMap);
-    });
-  }
-
-  if (
-    schema.additionalProperties &&
-    typeof schema.additionalProperties === "object"
-  ) {
-    adjustSchema(schema.additionalProperties, schemaMap);
-  }
-
-  if (schema.items && typeof schema.items === "object") {
-    adjustSchema(schema.items, schemaMap);
-  }
-
-  if (schema.allOf) {
-    schema.allOf.forEach((entry) => adjustSchema(entry, schemaMap));
-  }
-
-  // Adjust deeply nested `examples` in properties, items, allOf, oneOf, anyOf
-  ["properties", "items", "allOf", "oneOf", "anyOf"].forEach((keyword) => {
-    if (schema[keyword]) {
-      if (Array.isArray(schema[keyword])) {
-        schema[keyword].forEach((nestedSchema) =>
-          adjustSchema(nestedSchema, schemaMap)
-        );
-      } else if (typeof schema[keyword] === "object") {
-        adjustSchema(schema[keyword], schemaMap);
-      }
-    }
-  });
-
-  // Ensure no type is an array
-  if (Array.isArray(schema.type)) {
-    if (schema.type.length === 1) {
-      schema.type = schema.type[0]; // If there's only one type, convert it to a string
-    } else {
-      schema.anyOf = schema.type.map((type) => ({ type }));
-      delete schema.type;
-    }
-  }
-}
-
-function adjustContent(
-  content: ContentObject,
-  schemaMap: Record<string, SchemaObject>
-): void {
-  for (const contentType in content) {
-    const mediaTypeObject = content[contentType];
-    if (mediaTypeObject.schema) {
-      adjustSchema(mediaTypeObject.schema, schemaMap);
-    }
-    if (mediaTypeObject.examples && Array.isArray(mediaTypeObject.examples)) {
-      mediaTypeObject.example = mediaTypeObject.examples.join("\n");
-      delete mediaTypeObject.examples;
-    }
-  }
 }
 
 import { promises as fs } from "fs";
@@ -343,5 +361,3 @@ async function writeJsonToFile(filePath: string, data: object): Promise<void> {
 readYamlFile("./dist/platform.yml")
   .then((r) => downconvertOpenAPI31To30(r as any))
   .then((spec) => writeJsonToFile("./dist/platform-3.0.3.json", spec));
-
-// downconvertOpenAPI31To30()

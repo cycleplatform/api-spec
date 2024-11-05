@@ -156,6 +156,14 @@ properties:
                 description: Signals that should be sent to the container on shutdown.
                 items:
                   type: string
+                  enum:
+                    - SIGTERM
+                    - SIGINT
+                    - SIGUSR1
+                    - SIGUSR2
+                    - SIGHUB
+                    - SIGKILL
+                    - SIGQUIT
               - $ref: StackVariable.yml
       - $ref: StackVariable.yml
   startup:
