@@ -57,7 +57,9 @@ properties:
       changed:
         $ref: ../DateTime.yml
       current:
-        type: string
+        type: 
+          - string
+          - "null"
         description: The root password.
     required:
       - changed
