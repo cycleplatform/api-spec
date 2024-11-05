@@ -40,6 +40,12 @@ properties:
       image-source:
         description: Associated image source Id
         type: string
+      pipeline:
+        description: Associated pipeline source Id
+        type: string
+      virtual-machine:
+        description: Associated virtual machine source Id
+        type: string
       image:
         description: Associated image Id
         type: string

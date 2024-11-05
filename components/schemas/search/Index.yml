@@ -10,6 +10,8 @@ required:
   - dns_zones
   - stacks
   - servers
+  - pipelines
+  - virtual_machines
 properties:
   generated:
     description: The timestampof when the index was generated
@@ -38,6 +40,14 @@ properties:
     additionalProperties:
       "$ref": "./Component.yml"
   servers:
+    type: object
+    additionalProperties:
+      "$ref": "./Component.yml"
+  pipelines:
+    type: object
+    additionalProperties:
+      "$ref": "./Component.yml"
+  virtual_machines:
     type: object
     additionalProperties:
       "$ref": "./Component.yml"
