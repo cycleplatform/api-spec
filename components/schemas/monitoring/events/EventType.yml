@@ -4,6 +4,8 @@ enum:
   - api.security_violation
   - console.ssh.login
   - console.ssh.login.failed
+  - console.sos.login
+  - console.sos.login.failed
   - container.instance.backup.completed
   - container.instance.backup.failed
   - container.instance.delete.failed

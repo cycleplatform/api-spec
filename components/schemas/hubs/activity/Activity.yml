@@ -339,6 +339,7 @@ properties:
       - virtual-machine.update
       - virtual-machine.task.delete
       - virtual-machine.delete
+      - virtual-machine.sos.login
   time:
     description: A timestamp for when the activity took place.
     "$ref": "../../DateTime.yml"
