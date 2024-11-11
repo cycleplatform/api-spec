@@ -8,10 +8,3 @@ properties:
       - $ref: ../../../Duration.yml
       - type: "null"
     description: The timeout period for graceful shutdown.
-  signals:
-    anyOf:
-      - type: array
-        items:
-          type: string
-      - type: "null"
-    description: Signals to send during the shutdown process.
