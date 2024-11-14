@@ -119,6 +119,8 @@ post:
             public_key:
               type: string
               description: The public key of the SSH key.
+            environment_id:
+              $ref: ../../../../components/schemas/ID.yml
 
   responses:
     201:
