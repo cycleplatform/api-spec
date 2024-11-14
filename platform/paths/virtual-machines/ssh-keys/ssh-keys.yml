@@ -1,0 +1,140 @@
+get:
+  operationId: "getVirtualMachineSshKeys"
+  summary: List Virtual Machine SSH Keys
+  description: Requires the `virtual-machines-ssh-keys-manage` capability.
+  tags:
+    - Virtual Machines
+  parameters:
+    - name: filter
+      in: query
+      style: deepObject
+      required: false
+      description: |
+        ## Filter Field
+        The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
+      schema:
+        type: object
+        properties:
+          identifier:
+            type: string
+            description: |
+              `filter[identifier]=value` List only those SSH keys matching this identifier. May return multiple results.
+          search:
+            type: string
+            description: |
+              `filter[search]=value` Search SSH keys for a value associated with a field.
+          creator:
+            type: string
+            description: |
+              `filter[creator]=account-ID` Filter for SSH keys matching a particular creator, such as `account-<ID>` or `environment-<ID>`.
+          environment:
+            type: string
+            description: |
+              `filter[environment]=ID` Filter SSH keys by environment ID. Submit the ID of the environment you wish to filter for.
+          state:
+            type: string
+            enum:
+              - live
+              - deleting
+              - deleted
+            description: |
+              `filter[state]=value` Filter virtual machines by their current state.
+          range-start:
+            description: The start date from when to pull the virtual machines.
+            $ref: ../../../../components/schemas/DateTime.yml
+          range-end:
+            description: The end date from when to pull the virtual machines.
+            $ref: ../../../../components/schemas/DateTime.yml
+    - name: include
+      in: query
+      required: false
+      description: |
+        A comma-separated list of include values. Included resources will show up under the root document's `include` field.
+        In the case of applying an include to a collection of resources, if multiple resources share the same include, it will only appear once in the return.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - creators
+            - environments
+
+    - $ref: ../../../../components/parameters/SortParam.yml
+    - $ref: ../../../../components/parameters/PageParam.yml
+  responses:
+    200:
+      description: Returns a list of virtual machine SSH keys.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: ../../../../components/schemas/vms/ssh-keys/VirtualMachineSshKey.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
+
+post:
+  operationId: "createVirtualMachineSshKey"
+  summary: Create Virtual Machine SSH Key
+  description: Requires the `virtual-machines-ssh-keys-manage` capability.
+  tags:
+    - Virtual Machines
+  parameters:
+    - name: include
+      in: query
+      required: false
+      description: |
+        A comma-separated list of include values. Included resources will show up under the root document's `include` field.
+        In the case of applying an include to a collection of resources, if multiple resources share the same include, it will only appear once in the return.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - creators
+            - environments
+  requestBody:
+    description: Parameters for creating a new virtual machine SSH key.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - name
+            - environment_id
+            - image
+            - config
+            - lock
+          properties:
+            identifier:
+              $ref: ../../../../components/schemas/Identifier.yml
+            name:
+              type: string
+              description: A user-defined name for the SSH key.
+            public_key:
+              type: string
+              description: The public key of the SSH key.
+            environment_id:
+              $ref: ../../../../components/schemas/ID.yml
+
+  responses:
+    201:
+      description: Returns the newly created SSH key.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/vms/ssh-keys/VirtualMachineSshKey.yml
+              includes:
+                $ref: ../includes/VirtualMachineSshIncludes.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml

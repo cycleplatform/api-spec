@@ -8,7 +8,7 @@ get:
     - name: networkId
       in: path
       required: true
-      description: The ID of the Network.
+      description: The ID of the network.
       schema:
         type: string
     - name: include
@@ -72,7 +72,7 @@ patch:
             - creators
             - environments
   requestBody:
-    description: Parameters for updating a Network.
+    description: Parameters for updating a network.
     content:
       application/json:
         schema:
@@ -80,10 +80,10 @@ patch:
           properties:
             name:
               type: string
-              description: The name of the Network.
+              description: The name of the network.
   responses:
     200:
-      description: Returns a Network.
+      description: Returns a network.
       content:
         application/json:
           schema:
@@ -108,12 +108,12 @@ delete:
     - name: networkId
       in: path
       required: true
-      description: The ID of the Network.
+      description: The ID of the network.
       schema:
         type: string
   responses:
     202:
-      description: Returns a Job Descriptor.
+      description: Returns a job descriptor.
       content:
         application/json:
           schema:

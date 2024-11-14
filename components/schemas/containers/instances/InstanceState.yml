@@ -10,7 +10,6 @@ allOf:
         enum:
           - new
           - starting
-          - reimaging
           - migrating
           - running
           - stopping

@@ -10,7 +10,7 @@ properties:
       - type: integer
       - $ref: StackVariable.yml
   strategy:
-    description: >
+    description: |
       The strategy Cycle will apply when deploying instances of this container.
 
       - ** resource-density **: Cycle will distribute instances across servers to maintain balanced resource usage.
