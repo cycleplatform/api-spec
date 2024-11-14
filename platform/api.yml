@@ -697,6 +697,8 @@ paths:
     $ref: "./paths/virtual-machines/images/base.yml"
   "/v1/virtual-machines/{virtualMachineId}/sos":
     $ref: paths/virtual-machines/sos/sos.yml
+  "/v1/virtual-machines/ssh-keys":
+    $ref: paths/virtual-machines/ssh-keys/ssh-keys.yml
 
   # --Utility
   "/v1/utils/resource/lookup":

@@ -1,0 +1,44 @@
+title: VirtualMachineSshKey
+type: object
+description: |
+  Describes an SSH key used to access a virtual machine.
+properties:
+  id:
+    $ref: ../../ID.yml
+  name:
+    type: string
+    description: A user-defined name for the SSH key.
+  identifier:
+    $ref: ../../Identifier.yml
+  creator:
+    $ref: ../../creators/CreatorScope.yml
+  environment_id:
+    $ref: ../../ID.yml
+  hub_id:
+    $ref: ../../ID.yml
+  state:
+    allOf:
+      - required:
+          - current
+        properties:
+          current:
+            description: The current state of the SSH key.
+            type: string
+            enum:
+              - live
+              - deleting
+              - deleted
+      - $ref: ../../State.yml
+  public_key:
+    type: string
+    description: The public key value of this SSH key.
+required:
+  - id
+  - name
+  - identifier
+  - creator
+  - environment_id
+  - hub_id
+  - state
+  - public_key
+
