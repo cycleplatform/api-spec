@@ -57,13 +57,20 @@ properties:
       changed:
         $ref: ../DateTime.yml
       current:
-        type: 
+        type:
           - string
           - "null"
         description: The root password.
     required:
       - changed
       - current
+  ssh_keys:
+    description: An array of IDs corresponding to SSH keys that have been assigned to this virtual machine.
+    anyOf:
+      - type: array
+        items:
+          $ref: ../ID.yml
+      - type: "null"
   state:
     $ref: ./VirtualMachineState.yml
   events:

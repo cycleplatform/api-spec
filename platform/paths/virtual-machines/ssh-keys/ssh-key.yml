@@ -83,9 +83,6 @@ patch:
             name:
               type: string
               description: The name of the virtual machine SSH key.
-            identifier:
-              type: string
-              description: The identifier of the virtual machine SSH key.
   responses:
     200:
       description: Returns the updated virtual machine SSH key.
