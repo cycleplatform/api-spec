@@ -119,11 +119,6 @@ post:
               description: The public key of the SSH key.
             environment_id:
               $ref: ../../../../components/schemas/ID.yml
-            ssh_keys:
-              description: An array of SSH key IDs that should be applied to this virtual machine.
-              type: array
-              items:
-                $ref: ../../../../components/schemas/ID.yml
 
   responses:
     201:
