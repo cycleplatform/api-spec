@@ -111,8 +111,6 @@ post:
             - config
             - lock
           properties:
-            identifier:
-              $ref: ../../../../components/schemas/Identifier.yml
             name:
               type: string
               description: A user-defined name for the SSH key.
@@ -121,6 +119,11 @@ post:
               description: The public key of the SSH key.
             environment_id:
               $ref: ../../../../components/schemas/ID.yml
+            ssh_keys:
+              description: An array of SSH key IDs that should be applied to this virtual machine.
+              type: array
+              items:
+                $ref: ../../../../components/schemas/ID.yml
 
   responses:
     201:

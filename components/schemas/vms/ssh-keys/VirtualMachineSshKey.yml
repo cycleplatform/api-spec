@@ -8,8 +8,6 @@ properties:
   name:
     type: string
     description: A user-defined name for the SSH key.
-  identifier:
-    $ref: ../../Identifier.yml
   creator:
     $ref: ../../creators/CreatorScope.yml
   environment_id:
