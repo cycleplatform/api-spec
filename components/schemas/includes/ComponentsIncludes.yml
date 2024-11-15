@@ -29,3 +29,4 @@ additionalProperties:
     - $ref: ../pipelines/runs/PipelineRun.yml
     - $ref: ../hubs/roles/Role.yml
     - $ref: ../creators/PublicAccount.yml
+    - $ref: ../vms/ssh-keys/VirtualMachineSshKey.yml
