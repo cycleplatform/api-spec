@@ -109,9 +109,7 @@ post:
           required:
             - name
             - environment_id
-            - image
-            - config
-            - lock
+            - public_key
           properties:
             name:
               type: string
