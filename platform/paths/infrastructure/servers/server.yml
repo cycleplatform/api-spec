@@ -43,6 +43,7 @@ get:
           enum:
             - node
             - instances_count
+            - allocations
   responses:
     200:
       description: Returns a Server.
