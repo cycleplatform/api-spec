@@ -34,3 +34,35 @@ properties:
         description: A boolean where true means the server is online and reachable by the platform.
   instances_count:
     "$ref": "../../StateCountSummary.yml"
+  allocations:
+    type: object
+    required:
+      - cpu_shares
+      - ram
+    properties:
+      cpu_shares:
+        type: object
+        required:
+          - total
+          - allocatable
+          - allocated
+        properties:
+          total:
+            type: integer
+          allocatable:
+            type: integer
+          allocated:
+            type: integer
+      ram:
+        type: object
+        required:
+          - total_mb
+          - allocatable_mb
+          - allocated_mb
+        properties:
+          total_mb:
+            type: integer
+          allocatable_mb:
+            type: integer
+          allocated_mb:
+            type: integer
