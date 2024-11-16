@@ -1,0 +1,129 @@
+get:
+  operationId: "getVirtualMachineSshKey"
+  summary: Get Virtual Machine SSH Key
+  description: |
+    Retrieves a single virtual machine SSH key by ID.
+
+    Requires the `virtual-machines-ssh-keys-manage` capability.
+  tags:
+    - Virtual Machines
+  parameters:
+    - name: sshKeyId
+      description: The ID of the virtual machine SSH key.
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: include
+      in: query
+      required: false
+      description: |
+        A comma-separated list of include values. Included resources will show up under the root document's `include` field.
+        In the case of applying an include to a collection of resources, if multiple resources share the same include, it will only appear once in the return.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - creators
+            - environments
+  responses:
+    200:
+      description: Returns the requested virtual machine SSH key.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/vms/ssh-keys/VirtualMachineSshKey.yml
+              includes:
+                $ref: ../includes/VirtualMachineSshIncludes.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
+
+patch:
+  operationId: "updateVirtualMachineSshKey"
+  summary: Update Virtual Machine SSH Key
+  description: |
+    Updates the specified virtual machine SSH key.
+
+    Requires the `virtual-machines-ssh-keys-manage` capability.
+  tags:
+    - Virtual Machine
+  parameters:
+    - name: sshKeyId
+      description: The ID of the SSH key.
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: include
+      in: query
+      required: false
+      description: |
+        A comma-separated list of include values. Included resources will show up under the root document's `include` field.
+        In the case of applying an include to a collection of resources, if multiple resources share the same include, it will only appear once in the return.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - creators
+            - environments
+  requestBody:
+    description: Parameters for updating the virtual machine SSH key.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: The name of the virtual machine SSH key.
+  responses:
+    200:
+      description: Returns the updated virtual machine SSH key.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/vms/ssh-keys/VirtualMachineSshKey.yml
+              includes:
+                $ref: ../includes/VirtualMachineSshIncludes.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
+
+delete:
+  operationId: "deleteVirtualMachineSshKey"
+  summary: Delete Virtual Machine SSH Key
+  description: Requires the `virtual-machines-ssh-keys-manage` capability.
+  tags:
+    - Virtual Machines
+  parameters:
+    - name: sshKeyId
+      description: The ID of the virtual machine SSH key to delete.
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    202:
+      description: Returns a job descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/jobs/JobDescriptor.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml

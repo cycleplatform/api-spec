@@ -340,6 +340,11 @@ properties:
       - virtual-machine.task.delete
       - virtual-machine.delete
       - virtual-machine.sos.login
+
+      - virtual-machine.ssh-key.create
+      - virtual-machine.ssh-key.update
+      - virtual-machine.ssh-key.task.delete
+      - virtual-machine.ssh-key.delete
   time:
     description: A timestamp for when the activity took place.
     "$ref": "../../DateTime.yml"

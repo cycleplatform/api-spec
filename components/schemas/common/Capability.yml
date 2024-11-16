@@ -109,3 +109,5 @@ enum:
   - "virtual-machines-deploy"
   - "virtual-machines-console"
   - "virtual-machines-lock"
+  - "virtual-machines-ssh-keys-manage"
+
