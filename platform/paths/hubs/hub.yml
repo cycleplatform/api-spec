@@ -54,6 +54,8 @@ patch:
               description: A name for the hub.
             webhooks:
               $ref: ../../../components/schemas/hubs/HubWebhooks.yml
+            security:
+              $ref: ../../../components/schemas/hubs/HubSecurity.yml
   responses:
     200:
       description: Returns the updated Hub resource.

@@ -1,0 +1,9 @@
+title: HubSecurity
+type: object
+description: Security options for a hub.
+properties:
+  force_2fa:
+    type: boolean
+    description: When true, any API call for this hub from an account that does not have two-factor auth enabled will fail with a 403 error.
+required:
+  - force_2fa
