@@ -13,5 +13,5 @@ properties:
     type: object
     properties:
       ip_id:
-        type: ../../ID.yml
+        $ref: ../../ID.yml
         description: The ID of the IP address to allocate to the virtual machine.

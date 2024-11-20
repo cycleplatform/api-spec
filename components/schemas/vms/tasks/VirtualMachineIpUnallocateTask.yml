@@ -13,7 +13,7 @@ properties:
     type: object
     properties:
       ip_id:
-        type: ../../ID.yml
+        $ref: ../../ID.yml
         description: The ID of the IP address to unallocate from the virtual machine.
     required:
       - ip_id
