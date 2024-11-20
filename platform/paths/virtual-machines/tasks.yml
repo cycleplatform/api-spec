@@ -9,6 +9,8 @@ post:
     `stop`: `virtual-machines-manage`
     `reconfigure`: `virtual-machines-manage`
     `rootpw.change`: `virtual-machines-manage`
+    `ip.allocate`: `virtual-machines-manage`
+    `ip.unallocate`: `virtual-machines-manage`
   tags:
     - Virtual Machines
   parameters:
