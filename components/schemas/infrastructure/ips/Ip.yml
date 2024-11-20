@@ -33,11 +33,19 @@ properties:
       - environment_id
     properties:
       container_id:
-        type: string
+        "$ref": "../../ID.yml"
       instance_id:
-        type: string
+        "$ref": "../../ID.yml"
       environment_id:
-        type: string
+        "$ref": "../../ID.yml"
+      virtual_machine:
+        type: object
+        description: Details about the virtual machine this IP is assigned to.
+        properties:
+          id:
+            "$ref": "../../ID.yml"
+        required:
+          - id
   pool_id:
     type: string
     description: A unique identifier that associates the IP with an IP pool.
