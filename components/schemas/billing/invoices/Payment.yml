@@ -8,7 +8,6 @@ required:
   - amount
   - amount_refunded
   - refunds
-  - method_id
   - result
   - gateway
 properties:
