@@ -345,6 +345,12 @@ properties:
       - virtual-machine.ssh-key.update
       - virtual-machine.ssh-key.task.delete
       - virtual-machine.ssh-key.delete
+
+      - virtual-machine.ip.allocate
+      - virtual-machine.task.ip.allocate
+      - virtual-machine.ip.unallocate
+      - virtual-machine.task.ip.unallocate
+      
   time:
     description: A timestamp for when the activity took place.
     "$ref": "../../DateTime.yml"

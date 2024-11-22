@@ -1,4 +1,4 @@
-title: RestartServerAction
+title: RestartServerTask
 type: object 
 description: A job that restarts the server.
 required: 
