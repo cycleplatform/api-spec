@@ -28,6 +28,7 @@ get:
           enum:
             - domains
             - ips
+            - server
     - name: include
       in: query
       required: false

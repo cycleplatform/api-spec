@@ -26,3 +26,8 @@ properties:
         items:
           $ref: ../infrastructure/ips/Ip.yml
       - type: "null"
+  server:
+    description: The server the virtual machine is deployed to.
+    anyOf:
+      - $ref: ../infrastructure/servers/Server.yml
+      - type: "null"
