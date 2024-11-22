@@ -1,4 +1,4 @@
-title: EvacuateServer
+title: EvacuateServerTask
 type: object
 required:
   - action
