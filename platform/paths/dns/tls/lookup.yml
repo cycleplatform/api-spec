@@ -1,0 +1,76 @@
+get:
+  operationId: "lookupTLSCertificate"
+  summary: Lookup TLS Certificate
+  description: |
+    Lookup and retrieve a TLS certificate bundle for a specified domain.
+
+    Requires the `dns-view` capability.
+  tags:
+    - TLS
+  parameters:
+    - name: domain
+      in: query
+      style: form
+      required: true
+      description: "The domain to lookup."
+      schema:
+        type: string
+    - name: wildcard
+      in: query
+      style: form
+      required: false
+      description: "Whether or not to lookup a *. wildcard certificate that would be applicable for this domain. For example, if you are looking for a certificate for x.test.com, setting this to true will identify a *.test.com certificate that would also be applicable."
+      schema:
+        type: boolean
+  responses:
+    200:
+      description: Returns a TLS certificate bundle.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: object
+                description: A DNS TLS certificate.
+                required:
+                  - id
+                  - hub_id
+                  - domains
+                  - events
+                  - bundle
+                  - private_key
+                properties:
+                  id:
+                    $ref: ../../../../components/schemas/ID.yml
+                  hub_id:
+                    $ref: ../../../../components/schemas/HubID.yml
+                  domains:
+                    description: A list of domains associated with the certificate.
+                    type: array
+                    items:
+                      type: string
+                  events:
+                    type: object
+                    description: A collection of timestamps for each event in the certificate's lifetime.
+                    properties:
+                      created:
+                        $ref: ../../../../components/schemas/DateTime.yml
+                      updated:
+                        $ref: ../../../../components/schemas/DateTime.yml
+                      deleted:
+                        $ref: ../../../../components/schemas/DateTime.yml
+                      generated:
+                        description: "When the certificate was generated."
+                        $ref: ../../../../components/schemas/DateTime.yml
+                  bundle:
+                    description: The certificate bundle
+                    type: string
+                  private_key:
+                    description: The private key for the certificate
+                    type: string
+
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml

@@ -416,7 +416,11 @@ paths:
   "/v1/dns/tls/attempts":
     $ref: "./paths/dns/tls/attempts.yml"
   "/v1/dns/tls/certificates/lookup":
-    $ref: "./paths/dns/tls/certificates.yml"
+    $ref: "./paths/dns/tls/lookup.yml"
+  "/v1/dns/tls/certificates/user-supplied":
+    $ref: "./paths/dns/tls/user-supplied/certificates.yml"
+  "/v1/dns/tls/certificates/user-supplied/{certificateId}":
+    $ref: "./paths/dns/tls/user-supplied/certificate.yml"
 
   # --Environments
   "/v1/environments":

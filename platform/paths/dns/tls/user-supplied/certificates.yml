@@ -1,0 +1,95 @@
+get:
+  operationId: "getUserSuppliedCertificates"
+  summary: List User Supplied TLS Certificates
+  description: |
+    Retrieve a list of TLS certificates that were uploaded to Cycle.
+
+    Requires the `dns-certs-view` capability.
+  tags:
+    - TLS
+  parameters:
+    - name: filter
+      in: query
+      # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706
+      style: deepObject
+      required: false
+      description: |
+        ## Filter Field 
+        The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
+      schema:
+        type: object
+        properties:
+          domains:
+            type: string
+            description: |
+              `filter[domains]=value1,value2` filter user certificates by associated domain.
+          state:
+            type: string
+            description: |
+              `filter[state]=value1,value2` state filtering will allow filtering by the current state.
+    - $ref: ../../../../../components/parameters/SortParam.yml
+    - $ref: ../../../../../components/parameters/PageParam.yml
+  responses:
+    200:
+      description: Returns a TLS certificate.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: ../../../../../components/schemas/dns/tls/TlsCertificate.yml
+    default:
+      $ref: ../../../../../components/responses/errors/DefaultError.yml
+
+post:
+  operationId: "uploadUserSuppliedCertificate"
+  tags:
+    - TLS
+  parameters: []
+  summary: Upload User Supplied TLS Certificate
+  description: |
+    Upload a user-supplied TLS certificate to the hub. This TLS certificate can be utilized by **LINKED** records matching the specified domains.
+
+    Requires the `dns-manage` capability.
+  requestBody:
+    description: Parameters for creating a new TLS certificate.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - domains
+            - private_key
+            - bundle
+          properties:
+            domains:
+              description: A list of domains associated with the certificate.
+              type: array
+              items:
+                type: string
+            private_key:
+              type: string
+              description: The certificate's private key.
+            bundle:
+              type: string
+              description: A PEM encoded certificate bundle.
+
+  responses:
+    201:
+      description: Returns a TLS certificate.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../../components/schemas/dns/tls/TlsCertificate.yml
+    default:
+      $ref: ../../../../../components/responses/errors/DefaultError.yml
