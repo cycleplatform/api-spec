@@ -19,10 +19,10 @@ get:
       schema:
         type: object
         properties:
-          domains:
+          domain:
             type: string
             description: |
-              `filter[domains]=value1,value2` filter user certificates by associated domain.
+              `filter[domain]=value1` filter user certificates by associated domain.
           state:
             type: string
             description: |
