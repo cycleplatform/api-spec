@@ -16,6 +16,7 @@ additionalProperties:
     - $ref: ../stacks/builds/StackBuild.yml
     - $ref: ../dns/Zone.yml
     - $ref: ../dns/records/Record.yml
+    - $ref: ../dns/tls/TlsCertificate.yml
     - $ref: ../hubs/ApiKey.yml
     - $ref: ../sdn/networks/Network.yml
     - $ref: ../hubs/HubMembership.yml
