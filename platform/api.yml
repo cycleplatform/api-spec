@@ -421,6 +421,8 @@ paths:
     $ref: "./paths/dns/tls/user-supplied/certificates.yml"
   "/v1/dns/tls/certificates/user-supplied/{certificateId}":
     $ref: "./paths/dns/tls/user-supplied/certificate.yml"
+  "/v1/dns/tls/certificates/user-supplied/{certificateId}/tasks":
+    $ref: "./paths/dns/tls/user-supplied/tasks.yml"
 
   # --Environments
   "/v1/environments":

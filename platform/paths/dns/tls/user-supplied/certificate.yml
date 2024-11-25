@@ -28,31 +28,3 @@ get:
                 $ref: ../../../../../components/schemas/dns/tls/TlsCertificate.yml
     default:
       $ref: ../../../../../components/responses/errors/DefaultError.yml
-
-delete:
-  operationId: "deleteUserSuppliedCertificate"
-  summary: Delete User Supplied TLS Certificate
-  description: Requires the `dns-certs-view` capability.
-  tags:
-    - TLS
-  parameters:
-    - name: certificateId
-      description: The ID of the TLS certificate.
-      in: path
-      required: true
-      schema:
-        type: string
-  responses:
-    202:
-      description: Returns a job descriptor.
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-              - data
-            properties:
-              data:
-                $ref: ../../../../../components/schemas/jobs/JobDescriptor.yml
-    default:
-      $ref: ../../../../../components/responses/errors/DefaultError.yml
