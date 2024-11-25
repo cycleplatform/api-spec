@@ -21,19 +21,41 @@ properties:
   expires:
     $ref: ../../DateTime.yml
   state:
-    allOf: 
-      - required: 
-          - current 
-        properties: 
-          current: 
-            description: The current state of the TLS certificate. 
-            type: string 
-            enum: 
-              - new 
-              - processing 
-              - live 
+    allOf:
+      - required:
+          - current
+        properties:
+          current:
+            description: The current state of the TLS certificate.
+            type: string
+            enum:
+              - new
+              - processing
+              - live
               - deprecated
       - $ref: ../../State.yml
+  events:
+    title: TlsCertificateEvents
+    type: object
+    description: A collection of timestamps for each event in the TLS certificate's lifetime.
+    required:
+      - created
+      - updated
+      - deleted
+      - generated
+    properties:
+      created:
+        description: The timestamp of when the TLS certificate was created.
+        "$ref": "../../DateTime.yml"
+      updated:
+        description: The timestamp of when the TLS certificate was updated.
+        "$ref": "../../DateTime.yml"
+      deleted:
+        description: The timestamp of when the TLS certificate was deleted.
+        "$ref": ../../DateTime.yml
+      generated:
+        description: The timestamp of when the TLS certificate was generated.
+        "$ref": "../../DateTime.yml"
 required:
   - id
   - user_supplied
