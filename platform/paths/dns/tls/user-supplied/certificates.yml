@@ -63,15 +63,9 @@ post:
         schema:
           type: object
           required:
-            - domains
             - private_key
             - bundle
           properties:
-            domains:
-              description: A list of domains associated with the certificate.
-              type: array
-              items:
-                type: string
             private_key:
               type: string
               description: The certificate's private key.

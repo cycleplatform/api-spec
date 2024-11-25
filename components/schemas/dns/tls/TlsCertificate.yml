@@ -18,6 +18,8 @@ properties:
     anyOf:
       - $ref: ../../ID.yml
       - type: "null"
+  expires:
+    $ref: ../../DateTime.yml
   state:
     allOf: 
       - required: 
@@ -39,3 +41,4 @@ required:
   - domains
   - state
   - events
+  - expires

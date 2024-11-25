@@ -1,0 +1,48 @@
+post:
+  operationId: "createUserSuppliedCertificateJob"
+  summary: Create User Supplied TLS Certificate Job
+  description: |
+    Used to perform different actions on a given user supplied TLS certificate. 
+
+    Requires the `dns-manage` capability.
+  tags:
+    - TLS
+  parameters:
+    - name: certificateId
+      description: The ID of the TLS certificate.
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    description: Parameters for creating a new TLS certificate job.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - action
+          properties:
+            action:
+              type: string
+              description: |
+                The action that the job will take.
+
+                **deprecate**: Cycle will deprecate this certificate, and try to find another usable certificate. If none exists, it will generate a new one
+                for the applicable domains.
+              enum:
+                - deprecate
+  responses:
+    202:
+      description: Returns a job descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../../components/schemas/jobs/JobDescriptor.yml
+    default:
+      $ref: ../../../../../components/responses/errors/DefaultError.yml
