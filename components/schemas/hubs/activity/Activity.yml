@@ -256,6 +256,11 @@ properties:
       - dns.zone.record.task.delete
       - dns.zone.record.create
 
+      - dns.certificate.associate
+      - dns.certificate.deprecate
+      - dns.certificate.create
+      - dns.certificate.task.deprecate
+
       - stack.update
       - stack.task.delete
       - stack.delete

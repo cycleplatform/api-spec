@@ -32,8 +32,7 @@ properties:
               - new 
               - processing 
               - live 
-              - deleting 
-              - deleted 
+              - deprecated
       - $ref: ../../State.yml
 required:
   - id
