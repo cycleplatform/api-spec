@@ -39,14 +39,11 @@ properties:
           type: string
           description: The path in the container for these files to be injected.
   lets_encrypt:
-    type: object
+    type:
+      - object
+      - "null"
     description: Configuration settings to embed a TLS certificate in the container.
-    required:
-      - enable
     properties:
-      enable:
-        type: boolean
-        description: A boolean where true represents the desire for a container to have its corresponding TLS certificate(s) injected into the configured path(s).
       certificate_path:
         type: string
         description: Path where the `certificate.cert` will be saved.
