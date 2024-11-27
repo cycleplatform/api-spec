@@ -3,6 +3,7 @@ type: object
 description: A resource regarding the provider a given server is deployed from.
 required:
   - vendor
+  - integration_id
   - model
   - location
   - server
@@ -10,7 +11,8 @@ properties:
   vendor:
     type: string
     description: The vendor for the provider this server is deployed from.
-    # TODO might add the enum might not
+  integration_id:
+    $ref: ../../ID.yml
   model:
     type: string
     description: The model of the server that is deployed.
@@ -34,7 +36,9 @@ properties:
   provision_options:
     type: object
     properties:
-      attachesd_storage_size:
+      encrypt_storage:
+        type: boolean
+      storage_size:
         type: number
       reservation_id:
         type: string
