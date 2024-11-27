@@ -27,6 +27,7 @@ get:
             - locations
             - models
             - integrations
+            - clusters
     - name: meta
       in: query
       required: false
