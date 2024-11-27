@@ -11,6 +11,7 @@ get:
     - bearerAuth: []
   parameters:
     - $ref: ../../../../components/parameters/PageParam.yml
+    - $ref: ../../../../components/parameters/SortParam.yml
     - name: meta
       in: query
       required: false
