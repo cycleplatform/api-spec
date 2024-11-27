@@ -36,7 +36,7 @@ get:
     default:
       $ref: "../../../../components/responses/errors/DefaultError.yml"
     200:
-      description: Details of the specified integration
+      description: Details of the specified integration.
       content:
         application/json:
           schema:
@@ -103,7 +103,7 @@ patch:
               type:
                 - object
                 - "null"
-              description: Updated key-value pairs associated with the ntegration.
+              description: Updated key-value pairs associated with the integration.
               additionalProperties:
                 type: string
   responses:
