@@ -52,13 +52,7 @@ properties:
       - type:
           - object
           - "null"
-        required:
-          - enable
         properties:
-          enable:
-            oneOf:
-              - type: boolean
-              - $ref: StackVariable.yml
           certificate_path:
             oneOf:
               - type:
