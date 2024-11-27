@@ -4,6 +4,10 @@ description: A resource associated with a server.
 properties:
   locations:
     "$ref": "../../includes/LocationsIncludes.yml"
+  clusters:
+    type: object
+    additionalProperties:
+      "$ref": ../clusters/Cluster.yml
   models:
     "$ref": "../../includes/ServerModelIncludes.yml"
   integrations:
