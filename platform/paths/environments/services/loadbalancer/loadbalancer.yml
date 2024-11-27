@@ -28,6 +28,7 @@ get:
                   - default_config
                   - service
                   - default_type
+                  - current_type
                 properties:
                   default_config:
                     $ref: ../../../../../components/schemas/environments/services/loadbalancer/LoadBalancerConfig.yml
