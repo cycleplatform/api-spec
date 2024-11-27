@@ -2,7 +2,7 @@ get:
   operationId: getIntegration
   summary: Get Integration
   description: |
-    Retrieves details of a single Integration associated with the current hub.
+    Retrieves details of a single integration associated with the current hub.
 
     Requires the `hubs-integrations-view` capability.
   tags:
@@ -16,7 +16,7 @@ get:
       schema:
         type: string
         pattern: "^[a-f0-9]{24}$"
-      description: The ID of the Integration to retrieve.
+      description: The ID of the integration to retrieve.
     - name: meta
       in: query
       required: false
@@ -36,7 +36,7 @@ get:
     default:
       $ref: "../../../../components/responses/errors/DefaultError.yml"
     200:
-      description: Details of the specified Integration
+      description: Details of the specified integration.
       content:
         application/json:
           schema:
@@ -54,7 +54,7 @@ patch:
   security:
     - bearerAuth: []
   summary: Update Integration
-  description: Updates the specified Integration within the current hub. If the Integration definition specifies that it requires verification, then you must submit a verify task to enable it.
+  description: Updates the specified integration within the current hub. If the integration definition specifies that it requires verification, then you must submit a verify task to enable it.
   parameters:
     - name: integrationId
       in: path
@@ -62,7 +62,7 @@ patch:
       schema:
         type: string
         pattern: "^[a-f0-9]{24}$"
-      description: The ID of the Integration to update.
+      description: The ID of the integration to update.
     - name: meta
       in: query
       required: false
@@ -89,9 +89,12 @@ patch:
               type:
                 - string
                 - "null"
-              description: A new name for the Integration.
+              description: A new name for the integration.
+              minLength: 5
             identifier:
               $ref: ../../../../components/schemas/Identifier.yml
+              description: The identifier of the integration. Must be unique for every integration.
+              minLength: 3
             auth:
               anyOf:
                 - $ref: "../../../../components/schemas/hubs/integrations/IntegrationAuth.yml"
@@ -100,14 +103,14 @@ patch:
               type:
                 - object
                 - "null"
-              description: Updated key-value pairs associated with the Integration.
+              description: Updated key-value pairs associated with the integration.
               additionalProperties:
                 type: string
   responses:
     default:
       $ref: "../../../../components/responses/errors/DefaultError.yml"
     200:
-      description: Returns the updated Integration.
+      description: Returns the updated integration.
       content:
         application/json:
           schema:
@@ -125,7 +128,7 @@ delete:
   security:
     - bearerAuth: []
   summary: Delete an Integration
-  description: Deletes the specified Integration from the current hub, marking it as deleted and returning the updated Integration.
+  description: Deletes the specified integration from the current hub, marking it as deleted and returning the updated integration.
   parameters:
     - name: integrationId
       in: path
@@ -133,7 +136,7 @@ delete:
       schema:
         type: string
         pattern: "^[a-f0-9]{24}$"
-      description: The ID of the Integration to delete.
+      description: The ID of the integration to delete.
   responses:
     default:
       $ref: "../../../../components/responses/errors/DefaultError.yml"

@@ -72,7 +72,7 @@ get:
 post:
   operationId: createIntegration
   summary: Create Integration
-  description: Create an Integration resource within a hub. If the Integration definition specifies that it requires verification, then you must submit a verify task to enable it.
+  description: Create an integration resource within a hub. If the integration definition specifies that it requires verification, then you must submit a verify task to enable it.
   tags:
     - Integrations
   security:
@@ -94,25 +94,28 @@ post:
           enum:
             - definition
   requestBody:
-    description: Parameters for creating an Integration.
+    description: Parameters for creating an integration.
     required: true
     content:
       application/json:
         schema:
           type: object
           required:
+            - name
+            - identifier
             - vendor
           properties:
             name:
-              type:
-                - string
-                - "null"
-              description: A name for the Integration.
+              type: string
+              description: A name for the integration.
+              minLength: 5
             vendor:
               type: string
-              description: Unique vendor for the Integration, subject to validation.
+              description: Unique vendor for the integration, subject to validation.
             identifier:
               $ref: ../../../../components/schemas/Identifier.yml
+              description: The identifier of the integration. Must be unique for every integration.
+              minLength: 3
             auth:
               type: object
               properties:
@@ -120,53 +123,53 @@ post:
                   type:
                     - string
                     - "null"
-                  description: The region associated with the Integration.
+                  description: The region associated with the integration.
                 namespace:
                   type:
                     - string
                     - "null"
-                  description: The namespace associated with the Integration.
+                  description: The namespace associated with the integration.
                 api_key:
                   type:
                     - string
                     - "null"
-                  description: API key for accessing the Integration.
+                  description: API key for accessing the integration.
                 key_id:
                   type:
                     - string
                     - "null"
-                  description: Key ID for accessing the Integration.
+                  description: Key ID for accessing the integration.
                 secret:
                   type:
                     - string
                     - "null"
-                  description: Secret for accessing the Integration.
+                  description: Secret for accessing the integration.
                 subscription_id:
                   type:
                     - string
                     - "null"
-                  description: Subscription ID for the Integration.
+                  description: Subscription ID for the integration.
                 client_id:
                   type:
                     - string
                     - "null"
-                  description: Client ID for the Integration.
+                  description: Client ID for the integration.
                 base64_config:
                   type:
                     - string
                     - "null"
-                  description: Base64 encoded configuration for the Integration.
-              description: Authentication information for the Integration.
+                  description: Base64 encoded configuration for the integration.
+              description: Authentication information for the integration.
             extra:
               type: object
               additionalProperties:
                 type: string
-              description: Additional key-value pairs associated with the Integration.
+              description: Additional key-value pairs associated with the integration.
   responses:
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
     201:
-      description: Returns the new Integration.
+      description: Returns the new integration.
       content:
         application/json:
           schema:
