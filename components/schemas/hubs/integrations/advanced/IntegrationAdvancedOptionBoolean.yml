@@ -1,0 +1,19 @@
+title: IntegrationAdvancedOptionBoolean
+type: object
+required:
+  - title
+  - key
+  - type
+properties:
+  title:
+    type: string
+  key:
+    type: string
+  type:
+    type: string
+    enum:
+      - bool
+  default:
+    type:
+      - boolean
+      - "null"

@@ -46,13 +46,17 @@ properties:
           - "null"
         items:
           type: object
-          properties:
-            title:
-              type: string
-            key:
-              type: string
-            type:
-              type: string
+          discriminator:
+            propertyName: type
+            mapping:
+              bool: ./advanced/IntegrationAdvancedOptionBoolean.yml
+              int: ./advanced/IntegrationAdvancedOptionInt.yml
+              string: ./advanced/IntegrationAdvancedOptionString.yml
+          oneOf:
+            - $ref: ./advanced/IntegrationAdvancedOptionBoolean.yml
+            - $ref: ./advanced/IntegrationAdvancedOptionInt.yml
+            - $ref: ./advanced/IntegrationAdvancedOptionString.yml
+
   fields:
     type: object
     properties:
