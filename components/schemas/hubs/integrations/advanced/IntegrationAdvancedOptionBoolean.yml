@@ -14,5 +14,6 @@ properties:
     enum:
       - bool
   default:
-    type: boolean
-    nullable: true
+    type:
+      - boolean
+      - "null"

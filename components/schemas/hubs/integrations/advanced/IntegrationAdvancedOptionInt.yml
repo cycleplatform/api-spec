@@ -14,5 +14,6 @@ properties:
     enum:
       - int
   default:
-    type: integer
-    nullable: true
+    type:
+      - integer
+      - "null"

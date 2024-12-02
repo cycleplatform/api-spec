@@ -14,5 +14,6 @@ properties:
     enum:
       - string
   default:
-    type: string
-    nullable: true
+    type:
+      - string
+      - "null"
