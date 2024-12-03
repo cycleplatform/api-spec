@@ -16,6 +16,11 @@ properties:
   model:
     type: string
     description: The model of the server that is deployed.
+  zone:
+    type:
+      - string
+      - "null"
+    description: The zone of the server that is deployed, if defined.
   location:
     type: string
     description: A location where the server is deployed.
