@@ -26,8 +26,6 @@ get:
         items:
           type: string
           enum:
-            - senders
-            - hubs
             - accounts
             - roles
   responses:
