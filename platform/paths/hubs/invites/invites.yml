@@ -36,8 +36,7 @@ get:
           type: string
           enum:
             - senders
-            - hubs
-            - accounts
+            - invites
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/FilterParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
@@ -56,7 +55,7 @@ get:
                 items:
                   $ref: ../../../../components/schemas/hubs/HubMembership.yml
               includes:
-                $ref: ../../../../components/schemas/hubs/HubMembershipIncludes.yml
+                $ref: includes/HubInviteIncludes.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
 
