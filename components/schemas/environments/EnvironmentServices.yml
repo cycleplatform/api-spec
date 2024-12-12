@@ -20,3 +20,7 @@ properties:
     anyOf:
       - $ref: ./services/SchedulerEnvironmentService.yml
       - type: "null"
+  gateway:
+    anyOf:
+      - $ref: ./services/GatewayEnvironmentService.yml
+      - type: "null"
