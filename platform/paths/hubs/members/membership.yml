@@ -20,8 +20,6 @@ get:
         items:
           type: string
           enum:
-            - senders
-            - hubs
             - accounts
             - roles
     - $ref: ../../../../components/parameters/SortParam.yml

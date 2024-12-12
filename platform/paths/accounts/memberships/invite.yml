@@ -39,6 +39,6 @@ patch:
               data:
                 $ref: ../../../../components/schemas/hubs/HubMembership.yml
               includes:
-                $ref: ../../../../components/schemas/hubs/HubMembershipIncludes.yml
+                $ref: includes/AccountMembershipIncludes.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml

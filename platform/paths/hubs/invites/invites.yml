@@ -36,7 +36,7 @@ get:
           type: string
           enum:
             - senders
-            - invites
+            - roles
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/FilterParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
