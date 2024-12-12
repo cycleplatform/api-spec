@@ -9,5 +9,4 @@ schema:
     enum:
       - senders
       - hubs
-      - accounts
       - roles
