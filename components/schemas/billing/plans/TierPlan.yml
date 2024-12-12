@@ -52,6 +52,7 @@ properties:
       - autoscale
       - deployments
       - geodns
+      - provider_multi_account
     properties:
       gpu:
         type: boolean
@@ -62,6 +63,8 @@ properties:
       autoscale:
         type: boolean
       geodns:
+        type: boolean
+      provider_multi_account:
         type: boolean
   max_daily_api_requests:
     type:
