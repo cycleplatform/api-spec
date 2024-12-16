@@ -205,17 +205,21 @@ properties:
   logs:
     description: When enabled, allows more customization to be applied to logging for the container.
     oneOf:
-      - type:
-          - object
-          - "null"
+      - type: object
         properties:
-          groups:
-            description: A tag used for applying log filters and analytics.
+          drain:
+            description: When enabled, log drain allows logs to be exported to a third party service..
             oneOf:
-              - type:
-                  - array
-                  - "null"
-                items:
-                  $ref: ../../components/schemas/Identifier.yml
+              - type: object
+                required:
+                  - url
+                properties:
+                  url:
+                    description: The URL to the third party loggins service where logs will be sent.
+                    oneOf:
+                      - type: string
+                      - $ref: StackVariable.yml
+              - type: "null"
               - $ref: StackVariable.yml
+      - type: "null"
       - $ref: StackVariable.yml
