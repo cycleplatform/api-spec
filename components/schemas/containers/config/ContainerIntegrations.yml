@@ -129,7 +129,7 @@ properties:
       - type: object
         properties:
           drain:
-            description: When enabled, log drain allows logs to be exported to a third party service..
+            description: When enabled, log drain allows logs to be exported to a third party service.
             oneOf:
               - type: object
                 required:
