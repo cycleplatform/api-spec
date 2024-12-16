@@ -215,7 +215,7 @@ properties:
                   - url
                 properties:
                   url:
-                    description: The URL to the third party loggins service where logs will be sent.
+                    description: The URL to the third party logging service where logs will be sent.
                     oneOf:
                       - type: string
                       - $ref: StackVariable.yml
