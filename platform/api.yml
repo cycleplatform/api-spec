@@ -689,6 +689,8 @@ paths:
     $ref: "./paths/stacks/builds/builds.yml"
   "/v1/stacks/{stackId}/builds/{buildId}":
     $ref: "./paths/stacks/builds/build.yml"
+  "/v1/stacks/{stackId}/builds/{buildId}/build-log":
+    $ref: "./paths/stacks/builds/buildLog.yml"
   "/v1/stacks/{stackId}/builds/{buildId}/tasks":
     $ref: "./paths/stacks/builds/tasks.yml"
 
