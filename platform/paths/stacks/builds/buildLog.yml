@@ -19,7 +19,13 @@ get:
         type: string
   responses:
     200:
-      description: Returns a stack's build log.
+      description: |
+        Returns the log generated during a stack build. 
+        Contains log entries for the stack build process, 
+        but individual image build logs must be fetched from the 
+        generated image. When a stack build fails due to an invalid spec, 
+        the incorrect spec, with populated variables, 
+        will be included in the log.
       content:
         application/json:
           schema:
