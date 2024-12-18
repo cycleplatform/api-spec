@@ -1,0 +1,33 @@
+get:
+  operationId: "getStackBuildLog"
+  summary: Get Stack Build Log
+  description: Requires the `stacks-view` capability.
+  tags:
+    - Stacks
+  parameters:
+    - name: stackId
+      in: path
+      required: true
+      description: The ID of the stack.
+      schema:
+        type: string
+    - name: buildId
+      in: path
+      required: true
+      description: The ID of the stack build.
+      schema:
+        type: string
+  responses:
+    200:
+      description: Returns a stack's build log.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/stacks/builds/StackBuildLog.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
