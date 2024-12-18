@@ -1,7 +1,15 @@
 get:
   operationId: "getStackBuildLog"
   summary: Get Stack Build Log
-  description: Requires the `stacks-view` capability.
+  description: |
+    Requests for the log generated during a stack build. 
+    The response log includes  log entries for the stack build process, 
+    but individual image build logs must be fetched from the 
+    generated image. When a stack build fails due to an invalid spec, 
+    the incorrect spec, with populated variables, 
+    will be included in the log.
+
+    Requires the `stacks-view` capability.
   tags:
     - Stacks
   parameters:
@@ -19,13 +27,7 @@ get:
         type: string
   responses:
     200:
-      description: |
-        Returns the log generated during a stack build. 
-        Contains log entries for the stack build process, 
-        but individual image build logs must be fetched from the 
-        generated image. When a stack build fails due to an invalid spec, 
-        the incorrect spec, with populated variables, 
-        will be included in the log.
+      description: Returns the stack build's log.
       content:
         application/json:
           schema:
