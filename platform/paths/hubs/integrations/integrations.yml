@@ -45,10 +45,6 @@ get:
             type: string
             description: |
               `filter[search]=value` Performs a text search across relevant fields of the integrations. For example, `filter[search]=example` would return integrations that have "example" in any of the searchable fields
-          identifier:
-            type: string
-            description: |
-              `filter[identifier]=value` Filters integrations by their identifier. For example, `filter[identifier]=abstraction` would return only integrations with the abstraction identifier.
           category:
             type: string
             description: |
