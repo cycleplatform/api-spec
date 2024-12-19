@@ -1,5 +1,5 @@
 title: StackBuildLog
-description: A build log for a given stack.
+description: A build log for a given stack build.
 type: object
 required:
   - id
