@@ -112,7 +112,7 @@ properties:
       - 404.virtual-machine
       - 404.virtual-machine.ssh-key
       - 404.sales.lead
-      - 404.stack_build_log
+      - 404.stack.build_log
 
       # 409
       - 409.duplicate-found
