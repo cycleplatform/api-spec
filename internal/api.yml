@@ -1,9 +1,10 @@
 openapi: 3.1.0
 servers:
   - description: Cycle Internal API
-    # https://github.com/whatwg/url/issues/577
-    # https://github.com/OAI/OpenAPI-Specification/issues/3011
-    url: "http+unix:/var/run/cycle/api/api.sock"
+    url: http://localhost
+    x-unix-socket:
+      description: Unix socket path for internal API
+      url: /var/run/cycle/api/api.sock
 info:
   license:
     name: Apache-2.0
