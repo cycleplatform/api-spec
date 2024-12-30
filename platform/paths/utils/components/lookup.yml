@@ -1,10 +1,14 @@
 post:
   operationId: "lookupComponents"
-  summary: Look up a component.
+  summary: |
+    Look up Cycle components (resources such as containers, servers, etc) based on their ID.
+    Useful when the IDs are known ahead of time - all relevant items can be fetched in a single request.
   tags:
     - Utility
   requestBody:
-    description: ABC
+    description: | 
+      Accepts an array of component lookup objects. Consists of the type of resource to look up,
+      and the ID.
     content:
       application/json:
         schema:
@@ -26,7 +30,7 @@ post:
                     type: string
   responses:
     200:
-      description: Returns an array of components requested.
+      description: Returns an array of the components requested.
       content:
         application/json:
           schema:
