@@ -1,0 +1,38 @@
+get:
+  operationId: "getAvailableIps"
+  tags:
+    - Virtual Machines
+  summary: List Available IP Addresses
+  description: |
+    Lists IP addresses that can be assigned to the specified virtual machine.
+
+    For an IP address to be assignable to a virtual machine, it must follow these rules:
+
+    1. The IP address must be assigned to the same location as the virtual machine.
+    2. The IP address must be from a server that supports the `gateway` service.
+    3. The IP address must be in the `available` state.
+
+    Requires the `virtual-machines-view` capability.
+  parameters:
+    - name: virtualMachineId
+      description: The ID of the virtual machine.
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    200:
+      description: Returns a list of IP addresses.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: ../../../components/schemas/infrastructure/ips/Ip.yml
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
