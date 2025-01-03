@@ -6,7 +6,7 @@
   <img alt="cycle" src="https://static.cycle.io/icons/logo/cycle-logo-fullcolor.svg">
 </picture>
 
-This repository contains the [OpenAPI](https://www.openapis.org/) definitions for the [Cycle API](https://api-docs.cycle.io). It is used in several downstream API clients and projects, and is the basis of our API documentation.
+This repository contains the [OpenAPI](https://www.openapis.org/) definitions for the [Cycle API](https://cycle.io/docs/api/platform). It is used in several downstream API clients and projects, and is the basis of our API documentation.
 
 ⚠️ This spec is still under development. While most endpoints should be stable, there are still edge cases and small discrepancies that are actively being worked on.
 
