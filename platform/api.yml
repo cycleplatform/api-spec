@@ -709,6 +709,8 @@ paths:
     $ref: paths/virtual-machines/ssh-keys/ssh-keys.yml
   "/v1/virtual-machines/ssh-keys/{sshKeyId}":
     $ref: paths/virtual-machines/ssh-keys/ssh-key.yml
+  "/v1/virtual-machines/{virtualMachineId}/available-ips":
+    $ref: "./paths/virtual-machines/available-ips.yml"
 
   # --Utility
   "/v1/utils/resource/lookup":
