@@ -99,6 +99,7 @@ x-tagGroups:
       - Deployments
       - Scoped Variables
       - Services/Discovery
+      - Services/Gateway
       - Services/Load Balancer
       - Services/Scheduler
       - Services/VPN
@@ -198,6 +199,8 @@ tags:
   - name: Scoped Variables
     description: Endpoints related to managing an environment's scoped variables.
   - name: Services/Discovery
+    description: Endpoints related to managing an environment's gateway service.
+  - name: Services/Gateway
     description: Endpoints related to managing an environment's discovery service.
   - name: Services/Load Balancer
     description: Endpoints related to managing an environment's load balancer service.
@@ -455,6 +458,10 @@ paths:
   ## Services/Discovery
   "/v1/environments/{environmentId}/services/discovery/tasks":
     $ref: "./paths/environments/services/discovery/tasks.yml"
+
+  ## Services/Gateway
+  "/v1/environments/{environmentId}/services/gateway/tasks":
+    $ref: "./paths/environments/services/gateway/tasks.yml"
 
   ## Services/Load Balancer
   "/v1/environments/{environmentId}/services/lb":

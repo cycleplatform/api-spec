@@ -1,18 +1,18 @@
 post:
-  operationId: "createDiscoveryServiceJob"
-  summary: Create Discovery Service Job
-  description: Creates a task that will update the discovery service's configuration.
+  operationId: "createGatewayServiceJob"
+  summary: Create Gateway Service Job
+  description: Creates a task that will update the gateway service's configuration.
   tags:
-    - Services/Discovery
+    - Services/Gateway
   parameters:
     - name: environmentId
-      description: The ID of the environment where this discovery service resides.
+      description: The ID of the environment where this gateway service resides.
       in: path
       required: true
       schema:
         type: string
   requestBody:
-    description: Parameters for reconfiguring a discovery service.
+    description: Parameters for reconfiguring a gateway service.
     content:
       application/json:
         schema:
@@ -29,20 +29,11 @@ post:
             contents:
               type: object
               properties:
-                config:
-                  anyOf:
-                    - $ref: ../../../../../components/schemas/environments/services/discovery/DiscoveryConfig.yml
-                    - type: "null"
-                high_availability:
-                  type:
-                    - boolean
-                    - "null"
-                  description: A boolean where `true` represents the desire to run the environment discovery service in high availability mode.
                 auto_update:
                   type:
                     - boolean
                     - "null"
-                  description: A boolean where `true` represents the desire to automatically update the environment discovery service.
+                  description: A boolean where `true` represents the desire to automatically update the environment gateway service.
 
   responses:
     202:
