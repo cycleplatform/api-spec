@@ -459,7 +459,7 @@ paths:
   "/v1/environments/{environmentId}/services/discovery/tasks":
     $ref: "./paths/environments/services/discovery/tasks.yml"
 
-  ## Services/Discovery
+  ## Services/Gatewa
   "/v1/environments/{environmentId}/services/gateway/tasks":
     $ref: "./paths/environments/services/gateway/tasks.yml"
 
