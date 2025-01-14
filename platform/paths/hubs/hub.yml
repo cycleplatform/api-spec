@@ -85,7 +85,7 @@ delete:
         type: object
         properties:
           force:
-            type: boolean
+            type: string
   summary: Delete Hub
   description: Requires the `hubs-delete` capability. This can only be aquired by being the hub owner.
   responses:

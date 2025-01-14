@@ -150,7 +150,7 @@ delete:
         type: object
         properties:
           force:
-            type: boolean
+            type: string
   responses:
     200:
       description: Returns a Job Descriptor.
