@@ -151,6 +151,9 @@ delete:
         properties:
           force:
             type: string
+            enum:
+              - "true"
+              - "false"
   responses:
     200:
       description: Returns a Job Descriptor.
