@@ -143,7 +143,18 @@ delete:
       required: true
       schema:
         type: string
-    - $ref: ../../../../components/parameters/OptionParam.yml
+    - name: options
+      in: query
+      required: false
+      schema:
+        type: object
+        properties:
+          force:
+            type: string
+            description: If force is set to true, this will force delete the server, even if there are environments running on it.
+            enum:
+              - "true"
+              - "false"
   responses:
     200:
       description: Returns a Job Descriptor.

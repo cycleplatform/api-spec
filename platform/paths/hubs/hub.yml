@@ -77,7 +77,19 @@ delete:
     - Hubs
   security:
     - bearerAuth: []
-  parameters: []
+  parameters:
+    - name: options
+      in: query
+      required: false
+      schema:
+        type: object
+        properties:
+          force:
+            type: string
+            description: If force is set to true, this will force delete the hub, even if there are servers running on it.
+            enum:
+              - "true"
+              - "false"
   summary: Delete Hub
   description: Requires the `hubs-delete` capability. This can only be aquired by being the hub owner.
   responses:
