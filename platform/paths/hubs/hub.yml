@@ -77,7 +77,8 @@ delete:
     - Hubs
   security:
     - bearerAuth: []
-  parameters: []
+  parameters:
+    - $ref: ../../../components/parameters/OptionParam.yml
   summary: Delete Hub
   description: Requires the `hubs-delete` capability. This can only be aquired by being the hub owner.
   responses:
