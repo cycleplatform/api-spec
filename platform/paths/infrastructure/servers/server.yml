@@ -148,8 +148,6 @@ delete:
       required: false
       schema:
         type: object
-        required:
-          - force
         properties:
           force:
             type: boolean
