@@ -151,6 +151,7 @@ delete:
         properties:
           force:
             type: string
+            description: If force is set to true, this will force delete the server, even if there are environments running on it.
             enum:
               - "true"
               - "false"

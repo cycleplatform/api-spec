@@ -86,6 +86,7 @@ delete:
         properties:
           force:
             type: string
+            description: If force is set to true, this will force delete the hub, even if there are servers running on it.
             enum:
               - "true"
               - "false"
