@@ -11,6 +11,7 @@ allOf:
           - new
           - starting
           - migrating
+          - migrated
           - running
           - stopping
           - stopped
