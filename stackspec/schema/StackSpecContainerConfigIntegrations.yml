@@ -219,6 +219,14 @@ properties:
                     oneOf:
                       - type: string
                       - $ref: StackVariable.yml
+                  format:
+                    description: The format Cycle will use to send the logs.
+                    oneOf:
+                      - type: string
+                        enum:
+                          - ndjson-headers
+                          - ndjson-raw
+                      - StackVariable.yml
               - type: "null"
               - $ref: StackVariable.yml
       - type: "null"
