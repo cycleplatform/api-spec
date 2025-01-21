@@ -140,11 +140,11 @@ properties:
                     type: string
                   format:
                     description: The format Cycle will use to send the logs.
-                    type:
-                      - string
-                      - "null"
-                    enum:
-                      - ndjson-headers
-                      - ndjson-raw
+                    oneOf:
+                      - type: string
+                        enum:
+                          - ndjson-headers
+                          - ndjson-raw
+                      - type: "null"
               - type: "null"
       - type: "null"
