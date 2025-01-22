@@ -138,5 +138,13 @@ properties:
                   url:
                     description: The URL to the third party logging service where logs will be sent.
                     type: string
+                  format:
+                    description: The format Cycle will use to send the logs.
+                    oneOf:
+                      - type: string
+                        enum:
+                          - ndjson-headers
+                          - ndjson-raw
+                      - type: "null"
               - type: "null"
       - type: "null"
