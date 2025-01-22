@@ -6,3 +6,4 @@ enum:
   - vpn
   - loadbalancer
   - scheduler
+  - gateway
