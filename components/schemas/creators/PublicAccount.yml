@@ -6,6 +6,7 @@ required:
   - name
   - email
   - id
+  - two_factor_auth
 properties:
   name:
     title: AccountName
@@ -35,6 +36,13 @@ properties:
     title: AccountId
     description: Id information for an account
     type: string
+  two_factor_auth:
+    type: object
+    required:
+      - verified:
+    properties:
+      verified:
+        type: boolean
   events:
     allOf:
       - $ref: "../Events.yml"
