@@ -39,7 +39,7 @@ properties:
   two_factor_auth:
     type: object
     required:
-      - verified:
+      - verified
     properties:
       verified:
         description: Indicates if the user account has two factor authentication enabled for log in.
