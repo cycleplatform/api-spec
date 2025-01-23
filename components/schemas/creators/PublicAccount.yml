@@ -42,6 +42,7 @@ properties:
       - verified:
     properties:
       verified:
+        description: Indicates if the user account has two factor authentication enabled for log in.
         type: boolean
   events:
     allOf:
