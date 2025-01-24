@@ -44,7 +44,7 @@ properties:
     description: An array of email addresses to whom the billing invoices will be sent to. If left empty, they will be sent to the owner of this hub.
   contact:
     type: object
-    name: BillingContact
+    title: BillingContact
     description: The contact to whom invoices are billed.
     required:
       - name
