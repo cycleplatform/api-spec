@@ -1,0 +1,14 @@
+title: ChangelogEntryState
+allOf:
+  - required:
+      - current
+    properties:
+      current:
+        description: The current state of the changelog entry.
+        type: string
+        enum:
+          - new
+          - approved
+          - published
+          - deleted
+  - "$ref": "../State.yml"
