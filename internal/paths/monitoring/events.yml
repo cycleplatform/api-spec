@@ -1,8 +1,8 @@
 post:
-  operationId: "postMetric"
-  summary: Post Metric
+  operationId: "postEvent"
+  summary: Post Event
   description: |
-    Post data to Cycle's monitoring system.
+    Post a custom event to Cycle's monitoring system.
   tags:
     - Monitoring
   parameters: []
@@ -13,7 +13,7 @@ post:
         schema:
           type: array
           items:
-            $ref: ../../components/monitoring/Metric.yml
+            $ref: ../../components/monitoring/Event.yml
   responses:
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
