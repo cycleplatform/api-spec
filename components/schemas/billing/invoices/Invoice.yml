@@ -15,6 +15,10 @@ properties:
     "$ref": "../../ID.yml"
   hub_id:
     "$ref": "../../HubID.yml"
+  billing_contact:
+    oneOf:
+      - type: "null"
+      - $ref: ../../hubs/HubBillingContact.yml
   approved:
     type: boolean
     description: A boolean where true represents the invoice is approved for collection.
