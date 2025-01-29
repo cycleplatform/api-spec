@@ -226,6 +226,7 @@ properties:
                         enum:
                           - ndjson-headers
                           - ndjson-raw
+                      - type: "null"
                       - $ref: StackVariable.yml
               - type: "null"
               - $ref: StackVariable.yml

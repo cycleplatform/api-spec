@@ -1,16 +1,16 @@
 get:
-  operationId: "getEnvironmentInstances"
-  summary: List Environment Instances
-  description: Lists all instances present in this instance's environment.
+  operationId: "getEnvironmentVirtualMachines"
+  summary: Get Environment Virtual Machines
+  description: |
+     Returns a list of virtual machines that are in the same environment as this instance.
   tags:
     - Environments
-    - Instances
   parameters: []
   responses:
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
     200:
-      description: Returns a list of instances.
+      description: Returns a list of virtual machines.
       content:
         application/json:
           schema:
@@ -21,4 +21,4 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../components/schemas/containers/instances/Instance.yml"
+                  $ref: ../../../components/schemas/vms/VirtualMachine.yml

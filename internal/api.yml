@@ -39,10 +39,12 @@ paths:
     $ref: paths/environment/ips.yml
   /v1/environment/services:
     $ref: paths/environment/services.yml
+  /v1/environment/virtual-machines:
+    $ref: paths/environment/virtual-machines.yml
   /v1/environment/services/lb/telemetry/snapshots:
     $ref: paths/environment/lbtelemetry.yml
   /v1/environment/scoped-variables:
-    $ref: paths/environment/scopedVariables.yml
+    $ref: paths/environment/scoped-variables.yml
 
   # Hubs
   /v1/hub:
@@ -56,13 +58,13 @@ paths:
   /v1/server/instances:
     $ref: paths/server/instances.yml
   /v1/server/instances/telemetry:
-    $ref: paths/server/instanceTelemetry.yml
+    $ref: paths/server/instance-telemetry.yml
   /v1/server/containers:
     $ref: paths/server/containers.yml
   /v1/server/images:
     $ref: paths/server/images.yml
   /v1/server/images/download:
-    $ref: paths/server/imageDownload.yml
+    $ref: paths/server/image-download.yml
 
   # Containers
   /v1/container:
@@ -81,6 +83,8 @@ paths:
   # Monitoring
   /v1/monitoring/metrics:
     $ref: paths/monitoring/metrics.yml
+  /v1/monitoring/events:
+    $ref: paths/monitoring/events.yml
 
   # VPN
   /v1/vpn/login:
@@ -93,7 +97,16 @@ paths:
     $ref: paths/sdn/instances.yml
   /v1/sdn/networks/environments:
     $ref: paths/sdn/environments.yml
+  
+  # Virtual Machines
+  /v1/virtual-machine:
+    $ref: paths/virtual-machine/virtual-machine.yml
+  /v1/virtual-machine/domains:
+    $ref: paths/virtual-machine/domains.yml
 
+  # Object Cache
+  /v1/object-cache:
+    $ref: paths/object-cache/object-cache.yml
 components:
   securitySchemes:
     tokenAuth:
