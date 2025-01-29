@@ -1,0 +1,68 @@
+get:
+  operationId: "getObjectCache"
+  summary: Get Object Cache
+  description: |
+    Returns an object saved to the internal object cache.
+  tags:
+    - Object Cache
+  parameters:
+    - name: scope
+      in: query
+      required: true
+      description: Specify the object scope.
+      schema:
+        type: string
+        enum:
+          - global
+          - environment
+          - container
+          - instance
+    - name: key
+      in: query
+      required: true
+      description: Specify the object key.
+      schema:
+        type: string
+  responses:
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns a saved object cache item.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../components/object-cache/ObjectCacheSave.yml
+
+post:
+  operationId: "postObjectCache"
+  summary: Post Object Cache
+  description: |
+    Save an item to the internal API object cache.
+  tags:
+    - Object Cache
+  parameters: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../components/object-cache/ObjectCacheSave.yml
+  responses:
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns true on success.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: "null"

@@ -28,5 +28,7 @@ get:
                     $ref: ../../../components/schemas/containers/ServiceContainer.yml
                   scheduler:
                     $ref: ../../../components/schemas/containers/ServiceContainer.yml
+                  gateway:
+                    $ref: ../../../components/schemas/containers/ServiceContainer.yml
                 additionalProperties:
                   $ref: ../../../components/schemas/containers/ServiceContainer.yml
