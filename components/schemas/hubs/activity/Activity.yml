@@ -341,6 +341,7 @@ properties:
       - virtual-machine.task.stop
       - virtual-machine.stop
       - virtual-machine.reconfigure
+      - virtual-machine.task.reconfigure
       - virtual-machine.update
       - virtual-machine.task.delete
       - virtual-machine.delete
@@ -355,7 +356,7 @@ properties:
       - virtual-machine.task.ip.allocate
       - virtual-machine.ip.unallocate
       - virtual-machine.task.ip.unallocate
-      
+
   time:
     description: A timestamp for when the activity took place.
     "$ref": "../../DateTime.yml"
