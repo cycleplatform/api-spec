@@ -56,6 +56,25 @@ patch:
               $ref: ../../../components/schemas/hubs/HubWebhooks.yml
             security:
               $ref: ../../../components/schemas/hubs/HubSecurity.yml
+            identifier:
+              type: string
+            billing_contact:
+              oneOf:
+                - type: object
+                  properties:
+                    name:
+                      type:
+                        - string
+                        - "null"
+                    legal_business_name:
+                      type:
+                        - string
+                        - "null"
+                    tax_id:
+                      type:
+                        - string
+                        - "null"
+                - type: "null"
   responses:
     200:
       description: Returns the updated Hub resource.
