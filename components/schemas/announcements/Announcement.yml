@@ -27,6 +27,19 @@ properties:
     type: array
     items:
       type: string
+  affected_services:
+    type: array
+    items:
+      type: string
+      enum:
+        - compute
+        - manager
+        - status
+        - load_balancer
+        - scheduler
+        - discovery
+        - gateway
+        - vpn
   creator:
     "$ref": "../creators/CreatorScope.yml"
   state:
