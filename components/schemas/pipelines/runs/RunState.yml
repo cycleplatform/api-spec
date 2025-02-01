@@ -7,8 +7,8 @@ allOf:
         description: The current state of the pipeline run.
         type: string
         enum:
-          - new
           - queued 
+          - acquiring
           - running
           - complete
           - deleting
