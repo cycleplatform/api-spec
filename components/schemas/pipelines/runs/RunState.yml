@@ -9,7 +9,8 @@ allOf:
         enum:
           - new
           - queued 
-          - running 
+          - running
+          - complete
           - deleting
           - deleted
   - "$ref": "../../State.yml"
