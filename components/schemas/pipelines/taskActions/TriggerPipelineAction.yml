@@ -16,3 +16,18 @@ properties:
         description: A map of variables to pass into the pipeline when it runs.
         additionalProperties:
           type: string
+      advanced:
+        type: object
+        properties:
+          sub_queue:
+            description: Sub queue allows multiple concurrent pipeline runs.
+            type:
+              - string
+              - "null"
+          skip_locks:
+            description: |
+              To enable skip locks, pass the current UNIX timestamp. Must be accurate within 10 minutes of the current UTC time. 
+              This will skip lock checks when running a pipeline - the user takes all risk of ensuring two pipeline runs won't make conflicting changes.
+            type:
+              - integer
+              - "null"
