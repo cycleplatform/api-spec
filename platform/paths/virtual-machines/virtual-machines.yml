@@ -19,6 +19,8 @@ get:
           enum:
             - domains
             - ips
+            - vm_priv_ips
+            - server
     - name: include
       in: query
       required: false
