@@ -6,6 +6,11 @@ properties:
     anyOf:
       - $ref: ../../../Duration.yml
       - type: "null"
+  dual_stack_legacy:
+    description: When enabled, Discovery will return both IPv6 and IPv4 when in Legacy mode.  Otherwise, only IPv4 will be retuned.
+    anyOf:
+      - type: boolean
+      - type: "null"
   hosts:
     type:
       - object
