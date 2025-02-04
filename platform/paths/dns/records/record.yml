@@ -17,6 +17,7 @@ patch:
       required: true
       schema:
         type: string
+    - $ref: includes/RecordIncludeParam.yml
   requestBody:
     description: Parameters for updating a DNS Zone Record. The name value cannot be updated and is omitted from the properties.
     content:
@@ -40,6 +41,8 @@ patch:
             properties:
               data:
                 $ref: ../../../../components/schemas/dns/records/Record.yml
+              includes:
+                $ref: includes/RecordIncludes.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
 
