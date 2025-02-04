@@ -7,9 +7,10 @@ allOf:
         description: The current state of the pipeline run.
         type: string
         enum:
-          - new
           - queued 
-          - running 
+          - acquiring
+          - running
+          - complete
           - deleting
           - deleted
   - "$ref": "../../State.yml"
