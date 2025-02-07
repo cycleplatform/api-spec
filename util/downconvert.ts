@@ -116,6 +116,7 @@ class Schema {
   adjust(schemaMap: Record<string, Schema>) {
     this.removeUnsupportedProperties();
     this.handleConstAsEnum();
+    this.handleNullType();
     this.handleAnyOfWithNull();
     this.handleOneOfWithNull();
     this.flattenIdenticalReferences(schemaMap);
@@ -142,6 +143,14 @@ class Schema {
     }
   }
 
+  // 🔹 Convert `type: "null"` to `type: "object", nullable: true`
+  handleNullType() {
+    if (this.type === "null") {
+      this.type = "object";
+      this.nullable = true;
+    }
+  }
+
   // Handle `anyOf` containing `null` and a reference or another type
   handleAnyOfWithNull() {
     if (this.anyOf) {
@@ -161,9 +170,9 @@ class Schema {
       if (hasNullType && nonNullEntry) {
         this.nullable = true;
 
-        if (nonNullEntry.$ref) {
+        if ((nonNullEntry as Schema).$ref) {
           // Convert `anyOf` to `allOf` with the reference
-          this.allOf = [{ $ref: nonNullEntry.$ref }];
+          this.allOf = [{ $ref: (nonNullEntry as Schema).$ref } as Schema];
         } else {
           // Otherwise, retain all properties of the non-null entry
           Object.assign(this, nonNullEntry);
@@ -200,18 +209,18 @@ class Schema {
         this.nullable = true;
 
         // Retain all properties of the non-null entry (type, enum, description, etc.)
-        for (const key in nonNullEntry) {
+        for (const key in nonNullEntry as Schema) {
           if (key !== "type" && key !== "nullable") {
             (this as any)[key] = nonNullEntry[key];
           }
         }
 
         // Assign the type of the non-null entry
-        this.type = nonNullEntry.type;
+        this.type = (nonNullEntry as Schema).type;
 
         // If there's an enum, retain it
-        if (nonNullEntry.enum) {
-          this.enum = nonNullEntry.enum;
+        if ((nonNullEntry as Schema).enum) {
+          this.enum = (nonNullEntry as Schema).enum;
         }
 
         delete this.oneOf;
@@ -396,7 +405,10 @@ async function readYamlFile(filePath: string): Promise<object> {
 
     return parsedData;
   } catch (err) {
-    throw new Error(`Error reading or parsing YAML file: ${err.message}`);
+    if (err && typeof err === "object" && "message" in err) {
+      throw new Error(`Error reading or parsing YAML file: ${err.message}`);
+    }
+    throw err;
   }
 }
 
@@ -412,7 +424,10 @@ async function writeJsonToFile(filePath: string, data: object): Promise<void> {
     await fs.writeFile(fullPath, jsonString, "utf8");
     console.log(`Successfully wrote to ${fullPath}`);
   } catch (err) {
-    throw new Error(`Error writing JSON to file: ${err.message}`);
+    if (err && typeof err === "object" && "message" in err) {
+      throw new Error(`Error writing JSON to file: ${err.message}`);
+    }
+    throw err;
   }
 }
 

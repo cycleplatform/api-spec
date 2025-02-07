@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "NodeNext",
+        "lib": [
+            "ESNext"
+        ],
+        "outDir": "./dist",
+        "strict": true,
+        "esModuleInterop": true,
+        "moduleResolution": "nodenext",
+        "resolveJsonModule": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+    },
+    "include": ["./downconvert.ts"],
+    "exclude": [
+        "dist"
+    ]
+}
