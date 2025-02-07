@@ -16,6 +16,7 @@ additionalProperties:
     - $ref: ../stacks/builds/StackBuild.yml
     - $ref: ../dns/Zone.yml
     - $ref: ../dns/records/Record.yml
+    - $ref: ../dns/tls/TlsCertificate.yml
     - $ref: ../hubs/ApiKey.yml
     - $ref: ../sdn/networks/Network.yml
     - $ref: ../hubs/HubMembership.yml
@@ -29,3 +30,4 @@ additionalProperties:
     - $ref: ../pipelines/runs/PipelineRun.yml
     - $ref: ../hubs/roles/Role.yml
     - $ref: ../creators/PublicAccount.yml
+    - $ref: ../vms/ssh-keys/VirtualMachineSshKey.yml

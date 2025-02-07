@@ -1,0 +1,28 @@
+title: AccountMembershipsIncludes
+type: object
+description: A resource that is associated with an account's membership.
+properties:
+  senders:
+    type: object
+    description: A record with an ID mapped to a public account for the account that sent this memberships initial invite.
+    properties:
+      accounts:
+        type: object
+        description: A record with an ID mapped to a public account.
+        additionalProperties:
+          $ref: ../../../../../components/schemas/creators/PublicAccount.yml
+  hubs:
+    type: object
+    description: A record with an ID mapped to a hub resource.
+    additionalProperties:
+      $ref: ../../../../../components/schemas/hubs/Hub.yml
+  roles:
+    type: object
+    description: A map of Roles relevant to this Hub Membership, keyed by the Role ID.
+    additionalProperties:
+      $ref: ../../../../../components/schemas/hubs/roles/Role.yml
+  roles:identifiers:
+    type: object
+    description: A map of Roles relevant to this Hub Membership, keyed by the Role ID.
+    additionalProperties:
+      $ref: ../../../../../components/schemas/ID.yml

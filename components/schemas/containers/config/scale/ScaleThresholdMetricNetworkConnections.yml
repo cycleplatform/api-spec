@@ -12,7 +12,7 @@ properties:
   details:
     type: object
     required:
-      - connections_total
+      - connections
     properties:
-      connections_total:
+      connections:
         type: integer

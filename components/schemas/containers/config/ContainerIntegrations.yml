@@ -39,14 +39,11 @@ properties:
           type: string
           description: The path in the container for these files to be injected.
   lets_encrypt:
-    type: object
+    type:
+      - object
+      - "null"
     description: Configuration settings to embed a TLS certificate in the container.
-    required:
-      - enable
     properties:
-      enable:
-        type: boolean
-        description: A boolean where true represents the desire for a container to have its corresponding TLS certificate(s) injected into the configured path(s).
       certificate_path:
         type: string
         description: Path where the `certificate.cert` will be saved.
@@ -128,14 +125,26 @@ properties:
           type: string
   logs:
     description: When enabled, allows more customization to be applied to logging for the container.
-    type:
-      - object
-      - "null"
-    properties:
-      groups:
-        description: A tag used for applying log filters and analytics.
-        type:
-          - array
-          - "null"
-        items:
-          $ref: ../../Identifier.yml
+    oneOf:
+      - type: object
+        properties:
+          drain:
+            description: When enabled, log drain allows logs to be exported to a third party service.
+            oneOf:
+              - type: object
+                required:
+                  - url
+                properties:
+                  url:
+                    description: The URL to the third party logging service where logs will be sent.
+                    type: string
+                  format:
+                    description: The format Cycle will use to send the logs.
+                    oneOf:
+                      - type: string
+                        enum:
+                          - ndjson-headers
+                          - ndjson-raw
+                      - type: "null"
+              - type: "null"
+      - type: "null"

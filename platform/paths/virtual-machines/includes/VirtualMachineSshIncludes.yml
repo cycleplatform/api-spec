@@ -1,0 +1,14 @@
+title: VirtualMachineSshIncludes
+description: All includable resources linkable to the given virtual machine SSH key.
+type: object
+properties:
+  creators:
+    $ref: ../../../../components/schemas/includes/CreatorInclude.yml
+  environments:
+    type: object
+    additionalProperties:
+      $ref: ../../../../components/schemas/environments/Environment.yml
+  environments:identifiers:
+    type: object
+    additionalProperties:
+      $ref: ../../../../components/schemas/ID.yml

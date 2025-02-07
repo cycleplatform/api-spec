@@ -28,6 +28,8 @@ get:
           enum:
             - domains
             - ips
+            - server
+            - vm_priv_ips
     - name: include
       in: query
       required: false
@@ -42,6 +44,7 @@ get:
             - creators
             - environments
             - clusters
+            - containers
   responses:
     200:
       description: Returns the requested virtual machine.
@@ -94,11 +97,16 @@ patch:
             lock:
               type: boolean
               description: Prevents this virtual machine from being deleted when true.
-            annotation:
+            annotations:
               type: object
               description: Metadata annotations for the virtual machine.
               additionalProperties:
                 type: string
+            ssh_keys:
+              description: An array of SSH key IDs that should be applied to this virtual machine.
+              type: array
+              items:
+                $ref: ../../../components/schemas/ID.yml
   responses:
     200:
       description: Returns the updated virtual machine.

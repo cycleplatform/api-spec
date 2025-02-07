@@ -80,6 +80,10 @@ properties:
   service:
     $ref: ../ServiceContainerIdentifier.yml
     description: The type of service this instance is within the environment, if any.
+  extension:
+    anyOf:
+      - $ref: ../extension/ContainerExtension.yml
+      - type: "null"
   state:
     $ref: InstanceState.yml
   autoscale:

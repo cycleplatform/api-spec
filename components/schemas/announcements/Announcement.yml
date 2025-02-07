@@ -27,6 +27,10 @@ properties:
     type: array
     items:
       type: string
+  affected_services:
+    type: array
+    items:
+      type: string
   creator:
     "$ref": "../creators/CreatorScope.yml"
   state:

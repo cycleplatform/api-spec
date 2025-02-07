@@ -3,7 +3,6 @@ type: object
 description: A set of features a given server can have and their information.
 required:
   - sftp
-  - base_volume_ gb
 properties:
   sftp:
     type: boolean
@@ -13,3 +12,17 @@ properties:
       - integer
       - "null"
     description: The size of the base volume (where Cycle stores container images on this server).
+  gateway:
+    type:
+      - object
+      - "null"
+    description: Configuration options for running gateway services on this server.
+    properties:
+      type:
+        type: string
+        description: The type of gateway service that can be run on this server.
+        enum:
+          - bgp
+          - static
+    required:
+      - type

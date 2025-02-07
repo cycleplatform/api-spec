@@ -1,0 +1,19 @@
+title: HubMembershipIncludes
+description: All includable resources for hub memberships.
+type: object
+properties:
+  accounts:
+    type: object
+    description: A record with an ID mapped to a public account.
+    additionalProperties:
+      $ref: ../../../../../components/schemas/creators/PublicAccount.yml
+  roles:
+    type: object
+    description: A map of roles relevant to this hub membership, keyed by the Role ID.
+    additionalProperties:
+      $ref: ../../../../../components/schemas/hubs/roles/Role.yml
+  roles:identifiers:
+    type: object
+    description: A map of roles relevant to this hub membership, keyed by the role ID.
+    additionalProperties:
+      $ref: ../../../../../components/schemas/ID.yml

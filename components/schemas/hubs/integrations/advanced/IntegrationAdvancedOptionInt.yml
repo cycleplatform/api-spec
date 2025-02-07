@@ -1,0 +1,19 @@
+title: IntegrationAdvancedOptionInt
+type: object
+required:
+  - title
+  - key
+  - type
+properties:
+  title:
+    type: string
+  key:
+    type: string
+  type:
+    type: string
+    enum:
+      - int
+  default:
+    type:
+      - integer
+      - "null"

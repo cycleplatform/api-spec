@@ -256,6 +256,11 @@ properties:
       - dns.zone.record.task.delete
       - dns.zone.record.create
 
+      - dns.certificate.associate
+      - dns.certificate.deprecate
+      - dns.certificate.create
+      - dns.certificate.task.deprecate
+
       - stack.update
       - stack.task.delete
       - stack.delete
@@ -336,9 +341,22 @@ properties:
       - virtual-machine.task.stop
       - virtual-machine.stop
       - virtual-machine.reconfigure
+      - virtual-machine.task.reconfigure
       - virtual-machine.update
       - virtual-machine.task.delete
       - virtual-machine.delete
+      - virtual-machine.sos.login
+
+      - virtual-machine.ssh-key.create
+      - virtual-machine.ssh-key.update
+      - virtual-machine.ssh-key.task.delete
+      - virtual-machine.ssh-key.delete
+
+      - virtual-machine.ip.allocate
+      - virtual-machine.task.ip.allocate
+      - virtual-machine.ip.unallocate
+      - virtual-machine.task.ip.unallocate
+
   time:
     description: A timestamp for when the activity took place.
     "$ref": "../../DateTime.yml"

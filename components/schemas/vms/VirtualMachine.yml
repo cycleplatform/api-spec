@@ -13,7 +13,18 @@ properties:
   creator:
     $ref: ../creators/CreatorScope.yml
   environment:
-    $ref: summaries/VirtualMachineEnvironmentSummary.yml
+    type: object
+    description: |
+      Basic information about the environment this virtual machine is in.
+    properties:
+      id:
+        $ref: ../ID.yml
+      cluster:
+        $ref: ../Identifier.yml
+        description: The cluster this environment is associated with.
+    required:
+      - id
+      - cluster
   hub_id:
     $ref: ../HubID.yml
   config:
@@ -40,8 +51,26 @@ properties:
     examples:
       - "10G"
   root_password:
-    type: string
+    type: object
     description: The generated root password for the virtual machine. Only visible by the owner, or if it was created in the last ten minutes.
+    properties:
+      changed:
+        $ref: ../DateTime.yml
+      current:
+        type:
+          - string
+          - "null"
+        description: The root password.
+    required:
+      - changed
+      - current
+  ssh_keys:
+    description: An array of IDs corresponding to SSH keys that have been assigned to this virtual machine.
+    anyOf:
+      - type: array
+        items:
+          $ref: ../ID.yml
+      - type: "null"
   state:
     $ref: ./VirtualMachineState.yml
   events:

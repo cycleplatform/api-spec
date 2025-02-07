@@ -28,51 +28,52 @@ properties:
     description: A Cycle standard error code.
     enum:
       # 400
-      - 400.invalid_syntax
+      - 400.invalid-syntax
 
-        # 401
-      - 401.auth_invalid
-      - 401.auth_expired
-      - 401.no_cookie
-      - 401.unauthorized_application
+      # 401
+      - 401.auth-invalid
+      - 401.auth-expired
+      - 401.no-cookie
+      - 401.unauthorized-application
 
-        # 403
+      # 403
       - 403.mismatch
-      - 403.wrong_hub
-      - 403.not_ready
+      - 403.wrong-hub
+      - 403.not-ready
       - 403.expired
-      - 403.restricted_portal
+      - 403.restricted-portal
       - 403.permissions
-      - 403.wrong_scope
-      - 403.invalid_ip
-      - 403.invalid_state
-      - 403.not_approved
-      - 403.not_allowed
-      - 403.platform_disabled
-      - 403.2fa_required
-      - 403.2fa_failed
-      - 403.new_application_capabilities
-      - 403.tier_restricted
+      - 403.invalid-ip
+      - 403.invalid-state
+      - 403.not-approved
+      - 403.not-allowed
+      - 403.platform-disabled
+      - 403.2fa-required
+      - 403.2fa-failed
+      - 403.new-application-capabilities
+      - 403.tier-restricted
 
-        # 404
+      # 404
       - 404.hub
       - 404.hub.invitation
-      - 404.sdn_network
+      - 404.hub.integration
+      - 404.hub.role
+      - 404.sdn.network
       - 404.environment
       - 404.environment.scoped-variable
-      - 404.hub.api_key
-      - 404.hub.provider
-      - 404.hub.integration
+      - 404.hub.api-key
       - 404.uri
       - 404.provider
       - 404.stack
+      - 404.community.thread
+      - 404.community.thread.reply
       - 404.survey
-      - 404.survey_response
+      - 404.survey-response
       - 404.notification
-      - 404.stack_build
+      - 404.stack-build
       - 404.image
       - 404.image.source
-      - 404.image.build_log
+      - 404.image.build-log
       - 404.job
       - 404.billing.order
       - 404.billing.service
@@ -80,18 +81,21 @@ properties:
       - 404.billing.invoice
       - 404.billing.tier
       - 404.billing.support
-      - 404.billing.payment_method
-      - 404.billing.promo_code
+      - 404.billing.payment-method
+      - 404.billing.promo-code
       - 404.node
       - 404.infrastructure.location
       - 404.infrastructure.ips.pool
       - 404.infrastructure.provider
       - 404.infrastructure.server
+      - 404.infrastructure.cluster
+      - 404.infrastructure.autoscale.group
       - 404.infrastructure.model
+      - 404.monitoring.logs.analytics.rule
       - 404.account
       - 404.container
       - 404.container.backup
-      - 404.vpn_account
+      - 404.vpn.account
       - 404.instance
       - 404.pipeline
       - 404.pipeline.run
@@ -99,49 +103,51 @@ properties:
       - 404.dns.zone
       - 404.dns.record
       - 404.cluster
-      - 404.platform_build
-      - 404.cycleos_build
-      - 404.email_verification
+      - 404.platform-build
+      - 404.cycleos-build
+      - 404.email-verification
       - 404.hub.membership
       - 404.announcement
-      - 404.ha_service_session
-      - 404.sales_lead
+      - 404.ha-service.session
+      - 404.virtual-machine
+      - 404.virtual-machine.ssh-key
+      - 404.sales.lead
+      - 404.stack.build-log
 
-        # 409
-      - 409.duplicate_found
+      # 409
+      - 409.duplicate-found
 
-        # 415
-      - 415.invalid_content_type
+      # 415
+      - 415.invalid-content-type
 
-        # 422
-      - 422.missing_argument
-      - 422.invalid_argument
-      - 422.invalid_input
-      - 422.max_exceeded
-      - 422.not_compatible
-      - 422.already_exists
+      # 422
+      - 422.missing-argument
+      - 422.invalid-argument
+      - 422.invalid-input
+      - 422.max-exceeded
+      - 422.not-compatible
+      - 422.already-exists
 
-        # 429
-      - 429.rate_limiting
+      # 429
+      - 429.rate-limiting
 
-        # 500
+      # 500
       - 500.database
-      - 500.database_insert
-      - 500.database_update
-      - 500.database_remove
+      - 500.database-insert
+      - 500.database-update
+      - 500.database-remove
       - 500.jobd
       - 500.unknown
       - 500.dev
       - 500.email
-      - 500.payment_gateway
 
       # 503
-      - 503.not_ready
-      - 503.not_enabled
-      - 503.dependency_not_enabled
+      - 503.not-ready
+      - 503.not-enabled
+      - 503.dependency-not-enabled
 
       # 504
-      - 504.not_available
+      - 504.not-available
 
   title:
     type: string

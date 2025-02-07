@@ -1,0 +1,19 @@
+title: VirtualMachineIpUnallocateTask
+type: object
+required:
+  - action
+  - contents
+properties:
+  action:
+    type: string
+    enum:
+      - ip.unallocate
+    description: The action to take.
+  contents:
+    type: object
+    properties:
+      ip_id:
+        $ref: ../../ID.yml
+        description: The ID of the IP address to unallocate from the virtual machine.
+    required:
+      - ip_id

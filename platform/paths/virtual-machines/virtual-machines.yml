@@ -19,6 +19,8 @@ get:
           enum:
             - domains
             - ips
+            - vm_priv_ips
+            - server
     - name: include
       in: query
       required: false
@@ -33,6 +35,7 @@ get:
             - creators
             - environments
             - clusters
+            - containers
     - name: filter
       in: query
       style: deepObject
@@ -131,6 +134,7 @@ post:
           enum:
             - domains
             - ips
+            - server
     - name: include
       in: query
       required: false
@@ -183,13 +187,18 @@ post:
               type: string
               description: The size of the base disk. Must be between 10G and 100G.
               examples:
-                - "10G" 
+                - "10G"
             annotations:
               type:
                 - object
                 - "null"
               description: Custom meta data. Not utilized by Cycle.
               additionalProperties: {}
+            ssh_keys:
+              description: An array of SSH key IDs that should be applied to this virtual machine.
+              type: array
+              items:
+                $ref: ../../../components/schemas/ID.yml
 
   responses:
     201:

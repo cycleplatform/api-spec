@@ -1,4 +1,4 @@
-title: ReconfigureServerAction
+title: ReconfigureServerFeaturesTask
 type: object
 required:
   - action
@@ -12,9 +12,6 @@ properties:
   contents:
     type: object
     description: Supplemental information needed to perform the action.
-    required:
-      - sftp
-      - base_volume_gb
     properties:
       sftp:
         type: boolean
@@ -24,3 +21,17 @@ properties:
           - integer
           - "null"
         description: A number in GB for how big the base volume should be.  This cannot be lower than the currently set value for the server.
+      gateway:
+        type:
+          - object
+          - "null"
+        description: Configuration options for running gateway services on this server.
+        properties:
+          type:
+            type: string
+            description: The type of gateway service that can be run on this server.
+            enum:
+              - bgp
+              - static
+        required:
+          - type

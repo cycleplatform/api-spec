@@ -32,6 +32,10 @@ properties:
         anyOf:
           - $ref: "./EnvironmentServiceContainerSummary.yml"
           - type: "null"
+      gateway:
+        anyOf:
+          - $ref: "./EnvironmentServiceContainerSummary.yml"
+          - type: "null"
   stats:
     title: EnvironmentSummaryStats
     type: object
@@ -44,3 +48,8 @@ properties:
         $ref: "../../StateCountSummary.yml"
       instances:
         $ref: "../../StateCountSummary.yml"
+      servers:
+        type: object
+        description: A summary of instance counts, keyed by the host server ID.
+        additionalProperties:
+          $ref: "../../StateCountSummary.yml"

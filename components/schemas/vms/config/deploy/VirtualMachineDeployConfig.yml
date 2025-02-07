@@ -15,10 +15,6 @@ properties:
     anyOf:
       - $ref: ./VirtualMachineStartupPolicy.yml
       - type: "null"
-  restart:
-    anyOf:
-      - $ref: ./VirtualMachineRestartPolicy.yml
-      - type: "null"
   telemetry:
     anyOf:
       - $ref: ./VirtualMachineTelemetryConfig.yml

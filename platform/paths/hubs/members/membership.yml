@@ -20,8 +20,6 @@ get:
         items:
           type: string
           enum:
-            - senders
-            - hubs
             - accounts
             - roles
     - $ref: ../../../../components/parameters/SortParam.yml
@@ -40,6 +38,6 @@ get:
               data:
                 $ref: ../../../../components/schemas/hubs/HubMembership.yml
               includes:
-                $ref: ../../../../components/schemas/hubs/HubMembershipIncludes.yml
+                $ref: includes/HubMembershipIncludes.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml

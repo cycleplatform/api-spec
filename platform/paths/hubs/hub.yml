@@ -54,6 +54,27 @@ patch:
               description: A name for the hub.
             webhooks:
               $ref: ../../../components/schemas/hubs/HubWebhooks.yml
+            security:
+              $ref: ../../../components/schemas/hubs/HubSecurity.yml
+            identifier:
+              type: string
+            billing_contact:
+              oneOf:
+                - type: object
+                  properties:
+                    name:
+                      type:
+                        - string
+                        - "null"
+                    legal_business_name:
+                      type:
+                        - string
+                        - "null"
+                    tax_id:
+                      type:
+                        - string
+                        - "null"
+                - type: "null"
   responses:
     200:
       description: Returns the updated Hub resource.
@@ -76,6 +97,19 @@ delete:
   security:
     - bearerAuth: []
   parameters: []
+  requestBody:
+    description: Parameters for deleting a Server.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            options:
+              type: object
+              properties:
+                force:
+                  description: If force is set to true, this will force delete the hub, even if there are servers running on it.
+                  type: boolean
   summary: Delete Hub
   description: Requires the `hubs-delete` capability. This can only be aquired by being the hub owner.
   responses:

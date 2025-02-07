@@ -7,6 +7,10 @@ post:
     Requires the following capabilities based on the task: 
     `start`: `virtual-machines-manage`
     `stop`: `virtual-machines-manage`
+    `reconfigure`: `virtual-machines-manage`
+    `rootpw.change`: `virtual-machines-manage`
+    `ip.allocate`: `virtual-machines-manage`
+    `ip.unallocate`: `virtual-machines-manage`
   tags:
     - Virtual Machines
   parameters:
@@ -26,9 +30,17 @@ post:
             mapping:
               start: ../../../components/schemas/vms/tasks/VirtualMachineStartTask.yml
               stop: ../../../components/schemas/vms/tasks/VirtualMachineStopTask.yml
+              reconfigure: ../../../components/schemas/vms/tasks/VirtualMachineReconfigureTask.yml
+              rootpw.change: ../../../components/schemas/vms/tasks/VirtualMachineRootPwChangeTask.yml
+              ip.allocate: ../../../components/schemas/vms/tasks/VirtualMachineIpAllocateTask.yml
+              ip.unallocate: ../../../components/schemas/vms/tasks/VirtualMachineIpUnallocateTask.yml
           oneOf:
             - $ref: ../../../components/schemas/vms/tasks/VirtualMachineStartTask.yml
             - $ref: ../../../components/schemas/vms/tasks/VirtualMachineStopTask.yml
+            - $ref: ../../../components/schemas/vms/tasks/VirtualMachineReconfigureTask.yml
+            - $ref: ../../../components/schemas/vms/tasks/VirtualMachineRootPwChangeTask.yml
+            - $ref: ../../../components/schemas/vms/tasks/VirtualMachineIpAllocateTask.yml
+            - $ref: ../../../components/schemas/vms/tasks/VirtualMachineIpUnallocateTask.yml
   responses:
     202:
       description: Returns a job descriptor.

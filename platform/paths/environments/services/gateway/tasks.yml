@@ -1,0 +1,52 @@
+post:
+  operationId: "createGatewayServiceJob"
+  summary: Create Gateway Service Job
+  description: Creates a task that will update the gateway service's configuration.
+  tags:
+    - Services/Gateway
+  parameters:
+    - name: environmentId
+      description: The ID of the environment where this gateway service resides.
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    description: Parameters for reconfiguring a gateway service.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - action
+            - contents
+          properties:
+            action:
+              type: string
+              enum:
+                - reconfigure
+              description: The name of the action to perform.
+            contents:
+              type: object
+              properties:
+                auto_update:
+                  type:
+                    - boolean
+                    - "null"
+                  description: A boolean where `true` represents the desire to automatically update the environment gateway service.
+
+  responses:
+    202:
+      description: Returns a job descriptor.
+      content:
+        application/json:
+          schema:
+            title: "TaskResponse"
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../../components/schemas/jobs/JobDescriptor.yml
+    default:
+      $ref: ../../../../../components/responses/errors/DefaultError.yml

@@ -8,6 +8,7 @@ required:
   - creator
   - events
   - state
+  - security
   - integrations
   - webhooks
   - billing
@@ -26,6 +27,8 @@ properties:
     $ref: "HubEvents.yml"
   state:
     $ref: "./HubState.yml"
+  security:
+    $ref: HubSecurity.yml
   webhooks:
     $ref: HubWebhooks.yml
   billing:

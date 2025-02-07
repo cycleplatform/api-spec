@@ -1,0 +1,19 @@
+title: VirtualMachineRootPwChangeTask
+type: object
+required:
+  - action
+  - contents
+properties:
+  action:
+    type: string
+    enum:
+      - rootpw.change
+    description: The action to take.
+  contents:
+    type: object
+    properties:
+      password:
+        type: string
+        description: The new password. Must be at least 10 characters.
+    required:
+      - password

@@ -52,13 +52,7 @@ properties:
       - type:
           - object
           - "null"
-        required:
-          - enable
         properties:
-          enable:
-            oneOf:
-              - type: boolean
-              - $ref: StackVariable.yml
           certificate_path:
             oneOf:
               - type:
@@ -211,17 +205,30 @@ properties:
   logs:
     description: When enabled, allows more customization to be applied to logging for the container.
     oneOf:
-      - type:
-          - object
-          - "null"
+      - type: object
         properties:
-          groups:
-            description: A tag used for applying log filters and analytics.
+          drain:
+            description: When enabled, log drain allows logs to be exported to a third party service.
             oneOf:
-              - type:
-                  - array
-                  - "null"
-                items:
-                  $ref: ../../components/schemas/Identifier.yml
+              - type: object
+                required:
+                  - url
+                properties:
+                  url:
+                    description: The URL to the third party logging service where logs will be sent.
+                    oneOf:
+                      - type: string
+                      - $ref: StackVariable.yml
+                  format:
+                    description: The format Cycle will use to send the logs.
+                    oneOf:
+                      - type: string
+                        enum:
+                          - ndjson-headers
+                          - ndjson-raw
+                      - type: "null"
+                      - $ref: StackVariable.yml
+              - type: "null"
               - $ref: StackVariable.yml
+      - type: "null"
       - $ref: StackVariable.yml
