@@ -1,5 +1,4 @@
 title: IntegrationMeta
-x-ogen-name: HubIntegrationMeta
 type: object
 description: Additional fields that can be requested for an Integration on fetch.
 properties:

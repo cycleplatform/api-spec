@@ -1,5 +1,4 @@
 title: InstanceMigration
-x-ogen-name: InstanceMigrationResult
 type: object
 description: Information regarding the migration of an instance, such as the server that the instance came from or the server that the instance was moved to.
 required:
