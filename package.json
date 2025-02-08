@@ -17,13 +17,16 @@
     "preview:platform": "npm run build:platform && npx @redocly/cli preview-docs dist/platform.yml",
     "preview:internal": "npm run build:internal && npx @redocly/cli preview-docs dist/internal.yml",
     "preview:scheduler": "npm run build:scheduler && npx @redocly/cli preview-docs cycle-scheduler-api",
-    "preview:ial": "npm run build:ial && npx @redocly/cli preview-docs cycle-ial"
+    "preview:ial": "npm run build:ial && npx @redocly/cli preview-docs cycle-ial",
+    "downconvert:platform": "npm run build:platform && npx tsx ./util/downconvert.ts"
   },
   "author": "Petrichor Holdings, Inc.",
   "license": "Apache-2.0",
   "devDependencies": {
     "@apidevtools/json-schema-ref-parser": "^11.5.4",
     "@redocly/cli": "1.11.0",
-    "@types/node": "^20.12.7"
+    "@types/node": "^20.12.7",
+    "@types/yamljs": "^0.2.34",
+    "yamljs": "^0.3.0"
   }
 }

@@ -16,7 +16,6 @@ enum:
   - container.instance.healthcheck.recovered
   - container.instance.volume.extend.failed
   - container.instance.healthcheck.restarted
-  - container.instance.migration.failed
   - container.instance.migration.completed
   - container.instance.migration.failed
   - container.instance.network.interfaces.create.failed

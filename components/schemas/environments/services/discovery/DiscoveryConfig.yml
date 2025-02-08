@@ -35,6 +35,8 @@ properties:
             type: string
   custom_resolvers:
     description: "A list of custom DNS resolver strings.  Can specifify domains or ips."
-    type: array
-    items:
-      type: string
+    oneOf:
+      - type: array
+        items:
+          type: string
+      - type: "null"

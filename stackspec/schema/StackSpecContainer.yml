@@ -11,6 +11,7 @@ properties:
     type: string
     description: The human-readable name of this container.
   image:
+    x-ogen-name: StackSpecContainerImageProperty
     description: Details about the image used for this container.
     oneOf:
       - $ref: StackSpecContainerImage.yml

@@ -19,6 +19,6 @@ properties:
         type: string
         enum:
           - limited
-          - standard
+          - basic
           - premium
           - enterprise

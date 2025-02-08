@@ -1,4 +1,5 @@
 title: StackSpecContainerConfigNetwork
+x-ogen-name: StackSpecContainerConfigNetwork
 description: Stack configuration options related to the container's network.
 type: object
 required:

@@ -1,5 +1,4 @@
 title: StackBuildInstructions
-x-ogen-name: StackBuildInstructionsDetails
 type: object
 description: Additional instructions used when generating this stack build.
 properties:

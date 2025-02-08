@@ -175,9 +175,7 @@ properties:
           - type: object
             properties:
               deployment:
-                type:
-                  - object
-                  - "null"
+                type: object
                 description: Information about the deployment this record points to.
                 required:
                   - environment_id
