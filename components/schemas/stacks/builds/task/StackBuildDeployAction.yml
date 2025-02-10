@@ -1,4 +1,4 @@
-title: DeployStackBuild
+title: StackBuildDeployAction
 type: object
 required:
   - action

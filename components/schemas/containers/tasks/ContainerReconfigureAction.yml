@@ -1,4 +1,4 @@
-title: ReconfigureContainer 
+title: ContainerReconfigureAction
 type: object
 required:
   - action

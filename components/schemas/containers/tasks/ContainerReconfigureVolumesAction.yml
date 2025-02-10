@@ -1,4 +1,4 @@
-title: ReconfigureVolumeTask
+title: ContainerReconfigureVolumesAction
 type: object
 required:
   - action
