@@ -1,4 +1,4 @@
-title: VirtualMachineStopTask
+title: VirtualMachineStopAction
 type: object
 required:
   - action

@@ -1,4 +1,4 @@
-title: RerunPipelineAction
+title: PipelineTriggerAction
 type: object
 required:
   - action

@@ -1,4 +1,4 @@
-title: VirtualMachineStartTask
+title: VirtualMachineStartAction
 type: object
 required:
   - action

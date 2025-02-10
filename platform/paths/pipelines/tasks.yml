@@ -16,14 +16,7 @@ post:
     content:
       application/json:
         schema:
-          discriminator:
-            propertyName: action
-            mapping:
-              trigger: ../../../components/schemas/pipelines/taskActions/TriggerPipelineAction.yml
-              rerun: ../../../components/schemas/pipelines/taskActions/RerunPipelineAction.yml
-          oneOf:
-            - $ref: ../../../components/schemas/pipelines/taskActions/TriggerPipelineAction.yml
-            - $ref: ../../../components/schemas/pipelines/taskActions/RerunPipelineAction.yml
+          $ref: ../../../components/schemas/pipelines/task/PipelineTask.yml
   responses:
     202:
       description: Returns a job descriptor.

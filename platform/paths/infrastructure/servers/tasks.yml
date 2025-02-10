@@ -16,7 +16,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: ../../../../components/schemas/infrastructure/servers/taskActions/ServerTask.yml
+          $ref: ../../../../components/schemas/infrastructure/servers/task/ServerTask.yml
   responses:
     202:
       description: Returns a Job Descriptor.

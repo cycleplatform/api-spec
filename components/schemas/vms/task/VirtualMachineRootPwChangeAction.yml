@@ -1,4 +1,4 @@
-title: VirtualMachineRootPwChangeTask
+title: VirtualMachineRootPwChangeAction
 type: object
 required:
   - action

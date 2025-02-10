@@ -1,4 +1,4 @@
-title: VirtualMachineReconfigureTask
+title: VirtualMachineReconfigureAction
 type: object
 required:
   - action

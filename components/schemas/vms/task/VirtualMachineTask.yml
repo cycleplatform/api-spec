@@ -1,0 +1,17 @@
+title: VirtualMachineStopTask.yml
+discriminator:
+  propertyName: action
+  mapping:
+    start: VirtualMachineStartAction.yml
+    stop: VirtualMachineStopAction.yml
+    reconfigure: VirtualMachineReconfigureAction.yml
+    rootpw.change: VirtualMachineRootPwChangeAction.yml
+    ip.allocate: VirtualMachineIpAllocateAction.yml
+    ip.unallocate: VirtualMachineIpUnallocateAction.yml
+oneOf:
+  - $ref: VirtualMachineStartAction.yml
+  - $ref: VirtualMachineStopAction.yml
+  - $ref: VirtualMachineReconfigureAction.yml
+  - $ref: VirtualMachineRootPwChangeAction.yml
+  - $ref: VirtualMachineIpAllocateAction.yml
+  - $ref: VirtualMachineIpUnallocateAction.yml
