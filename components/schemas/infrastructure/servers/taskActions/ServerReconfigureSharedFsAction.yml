@@ -1,4 +1,4 @@
-title: ReconfigureSharedFsTask
+title: ServerReconfigureSharedFsAction
 type: object
 required:
   - action

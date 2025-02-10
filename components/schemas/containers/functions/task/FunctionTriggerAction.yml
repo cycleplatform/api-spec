@@ -1,4 +1,4 @@
-title: TriggerAction
+title: FunctionTriggerAction
 type: object
 required:
   - action

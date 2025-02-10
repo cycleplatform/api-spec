@@ -1,4 +1,4 @@
-title: RevertMigrationAction
+title: InstanceRevertMigrationAction
 type: object
 required:
   - action

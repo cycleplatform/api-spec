@@ -16,24 +16,7 @@ post:
     content:
       application/json:
         schema:
-          discriminator:
-            propertyName: action
-            mapping:
-              sharedfs.reconfigure: ../../../../components/schemas/infrastructure/servers/taskActions/ReconfigureSharedFsTask.yml
-              features.reconfigure: ../../../../components/schemas/infrastructure/servers/taskActions/ReconfigureServerFeaturesTask.yml
-              restart: ../../../../components/schemas/infrastructure/servers/taskActions/RestartServerTask.yml
-              compute.restart: ../../../../components/schemas/infrastructure/servers/taskActions/RestartComputeTask.yml
-              compute.spawner.restart: ../../../../components/schemas/infrastructure/servers/taskActions/RestartComputeSpawnerTask.yml
-              evacuation.start: ../../../../components/schemas/infrastructure/servers/taskActions/EvacuateServerTask.yml
-              evacuation.reset: ../../../../components/schemas/infrastructure/servers/taskActions/EvacuateServerResetTask.yml
-          oneOf:
-            - $ref: ../../../../components/schemas/infrastructure/servers/taskActions/ReconfigureSharedFsTask.yml
-            - $ref: ../../../../components/schemas/infrastructure/servers/taskActions/ReconfigureServerFeaturesTask.yml
-            - $ref: ../../../../components/schemas/infrastructure/servers/taskActions/RestartServerTask.yml
-            - $ref: ../../../../components/schemas/infrastructure/servers/taskActions/RestartComputeTask.yml
-            - $ref: ../../../../components/schemas/infrastructure/servers/taskActions/RestartComputeSpawnerTask.yml
-            - $ref: ../../../../components/schemas/infrastructure/servers/taskActions/EvacuateServerTask.yml
-            - $ref: ../../../../components/schemas/infrastructure/servers/taskActions/EvacuateServerResetTask.yml
+          $ref: ../../../../components/schemas/infrastructure/servers/taskActions/ServerTask.yml
   responses:
     202:
       description: Returns a Job Descriptor.

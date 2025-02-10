@@ -1,4 +1,4 @@
-title: ExtendVolumeAction
+title: InstanceExtendVolumeAction
 type: object
 required:
   - action

@@ -1,4 +1,4 @@
-title: MigrateAction
+title: InstanceMigrateAction
 type: object
 required:
   - action

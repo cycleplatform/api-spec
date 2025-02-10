@@ -1,4 +1,4 @@
-title: VpnReconfigureTask
+title: VpnReconfigureAction
 type: object
 required:
   - action

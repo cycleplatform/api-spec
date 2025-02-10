@@ -1,4 +1,4 @@
-title: ReconfigureServerFeaturesTask
+title: ServerReconfigureFeaturesAction
 type: object
 required:
   - action

@@ -1,5 +1,5 @@
-title: StartInstanceTask
-description: Properties for creating a job to start an instance.
+title: StopInstanceAction
+description: Properties for creating a job to stop an instance.
 type: object
 required:
   - action
@@ -8,7 +8,7 @@ properties:
   action:
     type: string
     enum:
-      - container.instance.start
+      - container.instance.stop
   contents:
     type: object
     required:
@@ -19,8 +19,3 @@ properties:
         $ref: ../../../../components/schemas/ID.yml
       container_id:
         $ref: ../../../../components/schemas/ID.yml
-      function:
-        anyOf: 
-          - $ref: ../../../../components/schemas/containers/functions/FunctionInitOpts.yml
-          - type: "null"
-          
