@@ -25,22 +25,7 @@ post:
     content:
       application/json:
         schema:
-          discriminator:
-            propertyName: action
-            mapping:
-              start: ../../../components/schemas/containers/taskActions/ContainerStartAction.yml
-              stop: ../../../components/schemas/containers/taskActions/ContainerStopAction.yml
-              reconfigure: ../../../components/schemas/containers/taskActions/ReconfigureContainer.yml
-              volumes.reconfigure: ../../../components/schemas/containers/taskActions/ReconfigureVolumes.yml
-              reimage: ../../../components/schemas/containers/taskActions/Reimage.yml
-              scale: ../../../components/schemas/containers/taskActions/Scale.yml
-          oneOf:
-            - $ref: ../../../components/schemas/containers/taskActions/ContainerStartAction.yml
-            - $ref: ../../../components/schemas/containers/taskActions/ContainerStopAction.yml
-            - $ref: ../../../components/schemas/containers/taskActions/ReconfigureContainer.yml
-            - $ref: ../../../components/schemas/containers/taskActions/ReconfigureVolumes.yml
-            - $ref: ../../../components/schemas/containers/taskActions/Reimage.yml
-            - $ref: ../../../components/schemas/containers/taskActions/Scale.yml
+          $ref: ../../../components/schemas/containers/tasks/ContainerTask.yml
   responses:
     202:
       description: Returns a Job Descriptor.
