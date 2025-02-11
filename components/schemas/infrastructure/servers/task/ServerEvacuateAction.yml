@@ -1,0 +1,23 @@
+title: ServerEvacuateAction
+type: object
+required:
+  - action
+  - contents
+properties:
+  action:
+    type: string
+    description: The action to take.
+    enum:
+      - evacuation.start
+  contents:
+    type: object
+    required:
+      - destination
+    properties:
+      destination:
+        type: object
+        properties:
+          server_id:
+            anyOf:
+              - $ref: ../../../ID.yml
+              - type: "null"

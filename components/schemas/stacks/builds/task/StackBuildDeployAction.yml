@@ -1,0 +1,28 @@
+title: StackBuildDeployAction
+type: object
+required:
+  - action
+  - contents
+properties:
+  action:
+    type: string
+    description: The action the job takes.
+    enum:
+      - deploy
+  contents:
+    type: object
+    description: Additional information needed for the job.
+    required:
+      - environment_id
+    properties:
+      environment_id:
+        type: string
+        description: The ID for the environment this stack build will be deployed to.
+      deployment:
+        anyOf:
+          - $ref: ../../../containers/Deployment.yml
+          - type: "null"
+      update:
+        anyOf:
+          - $ref: "../StackBuildDeploymentUpdates.yml"
+          - type: "null"

@@ -1,0 +1,13 @@
+title: EnvironmentTask
+discriminator:
+  propertyName: action
+  mapping:
+    start: EnvironmentStartAction.yml
+    stop: EnvironmentStopAction.yml
+    initialize: EnvironmentInitializeAction.yml
+    deployments.reconfigure: EnvironmentReconfigureDeploymentsAction.yml
+oneOf:
+  - $ref: EnvironmentStartAction.yml
+  - $ref: EnvironmentStopAction.yml
+  - $ref: EnvironmentInitializeAction.yml
+  - $ref: EnvironmentReconfigureDeploymentsAction.yml
