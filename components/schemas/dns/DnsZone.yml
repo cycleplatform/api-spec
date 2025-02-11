@@ -1,4 +1,4 @@
-title: DNSZone
+title: DnsZone
 type: object
 description: DNS (Domain Name System), in short, is a decentralized naming system for computers, services, or other resources connected to the internet or a private network. It is what allows the translation of a URL, such as http://example.com, to an IP address.
 required:
@@ -24,10 +24,10 @@ properties:
     description: A boolean where true represents this zone is a hosted zone.
   acl:
     anyOf:
-      - $ref: ../common/ACL.yml 
+      - $ref: ../common/ACL.yml
       - type: "null"
   state:
-    "$ref": "./ZoneState.yml"
+    "$ref": "./DnsZoneState.yml"
   events:
     title: ZoneEvents
     type: object

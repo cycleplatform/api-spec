@@ -18,7 +18,7 @@ properties:
           type: string
           description: The fully qualified domain name.
         record:
-          "$ref": "../dns/records/Record.yml"
+          "$ref": "../dns/records/DnsRecord.yml"
   ips:
     description: An array of IP resources.
     type: array

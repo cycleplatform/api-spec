@@ -44,7 +44,7 @@ get:
               data:
                 type: array
                 items:
-                  $ref: ../../../../components/schemas/dns/records/Record.yml
+                  $ref: ../../../../components/schemas/dns/records/DnsRecord.yml
               includes:
                 $ref: includes/RecordIncludes.yml
     default:
@@ -75,7 +75,7 @@ post:
             - name
           properties:
             type:
-              $ref: ../../../../components/schemas/dns/records/RecordTypes.yml
+              $ref: ../../../../components/schemas/dns/records/DnsRecordTypes.yml
             name:
               type: string
               description: A name for the given record where `@` represents the desire to use the root of the origin.
@@ -91,7 +91,7 @@ post:
               - data
             properties:
               data:
-                $ref: ../../../../components/schemas/dns/records/Record.yml
+                $ref: ../../../../components/schemas/dns/records/DnsRecord.yml
               includes:
                 $ref: includes/RecordIncludes.yml
     default:

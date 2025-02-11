@@ -1,4 +1,4 @@
-title: RecordTlsCertificate
+title: DnsRecordTlsCertificate
 type: object
 description: A TLS certificate assigned to a DNS record.
 required:
