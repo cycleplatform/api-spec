@@ -1,4 +1,4 @@
-title: DNSRecord
+title: DnsRecord
 type: object
 description: A DNS record.
 required:
@@ -29,7 +29,7 @@ properties:
     type: string
     description: The name of the record and the origin as a domain name.
   type:
-    $ref: RecordTypes.yml
+    $ref: DnsRecordTypes.yml
   features:
     type:
       - object
@@ -40,9 +40,9 @@ properties:
     properties:
       certificate:
         anyOf:
-          - $ref: RecordTlsCertificate.yml
+          - $ref: DnsRecordTlsCertificate.yml
           - type: "null"
   state:
-    $ref: RecordState.yml
+    $ref: DnsRecordState.yml
   events:
     $ref: ../../Events.yml

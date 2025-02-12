@@ -1,4 +1,4 @@
-title: DNSRecordTypes
+title: DnsRecordTypes
 type: object
 description: DNS record types the platform supports.
 properties:
