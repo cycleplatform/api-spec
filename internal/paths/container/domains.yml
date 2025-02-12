@@ -35,4 +35,4 @@ get:
                       type: string
                       description: The fully qualified domain name.
                     record:
-                      $ref: ../../../components/schemas/dns/records/Record.yml
+                      $ref: ../../../components/schemas/dns/records/DnsRecord.yml
