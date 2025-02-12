@@ -2,7 +2,7 @@ get:
   operationId: "getVirtualMachineDomains"
   summary: Get Virtual Machine Domains
   description: |
-     Returns the domains associated with the specified virtual machine.
+    Returns the domains associated with the specified virtual machine.
   tags:
     - Virtual Machines
   parameters:
@@ -35,4 +35,4 @@ get:
                       type: string
                     record:
                       anyOf:
-                        - $ref: ../../../components/schemas/dns/records/Record.yml
+                        - $ref: ../../../components/schemas/dns/records/DnsRecord.yml
