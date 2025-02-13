@@ -58,6 +58,11 @@ patch:
               $ref: ../../../components/schemas/hubs/HubSecurity.yml
             identifier:
               type: string
+            billing_emails:
+              type: array
+              description: Email addresses that will receive any invoices or billing related correspondence. 
+              items:
+                type: string
             billing_contact:
               oneOf:
                 - type: object
