@@ -1,0 +1,5 @@
+title: ClusterIncludes
+description: A resource associated with a cluster.
+type: object
+additionalProperties:
+  "$ref": "../infrastructure/clusters/Cluster.yml"

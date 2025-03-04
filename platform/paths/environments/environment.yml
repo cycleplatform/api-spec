@@ -63,7 +63,7 @@ get:
                   creators:
                     $ref: ../../../components/schemas/includes/CreatorInclude.yml
                   clusters:
-                    $ref: ../../../../components/schemas/includes/ClusterIncludes.yml
+                    $ref: ../../../components/schemas/includes/ClusterIncludes.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
 
