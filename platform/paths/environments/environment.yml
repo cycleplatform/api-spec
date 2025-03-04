@@ -44,6 +44,7 @@ get:
           enum:
             - creators
             - stacks
+            - clusters
   responses:
     200:
       description: Returns an Environment.
@@ -61,6 +62,8 @@ get:
                 properties:
                   creators:
                     $ref: ../../../components/schemas/includes/CreatorInclude.yml
+                  clusters:
+                    $ref: ../../../../components/schemas/includes/ClusterIncludes.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
 
@@ -113,7 +116,7 @@ patch:
               properties:
                 tier:
                   $ref: ../../../components/schemas/environments/monitoring/MonitoringTier.yml
-                    
+
   responses:
     200:
       description: Returns an Environment.
