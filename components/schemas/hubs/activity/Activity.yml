@@ -211,6 +211,7 @@ properties:
       - container.restart
       - container.task.reimage
       - container.reimage
+      - container.deprecate
       - container.update
       - container.task.delete
       - container.delete
