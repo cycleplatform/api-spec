@@ -591,8 +591,8 @@ paths:
     $ref: "./paths/infrastructure/providers/locations.yml"
 
     ## Virtual Providers
-    "/v1/infrastructure/virtual-providers/{integrationId}/tasks":
-      $ref: "./paths/infrastructure/virtual-providers/tasks.yml"
+  "/v1/infrastructure/virtual-providers/{integrationId}/tasks":
+    $ref: "./paths/infrastructure/virtual-providers/tasks.yml"
 
   ## Clusters
   "/v1/infrastructure/clusters":
