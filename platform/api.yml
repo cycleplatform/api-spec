@@ -121,6 +121,7 @@ x-tagGroups:
       - Auto-Scale Groups
       - Clusters
       - Providers
+      - Virtual Providers
       - Servers
       - IPs
   - name: Jobs
@@ -238,6 +239,8 @@ tags:
     description: Endpoints related to managing infrastructure clusters.
   - name: Providers
     description: Endpoints related to providers configured for a hub.
+  - name: Virtual Providers
+    description: Endpoints related to virtual provider configurations.
   - name: Servers
     description: Endpoints related to managing servers on Cycle.
   - name: IPs
@@ -586,6 +589,10 @@ paths:
     $ref: "./paths/infrastructure/providers/servers.yml"
   "/v1/infrastructure/providers/{providerVendor}/locations":
     $ref: "./paths/infrastructure/providers/locations.yml"
+
+    ## Virtual Providers
+    "/v1/infrastructure/virtual-providers/{id}/tasks":
+      $ref: "./paths/infrastructure/virtual-providers/tasks.yml"
 
   ## Clusters
   "/v1/infrastructure/clusters":
