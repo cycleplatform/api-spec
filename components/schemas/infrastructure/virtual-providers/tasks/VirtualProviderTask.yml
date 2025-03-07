@@ -1,0 +1,7 @@
+title: VirtualProviderTask.yml
+discriminator:
+  propertyName: action
+  mapping:
+    "iso.generate": VirtualProviderGenerateIsoAction.yml
+oneOf:
+  - $ref: VirtualProviderGenerateIsoAction.yml
