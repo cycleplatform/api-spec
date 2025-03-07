@@ -33,6 +33,6 @@ post:
               - data
             properties:
               data:
-                $ref: ../../../components/schemas/jobs/JobDescriptor.yml
+                $ref: ../../../../components/schemas/jobs/JobDescriptor.yml
     default:
-      $ref: ../../../components/responses/errors/DefaultError.yml
+      $ref: ../../../../components/responses/errors/DefaultError.yml
