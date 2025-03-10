@@ -10,8 +10,8 @@ info:
     name: Apache-2.0
     url: http://www.apache.org/licenses/LICENSE-2.0
   title: Cycle Internal API
-  description:
-    Inside every container running on Cycle, there is a Unix socket mounted at /var/run/cycle/api/api.sock. You can send HTTP requests over this socket to access information about the local environment, access secrets, and much more.
+  description: |
+    Inside every container running on Cycle, there is a Unix socket mounted at *`/var/run/cycle/api/api.sock`*. You can send HTTP requests over this socket to access information about the local environment, access secrets, and much more.
     The way this internal API functions is very similar to how Cycle's main API works, though the purpose is different. The internal API is primarily used by instances to learn about their environment, and dynamically update as deployments change. In the future, we expect you'll be able to use the internal API to register service containers and much more.
     The internal API returns identical JSON responses to the main API. There is also a websocket based API that you can tune into for streaming platform updates.
   version: 1.0.0
@@ -103,6 +103,9 @@ paths:
     $ref: paths/virtual-machine/virtual-machine.yml
   /v1/virtual-machine/domains:
     $ref: paths/virtual-machine/domains.yml
+  /v1/virtual-machine/gateways:
+    $ref: paths/virtual-machine/gateways.yml
+
 
   # Object Cache
   /v1/object-cache:
