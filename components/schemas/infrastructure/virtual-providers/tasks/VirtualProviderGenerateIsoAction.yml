@@ -13,11 +13,17 @@ properties:
     type: object
     properties:
       vxlan_id:
-        type: integer
+        type:
+          - integer
+          - "null"
         description: The VXLAN ID that the target server should initialize with when booted.
       vlan_id:
-        type: integer
+        type:
+          - integer
+          - "null"
         description: The VLAN ID that the target server should initialize with when booted.
       static_ip:
-        type: string
+        type:
+          - string
+          - "null"
         description: The static IP that the target server should initialize with when booted.
