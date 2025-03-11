@@ -2,28 +2,9 @@ title: VirtualProviderGenerateIsoAction
 type: object
 required:
   - action
-  - contents
 properties:
   action:
     type: string
     enum:
-      - iso.generate
+      - generate
     description: The action to take.
-  contents:
-    type: object
-    properties:
-      vxlan_id:
-        type:
-          - integer
-          - "null"
-        description: The VXLAN ID that the target server should initialize with when booted.
-      vlan_id:
-        type:
-          - integer
-          - "null"
-        description: The VLAN ID that the target server should initialize with when booted.
-      static_ip:
-        type:
-          - string
-          - "null"
-        description: The static IP that the target server should initialize with when booted.

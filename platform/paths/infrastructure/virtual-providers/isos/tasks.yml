@@ -1,5 +1,5 @@
 post:
-  operationId: "createVirtualProviderJob"
+  operationId: "createVirtualProviderIsoJob"
   summary: Create Virtual Provider Job
   description: |
     Create a job for a virtual provider.
@@ -14,12 +14,18 @@ post:
       required: true
       schema:
         type: string
+    - name: isoId
+      description: The ID for the container backup.
+      in: path
+      required: true
+      schema:
+        type: string
   requestBody:
     description: Parameters for creating a new virtual provider job.
     content:
       application/json:
         schema:
-          $ref: ../../../../components/schemas/infrastructure/virtual-providers/tasks/VirtualProviderTask.yml
+          $ref: ../../../../../components/schemas/infrastructure/virtual-providers/tasks/VirtualProviderIsoTask.yml
 
   responses:
     202:
@@ -33,6 +39,6 @@ post:
               - data
             properties:
               data:
-                $ref: ../../../../components/schemas/jobs/JobDescriptor.yml
+                $ref: ../../../../../components/schemas/jobs/JobDescriptor.yml
     default:
-      $ref: ../../../../components/responses/errors/DefaultError.yml
+      $ref: ../../../../../components/responses/errors/DefaultError.yml
