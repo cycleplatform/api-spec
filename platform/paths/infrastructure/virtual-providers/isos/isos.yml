@@ -101,21 +101,21 @@ get:
   operationId: getVirtualProviderIsos
   summary: Get ISOs for a virtual provider
   description: |
-    Create an ISO for a virtual provider.
+    Get ISOs for a virtual provider.
 
     Requires the `servers-manage` capability.
   tags:
     - Virtual Providers
   parameters:
     - name: integrationId
-      description: The ID of the integration linked to requested ISOs.
+      description: The ID of the integration.
       in: path
       required: true
       schema:
         type: string
   responses:
     200:
-      description: Returns an Environment.
+      description: Returns an a list of ISOs.
       content:
         application/json:
           schema:
