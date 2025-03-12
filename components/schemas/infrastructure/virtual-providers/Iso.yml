@@ -27,51 +27,55 @@ properties:
         type: string
         description: Authentication token for the ISO.
       ipxe:
-        type: object
-        properties:
-          vlan_id:
-            type:
-              - integer
-              - "null"
-            description: VLAN ID for the ISO configuration.
-          static_ip:
-            type:
-              - string
-              - "null"
-            description: Static IP assigned to the ISO.
-          gateway_ip:
-            type:
-              - string
-              - "null"
-            description: Gateway IP assigned to the ISO.
-          dns_ip:
-            type:
-              - string
-              - "null"
-            description: DNS IP assigned to the ISO.
+        oneOf:
+          - type: object
+            properties:
+              vlan_id:
+                type:
+                  - integer
+                  - "null"
+                description: VLAN ID for the IPXE boot.
+              static_ip:
+                type:
+                  - string
+                  - "null"
+                description: Static IP assigned to the IPXE boot.
+              gateway_ip:
+                type:
+                  - string
+                  - "null"
+                description: Gateway IP assigned to the IPXE boot.
+              dns_ip:
+                type:
+                  - string
+                  - "null"
+                description: DNS IP assigned to the IPXE boot.
+          - type: "null"
       server:
-        type: object
-        properties:
-          vlan_id:
-            type:
-              - integer
-              - "null"
-            description: VLAN ID for the ISO configuration.
-          static_ip:
-            type:
-              - string
-              - "null"
-            description: Static IP assigned to the ISO.
-          gateway_ip:
-            type:
-              - string
-              - "null"
-            description: Gateway IP assigned to the ISO.
-          dns_ip:
-            type:
-              - string
-              - "null"
-            description: DNS IP assigned to the ISO.
+        oneOf:
+          - type: object
+            properties:
+              vlan_id:
+                type:
+                  - integer
+                  - "null"
+                description: VLAN ID for the serer.
+              static_ip:
+                type:
+                  - string
+                  - "null"
+                description: Static IP assigned to the server.
+              gateway_ip:
+                type:
+                  - string
+                  - "null"
+                description: Gateway IP assigned to the server.
+              dns_ip:
+                type:
+                  - string
+                  - "null"
+                description: DNS IP assigned to the server.
+          - type: "null"
   backend:
     oneOf:
       - type: object
