@@ -591,12 +591,18 @@ paths:
     $ref: "./paths/infrastructure/providers/locations.yml"
 
     ## Virtual Providers
-  "/v1/infrastructure/virtual-providers/{integrationId}/isos/{isoId}/tasks":
-    $ref: "./paths/infrastructure/virtual-providers/isos/tasks.yml"
 
   "/v1/infrastructure/virtual-providers/{integrationId}/isos":
     $ref: "./paths/infrastructure/virtual-providers/isos/isos.yml"
 
+  "/v1/infrastructure/virtual-providers/{integrationId}/isos/{isoId}":
+    $ref: "./paths/infrastructure/virtual-providers/isos/iso.yml"
+
+  "/v1/infrastructure/virtual-providers/{integrationId}/isos/{isoId}/tasks":
+    $ref: "./paths/infrastructure/virtual-providers/isos/tasks.yml"
+
+  "/v1/infrastructure/virtual-providers/{integrationId}/isos/{isoId}/download":
+    $ref: "./paths/infrastructure/virtual-providers/isos/download.yml"
   ## Clusters
   "/v1/infrastructure/clusters":
     $ref: "./paths/infrastructure/clusters/clusters.yml"
