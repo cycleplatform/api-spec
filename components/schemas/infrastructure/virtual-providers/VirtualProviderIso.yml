@@ -1,4 +1,4 @@
-title: Iso
+title: VirtualProviderIso
 description: The ISO image for a virtual provider.
 type: object
 required:

@@ -93,7 +93,7 @@ post:
               - data
             properties:
               data:
-                $ref: ../../../../../components/schemas/infrastructure/virtual-providers/Iso.yml
+                $ref: ../../../../../components/schemas/infrastructure/virtual-providers/VirtualProviderIso.yml
     default:
       $ref: ../../../../../components/responses/errors/DefaultError.yml
 
@@ -126,4 +126,4 @@ get:
               data:
                 type: array
                 items:
-                  $ref: ../../../../../components/schemas/infrastructure/virtual-providers/Iso.yml
+                  $ref: ../../../../../components/schemas/infrastructure/virtual-providers/VirtualProviderIso.yml
