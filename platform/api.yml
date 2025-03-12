@@ -382,10 +382,10 @@ paths:
     $ref: "./paths/containers/instances/tasks.yml"
   "/v1/containers/{containerId}/instances/{instanceId}/volumes":
     $ref: "./paths/containers/instances/volumes.yml"
-  ? "/v1/containers/{containerId}/instances/{instanceId}/telemetry/resources/report"
-  : $ref: paths/containers/instances/telemetry/report.yml
-  ? "/v1/containers/{containerId}/instances/{instanceId}/telemetry/resources/stream"
-  : $ref: paths/containers/instances/telemetry/stream.yml
+  "/v1/containers/{containerId}/instances/{instanceId}/telemetry/resources/report":
+    $ref: paths/containers/instances/telemetry/report.yml
+  "/v1/containers/{containerId}/instances/{instanceId}/telemetry/resources/stream":
+    $ref: paths/containers/instances/telemetry/stream.yml
   "/v1/containers/{containerId}/instances/{instanceId}/console":
     $ref: "paths/containers/instances/console.yml"
   "/v1/containers/{containerId}/functions/tasks":
@@ -591,8 +591,11 @@ paths:
     $ref: "./paths/infrastructure/providers/locations.yml"
 
     ## Virtual Providers
-  "/v1/infrastructure/virtual-providers/{integrationId}/tasks":
-    $ref: "./paths/infrastructure/virtual-providers/tasks.yml"
+  "/v1/infrastructure/virtual-providers/{integrationId}/isos/{isoId}/tasks":
+    $ref: "./paths/infrastructure/virtual-providers/isos/tasks.yml"
+
+  "/v1/infrastructure/virtual-providers/{integrationId}/isos":
+    $ref: "./paths/infrastructure/virtual-providers/isos/isos.yml"
 
   ## Clusters
   "/v1/infrastructure/clusters":
