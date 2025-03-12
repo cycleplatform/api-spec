@@ -21,8 +21,11 @@ post:
         schema:
           type: object
           required:
+            - identifier
             - config
           properties:
+            identifier:
+              type: string
             config:
               type: object
               required:
@@ -40,11 +43,21 @@ post:
                             - integer
                             - "null"
                           description: VLAN ID for the IPXE boot.
+                        network_interface:
+                          type:
+                            - integer
+                            - "null"
+                          description: Network interface for the IPXE boot.
                         static_ip:
                           type:
                             - string
                             - "null"
                           description: Static IP assigned to the IPXE boot.
+                        netmask:
+                          type:
+                            - string
+                            - "null"
+                          description: Netmask assigned to the IPXE boot.
                         gateway_ip:
                           type:
                             - string
@@ -70,6 +83,11 @@ post:
                             - string
                             - "null"
                           description: Static IP assigned to the server.
+                        netmask:
+                          type:
+                            - string
+                            - "null"
+                          description: Netmask assigned to the server
                         gateway_ip:
                           type:
                             - string

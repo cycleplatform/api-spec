@@ -1,10 +1,5 @@
-post:
-  operationId: "createVirtualProviderIsoJob"
-  summary: Create Virtual Provider Iso Job
-  description: |
-    Create a job for a virtual provider iso.
-
-    Requires the `servers-manage` capability.
+delete:
+  operationId: "deleteVirtualProviderIso"
   tags:
     - Virtual Providers
   parameters:
@@ -20,20 +15,14 @@ post:
       required: true
       schema:
         type: string
-  requestBody:
-    description: Parameters for creating a new virtual provider iso job.
-    content:
-      application/json:
-        schema:
-          $ref: ../../../../../components/schemas/infrastructure/virtual-providers/tasks/VirtualProviderIsoTask.yml
-
+  summary: Delete ISO
+  description: Requires the `servers-manage` capability.
   responses:
     202:
-      description: Returns a job descriptor.
+      description: Returns a Job Descriptor.
       content:
         application/json:
           schema:
-            title: "TaskResponse"
             type: object
             required:
               - data
