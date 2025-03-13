@@ -19,8 +19,6 @@ properties:
     $ref: ../../ID.yml
   integration_id:
     $ref: ../../ID.yml
-  identifier:
-    type: string
   config:
     type: object
     required:
