@@ -21,11 +21,8 @@ post:
         schema:
           type: object
           required:
-            - identifier
             - config
           properties:
-            identifier:
-              type: string
             config:
               type: object
               required:
