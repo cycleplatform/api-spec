@@ -9,6 +9,7 @@ discriminator:
     compute.spawner.restart: ServerRestartComputeSpawnerAction.yml
     evacuation.start: ServerEvacuateAction.yml
     evacuation.reset: ServerEvacuateResetAction.yml
+    unquarantine: ServerUnquarantineAction.yml
 oneOf:
   - $ref: ServerReconfigureSharedFsAction.yml
   - $ref: ServerReconfigureFeaturesAction.yml
@@ -17,3 +18,4 @@ oneOf:
   - $ref: ServerRestartComputeSpawnerAction.yml
   - $ref: ServerEvacuateAction.yml
   - $ref: ServerEvacuateResetAction.yml
+  - $ref: ServerUnquarantineAction.yml
