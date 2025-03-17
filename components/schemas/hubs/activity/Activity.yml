@@ -282,6 +282,9 @@ properties:
       - infrastructure.provider.create
       - infrastructure.provider.task.verify
 
+      - infrastructure.virtual-providers.iso.create
+      - infrastructure.virtual-providers.iso.generate
+
       - infrastructure.server.task.delete
       - infrastructure.server.task.restart
       - infrastructure.server.services.sftp.auth
