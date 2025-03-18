@@ -8,8 +8,7 @@
 </picture>
 </a>
 
-This repository contains the [OpenAPI](https://www.openapis.org/) definitions for the [Cycle Platform](https://cycle.io).
-This spec is used to generate various API clients, used by our team internally, and also the foundation of our API documentation.
+This repository contains the [OpenAPI](https://www.openapis.org/) definitions for the [Cycle API](https://cycle.io/docs/api/platform). It is used in several downstream API clients and projects, and is the basis of our API documentation.
 
 ⚠️ This spec is still under development. While most endpoints should be stable, there are still edge cases and small discrepancies that are actively being worked on. While no major breaking changes are expected, we can't guarantee that any downstream clients won't be affected by changes to schemas.
 
@@ -19,7 +18,7 @@ This spec is used to generate various API clients, used by our team internally, 
 
 https://api.cycle.io
 
-[Documentation](https://api-docs.cycle.io)
+[Documentation](https://cycle.io/docs/api/platform)
 
 The platform API is the general use API for the Cycle Platform, and is available to all Cycle customers. It is the same API consumed by Cycle's portal, and is the main way to interact with all aspects of the platform.
 
@@ -27,7 +26,7 @@ See the [platform](./platform/) folder for implementation.
 
 ### Internal API
 
-[Documentation](https://internal-api.docs.cycle.io)
+[Documentation](https://cycle.io/docs/api/internal)
 
 Inside every container running on Cycle, there is a Unix socket mounted at `/var/run/cycle/api/api.sock`. You can send HTTP requests over this socket to access information about the local environment, access secrets, and much more. The way this internal API functions is very similar to how Cycle's main API works, though the purpose is different. The internal API is primarily used by instances to learn about their environment, and dynamically update as deployments change.
 
@@ -35,7 +34,7 @@ See the [internal](./internal/) folder for implementation.
 
 ### Scheduler API
 
-[Documentation](https://scheduler-api.docs.cycle.io/)
+[Documentation](https://cycle.io/docs/api/scheduler)
 
 The scheduler API is used to interact with the [Scheduler Service](https://cycle.io/docs/platform/scheduler-service) inside of
 an environment on Cycle. The scheduler service can be accessed from other containers in the environment over the private network,
@@ -100,7 +99,7 @@ This will build the stack spec into a single JSON schema file, and save it to ./
 
 ## Downconverting to OpenAPI 3.0.3
 
-The API specs in this repo are written using the OpenAPI 3.1.0 standard. Some code generators and other tools haven't yet 
+The API specs in this repo are written using the OpenAPI 3.1.0 standard. Some code generators and other tools haven't yet
 been updated to support 3.1.0, which can be an inconvenience. For us, it seems nearly all golang client generators don't
 support 3.1.0 (if you find one let us know!).
 
