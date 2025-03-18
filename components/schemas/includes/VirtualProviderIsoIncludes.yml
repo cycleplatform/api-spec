@@ -1,6 +1,0 @@
-title: IsoIncludes
-description: A resource that is associated with an ISO.
-type: object
-properties:
-  integrations:
-    $ref: ./IntegrationsIncludes.yml

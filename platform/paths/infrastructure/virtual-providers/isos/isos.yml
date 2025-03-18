@@ -172,4 +172,4 @@ get:
                 items:
                   $ref: ../../../../../components/schemas/infrastructure/virtual-providers/VirtualProviderIso.yml
               includes:
-                $ref: ../../../../../../public-spec/components/schemas/includes/VirtualProviderIsoIncludes.yml
+                $ref: ../../../../../components/schemas/infrastructure/virtual-providers/VirtualProviderIsoIncludes.yml
