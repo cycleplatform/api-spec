@@ -1,8 +1,0 @@
-title: VirtualProviderIsoIncludes
-description: A resource that is associated with an ISO.
-type: object
-properties:
-  integrations:
-    type: object
-    additionalProperties:
-      $ref: ../../hubs/integrations/Integration.yml
