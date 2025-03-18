@@ -78,7 +78,7 @@ get:
               data:
                 $ref: ../../../../../components/schemas/infrastructure/virtual-providers/VirtualProviderIso.yml
               includes:
-                $ref: ../../../../../../public-spec/components/schemas/includes/IsoIncludes.yml
+                $ref: ../../../../../../public-spec/components/schemas/includes/VirtualProviderIsoIncludes.yml
 
     default:
       $ref: ../../../../../components/responses/errors/DefaultError.yml
