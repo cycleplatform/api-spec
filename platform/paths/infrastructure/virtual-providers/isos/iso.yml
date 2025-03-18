@@ -109,6 +109,9 @@ patch:
         schema:
           type: object
           properties:
+            name:
+              description: The name of the ISO.
+              type: string
             server:
               oneOf:
                 - type: object
@@ -116,6 +119,7 @@ patch:
                     - nics
                   properties:
                     nics:
+                      description: An array of server network interfaces.
                       type: array
                       items:
                         type: object
@@ -123,13 +127,16 @@ patch:
                           - match
                         properties:
                           match:
+                            description: The criteria used to match the server to the interface.
                             type: object
                             properties:
                               interface_name:
+                                description: The name of the interface on the server.
                                 type:
                                   - string
                                   - "null"
                               mac_address:
+                                description: The mac address of the server.
                                 type:
                                   - string
                                   - "null"

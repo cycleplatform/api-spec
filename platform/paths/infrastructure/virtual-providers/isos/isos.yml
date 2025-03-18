@@ -21,8 +21,12 @@ post:
         schema:
           type: object
           required:
+            - name
             - config
           properties:
+            name:
+              description: The name of the ISO.
+              type: string
             config:
               type: object
               required:
@@ -73,6 +77,7 @@ post:
                         - nics
                       properties:
                         nics:
+                          description: An array of server network interfaces.
                           type: array
                           items:
                             type: object
@@ -80,13 +85,16 @@ post:
                               - match
                             properties:
                               match:
+                                description: The criteria used to match the server to the interface.
                                 type: object
                                 properties:
                                   interface_name:
+                                    description: The name of the interface on the server.
                                     type:
                                       - string
                                       - "null"
                                   mac_address:
+                                    description: The mac address of the server.
                                     type:
                                       - string
                                       - "null"
