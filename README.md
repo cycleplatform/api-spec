@@ -8,8 +8,7 @@
 </picture>
 </a>
 
-This repository contains the [OpenAPI](https://www.openapis.org/) definitions for the [Cycle Platform](https://cycle.io).
-This spec is used to generate various API clients, used by our team internally, and also the foundation of our API documentation.
+This repository contains the [OpenAPI](https://www.openapis.org/) definitions for the [Cycle API](https://cycle.io/docs/api/platform). It is used in several downstream API clients and projects, and is the basis of our API documentation.
 
 ⚠️ This spec is still under development. While most endpoints should be stable, there are still edge cases and small discrepancies that are actively being worked on. While no major breaking changes are expected, we can't guarantee that any downstream clients won't be affected by changes to schemas.
 
