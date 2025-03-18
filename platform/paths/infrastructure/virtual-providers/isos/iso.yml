@@ -109,6 +109,8 @@ patch:
         schema:
           type: object
           properties:
+            name:
+              type: string
             server:
               oneOf:
                 - type: object

@@ -3,6 +3,7 @@ description: The ISO image for a virtual provider.
 type: object
 required:
   - id
+  - name
   - creator
   - hub_id
   - integration_id
@@ -13,6 +14,8 @@ required:
 properties:
   id:
     $ref: ../../ID.yml
+  name:
+    type: string
   creator:
     $ref: ../../creators/CreatorScope.yml
   hub_id:
