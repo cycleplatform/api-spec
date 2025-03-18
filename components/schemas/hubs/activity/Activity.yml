@@ -194,6 +194,7 @@ properties:
       - hub.integration.create
       - hub.integration.update
       - hub.integration.delete
+      - hub.integration.task.delete
       - hub.inactive
 
       - container.initialize
@@ -284,6 +285,9 @@ properties:
 
       - infrastructure.virtual-providers.iso.create
       - infrastructure.virtual-providers.iso.generate
+      - infrastructure.virtual-providers.iso.update
+      - infrastructure.virtual-providers.iso.delete
+      - infrastructure.virtual-providers.iso.task.delete
 
       - infrastructure.server.task.delete
       - infrastructure.server.task.restart
