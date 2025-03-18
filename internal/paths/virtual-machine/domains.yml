@@ -1,0 +1,38 @@
+get:
+  operationId: "getVirtualMachineDomains"
+  summary: Get Virtual Machine Domains
+  description: |
+    Returns the domains associated with the specified virtual machine.
+  tags:
+    - Virtual Machines
+  parameters:
+    - name: virtual-machine-id
+      in: query
+      required: true
+      description: Specify which virtual machine to fetch domains for.
+      schema:
+        type: string
+  responses:
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns a list of virtual machine domains.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  type: object
+                  required:
+                    - fqdn
+                  properties:
+                    fqdn:
+                      type: string
+                    record:
+                      anyOf:
+                        - $ref: ../../../components/schemas/dns/records/DnsRecord.yml

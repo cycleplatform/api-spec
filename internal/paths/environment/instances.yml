@@ -1,7 +1,7 @@
 get:
   operationId: "getEnvironmentInstances"
   summary: List Environment Instances
-  description: Lists all Instances present in this Instance's Environment.
+  description: Lists all instances present in this instance's environment.
   tags:
     - Environments
     - Instances
@@ -10,7 +10,7 @@ get:
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
     200:
-      description: Returns a list of Instances.
+      description: Returns a list of instances.
       content:
         application/json:
           schema:

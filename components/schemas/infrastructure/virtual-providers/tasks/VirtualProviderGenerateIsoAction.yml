@@ -1,0 +1,10 @@
+title: VirtualProviderGenerateIsoAction
+type: object
+required:
+  - action
+properties:
+  action:
+    type: string
+    enum:
+      - generate
+    description: The action to take.

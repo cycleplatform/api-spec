@@ -33,6 +33,8 @@ properties:
           enum:
             - any
             - all
+            # legacy value TODO remove
+            - ""
         conditions:
           description: An array of the specific conditions for the rule.
           type: array

@@ -1,5 +1,4 @@
 title: Server
-x-ogen-name: InfraServer
 type: object
 description: The server resource, referring to servers that have been deployed to a Cycle hub.
 required:

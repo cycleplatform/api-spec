@@ -29,6 +29,7 @@ get:
             - domains
             - ips
             - server
+            - vm_priv_ips
     - name: include
       in: query
       required: false

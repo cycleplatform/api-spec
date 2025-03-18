@@ -211,6 +211,7 @@ properties:
       - container.restart
       - container.task.reimage
       - container.reimage
+      - container.deprecate
       - container.update
       - container.task.delete
       - container.delete
@@ -281,6 +282,9 @@ properties:
       - infrastructure.provider.create
       - infrastructure.provider.task.verify
 
+      - infrastructure.virtual-providers.iso.create
+      - infrastructure.virtual-providers.iso.generate
+
       - infrastructure.server.task.delete
       - infrastructure.server.task.restart
       - infrastructure.server.services.sftp.auth
@@ -341,6 +345,7 @@ properties:
       - virtual-machine.task.stop
       - virtual-machine.stop
       - virtual-machine.reconfigure
+      - virtual-machine.task.reconfigure
       - virtual-machine.update
       - virtual-machine.task.delete
       - virtual-machine.delete
@@ -355,7 +360,7 @@ properties:
       - virtual-machine.task.ip.allocate
       - virtual-machine.ip.unallocate
       - virtual-machine.task.ip.unallocate
-      
+
   time:
     description: A timestamp for when the activity took place.
     "$ref": "../../DateTime.yml"

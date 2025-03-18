@@ -1,8 +1,8 @@
 title: BucketImageSource
 type: object
 required:
-  - id
-  - origin
+  - type
+  - details
 properties:
   type:
     type: string

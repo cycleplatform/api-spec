@@ -1,5 +1,5 @@
 title: IntegrationDefinition
-description: Describes an integration for a Cycle Hub that can be enabled by the Hub owner.
+description: Describes an integration for a Cycle hub that can be enabled by the hub owner.
 type: object
 required:
   - vendor
@@ -24,7 +24,7 @@ properties:
     type:
       - array
       - "null"
-    description: A list of additional features supported by this Integration.
+    description: A list of additional features supported by this integration.
     items:
       type: string
   extends:
@@ -38,7 +38,7 @@ properties:
     type:
       - object
       - "null"
-    description: Additional configuration options that are available when using this Integration. These describe additional functionality that Cycle may utilize.
+    description: Additional configuration options that are available when using this integration. These describe additional functionality that Cycle may utilize.
     properties:
       options:
         type:
@@ -65,37 +65,13 @@ properties:
           - object
           - "null"
         additionalProperties:
-          type: object
-          required:
-            - description
-            - required
-          properties:
-            regex:
-              type:
-                - string
-                - "null"
-            required:
-              type: boolean
-            description:
-              type: string
+          $ref: ./IntegrationDefinitionField.yml
       auth:
         type:
           - object
           - "null"
         additionalProperties:
-          type: object
-          required:
-            - description
-            - required
-          properties:
-            regex:
-              type:
-                - string
-                - "null"
-            required:
-              type: boolean
-            description:
-              type: string
+          $ref: ./IntegrationDefinitionField.yml
   url:
     type: string
     format: uri
@@ -103,6 +79,10 @@ properties:
     type: boolean
   usable:
     type: boolean
+    description: Whether or not this integration can be used at this time.
+  deprecated:
+    type: boolean
+    description: If true, this integration is no longer being supported and may be removed in the future. New instances of this integration will not be able to be created.
   editable:
     type: boolean
-    description: If true, the Integration can be edited. Otherwise, to make a change it will need to be deleted and recreated.
+    description: If true, the integration can be edited. Otherwise, to make a change it will need to be deleted and recreated.

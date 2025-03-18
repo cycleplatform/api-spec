@@ -12,14 +12,7 @@ post:
     content:
       application/json:
         schema:
-          discriminator:
-            propertyName: action
-            mapping:
-              container.instance.start: ../../components/instances/tasks/StartInstanceTask.yml
-              container.instance.stop: ../../components/instances/tasks/StopInstanceTask.yml
-          oneOf:
-            - $ref: ../../components/instances/tasks/StartInstanceTask.yml
-            - $ref: ../../components/instances/tasks/StopInstanceTask.yml
+          $ref: ../../components/instances/task/InstanceTask.yml
   responses:
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml

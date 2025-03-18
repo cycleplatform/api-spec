@@ -1,0 +1,27 @@
+title: IntegrationDefinitionField
+type: object
+required:
+  - description
+  - required
+properties:
+  regex:
+    type:
+      - string
+      - "null"
+  required:
+    type: boolean
+  description:
+    type: string
+  type:
+    type: string
+    enum:
+      - "select"
+      - "string"
+      - "int"
+      - "blob"
+  options:
+    oneOf:
+      - type: array
+        items:
+          type: string
+      - type: "null"

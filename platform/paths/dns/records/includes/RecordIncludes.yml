@@ -1,0 +1,22 @@
+title: RecordIncludes
+description: All includable resources linkable to the given records.
+type: object
+properties:
+  creators:
+    $ref: ../../../../../components/schemas/includes/CreatorInclude.yml
+  containers:
+    type: object
+    additionalProperties:
+      $ref: ../../../../../components/schemas/containers/Container.yml
+  "containers:identifiers":
+    type: object
+    additionalProperties:
+      $ref: ../../../../../components/schemas/ID.yml
+  virtual-machines:
+    type: object
+    additionalProperties:
+      $ref: ../../../../../components/schemas/vms/VirtualMachine.yml
+  virtual-machines:identifiers:
+    type: object
+    additionalProperties:
+      $ref: ../../../../../components/schemas/ID.yml

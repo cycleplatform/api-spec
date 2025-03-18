@@ -6,11 +6,14 @@ enum:
   - image
   - container
   - container.instance
+  - virtual-machine
+  - virtual-machine.ssh-key
   - hub
   - hub.api_key
   - hub.membership
   - hub.role
   - sdn.network
+  - dns.certificate
   - dns.zone
   - dns.zone.record
   - pipeline

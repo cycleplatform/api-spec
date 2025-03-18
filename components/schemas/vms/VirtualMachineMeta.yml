@@ -14,13 +14,13 @@ properties:
               description: The fully qualified domain name.
             record:
               anyOf:
-                - $ref: ../dns/records/Record.yml
+                - $ref: ../dns/records/DnsRecord.yml
                 - type: "null"
           required:
             - fqdn
       - type: "null"
   ips:
-    description: An array of IP addresses associated with this virtual machine.
+    description: An array of public IP addresses associated with this virtual machine.
     anyOf:
       - type: array
         items:
@@ -30,4 +30,15 @@ properties:
     description: The server the virtual machine is deployed to.
     anyOf:
       - $ref: ../infrastructure/servers/Server.yml
+      - type: "null"
+
+  vm_priv_ips:
+    description: An array of private IP addresses associated with this virtual machine.
+    anyOf:
+      - type: object
+        properties:
+          ipv4:
+            type: string
+          ipv6:
+            type: string
       - type: "null"

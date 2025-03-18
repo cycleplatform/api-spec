@@ -1,0 +1,17 @@
+title: ContainerTask
+discriminator:
+  propertyName: action
+  mapping:
+    start: ContainerStartAction.yml
+    stop: ContainerStopAction.yml
+    reconfigure: ContainerReconfigureAction.yml
+    volumes.reconfigure: ContainerReconfigureVolumesAction.yml
+    reimage: ContainerReimageAction.yml
+    scale: ContainerScaleAction.yml
+oneOf:
+  - $ref: ContainerStartAction.yml
+  - $ref: ContainerStopAction.yml
+  - $ref: ContainerReconfigureAction.yml
+  - $ref: ContainerReconfigureVolumesAction.yml
+  - $ref: ContainerReimageAction.yml
+  - $ref: ContainerScaleAction.yml

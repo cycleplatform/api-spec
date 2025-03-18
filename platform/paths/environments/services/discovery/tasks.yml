@@ -46,7 +46,7 @@ post:
 
   responses:
     202:
-      description: Returns a Job Descriptor.
+      description: Returns a job descriptor.
       content:
         application/json:
           schema:

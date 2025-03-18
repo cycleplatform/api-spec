@@ -1,0 +1,29 @@
+title: ContainerDeprecateStep
+type: object
+description: Settings for restarting a container in a pipeline
+required:
+  - action
+  - details
+properties:
+  identifier:
+    type: string
+    description: An identifier for the step.
+  options:
+    type: object
+    properties:
+      skip:
+        type: boolean
+  action:
+    type: string
+    description: The action that the step takes.
+    enum:
+      - container.deprecate
+  details:
+    type: object
+    required:
+      - container
+    properties:
+      container:
+        $ref: ../FluidIdentifier.yml
+      unset:
+        type: boolean

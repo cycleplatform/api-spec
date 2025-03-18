@@ -16,9 +16,4 @@ properties:
       - tier
     properties:
       tier:
-        type: string
-        enum:
-          - limited
-          - standard
-          - premium
-          - enterprise
+        $ref: monitoring/MonitoringTier.yml

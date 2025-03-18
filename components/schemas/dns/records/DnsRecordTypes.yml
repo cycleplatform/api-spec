@@ -1,0 +1,200 @@
+title: DnsRecordTypes
+type: object
+description: DNS record types the platform supports.
+properties:
+  a:
+    type: object
+    description: A DNS A record
+    required:
+      - ip
+    properties:
+      ip:
+        type: string
+        description: The IPv4 address that the A record should map to.
+  aaaa:
+    type: object
+    description: A DNS AAAA record
+    required:
+      - ip
+    properties:
+      ip:
+        type: string
+        description: The IPv6 address that the AAAA record should map to.
+  cname:
+    type: object
+    description: A DNS CNAME record
+    required:
+      - domain
+    properties:
+      domain:
+        type: string
+        description: The domain string the record resolves to.
+  ns:
+    type: object
+    description: A DNS NS record
+    required:
+      - domain
+    properties:
+      domain:
+        type: string
+        description: The domain of the nameserver for this record.
+  mx:
+    type: object
+    description: A DNS MX record
+    required:
+      - priority
+      - domain
+    properties:
+      priority:
+        type: integer
+        description: The priority setting for this mx record.
+      domain:
+        type: string
+        description: The domain this mx record points to.
+  txt:
+    type: object
+    description: A DNS TXT record.
+    required:
+      - value
+    properties:
+      value:
+        type: string
+        description: The value for this TXT record.
+  alias:
+    type: object
+    description: A DNS ALIAS record.
+    required:
+      - domain
+    properties:
+      domain:
+        type: string
+        description: The domain string returned from the DNS server when this alias record is requested.
+  srv:
+    type: object
+    description: A DNS SRV record.
+    required:
+      - weight
+      - priority
+      - port
+      - domain
+    properties:
+      weight:
+        type: integer
+        description: Teh weight configured for this record - breaks ties for priority.
+      priority:
+        type: integer
+        description: The priority for the record.
+      port:
+        type: integer
+        description: The port number for the service.
+      domain:
+        type: string
+        description: The domain for the record.
+  caa:
+    type: object
+    description: A DNS CAA record.
+    required:
+      - tag
+      - value
+    properties:
+      tag:
+        type: string
+        description: The ASCII string that represents the identifier of the property represented by the record.
+      value:
+        type: string
+        description: The value associated with the tag.
+  linked:
+    type: object
+    description: A LINKED record is a record special to Cycle.  It represents a URL that points to a specific container or deployment of a container, however the IP address mapping in handled automatically by the platform.
+    allOf:
+      - type: object
+        required:
+          - features
+        properties:
+          features:
+            type: object
+            description: Features associated with this record.
+            required:
+              - tls
+              - geodns
+            properties:
+              tls:
+                type: object
+                description: TLS properties of the record.
+                required:
+                  - enable
+                properties:
+                  enable:
+                    type: boolean
+                    description: A boolean, where true represents this record will be paired with a TLS certificate automatically maintained by the platform.
+              geodns:
+                type: object
+                description: Options for the GeoDNS LINKED record feature.
+                required:
+                  - enable
+                properties:
+                  enable:
+                    type: boolean
+                    description: If enabled, Cycle will attempt to match inbound requests to the closest load balancer geographically.
+              wildcard:
+                type:
+                  - object
+                  - "null"
+                required:
+                  - resolve_sub_domains
+                properties:
+                  resolve_sub_domains:
+                    description: If enabled, subdomains will resolve for wildcard records. If disabled, only the primary domain will resolve.
+                    default: false
+                    type: boolean
+      - oneOf:
+          - type: object
+            properties:
+              container_id:
+                type: string
+                description: The ID of the container this record is related to.
+
+          - type: object
+            required:
+              - virtual_machine
+            properties:
+              virtual_machine:
+                type: object
+                required:
+                  - id
+                  - dmz
+                properties:
+                  id:
+                    $ref: ../../ID.yml
+                  dmz:
+                    type: boolean
+                    description: |
+                      If true, traffic to this domain will skip the load balancer and go directly to the virtual machine
+                      via the gateway service.
+
+          - type: object
+            properties:
+              deployment:
+                type: object
+                description: Information about the deployment this record points to.
+                required:
+                  - environment_id
+                  - match
+                properties:
+                  environment_id:
+                    $ref: ../../ID.yml
+                    description: The ID of the environment with the deployment tag mapping we want to reference.
+                  match:
+                    type: object
+                    description: Describes which container and which tagged deployment this record should target.
+                    required:
+                      - container
+                    properties:
+                      container:
+                        $ref: ../../Identifier.yml
+                        description: The identifier of the container in the environment this record should point to.
+                      tag:
+                        description: The deployment tag that this record should point to. The tags are set on the root of an environment and map to a deployment version.
+                        anyOf:
+                          - $ref: ../../Identifier.yml
+                          - type: "null"

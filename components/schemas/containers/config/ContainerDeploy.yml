@@ -90,14 +90,7 @@ properties:
           - array
           - "null"
         items:
-          type: string
-          enum:
-            - SIGTERM
-            - SIGINT
-            - SIGUSR1
-            - SIGUSR2
-            - SIGHUP
-            - SIGQUIT
+          $ref: ShutdownSignal.yml
         description: Process signal sent to the container process.
   startup:
     type: object

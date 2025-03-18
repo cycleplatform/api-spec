@@ -6,6 +6,12 @@ properties:
       - $ref: ../../../../components/schemas/Duration.yml
       - $ref: ../../StackVariable.yml
       - type: "null"
+  dual_stack_legacy:
+    description: When enabled, discovery will return both IPv6 and IPv4 when in legacy mode.  Otherwise, only IPv4 will be returned.
+    anyOf:
+      - type: boolean
+      - $ref: ../../StackVariable.yml
+      - type: "null"
   hosts:
     description: A custom mapping of hosts - for forced resolution of specific IPs for a domain.
     oneOf:

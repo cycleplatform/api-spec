@@ -26,6 +26,7 @@ properties:
       - image.create-import
       - container.create
       - container.reimage
+      - container.deprecate
       - container.start
       - container.stop
       - container.restart
@@ -49,7 +50,7 @@ properties:
         description: The timestamp of when the pipeline step was started.
         "$ref": "../../DateTime.yml"
       finished:
-        description: The timestamp of when the pipeline step was finished.  
+        description: The timestamp of when the pipeline step was finished.
         "$ref": "../../DateTime.yml"
   success:
     type: boolean

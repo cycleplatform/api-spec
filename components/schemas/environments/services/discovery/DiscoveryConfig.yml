@@ -6,6 +6,11 @@ properties:
     anyOf:
       - $ref: ../../../Duration.yml
       - type: "null"
+  dual_stack_legacy:
+    description: When enabled, discovery will return both IPv6 and IPv4 when in legacy mode.  Otherwise, only IPv4 will be returned.
+    anyOf:
+      - type: boolean
+      - type: "null"
   hosts:
     type:
       - object
@@ -30,6 +35,8 @@ properties:
             type: string
   custom_resolvers:
     description: "A list of custom DNS resolver strings.  Can specifify domains or ips."
-    type: array
-    items:
-      type: string
+    oneOf:
+      - type: array
+        items:
+          type: string
+      - type: "null"

@@ -143,7 +143,19 @@ delete:
       required: true
       schema:
         type: string
-    - $ref: ../../../../components/parameters/OptionParam.yml
+  requestBody:
+    description: Parameters for deleting a Server.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            options:
+              type: object
+              properties:
+                force:
+                  description: If force is set to true, this will force delete the hub, even if there are servers running on it.
+                  type: boolean
   responses:
     200:
       description: Returns a Job Descriptor.

@@ -1,0 +1,23 @@
+title: ObjectCacheSave
+description: An item saved in the internal API object cache.
+type: object
+required:
+  - scope
+  - expires
+  - key
+  - value
+properties:
+  scope:
+    type: string
+    enum:
+      - global
+      - environment
+      - container
+      - instance
+  expires:
+    $ref: ../../../components/schemas/Duration.yml
+  key:
+    type: string
+  value:
+    type: string
+    

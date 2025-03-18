@@ -49,9 +49,9 @@ get:
               data:
                 type: array
                 items:
-                  $ref: ../../../components/schemas/dns/Zone.yml
+                  $ref: ../../../components/schemas/dns/DnsZone.yml
               includes:
-                $ref: ../../../components/schemas/dns/ZoneIncludes.yml
+                $ref: ../../../components/schemas/dns/DnsZoneIncludes.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
 post:
@@ -79,7 +79,7 @@ post:
               description: The origin that will be created.
             acl:
               anyOf:
-                - $ref: ../../../components/schemas/common/ACL.yml 
+                - $ref: ../../../components/schemas/common/ACL.yml
                 - type: "null"
 
   responses:
@@ -93,6 +93,6 @@ post:
               - data
             properties:
               data:
-                $ref: ../../../components/schemas/dns/Zone.yml
+                $ref: ../../../components/schemas/dns/DnsZone.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml

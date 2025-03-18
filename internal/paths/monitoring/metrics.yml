@@ -18,7 +18,7 @@ post:
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
     200:
-      description: Returns true on success
+      description: Returns true on success.
       content:
         application/json:
           schema:

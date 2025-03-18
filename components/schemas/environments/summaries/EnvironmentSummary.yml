@@ -48,3 +48,8 @@ properties:
         $ref: "../../StateCountSummary.yml"
       instances:
         $ref: "../../StateCountSummary.yml"
+      servers:
+        type: object
+        description: A summary of instance counts, keyed by the host server ID.
+        additionalProperties:
+          $ref: "../../StateCountSummary.yml"

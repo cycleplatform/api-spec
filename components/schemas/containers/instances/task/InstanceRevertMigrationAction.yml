@@ -1,0 +1,10 @@
+title: InstanceRevertMigrationAction
+type: object
+required:
+  - action
+properties:
+  action:
+    type: string
+    enum:
+      - migration.revert
+    description: The name of the action to perform.

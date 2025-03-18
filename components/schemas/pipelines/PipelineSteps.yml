@@ -12,6 +12,7 @@ discriminator:
     container.start: steps/ContainerStartStep.yml
     container.stop: steps/ContainerStopStep.yml
     container.delete: steps/ContainerDeleteStep.yml
+    container.deprecate: steps/ContainerDeprecateStep.yml
     container.reimage: steps/ContainerReimageStep.yml
     container.restart: steps/ContainerRestartStep.yml
     container.function.trigger: steps/ContainerFunctionTriggerStep.yml
