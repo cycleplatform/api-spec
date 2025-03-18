@@ -3,4 +3,6 @@ description: A resource that is associated with an ISO.
 type: object
 properties:
   integrations:
-    $ref: ../../../../../components/schemas/includes/IntegrationsIncludes.yml
+    type: object
+    additionalProperties:
+      $ref: ../../../../../components/schemas/hubs/integrations/Integration.yml
