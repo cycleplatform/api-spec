@@ -1,0 +1,172 @@
+title: VirtualProviderIso
+description: The ISO image for a virtual provider.
+type: object
+required:
+  - id
+  - name
+  - creator
+  - hub_id
+  - integration_id
+  - identifier
+  - config
+  - state
+  - events
+properties:
+  id:
+    $ref: ../../ID.yml
+  name:
+    description: The name of the ISO.
+    type: string
+  creator:
+    $ref: ../../creators/CreatorScope.yml
+  hub_id:
+    $ref: ../../ID.yml
+  integration_id:
+    $ref: ../../ID.yml
+  config:
+    type: object
+    required:
+      - token
+    properties:
+      token:
+        type: string
+        description: Authentication token for the ISO.
+      ipxe:
+        oneOf:
+          - type: object
+            properties:
+              vlan_id:
+                type:
+                  - integer
+                  - "null"
+                description: VLAN ID for the IPXE boot.
+              network_interface:
+                type:
+                  - integer
+                  - "null"
+                description: Network interface for the IPXE boot.
+              static_ip:
+                type:
+                  - string
+                  - "null"
+                description: Static IP assigned to the IPXE boot.
+              netmask:
+                type:
+                  - string
+                  - "null"
+                description: Netmask assigned to the IPXE boot.
+              gateway_ip:
+                type:
+                  - string
+                  - "null"
+                description: Gateway IP assigned to the IPXE boot.
+              dns_ip:
+                type:
+                  - string
+                  - "null"
+                description: DNS IP assigned to the IPXE boot.
+          - type: "null"
+      server:
+        oneOf:
+          - type: object
+            required:
+              - nics
+            properties:
+              nics:
+                description: An array of server network interfaces.
+                type: array
+                items:
+                  type: object
+                  required:
+                    - match
+                  properties:
+                    match:
+                      description: The criteria used to match the server to the interface.
+                      type: object
+                      properties:
+                        interface_name:
+                          description: The name of the interface on the server.
+                          type:
+                            - string
+                            - "null"
+                        mac_address:
+                          description: The mac address of the server.
+                          type:
+                            - string
+                            - "null"
+                    vlan_id:
+                      type:
+                        - integer
+                        - "null"
+                      description: VLAN ID for the serer.
+                    static_ip:
+                      type:
+                        - string
+                        - "null"
+                      description: Static IP assigned to the server.
+                    netmask:
+                      type:
+                        - string
+                        - "null"
+                      description: Netmask assigned to the server
+                    gateway_ip:
+                      type:
+                        - string
+                        - "null"
+                      description: Gateway IP assigned to the server.
+          - type: "null"
+  backend:
+    oneOf:
+      - type: object
+        properties:
+          provider:
+            type: string
+            enum:
+              - AWS
+              - Azure
+              - GCP
+              - Local
+            description: The provider responsible for storing the ISO.
+          file_name:
+            type: string
+            description: Name of the ISO file.
+          file_id:
+            type: string
+            description: Unique identifier for the ISO file.
+          size:
+            type: integer
+            format: int64
+            description: Size of the ISO file in bytes.
+      - type: "null"
+  state:
+    allOf:
+      - required:
+          - current
+        properties:
+          current:
+            description: The current state of the environment.
+            type: string
+            enum:
+              - new
+              - building
+              - live
+              - deleting
+              - deleted
+      - $ref: ../../State.yml
+  events:
+    type: object
+    description: A collection of timestamps for each event in the ISO's lifetime.
+    required:
+      - created
+      - updated
+      - deleted
+    properties:
+      created:
+        description: The timestamp of when the ISO was created.
+        $ref: ../../DateTime.yml
+      updated:
+        description: The timestamp of when the ISO was updated.
+        $ref: ../../DateTime.yml
+      deleted:
+        description: The timestamp of when the ISO was deleted.
+        $ref: ../../DateTime.yml

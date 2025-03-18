@@ -104,6 +104,25 @@ post:
                       type: string
                       description: The number of the bank account.
                 - type: "null"
+            direct_payment:
+              oneOf:
+                - type: object
+                  description: Only available for hubs that have direct billing enabled. Contact Cycle staff at support@cycle.io for any questions.
+                  required:
+                    - preference
+                    - instructions
+                  properties:
+                    preference:
+                      type: string
+                      description: The preference for how the payment will be sent.
+                      enum:
+                        - check
+                        - wire
+                        - ach
+                    instructions:
+                      type: string
+                      description: Any additional instructions for an organization's billing dept., etc. that should be known about this payment method.
+                - type: "null"
   responses:
     201:
       description: Returns a billing method.

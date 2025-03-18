@@ -1,0 +1,65 @@
+get:
+  operationId: "getVirtualMachineGateways"
+  summary: Get Virtual Machine Gateways
+  description: |
+    Returns a list of gateways applicable to the specified virtual machine.
+  tags:
+    - Virtual Machines
+  parameters:
+    - name: virtual-machine-id
+      in: query
+      required: true
+      description: The ID of the virtual machine.
+      schema:
+        type: string
+  responses:
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns a list of gateways applicable to the specified virtual machine.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  type: object
+                  required:
+                    - virtual_machine_id
+                    - gateway_instance_id
+                  properties:
+                    virtual_machine_id:
+                      $ref: ../../../components/schemas/ID.yml
+                    gateway_instance_id:
+                      $ref: ../../../components/schemas/ID.yml
+                    ips:
+                      type: array
+                      items:
+                        type: object
+                        required:
+                          - kind
+                          - public_ip
+                        properties:
+                          kind:
+                            type: string
+                            description: The type of IP protocol this IP is.
+                            enum:
+                              - ipv4
+                              - ipv6
+                          public_ip:
+                            type: string
+                            description: The public IP attached to the gateway.
+                          gateway_private_ip:
+                            type: 
+                              - string
+                              - "null"
+                            description: The private IP of the gateway.
+                          gateway_nat_ip:
+                            type: 
+                              - string
+                              - "null"
+                            description: The NAT IP of the gateway.

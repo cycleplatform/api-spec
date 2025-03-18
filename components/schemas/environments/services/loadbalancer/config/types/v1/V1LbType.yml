@@ -18,13 +18,3 @@ properties:
       - "v1"
   details:
     $ref: V1LbConfig.yml
-  bind_host:
-    description: |
-      Binds the load balancer to the host server IP address. 
-
-      **Pros**: This allows for significantly lower cost (utilizing fewer IPv4 addresses), and enables building out a true edge network with lower latency.
-      **Cons**: Only 1 environment is allowed on the host. This is because the load balancer is the only ingress point for an environment, and if it is sharing
-      the same IP as the host, that host can only operate under that environment.
-    type:
-      - boolean
-      - "null"

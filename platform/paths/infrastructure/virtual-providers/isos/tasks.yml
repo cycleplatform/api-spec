@@ -1,0 +1,44 @@
+post:
+  operationId: "createVirtualProviderIsoJob"
+  summary: Create Virtual Provider Iso Job
+  description: |
+    Create a job for a virtual provider iso.
+
+    Requires the `servers-manage` capability.
+  tags:
+    - Virtual Providers
+  parameters:
+    - name: integrationId
+      description: The ID of the virtual provider integration.
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: isoId
+      description: The ID for the virtual provider ISO.
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    description: Parameters for creating a new virtual provider iso job.
+    content:
+      application/json:
+        schema:
+          $ref: ../../../../../components/schemas/infrastructure/virtual-providers/tasks/VirtualProviderIsoTask.yml
+
+  responses:
+    202:
+      description: Returns a job descriptor.
+      content:
+        application/json:
+          schema:
+            title: "TaskResponse"
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../../components/schemas/jobs/JobDescriptor.yml
+    default:
+      $ref: ../../../../../components/responses/errors/DefaultError.yml

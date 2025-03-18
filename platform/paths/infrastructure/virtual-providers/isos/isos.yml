@@ -1,0 +1,183 @@
+post:
+  operationId: "createVirtualProviderIso"
+  summary: Create Virtual Provider Iso
+  description: |
+    Create an ISO for a virtual provider.
+
+    Requires the `servers-manage` capability.
+  tags:
+    - Virtual Providers
+  parameters:
+    - name: integrationId
+      description: The ID of the virtual provider integration to execute the job on.
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    description: Parameters for creating a new virtual provider job.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - name
+            - config
+          properties:
+            name:
+              description: The name of the ISO.
+              type: string
+            config:
+              type: object
+              required:
+                - token
+              properties:
+                token:
+                  type: string
+                  description: Authentication token for the ISO.
+                ipxe:
+                  oneOf:
+                    - type: object
+                      properties:
+                        vlan_id:
+                          type:
+                            - integer
+                            - "null"
+                          description: VLAN ID for the IPXE boot.
+                        network_interface:
+                          type:
+                            - integer
+                            - "null"
+                          description: Network interface for the IPXE boot.
+                        static_ip:
+                          type:
+                            - string
+                            - "null"
+                          description: Static IP assigned to the IPXE boot.
+                        netmask:
+                          type:
+                            - string
+                            - "null"
+                          description: Netmask assigned to the IPXE boot.
+                        gateway_ip:
+                          type:
+                            - string
+                            - "null"
+                          description: Gateway IP assigned to the IPXE boot.
+                        dns_ip:
+                          type:
+                            - string
+                            - "null"
+                          description: DNS IP assigned to the IPXE boot.
+                    - type: "null"
+                server:
+                  oneOf:
+                    - type: object
+                      required:
+                        - nics
+                      properties:
+                        nics:
+                          description: An array of server network interfaces.
+                          type: array
+                          items:
+                            type: object
+                            required:
+                              - match
+                            properties:
+                              match:
+                                description: The criteria used to match the server to the interface.
+                                type: object
+                                properties:
+                                  interface_name:
+                                    description: The name of the interface on the server.
+                                    type:
+                                      - string
+                                      - "null"
+                                  mac_address:
+                                    description: The mac address of the server.
+                                    type:
+                                      - string
+                                      - "null"
+                              vlan_id:
+                                type:
+                                  - integer
+                                  - "null"
+                                description: VLAN ID for the serer.
+                              static_ip:
+                                type:
+                                  - string
+                                  - "null"
+                                description: Static IP assigned to the server.
+                              netmask:
+                                type:
+                                  - string
+                                  - "null"
+                                description: Netmask assigned to the server
+                              gateway_ip:
+                                type:
+                                  - string
+                                  - "null"
+                                description: Gateway IP assigned to the server.
+                    - type: "null"
+  responses:
+    201:
+      description: Returns an ISO.
+      content:
+        application/json:
+          schema:
+            title: "TaskResponse"
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../../components/schemas/infrastructure/virtual-providers/VirtualProviderIso.yml
+    default:
+      $ref: ../../../../../components/responses/errors/DefaultError.yml
+
+get:
+  operationId: getVirtualProviderIsos
+  summary: Get ISOs for a virtual provider
+  description: |
+    Get ISOs for a virtual provider.
+
+    Requires the `servers-manage` capability.
+  tags:
+    - Virtual Providers
+  parameters:
+    - name: integrationId
+      description: The ID of the integration.
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: include
+      in: query
+      required: false
+      description:
+        A comma separated list of include values. Included resources will show
+        up under the root document's `include` field, with the key being the id of the included
+        resource. In the case of applying an include to a collection of resources, if two
+        resources share the same include, it will only appear once in the return.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - integrations
+  responses:
+    200:
+      description: Returns an a list of ISOs.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: ../../../../../components/schemas/infrastructure/virtual-providers/VirtualProviderIso.yml
+              includes:
+                $ref: ../includes/VirtualProviderIsoIncludes.yml

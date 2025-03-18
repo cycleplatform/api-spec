@@ -121,6 +121,7 @@ x-tagGroups:
       - Auto-Scale Groups
       - Clusters
       - Providers
+      - Virtual Providers
       - Servers
       - IPs
   - name: Jobs
@@ -238,6 +239,8 @@ tags:
     description: Endpoints related to managing infrastructure clusters.
   - name: Providers
     description: Endpoints related to providers configured for a hub.
+  - name: Virtual Providers
+    description: Endpoints related to virtual provider configurations.
   - name: Servers
     description: Endpoints related to managing servers on Cycle.
   - name: IPs
@@ -379,10 +382,10 @@ paths:
     $ref: "./paths/containers/instances/tasks.yml"
   "/v1/containers/{containerId}/instances/{instanceId}/volumes":
     $ref: "./paths/containers/instances/volumes.yml"
-  ? "/v1/containers/{containerId}/instances/{instanceId}/telemetry/resources/report"
-  : $ref: paths/containers/instances/telemetry/report.yml
-  ? "/v1/containers/{containerId}/instances/{instanceId}/telemetry/resources/stream"
-  : $ref: paths/containers/instances/telemetry/stream.yml
+  "/v1/containers/{containerId}/instances/{instanceId}/telemetry/resources/report":
+    $ref: paths/containers/instances/telemetry/report.yml
+  "/v1/containers/{containerId}/instances/{instanceId}/telemetry/resources/stream":
+    $ref: paths/containers/instances/telemetry/stream.yml
   "/v1/containers/{containerId}/instances/{instanceId}/console":
     $ref: "paths/containers/instances/console.yml"
   "/v1/containers/{containerId}/functions/tasks":
@@ -587,6 +590,19 @@ paths:
   "/v1/infrastructure/providers/{providerVendor}/locations":
     $ref: "./paths/infrastructure/providers/locations.yml"
 
+    ## Virtual Providers
+
+  "/v1/infrastructure/virtual-providers/{integrationId}/isos":
+    $ref: "./paths/infrastructure/virtual-providers/isos/isos.yml"
+
+  "/v1/infrastructure/virtual-providers/{integrationId}/isos/{isoId}":
+    $ref: "./paths/infrastructure/virtual-providers/isos/iso.yml"
+
+  "/v1/infrastructure/virtual-providers/{integrationId}/isos/{isoId}/tasks":
+    $ref: "./paths/infrastructure/virtual-providers/isos/tasks.yml"
+
+  "/v1/infrastructure/virtual-providers/{integrationId}/isos/{isoId}/download":
+    $ref: "./paths/infrastructure/virtual-providers/isos/download.yml"
   ## Clusters
   "/v1/infrastructure/clusters":
     $ref: "./paths/infrastructure/clusters/clusters.yml"

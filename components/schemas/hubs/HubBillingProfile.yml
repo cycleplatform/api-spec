@@ -12,6 +12,9 @@ properties:
   allow_prepaid:
     type: boolean
     description: A boolean where true represents this account being approved to use a prepaid card for billing transactions.
+  allow_direct_payments:
+    type: boolean
+    description: When true, this hub is allowed to create 'direct' payment methods.
   pause_invoices:
     type: boolean
     description: A boolean where true represents invoices have been paused on this hub for one reason or another.

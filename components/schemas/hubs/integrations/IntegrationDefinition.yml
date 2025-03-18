@@ -65,37 +65,13 @@ properties:
           - object
           - "null"
         additionalProperties:
-          type: object
-          required:
-            - description
-            - required
-          properties:
-            regex:
-              type:
-                - string
-                - "null"
-            required:
-              type: boolean
-            description:
-              type: string
+          $ref: ./IntegrationDefinitionField.yml
       auth:
         type:
           - object
           - "null"
         additionalProperties:
-          type: object
-          required:
-            - description
-            - required
-          properties:
-            regex:
-              type:
-                - string
-                - "null"
-            required:
-              type: boolean
-            description:
-              type: string
+          $ref: ./IntegrationDefinitionField.yml
   url:
     type: string
     format: uri

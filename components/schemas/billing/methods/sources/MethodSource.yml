@@ -5,6 +5,8 @@ discriminator:
   mapping:
     stripe-credit-card: ./StripeCreditCard.yml
     stripe-us-bank-acct: ./StripeUsBankAcct.yml
+    direct-payment: ./DirectPayment.yml
 oneOf:
   - $ref: ./StripeCreditCard.yml
   - $ref: ./StripeUsBankAcct.yml
+  - $ref: DirectPayment.yml

@@ -211,6 +211,7 @@ properties:
       - container.restart
       - container.task.reimage
       - container.reimage
+      - container.deprecate
       - container.update
       - container.task.delete
       - container.delete
@@ -280,6 +281,9 @@ properties:
       - infrastructure.provider.task.delete
       - infrastructure.provider.create
       - infrastructure.provider.task.verify
+
+      - infrastructure.virtual-providers.iso.create
+      - infrastructure.virtual-providers.iso.generate
 
       - infrastructure.server.task.delete
       - infrastructure.server.task.restart
