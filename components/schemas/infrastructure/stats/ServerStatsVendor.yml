@@ -1,0 +1,19 @@
+title: ServerStatsVendor
+type: object
+description: Details about the vendors for the server.
+properties:
+  system_vendor:
+    type: string
+    description: The system vendor of the server.
+  board_vendor:
+    type: string
+    description: The board vendor of the server.
+  board_name:
+    type: string
+    description: The board name of the server.
+  board_serial:
+    type: string
+    description: The board serial number of the server.
+  bios_vendor:
+    type: string
+    description: The bios vendor of the server.

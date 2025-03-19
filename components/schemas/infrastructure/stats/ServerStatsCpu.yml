@@ -21,3 +21,6 @@ properties:
           description: The speed of the processor.
   usage:
     $ref: ./ServerStatsCpuUsage.yml
+  virtualization:
+    description: A true value indicates the server supports virtualization.
+    type: boolean
