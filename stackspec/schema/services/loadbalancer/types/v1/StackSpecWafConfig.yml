@@ -37,7 +37,10 @@ properties:
                 expires:
                   description: The expiration date of the waf config, if present.
                   oneOf:
-                    - $ref: "../../../../../../../public-spec/components/schemas/DateTime.yml"
+                    - type: string
+                      format: date-time
+                      examples:
+                        - "2021-01-30T08:30:00Z"
                     - $ref: ../../../../StackVariable.yml
                     - type: "null"
                 match:
