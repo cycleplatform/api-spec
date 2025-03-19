@@ -9,6 +9,7 @@ required:
   - ram
   - storage
   - os
+  - vendor
   - versions
 properties:
   network:
