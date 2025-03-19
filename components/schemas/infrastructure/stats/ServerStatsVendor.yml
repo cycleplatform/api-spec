@@ -1,6 +1,6 @@
 title: ServerStatsVendor
 type: object
-description: Statistics about the operating system installed on the server (CycleOS).
+description: Details about the vendors for the server.
 properties:
   system_vendor:
     type: string
