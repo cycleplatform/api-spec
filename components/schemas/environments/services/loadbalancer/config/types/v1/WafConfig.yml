@@ -27,6 +27,11 @@ properties:
           enum:
             - allow
             - deny
+        expires:
+          description: The expiration date of the waf config, if present.
+          oneOf:
+            - $ref: "../../../../../../DateTime.yml"
+            - type: "null"
         match:
           description: A string that describes if both attributes need to be true (match all) or if only one of the conditions needs to be true (match any).
           type: string

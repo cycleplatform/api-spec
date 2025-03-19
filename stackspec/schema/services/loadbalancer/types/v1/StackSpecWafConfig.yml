@@ -34,6 +34,12 @@ properties:
                         - allow
                         - deny
                     - $ref: ../../../../StackVariable.yml
+                expires:
+                  description: The expiration date of the waf config, if present.
+                  oneOf:
+                    - $ref: "../../../../../../../public-spec/components/schemas/DateTime.yml"
+                    - $ref: ../../../../StackVariable.yml
+                    - type: "null"
                 match:
                   description: A string that describes if both attributes need to be true (match all) or if only one of the conditions needs to be true (match any).
                   oneOf:
