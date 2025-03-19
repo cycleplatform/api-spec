@@ -295,6 +295,7 @@ properties:
       - infrastructure.server.live
       - infrastructure.server.delete
       - infrastructure.server.restart
+      - infrastructure.server.unquarantine
 
       - infrastructure.server.compute.restart
       - infrastructure.server.compute.spawner.restart
