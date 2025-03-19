@@ -12,18 +12,20 @@ required:
   - versions
 properties:
   network:
-    "$ref": "./ServerStatsNetwork.yml"
+    $ref: ./ServerStatsNetwork.yml
   uptime:
-    "$ref": "./ServerStatsUptime.yml"
+    $ref: ./ServerStatsUptime.yml
   cpu:
-    "$ref": "./ServerStatsCpu.yml"
+    $ref: ./ServerStatsCpu.yml
   load:
-    "$ref": "./ServerStatsLoad.yml"
+    $ref: ./ServerStatsLoad.yml
   ram:
-    "$ref": "./ServerStatsRam.yml"
+    $ref: ./ServerStatsRam.yml
   storage:
-    "$ref": "./ServerStatsStorage.yml"
+    $ref: ./ServerStatsStorage.yml
   os:
-    "$ref": "./ServerStatsOS.yml"
+    $ref: ./ServerStatsOS.yml
+  vendor:
+    $ref: ./ServerStatsVendor.yml
   versions:
-    "$ref": "./ServerStatsVersions.yml"
+    $ref: ./ServerStatsVersions.yml
