@@ -28,7 +28,7 @@ properties:
             - allow
             - deny
         expires:
-          description: The expiration date of the waf config, if present.
+          description: The expiration date of the WAF config, if present.
           oneOf:
             - $ref: "../../../../../../DateTime.yml"
             - type: "null"

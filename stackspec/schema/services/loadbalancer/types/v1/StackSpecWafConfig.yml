@@ -35,7 +35,7 @@ properties:
                         - deny
                     - $ref: ../../../../StackVariable.yml
                 expires:
-                  description: The expiration date of the waf config, if present.
+                  description: The expiration date of the WAF config, if present.
                   oneOf:
                     - type: string
                       format: date-time
