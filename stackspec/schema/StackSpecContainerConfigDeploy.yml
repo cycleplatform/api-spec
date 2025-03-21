@@ -14,9 +14,10 @@ properties:
       The strategy Cycle will apply when deploying instances of this container.
 
       - ** resource-density **: Cycle will distribute instances across servers to maintain balanced resource usage.
-      - ** high-availability **: Cycle will deploy instances over servers with an emphasis on geographic and physical separation
-      - ** first-available **: Cycle will deploy one instance to every node that matches the specified criteria. (default)
-      - ** node **: Cycle will deploy one instance to every node that matches the specified criteria.
+      - ** high-availability **: Cycle will deploy instances across servers with an emphasis on geographic and physical separation. Requires multiple locations.
+      - ** distributed **: Cycle will deploy instances across servers with an emphasis on physical separation. Does not require multiple locations.
+      - ** first-available **: Cycle will deploy one instance to every server that matches the specified criteria. (default)
+      - ** node **: Cycle will deploy one instance to every server that matches the specified criteria.
       - ** edge **: Cycle will prioritize geographic distribution of instances.
       - ** function **: Every ingress request/connection receives its own instance. 
       - ** manual **: Cycle will not make any decisions on where instances are deployed. Instead, instances must be deployed manually using the portal or API.
