@@ -3,8 +3,9 @@ type: string
 enum:
   - resource-density
   - high-availability
+  - distributed
   - first-available
+  - manual
   - node
   - edge
-  - manual
   - function
