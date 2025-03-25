@@ -3,7 +3,6 @@ type: object
 description: VLAN information for a Cycle SDN.
 required:
   - vid
-  - host_interface
   - ips
   - location_ids
 properties:
@@ -14,7 +13,9 @@ properties:
   vid:
     type: integer
   host_interface:
-    type: string
+    oneOf:
+      - type: string
+      - type: "null"
   ips:
     discriminator:
       propertyName: method
