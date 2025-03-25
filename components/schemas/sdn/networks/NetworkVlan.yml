@@ -1,0 +1,26 @@
+title: NetworkVlan
+type: object
+description: VLAN information for a Cycle SDN.
+required:
+  - vid
+  - host_interface
+  - ips
+  - location_ids
+properties:
+  location_ids:
+    type: array
+    items:
+      $ref: ../../ID.yml
+  vid:
+    type: integer
+  host_interface:
+    type: string
+  ips:
+    discriminator:
+      propertyName: method
+      mapping:
+        dhcp: NetworkVlanDhcpDetails.yml
+        static: NetworkVlanStaticDetails.yml
+    oneOf:
+      - $ref: NetworkVlanDhcpDetails.yml
+      - $ref: NetworkVlanStaticDetails.yml

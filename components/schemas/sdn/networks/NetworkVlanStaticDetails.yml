@@ -1,0 +1,51 @@
+title: NetworkVlanStaticDetails
+type: object
+required:
+  - method
+  - details
+properties:
+  method:
+    type: string
+    enum:
+      - "static"
+  details:
+    type: object
+    properties:
+      ipv4:
+        oneOf:
+          - type: object
+            required:
+              - network
+              - usable
+            properties:
+              network:
+                description: The CIDR for the network.
+                type: string
+              usable:
+                description: The usable CIDR.
+                type: string
+              gateway:
+                description: The IP of the gateway
+                type:
+                  - string
+                  - "null"
+          - type: "null"
+      ipv6:
+        oneOf:
+          - type: object
+            required:
+              - network
+              - usable
+            properties:
+              network:
+                description: The CIDR for the network.
+                type: string
+              usable:
+                description: The usable CIDR.
+                type: string
+              gateway:
+                description: The IP of the gateway
+                type:
+                  - string
+                  - "null"
+          - type: "null"
