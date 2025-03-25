@@ -1,0 +1,12 @@
+title: NetworkVlanDhcpDetails
+type: object
+required:
+  - method
+properties:
+  method:
+    type: string
+    enum:
+      - "dhcp"
+  details:
+    type: object
+    maxProperties: 0

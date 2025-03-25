@@ -28,6 +28,10 @@ properties:
     $ref: ../../HubID.yml
   state:
     $ref: NetworkState.yml
+  vlan:
+    anyOf:
+      - $ref: NetworkVlan.yml
+      - type: "null"
   private_network:
     anyOf:
       - $ref: NetworkPrivacySettings.yml
@@ -50,7 +54,7 @@ properties:
           $ref: ../../DateTime.yml
   acl:
     anyOf:
-      - $ref: ../../common/ACL.yml 
+      - $ref: ../../common/ACL.yml
       - type: "null"
   events:
     title: NetworkEvents
