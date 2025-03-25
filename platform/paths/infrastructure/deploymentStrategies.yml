@@ -22,6 +22,8 @@ get:
                     $ref: ../../../components/schemas/infrastructure/DeploymentStrategy.yml
                   high-availability:
                     $ref: ../../../components/schemas/infrastructure/DeploymentStrategy.yml
+                  distributed:
+                    $ref: ../../../components/schemas/infrastructure/DeploymentStrategy.yml
                   first-available:
                     $ref: ../../../components/schemas/infrastructure/DeploymentStrategy.yml
                   node:
