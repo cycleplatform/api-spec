@@ -81,6 +81,20 @@ patch:
             name:
               type: string
               description: The name of the network.
+            vlan:
+              oneOf:
+                - type: object
+                  properties:
+                    location_ids:
+                      type: array
+                      items:
+                        $ref: ../../../components/schemas/ID.yml
+                    host_interface:
+                      oneOf:
+                        - type: string
+                        - type: "null"
+                - type: "null"
+
   responses:
     200:
       description: Returns a network.
