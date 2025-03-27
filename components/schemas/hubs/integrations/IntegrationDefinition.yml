@@ -21,57 +21,57 @@ properties:
   supports_multiple:
     type: boolean
   features:
-    type:
-      - array
-      - "null"
-    description: A list of additional features supported by this integration.
-    items:
-      type: string
-  extends:
-    type:
-      - array
-      - "null"
-    description: A list of functionality that this integration extends. i.e. ["backups"]
-    items:
-      type: string
-  extended_configuration:
-    type:
-      - object
-      - "null"
-    description: Additional configuration options that are available when using this integration. These describe additional functionality that Cycle may utilize.
-    properties:
-      options:
-        type:
-          - array
-          - "null"
+    oneOf:
+      - type: array
+        description: A list of additional features supported by this integration.
         items:
-          type: object
-          discriminator:
-            propertyName: type
-            mapping:
-              bool: ./advanced/IntegrationAdvancedOptionBoolean.yml
-              int: ./advanced/IntegrationAdvancedOptionInt.yml
-              string: ./advanced/IntegrationAdvancedOptionString.yml
-          oneOf:
-            - $ref: ./advanced/IntegrationAdvancedOptionBoolean.yml
-            - $ref: ./advanced/IntegrationAdvancedOptionInt.yml
-            - $ref: ./advanced/IntegrationAdvancedOptionString.yml
+          type: string
+      - type: "null"
+  extends:
+    oneOf:
+      - type: array
+        description: A list of functionality that this integration extends. i.e. ["backups"]
+        items:
+          type: string
+      - type: "null"
 
+  extended_configuration:
+    oneOf:
+      - type: object
+        description: Additional configuration options that are available when using this integration. These describe additional functionality that Cycle may utilize.
+        properties:
+          options:
+            oneOf:
+              - type: array
+                items:
+                  type: object
+                  discriminator:
+                    propertyName: type
+                    mapping:
+                      bool: ./advanced/IntegrationAdvancedOptionBoolean.yml
+                      int: ./advanced/IntegrationAdvancedOptionInt.yml
+                      string: ./advanced/IntegrationAdvancedOptionString.yml
+                  oneOf:
+                    - $ref: ./advanced/IntegrationAdvancedOptionBoolean.yml
+                    - $ref: ./advanced/IntegrationAdvancedOptionInt.yml
+                    - $ref: ./advanced/IntegrationAdvancedOptionString.yml
+              - type: "null"
+      - type: "null"
   fields:
     type: object
     properties:
       extra:
-        type:
-          - object
-          - "null"
-        additionalProperties:
-          $ref: ./IntegrationDefinitionField.yml
+        oneOf:
+          - type: object
+            additionalProperties:
+              $ref: ./IntegrationDefinitionField.yml
+          - type: "null"
       auth:
-        type:
-          - object
-          - "null"
-        additionalProperties:
-          $ref: ./IntegrationDefinitionField.yml
+        oneOf:
+          - type: object
+            additionalProperties:
+              $ref: ./IntegrationDefinitionField.yml
+          - type: "null"
   url:
     type: string
     format: uri
