@@ -112,55 +112,65 @@ patch:
             name:
               description: The name of the ISO.
               type: string
-            server:
-              oneOf:
-                - type: object
-                  required:
-                    - nics
-                  properties:
-                    nics:
-                      description: An array of server network interfaces.
-                      type: array
-                      items:
-                        type: object
-                        required:
-                          - match
-                        properties:
-                          match:
-                            description: The criteria used to match the server to the interface.
+            config:
+              type: object
+              properties:
+                server:
+                  oneOf:
+                    - type: object
+                      required:
+                        - nics
+                      properties:
+                        sdn_neighbor_preference:
+                          oneOf:
+                            - type: string
+                              enum:
+                                - ipv4
+                                - ipv6
+                            - type: "null"
+                        nics:
+                          description: An array of server network interfaces.
+                          type: array
+                          items:
                             type: object
+                            required:
+                              - match
                             properties:
-                              interface_name:
-                                description: The name of the interface on the server.
+                              match:
+                                description: The criteria used to match the server to the interface.
+                                type: object
+                                properties:
+                                  interface_name:
+                                    description: The name of the interface on the server.
+                                    type:
+                                      - string
+                                      - "null"
+                                  mac_address:
+                                    description: The mac address of the server.
+                                    type:
+                                      - string
+                                      - "null"
+                              vlan_id:
+                                type:
+                                  - integer
+                                  - "null"
+                                description: VLAN ID for the serer.
+                              static_ip:
                                 type:
                                   - string
                                   - "null"
-                              mac_address:
-                                description: The mac address of the server.
+                                description: Static IP assigned to the server.
+                              netmask:
                                 type:
                                   - string
                                   - "null"
-                          vlan_id:
-                            type:
-                              - integer
-                              - "null"
-                            description: VLAN ID for the serer.
-                          static_ip:
-                            type:
-                              - string
-                              - "null"
-                            description: Static IP assigned to the server.
-                          netmask:
-                            type:
-                              - string
-                              - "null"
-                            description: Netmask assigned to the server
-                          gateway_ip:
-                            type:
-                              - string
-                              - "null"
-                            description: Gateway IP assigned to the server.
-                - type: "null"
+                                description: Netmask assigned to the server
+                              gateway_ip:
+                                type:
+                                  - string
+                                  - "null"
+                                description: Gateway IP assigned to the server.
+                    - type: "null"
   responses:
     202:
       description: Returns a virtual provider ISO.

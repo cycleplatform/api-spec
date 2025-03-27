@@ -72,6 +72,13 @@ properties:
             required:
               - nics
             properties:
+              sdn_neighbor_preference:
+                oneOf:
+                  - type: string
+                    enum:
+                      - ipv4
+                      - ipv6
+                  - type: "null"
               nics:
                 description: An array of server network interfaces.
                 type: array
