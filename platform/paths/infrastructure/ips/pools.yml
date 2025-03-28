@@ -4,12 +4,12 @@ post:
   description: |
     Create an infrastructure IP Pool
 
-    Requires the 'infrastructure-ips-manage' capability.
+    Requires the 'ips-manage' capability.
   tags:
     - IPs
   parameters: []
   requestBody:
-    description: Parameters for creating a new ip pool.
+    description: Parameters for creating a new IP pool.
     content:
       application/json:
         schema:
