@@ -28,10 +28,14 @@ post:
               properties:
                 cidr:
                   type: string
-                  format: CIDR
+                  format: cidr
+                  examples:
+                    - 192.168.1.0/24
                 gateway:
                   type: string
-                  format: IP
+                  format: ip-address
+                  examples:
+                    - 192.168.1.1
   responses:
     201:
       description: Returns an IP Pool.

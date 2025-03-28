@@ -25,11 +25,17 @@ properties:
         - usable
       properties:
         usable:
+          description: The usable CIDR for the route.
           type: string
-          format: CIDR
+          format: cidr
+          examples:
+            - 192.168.1.0/24
         gateway:
+          description: The IP of the gateway for the route.
           type: string
-          format: IP
+          format: ip-address
+          examples:
+            - 192.168.1.1
   ips:
     discriminator:
       propertyName: method
