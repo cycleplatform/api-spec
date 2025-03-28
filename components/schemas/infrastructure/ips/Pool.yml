@@ -62,11 +62,5 @@ properties:
       gateway:
         type: string
         description: A gateway for the pool.
-      netmask:
-        type: string
-        description: A netmask for the pool.
-      network:
-        type: string
-        description: A network for the pool.
   state:
     "$ref": "./PoolState.yml"

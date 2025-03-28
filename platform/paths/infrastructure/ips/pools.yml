@@ -1,3 +1,52 @@
+post:
+  operationId: createInfrastructureIpPool
+  summary: Create IP Pool
+  description: |
+    Create an infrastructure IP Pool
+
+    Requires the 'infrastructure-ips-manage' capability.
+  tags:
+    - IPs
+  parameters: []
+  requestBody:
+    description: Parameters for creating a new ip pool.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - server_id
+            - block
+          properties:
+            server_id:
+              $ref: ../../../../components/schemas/ID.yml
+            block:
+              type: object
+              required:
+                - cidr
+                - gateway
+              properties:
+                cidr:
+                  type: string
+                  format: CIDR
+                gateway:
+                  type: string
+                  format: IP
+  responses:
+    201:
+      description: Returns an IP Pool.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/infrastructure/ips/Pool.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
+
 get:
   operationId: "getInfrastructureIPPools"
   summary: List IP Pools
