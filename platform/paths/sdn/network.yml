@@ -93,8 +93,21 @@ patch:
                       oneOf:
                         - type: string
                         - type: "null"
+                    routes:
+                      description: An array of defined VLAN routes
+                      type: array
+                      items:
+                        type: object
+                        required:
+                          - usable
+                        properties:
+                          usable:
+                            type: string
+                            format: CIDR
+                          gateway:
+                            type: string
+                            format: IP
                 - type: "null"
-
   responses:
     200:
       description: Returns a network.
