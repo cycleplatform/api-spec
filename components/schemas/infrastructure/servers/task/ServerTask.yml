@@ -5,6 +5,8 @@ discriminator:
     sharedfs.reconfigure: ServerReconfigureSharedFsAction.yml
     features.reconfigure: ServerReconfigureFeaturesAction.yml
     restart: ServerRestartAction.yml
+    power-off: ServerPowerOffAction.yml
+    auth-reset: ServerAuthResetAction.yml
     compute.restart: ServerRestartComputeAction.yml
     compute.spawner.restart: ServerRestartComputeSpawnerAction.yml
     evacuation.start: ServerEvacuateAction.yml
@@ -14,6 +16,8 @@ oneOf:
   - $ref: ServerReconfigureSharedFsAction.yml
   - $ref: ServerReconfigureFeaturesAction.yml
   - $ref: ServerRestartAction.yml
+  - $ref: ServerPowerOffAction.yml
+  - $ref: ServerAuthResetAction.yml
   - $ref: ServerRestartComputeAction.yml
   - $ref: ServerRestartComputeSpawnerAction.yml
   - $ref: ServerEvacuateAction.yml

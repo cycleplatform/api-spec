@@ -1,0 +1,13 @@
+title: ServerPowerOffAction
+type: object
+description: |
+  A job that powers the server off.
+  Only for servers deployed from a virtual provider.
+required:
+  - action
+properties:
+  action:
+    type: string
+    description: The action to take.
+    enum:
+      - power-off

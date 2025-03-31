@@ -1,0 +1,13 @@
+title: ServerAuthResetAction
+type: object
+description: |
+  A job that resets authentication for the server.
+  Only for servers deployed from a virtual provider.
+required:
+  - action
+properties:
+  action:
+    type: string
+    description: The action to take.
+    enum:
+      - auth-reset
