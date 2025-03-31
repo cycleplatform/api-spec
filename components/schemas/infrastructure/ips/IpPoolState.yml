@@ -1,4 +1,4 @@
-title: PoolState
+title: IpPoolState
 allOf:
   - required:
       - current

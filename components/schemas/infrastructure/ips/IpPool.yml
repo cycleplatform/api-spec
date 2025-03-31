@@ -1,4 +1,4 @@
-title: InfrastructureIPPool
+title: IPPool
 type: object
 description: An IP Pool
 required:
@@ -30,7 +30,7 @@ properties:
       - ipv4
       - ipv6
   provider:
-    "$ref": "./PoolProvider.yml"
+    "$ref": "./IpPoolProvider.yml"
   floating:
     type: boolean
     description: A boolean where true represents the pool as a floating IP pool.
@@ -63,4 +63,4 @@ properties:
         type: string
         description: A gateway for the pool.
   state:
-    "$ref": "./PoolState.yml"
+    "$ref": "./IpPoolState.yml"

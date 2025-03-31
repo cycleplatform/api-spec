@@ -1,4 +1,4 @@
-title: PoolIncludes
+title: IpPoolIncludes
 type: object
 description: Resources associated with an IP Pool.
 properties:

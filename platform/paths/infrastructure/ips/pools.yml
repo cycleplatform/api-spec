@@ -1,5 +1,5 @@
 post:
-  operationId: createInfrastructureIpPool
+  operationId: createIpPool
   summary: Create IP Pool
   description: |
     Create an infrastructure IP Pool
@@ -32,10 +32,13 @@ post:
                   examples:
                     - 192.168.1.0/24
                 gateway:
-                  type: string
-                  format: ip-address
-                  examples:
-                    - 192.168.1.1
+                  oneOf:
+                    - type: string
+                      format: ip-address
+                      examples:
+                        - 192.168.1.1
+                    - type: "null"
+
   responses:
     201:
       description: Returns an IP Pool.
@@ -47,14 +50,14 @@ post:
               - data
             properties:
               data:
-                $ref: ../../../../components/schemas/infrastructure/ips/Pool.yml
+                $ref: ../../../../components/schemas/infrastructure/ips/IpPool.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
 
 get:
-  operationId: "getInfrastructureIPPools"
+  operationId: "getIpPools"
   summary: List IP Pools
-  description: Requires the `infrastructure-ips-manage` capability.
+  description: Requires the `ips-manage` capability.
   tags:
     - IPs
   parameters:
@@ -116,8 +119,8 @@ get:
               data:
                 type: array
                 items:
-                  $ref: ../../../../components/schemas/infrastructure/ips/Pool.yml
+                  $ref: ../../../../components/schemas/infrastructure/ips/IpPool.yml
               includes:
-                $ref: ../../../../components/schemas/infrastructure/ips/PoolIncludes.yml
+                $ref: ../../../../components/schemas/infrastructure/ips/IpPoolIncludes.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml

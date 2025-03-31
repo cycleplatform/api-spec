@@ -1,7 +1,7 @@
 get:
   operationId: "getIPPool"
   summary: Get IP Pool
-  description: Requires the `infrastructure-ips-manage` capability.
+  description: Requires the `ips-manage` capability.
   tags:
     - IPs
   parameters:
@@ -38,21 +38,21 @@ get:
               - data
             properties:
               data:
-                $ref: ../../../../components/schemas/infrastructure/ips/Pool.yml
+                $ref: ../../../../components/schemas/infrastructure/ips/IpPool.yml
               includes:
-                $ref: ../../../../components/schemas/infrastructure/ips/PoolIncludes.yml
+                $ref: ../../../../components/schemas/infrastructure/ips/IpPoolIncludes.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
 
 delete:
   operationId: "deleteIPPool"
   summary: Delete IP Pool
-  description: Requires the `infrastructure-ips-manage` capability.
+  description: Requires the `ips-manage` capability.
   tags:
     - IPs
   parameters:
     - name: poolId
-      description: The ID for the given IP Pool.
+      description: The ID for the given IP pool.
       in: path
       required: true
       schema:
@@ -69,5 +69,58 @@ delete:
             properties:
               data:
                 $ref: ../../../../components/schemas/jobs/JobDescriptor.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
+
+patch:
+  operationId: updateIpPool
+  summary: Update IP Pool
+  description: Requires the `ips-manage` capability.
+  tags:
+    - IPs
+  parameters:
+    - name: poolId
+      description: the ID for the given IP pool.
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    description: Parameters for updating an IP pool.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            block:
+              type: object
+              required:
+                - cidr
+                - gateway
+              properties:
+                cidr:
+                  type: string
+                  format: cidr
+                  examples:
+                    - 192.168.1.0/24
+                gateway:
+                  oneOf:
+                    - type: string
+                      format: ip-address
+                      examples:
+                        - 192.168.1.1
+                    - type: "null"
+  responses:
+    200:
+      description: Returns an IP Pool.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/infrastructure/ips/IpPool.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
