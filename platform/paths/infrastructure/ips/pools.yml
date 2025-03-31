@@ -93,9 +93,16 @@ get:
             type: string
             description: |
               `filter[state]=value1,value2` state filtering will allow you to filter by the IP's current state.
+          server:
+            type: string
+            description: |
+              `filter[server]=ID` server filtering by ID. Submit the ID of the server you wish to filter for and the return will be any IP pool associated with that server.
+          location:
+            type: string
+            description: |
+              `filter[location]=ID` location filtering by ID. Submit the ID of the location you wish to filter by.
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
-
   responses:
     200:
       description: A list of IP Pools.
