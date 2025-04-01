@@ -67,6 +67,10 @@ get:
             type: string
             description: |
               `filter[state]=value1,value2` state filtering will allow you to filter by the container's current state.
+          deprecated:
+            type: string
+            description: |
+              `filter[deprecated]=true` filter for containers that are deprecated.
           service:
             type: string
             description: |
