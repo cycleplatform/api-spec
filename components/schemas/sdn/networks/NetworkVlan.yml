@@ -22,10 +22,10 @@ properties:
     items:
       type: object
       required:
-        - usable
+        - network
       properties:
-        usable:
-          description: The usable CIDR for the route.
+        network:
+          description: The network CIDR for the route.
           type: string
           format: cidr
           examples:
