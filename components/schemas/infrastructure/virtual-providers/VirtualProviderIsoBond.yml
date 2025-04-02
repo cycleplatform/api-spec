@@ -1,0 +1,31 @@
+title: VirtualProviderIsoBond
+description: Server ISO bond.
+type: object
+required:
+  - mode
+properties:
+  interface_name:
+    oneOf:
+      - type: string
+      - type: "null"
+  interfaces:
+    type: array
+    items:
+      type: object
+      properties:
+        interface_name:
+          description: The name of the interface on the server.
+          type:
+            - string
+            - "null"
+        mac_address:
+          description: The mac address of the server.
+          type:
+            - string
+            - "null"
+  mode:
+    type: string
+    enum:
+      - round-robin
+      - active-backup
+      - lacp
