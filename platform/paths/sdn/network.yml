@@ -102,17 +102,10 @@ patch:
                           - network
                         properties:
                           usable:
-                            description: The network CIDR for the route.
-                            type: string
-                            format: cidr
-                            examples:
-                              - 192.168.1.0/24
+                            $ref: ../../../components/schemas/CIDR.yml
                           gateway:
-                            description: The IP of the gateway for the route.
-                            type: string
-                            format: ip-address
-                            examples:
-                              - 192.168.1.1
+                            $ref: ../../../components/schemas/IpAddress.yml
+
                 - type: "null"
   responses:
     200:

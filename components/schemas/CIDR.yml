@@ -1,0 +1,9 @@
+---
+title: CIDR
+type: string
+format: cidr
+description: |
+  A CIDR (Classless Inter-Domain Routing) string is a notation used to represent an IP address and its associated network prefix. 
+  It combines an IP address with a suffix that indicates how many bits are fixed for routing.
+examples:
+  - 192.168.1.0/24
