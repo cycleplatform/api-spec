@@ -3,11 +3,11 @@ description: Server ISO bond.
 type: object
 required:
   - mode
+  - interface_name
 properties:
   interface_name:
-    oneOf:
-      - type: string
-      - type: "null"
+    type: string
+
   interfaces:
     type: array
     items:
