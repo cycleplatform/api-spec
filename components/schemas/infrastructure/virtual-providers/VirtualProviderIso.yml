@@ -72,6 +72,13 @@ properties:
             required:
               - nics
             properties:
+              storage:
+                oneOf:
+                  - type: object
+                    properties:
+                      conditional_format:
+                        type: boolean
+                  - type: "null"
               sdn_neighbor_preference:
                 oneOf:
                   - type: string
@@ -90,6 +97,7 @@ properties:
                 items:
                   $ref: VirtualProviderIsoBond.yml
           - type: "null"
+
   backend:
     oneOf:
       - type: object
