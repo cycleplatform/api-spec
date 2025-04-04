@@ -74,6 +74,13 @@ post:
                   oneOf:
                     - type: object
                       properties:
+                        storage:
+                          oneOf:
+                            - type: object
+                              properties:
+                                conditional_format:
+                                  type: boolean
+                            - type: "null"
                         sdn_neighbor_preference:
                           oneOf:
                             - type: string
@@ -92,6 +99,7 @@ post:
                           items:
                             $ref: ../../../../../components/schemas/infrastructure/virtual-providers/VirtualProviderIsoBond.yml
                     - type: "null"
+
   responses:
     201:
       description: Returns an ISO.
