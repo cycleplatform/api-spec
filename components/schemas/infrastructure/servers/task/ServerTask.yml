@@ -6,7 +6,7 @@ discriminator:
     features.reconfigure: ServerReconfigureFeaturesAction.yml
     restart: ServerRestartAction.yml
     power-off: ServerPowerOffAction.yml
-    auth-reset: ServerAuthResetAction.yml
+    auth.reset: ServerAuthResetAction.yml
     compute.restart: ServerRestartComputeAction.yml
     compute.spawner.restart: ServerRestartComputeSpawnerAction.yml
     evacuation.start: ServerEvacuateAction.yml

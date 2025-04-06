@@ -10,4 +10,4 @@ properties:
     type: string
     description: The action to take.
     enum:
-      - auth-reset
+      - auth.reset
