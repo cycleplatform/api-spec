@@ -315,7 +315,7 @@ properties:
       - infrastructure.server.evacuation.reset
       - infrastructure.server.task.evacuation.reset
       - infrastructure.server.power-off
-      - infrastructure.server.auth-reset
+      - infrastructure.server.auth.reset
 
       - infrastructure.autoscale.group.create
       - infrastructure.autoscale.group.update
