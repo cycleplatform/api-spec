@@ -27,7 +27,7 @@ post:
                 - gateway
               properties:
                 cidr:
-                  $ref: ../../../../components/schemas/CIDR.yml
+                  $ref: ../../../../components/schemas/Cidr.yml
                 gateway:
                   oneOf:
                     - $ref: ../../../../components/schemas/IpAddress.yml

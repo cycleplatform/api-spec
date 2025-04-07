@@ -23,18 +23,38 @@ properties:
       - integer
       - "null"
     description: VLAN ID for the serer.
-  static_ip:
-    description: Static IP assigned to the server.
+  static:
+    description: The static configuration for the network interface.
     oneOf:
-      - $ref: ../../IpAddress.yml
+      - type: object
+        required:
+          - static_ip
+          - network
+        properties:
+          static_ip:
+            description: Static IP assigned to the server.
+            $ref: ../../IpAddress.yml
+          network:
+            description: Network assigned to the server
+            $ref: ../../Cidr.yml
+          gateway_ip:
+            description: Gateway IP assigned to the server.
+            oneOf:
+              - $ref: ../../IpAddress.yml
+              - type: "null"
       - type: "null"
-  network:
-    description: Network assigned to the server
+  dhcp:
+    description: The DHCP configuration for the network interface.
     oneOf:
-      - $ref: ../../CIDR.yml
-      - type: "null"
-  gateway_ip:
-    description: Gateway IP assigned to the server.
-    oneOf:
-      - $ref: ../../IpAddress.yml
+      - type: object
+        required:
+          - mode
+        properties:
+          mode:
+            type: string
+            enum:
+              - all
+              - none
+              - ipv4
+              - ipv6
       - type: "null"
