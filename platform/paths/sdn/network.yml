@@ -102,7 +102,7 @@ patch:
                           - network
                         properties:
                           usable:
-                            $ref: ../../../components/schemas/CIDR.yml
+                            $ref: ../../../components/schemas/Cidr.yml
                           gateway:
                             $ref: ../../../components/schemas/IpAddress.yml
 

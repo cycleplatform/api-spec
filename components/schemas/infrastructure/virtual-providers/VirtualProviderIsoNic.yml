@@ -36,7 +36,7 @@ properties:
             $ref: ../../IpAddress.yml
           network:
             description: Network assigned to the server
-            $ref: ../../CIDR.yml
+            $ref: ../../Cidr.yml
           gateway_ip:
             description: Gateway IP assigned to the server.
             oneOf:
