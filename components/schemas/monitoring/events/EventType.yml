@@ -43,6 +43,7 @@ enum:
   - infrastructure.server.mesh.connect.failed
   - infrastructure.server.neighbor.reachable
   - infrastructure.server.neighbor.rebuild
+  - infrastructure.server.neighbors.rebuild
   - infrastructure.server.neighbor.unreachable
   - infrastructure.server.neighbor.upgraded
   - infrastructure.server.resources.load.high
