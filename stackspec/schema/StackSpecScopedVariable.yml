@@ -88,10 +88,6 @@ properties:
                 required:
                   - decode
                   - path
-                # avoid conflicting name in ogen generator with the Decode method
-                x-ogen-properties:
-                  decode:
-                    name: "DecodeBase64"
                 properties:
                   decode:
                     description: When true, Cycle will interpret this variable as a base-64 encoded string, and decode it before writing it to the file inside the container.
@@ -107,6 +103,13 @@ properties:
                       - $ref: StackVariable.yml
                     examples:
                       - "/var/run/cycle/variables/<myVariable>"
+                  permissions:
+                    type:
+                      - string
+                      - "null"
+                    description: A linux file mode that will be set on the injected file.
+                    examples:
+                      - "0644"
               - $ref: StackVariable.yml
       - $ref: StackVariable.yml
   source:
