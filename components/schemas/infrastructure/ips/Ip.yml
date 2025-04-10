@@ -55,6 +55,10 @@ properties:
   gateway:
     type: string
     description: The IP gateway.
+  network:
+    oneOf:
+      - $ref: ../../Cidr.yml
+      - type: "null"
   cidr:
     type: string
     description: The CIDR for the IP.

@@ -20,6 +20,10 @@ post:
           properties:
             server_id:
               $ref: ../../../../components/schemas/ID.yml
+            network:
+              oneOf:
+                - $ref: ../../../../components/schemas/Cidr.yml
+                - type: "null"
             block:
               type: object
               required:
