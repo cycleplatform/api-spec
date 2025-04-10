@@ -7,7 +7,7 @@ post:
     Requires the following capabilities based on the task: 
     `start`: `containers-manage`
     `stop`: `containers-manage`
-    `restar`: `containers-manage`
+    `restart`: `containers-manage`
     `reconfigure`: `containers-manage`
     `volumes.reconfigure`: `containers-volumes-manage`
     `reimage`: `containers-manage`
