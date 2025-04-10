@@ -50,3 +50,17 @@ properties:
         description: A linux file mode that will be set on the injected file.
         examples:
           - "0644"
+      uid:
+        type:
+          - integer
+          - "null"
+        description: The linux UID to set on the file.
+        examples:
+          - 777
+      gid:
+        type:
+          - integer
+          - "null"
+        description: The linux GID to set on the file.
+        examples:
+          - 777

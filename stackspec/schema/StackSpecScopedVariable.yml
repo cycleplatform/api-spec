@@ -104,12 +104,32 @@ properties:
                     examples:
                       - "/var/run/cycle/variables/<myVariable>"
                   permissions:
-                    type:
-                      - string
-                      - "null"
+                    oneOf:
+                      - type:
+                          - string
+                          - "null"
+                      - $ref: StackVariable.yml
                     description: A linux file mode that will be set on the injected file.
                     examples:
                       - "0644"
+                  uid:
+                    oneOf:
+                      - type:
+                          - integer
+                          - "null"
+                      - $ref: StackVariable.yml
+                    description: The linux UID to set on the file.
+                    examples:
+                      - 777
+                  gid:
+                    oneOf:
+                      - type:
+                          - integer
+                          - "null"
+                      - $ref: StackVariable.yml
+                    description: The linux GID to set on the file.
+                    examples:
+                      - 777
               - $ref: StackVariable.yml
       - $ref: StackVariable.yml
   source:
