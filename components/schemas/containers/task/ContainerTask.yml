@@ -4,6 +4,7 @@ discriminator:
   mapping:
     start: ContainerStartAction.yml
     stop: ContainerStopAction.yml
+    restart: ContainerRestartAction.yml
     reconfigure: ContainerReconfigureAction.yml
     volumes.reconfigure: ContainerReconfigureVolumesAction.yml
     reimage: ContainerReimageAction.yml
@@ -11,6 +12,7 @@ discriminator:
 oneOf:
   - $ref: ContainerStartAction.yml
   - $ref: ContainerStopAction.yml
+  - $ref: ContainerRestartAction.yml
   - $ref: ContainerReconfigureAction.yml
   - $ref: ContainerReconfigureVolumesAction.yml
   - $ref: ContainerReimageAction.yml
