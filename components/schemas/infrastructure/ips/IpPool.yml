@@ -47,18 +47,12 @@ properties:
       available:
         type: integer
         description: Of the total number of IP's how many are available to be assigned.
-  network:
-    oneOf:
-      - $ref: ../../Cidr.yml
-      - type: "null"
   block:
     type: object
     description: Network information about the pool.
     required:
       - cidr
       - gateway
-      - netmask
-      - network
     properties:
       cidr:
         type: string
@@ -66,5 +60,9 @@ properties:
       gateway:
         type: string
         description: A gateway for the pool.
+      network:
+        oneOf:
+          - $ref: ../../Cidr.yml
+          - type: "null"
   state:
     "$ref": "./IpPoolState.yml"
