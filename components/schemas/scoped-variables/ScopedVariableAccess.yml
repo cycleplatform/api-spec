@@ -43,3 +43,10 @@ properties:
         description: The path to mount the file to inside the container.
         examples:
           - "/var/run/cycle/variables/<myVariable>"
+      permissions:
+        type:
+          - string
+          - "null"
+        description: A linux file mode that will be set on the injected file.
+        examples:
+          - "0644"
