@@ -5,7 +5,9 @@ discriminator:
     migration.start: InstanceMigrateAction.yml
     migration.revert: InstanceRevertMigrationAction.yml
     volume.extend: InstanceExtendVolumeAction.yml
+    traffic-drain.reconfigure: InstanceTrafficDrainReconfigure.yml
 oneOf:
   - $ref: InstanceMigrateAction.yml
   - $ref: InstanceRevertMigrationAction.yml
   - $ref: InstanceExtendVolumeAction.yml
+  - $ref: InstanceTrafficDrainReconfigure.yml
