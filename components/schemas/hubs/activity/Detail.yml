@@ -10,3 +10,6 @@ properties:
   string:
     type: string
     description: Additional information.
+  boolean:
+    type: string
+    description: A boolean describing if a resource exists or not.

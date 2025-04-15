@@ -237,6 +237,7 @@ properties:
       - container.instance.delete
       - container.instance.task.migration.revert
       - container.instance.task.migration.start
+      - container.instance.traffic-drain.reconfigure
       # there may be other custom-generated container.instance events
 
       - container.backup.create
