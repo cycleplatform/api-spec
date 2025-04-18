@@ -85,7 +85,7 @@ patch:
             - constraints
           properties:
             nickname:
-              description: The server nickname.
+              description: A custom name given to the server for identification purposes. Does not affect server hostname.
               type:
                 - string
                 - "null"
