@@ -86,9 +86,9 @@ patch:
           properties:
             nickname:
               description: The server nickname.
-              oneof:
-                - type: string
-                - type: "null"
+              type:
+                - string
+                - "null"
             constraints:
               type: object
               description: Server constriants.
