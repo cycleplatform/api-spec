@@ -36,6 +36,11 @@ properties:
   hostname:
     type: string
     description: The server hostname.
+  nickname:
+    description: A custom name given to the server for identification purposes. Does not affect server hostname.
+    type:
+      - string
+      - "null"
   creator:
     $ref: "../../creators/CreatorScope.yml"
   provider:
