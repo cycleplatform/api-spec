@@ -10,6 +10,14 @@ properties:
     description: Network interfaces for a given server.
     additionalProperties:
       type: object
+      required:
+        - interface
+        - flags
+        - mtu
+        - mac_addr
+        - speed
+        - rx_bytes
+        - tx_bytes
       description: Network interface.
       properties:
         interface:
@@ -31,6 +39,12 @@ properties:
             - "null"
           items:
             type: string
+        speed:
+          type: integer
+        rx_bytes:
+          type: integer
+        ty_bytes:
+          type: integer
   external_ipv4:
     type: string
     description: The public IPv4 address used to connect to this server.
