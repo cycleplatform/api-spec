@@ -43,7 +43,7 @@ properties:
           type: integer
         rx_bytes:
           type: integer
-        ty_bytes:
+        tx_bytes:
           type: integer
   external_ipv4:
     type: string
