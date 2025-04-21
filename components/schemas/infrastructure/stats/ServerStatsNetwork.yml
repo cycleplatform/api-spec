@@ -40,10 +40,13 @@ properties:
           items:
             type: string
         speed:
+          description: The link speed for the interface in megabits.
           type: integer
         rx_bytes:
+          description: The bytes received over the interface.
           type: integer
         tx_bytes:
+          description: The bytes transmitted over the interface.
           type: integer
   external_ipv4:
     type: string
