@@ -70,11 +70,13 @@ properties:
       How to route the traffic to the destination.
       `random`: Pick a valid destination at random.
       `round-robin`: Send each request to the 'next' destination on the list, restarting from the beginning when the last destination is used.
+      `source-ip`: Utilizes a hash function to ensure traffic from an IP will always hit the same destination instance.
     oneOf:
       - type: string
         enum:
           - random
           - round-robin
+          - source-ip
       - $ref: ../../../../StackVariable.yml
   config:
     oneOf:
