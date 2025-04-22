@@ -119,3 +119,7 @@ properties:
       deleted:
         description: The timestamp of when the instance was deleted.
         $ref: ../../DateTime.yml
+  meta:
+    anyOf:
+      - $ref: InstanceMeta.yml
+      - type: "null"
