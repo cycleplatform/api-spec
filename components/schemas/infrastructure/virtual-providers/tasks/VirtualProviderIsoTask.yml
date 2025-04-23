@@ -1,4 +1,4 @@
-title: VirtualProviderIsoTask.yml
+title: VirtualProviderIsoTask
 discriminator:
   propertyName: action
   mapping:
