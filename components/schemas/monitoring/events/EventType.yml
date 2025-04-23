@@ -55,3 +55,5 @@ enum:
   - infrastructure.server.sftp.login.failed
   - infrastructure.server.evacuation.failed
   - infrastructure.server.evacuation.completed
+  - infrastructure.server.checkin.missed
+  - infrastructure.server.checkin.resumed
