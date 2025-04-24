@@ -9,7 +9,7 @@
     "lint:internal": "npx @redocly/cli lint ./internal/api.yml",
     "lint:scheduler": "npx @redocly/cli lint ./scheduler/api.yml",
     "lint:ial": "npx @redocly/cli lint ./ial/api.yml",
-    "build": "npm run build:platform && npm run build:internal",
+    "build": "npm run build:platform && npm run build:internal && npm run build:scheduler && npm run build:internal",
     "build:platform": "npx @redocly/cli@1.11.0 bundle platform/api.yml --output dist/platform.yml",
     "build:internal": "npx @redocly/cli@1.11.0 bundle internal/api.yml --output dist/internal.yml",
     "build:scheduler": "npx @redocly/cli@1.11.0 bundle scheduler/api.yml --output dist/scheduler.yml",
