@@ -180,7 +180,7 @@ properties:
                   - "null"
               - $ref: StackVariable.yml
           expose_cgroups:
-            description: If true, Cycle will mount the `/cgroups` directory to `/var/run/cycle/host/cgroups` in the container.
+            description: If true, Cycle will mount the cgroup details to `/var/run/cycle/host/cgroups` in the container.
             oneOf:
               - type:
                   - boolean
