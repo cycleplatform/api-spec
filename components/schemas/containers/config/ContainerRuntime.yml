@@ -127,7 +127,7 @@ properties:
           - boolean
           - "null"
       expose_cgroups:
-        description: If true, Cycle will mount the host's `/sys/fs/cgroups` directory into the container at `/var/run/cycle/host/cgroups`.`
+        description: If true, Cycle will mount the host's `/sys/fs/cgroups` directory into the container at `/var/run/cycle/host/cgroups`.
         type:
           - boolean
           - "null"
