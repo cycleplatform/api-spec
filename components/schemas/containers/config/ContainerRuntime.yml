@@ -122,6 +122,17 @@ properties:
       - "null"
     properties:
       expose_proc:
+        description: If true, Cycle will mount the `/proc` directory into the container, giving it access to the host metrics. This is useful if you're running i.e. a monitoring agent.
+        type:
+          - boolean
+          - "null"
+      expose_cgroups:
+        description: If true, Cycle will mount the host's `/sys/fs/cgroups` directory into the container at `/var/run/cycle/host/cgroups`.
+        type:
+          - boolean
+          - "null"
+      power_management:
+        description: If true, Cycle will give the container instances access via internal api to power off or reboot the host server.
         type:
           - boolean
           - "null"

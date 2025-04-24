@@ -179,6 +179,20 @@ properties:
                   - boolean
                   - "null"
               - $ref: StackVariable.yml
+          expose_cgroups:
+            description: If true, Cycle will mount the host's `/sys/fs/cgroups` directory into the container at `/var/run/cycle/host/cgroups`.
+            oneOf:
+              - type:
+                  - boolean
+                  - "null"
+              - $ref: StackVariable.yml
+          power_management:
+            description: If true, Cycle will give the container instances access via internal api to power off or reboot the host server.
+            oneOf:
+              - type:
+                  - boolean
+                  - "null"
+              - $ref: StackVariable.yml
       - $ref: StackVariable.yml
   privileged:
     description: If true, the container process will run in fully-privileged mode. **WARNING** This is considered insecure, and should only be done if you know what you're doing.

@@ -57,3 +57,5 @@ enum:
   - infrastructure.server.evacuation.completed
   - infrastructure.server.checkin.missed
   - infrastructure.server.checkin.resumed
+  - infrastructure.server.power.reboot
+  - infrastructure.server.power.power-off
