@@ -1,7 +1,9 @@
 post:
   operationId: "poweroffServer"
   summary: Power Off Server
-  description: Initiates a graceful poweroff on the host server this instance is running on.
+  description: |
+    Initiates a graceful poweroff on the host server this instance is running on.
+    The container must have `config.runtime.host.power_management` set to true to utilize this endpoint.
   tags:
     - Servers
   parameters: []
