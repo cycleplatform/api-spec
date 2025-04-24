@@ -65,6 +65,10 @@ paths:
     $ref: paths/server/images.yml
   /v1/server/images/download:
     $ref: paths/server/image-download.yml
+  /v1/server/power/poweroff:
+    $ref: paths/server/poweroff.yml
+  /v1/server/power/reboot:
+    $ref: paths/server/reboot.yml
 
   # Containers
   /v1/container:

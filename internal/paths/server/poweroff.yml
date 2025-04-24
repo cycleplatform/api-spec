@@ -1,0 +1,24 @@
+post:
+  operationId: "poweroffServer"
+  summary: Power Off Server
+  description: |
+    Initiates a graceful poweroff on the host server this instance is running on.
+    The container must have `config.runtime.host.power_management` set to true to utilize this endpoint.
+  tags:
+    - Servers
+  parameters: []
+  responses:
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns a generic success result.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: boolean
+                
