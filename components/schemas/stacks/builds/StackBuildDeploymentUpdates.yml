@@ -28,5 +28,7 @@ properties:
         description: When deploying to the environment, any scoped variables defined in the build that match an existing scoped variable in the environment will cause the existing scoped variable to be updated to the new value.
         type: boolean
       associate_deployment:
-        description: If set to true, scoped variables will be associated to the deployment if a deployment is selected.
+        description: |
+          If set to true and `add_new` is enabled, any variables that dont exist FOR THAT DEPLOYMENT will be created. 
+          If set to true and `replace_existing` is enabled, any matching variables FOR THAT DEPLOYMENT will be replaced.
         type: boolean
