@@ -26,6 +26,9 @@ properties:
   mode:
     type: string
     enum:
-      - round-robin
+      - balance-rr
       - active-backup
+      - balance-xor
       - lacp
+      - balance-tlb
+      - balance-alb
