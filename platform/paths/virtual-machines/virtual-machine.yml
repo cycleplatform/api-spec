@@ -70,7 +70,7 @@ patch:
 
     Requires the `virtual-machines-manage` capability.
   tags:
-    - Virtual Machine
+    - Virtual Machines
   parameters:
     - name: virtualMachineId
       description: The ID of the virtual machine.
