@@ -31,6 +31,7 @@ enum:
   - environment.service.auto_update
   - environment.service.lb.ips.sync.failed
   - environment.service.vpn.login.failed
+  - environment.service.discovery.client.throttle.hit
   - infrastructure.cluster.resources.ram.full
   - infrastructure.server.compute.volumes.base.reconfigured
   - infrastructure.server.compute.full_restart
