@@ -3,7 +3,7 @@ get:
   summary: Get Trigger Key
   description: Requires the `pipelines-manage` capability.
   tags:
-    - Trigger Keys
+    - Pipelines
   parameters:
     - name: pipelineId
       in: path

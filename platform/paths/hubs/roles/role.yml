@@ -6,7 +6,7 @@ get:
 
     Requries the `hubs-roles-manage` capability.
   tags:
-    - Roles
+    - Hub Roles
   parameters:
     - name: roleId
       description: The ID of the Role.
@@ -51,7 +51,7 @@ patch:
 
     Requires the `hubs-roles-manage` capability.
   tags:
-    - Roles
+    - Hub Roles
   parameters:
     - name: roleId
       description: The ID of the Role.
@@ -123,7 +123,7 @@ delete:
 
     Requires the 'hubs-roles-manage' capability.
   tags:
-    - Roles
+    - Hub Roles
   parameters:
     - name: roleId
       description: The ID of the Role.
