@@ -108,7 +108,7 @@ x-tagGroups:
       - Hubs
       - API Keys
       - Integrations
-      - Hub Members
+      - Members
       - Hub Notifications
       - Roles
   - name: Images

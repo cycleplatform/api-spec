@@ -73,7 +73,6 @@ delete:
   summary: Delete Container Instance
   description: Requires the `containers-update` capability.
   tags:
-    - Containers
     - Instances
   parameters:
     - name: containerId

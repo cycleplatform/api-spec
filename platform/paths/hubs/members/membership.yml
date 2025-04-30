@@ -3,7 +3,7 @@ get:
   summary: Get Hub Membership
   description: Gets the Hub Membership for the requesting Account.
   tags:
-    - Hub Members
+    - Members
   security:
     - bearerAuth: []
   parameters:

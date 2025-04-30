@@ -3,7 +3,7 @@ get:
   summary: List Hub Members
   description: Requires the `hubs-members-view` capability.
   tags:
-    - Hub Members
+    - Members
   security:
     - bearerAuth: []
   parameters:

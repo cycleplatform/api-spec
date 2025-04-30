@@ -3,7 +3,7 @@ delete:
   summary: Delete Hub Invite
   description: Requires the `hub-invites-manage` capability.
   tags:
-    - Hub Members
+    - Members
   security:
     - bearerAuth: []
   parameters:
