@@ -2,7 +2,7 @@ get:
   operationId: "getDefaultHubRoles"
   summary: List Default Hub Roles
   tags:
-    - Hub Roles
+    - Roles
   parameters: []
   security: []
   responses:

@@ -6,7 +6,7 @@ get:
 
     Requires the `hubs-roles-manage` capability.
   tags:
-    - Hub Roles
+    - Roles
   parameters:
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/FilterParam.yml
@@ -46,7 +46,7 @@ get:
 post:
   operationId: createRole
   tags:
-    - Hub Roles
+    - Roles
   parameters: []
   summary: Create Hub Role
   description: |
