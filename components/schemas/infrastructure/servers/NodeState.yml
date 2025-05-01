@@ -16,4 +16,14 @@ allOf:
           - decommissioned
       changed:
         $ref: ../../DateTime.yml
+      desired:
+        oneOf:
+          - type: string
+            enum:
+              - new
+              - offline
+              - authorizing
+              - online
+              - decommissioned
+          - type: "null"
   - "$ref": "../../State.yml"
