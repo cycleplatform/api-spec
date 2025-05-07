@@ -101,9 +101,9 @@ post:
             identifier:
               type: string
               description: A network identifier used to construct http calls that specifically use this network over another.
-            vlan:
+            l2:
               anyOf:
-                - $ref: ../../../components/schemas/sdn/networks/NetworkVlan.yml
+                - $ref: ../../../components/schemas/sdn/networks/NetworkL2.yml
                 - type: "null"
             acl:
               anyOf:

@@ -1,4 +1,4 @@
-title: NetworkVlanStaticDetails
+title: NetworkL2StaticDetails
 type: object
 required:
   - method

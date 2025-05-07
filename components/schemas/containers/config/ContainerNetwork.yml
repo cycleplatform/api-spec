@@ -20,3 +20,18 @@ properties:
     items:
       type: string
     description: An array of port mappings for the container.
+  l2:
+    description: Layer 2 network configuration options for containers running on virtual provider servers.
+    oneOf:
+      - type: object
+        required:
+          - domains
+        properties:
+          domains:
+            type: array
+            description: | 
+              The layer 2 'domains' that this container's instances should bridge to on the host server. 
+              If the host has a matching layer 2 NIC configured via a virtual provider ISO, this container's instances 
+              will be joined directly to the host's network.
+            items:
+              $ref: ../../sdn/L2Domain.yml
