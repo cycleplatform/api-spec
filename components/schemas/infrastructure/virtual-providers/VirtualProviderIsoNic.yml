@@ -58,3 +58,20 @@ properties:
               - ipv4
               - ipv6
       - type: "null"
+  l2:
+    description: Configuration options for extending the L2 network into containers directly via a bridge.
+    oneOf:
+      - type: object
+        required:
+          - domain
+        properties:
+          domain:
+            description: |
+              The 'type' of network this is. Containers will utilize this type to determine which NIC to join on the host each 
+              instance is deployed to, as this can vary between servers.
+            type: string
+            enum:
+              - shared
+              - public
+              - private
+      - type: "null"
