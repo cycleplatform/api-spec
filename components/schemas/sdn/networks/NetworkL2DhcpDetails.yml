@@ -1,4 +1,4 @@
-title: NetworkVlanDhcpDetails
+title: NetworkL2DhcpDetails
 type: object
 required:
   - method

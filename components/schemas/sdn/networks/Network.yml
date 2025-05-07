@@ -28,9 +28,9 @@ properties:
     $ref: ../../HubID.yml
   state:
     $ref: NetworkState.yml
-  vlan:
+  l2:
     anyOf:
-      - $ref: NetworkVlan.yml
+      - $ref: NetworkL2.yml
       - type: "null"
   private_network:
     anyOf:
