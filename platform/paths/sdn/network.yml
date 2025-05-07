@@ -81,7 +81,7 @@ patch:
             name:
               type: string
               description: The name of the network.
-            vlan:
+            l2:
               oneOf:
                 - type: object
                   properties:
@@ -94,7 +94,7 @@ patch:
                         - type: string
                         - type: "null"
                     routes:
-                      description: An array of defined VLAN routes
+                      description: An array of defined L2 routes
                       type: array
                       items:
                         type: object
