@@ -53,6 +53,7 @@ properties:
       - deployments
       - geodns
       - provider_multi_account
+      - virtual_provider
     properties:
       gpu:
         type: boolean
@@ -65,6 +66,8 @@ properties:
       geodns:
         type: boolean
       provider_multi_account:
+        type: boolean
+      virtual_provider:
         type: boolean
   max_daily_api_requests:
     type:
