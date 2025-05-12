@@ -83,9 +83,11 @@ properties:
 
               **random**: Chooses a random instance.
               **latency**: Prioritizes lower latency instances.
+              **fixed**: The order of the destinations will be the same regardless of instance or load balancer location.  Used primarily with source IP routing.
             enum:
               - latency
               - random
+              - fixed
           - type: "null"
       tls:
         type:
