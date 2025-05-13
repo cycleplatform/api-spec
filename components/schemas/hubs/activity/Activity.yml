@@ -360,6 +360,7 @@ properties:
       - virtual-machine.task.delete
       - virtual-machine.delete
       - virtual-machine.sos.login
+      - virtual-machine.rootpw.change
 
       - virtual-machine.ssh-key.create
       - virtual-machine.ssh-key.update
