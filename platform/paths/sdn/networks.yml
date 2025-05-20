@@ -31,6 +31,10 @@ get:
       schema:
         type: object
         properties:
+          environment:
+            type: string
+            description: |
+              `filter[environment]=ID` Filter networks based on linked environment. Submit the ID of the environment you wish to filter for.
           search:
             type: string
             description: |
