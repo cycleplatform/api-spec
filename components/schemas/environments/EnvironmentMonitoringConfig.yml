@@ -1,0 +1,27 @@
+title: EnvironmentMonitoring
+type: object
+description: The configuration for environment monitoring.
+properties:
+  logs:
+    description: An object describing the log configuration for the environment.
+    oneOf:
+      - type: object
+        properties:
+          drain:
+            description: An object describing log drain configuration for the environment.
+            oneOf:
+              - type: object
+                required:
+                  - url
+                properties:
+                  url:
+                    description: The destination URL for the log drain.
+                    type: string
+                  format:
+                    description: The format of the logs that will be sent to the drain URL.
+                    type: string
+                    enum:
+                      - ndjson-headers
+                      - ndjson-raw
+              - type: "null"
+      - type: "null"
