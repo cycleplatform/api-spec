@@ -1,0 +1,7 @@
+title: ClusterTask
+discriminator:
+  propertyName: action
+  mapping:
+    features.monitoring.tier.reconfigure: ServerReconfigureSharedFsAction.yml
+oneOf:
+  - $ref: ServerReconfigureSharedFsAction.yml

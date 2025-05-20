@@ -1,0 +1,25 @@
+title: MonitoringUsage
+type: object
+required:
+  - included
+  - unit
+  - hard_cap
+properties:
+  included:
+    type: integer
+  unit:
+    type: string
+  hard_cap:
+    type: boolean
+  additional:
+    oneOf:
+      - type: object
+        required:
+          - size
+          - price
+        properties:
+          size:
+            type: integer
+          price:
+            $ref: ../../../billing/BillingAmount.yml
+      - type: "null"

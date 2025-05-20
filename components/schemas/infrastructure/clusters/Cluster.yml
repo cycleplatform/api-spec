@@ -7,6 +7,7 @@ required:
   - creator
   - hub_id
   - state
+  - features
   - events
 properties:
   id:
@@ -20,10 +21,22 @@ properties:
     $ref: ../../HubID.yml
   acl:
     anyOf:
-      - $ref: ../../common/ACL.yml 
+      - $ref: ../../common/ACL.yml
       - type: "null"
   state:
     $ref: ./ClusterState.yml
+  features:
+    type: object
+    properties:
+      monitoring:
+        oneOf:
+          - type: object
+            required:
+              - tier
+            properties:
+              tier:
+                $ref: ./monitoring/MonitoringTier.yml
+          - type: "null"
   events:
     title: ClusterEvents
     type: object
