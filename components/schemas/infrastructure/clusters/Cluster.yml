@@ -29,6 +29,7 @@ properties:
     type: object
     properties:
       monitoring:
+        description: The level of monitoring to enable for this cluster. There is a cost associated with higher levels of monitoring.
         oneOf:
           - type: object
             required:
