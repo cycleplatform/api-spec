@@ -29,17 +29,6 @@ properties:
             type: string
             description: Custom, user-defined details about this stack.
       - $ref: StackVariable.yml
-
-  # tests:
-  #   description: |
-  #     An array of containers that are deployed as part of a stack. Test containers run once and should exit with 0 on success. If all exit successfully, the stack is considered deployed.
-
-  #     **Not currently implemented.**
-  #   type:
-  #     - array
-  #     - "null"
-  #   items:
-  #     $ref: StackSpecTestContainer.yml
   scoped_variables:
     description: Describes variables that are assigned to one or more containers at runtime. Can be assigned as an environment variable, written as a file inside the container(s), or accessed over the internal API.
     oneOf:
@@ -55,6 +44,11 @@ properties:
         description: A mapping of containers that will be deployed as a part of this stack. The key is used as the container's identifier.
         additionalProperties:
           $ref: ./StackSpecContainer.yml
+      - $ref: StackVariable.yml
+  monitoring:
+    description: Monitoring options for containers within this stack.
+    oneOf:
+      - $ref: monitoring/StackSpecMonitoringConfig.yml
       - $ref: StackVariable.yml
   services:
     description: Settings for any auxillary services deployed as part of the environment, such as load balancer and discovery services.

@@ -1,0 +1,9 @@
+title: StackSpecMonitoringConfig
+description: Monitoring options for the stack build & containers within this stack.
+type: object
+properties:
+  logs:
+    oneOf:
+      - $ref: StackSpecMonitoringLogs.yml
+      - type: "null"
+      - $ref: ../StackVariable.yml
