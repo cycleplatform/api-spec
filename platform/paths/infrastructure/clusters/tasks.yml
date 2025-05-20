@@ -1,0 +1,33 @@
+post:
+  operationId: "createClusterJob"
+  summary: Create Cluster Job
+  description: Used to perform different actions on a given cluster. Requires the `clusters-manage` capability.
+  tags:
+    - Clusters
+  parameters:
+    - name: clusterId
+      description: The ID for the given cluster.
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    description: Parameters for creating the new cluster Job.
+    content:
+      application/json:
+        schema:
+          $ref: ../../../../components/schemas/infrastructure/clusters/task/ClusterTask.yml
+  responses:
+    202:
+      description: Returns a Job Descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/jobs/JobDescriptor.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
