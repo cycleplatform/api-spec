@@ -1,0 +1,33 @@
+title: StackSpecMonitoringLogs
+description: Log configuration for containers in this stack.
+type: object
+properties:
+  logs:
+    oneOf:
+      - type: object
+        properties:
+          drain:
+            description: When enabled, log drain allows logs to be exported to a third party service.
+            oneOf:
+              - type: object
+                required:
+                  - url
+                properties:
+                  url:
+                    description: The URL to the third party logging service where logs will be sent.
+                    oneOf:
+                      - type: string
+                      - $ref: ../StackVariable.yml
+                  format:
+                    description: The format Cycle will use to send the logs.
+                    oneOf:
+                      - type: string
+                        enum:
+                          - ndjson-headers
+                          - ndjson-raw
+                      - type: "null"
+                      - $ref: ../StackVariable.yml
+              - type: "null"
+              - $ref: ../StackVariable.yml
+      - type: "null"
+      - $ref: ../StackVariable.yml
