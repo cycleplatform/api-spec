@@ -17,3 +17,5 @@ properties:
     properties:
       tier:
         $ref: ../infrastructure/clusters/monitoring/MonitoringTier.yml
+      config:
+        $ref: ./EnvironmentMonitoringConfig.yml

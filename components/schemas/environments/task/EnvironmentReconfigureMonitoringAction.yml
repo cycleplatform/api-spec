@@ -1,0 +1,19 @@
+title: EnvironmentReconfigureMonitoringAction
+description: A task to reconfigure monitoring on an environment.
+type: object
+required:
+  - action
+  - contents
+properties:
+  action:
+    type: string
+    enum:
+      - monitoring.reconfigur
+    description: The action to take.
+  contents:
+    type: object
+    required:
+      - config
+    properties:
+      config:
+        $ref: ../EnvironmentMonitoringConfig.yml

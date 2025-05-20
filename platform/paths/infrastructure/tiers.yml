@@ -19,6 +19,6 @@ get:
               data:
                 type: object
                 additionalProperties:
-                  $ref: ../../../../components/schemas/infrastructure/clusters/monitoring/MonitoringTierDetails.yml
+                  $ref: ../../../components/schemas/infrastructure/clusters/monitoring/MonitoringTierDetails.yml
     default:
-      $ref: ../../../../components/responses/errors/DefaultError.yml
+      $ref: ../../../components/responses/errors/DefaultError.yml

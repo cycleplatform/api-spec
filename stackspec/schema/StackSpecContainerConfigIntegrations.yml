@@ -222,10 +222,7 @@ properties:
                   format:
                     description: The format Cycle will use to send the logs.
                     oneOf:
-                      - type: string
-                        enum:
-                          - ndjson-headers
-                          - ndjson-raw
+                      - $ref: ../../components/schemas/LogFormat.yml
                       - type: "null"
                       - $ref: StackVariable.yml
               - type: "null"
