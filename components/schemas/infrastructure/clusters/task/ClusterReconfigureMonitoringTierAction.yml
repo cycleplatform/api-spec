@@ -1,6 +1,6 @@
-title: ClusterReconfigureMonitoringTier
+title: ClusterReconfigureMonitoringTierAction
 type: object
-description: A job that reconfigures the monitoring tier for the cluster..
+description: A job that reconfigures the monitoring tier for the cluster.
 required:
   - action
 properties:
@@ -12,4 +12,5 @@ properties:
   contents:
     type: object
     properties:
-      tier: ../monitoring/MonitoringTier.yml
+      tier:
+        $ref: ../monitoring/MonitoringTier.yml
