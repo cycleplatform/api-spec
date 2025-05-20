@@ -6,8 +6,10 @@ discriminator:
     stop: EnvironmentStopAction.yml
     initialize: EnvironmentInitializeAction.yml
     deployments.reconfigure: EnvironmentReconfigureDeploymentsAction.yml
+    monitoring.reconfigure: EnvironmentReconfigureMonitoringAction.yml
 oneOf:
   - $ref: EnvironmentStartAction.yml
   - $ref: EnvironmentStopAction.yml
   - $ref: EnvironmentInitializeAction.yml
   - $ref: EnvironmentReconfigureDeploymentsAction.yml
+  - $ref: EnvironmentReconfigureMonitoringAction.yml

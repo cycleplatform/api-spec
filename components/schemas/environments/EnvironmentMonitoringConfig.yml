@@ -1,4 +1,4 @@
-title: EnvironmentMonitoring
+title: EnvironmentMonitoringConfig
 type: object
 description: The configuration for environment monitoring.
 properties:
@@ -19,9 +19,6 @@ properties:
                     type: string
                   format:
                     description: The format of the logs that will be sent to the drain URL.
-                    type: string
-                    enum:
-                      - ndjson-headers
-                      - ndjson-raw
+                    $ref: ../LogFormat.yml
               - type: "null"
       - type: "null"
