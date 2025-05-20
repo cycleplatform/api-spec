@@ -1,0 +1,16 @@
+title: ClusterReconfigureMonitoringTierAction
+type: object
+description: A job that reconfigures the monitoring tier for the cluster.
+required:
+  - action
+properties:
+  action:
+    type: string
+    description: The action to take.
+    enum:
+      - features.monitoring.tier.reconfigure
+  contents:
+    type: object
+    properties:
+      tier:
+        $ref: ../monitoring/MonitoringTier.yml
