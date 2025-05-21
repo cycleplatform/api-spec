@@ -8,7 +8,7 @@ properties:
   action:
     type: string
     enum:
-      - monitoring.reconfigur
+      - monitoring.reconfigure
     description: The action to take.
   contents:
     type: object
