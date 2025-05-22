@@ -32,6 +32,7 @@ get:
           type: string
           enum:
             - node
+            - sdn_pool_ips
     - name: include
       in: query
       required: false
