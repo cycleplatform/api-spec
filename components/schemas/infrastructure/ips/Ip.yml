@@ -5,23 +5,28 @@ required:
   - id
   - hub_id
   - kind
+  - ip
   - assingment
   - pool_id
+  - network_id
   - address
   - gateway
   - cidr
   - state
 properties:
   id:
-    "$ref": "../../ID.yml"
+    $ref: ../../ID.yml
   hub_id:
-    "$ref": "../../HubID.yml"
+    $ref: ../../HubID.yml
   kind:
     type: string
     description: The type of IP protocol this IP is.
     enum:
       - ipv4
       - ipv6
+  ip:
+    description: The IP string this IP represents.
+    $ref: ../../IpAddress.yml
   assignment:
     type:
       - object
@@ -33,22 +38,25 @@ properties:
       - environment_id
     properties:
       container_id:
-        "$ref": "../../ID.yml"
+        $ref: ../../ID.yml
       instance_id:
-        "$ref": "../../ID.yml"
+        $ref: ../../ID.yml
       environment_id:
-        "$ref": "../../ID.yml"
+        $ref: ../../ID.yml
       virtual_machine:
         type: object
         description: Details about the virtual machine this IP is assigned to.
         properties:
           id:
-            "$ref": "../../ID.yml"
+            $ref: ../../ID.yml
         required:
           - id
   pool_id:
-    type: string
+    $ref: ../../ID.yml
     description: A unique identifier that associates the IP with an IP pool.
+  network_id:
+    $ref: ../../ID.yml
+    description: A unique identifier that associates the IP with a network.
   address:
     type: string
     description: The IP address.
@@ -63,4 +71,4 @@ properties:
     type: string
     description: The CIDR for the IP.
   state:
-    "$ref": "./IpState.yml"
+    $ref: ./IpState.yml
