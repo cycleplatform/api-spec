@@ -16,4 +16,6 @@ properties:
       - tier
     properties:
       tier:
-        $ref: monitoring/MonitoringTier.yml
+        $ref: ../infrastructure/clusters/monitoring/MonitoringTier.yml
+      config:
+        $ref: ./EnvironmentMonitoringConfig.yml

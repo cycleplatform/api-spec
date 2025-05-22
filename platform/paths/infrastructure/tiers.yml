@@ -1,11 +1,11 @@
 ---
 get:
-  operationId: getEnvironmentMonitoringTiers
-  summary: Get Environment Monitoring Tiers
+  operationId: getClusterMonitoringTiers
+  summary: Get Cluster Monitoring Tiers
   description: |
-    Gets all the available monitoring tiers that can be enabled for an environment.
+    Gets all the available monitoring tiers that can be enabled for a cluster.
   tags:
-    - Environments
+    - Clusters
   responses:
     200:
       description: A list of monitoring tiers.
@@ -19,6 +19,6 @@ get:
               data:
                 type: object
                 additionalProperties:
-                  $ref: ../../../components/schemas/environments/monitoring/MonitoringTierDetails.yml
+                  $ref: ../../../components/schemas/infrastructure/clusters/monitoring/MonitoringTierDetails.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml

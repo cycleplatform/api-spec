@@ -435,8 +435,6 @@ paths:
   # --Environments
   "/v1/environments":
     $ref: "./paths/environments/environments.yml"
-  "/v1/environments/monitoring-tiers":
-    $ref: "./paths/environments/tiers.yml"
   "/v1/environments/{environmentId}":
     $ref: "./paths/environments/environment.yml"
   "/v1/environments/{environmentId}/access":
@@ -575,6 +573,8 @@ paths:
     $ref: "./paths/infrastructure/summary.yml"
   "/v1/infrastructure/deployment-strategies":
     $ref: "./paths/infrastructure/deploymentStrategies.yml"
+  "/v1/infrastructure/monitoring-tiers":
+    $ref: "./paths/infrastructure/tiers.yml"
 
   ## Auto-Scale Groups
   "/v1/infrastructure/auto-scale/groups":
@@ -610,6 +610,9 @@ paths:
     $ref: "./paths/infrastructure/clusters/cluster.yml"
   "/v1/infrastructure/clusters/{clusterId}/access":
     $ref: "./paths/infrastructure/clusters/access.yml"
+
+  "/v1/infrastructure/clusters/{clusterId}/tasks":
+    $ref: "./paths/infrastructure/clusters/tasks.yml"
 
   ## Servers
   "/v1/infrastructure/servers":
