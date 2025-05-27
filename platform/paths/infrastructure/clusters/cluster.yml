@@ -8,7 +8,7 @@ get:
     - Clusters
   parameters:
     - name: clusterId
-      description: The ID of the requested cluster.
+      description: The ID or identifier of the requested cluster.
       in: path
       required: true
       schema:
@@ -27,7 +27,7 @@ get:
                 $ref: ../../../../components/schemas/infrastructure/clusters/Cluster.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
-  
+
 patch:
   operationId: updateCluster
   summary: Update Cluster
@@ -62,7 +62,7 @@ patch:
                 $ref: ../../../../components/schemas/infrastructure/clusters/Cluster.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
-              
+
 delete:
   operationId: "deleteCluster"
   summary: Delete Cluster
