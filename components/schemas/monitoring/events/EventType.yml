@@ -39,6 +39,7 @@ enum:
   - infrastructure.server.compute.sharedfs.mounts.mount.failed
   - infrastructure.server.compute.soft_restart
   - infrastructure.server.image.download.failed
+  - infrastructure.server.monitoring.throttled
   - infrastructure.server.internal_api.throttled
   - infrastructure.server.manifest.sync.failed
   - infrastructure.server.mesh.connect.failed
