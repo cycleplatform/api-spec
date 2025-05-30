@@ -32,7 +32,7 @@ properties:
       - $ref: ../infrastructure/servers/Server.yml
       - type: "null"
 
-  vm_priv_ips:
+  hypervisor_ipss:
     description: An array of private IP addresses associated with this virtual machine.
     anyOf:
       - type: object
