@@ -19,7 +19,7 @@ get:
           enum:
             - domains
             - ips
-            - vm_priv_ips
+            - hypervisor_ips
             - server
     - name: include
       in: query
