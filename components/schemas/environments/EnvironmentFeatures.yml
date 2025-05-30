@@ -9,13 +9,13 @@ properties:
     type: boolean
   monitoring:
     description: The level of monitoring to enable for this environment. There is a cost associated with higher levels of monitoring.
-    type:
-      - object
-      - "null"
-    required:
-      - tier
-    properties:
-      tier:
-        $ref: ../infrastructure/clusters/monitoring/MonitoringTier.yml
-      config:
-        $ref: ./EnvironmentMonitoringConfig.yml
+    oneOf:
+      - type: object
+        required:
+          - tier
+        properties:
+          tier:
+            $ref: ../infrastructure/clusters/monitoring/MonitoringTier.yml
+          config:
+            $ref: ./EnvironmentMonitoringConfig.yml
+      - type: "null"
