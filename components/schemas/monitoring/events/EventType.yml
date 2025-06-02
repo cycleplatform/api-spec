@@ -52,6 +52,7 @@ enum:
   - infrastructure.server.resources.ram.full
   - infrastructure.server.resources.storage.volumes.base.full
   - infrastructure.server.resources.storage.cycle_pool.full
+  - infrastructure.server.autoscale.up
   - infrastructure.server.sftp.lockdown
   - infrastructure.server.sftp.login
   - infrastructure.server.sftp.login.failed
