@@ -26,7 +26,7 @@ properties:
       - $ref: IntegrationAuth.yml
       - type: "null"
   extra:
-    description: Additional key-value pairs associated with the integration.
+    description: Updated key-value pairs associated with the integration.
     oneOf:
       - type: object
         additionalProperties:

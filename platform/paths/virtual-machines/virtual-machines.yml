@@ -189,11 +189,11 @@ post:
               examples:
                 - "10G"
             annotations:
-              type:
-                - object
-                - "null"
               description: Custom meta data. Not utilized by Cycle.
-              additionalProperties: {}
+              oneOf:
+                - type: object
+                  additionalProperties: {}
+                - type: "null"
             ssh_keys:
               description: An array of SSH key IDs that should be applied to this virtual machine.
               type: array
