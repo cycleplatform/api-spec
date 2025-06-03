@@ -53,28 +53,28 @@ properties:
   constraints:
     $ref: "./ServerConstraints.yml"
   autoscale:
-    type:
-      - object
-      - "null"
-    required:
-      - group_id
-    properties:
-      group_id:
-        $ref: "../../ID.yml"
+    oneOf:
+      - type: object
+        required:
+          - group_id
+        properties:
+          group_id:
+            $ref: "../../ID.yml"
+      - type: "null"
   ephemeral:
     type: boolean
     description: Set to true when a server is created as part of an auto-scale event.
   evacuate:
-    type:
-      - object
-      - "null"
     description: Details about a server's evacuation status. When an evacuation is in progress, no new container instances will be permitted on the server.
-    required:
-      - started
-    properties:
-      started:
-        description: The time when this server began evacuating instances.
-        $ref: ../../DateTime.yml
+    oneOf:
+      - type: object
+        required:
+          - started
+        properties:
+          started:
+            description: The time when this server began evacuating instances.
+            $ref: ../../DateTime.yml
+      - type: "null"
   state:
     $ref: "./ServerState.yml"
   events:

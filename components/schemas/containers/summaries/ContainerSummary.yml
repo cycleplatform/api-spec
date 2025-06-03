@@ -31,11 +31,11 @@ properties:
   image:
     $ref: "ImageSummary.yml"
   annotations:
-    type:
-      - object
-      - "null"
     description: Custom meta data for a given Container. Not utilized by the platform.
-    additionalProperties: {}
+    oneOf:
+      - type: object
+        additionalProperties: {}
+      - type: "null"
   state:
     $ref: "../ContainerState.yml"
   role:

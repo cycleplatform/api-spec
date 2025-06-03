@@ -12,23 +12,23 @@ properties:
       $ref: "../StackDeployContainersObject.yml"
     minProperties: 1
   scoped_variables:
-    type:
-      - object
-      - "null"
     description: An object that describes configuration options for scoped variables on stack build. If null, scoped variables will be ignored during deployment events.
-    required:
-      - add_new
-      - replace_existing
-      - associate_deployment
-    properties:
-      add_new:
-        description: If set to true, any scoped variables that are new to the environment will be created when deployed.
-        type: boolean
-      replace_existing:
-        description: When deploying to the environment, any scoped variables defined in the build that match an existing scoped variable in the environment will cause the existing scoped variable to be updated to the new value.
-        type: boolean
-      associate_deployment:
-        description: |
-          If set to true and `add_new` is enabled, any variables that dont exist FOR THAT DEPLOYMENT will be created. 
-          If set to true and `replace_existing` is enabled, any matching variables FOR THAT DEPLOYMENT will be replaced.
-        type: boolean
+    oneOf:
+      - type: object
+        required:
+          - add_new
+          - replace_existing
+          - associate_deployment
+        properties:
+          add_new:
+            description: If set to true, any scoped variables that are new to the environment will be created when deployed.
+            type: boolean
+          replace_existing:
+            description: When deploying to the environment, any scoped variables defined in the build that match an existing scoped variable in the environment will cause the existing scoped variable to be updated to the new value.
+            type: boolean
+          associate_deployment:
+            description: |
+              If set to true and `add_new` is enabled, any variables that dont exist FOR THAT DEPLOYMENT will be created. 
+              If set to true and `replace_existing` is enabled, any matching variables FOR THAT DEPLOYMENT will be replaced.
+            type: boolean
+      - type: "null"

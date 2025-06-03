@@ -5,21 +5,21 @@ required:
   - privileged
 properties:
   command:
-    type:
-      - object
-      - "null"
     description: A command that will be run in place of the images defined startup command.
-    properties:
-      path:
-        type:
-          - string
-          - "null"
-        description: System path for the command.
-      args:
-        type:
-          - string
-          - "null"
-        description: Arguments to pass to the command.
+    oneOf:
+      - type: object
+        properties:
+          path:
+            type:
+              - string
+              - "null"
+            description: System path for the command.
+          args:
+            type:
+              - string
+              - "null"
+            description: Arguments to pass to the command.
+      - type: "null"
   namespaces:
     type: array
     items:
@@ -106,36 +106,36 @@ properties:
           type: integer
           description: The soft limit for the rlimit.
   seccomp:
-    type:
-      - object
-      - "null"
-    properties:
-      disable:
-        type: boolean
-      rules:
-        type: array
-        items:
-          $ref: seccomp/SeccompRule.yml
+    oneOf:
+      - type: object
+        properties:
+          disable:
+            type: boolean
+          rules:
+            type: array
+            items:
+              $ref: seccomp/SeccompRule.yml
+      - type: "null"
   host:
-    type:
-      - object
-      - "null"
-    properties:
-      expose_proc:
-        description: If true, Cycle will mount the `/proc` directory into the container, giving it access to the host metrics. This is useful if you're running i.e. a monitoring agent.
-        type:
-          - boolean
-          - "null"
-      expose_cgroups:
-        description: If true, Cycle will mount the host's `/sys/fs/cgroups` directory into the container at `/var/run/cycle/host/cgroups`.
-        type:
-          - boolean
-          - "null"
-      power_management:
-        description: If true, Cycle will give the container instances access via internal api to power off or reboot the host server.
-        type:
-          - boolean
-          - "null"
+    oneOf:
+      - type: object
+        properties:
+          expose_proc:
+            description: If true, Cycle will mount the `/proc` directory into the container, giving it access to the host metrics. This is useful if you're running i.e. a monitoring agent.
+            type:
+              - boolean
+              - "null"
+          expose_cgroups:
+            description: If true, Cycle will mount the host's `/sys/fs/cgroups` directory into the container at `/var/run/cycle/host/cgroups`.
+            type:
+              - boolean
+              - "null"
+          power_management:
+            description: If true, Cycle will give the container instances access via internal api to power off or reboot the host server.
+            type:
+              - boolean
+              - "null"
+      - type: "null"
   rootfs:
     type: object
     properties:
@@ -143,16 +143,16 @@ properties:
         description: Enabling this option will set the containers filesystem to readonly. Volumes associated with the container will not be affected by this.
         type: boolean
   devices:
-    type:
-      - object
-      - "null"
-    properties:
-      shm_size:
-        type:
-          - string
-          - "null"
-        description: The size of the shared host memory device (/dev/shm).
-        examples:
-          - "64M"
-          - "128M"
-          - "512M"
+    oneOf:
+      - type: object
+        properties:
+          shm_size:
+            type:
+              - string
+              - "null"
+            description: The size of the shared host memory device (/dev/shm).
+            examples:
+              - "64M"
+              - "128M"
+              - "512M"
+      - type: "null"

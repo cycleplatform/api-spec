@@ -88,14 +88,14 @@ patch:
             origin:
               $ref: "../../../../components/schemas/images/origins/ImageOrigin.yml"
             builder:
-              type:
-                - object
-                - "null"
-              properties:
-                integration_id:
-                  anyOf:
-                    - $ref: ../../../../components/schemas/HybridIdentifier.yml
-                    - type: "null"
+              oneOf:
+                - type: object
+                  properties:
+                    integration_id:
+                      anyOf:
+                        - $ref: ../../../../components/schemas/HybridIdentifier.yml
+                        - type: "null"
+                - type: "null"
             about:
               type: object
               description: User defined information about the image source.

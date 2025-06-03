@@ -61,27 +61,28 @@ properties:
       nvidia_gpu:
         type: boolean
   build:
-    type:
-      - object
-      - "null"
     description: Any additional build details for this image
-    properties:
-      args:
-        type: object
-        description: Arguments to pass to the builder during a build of this image.
-        additionalProperties:
-          type: string
+    oneOf:
+      - type: object
+        properties:
+          args:
+            type: object
+            description: Arguments to pass to the builder during a build of this image.
+            additionalProperties:
+              type: string
+      - type: "null"
+
   builder:
-    type:
-      - object
-      - "null"
     description: Configuration options regarding the builder used to create/import this Image.
-    required:
-      - integration_id
-    properties:
-      integration_id:
-        description: The ID of the Integration used to do the build.
-        $ref: ../ID.yml
+    oneOf:
+      - type: object
+        required:
+          - integration_id
+        properties:
+          integration_id:
+            description: The ID of the Integration used to do the build.
+            $ref: ../ID.yml
+      - type: "null"
   config:
     type: object
     description: Configuration settings for the image.
@@ -172,24 +173,24 @@ properties:
   creator:
     "$ref": "../creators/CreatorScope.yml"
   factory:
-    type:
-      - object
-      - "null"
-    description: Information about the Factory service that built/imported the Image into Cycle.
-    required:
-      - node_id
-      - cached
-      - acknowledged
-    properties:
-      node_id:
-        type: string
-        description: The node holding the factory service that was responsible for building the image.
-      cached:
-        $ref: ../DateTime.yml
-        description: A date timestamp for when the node cached the image.
-      acknowledged:
-        $ref: ../DateTime.yml
-        description: A date timestamp for when the node acknowledged the image import job.
+    oneOf:
+      - type: object
+        description: Information about the Factory service that built/imported the Image into Cycle.
+        required:
+          - node_id
+          - cached
+          - acknowledged
+        properties:
+          node_id:
+            type: string
+            description: The node holding the factory service that was responsible for building the image.
+          cached:
+            $ref: ../DateTime.yml
+            description: A date timestamp for when the node cached the image.
+          acknowledged:
+            $ref: ../DateTime.yml
+            description: A date timestamp for when the node acknowledged the image import job.
+      - type: "null"
   state:
     "$ref": "./ImageState.yml"
   events:

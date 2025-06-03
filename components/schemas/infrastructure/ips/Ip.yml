@@ -28,29 +28,29 @@ properties:
     description: The IP string this IP represents.
     $ref: ../../IpAddress.yml
   assignment:
-    type:
-      - object
-      - "null"
     description: Information about the assignment of this IP.
-    required:
-      - container_id
-      - instance_id
-      - environment_id
-    properties:
-      container_id:
-        $ref: ../../ID.yml
-      instance_id:
-        $ref: ../../ID.yml
-      environment_id:
-        $ref: ../../ID.yml
-      virtual_machine:
-        type: object
-        description: Details about the virtual machine this IP is assigned to.
-        properties:
-          id:
-            $ref: ../../ID.yml
+    oneOf:
+      - type: object
         required:
-          - id
+          - container_id
+          - instance_id
+          - environment_id
+        properties:
+          container_id:
+            $ref: ../../ID.yml
+          instance_id:
+            $ref: ../../ID.yml
+          environment_id:
+            $ref: ../../ID.yml
+          virtual_machine:
+            type: object
+            description: Details about the virtual machine this IP is assigned to.
+            properties:
+              id:
+                $ref: ../../ID.yml
+            required:
+              - id
+      - type: "null"
   pool_id:
     $ref: ../../ID.yml
     description: A unique identifier that associates the IP with an IP pool.

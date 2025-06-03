@@ -16,11 +16,12 @@ properties:
   features:
     $ref: Features.yml
   annotations:
-    type:
-      - object
-      - "null"
-    additionalProperties:
-      type: string
+    oneOf:
+      - type: object
+        additionalProperties:
+          type: string
+      - type: "null"
+
   compatible:
     type:
       - boolean

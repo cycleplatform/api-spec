@@ -40,11 +40,11 @@ properties:
           $ref: ./VirtualMachineVolume.yml
       - type: "null"
   annotations:
-    type:
-      - object
-      - "null"
-    additionalProperties: {}
     description: Metadata annotations for the virtual machine.
+    oneOf:
+      - type: object
+        additionalProperties: {}
+      - type: "null"
   base_disk_size:
     type: string
     description: The size of the base disk. Must be between 10G and 100G.

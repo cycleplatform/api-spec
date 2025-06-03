@@ -21,22 +21,22 @@ properties:
       - $ref: ../../environments/IPNet.yml
       - type: "null"
   legacy:
-    type:
-      - object
-      - "null"
-    required:
-      - host
-      - subnet
-      - ipv4
-    properties:
-      host:
-        type: integer
-      subnet:
-        type: integer
-      ipv4:
-        anyOf:
-          - $ref: ../../environments/IPNet.yml
-          - type: "null"
+    oneOf:
+      - type: object
+        required:
+          - host
+          - subnet
+          - ipv4
+        properties:
+          host:
+            type: integer
+          subnet:
+            type: integer
+          ipv4:
+            anyOf:
+              - $ref: ../../environments/IPNet.yml
+              - type: "null"
+      - type: "null"
   mac_addr:
     type: string
   vxlan_tag:

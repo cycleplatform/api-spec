@@ -52,20 +52,20 @@ properties:
     description: Input information used for the job tasks.
     additionalProperties: {}
   output:
-    type:
-      - object
-      - "null"
     description: Output informaiton used for the job tasks.
-    additionalProperties:
-      type: string
+    oneOf:
+      - type: object
+        additionalProperties:
+          type: string
+      - type: "null"
   error:
-    type:
-      - object
-      - "null"
     description: An error object describing issues with the job.
-    required:
-      - message
-    properties:
-      message:
-        type: string
-        description: An error message
+    oneOf:
+      - type: object
+        required:
+          - message
+        properties:
+          message:
+            type: string
+            description: An error message
+      - type: "null"

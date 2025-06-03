@@ -31,17 +31,17 @@ properties:
   type:
     $ref: DnsRecordTypes.yml
   features:
-    type:
-      - object
-      - "null"
     description: TLS features for the record.
-    required:
-      - certificate
-    properties:
-      certificate:
-        anyOf:
-          - $ref: DnsRecordTlsCertificate.yml
-          - type: "null"
+    oneOf:
+      - type: object
+        required:
+          - certificate
+        properties:
+          certificate:
+            anyOf:
+              - $ref: DnsRecordTlsCertificate.yml
+              - type: "null"
+      - type: "null"
   state:
     $ref: DnsRecordState.yml
   events:
