@@ -14,17 +14,17 @@ properties:
     type: string
     description: The IP of the account associated with the session.
   token:
-    type:
-      - object
-      - "null"
-    required:
-      - application_id
-      - application_capabilities_version
-    properties:
-      application_id:
-        $ref: ../../ID.yml
-      application_capabilities_version:
-        type: integer
+    oneOf:
+      - type: object
+        required:
+          - application_id
+          - application_capabilities_version
+        properties:
+          application_id:
+            $ref: ../../ID.yml
+          application_capabilities_version:
+            type: integer
+      - type: "null"
   api_key:
     type:
       - string

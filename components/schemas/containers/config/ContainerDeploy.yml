@@ -12,42 +12,42 @@ properties:
     description: The deployment strategy to use when scaling the given container.
   function:
     description: Configuration options for containers using the 'function' deployment strategy.
-    type:
-      - object
-      - "null"
-    properties:
-      max_pool_size:
-        description: The maximum number of instances that Cycle can pre-allocate (includes auto-scaled instances).
-        type:
-          - integer
-          - "null"
-      max_shard_concurrency:
-        description: For each shard (scheduler), the maximum number of tasks it can run in parallel.
-        type:
-          - integer
-          - "null"
-      max_runtime:
-        anyOf:
-          - $ref: ../../Duration.yml
-          - type: "null"
-        description: The maximum amount of time a function instance can run before timing out.
-      max_queue_time:
-        anyOf:
-          - $ref: ../../Duration.yml
-          - type: "null"
-        description: The maximum amount of time Cycle will wait for an instance to be available.
+    oneOf:
+      - type: object
+        properties:
+          max_pool_size:
+            description: The maximum number of instances that Cycle can pre-allocate (includes auto-scaled instances).
+            type:
+              - integer
+              - "null"
+          max_shard_concurrency:
+            description: For each shard (scheduler), the maximum number of tasks it can run in parallel.
+            type:
+              - integer
+              - "null"
+          max_runtime:
+            anyOf:
+              - $ref: ../../Duration.yml
+              - type: "null"
+            description: The maximum amount of time a function instance can run before timing out.
+          max_queue_time:
+            anyOf:
+              - $ref: ../../Duration.yml
+              - type: "null"
+            description: The maximum amount of time Cycle will wait for an instance to be available.
+      - type: "null"
   stateful:
     type: object
     properties:
       options:
-        type:
-          - object
-          - "null"
-        properties:
-          use_base_hostname:
-            type:
-              - boolean
-              - "null"
+        oneOf:
+          - type: "object"
+            properties:
+              use_base_hostname:
+                type:
+                  - boolean
+                  - "null"
+          - type: "null"
   constraints:
     type: object
     description: Settings that give more granular control over deployment targets and conditions.

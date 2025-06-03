@@ -13,3 +13,7 @@ properties:
         $ref: ../../DateTime.yml
       state:
         $ref: ../../infrastructure/servers/NodeState.yml
+  sdn_pool_ips:
+    type: array
+    items:
+      $ref: ../../infrastructure/ips/Ip.yml

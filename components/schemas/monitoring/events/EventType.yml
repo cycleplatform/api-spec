@@ -39,6 +39,7 @@ enum:
   - infrastructure.server.compute.sharedfs.mounts.mount.failed
   - infrastructure.server.compute.soft_restart
   - infrastructure.server.image.download.failed
+  - infrastructure.server.monitoring.throttled
   - infrastructure.server.internal_api.throttled
   - infrastructure.server.manifest.sync.failed
   - infrastructure.server.mesh.connect.failed
@@ -51,6 +52,7 @@ enum:
   - infrastructure.server.resources.ram.full
   - infrastructure.server.resources.storage.volumes.base.full
   - infrastructure.server.resources.storage.cycle_pool.full
+  - infrastructure.server.autoscale.up
   - infrastructure.server.sftp.lockdown
   - infrastructure.server.sftp.login
   - infrastructure.server.sftp.login.failed

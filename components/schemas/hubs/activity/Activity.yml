@@ -66,30 +66,30 @@ properties:
     description: A record of additional annotations for the activity.
     additionalProperties: {}
   error:
-    type:
-      - object
-      - "null"
     description: An object describing a given activity error.
-    required:
-      - message
-    properties:
-      message:
-        type: string
-        description: The error message.
+    oneOf:
+      - type: object
+        required:
+          - message
+        properties:
+          message:
+            type: string
+            description: The error message.
+      - type: "null"
   component:
-    type:
-      - object
-      - "null"
     description: An object holding information about a component.
-    required:
-      - id
-      - type
-    properties:
-      id:
-        "$ref": "../../ID.yml"
-      type:
-        type: string
-        description: The type of component.
+    oneOf:
+      - type: object
+        required:
+          - id
+          - type
+        properties:
+          id:
+            "$ref": "../../ID.yml"
+          type:
+            type: string
+            description: The type of component.
+      - type: "null"
   tags:
     type: array
     description: An array of tags that denote things such as a type of security event, or can be user-provided.
@@ -143,6 +143,7 @@ properties:
       - environment.task.stop
       - environment.task.deployments.reconfigure
       - environment.deployments.reconfigure
+      - environment.monitoring.reconfigured
       - environment.deployments.prune
       - environment.deployment.start
       - environment.deployment.stop

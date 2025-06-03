@@ -39,26 +39,26 @@ properties:
           type: string
           description: The path in the container for these files to be injected.
   lets_encrypt:
-    type:
-      - object
-      - "null"
     description: Configuration settings to embed a TLS certificate in the container.
-    properties:
-      certificate_path:
-        type: string
-        description: Path where the `certificate.cert` will be saved.
-      chain_path:
-        type: string
-        description: Path where the `certificate.chain` will be saved.
-      key_path:
-        type: string
-        description: Path where the `certificate.key` will be saved.
-      bundle_path:
-        type: string
-        description: Path where the `certificate.bundle` will be saved.
-      additional_certs_path:
-        type: string
-        description: File path where any remaining certificate files will be stored.
+    oneOf:
+      - type: object
+        properties:
+          certificate_path:
+            type: string
+            description: Path where the `certificate.cert` will be saved.
+          chain_path:
+            type: string
+            description: Path where the `certificate.chain` will be saved.
+          key_path:
+            type: string
+            description: Path where the `certificate.key` will be saved.
+          bundle_path:
+            type: string
+            description: Path where the `certificate.bundle` will be saved.
+          additional_certs_path:
+            type: string
+            description: File path where any remaining certificate files will be stored.
+      - type: "null"
   backups:
     type: object
     description: Automated backups configuration for the given container.
@@ -110,19 +110,19 @@ properties:
         description: How long the platform will keep backups. Default is 1 year.
         default: "365d"
   shared_file_systems:
-    type:
-      - object
-      - "null"
-    additionalProperties:
-      type: object
-      required:
-        - writable
-        - mount_point
-      properties:
-        writable:
-          type: boolean
-        mount_point:
-          type: string
+    oneOf:
+      - type: object
+        additionalProperties:
+          type: object
+          required:
+            - writable
+            - mount_point
+          properties:
+            writable:
+              type: boolean
+            mount_point:
+              type: string
+      - type: "null"
   logs:
     description: When enabled, allows more customization to be applied to logging for the container.
     oneOf:
@@ -140,11 +140,6 @@ properties:
                     type: string
                   format:
                     description: The format Cycle will use to send the logs.
-                    oneOf:
-                      - type: string
-                        enum:
-                          - ndjson-headers
-                          - ndjson-raw
-                      - type: "null"
+                    $ref: ../../LogFormat.yml
               - type: "null"
       - type: "null"

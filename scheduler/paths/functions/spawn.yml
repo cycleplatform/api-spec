@@ -29,17 +29,17 @@ post:
               $ref: ../../../components/schemas/ID.yml
             runtime_variables:
               description: Optional variables that affect the runtime of the container.
-              type: 
-                - object
-                - "null"
-              properties:
-                environment_variables:
-                  description: Environment variables to inject into the container.
-                  type: 
-                    - object
-                    - "null"
-                  additionalProperties: 
-                    type: string
+              oneOf:
+                - type: object
+                  properties:
+                    environment_variables:
+                      description: Environment variables to inject into the container.
+                      oneOf:
+                        - type: object
+                          additionalProperties:
+                            type: string
+                        - type: "null"
+                - type: "null"
   responses:
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml

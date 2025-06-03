@@ -3,64 +3,64 @@ type: object
 description: The way the scoped variable is accessed.
 properties:
   env_variable:
-    type:
-      - object
-      - "null"
-    required:
-      - key
-    properties:
-      key:
-        description: The name of the environment variable set on the target container.
-        type: string
+    oneOf:
+      - type: object
+        required:
+          - key
+        properties:
+          key:
+            description: The name of the environment variable set on the target container.
+            type: string
+      - type: "null"
     description: When set to true, this scoped variable is set as an environment variable inside the container.
   internal_api:
     description: If set, this scoped variable will be available over the internal API. Contains settings for accessing this variable over the internal API.
-    type:
-      - object
-      - "null"
-    properties:
-      duration:
-        description: Duration is a time string that the internal API will serve that variable after runtime starts.
-        anyOf:
-          - $ref: ../Duration.yml
-          - type: "null"
+    oneOf:
+      - type: object
+        properties:
+          duration:
+            description: Duration is a time string that the internal API will serve that variable after runtime starts.
+            anyOf:
+              - $ref: ../Duration.yml
+              - type: "null"
+      - type: "null"
   file:
     description: File is an object that describes a path to mount the file to inside the container.
-    type:
-      - object
-      - "null"
-    required:
-      - decode
-      - path
-    properties:
-      decode:
-        description: When true, Cycle will interpret this variable as a base-64 encoded string, and decode it before passing it into the container.
-        type: boolean
-      path:
-        type:
-          - string
-          - "null"
-        description: The path to mount the file to inside the container.
-        examples:
-          - "/var/run/cycle/variables/<myVariable>"
-      permissions:
-        type:
-          - string
-          - "null"
-        description: A linux file mode that will be set on the injected file.
-        examples:
-          - "0644"
-      uid:
-        type:
-          - integer
-          - "null"
-        description: The linux UID to set on the file.
-        examples:
-          - 777
-      gid:
-        type:
-          - integer
-          - "null"
-        description: The linux GID to set on the file.
-        examples:
-          - 777
+    oneOf:
+      - type: object
+        required:
+          - decode
+          - path
+        properties:
+          decode:
+            description: When true, Cycle will interpret this variable as a base-64 encoded string, and decode it before passing it into the container.
+            type: boolean
+          path:
+            type:
+              - string
+              - "null"
+            description: The path to mount the file to inside the container.
+            examples:
+              - "/var/run/cycle/variables/<myVariable>"
+          permissions:
+            type:
+              - string
+              - "null"
+            description: A linux file mode that will be set on the injected file.
+            examples:
+              - "0644"
+          uid:
+            type:
+              - integer
+              - "null"
+            description: The linux UID to set on the file.
+            examples:
+              - 777
+          gid:
+            type:
+              - integer
+              - "null"
+            description: The linux GID to set on the file.
+            examples:
+              - 777
+      - type: "null"

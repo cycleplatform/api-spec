@@ -181,12 +181,11 @@ post:
               items:
                 $ref: ../../../components/schemas/containers/config/ContainerVolume.yml
             annotations:
-              type:
-                - object
-                - "null"
               description: Custom meta data. Not utilized by Cycle.
-              additionalProperties: {}
-
+              oneOf:
+                - type: object
+                  additionalProperties: {}
+                - type: "null"
   responses:
     201:
       description: Returns a Container.
