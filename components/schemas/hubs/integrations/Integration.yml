@@ -26,12 +26,12 @@ properties:
       - $ref: IntegrationAuth.yml
       - type: "null"
   extra:
-    type:
-      - object
-      - "null"
-    additionalProperties:
-      type: string
     description: Additional key-value pairs associated with the integration.
+    oneOf:
+      - type: object
+        additionalProperties:
+          type: string
+      - type: "null"
   creator:
     $ref: ../../creators/CreatorScope.yml
   hub_id:

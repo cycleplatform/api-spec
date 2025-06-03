@@ -51,11 +51,11 @@ properties:
     items:
       $ref: ./summaries/VolumeSummary.yml
   annotations:
-    type:
-      - object
-      - "null"
     description: Custom meta data for a given container
-    additionalProperties: {}
+    oneOf:
+      - type: object
+        additionalProperties: {}
+      - type: "null"
   role:
     description: The role of a given container if it has one.
     oneOf:

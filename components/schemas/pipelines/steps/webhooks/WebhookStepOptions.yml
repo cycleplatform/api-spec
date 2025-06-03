@@ -12,36 +12,36 @@ properties:
       - $ref: ../../../Duration.yml
       - type: "null"
   fail_on:
-    type:
-      - object
-      - "null"
-    required:
-      - not
-    properties:
-      not:
-        type: boolean
-        description: If true, will fail on any codes NOT defined in the http_codes array.
-      http_codes:
-        type:
-          - array
-          - "null"
-        description: A list of http response codes that will trigger a failure.
-        items:
-          type: integer
+    oneOf:
+      - type: object
+        required:
+          - not
+        properties:
+          not:
+            type: boolean
+            description: If true, will fail on any codes NOT defined in the http_codes array.
+          http_codes:
+            type:
+              - array
+              - "null"
+            description: A list of http response codes that will trigger a failure.
+            items:
+              type: integer
+      - type: "null"
   retry_on:
-    type:
-      - object
-      - "null"
-    required:
-      - not
-    properties:
-      not:
-        type: boolean
-        description: If true, will retry on any codes NOT defined in the http_codes array.
-      http_codes:
-        type:
-          - array
-          - "null"
-        description: A list of http response codes that will trigger a retry.
-        items:
-          type: integer
+    oneOf:
+      - type: object
+        required:
+          - not
+        properties:
+          not:
+            type: boolean
+            description: If true, will retry on any codes NOT defined in the http_codes array.
+          http_codes:
+            type:
+              - array
+              - "null"
+            description: A list of http response codes that will trigger a retry.
+            items:
+              type: integer
+      - type: "null"
