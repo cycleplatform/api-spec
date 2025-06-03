@@ -96,6 +96,11 @@ properties:
                 type: array
                 items:
                   $ref: VirtualProviderIsoBond.yml
+              additional_kernel_args:
+                description: Appends additional kernel arguments when booting CycleOS.
+                oneOf:
+                  - type: string
+                  - type: "null"
           - type: "null"
 
   backend:
