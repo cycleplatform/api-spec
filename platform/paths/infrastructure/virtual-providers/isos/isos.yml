@@ -98,6 +98,10 @@ post:
                           type: array
                           items:
                             $ref: ../../../../../components/schemas/infrastructure/virtual-providers/VirtualProviderIsoBond.yml
+                        additional_kernel_args:
+                          oneOf:
+                            - type: string
+                            - type: " null"
                     - type: "null"
 
   responses:
