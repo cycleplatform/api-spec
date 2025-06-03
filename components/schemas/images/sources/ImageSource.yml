@@ -33,11 +33,11 @@ properties:
     oneOf:
       - type: object
         properties:
-        integration_id:
-          anyOf:
-            - $ref: ../../HybridIdentifier.yml
-            - type: "null"
-          description: The ID or Identifier of the Integration used to do the build.
+          integration_id:
+            anyOf:
+              - $ref: ../../HybridIdentifier.yml
+              - type: "null"
+            description: The ID or Identifier of the Integration used to do the build.
       - type: "null"
   creator:
     "$ref": "../../creators/CreatorScope.yml"
