@@ -143,6 +143,7 @@ properties:
       - environment.task.stop
       - environment.task.deployments.reconfigure
       - environment.deployments.reconfigure
+      - environment.task.monitoring.reconfigured
       - environment.monitoring.reconfigured
       - environment.deployments.prune
       - environment.deployment.start
