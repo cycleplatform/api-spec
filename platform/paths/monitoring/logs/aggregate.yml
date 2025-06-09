@@ -50,14 +50,6 @@ post:
                         end:
                           description: The end date from when to fetch logs.
                           $ref: ../../../../components/schemas/DateTime.yml
-                context_window:
-                  description: |
-                    Context window indicates how many log lines after a match to return in the response. 
-                    This allows greater context around the matched lines.
-                  default: 5
-                  type:
-                    - integer
-                    - "null"
             search:
               type: array
               items:
@@ -84,6 +76,14 @@ post:
               description: Describes the maximum number of log lines the query will return.
               examples:
                 - 1000
+              type:
+                - integer
+                - "null"
+            context_window_size:
+              description: |
+                Context window size indicates how many log lines after a match to return in the response. 
+                This allows greater context around the matched lines.
+              default: 5
               type:
                 - integer
                 - "null"
