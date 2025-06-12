@@ -196,6 +196,7 @@ properties:
       - hub.integration.create
       - hub.integration.update
       - hub.integration.delete
+      - hub.integration.task.verify
       - hub.integration.task.delete
       - hub.inactive
 
