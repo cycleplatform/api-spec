@@ -332,6 +332,7 @@ properties:
       - infrastructure.cluster.update
       - infrastructure.cluster.task.delete
       - infrastructure.cluster.delete
+      - infrastructure.cluster.features.monitoring.tier.reconfigure
 
       - infrastructure.ips.pool.task.delete
 
