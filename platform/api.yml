@@ -317,6 +317,9 @@ paths:
   "/v1/billing/credits/{creditsId}":
     $ref: "./paths/billing/credits/credit.yml"
 
+    # Changelog
+  "/v1/changelog":
+    $ref: ./paths/changelog/changelog.yml
   ## Invoices
   "/v1/billing/invoices":
     $ref: "./paths/billing/invoices/invoices.yml"
