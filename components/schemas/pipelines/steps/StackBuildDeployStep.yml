@@ -34,7 +34,7 @@ properties:
           - type: "null"
       variables:
         type: object
-        description: Custom variables applied to the stack during build. Any place in the stack where a `{{variable}}` is used is replaced with the value of the variable supplied in this map.
+        description: Custom variables applied to the stack during deploy. Any place in the stack where a `{{variable}}` is used is replaced with the value of the variable supplied in this map.
         additionalProperties:
           type: string
       deployment:
