@@ -1,0 +1,147 @@
+title: ChangelogEntry
+type: object
+description: A changelog entry released by the Cycle team.
+required:
+  - id
+  - version
+  - title
+  - state
+  - events
+  - creator
+  - changes
+properties:
+  id:
+    $ref: ../../../components/schemas/ID.yml
+  title:
+    type: string
+    description: The title of the changelog entry.
+  version:
+    type: string
+    description: The version of the release described in the changelog entry.
+  hero:
+    description: An object describing the hero image for the changelog entry.
+    oneOf:
+      - type: object
+        required:
+          - intro
+        properties:
+          intro:
+            type: string
+          image_url:
+            type:
+              - string
+              - "null"
+          image_alt:
+            type:
+              - string
+              - "null"
+      - type: "null"
+  state:
+    $ref: ./ChangelogEntryState.yml
+  approved:
+    oneOf:
+      - type: object
+        required:
+          - signed_by
+          - date
+        properties:
+          signed_by:
+            $ref: ../../../components/schemas/common/UserScope.yml
+          date:
+            $ref: ../../../components/schemas/DateTime.yml
+      - type: "null"
+  published:
+    oneOf:
+      - type: object
+        required:
+          - signed_by
+          - date
+        properties:
+          signed_by:
+            $ref: ../../../components/schemas/common/UserScope.yml
+          date:
+            $ref: ../../../components/schemas/DateTime.yml
+      - type: "null"
+  events:
+    title: ChangelogEntryEvents
+    type: object
+    description: A collection of timestamps for each event in the changelog entry's lifetime.
+    required:
+      - created
+      - updated
+      - deleted
+      - published
+    properties:
+      created:
+        description: The timestamp of when the changelog entry was created.
+        "$ref": ../../../components/schemas/DateTime.yml
+      updated:
+        description: The timestamp of when the changelog entry was updated.
+        "$ref": ../../../components/schemas/DateTime.yml
+      deleted:
+        description: The timestamp of when the changelog entry was deleted.
+        "$ref": ../../../components/schemas/DateTime.yml
+  email_events:
+    type: array
+    items:
+      type: object
+      required:
+        - type
+        - sent
+        - address
+        - sender
+      properties:
+        type:
+          type: string
+          enum:
+            - internal
+            - external
+            - single
+        sent:
+          $ref: ../../../components/schemas/DateTime.yml
+        address:
+          type: string
+        sender:
+          $ref: ../../../components/schemas/common/UserScope.yml
+  creator:
+    "$ref": "../../../components/schemas/creators/CreatorScope.yml"
+  changes:
+    type: array
+    items:
+      type: object
+      required:
+        - title
+        - description
+        - showcase
+        - type
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        notes:
+          oneOf:
+            - type: array
+              items:
+                type: string
+            - type: "null"
+        showcase:
+          type: boolean
+        type:
+          type: string
+          enum:
+            - improvement
+            - fixed
+            - added
+            - security
+            - removed
+            - changed
+            - deprecated
+        codebase:
+          type:
+            - string
+            - "null"
+        external_url:
+          type:
+            - string
+            - "null"
