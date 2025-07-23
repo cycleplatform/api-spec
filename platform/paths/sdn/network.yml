@@ -81,32 +81,6 @@ patch:
             name:
               type: string
               description: The name of the network.
-            l2:
-              oneOf:
-                - type: object
-                  properties:
-                    location_ids:
-                      type: array
-                      items:
-                        $ref: ../../../components/schemas/ID.yml
-                    host_interface:
-                      oneOf:
-                        - type: string
-                        - type: "null"
-                    routes:
-                      description: An array of defined L2 routes
-                      type: array
-                      items:
-                        type: object
-                        required:
-                          - network
-                        properties:
-                          usable:
-                            $ref: ../../../components/schemas/Cidr.yml
-                          gateway:
-                            $ref: ../../../components/schemas/IpAddress.yml
-
-                - type: "null"
   responses:
     200:
       description: Returns a network.

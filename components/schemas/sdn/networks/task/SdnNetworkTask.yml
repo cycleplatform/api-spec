@@ -1,0 +1,7 @@
+title: SdnNetworkTask
+discriminator:
+  propertyName: action
+  mapping:
+    reconfigure: ReconfigureSdnNetworkAction.yml
+oneOf:
+  - $ref: ReconfigureSdnNetworkAction.yml
