@@ -27,20 +27,14 @@ properties:
     description: The static configuration for the network interface.
     oneOf:
       - type: object
-        required:
-          - static_ip
-          - network
         properties:
-          static_ip:
-            description: Static IP assigned to the server.
-            $ref: ../../IpAddress.yml
-          network:
-            description: Network assigned to the server
-            $ref: ../../Cidr.yml
-          gateway_ip:
-            description: Gateway IP assigned to the server.
+          ipv4:
             oneOf:
-              - $ref: ../../IpAddress.yml
+              - $ref: VirtualProviderIsoNicStaticFlavor.yml
+              - type: "null"
+          ipv6:
+            oneOf:
+              - $ref: VirtualProviderIsoNicStaticFlavor.yml
               - type: "null"
       - type: "null"
   dhcp:
