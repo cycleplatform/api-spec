@@ -1,0 +1,18 @@
+title: VirtualProviderIsoNicStaticFlavor
+description: The static subconfiguration for ipv4 or ipv6.
+type: object
+required:
+  - static_ip
+  - network
+properties:
+  ip:
+    description: Static IP assigned to the server for given IP type.
+    $ref: ../../IpAddress.yml
+  network:
+    description: Network assigned to the server
+    $ref: ../../Cidr.yml
+  gateway_ip:
+    description: Gateway IP assigned to the server.
+    oneOf:
+      - $ref: ../../IpAddress.yml
+      - type: "null"
