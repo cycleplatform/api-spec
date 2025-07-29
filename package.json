@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint": "npx @redocly/cli lint --lint-config=off",
+    "lint": "npm run lint:platform && npm run lint:internal && npm run lint:scheduler && npm run lint:ial",
     "lint:platform": "npx @redocly/cli lint ./platform/api.yml",
     "lint:internal": "npx @redocly/cli lint ./internal/api.yml",
     "lint:scheduler": "npx @redocly/cli lint ./scheduler/api.yml",
