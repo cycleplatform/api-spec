@@ -47,6 +47,10 @@ properties:
       available:
         type: integer
         description: Of the total number of IP's how many are available to be assigned.
+  options:
+    oneOf:
+      - $ref: IpOptions.yml
+      - type: "null"
   block:
     type: object
     description: Network information about the pool.

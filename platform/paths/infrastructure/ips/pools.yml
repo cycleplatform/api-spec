@@ -20,7 +20,6 @@ post:
           properties:
             server_id:
               $ref: ../../../../components/schemas/ID.yml
-
             block:
               type: object
               required:
@@ -37,6 +36,10 @@ post:
                   oneOf:
                     - $ref: ../../../../components/schemas/IpAddress.yml
                     - type: "null"
+            options:
+              oneOf:
+                - $ref: ../../../../components/schemas/infrastructure/ips/IpOptions.yml
+                - type: "null"
 
   responses:
     201:

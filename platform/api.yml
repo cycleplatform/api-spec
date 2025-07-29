@@ -642,6 +642,8 @@ paths:
     $ref: "./paths/infrastructure/ips/pool.yml"
   "/v1/infrastructure/ips/pools/{poolId}/ips":
     $ref: "./paths/infrastructure/ips/ips.yml"
+  "/v1/infrastructure/ips/pools/{poolId}/tasks":
+    $ref: "./paths/infrastructure/ips/tasks.yml"
 
   # --Jobs
   "/v1/jobs":

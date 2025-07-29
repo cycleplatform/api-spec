@@ -1,0 +1,9 @@
+title: IpPoolTask
+discriminator:
+  propertyName: action
+  mapping:
+    initialize: IpPoolInitializeAction.yml
+    options.reconfigure: IpPoolReconfigureOptionsAction.yml
+oneOf:
+  - $ref: IpPoolInitializeAction.yml
+  - $ref: IpPoolReconfigureOptionsAction.yml

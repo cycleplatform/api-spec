@@ -1,0 +1,14 @@
+title: IpPoolReconfigureOptionsAction
+type: object
+required:
+  - action
+properties:
+  action:
+    type: string
+    description: The action to take.
+    enum:
+      - options.reconfigure
+  contents:
+    oneOf:
+      - $ref: ../IpOptions.yml
+      - type: "null"
