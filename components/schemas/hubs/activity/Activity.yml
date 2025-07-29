@@ -335,6 +335,7 @@ properties:
       - infrastructure.cluster.features.monitoring.tier.reconfigure
 
       - infrastructure.ips.pool.task.delete
+      - infrastructure.ips.pool.create
 
       - sdn.network.update
       - sdn.network.task.delete
