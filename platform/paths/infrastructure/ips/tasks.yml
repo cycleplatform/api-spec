@@ -1,12 +1,12 @@
 post:
   operationId: "createIpPoolJob"
   summary: Create IP Pool Job
-  description: Used to perform different actions on a given IP Pool. Requires the `ips-manage` capability.
+  description: Used to perform different actions on a given IP pool. Requires the `ips-manage` capability.
   tags:
     - IPs
   parameters:
     - name: poolId
-      description: The ID for the given IP Pool.
+      description: The ID for the given IP pool.
       in: path
       required: true
       schema:
