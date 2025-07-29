@@ -12,14 +12,14 @@ post:
       schema:
         type: string
   requestBody:
-    description: Parameters for creating the new IP Pool Job.
+    description: Parameters for creating the new IP pool job.
     content:
       application/json:
         schema:
           $ref: ../../../../components/schemas/infrastructure/ips/task/IpPoolTask.yml
   responses:
     202:
-      description: Returns a Job Descriptor.
+      description: Returns a job descriptor.
       content:
         application/json:
           schema:
