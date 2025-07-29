@@ -1,0 +1,33 @@
+post:
+  operationId: "createIpPoolJob"
+  summary: Create IP Pool Job
+  description: Used to perform different actions on a given IP Pool. Requires the `ips-manage` capability.
+  tags:
+    - IPs
+  parameters:
+    - name: poolId
+      description: The ID for the given IP Pool.
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    description: Parameters for creating the new IP Pool Job.
+    content:
+      application/json:
+        schema:
+          $ref: ../../../../components/schemas/infrastructure/ips/task/IpPoolTask.yml
+  responses:
+    202:
+      description: Returns a Job Descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/jobs/JobDescriptor.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml

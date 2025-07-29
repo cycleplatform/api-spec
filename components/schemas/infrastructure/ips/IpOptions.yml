@@ -1,0 +1,9 @@
+title: IpOptions
+type: object
+description: Options for an IP.
+properties:
+  proxy_arp:
+    description: If enabled, allows Pool to respond to ARP requests, on behalf of a container / virtual machine, at the host level.
+    oneOf:
+      - type: boolean
+      - type: "null"

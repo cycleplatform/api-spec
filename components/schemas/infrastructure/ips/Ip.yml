@@ -67,6 +67,10 @@ properties:
     oneOf:
       - $ref: ../../Cidr.yml
       - type: "null"
+  options:
+    oneOf:
+      - $ref: IpOptions.yml
+      - type: "null"
   cidr:
     type: string
     description: The CIDR for the IP.
