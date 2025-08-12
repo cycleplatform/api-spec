@@ -73,9 +73,9 @@ theme:
         fontSize: 15px
         caretColor: rgb(42, 167, 255)
         spacing:
-          unit: 8
-          paddingVertical: 16
-          paddingHorizontal: 8
+          unit: 8px
+          paddingVertical: 16px
+          paddingHorizontal: 8px
         groupItems:
           textTransform: uppercase
           fontWeight: bold
