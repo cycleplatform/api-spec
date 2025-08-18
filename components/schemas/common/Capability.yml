@@ -110,4 +110,6 @@ enum:
   - "virtual-machines-console"
   - "virtual-machines-lock"
   - "virtual-machines-ssh-keys-manage"
+  - "virtual-machines-root-pw-view"
+  - "virtual-machines-root-pw-view-temp"
 
