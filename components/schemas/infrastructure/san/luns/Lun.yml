@@ -1,0 +1,42 @@
+title: Lun
+type: object
+description: Logical Unit Number (LUN) exposed over iSCSI within a Cycle server.
+required:
+  - id
+  - hub_id
+  - cluster
+  - iqn
+  - location_id
+  - description
+  - number
+  - size
+  - read_only
+  - state
+properties:
+  id:
+    $ref: "../../../ID.yml"
+  hub_id:
+    $ref: "../../../HubID.yml"
+  cluster:
+    type: string
+    description: Cluster identifier.
+  iqn:
+    $ref: "../targets/Iqn.yml"
+  location_id:
+    type: string
+    description: Location ID where this LUN is provisioned.
+  description:
+    description: Human-friendly description of the LUN.
+    type: [string, "null"]
+  number:
+    type: integer
+    format: int32
+    description: LUN number exposed to initiators.
+  size:
+    $ref: ../../../DataSize.yml
+    description: The total allocated capacity of the LUN in bytes, representing how much storage is exposed to initiators.
+  read_only:
+    type: boolean
+    description: When true, the LUN is exposed as read-only.
+  state:
+    $ref: "./LunState.yml"

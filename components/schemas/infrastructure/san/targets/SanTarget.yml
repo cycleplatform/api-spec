@@ -1,0 +1,51 @@
+title: Target
+type: object
+description: >
+  A SAN iSCSI target within a Cycle hub/cluster. A target exposes one or more
+  portals (IP:port listeners) and can optionally require CHAP credentials for
+  initiators.
+required:
+  - id
+  - hub_id
+  - identifier
+  - cluster
+  - server_ids
+  - location_id
+  - iqn
+  - portals
+  - state
+properties:
+  id:
+    $ref: "../../../ID.yml"
+  hub_id:
+    $ref: "../../../HubID.yml"
+  identifier:
+      - $ref: "../../../Identifier.yml"
+      - type: "null"
+  cluster:
+    $ref: "../../../Identifier.yml"
+  server_ids:
+    description: IDs of servers that host or are associated with this target.
+    anyOf:
+      - type: array
+        items:
+          $ref: "../../../ID.yml"
+      - type: "null"
+  location_id:
+    $ref: "../../../ID.yml"
+  iqn:
+    $ref: "./Iqn.yml"
+  portals:
+    description: List of network endpoints where the target accepts iSCSI sessions.
+    anyOf:
+      - type: array
+        items:
+          $ref: "./TargetPortal.yml"
+      - type: "null"
+  credentials:
+    description: Optional CHAP credentials required by initiators to authenticate.
+    anyOf:
+      - $ref: "./TargetChapCredentials.yml"
+      - type: "null"
+  state:
+    $ref: "./TargetState.yml"

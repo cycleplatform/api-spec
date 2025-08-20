@@ -1,4 +1,4 @@
-title: VirtualMachineStopTask.yml
+title: VirtualMachineTask.yml
 discriminator:
   propertyName: action
   mapping:
