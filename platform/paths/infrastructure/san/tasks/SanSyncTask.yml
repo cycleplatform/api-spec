@@ -1,0 +1,29 @@
+title: SanSyncTask
+type: object
+required:
+  - action
+properties:
+  action:
+    type: string
+    enum:
+      - sync
+  contents:
+    type: object
+    properties:
+      server_id:
+        $ref: ../../../../../components/schemas/ID.yml
+        description: The ID of the server to initiate a SAN sync on.
+      discovery_ip:
+        description: IP to run discovery on.
+        oneOf:
+          - type: string
+            format: ipv4
+          - type: string
+            format: ipv6
+      credentials:
+        anyOf:
+          - $ref: ../../../../../components/schemas/infrastructure/san/targets/SanTargetChapCredentials.yml
+          - type: "null"
+    required:
+      - server_id
+      - discovery_ip

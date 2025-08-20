@@ -1,0 +1,15 @@
+title: DataSize
+type: string
+description: >
+  A human-readable data size string.
+  Values are expressed as an integer followed by a unit suffix, without spaces.
+  Supported units:
+    - b, k, m, g, t, p (bytes, kilobytes, megabytes, gigabytes, terabytes, petabytes)
+    - An optional "b" suffix may be added (e.g., "mb", "gb").
+  Units are case-insensitive.
+  Example: "512M", "10GB", "1t".
+pattern: '^[0-9]+([bBkKmMgGtTpP]|[kKmMgGtTpP][bB])$'
+examples:
+  - "512M"
+  - "10GB"
+  - "1t"

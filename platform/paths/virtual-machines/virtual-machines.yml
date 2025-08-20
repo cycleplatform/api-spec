@@ -184,10 +184,8 @@ post:
                     $ref: ../../../components/schemas/vms/config/volumes/VirtualMachineVolumeConfig.yml
                 - type: "null"
             base_disk_size:
-              type: string
+              $ref: ../../../components/schemas/DataSize.yml
               description: The size of the base disk. Must be between 10G and 100G.
-              examples:
-                - "10G"
             annotations:
               description: Custom meta data. Not utilized by Cycle.
               oneOf:
