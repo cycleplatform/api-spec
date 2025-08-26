@@ -25,6 +25,19 @@ properties:
       storage_pool:
         type: boolean
         description: A boolean where true signifies using the largest drive over 2TB for the target server.
+  san:
+    type: object
+    description: Configuration settings for a SAN type volume.
+    required:
+      - target_id
+      - lun_number
+    properties:
+      target_id:
+        $ref: ../../ID.yml
+        description: The ID of the SAN target.
+      lun_number:
+        type: integer
+        description: The LUN for the SAN target to attach
   destination:
     type: string
     description: The mountpoint path for the container.
