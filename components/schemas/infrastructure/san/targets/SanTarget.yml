@@ -1,4 +1,4 @@
-title: Target
+title: SanTarget
 type: object
 description: >
   A SAN iSCSI target within a Cycle hub/cluster. A target exposes one or more

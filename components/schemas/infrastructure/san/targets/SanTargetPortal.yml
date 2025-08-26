@@ -1,4 +1,4 @@
-title: TargetPortal
+title: SanTargetPortal
 type: object
 description: A network endpoint (IP and TCP port) where the iSCSI target listens for sessions.
 required:

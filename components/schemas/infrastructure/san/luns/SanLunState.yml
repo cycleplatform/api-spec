@@ -1,4 +1,4 @@
-title: LunState
+title: SanLunState
 allOf:
   - required:
       - current

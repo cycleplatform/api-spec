@@ -1,4 +1,4 @@
-title: Lun
+title: SanLun
 type: object
 description: Logical Unit Number (LUN) exposed over iSCSI within a Cycle server.
 required:
@@ -17,6 +17,8 @@ properties:
     $ref: "../../../ID.yml"
   hub_id:
     $ref: "../../../HubID.yml"
+  target_id:
+    $ref: "../../../ID.yml"
   cluster:
     type: string
     description: Cluster identifier.

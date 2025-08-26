@@ -1,0 +1,55 @@
+get:
+  operationId: "getSanLuns"
+  summary: Get SAN LUNs
+  description: Lists any SAN LUNs available for the hub.
+  security:
+    - bearerAuth: []
+  tags:
+    - SANs
+  parameters:
+    - $ref: "../../../components/parameters/SortParam.yml"
+    - $ref: "../../../components/parameters/PageParam.yml"
+    - name: filter
+      in: query
+      required:
+        false
+        # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706
+      style: deepObject
+      description: |
+        ## Filter Field 
+        The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
+      schema:
+        type: object
+        properties:
+          location:
+            description: Get only those SAN LUNs within the specified location.
+            type: string
+          cluster:
+            description: Get only those SAN LUNs within the specified cluster.
+            type: string
+          state:
+            description: Get only those SAN LUNs with the specified state.
+            type: string
+            enum:
+              - new
+              - live
+              - deleting
+              - deleted
+  responses:
+    200:
+      description: Returns a list of SAN LUNs.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: ../../../../../components/schemas/infrastructure/san/luns/SanLun.yml
+              includes:
+                $ref: ../includes/SanLunIncludes.yml
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
