@@ -20,6 +20,7 @@ properties:
   hub_id:
     $ref: "../../../HubID.yml"
   identifier:
+    anyOf:
       - $ref: "../../../Identifier.yml"
       - type: "null"
   cluster:
@@ -40,12 +41,12 @@ properties:
     anyOf:
       - type: array
         items:
-          $ref: "./TargetPortal.yml"
+          $ref: "./SanTargetPortal.yml"
       - type: "null"
   credentials:
     description: Optional CHAP credentials required by initiators to authenticate.
     anyOf:
-      - $ref: "./TargetChapCredentials.yml"
+      - $ref: "./SanTargetChapCredentials.yml"
       - type: "null"
   state:
-    $ref: "./TargetState.yml"
+    $ref: "./SanTargetState.yml"

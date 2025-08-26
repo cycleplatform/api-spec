@@ -7,8 +7,8 @@ get:
   tags:
     - SANs
   parameters:
-    - $ref: "../../../components/parameters/SortParam.yml"
-    - $ref: "../../../components/parameters/PageParam.yml"
+    - $ref: "../../../../../components/parameters/SortParam.yml"
+    - $ref: "../../../../../components/parameters/PageParam.yml"
     - name: filter
       in: query
       required:
@@ -52,4 +52,4 @@ get:
               includes:
                 $ref: ../includes/SanLunIncludes.yml
     default:
-      $ref: ../../../components/responses/errors/DefaultError.yml
+      $ref: ../../../../../components/responses/errors/DefaultError.yml

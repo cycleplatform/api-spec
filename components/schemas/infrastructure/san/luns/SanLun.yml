@@ -41,4 +41,4 @@ properties:
     type: boolean
     description: When true, the LUN is exposed as read-only.
   state:
-    $ref: "./LunState.yml"
+    $ref: "./SanLunState.yml"
