@@ -3,7 +3,7 @@ post:
   summary: Create SAN Job
   description: Used to perform different actions related to SANs. Requires the `san-manage` capability.
   tags:
-    - SAN
+    - SANs
   requestBody:
     description: Parameters for creating the new SAN Job.
     content:
