@@ -4,6 +4,7 @@ description: Logical Unit Number (LUN) exposed over iSCSI within a Cycle server.
 required:
   - id
   - hub_id
+  - target_id
   - cluster
   - iqn
   - location_id
