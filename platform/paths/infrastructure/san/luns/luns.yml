@@ -35,6 +35,18 @@ get:
               - live
               - deleting
               - deleted
+    - name: include
+      in: query
+      required: false
+      description: |
+        A comma-separated list of include values. Included resources will show up under the root document's `include` field.
+        In the case of applying an include to a collection of resources, if multiple resources share the same include, it will only appear once in the return.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - targets
   responses:
     200:
       description: Returns a list of SAN LUNs.
