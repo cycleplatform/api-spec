@@ -37,7 +37,7 @@ properties:
         description: The ID of the SAN target.
       lun_number:
         type: integer
-        description: The LUN for the SAN target to attach
+        description: The LUN for the SAN target to attach.
   destination:
     type: string
     description: The mountpoint path for the container.
