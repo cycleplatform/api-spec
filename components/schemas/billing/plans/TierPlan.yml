@@ -54,6 +54,7 @@ properties:
       - geodns
       - provider_multi_account
       - virtual_provider
+      - san
     properties:
       gpu:
         type: boolean
@@ -68,6 +69,8 @@ properties:
       provider_multi_account:
         type: boolean
       virtual_provider:
+        type: boolean
+      san:
         type: boolean
   max_daily_api_requests:
     type:
