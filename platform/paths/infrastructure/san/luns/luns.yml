@@ -24,7 +24,7 @@ get:
           server_ids:
             type: string
             description: |
-              `filter[server_ids]=value` filter SAN targets within the specified server(s). Supports single or comma separated ids.
+              `filter[server_ids]=value` filter SAN LUNs within the specified server(s). Supports single or comma separated ids.
             examples:
               - "filter[serverIds]=ID1,ID2"
           location:
