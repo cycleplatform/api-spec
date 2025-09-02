@@ -20,7 +20,22 @@ properties:
         required:
           - max_size
       - type: "null"
-    description: Configuration details for a local volume, if applicable.
+    description: Configuration details for a local volume.
+  san:
+    anyOf:
+      - type: object
+        properties:
+          target_id:
+            $ref: ../../../ID.yml
+            description: The ID of the SAN target.
+          lun_number:
+            type: integer
+            description: The LUN for the SAN target to attach
+        required:
+          - target_id
+          - lun_number
+      - type: "null"
+    description: Configuration details for a SAN volume.
   identifier:
     $ref: ../../../Identifier.yml
   read_only:
