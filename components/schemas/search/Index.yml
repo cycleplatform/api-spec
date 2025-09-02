@@ -12,6 +12,7 @@ required:
   - servers
   - pipelines
   - virtual_machines
+  - instances
 properties:
   generated:
     description: The timestampof when the index was generated
@@ -48,6 +49,10 @@ properties:
     additionalProperties:
       "$ref": "./Component.yml"
   virtual_machines:
+    type: object
+    additionalProperties:
+      "$ref": "./Component.yml"
+  instances:
     type: object
     additionalProperties:
       "$ref": "./Component.yml"
