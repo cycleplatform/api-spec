@@ -1,0 +1,18 @@
+title: SanTargetPortal
+type: object
+description: A network endpoint (IP and TCP port) where the iSCSI target listens for sessions.
+required:
+  - ip
+  - port
+properties:
+  ip:
+    description: IPv4 or IPv6 address of the portal.
+    oneOf:
+      - type: string
+        format: ipv4
+      - type: string
+        format: ipv6
+  port:
+    type: integer
+    format: int32
+    description: TCP port number for the portal (typically 3260).

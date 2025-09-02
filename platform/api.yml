@@ -123,6 +123,7 @@ x-tagGroups:
       - Providers
       - Virtual Providers
       - Servers
+      - SANs
       - IPs
   - name: Jobs
     tags:
@@ -243,6 +244,8 @@ tags:
     description: Endpoints related to virtual provider configurations.
   - name: Servers
     description: Endpoints related to managing servers on Cycle.
+  - name: SANs
+    description: Endpoints for managing SANs.
   - name: IPs
     description: Endpoints for managing IP allocations.
 
@@ -593,8 +596,7 @@ paths:
   "/v1/infrastructure/providers/{providerVendor}/locations":
     $ref: "./paths/infrastructure/providers/locations.yml"
 
-    ## Virtual Providers
-
+  ## Virtual Providers
   "/v1/infrastructure/virtual-providers/{integrationId}/isos":
     $ref: "./paths/infrastructure/virtual-providers/isos/isos.yml"
 
@@ -606,6 +608,7 @@ paths:
 
   "/v1/infrastructure/virtual-providers/{integrationId}/isos/{isoId}/download":
     $ref: "./paths/infrastructure/virtual-providers/isos/download.yml"
+
   ## Clusters
   "/v1/infrastructure/clusters":
     $ref: "./paths/infrastructure/clusters/clusters.yml"
@@ -634,6 +637,15 @@ paths:
     $ref: "./paths/infrastructure/servers/usage.yml"
   "/v1/infrastructure/servers/{serverId}/console":
     $ref: "./paths/infrastructure/servers/console.yml"
+
+  ## SANs
+  "/v1/infrastructure/san/targets":
+    $ref: "./paths/infrastructure/san/targets/targets.yml"
+  "/v1/infrastructure/san/luns":
+    $ref: "./paths/infrastructure/san/luns/luns.yml"
+  "/v1/infrastructure/san/tasks":
+    $ref: "./paths/infrastructure/san/tasks.yml"
+  
 
   ## IPs
   "/v1/infrastructure/ips/pools":

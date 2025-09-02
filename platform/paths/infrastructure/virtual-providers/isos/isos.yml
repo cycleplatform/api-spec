@@ -151,6 +151,7 @@ get:
           type: string
           enum:
             - integrations
+    - $ref: ../../../../../components/parameters/PageParam.yml
   responses:
     200:
       description: Returns an a list of ISOs.

@@ -1,0 +1,8 @@
+title: SanTask.yml
+discriminator:
+  propertyName: action
+  mapping:
+    sync: SanSyncTask.yml
+oneOf:
+  - $ref: SanSyncTask.yml
+

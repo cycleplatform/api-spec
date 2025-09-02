@@ -19,7 +19,5 @@ properties:
         description: The ID of the volume that will be extended through this task.
         type: string
       extend_size:
-        type: string
+        $ref: ../../../DataSize.yml
         description: The amount of storage to extend the volume by. Container volumes on Cycle are thinly provisioned, meaning this isn't an allocation - the volume will only use the space it needs up to this size.
-        examples:
-          - "10G"

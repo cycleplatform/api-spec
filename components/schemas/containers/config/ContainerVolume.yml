@@ -14,19 +14,34 @@ properties:
     description: |
       Indicates that the volume will be used as unformatted block storage.
   local:
-    type: object
-    description: Configuration for settings local to the container filesystem.
-    required:
-      - max_size
-    properties:
-      max_size:
-        type: string
-        description: The maximum size this volume can grow to. Container volumes on Cycle are thinly provisioned, meaning this isn't an allocation - the volume will only use the space it needs up to this size.
-        examples:
-          - "10G"
-      storage_pool:
-        type: boolean
-        description: A boolean where true signifies using the largest drive over 2TB for the target server.
+    oneOf:
+      - type: object
+        description: Configuration for settings local to the container filesystem.
+        required:
+          - max_size
+        properties:
+          max_size:
+            $ref: ../../DataSize.yml
+            description: The maximum size this volume can grow to. Container volumes on Cycle are thinly provisioned, meaning this isn't an allocation - the volume will only use the space it needs up to this size.
+          storage_pool:
+            type: boolean
+            description: A boolean where true signifies using the largest drive over 2TB for the target server.
+      - type: "null"
+  san:
+    oneOf:
+      - type: object
+        description: Configuration settings for a SAN type volume.
+        required:
+          - target_id
+          - lun_number
+        properties:
+          target_id:
+            $ref: ../../ID.yml
+            description: The ID of the SAN target.
+          lun_number:
+            type: integer
+            description: The LUN for the SAN target to attach.
+      - type: "null"
   destination:
     type: string
     description: The mountpoint path for the container.

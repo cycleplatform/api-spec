@@ -62,3 +62,4 @@ enum:
   - infrastructure.server.checkin.resumed
   - infrastructure.server.power.reboot
   - infrastructure.server.power.power-off
+  - infrastructure.server.neighbor.incompatible
