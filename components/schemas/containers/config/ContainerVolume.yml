@@ -24,8 +24,10 @@ properties:
             $ref: ../../DataSize.yml
             description: The maximum size this volume can grow to. Container volumes on Cycle are thinly provisioned, meaning this isn't an allocation - the volume will only use the space it needs up to this size.
           storage_pool:
-            type: boolean
-            description: A boolean where true signifies using the largest drive over 2TB for the target server.
+            oneOf:
+              - type: boolean
+                description: A boolean where true signifies using the largest drive over 2TB for the target server.
+              - type: "null"
       - type: "null"
   san:
     oneOf:
