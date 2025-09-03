@@ -43,3 +43,5 @@ properties:
     description: When true, the LUN is exposed as read-only.
   state:
     $ref: "./SanLunState.yml"
+  meta:
+    $ref: "./SanLunMeta.yml"
