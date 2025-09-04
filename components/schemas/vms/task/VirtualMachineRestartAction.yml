@@ -1,0 +1,10 @@
+title: VirtualMachineRestartAction
+type: object
+required:
+  - action
+properties:
+  action:
+    type: string
+    enum:
+      - restart
+    description: The name of the action to perform.
