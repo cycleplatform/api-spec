@@ -4,14 +4,18 @@ discriminator:
   mapping:
     start: VirtualMachineStartAction.yml
     stop: VirtualMachineStopAction.yml
+    restart: VirtualMachineRestartAction.yml
     reconfigure: VirtualMachineReconfigureAction.yml
     rootpw.change: VirtualMachineRootPwChangeAction.yml
     ip.allocate: VirtualMachineIpAllocateAction.yml
     ip.unallocate: VirtualMachineIpUnallocateAction.yml
+    volumes.reconfigure: VirtualMachineReconfigureVolumesAction.yml
 oneOf:
   - $ref: VirtualMachineStartAction.yml
   - $ref: VirtualMachineStopAction.yml
+  - $ref: VirtualMachineRestartAction.yml
   - $ref: VirtualMachineReconfigureAction.yml
   - $ref: VirtualMachineRootPwChangeAction.yml
   - $ref: VirtualMachineIpAllocateAction.yml
   - $ref: VirtualMachineIpUnallocateAction.yml
+  - $ref: VirtualMachineReconfigureVolumesAction.yml

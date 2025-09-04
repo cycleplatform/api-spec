@@ -1,0 +1,29 @@
+title: VirtualMachineReconfigureVolumesAction
+type: object
+required:
+  - action
+  - contents
+properties:
+  action:
+    type: string
+    enum:
+      - volumes.reconfigure
+    description: The action to take.
+  contents:
+    description: An array of volume objects to be reconfigured.
+    type: array
+    items:
+      type: object
+      description: A summary of relevant volume information.
+      required:
+        - id
+        - hash
+        - config
+      properties:
+        id:
+          "$ref": "../../ID.yml"
+        hash:
+          type: string
+          description: A unique hash for the given volume.
+        config:
+          "$ref": "../config/volumes/VirtualMachineVolumeConfig.yml"

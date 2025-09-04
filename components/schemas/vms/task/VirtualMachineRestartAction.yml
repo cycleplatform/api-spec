@@ -1,4 +1,4 @@
-title: ContainerRestartActionTask
+title: VirtualMachineRestartAction
 type: object
 required:
   - action
