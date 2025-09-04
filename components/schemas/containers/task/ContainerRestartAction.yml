@@ -1,4 +1,4 @@
-title: ContainerRetartActionTask
+title: ContainerRestartActionTask
 type: object
 required:
   - action
