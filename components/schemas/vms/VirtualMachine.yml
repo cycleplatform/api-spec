@@ -45,9 +45,6 @@ properties:
       - type: object
         additionalProperties: {}
       - type: "null"
-  base_disk_size:
-    $ref: ../DataSize.yml
-    description: The size of the base disk. Must be between 10G and 100G.
   root_password:
     type: object
     description: The generated root password for the virtual machine. Only visible by the owner, or if it was created in the last ten minutes.

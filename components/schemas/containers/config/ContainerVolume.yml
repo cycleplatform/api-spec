@@ -6,6 +6,10 @@ required:
   - block_device
   - destination
 properties:
+  identifier:
+    oneOf:
+      - $ref: ../../../../components/schemas/Identifier.yml
+      - type: "null"
   read_only:
     type: boolean
     description: A boolean where true marks the volume as read only.
