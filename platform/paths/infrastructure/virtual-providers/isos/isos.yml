@@ -152,6 +152,7 @@ get:
           enum:
             - integrations
     - $ref: ../../../../../components/parameters/PageParam.yml
+    - $ref: ../../../../../components/parameters/SortParam.yml
   responses:
     200:
       description: Returns an a list of ISOs.
