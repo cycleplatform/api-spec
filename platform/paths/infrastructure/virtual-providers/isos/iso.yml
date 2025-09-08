@@ -117,8 +117,9 @@ patch:
               properties:
                 token:
                   type: string
-                  description: Authentication token for the ISO.
+                  description: Authentication token for the ISO. Only available when ISO is in new state.
                 ipxe:
+                  description: ISO IPXE configuration. Only available when ISO is in new state
                   oneOf:
                     - type: object
                       properties:
