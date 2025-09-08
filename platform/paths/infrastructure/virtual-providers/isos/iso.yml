@@ -115,6 +115,45 @@ patch:
             config:
               type: object
               properties:
+                token:
+                  type: string
+                  description: Authentication token for the ISO. Only available when ISO is in new state.
+                ipxe:
+                  description: ISO IPXE configuration. Only available when ISO is in new state.
+                  oneOf:
+                    - type: object
+                      properties:
+                        vlan_id:
+                          type:
+                            - integer
+                            - "null"
+                          description: VLAN ID for the IPXE boot.
+                        network_interface:
+                          type:
+                            - integer
+                            - "null"
+                          description: Network interface for the IPXE boot.
+                        static_ip:
+                          type:
+                            - string
+                            - "null"
+                          description: Static IP assigned to the IPXE boot.
+                        netmask:
+                          type:
+                            - string
+                            - "null"
+                          description: Netmask assigned to the IPXE boot.
+                        gateway_ip:
+                          type:
+                            - string
+                            - "null"
+                          description: Gateway IP assigned to the IPXE boot.
+                        dns_ip:
+                          type:
+                            - string
+                            - "null"
+                          description: DNS IP assigned to the IPXE boot.
+                    - type: "null"
                 server:
                   oneOf:
                     - type: object
