@@ -1,0 +1,6 @@
+title: RuntimeDevicePermissionType
+type: string
+description: >
+  The class of device this rule applies to (for example, block
+  devices or character devices).
+enum: [b, c] # a = all, b = block, c = char

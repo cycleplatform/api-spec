@@ -1,0 +1,29 @@
+title: RuntimeExposedDevice
+type: object
+description: A host device exposed to the container during runtime.
+required:
+  - source
+  - destination
+properties:
+  source:
+    type: string
+    description: The path to the device on the host.
+    examples:
+      - "/dev/kvm"
+      - "/dev/net/tun"
+  destination:
+    type: string
+    description: The path inside the container that the device is mapped to.
+    examples:
+      - "/dev/kvm"
+      - "/dev/net/tun"
+  options:
+    anyOf:
+      - type: array
+        description: Options passed when mounting the device.
+        items:
+          type: string
+          examples:
+            - rbind
+            - ro
+      - type: "null"
