@@ -155,4 +155,18 @@ properties:
               - "64M"
               - "128M"
               - "512M"
+          expose:
+            anyOf:
+              - type: array
+                description: An array of devices to expose to the container.
+                items:
+                  $ref: ./runtime/RuntimeExposedDevice.yml
+              - type: "null"
+          permissions:
+            anyOf:
+              - type: array
+                description: Rules for granting or denying access to a device node.
+                items:
+                  $ref: ./runtime/RuntimeDevicePermission.yml
+              - type: "null"
       - type: "null"
