@@ -1,0 +1,34 @@
+title: StackSpecRuntimeExposedDevice
+type: object
+description: A host device exposed to the container during runtime.
+required:
+  - source
+  - destination
+properties:
+  source:
+    description: The path to the device on the host.
+    oneOf:
+      - type: string
+        examples:
+          - "/dev/kvm"
+          - "/dev/net/tun"
+      - $ref: ../StackVariable.yml
+  destination:
+    description: The path inside the container that the device is mapped to.
+    oneOf:
+      - type: string
+        examples:
+          - "/dev/kvm"
+          - "/dev/net/tun"
+      - $ref: ../StackVariable.yml
+  options:
+    anyOf:
+      - type: array
+        description: Options passed when mounting the device.
+        items:
+          type: string
+          examples:
+            - rbind
+            - ro
+      - type: "null"
+      - $ref: ../StackVariable.yml
