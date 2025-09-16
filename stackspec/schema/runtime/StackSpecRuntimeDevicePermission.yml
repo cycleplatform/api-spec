@@ -1,0 +1,42 @@
+title: StackSpecRuntimeDevicePermission
+type: object
+description: >
+  A rule that grants or denies access to a device node (e.g., Linux cgroup
+  device rule). Controls which device type and major/minor numbers are
+  allowed, and with what access.
+required:
+  - type
+  - allow
+  - access
+properties:
+  type:
+    oneOf:
+      - $ref: "./StackSpecRuntimeDevicePermissionType.yml"
+      - $ref: ../StackVariable.yml
+  major:
+    description: >
+      Device major number.
+    oneOf:
+      - type:
+          - integer
+          - "null"
+        format: int64
+      - $ref: ../StackVariable.yml
+  minor:
+    description: >
+      Device minor number.
+    oneOf:
+      - type:
+          - integer
+          - "null"
+        format: int64
+      - $ref: ../StackVariable.yml
+  allow:
+    oneOf:
+      - type: boolean
+      - $ref: ../StackVariable.yml
+    description: Whether this rule allows (true) or denies (false) access.
+  access:
+    oneOf:
+      - $ref: "./RuntimeDevicePermissionAccess.yml"
+      - $ref: ../StackVariable.yml

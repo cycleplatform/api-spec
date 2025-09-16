@@ -258,3 +258,36 @@ properties:
               - type: boolean
               - $ref: StackVariable.yml
       - $ref: StackVariable.yml
+  devices:
+    oneOf:
+      - type: object
+        properties:
+          shm_size:
+            oneOf:
+              - type:
+                  - string
+                  - "null"
+                description: The size of the shared host memory device (/dev/shm).
+                examples:
+                  - "64M"
+                  - "128M"
+                  - "512M"
+              - $ref: StackVariable.yml
+          expose:
+            anyOf:
+              - type: array
+                description: An array of devices to expose to the container.
+                items:
+                  $ref: ./runtime/StackSpecRuntimeExposedDevice.yml
+              - type: "null"
+              - $ref: StackVariable.yml
+          permissions:
+            anyOf:
+              - type: array
+                description: Rules for granting or denying access to a device node.
+                items:
+                  $ref: ./runtime/StackSpecRuntimeDevicePermission.yml
+              - type: "null"
+              - $ref: StackVariable.yml
+      - type: "null"
+      - $ref: StackVariable.yml
