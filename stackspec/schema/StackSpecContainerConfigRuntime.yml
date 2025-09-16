@@ -264,14 +264,13 @@ properties:
         properties:
           shm_size:
             oneOf:
-              - type:
-                  - string
-                  - "null"
+              - type: string
                 description: The size of the shared host memory device (/dev/shm).
                 examples:
                   - "64M"
                   - "128M"
                   - "512M"
+              - type: "null"
               - $ref: StackVariable.yml
           expose:
             anyOf:
