@@ -38,5 +38,5 @@ properties:
     description: Whether this rule allows (true) or denies (false) access.
   access:
     oneOf:
-      - $ref: "./RuntimeDevicePermissionAccess.yml"
+      - $ref: "./StackSpecRuntimeDevicePermissionAccess.yml"
       - $ref: ../StackVariable.yml
