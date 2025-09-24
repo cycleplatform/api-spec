@@ -22,8 +22,8 @@ properties:
                   exclude_services:
                     description: If enabled, service logs will not be included in log drain.
                     oneOf:
-                      - type: string
                       - type: boolean
+                      - $ref: ../StackVariable.yml
                   format:
                     description: The format Cycle will use to send the logs.
                     oneOf:
