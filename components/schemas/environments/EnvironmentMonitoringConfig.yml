@@ -13,6 +13,7 @@ properties:
               - type: object
                 required:
                   - url
+                  - exclude_services
                 properties:
                   url:
                     description: The destination URL for the log drain.
@@ -20,5 +21,8 @@ properties:
                   format:
                     description: The format of the logs that will be sent to the drain URL.
                     $ref: ../LogFormat.yml
+                  exclude_services:
+                    description: If enabled, service logs will not be included in log drain.
+                    type: boolean
               - type: "null"
       - type: "null"
