@@ -370,6 +370,8 @@ properties:
       - virtual-machine.delete
       - virtual-machine.sos.login
       - virtual-machine.rootpw.change
+      - virtual-machine.task.volumes.reconfigure
+      - virtual-machine.volumes.reconfigure
 
       - virtual-machine.ssh-key.create
       - virtual-machine.ssh-key.update
