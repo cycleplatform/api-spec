@@ -1,22 +1,86 @@
 title: BillingOverage
 type: object
-description: Information about billing overage.
+description: Detailed information about resource overages incurred beyond included billing tier limits.
 required:
   - term
-  - ram
 properties:
   term:
-    "$ref": "./Term.yml"
+    $ref: "./Term.yml"
+  image_storage:
+    type: object
+    description: Overage related to container or image storage usage.
+    required:
+      - gbs
+      - cost
+    properties:
+      gbs:
+        type: integer
+        description: The number of gigabytes of image storage overage.
+      cost:
+        type: integer
+        description: The total cost of the image storage overage in mills.
   ram:
     type: object
-    description: Used for gen 1 pricing.
+    description: (GEN 1) Overage related to RAM usage.
     required:
       - gb_hours
       - cost
     properties:
       gb_hours:
         type: integer
-        description: The number of hours of overage.
+        description: The number of RAM GB-hours exceeding the included amount.
       cost:
         type: integer
-        description: The cost of the overage.
+        description: The total cost of the RAM overage in mills.
+  servers:
+    type: object
+    description: Overage related to server runtime.
+    required:
+      - hours
+      - cost
+    properties:
+      hours:
+        type: integer
+        description: The number of server hours exceeding the included amount.
+      cost:
+        type: integer
+        description: The total cost of the server overage in mills.
+  dns_zones:
+    type: object
+    description: Overage related to DNS zone usage.
+    required:
+      - hours
+      - cost
+    properties:
+      hours:
+        type: integer
+        description: The number of DNS zone hours exceeding the included amount.
+      cost:
+        type: integer
+        description: The total cost of the DNS zone overage in mills.
+  dns_linked_records:
+    type: object
+    description: Overage related to DNS linked records usage.
+    required:
+      - hours
+      - cost
+    properties:
+      hours:
+        type: integer
+        description: The number of DNS linked record hours exceeding the included amount.
+      cost:
+        type: integer
+        description: The total cost of the DNS linked record overage in mills.
+  members:
+    type: object
+    description: Overage related to member usage.
+    required:
+      - hours
+      - cost
+    properties:
+      hours:
+        type: integer
+        description: The number of member hours exceeding the included amount.
+      cost:
+        type: integer
+        description: The total cost of the member overage in mills.
