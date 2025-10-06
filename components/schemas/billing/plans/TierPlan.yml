@@ -10,6 +10,8 @@ required:
   - price
   - servers
   - members
+  - dns_zones
+  - dns_linked_records
   - max_nodes
   - max_members
   - advanced_features
@@ -31,11 +33,15 @@ properties:
   usable:
     type: boolean
   price:
-    "$ref": "../BillingAmount.yml"
+    $ref: ../BillingAmount.yml
   servers:
-    "$ref": "../BillingServers.yml"
+    $ref: ../ResourceAllowance.yml
   members:
-    "$ref": "../BillingMembers.yml"
+    $ref: ../ResourceAllowance.yml
+  dns_zones:
+    $ref: ../ResourceAllowance.yml
+  dns_linked_records:
+    $ref: ../ResourceAllowance.yml
   max_nodes:
     type:
       - integer
