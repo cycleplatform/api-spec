@@ -9,6 +9,7 @@ allOf:
         enum:
           - new
           - starting
+          - configuring
           - running
           - stopping
           - stopped
