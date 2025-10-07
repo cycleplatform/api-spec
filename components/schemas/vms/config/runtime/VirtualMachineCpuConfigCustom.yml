@@ -1,0 +1,30 @@
+title: VirtualMachineCpuConfigCustom
+type: object
+description: Custom CPU selection with model and feature flags.
+required:
+  - type
+  - details
+properties:
+  type:
+    type: string
+    enum:
+      - custom
+    description: Custom CPU definition.
+  details:
+    type: object
+    required:
+      - model
+      - feature_flags
+    properties:
+      model:
+        type: string
+        description: CPU model string (for example "Skylake-Client").
+      feature_flags:
+        type: array
+        description: Additional CPU feature flags to enable.
+        items:
+          type: string
+        uniqueItems: true
+        default: []
+    additionalProperties: false
+additionalProperties: false
