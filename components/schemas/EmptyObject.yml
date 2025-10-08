@@ -1,5 +1,0 @@
-title: EmptyObject
-type: object
-description: An object with no properties.
-properties: {}
-additionalProperties: false
