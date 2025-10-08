@@ -14,17 +14,15 @@ properties:
     type: object
     required:
       - model
-      - feature_flags
     properties:
       model:
         type: string
         description: CPU model string (for example "Skylake-Client").
       feature_flags:
-        type: array
-        description: Additional CPU feature flags to enable.
-        items:
-          type: string
-        uniqueItems: true
-        default: []
-    additionalProperties: false
-additionalProperties: false
+        oneOf:
+          - type: array
+            description: Additional CPU feature flags to enable Will start with a "+" or "-" to include or exclude.
+            example: ["+avx", "-vmz"]
+            items:
+              type: string
+          - type: "null"
