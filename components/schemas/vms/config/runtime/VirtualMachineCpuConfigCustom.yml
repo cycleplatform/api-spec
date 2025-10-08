@@ -21,7 +21,7 @@ properties:
       feature_flags:
         oneOf:
           - type: array
-            description: Additional CPU feature flags to enable Will start with a "+" or "-" to include or exclude.
+            description: Additional CPU feature flags to enable. Will start with a "+" or "-" to include or exclude.
             example: ["+avx", "-vmz"]
             items:
               type: string

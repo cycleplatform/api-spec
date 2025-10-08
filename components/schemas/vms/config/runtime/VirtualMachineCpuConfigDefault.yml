@@ -1,6 +1,6 @@
 title: VirtualMachineCpuConfigDefault
 type: object
-description: Predefined CPU selection with no extra details.
+description: Predefined CPU selection.
 required:
   - type
   - details
