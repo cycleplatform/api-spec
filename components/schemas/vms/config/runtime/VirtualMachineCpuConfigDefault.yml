@@ -10,7 +10,4 @@ properties:
     enum: [host, qemu32, qemu64, kvm64]
     description: Predefined CPU type.
   details:
-    type: object
-    description: No additional fields for default CPU types.
-    additionalProperties: false
-additionalProperties: false
+    $ref: ../../../EmptyObject.yml
