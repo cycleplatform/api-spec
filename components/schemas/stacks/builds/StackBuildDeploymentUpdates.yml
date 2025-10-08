@@ -7,7 +7,7 @@ required:
 properties:
   containers:
     type: object
-    description: A map of the container names to update within the environment.
+    description: A map of the container identifiers to update within the environment.
     additionalProperties:
       $ref: "../StackDeployContainersObject.yml"
     minProperties: 1
