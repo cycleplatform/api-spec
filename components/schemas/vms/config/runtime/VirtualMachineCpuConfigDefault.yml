@@ -11,6 +11,6 @@ properties:
     description: Predefined CPU type.
   details:
     type: object
-    description: No additional fields for default CPU types.
+    description: An object with no properties.
+    properties: {}
     additionalProperties: false
-additionalProperties: false
