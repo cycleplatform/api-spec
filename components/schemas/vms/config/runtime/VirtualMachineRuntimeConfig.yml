@@ -6,29 +6,21 @@ properties:
   hardware:
     description: Hardware parameters applied for VM runtime.
     oneOf:
-      - type: object
-        required:
-          - cpu
-        properties:
-          machine_type:
-            description: QEMU machine type to emulate.
-            oneOf:
-              - type: string
-                enum: [pc, q35, microvm]
-              - type: "null"
-          cpu:
-            description: CPU configuration for the VM. Discriminated by `type`.
-            oneOf:
-              - $ref: ./VirtualMachineCpuConfigDefault.yml
-              - $ref: ./VirtualMachineCpuConfigCustom.yml
-            discriminator:
-              propertyName: type
-              mapping:
-                host: ./VirtualMachineCpuConfigDefault.yml
-                qemu32: ./VirtualMachineCpuConfigDefault.yml
-                qemu64: ./VirtualMachineCpuConfigDefault.yml
-                kvm64: ./VirtualMachineCpuConfigDefault.yml
-                custom: ./VirtualMachineCpuConfigCustom.yml
-        additionalProperties: false
+      - $ref: "./hardware/VirtualMachineRuntimeConfigHardware.yml"
       - type: "null"
+  attach:
+    description: An array of attachments to 'plug in' to the virtual machine.
+    oneOf:
+      - type: array
+        items:
+          $ref: ./attachments/VirtualMachineRuntimeConfigAttachment.yml
+      - type: "null"
+  os_flavor:
+    description: The type of operating system that will be installed to the virtual machine. Allows for preconfigured settings, such as virtio-win drivers for Windows.
+    oneOf:
+      - type: string
+        enum:
+          - linux
+          - unix
+          - windows
 additionalProperties: false

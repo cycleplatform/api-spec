@@ -1,0 +1,20 @@
+title: VirtualMachineAttachmentTypeIso
+type: object
+description: Details of an ISO attachment for a virtual machine.
+required:
+  - type
+  - details
+properties:
+  type:
+    type: string
+    enum:
+      - iso
+    description: The type of the attachment (iso)
+  details:
+    type: object
+    required:
+      - url
+    properties:
+      url:
+        type: string
+        description: The URL of the ISO to download and attach to this virtual machine.
