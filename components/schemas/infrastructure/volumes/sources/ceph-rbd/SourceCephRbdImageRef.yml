@@ -1,0 +1,19 @@
+title: SourceCephRbdImageRef
+type: object
+description: Reference to the specific RBD image to attach.
+required:
+  - pool
+  - name
+properties:
+  pool:
+    type: string
+    description: Name of the Ceph pool containing the RBD image.
+  namespace:
+    type: string
+    description: Optional RBD namespace within the pool.
+  name:
+    type: string
+    description: Name of the RBD image.
+  snapshot:
+    type: string
+    description: Optional snapshot name if attaching a snapshot view of the image.

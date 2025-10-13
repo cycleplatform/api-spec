@@ -1,0 +1,11 @@
+title: AttachedVolumeOptions
+type: object
+description: Configuration options controlling the behavior of the volume.
+required:
+  - read_only
+properties:
+  read_only:
+    type: boolean
+    description: >
+      When true, the volume is attached as read-only and cannot be modified by
+      the consuming resource.

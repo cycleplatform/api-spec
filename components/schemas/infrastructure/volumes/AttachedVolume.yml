@@ -1,0 +1,53 @@
+title: AttachedVolume
+type: object
+description: >
+  A persistent storage volume within a cluster. Volumes may be
+  attached to containers or VMs and can originate from different
+  storage sources.
+required:
+  - id
+  - hub_id
+  - cluster
+  - location_id
+  - source
+  - options
+  - state
+  - events
+properties:
+  id:
+    $ref: "../../ID.yml"
+  hub_id:
+    $ref: "../../HubID.yml"
+  cluster:
+    $ref: "../../Identifier.yml"
+  identifier:
+    anyOf:
+      - $ref: "../../Identifier.yml"
+      - type: "null"
+  location_id:
+    $ref: "../../ID.yml"
+  description:
+    description: Optional human-friendly description of the volume.
+    type:
+      - string
+      - "null"
+  source:
+    $ref: "./sources/AttachedVolumeSource.yml"
+  attachment:
+    description: Information about the resource the volume is currently attached to.
+    anyOf:
+      - $ref: "./AttachedVolumeAttachment.yml"
+      - type: "null"
+  size:
+    description: >
+      Size of the volume; may be null or omitted if the size has not yet
+      been determined.
+    anyOf:
+      - $ref: "../../DataSize.yml"
+      - type: "null"
+  options:
+    $ref: "./AttachedVolumeOptions.yml"
+  state:
+    $ref: "./AttachedVolumeState.yml"
+  events:
+    $ref: "./AttachedVolumeEvents.yml"

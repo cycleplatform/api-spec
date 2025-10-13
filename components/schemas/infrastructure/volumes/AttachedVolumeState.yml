@@ -1,0 +1,15 @@
+title: VolumeState
+allOf:
+  - required:
+      - current
+    properties:
+      current:
+        description: The current lifecycle state of the volume.
+        type: string
+        enum:
+          - new
+          - configuring
+          - live
+          - deleting
+          - deleted
+  - "$ref": "../../State.yml"

@@ -1,0 +1,15 @@
+title: AttachedVolumeAttachment
+type: object
+description: >
+  Represents where the volume is currently attached.
+required:
+  - server_id
+  - container_id
+  - instance_id
+properties:
+  server_id:
+    $ref: "../../ID.yml"
+  container_id:
+    $ref: "../../ID.yml"
+  instance_id:
+    $ref: "../../ID.yml"

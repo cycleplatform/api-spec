@@ -1,0 +1,11 @@
+title: AttachedVolumeSource
+description: |
+  The source information for this volume.
+oneOf:
+  - $ref: ./san-iscsi/SourceSanIscsi.yml
+  - $ref: ./ceph-rbd/SourceCephRbd.yml
+discriminator:
+  propertyName: type
+  mapping:
+    san-iscsi: ./san-iscsi/SourceSanIscsi.yml
+    ceph-rbd: ./ceph-rbd/SourceCephRbd.yml

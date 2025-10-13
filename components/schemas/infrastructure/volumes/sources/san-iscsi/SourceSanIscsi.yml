@@ -1,0 +1,22 @@
+title: SourceSanIscsi
+type: object
+description: >
+  A SAN iSCSI volume source. Defines one or more iSCSI targets and the LUN
+  number to attach.
+required:
+  - targets
+  - lun
+properties:
+  targets:
+    description: >
+      One or more iSCSI targets that expose the desired LUN; may be null.
+    anyOf:
+      - type: array
+        items:
+          $ref: "./SourceSanIscsiTarget.yml"
+      - type: "null"
+  lun:
+    type: integer
+    format: int32
+    description: >
+      Logical Unit Number exposed by the target(s) to attach.

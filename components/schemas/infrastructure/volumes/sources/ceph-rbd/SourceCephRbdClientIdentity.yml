@@ -1,0 +1,14 @@
+title: SourceCephRbdClientIdentity
+type: object
+description: CephX client credentials used to authenticate to the Ceph cluster.
+required:
+  - id
+  - key
+properties:
+  id:
+    type: string
+    description: CephX client ID (e.g., "client.admin" or "client.cycle").
+  key:
+    type: string
+    format: password
+    description: CephX secret key for the client.
