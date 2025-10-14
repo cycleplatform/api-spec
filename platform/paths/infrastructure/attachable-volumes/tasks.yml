@@ -1,0 +1,37 @@
+post:
+  operationId: "createAttachableVolumeJob"
+  summary: Create Attachable Volume Job
+  description: |
+    Create a job for an attachable volume.
+
+    Requires the `attachable-volumes-manage` capability.
+  tags:
+    - Attachable Volumes
+  parameters:
+    - name: attachableVolumeId
+      description: The ID of the attached volume.
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    description: Parameters for creating a new attached volume job.
+    content:
+      application/json:
+        schema:
+          $ref: ../../../../components/schemas/infrastructure/attachable-volumes/tasks/AttachableVolumeTasks.yml
+  responses:
+    202:
+      description: Returns a job descriptor.
+      content:
+        application/json:
+          schema:
+            title: "TaskResponse"
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/jobs/JobDescriptor.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml

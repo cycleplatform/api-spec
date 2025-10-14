@@ -1,0 +1,11 @@
+title: AttachableVolumeDetachAction
+description: A task to detach an attachable volume from an instance.
+type: object
+required:
+  - action
+properties:
+  action:
+    type: string
+    enum:
+      - detach
+    description: The name of the action to perform (detach).

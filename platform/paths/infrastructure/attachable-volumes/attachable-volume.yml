@@ -1,0 +1,121 @@
+get:
+  operationId: "getAttachableVolume"
+  summary: Get Attachable Volume
+  description: |
+    Retrieves a single attachable volume by ID.
+
+    Requires the `attachable-volumes-view` capability.
+  tags:
+    - Attachable Volumes
+  parameters:
+    - name: attachableVolumeId
+      description: The ID of the attachable volume.
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: meta
+      in: query
+      required: false
+      description: |
+        A comma-separated list of meta values. Meta values will show up under a resource's `meta` field.
+        In the case of applying a meta to a collection of resources, each resource will have its own relevant meta data.
+        In some rare cases, meta may not apply to individual resources, and may appear in the root document. These will be clearly labeled.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - container
+  responses:
+    200:
+      description: Returns the requested virtual machine.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/infrastructure/attachable-volumes/AttachableVolume.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
+
+patch:
+  operationId: "updateAttachableVolume"
+  summary: Update Attachable Volume
+  description: |
+    Updates the specified attachable volume.
+
+    Requires the `attachable-volumes-manage` capability.
+  tags:
+    - Attachable Volumes
+  parameters:
+    - name: attachableVolumeId
+      description: The ID of the attachable volume.
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    description: Parameters for updating the attachable volume.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: The new name of the attachable volume.
+            identifier:
+              description: The new identifier of the attachable volume.
+              $ref: "../../../../components/schemas/Identifier.yml"
+            about:
+              type: object
+              properties:
+                description:
+                  type: string
+                  description: Updated description for the attached volume.
+  responses:
+    200:
+      description: Returns the updated attachable volume.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/infrastructure/attachable-volumes/AttachableVolume.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
+
+delete:
+  operationId: "deleteAttachableVolume"
+  summary: Delete Attachable Volume
+  description: Requires the `attachable-volumes-manage` capability.
+  tags:
+    - Attachable Volumes
+  parameters:
+    - name: attachableVolumeId
+      description: The ID of the attachable volume to delete.
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    202:
+      description: Returns a job descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/jobs/JobDescriptor.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml

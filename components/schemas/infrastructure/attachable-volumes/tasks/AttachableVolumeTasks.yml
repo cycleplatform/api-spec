@@ -1,0 +1,9 @@
+title: AttachableVolumeTask
+discriminator:
+  propertyName: action
+  mapping:
+    attach: AttachableVolumeAttachAction.yml
+    detach: AttachableVolumeDetachAction.yml
+oneOf:
+  - $ref: AttachableVolumeAttachAction.yml
+  - $ref: AttachableVolumeAttachAction.yml

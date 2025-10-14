@@ -1,0 +1,41 @@
+patch:
+  operationId: "updateAttachableVolumeAccess"
+  summary: Update Attachable Volume Access
+  description: |
+    Updates the ACL of the specified attachable volume.
+
+    Requires the `attachable-volumes-manage` capability.
+  tags:
+    - Attachable Volumes
+  parameters:
+    - name: attachableVolumeId
+      description: The ID of the attachable volume.
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    description: Parameters for updating the attachable volume ACL.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - acl
+          properties:
+            acl:
+              $ref: ../../../../components/schemas/common/ACL.yml
+  responses:
+    200:
+      description: Returns the updated attachable volume.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/infrastructure/attachable-volumes/AttachableVolume.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
