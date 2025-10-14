@@ -1,0 +1,19 @@
+title: AttachableVolumeAttachAction
+description: A task to attach an attachable volume.
+type: object
+required:
+  - action
+  - contents
+properties:
+  action:
+    type: string
+    enum:
+      - attach
+    description: The name of the action to perform (attach).
+  contents:
+    type: object
+    required:
+      - instance_id
+    properties:
+      instance_id:
+        $ref: ../../../ID.yml

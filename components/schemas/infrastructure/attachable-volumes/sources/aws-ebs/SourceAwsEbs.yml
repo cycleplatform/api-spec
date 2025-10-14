@@ -1,0 +1,13 @@
+title: SourceAwsEbs
+type: object
+description: >
+  An AWS EBS volume source. Defines how to authenticate to AWS and which EBS
+  volume to attach.
+required:
+  - auth
+  - volume
+properties:
+  auth:
+    $ref: "./SourceAwsEbsAuth.yml"
+  volume:
+    $ref: "./SourceAwsEbsRef.yml"

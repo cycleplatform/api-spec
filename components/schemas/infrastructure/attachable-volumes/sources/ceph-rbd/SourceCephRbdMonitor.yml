@@ -1,0 +1,14 @@
+title: SourceCephRbdMonitor
+type: object
+description: A Ceph monitor endpoint (host and TCP port).
+required:
+  - host
+  - port
+properties:
+  host:
+    type: string
+    description: Hostname or IP address of the Ceph monitor (DNS, IPv4, or IPv6).
+  port:
+    type: integer
+    format: int32
+    description: TCP port of the Ceph monitor (typically 6789 or 3300).

@@ -118,6 +118,7 @@ x-tagGroups:
   - name: Infrastructure
     tags:
       - Infrastructure
+      - Attachable Volumes
       - Auto-Scale Groups
       - Clusters
       - Providers
@@ -582,6 +583,16 @@ paths:
   "/v1/infrastructure/monitoring-tiers":
     $ref: "./paths/infrastructure/tiers.yml"
 
+  ## Attachable Volumes
+  "/v1/infrastructure/attachable-volumes":
+    $ref: "./paths/infrastructure/attachable-volumes/attachable-volumes.yml"
+  "/v1/infrastructure/attachable-volumes/{attachableVolumeId}":
+    $ref: "./paths/infrastructure/attachable-volumes/attachable-volume.yml"
+  "/v1/infrastructure/attachable-volumes/{attachableVolumeId}/access":
+    $ref: "./paths/infrastructure/attachable-volumes/access.yml"
+  "/v1/infrastructure/attachable-volumes/{attachableVolumeId}/tasks":
+    $ref: "./paths/infrastructure/attachable-volumes/tasks.yml"
+
   ## Auto-Scale Groups
   "/v1/infrastructure/auto-scale/groups":
     $ref: "./paths/infrastructure/auto-scale/groups/groups.yml"
@@ -645,7 +656,6 @@ paths:
     $ref: "./paths/infrastructure/san/luns/luns.yml"
   "/v1/infrastructure/san/tasks":
     $ref: "./paths/infrastructure/san/tasks.yml"
-  
 
   ## IPs
   "/v1/infrastructure/ips/pools":

@@ -1,0 +1,21 @@
+title: AttachableVolumeEvents
+type: object
+description: Timestamps for events that happen over the lifetime of the attached volume.
+required:
+  - created
+  - updated
+  - deleted
+properties:
+  created:
+    description: The timestamp of when the attached volume was created.
+    $ref: "../../DateTime.yml"
+  updated:
+    description: The timestamp of when the attached volume was updated.
+    $ref: "../../DateTime.yml"
+  deleted:
+    description: The timestamp of when the attached volume was deleted.
+    $ref: "../../DateTime.yml"
+  last_sync:
+    $ref: "../../DateTime.yml"
+    description: >
+      Timestamp of the last successful synchronization event for this volume.

@@ -1,0 +1,134 @@
+get:
+  operationId: "getAttachableVolumes"
+  summary: List Attachable Volumes
+  description: Requires the `attachable-volumes-view` capability.
+  tags:
+    - Attachable Volumes
+  parameters:
+    - name: meta
+      in: query
+      required: false
+      description:
+        A comma separated list of meta values. Meta values will show up under a resource's
+        `meta` field. In the case of applying a meta to a collection of resources, each
+        resource will have it's own relevant meta data. In some rare cases, meta may not
+        apply to individual resources, and may appear in the root document. These will be
+        clearly labeled.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - container
+    - name: filter
+      in: query
+      # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706
+      style: deepObject
+      required: false
+      description: |
+        ## Filter Field 
+        The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
+      schema:
+        type: object
+        properties:
+          location:
+            type: string
+            description: |
+              `filter[location]=value` List only those attached volumes available at the specified location.
+          server:
+            type: string
+            description: |
+              `filter[server-id]=value` List only those attached volumes attached to the specified server.
+          cluster:
+            type: string
+            description: |
+              `filter[search]=value` List only those attached volumes within the specified cluster.
+          state:
+            type: string
+            description: |
+              `filter[state]=value1,value2` state filtering will allow you to filter by the attached volume's current state.
+    - $ref: ../../../../components/parameters/SortParam.yml
+    - $ref: ../../../../components/parameters/PageParam.yml
+  responses:
+    200:
+      description: Returns a list of attachable volumes.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: ../../../../components/schemas/infrastructure/attachable-volumes/AttachableVolume.yml
+              includes:
+                type: object
+                properties:
+                  creators:
+                    $ref: ../../../../components/schemas/includes/CreatorInclude.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
+
+post:
+  operationId: "createAttachableVolume"
+  summary: Create Attachable Volume
+  description: Requires the `attachable-volumes-manage` capability.
+  tags:
+    - Attachable Volumes
+  parameters: []
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - name
+            - cluster
+            - identifier
+            - location_id
+            - source
+            - options
+          properties:
+            name:
+              type: string
+              description: A custom name for the attachable volume.
+            identifier:
+              $ref: ../../../../components/schemas/Identifier.yml
+            acl:
+              anyOf:
+                - $ref: ../../../../components/schemas/common/ACL.yml
+                - type: "null"
+            cluster:
+              type: string
+              description: The cluster this attachable volume is associated with.
+            location_id:
+              $ref: ../../../../components/schemas/ID.yml
+            source:
+              $ref: ../../../../components/schemas/infrastructure/attachable-volumes/sources/AttachableVolumeSource.yml
+            options:
+              $ref: ../../../../components/schemas/infrastructure/attachable-volumes/AttachableVolumeOptions.yml
+            about:
+              type: object
+              description: Additional details about the attachable volume.
+              required:
+                - description
+              properties:
+                description:
+                  type: string
+                  description: A custom description for this attachable volume.
+  responses:
+    201:
+      description: Returns an attachable volume.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/infrastructure/attachable-volumes/AttachableVolume.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml

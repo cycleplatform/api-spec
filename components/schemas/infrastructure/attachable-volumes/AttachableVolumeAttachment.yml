@@ -1,0 +1,22 @@
+title: AttachableVolumeAttachment
+type: object
+description: >
+  Represents where the volume is currently attached.
+required:
+  - mode
+  - server_id
+  - container_id
+  - instance_id
+properties:
+  mode:
+    type: string
+    description: The mode of attachment. `instance` means attached to a single container instance, while `host` makes it available across multiple containers on the same host.
+    enum:
+      - instance
+      - host
+  server_id:
+    $ref: "../../ID.yml"
+  container_id:
+    $ref: "../../ID.yml"
+  instance_id:
+    $ref: "../../ID.yml"
