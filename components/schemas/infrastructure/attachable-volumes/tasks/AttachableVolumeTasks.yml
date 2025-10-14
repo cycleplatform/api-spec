@@ -6,4 +6,4 @@ discriminator:
     detach: AttachableVolumeDetachAction.yml
 oneOf:
   - $ref: AttachableVolumeAttachAction.yml
-  - $ref: AttachableVolumeAttachAction.yml
+  - $ref: AttachableVolumeDetachAction.yml
