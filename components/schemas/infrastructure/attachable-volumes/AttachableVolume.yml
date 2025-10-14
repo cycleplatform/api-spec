@@ -1,4 +1,4 @@
-title: AttachedVolume
+title: AttachableVolume
 type: object
 description: >
   A persistent storage volume within a cluster. Volumes may be
@@ -26,17 +26,12 @@ properties:
       - type: "null"
   location_id:
     $ref: "../../ID.yml"
-  description:
-    description: Optional human-friendly description of the volume.
-    type:
-      - string
-      - "null"
   source:
-    $ref: "./sources/AttachedVolumeSource.yml"
+    $ref: "./sources/AttachableVolumeSource.yml"
   attachment:
     description: Information about the resource the volume is currently attached to.
     anyOf:
-      - $ref: "./AttachedVolumeAttachment.yml"
+      - $ref: "./AttachableVolumeAttachment.yml"
       - type: "null"
   size:
     description: >
@@ -46,8 +41,8 @@ properties:
       - $ref: "../../DataSize.yml"
       - type: "null"
   options:
-    $ref: "./AttachedVolumeOptions.yml"
+    $ref: "./AttachableVolumeOptions.yml"
   state:
-    $ref: "./AttachedVolumeState.yml"
+    $ref: "./AttachableVolumeState.yml"
   events:
-    $ref: "./AttachedVolumeEvents.yml"
+    $ref: "./AttachableVolumeEvents.yml"

@@ -1,4 +1,4 @@
-title: AttachedVolumeAttachment
+title: AttachableVolumeAttachment
 type: object
 description: >
   Represents where the volume is currently attached.

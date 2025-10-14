@@ -1,11 +1,13 @@
-title: AttachedVolumeSource
+title: AttachableVolumeSource
 description: |
   The source information for this volume.
 oneOf:
   - $ref: ./san-iscsi/SourceSanIscsi.yml
   - $ref: ./ceph-rbd/SourceCephRbd.yml
+  - $ref: ./aws-ebs/SourceAwsEbs.yml
 discriminator:
   propertyName: type
   mapping:
     san-iscsi: ./san-iscsi/SourceSanIscsi.yml
     ceph-rbd: ./ceph-rbd/SourceCephRbd.yml
+    aws-ebs: ./aws-ebs/SourceAwsEbs.yml
