@@ -10,7 +10,7 @@ properties:
   type:
     type: string
     enum:
-      - ceph-rdb
+      - ceph-rbd
   details:
     type: object
     required:
