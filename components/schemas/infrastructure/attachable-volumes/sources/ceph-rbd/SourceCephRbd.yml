@@ -4,26 +4,31 @@ description: >
   A Ceph RBD volume source. Defines monitor endpoints, optional cluster FSID,
   client identity (CephX), and the specific image to attach.
 required:
-  - monitors
-  - client
-  - image
+  - details
 properties:
-  monitors:
-    description: >
-      Ceph monitor endpoints used by the client to discover the cluster.
-      Typically 1-3 endpoints are provided.
-    anyOf:
-      - type: array
-        items:
-          $ref: "./SourceCephRbdMonitor.yml"
-      - type: "null"
-  fsid:
-    type: string
-    description: >
-      Ceph cluster FSID (UUID). Optional; used for additional validation or
-      to ensure the client connects to the intended cluster.
-    format: uuid
-  client:
-    $ref: "./SourceCephRbdClientIdentity.yml"
-  image:
-    $ref: "./SourceCephRbdImageRef.yml"
+  details:
+    type: object
+    required:
+      - monitors
+      - client
+      - image
+    properties:
+      monitors:
+        description: >
+          Ceph monitor endpoints used by the client to discover the cluster.
+          Typically 1-3 endpoints are provided.
+        anyOf:
+          - type: array
+            items:
+              $ref: "./SourceCephRbdMonitor.yml"
+          - type: "null"
+      fsid:
+        type: string
+        description: >
+          Ceph cluster FSID (UUID). Optional; used for additional validation or
+          to ensure the client connects to the intended cluster.
+        format: uuid
+      client:
+        $ref: "./SourceCephRbdClientIdentity.yml"
+      image:
+        $ref: "./SourceCephRbdImageRef.yml"
