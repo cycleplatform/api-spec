@@ -95,7 +95,9 @@ post:
               type: string
               description: A custom name for the attachable volume.
             identifier:
-              $ref: ../../../../components/schemas/Identifier.yml
+              oneOf:
+                - $ref: ../../../../components/schemas/Identifier.yml
+                - type: "null"
             acl:
               anyOf:
                 - $ref: ../../../../components/schemas/common/ACL.yml
@@ -110,14 +112,16 @@ post:
             options:
               $ref: ../../../../components/schemas/infrastructure/attachable-volumes/AttachableVolumeOptions.yml
             about:
-              type: object
-              description: Additional details about the attachable volume.
-              required:
-                - description
-              properties:
-                description:
-                  type: string
-                  description: A custom description for this attachable volume.
+              oneOf:
+                - type: object
+                  description: Additional details about the attachable volume.
+                  required:
+                    - description
+                  properties:
+                    description:
+                      type: string
+                      description: A custom description for this attachable volume.
+                - type: "null"
   responses:
     201:
       description: Returns an attachable volume.
