@@ -4,8 +4,13 @@ description: >
   An AWS EBS volume source. Defines how to authenticate to AWS and which EBS
   volume to attach.
 required:
+  - type
   - details
 properties:
+  type:
+    type: string
+    enum:
+      - aws-ebs
   details:
     type: object
     required:

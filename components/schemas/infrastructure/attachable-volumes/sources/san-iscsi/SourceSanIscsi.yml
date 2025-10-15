@@ -4,8 +4,13 @@ description: >
   A SAN iSCSI volume source. Defines one or more iSCSI targets and the LUN
   number to attach.
 required:
+  - type
   - details
 properties:
+  type:
+    type: string
+    enum:
+      - san-iscsi
   details:
     type: object
     required:

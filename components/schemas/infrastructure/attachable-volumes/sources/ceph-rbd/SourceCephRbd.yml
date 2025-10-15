@@ -4,8 +4,13 @@ description: >
   A Ceph RBD volume source. Defines monitor endpoints, optional cluster FSID,
   client identity (CephX), and the specific image to attach.
 required:
+  - type
   - details
 properties:
+  type:
+    type: string
+    enum:
+      - ceph-rdb
   details:
     type: object
     required:
