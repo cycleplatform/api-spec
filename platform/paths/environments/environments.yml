@@ -115,7 +115,9 @@ post:
               type: string
               description: A user defined name for the Environment.
             identifier:
-              $ref: ../../../components/schemas/Identifier.yml
+              oneOf:
+                - $ref: ../../../components/schemas/Identifier.yml
+                - type: "null"
             acl:
               anyOf:
                 - $ref: ../../../components/schemas/common/ACL.yml
