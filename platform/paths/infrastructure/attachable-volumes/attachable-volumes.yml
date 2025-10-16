@@ -86,7 +86,6 @@ post:
           required:
             - name
             - cluster
-            - identifier
             - location_id
             - source
             - options
