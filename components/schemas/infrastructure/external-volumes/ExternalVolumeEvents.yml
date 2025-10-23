@@ -1,4 +1,4 @@
-title: AttachableVolumeEvents
+title: ExternalVolumeEvents
 type: object
 description: Timestamps for events that happen over the lifetime of the attached volume.
 required:

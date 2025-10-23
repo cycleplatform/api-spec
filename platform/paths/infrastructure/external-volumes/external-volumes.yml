@@ -1,9 +1,9 @@
 get:
-  operationId: "getAttachableVolumes"
-  summary: List Attachable Volumes
-  description: Requires the `attachable-volumes-view` capability.
+  operationId: "getExternalVolumes"
+  summary: List External Volumes
+  description: Requires the `external-volumes-view` capability.
   tags:
-    - Attachable Volumes
+    - External Volumes
   parameters:
     - name: meta
       in: query
@@ -51,7 +51,7 @@ get:
     - $ref: ../../../../components/parameters/PageParam.yml
   responses:
     200:
-      description: Returns a list of attachable volumes.
+      description: Returns a list of external volumes.
       content:
         application/json:
           schema:
@@ -62,7 +62,7 @@ get:
               data:
                 type: array
                 items:
-                  $ref: ../../../../components/schemas/infrastructure/attachable-volumes/AttachableVolume.yml
+                  $ref: ../../../../components/schemas/infrastructure/external-volumes/ExternalVolume.yml
               includes:
                 type: object
                 properties:
@@ -72,11 +72,11 @@ get:
       $ref: ../../../../components/responses/errors/DefaultError.yml
 
 post:
-  operationId: "createAttachableVolume"
-  summary: Create Attachable Volume
-  description: Requires the `attachable-volumes-manage` capability.
+  operationId: "createExternalVolume"
+  summary: Create External Volume
+  description: Requires the `external-volumes-manage` capability.
   tags:
-    - Attachable Volumes
+    - External Volumes
   parameters: []
   requestBody:
     content:
@@ -93,7 +93,7 @@ post:
           properties:
             name:
               type: string
-              description: A custom name for the attachable volume.
+              description: A custom name for the external volume.
             identifier:
               oneOf:
                 - $ref: ../../../../components/schemas/Identifier.yml
@@ -104,27 +104,27 @@ post:
                 - type: "null"
             cluster:
               type: string
-              description: The cluster this attachable volume is associated with.
+              description: The cluster this external volume is associated with.
             location_id:
               $ref: ../../../../components/schemas/ID.yml
             source:
-              $ref: ../../../../components/schemas/infrastructure/attachable-volumes/sources/AttachableVolumeSource.yml
+              $ref: ../../../../components/schemas/infrastructure/external-volumes/sources/ExternalVolumeSource.yml
             options:
-              $ref: ../../../../components/schemas/infrastructure/attachable-volumes/AttachableVolumeOptions.yml
+              $ref: ../../../../components/schemas/infrastructure/external-volumes/ExternalVolumeOptions.yml
             about:
               oneOf:
                 - type: object
-                  description: Additional details about the attachable volume.
+                  description: Additional details about the external volume.
                   required:
                     - description
                   properties:
                     description:
                       type: string
-                      description: A custom description for this attachable volume.
+                      description: A custom description for this external volume.
                 - type: "null"
   responses:
     201:
-      description: Returns an attachable volume.
+      description: Returns an external volume.
       content:
         application/json:
           schema:
@@ -133,6 +133,6 @@ post:
               - data
             properties:
               data:
-                $ref: ../../../../components/schemas/infrastructure/attachable-volumes/AttachableVolume.yml
+                $ref: ../../../../components/schemas/infrastructure/external-volumes/ExternalVolume.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml

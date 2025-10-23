@@ -1,4 +1,4 @@
-title: AttachableVolumeState
+title: ExternalVolumeState
 allOf:
   - required:
       - current

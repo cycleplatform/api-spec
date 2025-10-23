@@ -1,0 +1,9 @@
+title: ExternalVolumeTask
+discriminator:
+  propertyName: action
+  mapping:
+    attach: ExternalVolumeAttachAction.yml
+    detach: ExternalVolumeDetachAction.yml
+oneOf:
+  - $ref: ExternalVolumeAttachAction.yml
+  - $ref: ExternalVolumeDetachAction.yml

@@ -1,4 +1,4 @@
-title: AttachableVolumeSource
+title: ExternalVolumeSource
 description: |
   The source information for this volume.
 oneOf:

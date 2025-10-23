@@ -1,5 +1,5 @@
-title: AttachableVolumeDetachAction
-description: A task to detach an attachable volume from an instance.
+title: ExternalVolumeDetachAction
+description: A task to detach an external volume from an instance.
 type: object
 required:
   - action

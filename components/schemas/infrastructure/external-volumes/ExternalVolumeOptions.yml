@@ -1,4 +1,4 @@
-title: AttachableVolumeOptions
+title: ExternalVolumeOptions
 type: object
 description: Configuration options controlling the behavior of the volume.
 required:

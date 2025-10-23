@@ -1,5 +1,5 @@
-title: AttachableVolumeAttachAction
-description: A task to attach an attachable volume.
+title: ExternalVolumeAttachAction
+description: A task to attach an external volume.
 type: object
 required:
   - action

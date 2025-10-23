@@ -1,0 +1,9 @@
+title: ExternalVolumeAbout
+type: object
+description: Additional details about the external volume.
+required:
+  - description
+properties:
+  description:
+    description: Custom details about this external volume.
+    type: string

@@ -1,4 +1,4 @@
-title: AttachableVolume
+title: ExternalVolume
 type: object
 description: >
   A persistent storage volume within a cluster. Volumes may be
@@ -22,9 +22,9 @@ properties:
     $ref: "../../HubID.yml"
   name:
     type: string
-    description: The name of the attachable volume.
+    description: The name of the external volume.
   about:
-    $ref: "./AttachableVolumeAbout.yml"
+    $ref: "./ExternalVolumeAbout.yml"
   cluster:
     $ref: "../../Identifier.yml"
   identifier:
@@ -34,24 +34,24 @@ properties:
   location_id:
     $ref: "../../ID.yml"
   source:
-    $ref: "./sources/AttachableVolumeSource.yml"
+    $ref: "./sources/ExternalVolumeSource.yml"
   attachment:
-    description: Information about the resource the attachable volume is currently attached to.
+    description: Information about the resource the external volume is currently attached to.
     anyOf:
-      - $ref: "./AttachableVolumeAttachment.yml"
+      - $ref: "./ExternalVolumeAttachment.yml"
       - type: "null"
   size:
     description: >
-      Size of the attachable volume; may be null or omitted if the size has not yet
+      Size of the external volume; may be null or omitted if the size has not yet
       been determined.
     anyOf:
       - $ref: "../../DataSize.yml"
       - type: "null"
   options:
-    $ref: "./AttachableVolumeOptions.yml"
+    $ref: "./ExternalVolumeOptions.yml"
   state:
-    $ref: "./AttachableVolumeState.yml"
+    $ref: "./ExternalVolumeState.yml"
   events:
-    $ref: "./AttachableVolumeEvents.yml"
+    $ref: "./ExternalVolumeEvents.yml"
   meta:
-    $ref: "./AttachableVolumeMeta.yml"
+    $ref: "./ExternalVolumeMeta.yml"
