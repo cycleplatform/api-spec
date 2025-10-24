@@ -43,7 +43,7 @@ properties:
                 description: The attachment mode for the external volume.
                 enum: [instance, host]
               - $ref: StackVariable.yml
-      - type: StackVariable.yml
+      - $ref: StackVariable.yml
       - type: "null"
   destination:
     description: The path this volume should be mounted at inside the container.
