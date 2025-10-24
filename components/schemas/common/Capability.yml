@@ -1,9 +1,9 @@
 type: string
 description: A capability that a user or API key that represents what an API key or a user can do.
 enum:
-  # Attachable Volumes
-  - attachable-volumes-view
-  - attachable-volumes-manage
+  # External Volumes
+  - external-volumes-view
+  - external-volumes-manage
 
   # API Keys
   - api-keys-manage

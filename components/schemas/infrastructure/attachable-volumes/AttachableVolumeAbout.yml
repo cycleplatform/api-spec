@@ -1,9 +1,0 @@
-title: AttachableVolumeAbout
-type: object
-description: Additional details about the attachable volume.
-required:
-  - description
-properties:
-  description:
-    description: Custom details about this attachable volume.
-    type: string

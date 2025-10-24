@@ -1,14 +1,14 @@
 post:
-  operationId: "createAttachableVolumeJob"
-  summary: Create Attachable Volume Job
+  operationId: "createExternalVolumeJob"
+  summary: Create External Volume Job
   description: |
-    Create a job for an attachable volume.
+    Create a job for an external volume.
 
-    Requires the `attachable-volumes-manage` capability.
+    Requires the `external-volumes-manage` capability.
   tags:
-    - Attachable Volumes
+    - External Volumes
   parameters:
-    - name: attachableVolumeId
+    - name: externalVolumeId
       description: The ID of the attached volume.
       in: path
       required: true
@@ -19,7 +19,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: ../../../../components/schemas/infrastructure/attachable-volumes/tasks/AttachableVolumeTasks.yml
+          $ref: ../../../../components/schemas/infrastructure/external-volumes/tasks/ExternalVolumeTasks.yml
   responses:
     202:
       description: Returns a job descriptor.

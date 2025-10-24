@@ -1,21 +1,21 @@
 patch:
-  operationId: "updateAttachableVolumeAccess"
-  summary: Update Attachable Volume Access
+  operationId: "updateExternalVolumeAccess"
+  summary: Update External Volume Access
   description: |
-    Updates the ACL of the specified attachable volume.
+    Updates the ACL of the specified external volume.
 
-    Requires the `attachable-volumes-manage` capability.
+    Requires the `external-volumes-manage` capability.
   tags:
-    - Attachable Volumes
+    - External Volumes
   parameters:
-    - name: attachableVolumeId
-      description: The ID of the attachable volume.
+    - name: externalVolumeId
+      description: The ID of the external volume.
       in: path
       required: true
       schema:
         type: string
   requestBody:
-    description: Parameters for updating the attachable volume ACL.
+    description: Parameters for updating the external volume ACL.
     content:
       application/json:
         schema:
@@ -27,7 +27,7 @@ patch:
                 - type: "null"
   responses:
     200:
-      description: Returns the updated attachable volume.
+      description: Returns the updated external volume.
       content:
         application/json:
           schema:
@@ -36,6 +36,6 @@ patch:
               - data
             properties:
               data:
-                $ref: ../../../../components/schemas/infrastructure/attachable-volumes/AttachableVolume.yml
+                $ref: ../../../../components/schemas/infrastructure/external-volumes/ExternalVolume.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
