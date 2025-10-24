@@ -2,38 +2,42 @@ title: VirtualMachineVolumeConfig
 type: object
 description: |
   Represents the configuration for a volume attached to a virtual machine.
+required:
+  - identifier
+  - read_only
 properties:
   local:
     anyOf:
       - type: object
+        required:
+          - max_size
         properties:
           max_size:
             type: string
             description: The maximum size allowed for the local volume.
-            examples:
-              - 100G
+            examples: [100G]
           storage_pool:
             anyOf:
               - type: boolean
               - type: "null"
             description: Indicates if the volume is part of a storage pool.
-        required:
-          - max_size
       - type: "null"
     description: Configuration details for a local volume.
-  san:
+  external:
     anyOf:
       - type: object
-        properties:
-          target_id:
-            $ref: ../../../ID.yml
-            description: The ID of the SAN target.
-          lun_number:
-            type: integer
-            description: The LUN for the SAN target to attach
         required:
-          - target_id
-          - lun_number
+          - mode
+        properties:
+          identifier:
+            oneOf:
+              - $ref: ../../../Identifier.yml
+              - type: "null"
+            description: The identifier of the external volume.
+          mode:
+            type: string
+            enum: [instance, host]
+            description: The attachment mode for the external volume.
       - type: "null"
     description: Configuration details for a SAN volume.
   identifier:
@@ -41,6 +45,3 @@ properties:
   read_only:
     type: boolean
     description: Specifies if the volume is mounted as read-only.
-required:
-  - identifier
-  - read_only

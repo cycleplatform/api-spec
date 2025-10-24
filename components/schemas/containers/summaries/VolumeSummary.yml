@@ -13,3 +13,8 @@ properties:
     description: A unique hash for the given volume.
   config:
     "$ref": "../config/ContainerVolume.yml"
+  external:
+    description: The ID of external volume, if applicable.
+    oneOf:
+      - $ref: ../../ID.yml
+      - type: "null"
