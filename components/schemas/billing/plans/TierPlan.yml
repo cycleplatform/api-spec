@@ -76,7 +76,7 @@ properties:
         type: boolean
       virtual_provider:
         type: boolean
-      san:
+      external_volumes:
         type: boolean
   max_daily_api_requests:
     type:
