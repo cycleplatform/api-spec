@@ -25,6 +25,26 @@ properties:
               - type: boolean
               - $ref: StackVariable.yml
       - $ref: StackVariable.yml
+  external:
+    anyOf:
+      - type: object
+        required:
+          - mode
+        properties:
+          identifier:
+            oneOf:
+              - $ref: ../../components/schemas/Identifier.yml
+              - $ref: StackVariable.yml
+              - type: "null"
+            description: The identifier of the external volume.
+          mode:
+            oneOf:
+              - type: string
+                description: The attachment mode for the external volume.
+                enum: [instance, host]
+              - $ref: StackVariable.yml
+      - $ref: StackVariable.yml
+      - type: "null"
   destination:
     description: The path this volume should be mounted at inside the container.
     oneOf:
