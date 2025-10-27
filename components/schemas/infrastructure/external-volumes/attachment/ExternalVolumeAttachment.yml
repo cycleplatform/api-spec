@@ -1,0 +1,14 @@
+# ExternalVolumeAttachment.yml
+title: ExternalVolumeAttachment
+type: object
+description: Attachment configuration for an external volume.
+discriminator:
+  propertyName: mode
+  mapping:
+    instance: ExternalVolumeAttachmentInstance.yml
+    server: ExternalVolumeAttachmentServer.yml
+    region: ExternalVolumeAttachmentRegion.yml
+oneOf:
+  - $ref: ExternalVolumeAttachmentInstance.yml
+  - $ref: ExternalVolumeAttachmentServer.yml
+  - $ref: ExternalVolumeAttachmentRegion.yml

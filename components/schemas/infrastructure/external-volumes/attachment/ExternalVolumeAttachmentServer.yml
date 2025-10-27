@@ -1,0 +1,16 @@
+title: ExternalVolumeAttachmentServer
+type: object
+required:
+  - mode
+  - details
+properties:
+  mode:
+    type: string
+    enum: [server]
+  details:
+    type: object
+    required:
+      - server_id
+    properties:
+      server_id:
+        $ref: ../../../ID.yml

@@ -1,0 +1,25 @@
+# ExternalVolumeAttachmentInstance.yml
+title: ExternalVolumeAttachmentInstance
+type: object
+required:
+  - mode
+  - details
+properties:
+  mode:
+    type: string
+    enum: [instance]
+  details:
+    type: object
+    required:
+      - server_id
+    properties:
+      server_id:
+        $ref: ../../../ID.yml
+      container_id:
+        oneOf:
+          - $ref: ../../../ID.yml
+          - type: "null"
+      instance_id:
+        oneOf:
+          - $ref: ../../../ID.yml
+          - type: "null"

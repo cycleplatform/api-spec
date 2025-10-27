@@ -1,0 +1,18 @@
+title: ExternalVolumeAttachmentRegion
+type: object
+required:
+  - mode
+  - details
+properties:
+  mode:
+    type: string
+    enum: [region]
+  details:
+    type: object
+    required:
+      - server_ids
+    properties:
+      server_ids:
+        type: array
+        items:
+          $ref: ../../../ID.yml
