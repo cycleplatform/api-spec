@@ -1,0 +1,6 @@
+title: ExternalVolumeAttachmentBlock
+type: object
+description: Details for a block attachment. Present when `type` is `block`.
+# No fields today, reserved for future expansion
+properties: {}
+additionalProperties: false

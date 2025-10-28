@@ -1,14 +1,36 @@
-# ExternalVolumeAttachment.yml
 title: ExternalVolumeAttachment
 type: object
 description: Attachment configuration for an external volume.
-discriminator:
-  propertyName: mode
-  mapping:
-    instance: ExternalVolumeAttachmentInstance.yml
-    server: ExternalVolumeAttachmentServer.yml
-    region: ExternalVolumeAttachmentRegion.yml
-oneOf:
-  - $ref: ExternalVolumeAttachmentInstance.yml
-  - $ref: ExternalVolumeAttachmentServer.yml
-  - $ref: ExternalVolumeAttachmentRegion.yml
+required: [mode, type, details]
+properties:
+  mode:
+    type: string
+    description: >
+      The access mode for the attachment.
+
+      - `single-instance-writer`: one instance may write.
+      - `single-instance-read-only`: one instance may read only.
+      - `single-node-writer`: multiple containers on a single node may write.
+      - `single-node-read-only`: multiple containers on a single node may read only.
+      - `multi-node-writer`: multiple nodes may write.
+      - `multi-node-read-only`: multiple nodes may read only.
+    enum:
+      - single-instance-writer
+      - single-instance-read-only
+      - single-node-writer
+      - single-node-read-only
+      - multi-node-writer
+      - multi-node-read-only
+allOf:
+  - oneOf:
+      - properties:
+          type:
+            const: block
+          details:
+            $ref: ./ExternalVolumeAttachmentBlock.yml
+      - properties:
+          type:
+            const: filesystem
+          details:
+            $ref: ./ExternalVolumeAttachmentFileSystem.yml
+  -

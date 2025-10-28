@@ -1,0 +1,6 @@
+title: ExternalVolumeAttachmentFileSystem
+type: object
+description: Details for a filesystem attachment. Present when `type` is `filesystem`.
+# No fields today, reserved for future expansion
+properties: {}
+additionalProperties: false
