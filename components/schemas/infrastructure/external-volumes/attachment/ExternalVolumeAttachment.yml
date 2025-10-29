@@ -13,7 +13,6 @@ properties:
       - single-node-read-only
       - multi-node-writer
       - multi-node-read-only
-
 oneOf:
   - type: object
     required: [type, details]
