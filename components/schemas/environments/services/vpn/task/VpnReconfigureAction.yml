@@ -35,6 +35,22 @@ properties:
           allow_internet:
             type: boolean
             description: If true, routes all traffic through the VPN, even non-Cycle traffic.
+          custom_directives:
+            type:
+              - string
+              - "null"
+            description: >
+              Additional OpenVPN directives that will be appended to the server configuration
+              on service start. Each line should follow standard OpenVPN syntax.
+            examples:
+              - |
+                client-to-client
+                duplicate-cn
+                persist-key
+                persist-tun
+              - |
+                verb 3
+                mute 10
           auth:
             type: object
             description: Auth configuration for the VPN.
