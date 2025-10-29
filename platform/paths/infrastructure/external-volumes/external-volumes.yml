@@ -87,6 +87,8 @@ post:
             - name
             - cluster
             - location_id
+            - server_ids
+            - attachment
             - source
             - options
           properties:
@@ -106,8 +108,15 @@ post:
               description: The cluster this external volume is associated with.
             location_id:
               $ref: ../../../../components/schemas/ID.yml
+            server_ids:
+              type: array
+              items:
+                $ref: ../../../../components/schemas/ID.yml
             source:
               $ref: ../../../../components/schemas/infrastructure/external-volumes/sources/ExternalVolumeSource.yml
+            attachment:
+              description: Information about the resource the external volume is currently attached to.
+              $ref: "../../../../components/schemas/infrastructure/external-volumes/attachment/ExternalVolumeAttachment.yml"
             options:
               $ref: ../../../../components/schemas/infrastructure/external-volumes/ExternalVolumeOptions.yml
             about:

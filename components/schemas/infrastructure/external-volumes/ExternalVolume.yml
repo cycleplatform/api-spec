@@ -11,6 +11,7 @@ required:
   - about
   - cluster
   - location_id
+  - server_ids
   - source
   - options
   - state
@@ -33,13 +34,15 @@ properties:
       - type: "null"
   location_id:
     $ref: "../../ID.yml"
+  server_ids:
+    type: array
+    items:
+      $ref: "../../ID.yml"
   source:
     $ref: "./sources/ExternalVolumeSource.yml"
   attachment:
     description: Information about the resource the external volume is currently attached to.
-    oneOf:
-      - $ref: "./attachment/ExternalVolumeAttachment.yml"
-      - type: "null"
+    $ref: "./attachment/ExternalVolumeAttachment.yml"
   size:
     description: >
       Size of the external volume; may be null or omitted if the size has not yet

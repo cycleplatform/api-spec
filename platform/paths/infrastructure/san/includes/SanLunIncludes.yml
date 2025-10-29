@@ -1,8 +1,0 @@
-title: SanLunIncludes
-description: All includable resources linkable to the given LUN.
-type: object
-properties:
-  targets:
-    type: object
-    additionalProperties:
-      $ref: ../../../../../components/schemas/infrastructure/san/targets/SanTarget.yml
