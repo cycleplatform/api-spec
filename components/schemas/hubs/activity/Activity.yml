@@ -295,9 +295,6 @@ properties:
       - infrastructure.virtual-providers.iso.delete
       - infrastructure.virtual-providers.iso.task.delete
 
-      - infrastructure.server.san.sync
-      - infrastructure.server.task.san.sync
-
       - infrastructure.server.task.delete
       - infrastructure.server.task.restart
       - infrastructure.server.services.sftp.auth

@@ -10,7 +10,8 @@ properties:
       - volumes.reconfigure
     description: The action to take.
   contents:
-    description: An array of volume objects to be reconfigured.
-    type: array
-    items:
-      "$ref": "../summaries/VolumeSummary.yml"
+    description: |
+      A map of volume objects where the key is the id and the value is the volume's config.
+    type: object
+    additionalProperties:
+      $ref: ../config/ContainerVolume.yml
