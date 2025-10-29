@@ -1,6 +1,24 @@
 title: ExternalVolumeAttachmentFileSystem
 type: object
-description: Details for a filesystem attachment. Present when `type` is `filesystem`.
-# No fields today, reserved for future expansion
-properties: {}
-additionalProperties: false
+description: Configuration for a filesystem volume attachment.
+required: [type, mode, details]
+properties:
+  type:
+    type: string
+    enum: [filesystem]
+  mode:
+    type: string
+    description: The access mode for the attachment.
+    enum:
+      - single-instance-writer
+      - single-instance-read-only
+      - single-node-writer
+      - single-node-read-only
+      - multi-node-writer
+      - multi-node-read-only
+  details:
+    type: object
+    description: Details for a filesystem attachment. Present when `type` is `filesystem`.
+    # No fields today, reserved for future expansion
+    properties: {}
+    additionalProperties: false
