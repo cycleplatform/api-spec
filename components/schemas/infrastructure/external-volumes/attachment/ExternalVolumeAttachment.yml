@@ -5,7 +5,7 @@ discriminator:
   propertyName: type
   mapping:
     block: ./ExternalVolumeAttachmentBlock.yml
-    filesystem: ./ExternalVolumeAttachmentFilesystem.yml
+    filesystem: ./ExternalVolumeAttachmentFileSystem.yml
 oneOf:
   - $ref: ./ExternalVolumeAttachmentBlock.yml
-  - $ref: ./ExternalVolumeAttachmentFilesystem.yml
+  - $ref: ./ExternalVolumeAttachmentFileSystem.yml
