@@ -30,4 +30,4 @@ oneOf:
         type: string
         enum: [filesystem]
       details:
-        $ref: ./ExternalVolumeAttachmentFilesystem.yml
+        $ref: ./ExternalVolumeAttachmentFileSystem.yml
