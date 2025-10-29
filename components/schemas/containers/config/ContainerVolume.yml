@@ -36,18 +36,17 @@ properties:
   external:
     anyOf:
       - type: object
-        required:
-          - mode
         properties:
           identifier:
             oneOf:
               - $ref: ../../Identifier.yml
               - type: "null"
             description: The identifier of the external volume.
-          mode:
-            type: string
-            description: The attachment mode for the external volume
-            enum: [instance, host]
+          id:
+            oneOf:
+              - $ref: ../../ID.yml
+              - type: "null"
+            description: The id of the external volume.
       - type: "null"
   destination:
     type: string
