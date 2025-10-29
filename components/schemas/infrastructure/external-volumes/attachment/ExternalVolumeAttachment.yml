@@ -5,15 +5,7 @@ required: [mode, type, details]
 properties:
   mode:
     type: string
-    description: >
-      The access mode for the attachment.
-
-      - `single-instance-writer`: one instance may write.
-      - `single-instance-read-only`: one instance may read only.
-      - `single-node-writer`: multiple containers on a single node may write.
-      - `single-node-read-only`: multiple containers on a single node may read only.
-      - `multi-node-writer`: multiple nodes may write.
-      - `multi-node-read-only`: multiple nodes may read only.
+    description: The access mode for the attachment.
     enum:
       - single-instance-writer
       - single-instance-read-only
@@ -21,16 +13,22 @@ properties:
       - single-node-read-only
       - multi-node-writer
       - multi-node-read-only
-allOf:
-  - oneOf:
-      - properties:
-          type:
-            const: block
-          details:
-            $ref: ./ExternalVolumeAttachmentBlock.yml
-      - properties:
-          type:
-            const: filesystem
-          details:
-            $ref: ./ExternalVolumeAttachmentFileSystem.yml
-  -
+
+oneOf:
+  - type: object
+    required: [type, details]
+    properties:
+      type:
+        type: string
+        enum: [block]
+      details:
+        $ref: ./ExternalVolumeAttachmentBlock.yml
+
+  - type: object
+    required: [type, details]
+    properties:
+      type:
+        type: string
+        enum: [filesystem]
+      details:
+        $ref: ./ExternalVolumeAttachmentFilesystem.yml

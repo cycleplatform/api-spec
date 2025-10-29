@@ -28,7 +28,7 @@ properties:
   cluster:
     $ref: "../../Identifier.yml"
   identifier:
-    anyOf:
+    oneOf:
       - $ref: "../../Identifier.yml"
       - type: "null"
   location_id:
@@ -37,14 +37,14 @@ properties:
     $ref: "./sources/ExternalVolumeSource.yml"
   attachment:
     description: Information about the resource the external volume is currently attached to.
-    anyOf:
+    oneOf:
       - $ref: "./attachment/ExternalVolumeAttachment.yml"
       - type: "null"
   size:
     description: >
       Size of the external volume; may be null or omitted if the size has not yet
       been determined.
-    anyOf:
+    oneOf:
       - $ref: "../../DataSize.yml"
       - type: "null"
   options:
