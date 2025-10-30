@@ -8,12 +8,9 @@ discriminator:
     url: types/VirtualMachineImageSourceUrl.yml
     ipxe: types/VirtualMachineImageSourceIpxe.yml
     base: types/VirtualMachineImageSourceBase.yml
-    san: types/VirtualMachineImageSourceSan.yml
+    external-volume: types/VirtualMachineImageSourceExternalVolume.yml
 oneOf:
   - $ref: types/VirtualMachineImageSourceUrl.yml
   - $ref: types/VirtualMachineImageSourceIpxe.yml
   - $ref: types/VirtualMachineImageSourceBase.yml
-  - $ref: types/VirtualMachineImageSourceSan.yml
-required:
-  - type
-  - details
+  - $ref: types/VirtualMachineImageSourceExternalVolume.yml

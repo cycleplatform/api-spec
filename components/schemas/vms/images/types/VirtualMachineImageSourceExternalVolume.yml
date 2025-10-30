@@ -1,0 +1,24 @@
+title: VirtualMachineImageSourceExternalVolume
+description: A virtual machine image sourced from a SAN target.
+type: object
+required:
+  - type
+  - details
+properties:
+  type:
+    type: string
+    enum:
+      - external-volume
+  details:
+    type: object
+    properties:
+      identifier:
+        description: The identifier of the external volume where the image is located.
+        oneOf:
+          - $ref: ../../../Identifier.yml
+          - type: "null"
+      id:
+        description: The id of the external volume where the image is located.
+        oneOf:
+          - $ref: ../../../ID.yml
+          - type: "null"
