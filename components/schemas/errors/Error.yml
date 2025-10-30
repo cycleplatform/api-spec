@@ -91,8 +91,6 @@ properties:
       - 404.infrastructure.cluster
       - 404.infrastructure.autoscale.group
       - 404.infrastructure.model
-      - 404.infrastructure.san.target
-      - 404.infrastructure.san.lun
       - 404.monitoring.logs.analytics.rule
       - 404.account
       - 404.container
