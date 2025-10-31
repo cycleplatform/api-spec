@@ -4,7 +4,7 @@ get:
   description: |
     Lookup and retrieve a TLS certificate bundle for a specified domain.
 
-    If the `private` parameter is set to `true`, the private key, bundle, and/or CSR will be included. Including these private fields requires the `dns-view` capability.
+    If the `private` parameter is set to `true`, the private key, bundle, and/or CSR will be included. Including these private fields requires the `dns-certs-view` capability.
   tags:
     - TLS
   parameters:
@@ -19,7 +19,7 @@ get:
       in: query
       style: form
       required: false
-      description: "If true, will include the private key, bundle, and/or CSR for this certificate. Requires the `dns-view` capability."
+      description: "If true, will include the private key, bundle, and/or CSR for this certificate. Requires the `dns-certs-view` capability."
       schema:
         type: boolean
   responses:
