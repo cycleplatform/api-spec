@@ -61,10 +61,10 @@ get:
             type: string
             description: |
               `filter[cluster]=clusterIdentifier` filtering by cluster.  Enter the cluster identifier and the return will include servers belonging to the specified cluster.
-          location_id:
+          location:
             type: string
             description: |
-              `filter[location_id]=location` filtering by location.  Enter the location id and the return will include servers belonging to the specified location.
+              `filter[location]=location` filtering by location.  Enter the location id and the return will include servers belonging to the specified location.
           providers:
             type: string
             description: |
