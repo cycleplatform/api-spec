@@ -27,12 +27,6 @@ properties:
             items:
               $ref: "./SourceCephRbdMonitor.yml"
           - type: "null"
-      fsid:
-        type: string
-        description: >
-          Ceph cluster FSID (UUID). Optional; used for additional validation or
-          to ensure the client connects to the intended cluster.
-        format: uuid
       client:
         $ref: "./SourceCephRbdClientIdentity.yml"
       image:
