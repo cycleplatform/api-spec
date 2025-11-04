@@ -71,6 +71,8 @@ patch:
             identifier:
               description: The new identifier of the external volume.
               $ref: "../../../../components/schemas/Identifier.yml"
+            options:
+              $ref: ../../../../components/schemas/infrastructure/external-volumes/ExternalVolumeOptions.yml
             about:
               type: object
               properties:

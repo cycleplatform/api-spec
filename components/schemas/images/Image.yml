@@ -70,6 +70,9 @@ properties:
             description: Arguments to pass to the builder during a build of this image.
             additionalProperties:
               type: string
+          use_disk:
+            type: boolean
+            description: If true, will skip using /dev/shm when building an image on factory. Allows for building much larger images.
       - type: "null"
 
   builder:
