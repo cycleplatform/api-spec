@@ -122,6 +122,9 @@ post:
                   description: An object holding key value build time arguments needed for the Image during build time.
                   additionalProperties:
                     type: string
+                use_disk:
+                  type: boolean
+                  description: Flag that will skip using /dev/shm when building an image on factory. Will allow for building much larger images.
             override:
               type: object
               description: An override object to be used for a single Image create request.

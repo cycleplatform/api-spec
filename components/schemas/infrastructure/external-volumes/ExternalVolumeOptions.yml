@@ -2,10 +2,9 @@ title: ExternalVolumeOptions
 type: object
 description: Configuration options controlling the behavior of the volume.
 required:
-  - read_only
+  - create
 properties:
-  read_only:
+  create:
     type: boolean
     description: >
-      When true, the volume is attached as read-only and cannot be modified by
-      the consuming resource.
+      When true, the volume will be created if needed.
