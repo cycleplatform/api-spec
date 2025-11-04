@@ -7,4 +7,4 @@ properties:
   create:
     type: boolean
     description: >
-      When true, the volume will be created if needed.
+      If the volume doesn't exist, attempt to create it on container start.
