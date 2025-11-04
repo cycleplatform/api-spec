@@ -72,7 +72,7 @@ properties:
               type: string
           use_disk:
             type: boolean
-            description: Flag that will skip using /dev/shm when building an image on factory. Will allow for building much larger images.
+            description: Flag that will skip using /dev/shm when building an image on factory. Allows for building much larger images.
       - type: "null"
 
   builder:
