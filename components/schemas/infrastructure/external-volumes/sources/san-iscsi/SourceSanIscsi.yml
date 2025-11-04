@@ -14,17 +14,15 @@ properties:
   details:
     type: object
     required:
-      - targets
+      - integration_ids
       - lun
     properties:
-      targets:
+      integration_ids:
         description: >
-          One or more iSCSI targets that expose the desired LUN; may be null.
-        anyOf:
-          - type: array
-            items:
-              $ref: "./SourceSanIscsiTarget.yml"
-          - type: "null"
+          One or more iSCSI integration IDs to use for authentication.
+        type: array
+        items:
+          $ref: ../../../../ID.yml
       lun:
         type: integer
         format: int32
