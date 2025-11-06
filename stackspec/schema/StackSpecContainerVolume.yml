@@ -33,7 +33,7 @@ properties:
         properties:
           id:
             oneOf:
-              - $ref: ../../components/schemas/Id.yml
+              - $ref: ../../components/schemas/ID.yml
               - $ref: StackVariable.yml
               - type: "null"
             description: The ID of the external volume.
