@@ -27,11 +27,6 @@ properties:
     anyOf:
       - type: object
         properties:
-          identifier:
-            oneOf:
-              - $ref: ../../../Identifier.yml
-              - type: "null"
-            description: The identifier of the external volume.
           id:
             oneOf:
               - $ref: ../../../ID.yml

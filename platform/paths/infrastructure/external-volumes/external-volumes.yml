@@ -19,7 +19,7 @@ get:
         items:
           type: string
           enum:
-            - container
+            - containers
     - name: filter
       in: query
       # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706

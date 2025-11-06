@@ -2,5 +2,7 @@ title: ExternalVolumeMeta
 type: object
 description: A list of meta fields that can be applied to an attached volume.
 properties:
-  container:
-    $ref: ../../containers/Container.yml
+  containers:
+    type: array
+    items:
+      $ref: ../../containers/ContainerSummary.yml

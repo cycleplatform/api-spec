@@ -16,5 +16,8 @@ properties:
   external:
     description: The ID of external volume, if applicable.
     oneOf:
-      - $ref: ../../ID.yml
+      - type: object
+        properties:
+          id:
+            $ref: ../../ID.yml
       - type: "null"

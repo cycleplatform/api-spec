@@ -31,12 +31,12 @@ properties:
         required:
           - mode
         properties:
-          identifier:
+          id:
             oneOf:
-              - $ref: ../../components/schemas/Identifier.yml
+              - $ref: ../../components/schemas/Id.yml
               - $ref: StackVariable.yml
               - type: "null"
-            description: The identifier of the external volume.
+            description: The ID of the external volume.
           mode:
             oneOf:
               - type: string

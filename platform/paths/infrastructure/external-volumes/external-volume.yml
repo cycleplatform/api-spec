@@ -26,7 +26,7 @@ get:
         items:
           type: string
           enum:
-            - container
+            - containers
   responses:
     200:
       description: Returns the requested virtual machine.
