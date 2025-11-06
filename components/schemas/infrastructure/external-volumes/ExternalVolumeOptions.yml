@@ -5,6 +5,13 @@ required:
   - create
 properties:
   create:
-    type: boolean
     description: >
-      If the volume doesn't exist, attempt to create it on container start.
+      If the volume doesn't exist, attempt to create it on container start if create struct defined.
+    oneOf:
+      - type: object
+        required: [size]
+        properties:
+          size:
+            description: Indicates the size of volume to create.
+            $ref: ../../DataSize.yml
+      - type: "null"
