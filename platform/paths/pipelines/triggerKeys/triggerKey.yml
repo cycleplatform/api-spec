@@ -75,7 +75,7 @@ patch:
               - data
             properties:
               data:
-                $ref: ../../../../components/schemas/jobs/JobDescriptor.yml
+                $ref: ../../../../components/schemas/pipelines/trigger-keys/TriggerKey.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
 
