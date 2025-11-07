@@ -588,6 +588,8 @@ paths:
     $ref: "./paths/infrastructure/external-volumes/external-volumes.yml"
   "/v1/infrastructure/external-volumes/{externalVolumeId}":
     $ref: "./paths/infrastructure/external-volumes/external-volume.yml"
+  "/v1/infrastructure/external-volumes/sources":
+    $ref: "./paths/infrastructure/external-volumes/sources.yml"
   "/v1/infrastructure/external-volumes/{externalVolumeId}/access":
     $ref: "./paths/infrastructure/external-volumes/access.yml"
   "/v1/infrastructure/external-volumes/{externalVolumeId}/tasks":
