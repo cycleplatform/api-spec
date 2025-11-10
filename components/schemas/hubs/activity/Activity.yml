@@ -328,6 +328,13 @@ properties:
       - infrastructure.autoscale.group.task.delete
       - infrastructure.autoscale.group.delete
 
+      - infrastructure.external-volume.create
+      - infrastructure.external-volume.update
+      - infrastructure.external-volume.task.delete
+      - infrastructure.external-volume.delete
+      - infrastructure.external-volume.task.servers.reconfigure
+      - infrastructure.external-volume.servers.reconfigure
+
       - infrastructure.cluster.create
       - infrastructure.cluster.update
       - infrastructure.cluster.task.delete

@@ -24,6 +24,7 @@ enum:
   - infrastructure.autoscale.group
   - infrastructure.server
   - infrastructure.cluster
+  - infrastructure.external-volume
   - infrastructure.ips.pool
   - billing.invoice
   - billing.method

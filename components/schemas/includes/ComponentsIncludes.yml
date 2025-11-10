@@ -28,6 +28,7 @@ additionalProperties:
     - $ref: ../billing/invoices/Invoice.yml
     - $ref: ../billing/methods/Method.yml
     - $ref: ../infrastructure/auto-scale/groups/AutoScaleGroup.yml
+    - $ref: ../infrastructure/external-volumes/ExternalVolume.yml
     - $ref: ../pipelines/runs/PipelineRun.yml
     - $ref: ../hubs/roles/Role.yml
     - $ref: ../creators/PublicAccount.yml
