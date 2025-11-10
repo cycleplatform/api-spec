@@ -15,6 +15,10 @@ properties:
   deleted:
     description: The timestamp of when the attached volume was deleted.
     $ref: "../../DateTime.yml"
+  last_verified:
+    $ref: "../../DateTime.yml"
+    description: >
+      Timestamp of the last successful verification event for this volume.
   last_sync:
     $ref: "../../DateTime.yml"
     description: >
