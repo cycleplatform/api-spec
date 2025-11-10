@@ -28,21 +28,13 @@ properties:
   external:
     anyOf:
       - type: object
-        required:
-          - mode
         properties:
           id:
             oneOf:
-              - $ref: ../../components/schemas/ID.yml
+              - $ref: ../../components/schemas/HybridIdentifier.yml
               - $ref: StackVariable.yml
               - type: "null"
             description: The ID of the external volume.
-          mode:
-            oneOf:
-              - type: string
-                description: The attachment mode for the external volume.
-                enum: [instance, host]
-              - $ref: StackVariable.yml
       - $ref: StackVariable.yml
       - type: "null"
   destination:
