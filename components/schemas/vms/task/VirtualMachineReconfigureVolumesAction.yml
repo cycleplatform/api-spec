@@ -10,20 +10,8 @@ properties:
       - volumes.reconfigure
     description: The action to take.
   contents:
-    description: An array of volume objects to be reconfigured.
-    type: array
-    items:
-      type: object
-      description: A summary of relevant volume information.
-      required:
-        - id
-        - hash
-        - config
-      properties:
-        id:
-          "$ref": "../../ID.yml"
-        hash:
-          type: string
-          description: A unique hash for the given volume.
-        config:
-          "$ref": "../config/volumes/VirtualMachineVolumeConfig.yml"
+    description: |
+      A map of volume objects where the key is the id and the value is the volume's config.
+    type: object
+    additionalProperties:
+      $ref: ../config/volumes/VirtualMachineVolumeConfig.yml
