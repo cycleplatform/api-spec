@@ -159,7 +159,7 @@ delete:
               type: object
               properties:
                 force:
-                  description: If force is set to true, this will force delete the hub, even if there are servers running on it.
+                  description: If force is set to true, this will force delete the server, even if there are instances running on it.
                   type: boolean
   responses:
     200:
