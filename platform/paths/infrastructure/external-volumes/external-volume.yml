@@ -107,6 +107,19 @@ delete:
       required: true
       schema:
         type: string
+  requestBody:
+    description: Parameters for deleting a external volume.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            options:
+              type: object
+              properties:
+                source_device:
+                  description: If source device is set to true, this will delete the underlying source device.
+                  type: boolean
   responses:
     202:
       description: Returns a job descriptor.
