@@ -19,7 +19,7 @@ post:
     content:
       application/json:
         schema:
-          $ref: ../../../../components/schemas/infrastructure/external-volumes/tasks/ExternalVolumeTasks.yml
+          $ref: ../../../../components/schemas/infrastructure/external-volumes/tasks/ExternalVolumeTask.yml
   responses:
     202:
       description: Returns a job descriptor.

@@ -1,0 +1,15 @@
+title: ExternalVolumeServersReconfigureAction
+description: A task to reconfigure servers for external volume.
+type: object
+required:
+  - action
+properties:
+  action:
+    type: string
+    enum:
+      - servers.reconfigure
+    description: The name of the action to perform (servers.reconfigure).
+  contents:
+    type: array
+    items:
+      type: string
