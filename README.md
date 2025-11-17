@@ -2,7 +2,7 @@
 
 <a href="https://cycle.io">
 <picture class="red">
-  <source media="(prefers-color-scheme: dark)" srcset="https://cycle.io/global/resources/images/logos/cycle-logo-white.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="https://static.cycle.io/icons/logo/logo-white.svg">
   <source media="(prefers-color-scheme: light)" srcset="https://static.cycle.io/icons/logo/cycle-logo-fullcolor.svg">
   <img alt="cycle" width="300px" src="https://static.cycle.io/icons/logo/cycle-logo-fullcolor.svg">
 </picture>
