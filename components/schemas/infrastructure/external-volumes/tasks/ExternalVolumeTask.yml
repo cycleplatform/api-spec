@@ -1,0 +1,7 @@
+title: ExternalVolumeTask
+discriminator:
+  propertyName: action
+  mapping:
+    servers.reconfigure: ExternalVolumeServersReconfigureAction.yml
+oneOf:
+  - $ref: ExternalVolumeServersReconfigureAction.yml
