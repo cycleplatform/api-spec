@@ -20,6 +20,19 @@ get:
           type: string
           enum:
             - containers
+    - name: include
+      in: query
+      required: false
+      description: |
+        A comma-separated list of include values. Included resources will show up under the root document's `include` field.
+        In the case of applying an include to a collection of resources, if multiple resources share the same include, it will only appear once in the return.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - servers
+            - locations
     - name: filter
       in: query
       # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706
@@ -64,10 +77,7 @@ get:
                 items:
                   $ref: ../../../../components/schemas/infrastructure/external-volumes/ExternalVolume.yml
               includes:
-                type: object
-                properties:
-                  creators:
-                    $ref: ../../../../components/schemas/includes/CreatorInclude.yml
+                $ref: ./includes/ExternalVolumeIncludes.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
 
@@ -77,7 +87,35 @@ post:
   description: Requires the `external-volumes-manage` capability.
   tags:
     - External Volumes
-  parameters: []
+  parameters:
+    - name: meta
+      in: query
+      required: false
+      description:
+        A comma separated list of meta values. Meta values will show up under a resource's
+        `meta` field. In the case of applying a meta to a collection of resources, each
+        resource will have it's own relevant meta data. In some rare cases, meta may not
+        apply to individual resources, and may appear in the root document. These will be
+        clearly labeled.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - containers
+    - name: include
+      in: query
+      required: false
+      description: |
+        A comma-separated list of include values. Included resources will show up under the root document's `include` field.
+        In the case of applying an include to a collection of resources, if multiple resources share the same include, it will only appear once in the return.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - servers
+            - locations
   requestBody:
     content:
       application/json:
@@ -142,5 +180,7 @@ post:
             properties:
               data:
                 $ref: ../../../../components/schemas/infrastructure/external-volumes/ExternalVolume.yml
+              includes:
+                $ref: ./includes/ExternalVolumeIncludes.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
