@@ -586,6 +586,8 @@ paths:
   ## External Volumes
   "/v1/infrastructure/external-volumes":
     $ref: "./paths/infrastructure/external-volumes/external-volumes.yml"
+  "/v1/infrastructure/external-volumes/tasks":
+    $ref: "./paths/infrastructure/external-volumes/bulkTasks.yml"
   "/v1/infrastructure/external-volumes/{externalVolumeId}":
     $ref: "./paths/infrastructure/external-volumes/external-volume.yml"
   "/v1/infrastructure/external-volumes/sources":
