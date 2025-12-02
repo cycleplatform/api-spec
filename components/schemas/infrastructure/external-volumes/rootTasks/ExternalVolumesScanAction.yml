@@ -1,0 +1,21 @@
+title: ExternalVolumesScanAction
+description: A task to scan for available external volumes on a given cluster.
+type: object
+required:
+  - action
+properties:
+  action:
+    type: string
+    description: The action for the external volumes job.
+    enum:
+      - scan
+  contents:
+    type: object
+    description: Scan options used by the platform to create the job.
+    required:
+      - cluster
+    properties:
+      cluster:
+        type: string
+        description: |
+          ID of the cluster to scan for external volumes.

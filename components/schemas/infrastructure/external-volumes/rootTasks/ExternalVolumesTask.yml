@@ -1,0 +1,7 @@
+title: ExternalVolumesTask
+discriminator:
+  propertyName: action
+  mapping:
+    scan: ExternalVolumesScanAction.yml
+oneOf:
+  - $ref: ExternalVolumesScanAction.yml

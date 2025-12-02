@@ -563,7 +563,7 @@ paths:
   "/v1/images/{imageId}/build-log":
     $ref: "./paths/images/buildLog.yml"
   "/v1/images/tasks":
-    $ref: paths/images/bulkTasks.yml
+    $ref: paths/images/rootTasks.yml
   "/v1/images/{imageId}/tasks":
     $ref: "./paths/images/tasks.yml"
 
@@ -586,6 +586,8 @@ paths:
   ## External Volumes
   "/v1/infrastructure/external-volumes":
     $ref: "./paths/infrastructure/external-volumes/external-volumes.yml"
+  "/v1/infrastructure/external-volumes/tasks":
+    $ref: "./paths/infrastructure/external-volumes/rootTasks.yml"
   "/v1/infrastructure/external-volumes/{externalVolumeId}":
     $ref: "./paths/infrastructure/external-volumes/external-volume.yml"
   "/v1/infrastructure/external-volumes/sources":

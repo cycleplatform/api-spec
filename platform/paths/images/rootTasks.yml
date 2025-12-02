@@ -25,7 +25,7 @@ post:
                 - prune
             contents:
               type: object
-              description: Additional contents needed by the platform to create the Job.
+              description: Additional contents needed by the platform to create the job.
               required:
                 - source_ids
               properties:
