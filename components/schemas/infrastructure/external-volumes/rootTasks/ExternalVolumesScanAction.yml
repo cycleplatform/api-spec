@@ -1,5 +1,5 @@
 title: ExternalVolumesScanAction
-description: A task to reconfigure mountable destination servers for external volume.
+description: A task to scan for available external volumes on a given cluster.
 type: object
 required:
   - action
