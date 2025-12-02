@@ -13,26 +13,7 @@ post:
     content:
       application/json:
         schema:
-          type: object
-          required:
-            - action
-            - contents
-          properties:
-            action:
-              type: string
-              description: The action for the external volumes job.
-              enum:
-                - scan
-            contents:
-              type: object
-              description: Scan options used by the platform to create the Job.
-              required:
-                - cluster
-              properties:
-                cluster:
-                  type: string
-                  description: |
-                    ID of the cluster to scan for external volumes.
+          $ref: ../../../../components/schemas/infrastructure/external-volumes/rootTasks/ExternalVolumesTask.yml
 
   responses:
     202:
