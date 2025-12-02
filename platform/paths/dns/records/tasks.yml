@@ -33,7 +33,7 @@ post:
               type: string
               description: The action that the job will take.
               enum:
-                - generate.cert
+                - cert.generate
   responses:
     202:
       description: Returns a Job Descriptor.
