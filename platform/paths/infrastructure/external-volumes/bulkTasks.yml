@@ -2,6 +2,8 @@ post:
   operationId: "createExternalVolumesJob"
   summary: Create External Volumes Job
   description: |
+    Create a job for external volumes.
+
     Requires the `external-volumes-manage` capability.
   tags:
     - External Volumes
