@@ -3,6 +3,7 @@ description: A task to scan for available external volumes on a given cluster.
 type: object
 required:
   - action
+  - contents
 properties:
   action:
     type: string
@@ -14,8 +15,19 @@ properties:
     description: Scan options used by the platform to create the job.
     required:
       - cluster
+      - type
+      - integration_id
     properties:
+      integration_id:
+        $ref: ../../../ID.yml
+      type:
+        type: string
+        enum: [san-iscsi, ceph-rbd, aws-ebs]
       cluster:
         type: string
         description: |
           ID of the cluster to scan for external volumes.
+      server_ids:
+        type: array
+        items:
+          $ref: ../../../ID.yml
