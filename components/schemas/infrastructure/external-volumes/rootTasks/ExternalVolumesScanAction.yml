@@ -19,15 +19,17 @@ properties:
       - integration_id
     properties:
       integration_id:
+        description: ID of the integration to scan for external volumes.
         $ref: ../../../ID.yml
       type:
+        description: Type of external volume system to scan.
         type: string
         enum: [san-iscsi, ceph-rbd, aws-ebs]
       cluster:
-        type: string
-        description: |
-          ID of the cluster to scan for external volumes.
+        description: ID of the cluster to scan for external volumes.
+        $ref: ../../../Identifier.yml
       server_ids:
+        description: Optional list of server IDs to limit the scan scope.
         type: array
         items:
           $ref: ../../../ID.yml
