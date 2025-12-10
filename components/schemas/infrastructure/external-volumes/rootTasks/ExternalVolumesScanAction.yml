@@ -15,13 +15,13 @@ properties:
     description: Scan options used by the platform to create the job.
     required:
       - cluster
-      - type
+      - source_type
       - integration_id
     properties:
       integration_id:
         description: ID of the integration to scan for external volumes.
         $ref: ../../../ID.yml
-      type:
+      source_type:
         description: Type of external volume system to scan.
         type: string
         enum: [san-iscsi, ceph-rbd, aws-ebs]
