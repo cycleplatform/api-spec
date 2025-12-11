@@ -42,7 +42,9 @@ properties:
     $ref: "./sources/ExternalVolumeSource.yml"
   attachment:
     description: Information about the resource the external volume is currently attached to.
-    $ref: "./attachment/ExternalVolumeAttachment.yml"
+    oneOf:
+      - $ref: "./attachment/ExternalVolumeAttachment.yml"
+      - type: "null"
   size:
     description: >
       Size of the external volume; may be null or omitted if the size has not yet
