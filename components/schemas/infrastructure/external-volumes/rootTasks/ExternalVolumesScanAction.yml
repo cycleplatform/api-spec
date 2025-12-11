@@ -30,6 +30,13 @@ properties:
         $ref: ../../../Identifier.yml
       server_ids:
         description: Optional list of server IDs to limit the scan scope.
-        type: array
-        items:
-          $ref: ../../../ID.yml
+        oneOf:
+          - type: array
+            items:
+              $ref: ../../../ID.yml
+          - type: "null"
+      namespace:
+        description: Optional namespace string to limit the scan scope.
+        oneOf:
+          - type: string
+          - type: "null"
