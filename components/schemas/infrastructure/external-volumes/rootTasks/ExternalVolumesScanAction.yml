@@ -21,7 +21,7 @@ properties:
       integration_id:
         description: ID of the integration to scan for external volumes.
         $ref: ../../../ID.yml
-      location:
+      location_id:
         description: ID of the location to scan for external volumes.
         $ref: ../../../ID.yml
       source_type:
