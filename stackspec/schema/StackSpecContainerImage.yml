@@ -21,9 +21,11 @@ properties:
       - type:
           - object
           - "null"
-        required:
-          - args
         properties:
+          use_disk:
+            type: boolean
+            description: If true, will skip using /dev/shm when building an image on factory, which is limited to `6.5GB`. Allows for building much larger images, up to `20GB`.
+            default: false
           args:
             description: A map of build arguments applied to the image at build time.
             oneOf:
