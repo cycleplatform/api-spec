@@ -3,5 +3,7 @@ discriminator:
   propertyName: action
   mapping:
     servers.reconfigure: ExternalVolumeServersReconfigureAction.yml
+    attachment.reconfigure: ExternalVolumeAttachmentReconfigureAction.yml
 oneOf:
   - $ref: ExternalVolumeServersReconfigureAction.yml
+  - $ref: ExternalVolumeAttachmentReconfigureAction.yml

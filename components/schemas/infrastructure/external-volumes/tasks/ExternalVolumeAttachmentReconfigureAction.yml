@@ -1,0 +1,14 @@
+title: ExternalVolumeAttachmentReconfigureAction
+description: A task to reconfigure the attachment for external volume.
+type: object
+required:
+  - action
+properties:
+  action:
+    type: string
+    enum:
+      - attachment.reconfigure
+    description: The name of the action to perform (attachment.reconfigure).
+  contents:
+    description: Attachment configuration details.
+    $ref: "../attachment/ExternalVolumeAttachment.yml"
