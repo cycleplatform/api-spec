@@ -6,11 +6,6 @@ properties:
     anyOf:
       - $ref: ../../../Duration.yml
       - type: "null"
-  dual_stack_legacy:
-    description: When enabled, discovery will return both IPv6 and IPv4 when in legacy mode.  Otherwise, only IPv4 will be returned.
-    anyOf:
-      - type: boolean
-      - type: "null"
   hosts:
     description: A mapping of hostnames to IP addresses for custom internal resolutions. Acts as a custom /etc/resolv.conf file that works environment wide.
     oneOf:
@@ -39,4 +34,19 @@ properties:
       - type: array
         items:
           type: string
+      - type: "null"
+  dual_stack_legacy:
+    description: When enabled, discovery will return both IPv6 and IPv4 when in legacy mode.  Otherwise, only IPv4 will be returned.
+    anyOf:
+      - type: boolean
+      - type: "null"
+  external_resolution:
+    anyOf:
+      - type: object
+        required:
+          - preference
+        properties:
+          preference:
+            type: string
+            enum: [default, ipv4, ipv6]
       - type: "null"
