@@ -14,6 +14,7 @@ allOf:
           - authorizing
           - online
           - decommissioned
+          - deleted
       changed:
         $ref: ../../DateTime.yml
       desired:
@@ -25,5 +26,6 @@ allOf:
               - authorizing
               - online
               - decommissioned
+              - deleted
           - type: "null"
   - "$ref": "../../State.yml"
