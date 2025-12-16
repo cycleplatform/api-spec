@@ -333,7 +333,11 @@ properties:
       - infrastructure.external-volume.task.delete
       - infrastructure.external-volume.delete
       - infrastructure.external-volume.task.servers.reconfigure
+      - infrastructure.external-volume.task.attachment.reconfigure
       - infrastructure.external-volume.servers.reconfigure
+      - infrastructure.external-volume.attachment.reconfigure
+
+      - infrastructure.external-volumes.task.scan
 
       - infrastructure.cluster.create
       - infrastructure.cluster.update
