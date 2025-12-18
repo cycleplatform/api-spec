@@ -40,7 +40,7 @@ enum:
   - infrastructure.server.compute.sharedfs.mounts.mount.failed
   - infrastructure.server.compute.soft_restart
   - infrastructure.server.compute.start.failure
-  - infrastructure.server.computer-spawner.full_restart
+  - infrastructure.server.compute-spawner.full_restart
   - infrastructure.server.image.download.failed
   - infrastructure.server.monitoring.throttled
   - infrastructure.server.internal_api.throttled
@@ -65,5 +65,4 @@ enum:
   - infrastructure.server.checkin.missed
   - infrastructure.server.checkin.resumed
   - infrastructure.server.power.reboot
-  - infrastructure.server.power.power-off
   - infrastructure.server.neighbor.incompatible
