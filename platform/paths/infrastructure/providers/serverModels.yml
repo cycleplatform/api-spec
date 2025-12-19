@@ -1,11 +1,13 @@
 get:
-  operationId: "getProviderServers"
+  operationId: "getServerModels"
   summary: List Provider Servers
   tags:
     - Providers
   parameters:
-    - name: providerVendor
-      description: The vendor for the given provider. Example `gcp`, `equinix-metal`, `abstraction`, etc. Can also use a Provider Integration ID.
+    - name: integrationId
+      description: |
+        The infrastructure provider integration ID to query for server models.  
+        Can also use a vendor string. Example `gcp`, `equinix-metal`, `abstraction`, etc.
       in: path
       required: true
       schema:
@@ -41,6 +43,6 @@ get:
               data:
                 type: array
                 items:
-                  $ref: ../../../../components/schemas/infrastructure/providers/ProviderServerModel.yml
+                  $ref: ../../../../components/schemas/infrastructure/serverModels/ServerModel.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml

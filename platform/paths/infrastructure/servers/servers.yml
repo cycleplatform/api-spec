@@ -91,7 +91,7 @@ get:
       $ref: ../../../../components/responses/errors/DefaultError.yml
 
 post:
-  operationId: "createServer"
+  operationId: "createServers"
   summary: Create Server
   description: Requires the `servers-provision` capability.
   tags:
@@ -130,44 +130,42 @@ post:
                   location_id:
                     type: string
                     description: The location ID of the Server.
-                  quantity:
-                    type: integer
-                    description: The number of this Server at this location to deploy.
-                  hostnames:
-                    description: An array of hostnames for the given servers.
-                    type: array
-                    items:
-                      type: string
+
                   advanced:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        provision_options:
-                          type:
-                            - object
-                            - "null"
-                          description: Advanced options to apply to the provisioning of a server.
-                          properties:
-                            attached_storage_size:
-                              type:
-                                - integer
-                                - "null"
-                              description: For providers that support setting this value dynamically; A number representing the GB size of the volume to be attached to the server.
-                            reservation_id:
-                              type:
-                                - string
-                                - "null"
-                              description: A reservation ID to be used to provision a server that has been reserved at the provider.
-                            encrypt_storage:
-                              type:
-                                - boolean
-                                - "null"
-                              description: For providers that support this setting, this option will encrypt storage for server.
-                        zone:
-                          type:
-                            - string
-                            - "null"
+                    oneOf:
+                      - type: object
+                        properties:
+                          provision_options:
+                            oneOf:
+                              - type: object
+                                description: Advanced options to apply to the provisioning of a server.
+                                properties:
+                                  attached_storage_size:
+                                    oneOf:
+                                      - type: integer
+                                      - type: "null"
+                                    description: |
+                                      For providers that support setting this value dynamically;
+                                      A number representing the GB size of the volume to be attached to the server.
+                                  reservation_id:
+                                    oneOf:
+                                      - type: string
+                                      - type: "null"
+                                    description: |
+                                      A reservation ID to be used to provision a server that has been reserved at the provider.
+                                  encrypt_storage:
+                                    oneOf:
+                                      - type: boolean
+                                      - type: "null"
+                                    description: |
+                                      For providers that support this setting, this option will encrypt storage for server.
+                              - type: "null"
+                          zone:
+                            oneOf:
+                              - type: string
+                              - type: "null"
+                      - type: "null"
+
   responses:
     202:
       description: Returns a Job Descriptor.

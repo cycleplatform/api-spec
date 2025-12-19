@@ -1,4 +1,4 @@
-title: ProviderServerModel
+title: ServerModel
 type: object
 description: A server from a provider.
 required:
@@ -21,9 +21,9 @@ properties:
     type: string
     description: A description of the server.
   specs:
-    $ref: "./ServerSpecs.yml"
+    $ref: ServerModelSpec.yml
   provider:
-    $ref: "./ProviderServerSpec.yml"
+    $ref: ServerModelProviderSpec.yml
   price:
     $ref: "../../billing/BillingAmount.yml"
   compatible:

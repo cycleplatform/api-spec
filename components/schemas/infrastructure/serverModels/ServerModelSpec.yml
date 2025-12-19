@@ -1,4 +1,4 @@
-title: ServerSpecs
+title: ServerModelSpec
 description: Specs for a given server
 type: object
 required:

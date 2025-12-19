@@ -1,4 +1,4 @@
-title: ProviderServerSpec
+title: ServerModelProviderSpec
 type: object
 description: Higher level information about a providers server.
 required:
@@ -7,9 +7,12 @@ required:
   - model
   - locations
 properties:
+  vendor:
+    type: string
+    description: The infrastructure vendor for the provider.
   identifier:
     type: string
-    description: A provider identifier
+    description: A provider identifier.
   integration_id:
     anyOf:
       - $ref: "../../ID.yml"
