@@ -608,7 +608,7 @@ paths:
   ## Providers
   "/v1/infrastructure/providers/{integrationId}/servers":
     $ref: "./paths/infrastructure/providers/serverModels.yml"
-  "/v1/infrastructure/providers/{providerVendor}/locations":
+  "/v1/infrastructure/providers/{integrationId}/locations":
     $ref: "./paths/infrastructure/providers/locations.yml"
 
   ## Virtual Providers
