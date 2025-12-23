@@ -1,6 +1,6 @@
-title: LocationProvider
+title: ProviderLocationDetails
 type: object
-description: Information about the locaiton of the provider.
+description: Information about the location of the provider.
 required:
   - identifier
   - location
