@@ -92,7 +92,7 @@ get:
 
 post:
   operationId: "createServers"
-  summary: Create Server
+  summary: Create Servers
   description: Requires the `servers-provision` capability.
   tags:
     - Servers
