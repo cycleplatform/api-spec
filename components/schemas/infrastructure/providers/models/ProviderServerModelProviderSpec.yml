@@ -1,4 +1,4 @@
-title: ServerModelProviderSpec
+title: ProviderServerModelProviderSpec
 type: object
 description: Higher level information about a providers server.
 required:
@@ -15,7 +15,7 @@ properties:
     description: A provider identifier.
   integration_id:
     anyOf:
-      - $ref: "../../ID.yml"
+      - $ref: "../../../ID.yml"
       - type: "null"
   category:
     type: string

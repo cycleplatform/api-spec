@@ -5,6 +5,6 @@ properties:
   integrations:
     "$ref": "../../../includes/IntegrationsIncludes.yml"
   models:
-    "$ref": "../../../includes/ServerModelsIncludes.yml"
+    "$ref": "../../../includes/ProviderServerModelsIncludes.yml"
   locations:
     "$ref": "../../../includes/LocationsIncludes.yml"

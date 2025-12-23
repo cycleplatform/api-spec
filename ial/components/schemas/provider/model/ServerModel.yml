@@ -1,4 +1,4 @@
-title: "ServerModel"
+title: "ProviderServerModel"
 type: object
 description: "Represents a server model, detailing its name, drivers, description, specifications, provider, pricing, and compatibility."
 required:

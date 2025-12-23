@@ -9,6 +9,6 @@ properties:
     additionalProperties:
       "$ref": ../clusters/Cluster.yml
   models:
-    "$ref": "../../includes/ServerModelIncludes.yml"
+    "$ref": "../../includes/ProviderServerModelsIncludes.yml"
   integrations:
     "$ref": "../../includes/IntegrationsIncludes.yml"

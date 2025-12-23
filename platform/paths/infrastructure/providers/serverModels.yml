@@ -1,6 +1,6 @@
 get:
-  operationId: "getServerModels"
-  summary: List Provider Servers
+  operationId: getProviderServerModels
+  summary: List Provider Server Models
   tags:
     - Providers
   parameters:
@@ -43,6 +43,6 @@ get:
               data:
                 type: array
                 items:
-                  $ref: ../../../../components/schemas/infrastructure/serverModels/ServerModel.yml
+                  $ref: ../../../../components/schemas/infrastructure/providers/models/ProviderServerModel.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
