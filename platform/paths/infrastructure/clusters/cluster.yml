@@ -47,7 +47,11 @@ patch:
       application/json:
         schema:
           type: object
-
+          properties:
+            non_essential:
+              type: boolean
+              description: >
+                Set to true to mark the cluster as 'non-essential'. Non-essential cluster resources are excluded by default from certain metrics and summaries unless opted in.
   responses:
     200:
       description: Returns a cluster.

@@ -7,6 +7,7 @@ required:
   - creator
   - hub_id
   - state
+  - non_essential
   - features
   - events
 properties:
@@ -23,7 +24,9 @@ properties:
     anyOf:
       - $ref: ../../common/ACL.yml
       - type: "null"
-  state:
+  non_essential:
+    type: boolean
+    description: Marks a cluster as non-essential. Non-essential cluster resources are excluded by default from certain metrics and summaries unless opted in.
     $ref: ./ClusterState.yml
   features:
     type: object
