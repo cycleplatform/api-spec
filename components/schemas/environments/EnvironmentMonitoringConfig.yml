@@ -3,7 +3,7 @@ type: object
 description: The configuration for environment monitoring.
 properties:
   logs:
-    description: An object describing the log configuration for the environment.
+    description: An object describing the log monitoring configuration for the environment.
     oneOf:
       - type: object
         properties:
@@ -26,3 +26,37 @@ properties:
                     type: boolean
               - type: "null"
       - type: "null"
+  metrics:
+    description: An object describing the metrics monitoring configuration for the environment.
+    oneOf:
+      - type: object
+        properties:
+          endpoint:
+            description: Configuration options for pushing metrics externally.
+            oneOf:
+              - type: object
+                required:
+                  - url
+                properties:
+                  url:
+                    description: The destination URL for the metrics.
+                    type: string
+              - type: "null"
+      - type: "null"
+  events:
+    description: An object describing the events monitoring configuration for the environment.
+    oneOf:
+      - type: object
+        properties:
+          endpoint:
+            description: Configuration options for pushing events externally.
+            oneOf:
+              - type: object
+                required:
+                  - url
+                properties:
+                  url:
+                    description: The destination URL for events.
+                    type: string
+              - type: "null"
+      - type: "null"  
