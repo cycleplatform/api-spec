@@ -32,7 +32,10 @@ properties:
       - type: object
         properties:
           endpoint:
-            description: Configuration options for pushing metrics externally.
+            description: >
+              Configuration options for pushing metrics externally.
+
+              For payload see webhook `environmentMetricsPush`
             oneOf:
               - type: object
                 required:
@@ -49,7 +52,10 @@ properties:
       - type: object
         properties:
           endpoint:
-            description: Configuration options for pushing events externally.
+            description: >
+              Configuration options for pushing events externally.
+
+              For payload see webhook `environmentEventsPush`
             oneOf:
               - type: object
                 required:
