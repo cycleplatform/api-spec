@@ -27,6 +27,7 @@ properties:
   non_essential:
     type: boolean
     description: Marks a cluster as non-essential. Non-essential cluster resources are excluded by default from certain metrics and summaries unless opted in.
+  state:
     $ref: ./ClusterState.yml
   features:
     type: object
