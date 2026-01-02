@@ -13,7 +13,7 @@ required:
   - location_ids
 properties:
   id:
-    $ref: "../../ID.yml"
+    $ref: "../../../ID.yml"
   name:
     type: string
     description: A name for the server.
@@ -21,11 +21,11 @@ properties:
     type: string
     description: A description of the server.
   specs:
-    $ref: "./ServerSpecs.yml"
+    $ref: ProviderServerModelSpec.yml
   provider:
-    $ref: "./ProviderServerSpec.yml"
+    $ref: ProviderServerModelProviderSpec.yml
   price:
-    $ref: "../../billing/BillingAmount.yml"
+    $ref: "../../../billing/BillingAmount.yml"
   compatible:
     type: boolean
     description: A boolean where true signifies this server is compatible with the platform.

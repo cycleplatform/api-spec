@@ -4,8 +4,10 @@ get:
   tags:
     - Providers
   parameters:
-    - name: providerVendor
-      description: The vendor for the given Provider Integration. Example `gcp`, `equinix-metal`, `abstraction`, etc. Can also use the Integration ID.
+    - name: integrationId
+      description: |
+        The infrastructure provider integration ID to query for server models.  
+        Can also use a vendor string. Example `gcp`, `equinix-metal`, `abstraction`, etc.
       in: path
       required: true
       schema:
