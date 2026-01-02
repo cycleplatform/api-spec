@@ -768,6 +768,7 @@ paths:
     $ref: paths/utils/resource/lookup.yml
   "/v1/utils/components/lookup":
     $ref: paths/utils/components/lookup.yml
+
 components:
   securitySchemes:
     bearerAuth:
@@ -779,3 +780,29 @@ components:
       in: header
       type: apiKey
       description: Defines the scope of the request to a specific Hub.
+
+webhooks:
+  environmentMetricsPush:
+    post:
+      operationId: environmentMetricsPush
+      summary: Environment Metrics Push
+      description: Regularly sends metrics from an environment to an endpoint.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: ../components/schemas/monitoring/Metric.yml
+  environmentEventsPush:
+    post:
+      operationId: environmentEventsPush
+      summary: Environment Events Push
+      description: Regularly sends events from an environment to an endpoint.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: ../components/schemas/monitoring/events/Event.yml
