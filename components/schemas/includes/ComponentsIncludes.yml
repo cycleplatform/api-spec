@@ -33,3 +33,4 @@ additionalProperties:
     - $ref: ../hubs/roles/Role.yml
     - $ref: ../creators/PublicAccount.yml
     - $ref: ../vms/ssh-keys/VirtualMachineSshKey.yml
+    - $ref: ../infrastructure/clusters/Cluster.yml
