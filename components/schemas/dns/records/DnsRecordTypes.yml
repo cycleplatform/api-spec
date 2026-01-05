@@ -110,7 +110,25 @@ properties:
       - type: object
         required:
           - features
+          - routing
         properties:
+          routing:
+            type: object
+            description: Rules for routing traffic at the load balancer for this linked record.
+            properties:
+              http:
+                type: 
+                  - object
+                  - "null"
+                properties:
+                  match_path:
+                    type: 
+                      - string
+                      - "null"
+                    description: >
+                      If set, this record will configure the load balancer to only match for paths of this domain matching this string.
+
+                      If the string starts with a /, it will be a literal prefix match (/test matches /test*). Otherwise, regex is used.
           features:
             type: object
             description: Features associated with this record.
