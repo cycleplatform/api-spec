@@ -1,7 +1,10 @@
 get:
   operationId: "getAllStackBuilds"
   summary: List All Builds
-  description: Requires the `stacks-view` capability.
+  description: |
+    Fetches all stack builds regardless of their association to a stack.
+
+    Requires the `stacks-view` capability.
   tags:
     - Stack Builds
   parameters:
@@ -43,7 +46,7 @@ get:
     - $ref: ../../../../components/parameters/PageParam.yml
   responses:
     200:
-      description: Returns a list of Stack Builds.
+      description: Returns a list of stack builds.
       content:
         application/json:
           schema:
