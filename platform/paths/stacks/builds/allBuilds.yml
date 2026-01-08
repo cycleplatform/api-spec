@@ -1,0 +1,59 @@
+get:
+  operationId: "getAllStackBuilds"
+  summary: List Builds
+  description: Requires the `stacks-view` capability.
+  tags:
+    - Stack Builds
+  parameters:
+    - name: meta
+      in: query
+      required: false
+      description:
+        A comma separated list of meta values. Meta values will show up under a resource's
+        `meta` field. In the case of applying a meta to a collection of resources, each
+        resource will have it's own relevant meta data. In some rare cases, meta may not
+        apply to individual resources, and may appear in the root document. These will be
+        clearly labeled.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - containers_count
+    - name: filter
+      in: query
+      # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706
+      style: deepObject
+      required: false
+      description: |
+        ## Filter Field 
+        The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
+      schema:
+        type: object
+        properties:
+          search:
+            type: string
+            description: |
+              `filter[search]=value` search for a value associated with a field on the given Stack Build(s).
+          state:
+            type: string
+            description: |
+              `filter[state]=value1,value2` state filtering will allow you to filter by the Stack Build's current state.
+    - $ref: ../../../../components/parameters/SortParam.yml
+    - $ref: ../../../../components/parameters/PageParam.yml
+  responses:
+    200:
+      description: Returns a list of Stack Builds.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: ../../../../components/schemas/stacks/builds/StackBuild.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
