@@ -1,6 +1,6 @@
 get:
   operationId: "getAllStackBuilds"
-  summary: List Builds
+  summary: List All Builds
   description: Requires the `stacks-view` capability.
   tags:
     - Stack Builds
