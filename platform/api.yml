@@ -734,6 +734,8 @@ paths:
     $ref: "./paths/stacks/tasks.yml"
 
   ## Stack Builds
+  "/v1/stacks/builds":
+    $ref: "./paths/stacks/builds/all-builds.yml"
   "/v1/stacks/builds/{buildId}":
     $ref: "./paths/stacks/builds/lookup.yml"
   "/v1/stacks/{stackId}/builds":
