@@ -1,0 +1,5 @@
+title: IncludedTriggerKeys
+description: A trigger key map provided when requested via includes.
+type: object
+additionalProperties:
+  $ref: ../pipelines/trigger-keys/TriggerKey.yml

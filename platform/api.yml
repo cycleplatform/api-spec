@@ -692,6 +692,8 @@ paths:
     $ref: "./paths/pipelines/pipeline.yml"
   "/v1/pipelines/{pipelineId}/access":
     $ref: "./paths/pipelines/access.yml"
+  "/v1/pipelines/runs":
+    $ref: "./paths/pipelines/all-runs.yml"
   "/v1/pipelines/{pipelineId}/runs":
     $ref: "./paths/pipelines/runs.yml"
   "/v1/pipelines/{pipelineId}/runs/{runId}":

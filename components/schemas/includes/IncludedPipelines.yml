@@ -1,0 +1,5 @@
+title: IncludedPipelines
+description: A pipeline map provided when requested via includes.
+type: object
+additionalProperties:
+  $ref: ../pipelines/Pipeline.yml

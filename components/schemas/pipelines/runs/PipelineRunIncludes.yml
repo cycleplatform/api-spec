@@ -1,0 +1,10 @@
+title: PipelineRunIncludes
+description: All includable resources linkable to the given pipeline run.
+type: object
+properties:
+  creators:
+    $ref: ../../../../components/schemas/includes/CreatorInclude.yml
+  pipelines:
+    $ref: ../../../../components/schemas/includes/IncludedPipelines.yml
+  keys:
+    $ref: ../../../../components/schemas/includes/IncludedTriggerKeys.yml

@@ -1,0 +1,47 @@
+get:
+  operationId: "getAllPipelineRuns"
+  summary: List All Pipeline Runs
+  description: |
+    Lists all pipeline runs, regardless of the pipeline they are associated with.
+
+    Requires the `pipelines-view` capability.
+  tags:
+    - Pipelines
+  parameters:
+    - $ref: ../../../components/parameters/PageParam.yml
+    - $ref: ../../../components/parameters/SortParam.yml
+    - name: include
+      in: query
+      required: false
+      description:
+        A comma separated list of include values. Included resources will show
+        up under the root document's `include` field, with the key being the id of the included
+        resource. In the case of applying an include to a collection of resources, if two
+        resources share the same include, it will only appear once in the return.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - creators
+            - keys
+            - pipelines
+  responses:
+    200:
+      description: Returns a list of Pipeline runs.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: ../../../components/schemas/pipelines/runs/PipelineRun.yml
+              includes:
+                $ref: ../../../components/schemas/pipelines/runs/PipelineRunIncludes.yml
+
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
