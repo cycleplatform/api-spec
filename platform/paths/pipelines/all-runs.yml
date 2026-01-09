@@ -1,19 +1,14 @@
 get:
-  operationId: "getPipelineRuns"
-  summary: List Pipeline Runs
+  operationId: "getAllPipelineRuns"
+  summary: List All Pipeline Runs
   description: |
-    List information about times this Pipeline has run.
+    Lists all pipeline runs, regardless of the pipeline they are associated with.
 
     Requires the `pipelines-view` capability.
   tags:
     - Pipelines
   parameters:
-    - name: pipelineId
-      in: path
-      required: true
-      description: The ID of the pipeline.
-      schema:
-        type: string
+    - $ref: ../../../components/parameters/PageParam.yml
     - $ref: ../../../components/parameters/SortParam.yml
     - name: include
       in: query
@@ -29,6 +24,8 @@ get:
           type: string
           enum:
             - creators
+            - keys
+            - pipelines
   responses:
     200:
       description: Returns a list of pipeline runs.
@@ -44,9 +41,7 @@ get:
                 items:
                   $ref: ../../../components/schemas/pipelines/runs/PipelineRun.yml
               includes:
-                type: object
-                properties:
-                  creators:
-                    "$ref": "../../../components/schemas/includes/CreatorInclude.yml"
+                $ref: ../../../components/schemas/pipelines/runs/PipelineRunIncludes.yml
+
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml

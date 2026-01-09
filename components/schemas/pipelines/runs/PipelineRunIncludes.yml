@@ -1,0 +1,10 @@
+title: PipelineRunIncludes
+description: Resources related to a pipeline run, that can be included on supported endpoints when the matching includes query parameter is passed.
+type: object
+properties:
+  creators:
+    $ref: ../../../../components/schemas/includes/CreatorInclude.yml
+  pipelines:
+    $ref: ../../../../components/schemas/includes/IncludedPipelines.yml
+  keys:
+    $ref: ../../../../components/schemas/includes/IncludedTriggerKeys.yml
