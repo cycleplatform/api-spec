@@ -28,7 +28,7 @@ get:
             - pipelines
   responses:
     200:
-      description: Returns a list of Pipeline runs.
+      description: Returns a list of pipeline runs.
       content:
         application/json:
           schema:

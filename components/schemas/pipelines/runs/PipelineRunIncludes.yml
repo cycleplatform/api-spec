@@ -1,5 +1,5 @@
 title: PipelineRunIncludes
-description: All includable resources linkable to the given pipeline run.
+description: Resources related to a pipeline run, that can be included on supported endpoints when the matching includes query parameter is passed.
 type: object
 properties:
   creators:
