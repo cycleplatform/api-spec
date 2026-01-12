@@ -430,6 +430,8 @@ paths:
   ## TLS
   "/v1/dns/tls/attempts":
     $ref: "./paths/dns/tls/attempts.yml"
+  "/v1/dns/tls/certificates":
+    $ref: "./paths/dns/tls/certificates.yml"
   "/v1/dns/tls/certificates/lookup":
     $ref: "./paths/dns/tls/lookup.yml"
   "/v1/dns/tls/certificates/user-supplied":
