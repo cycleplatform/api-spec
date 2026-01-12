@@ -22,9 +22,7 @@ properties:
       - ** function **: Every ingress request/connection receives its own instance. 
       - ** manual **: Cycle will not make any decisions on where instances are deployed. Instead, instances must be deployed manually using the portal or API.
     oneOf:
-      - type:
-          - string
-          - "null"
+      - type: string
         enum:
           - resource-density
           - manual
@@ -34,96 +32,100 @@ properties:
           - edge
           - function
         default: first-available
+      - type: "null"
       - $ref: StackVariable.yml
+
   function:
     description: Configuration options for containers using the 'function' deployment strategy.
     oneOf:
-      - type:
-          - object
-          - "null"
+      - type: object
         properties:
           max_pool_size:
             description: The maximum number of instances that Cycle can pre-allocate (includes auto-scaled instances).
             oneOf:
-              - type:
-                  - integer
-                  - "null"
+              - type: integer
+              - type: "null"
               - $ref: StackVariable.yml
           max_shard_concurrency:
             description: For each shard (scheduler), the maximum number of tasks it can run in parallel.
             oneOf:
-              - type:
-                  - integer
-                  - "null"
+              - type: integer
+              - type: "null"
               - $ref: StackVariable.yml
           max_runtime:
             description: The maximum amount of time a function instance can run before timing out.
             anyOf:
               - $ref: ../../components/schemas/Duration.yml
-              - $ref: StackVariable.yml
               - type: "null"
+              - $ref: StackVariable.yml
           max_queue_time:
             description: The maximum amount of time Cycle will wait for an instance to be available.
             anyOf:
               - $ref: ../../components/schemas/Duration.yml
-              - $ref: StackVariable.yml
               - type: "null"
+              - $ref: StackVariable.yml
+      - type: "null"
       - $ref: StackVariable.yml
+
   stateful:
     description: Configuration options for stateful containers.
     oneOf:
-      - type:
-          - object
-          - "null"
+      - type: object
         required:
           - options
         properties:
           options:
             description: Stateful container options.
-            type:
-              - object
-              - "null"
-            properties:
-              use_base_hostname:
-                description: When enabled, instances will utilize stateless base hostnames instead of being prefixed with a unique ID.
-                type:
-                  - boolean
-                  - "null"
+            oneOf:
+              - type: object
+                properties:
+                  use_base_hostname:
+                    description: When enabled, instances will utilize stateless base hostnames instead of being prefixed with a unique ID.
+                    type:
+                      - boolean
+                      - "null"
+              - type: "null"
+              - $ref: StackVariable.yml
+      - type: "null"
       - $ref: StackVariable.yml
+
   constraints:
     description: Configuration options that provide the ability to set restrictions on which nodes instances of this container are able to be deployed to. (i.e. if you have a GPU container, it should only go on nodes with a GPU).
     oneOf:
-      - type:
-          - object
-          - "null"
+      - type: object
         properties:
           node:
-            type:
-              - object
-              - "null"
-            required:
-              - tags
-            properties:
-              tags:
-                description: Tags applied to a node. Cycle generates some automatically, but additional, custom tags can be applied on a per-node basis.
-                oneOf:
-                  - type: object
-                    properties:
-                      any:
-                        description: If a node has at least one of these tags, it is considered a valid deployment target for this container.
-                        oneOf:
-                          - type: array
-                            items:
-                              type: string
-                          - $ref: StackVariable.yml
-                      all:
-                        description: A node must have **ALL** of these tags to be considered a valid deployment target for this container.
-                        oneOf:
-                          - type: array
-                            items:
-                              type: string
-                          - $ref: StackVariable.yml
-                  - $ref: StackVariable.yml
+            description: Constraint settings related to which nodes an instance can be deployed to.
+            oneOf:
+              - type: object
+                required:
+                  - tags
+                properties:
+                  tags:
+                    description: Tags applied to a node. Cycle generates some automatically, but additional, custom tags can be applied on a per-node basis.
+                    oneOf:
+                      - type: object
+                        properties:
+                          any:
+                            description: If a node has at least one of these tags, it is considered a valid deployment target for this container.
+                            oneOf:
+                              - type: array
+                                items:
+                                  type: string
+                              - type: "null"
+                              - $ref: StackVariable.yml
+                          all:
+                            description: A node must have **ALL** of these tags to be considered a valid deployment target for this container.
+                            oneOf:
+                              - type: array
+                                items:
+                                  type: string
+                              - type: "null"
+                              - $ref: StackVariable.yml
+                      - type: "null"
+                      - $ref: StackVariable.yml
+              - type: "null"
+              - $ref: StackVariable.yml
           # Not yet implemented.
           # secrets:
           #   type:
@@ -137,13 +139,13 @@ properties:
           #     - "null"
           #   items:
           #     type: string
+      - type: "null"
       - $ref: StackVariable.yml
+
   shutdown:
     description: Configuration options for how this container behaves during shutdown.
     oneOf:
-      - type:
-          - object
-          - "null"
+      - type: object
         properties:
           graceful_timeout:
             description: How long the platform will wait for a container to stop gracefully.
@@ -152,19 +154,20 @@ properties:
               - $ref: StackVariable.yml
               - type: "null"
           signals:
+            description: Signals that should be sent to the container on shutdown.
             oneOf:
               - type: array
-                description: Signals that should be sent to the container on shutdown.
                 items:
                   $ref: ../../components/schemas/containers/config/ShutdownSignal.yml
+              - type: "null"
               - $ref: StackVariable.yml
+      - type: "null"
       - $ref: StackVariable.yml
+
   startup:
     description: Configuration options for how this container behaves during startup.
     oneOf:
-      - type:
-          - object
-          - "null"
+      - type: object
         properties:
           delay:
             description: How long the platform will wait before sending the start signal to the given container.
@@ -172,13 +175,13 @@ properties:
               - $ref: ../../components/schemas/Duration.yml
               - $ref: StackVariable.yml
               - type: "null"
+      - type: "null"
       - $ref: StackVariable.yml
+
   update:
     description: Configurations for how the container behaves during updates.
     oneOf:
-      - type:
-          - object
-          - "null"
+      - type: object
         properties:
           stagger:
             anyOf:
@@ -186,13 +189,13 @@ properties:
               - $ref: StackVariable.yml
               - type: "null"
             description: When set, Cycle will pick a random time from `0 - this duration`, and stagger the instances so they all start at different times (up to the time specified here).
+      - type: "null"
       - $ref: StackVariable.yml
+
   restart:
     description: Configuration options for how Cycle should handle restarting this container (i.e. in case the process inside the container dies).
     oneOf:
-      - type:
-          - object
-          - "null"
+      - type: object
         required:
           - condition
           - delay
@@ -217,13 +220,29 @@ properties:
             oneOf:
               - type: integer
               - $ref: StackVariable.yml
+      - type: "null"
       - $ref: StackVariable.yml
+
+  readiness_check:
+    description: Configuration for determining readiness of a container.
+    oneOf:
+      - type: object
+        required: [command, interval, timeout]
+        properties:
+          command:
+            type: string
+            description: The command that will be run to verify readiness of the container.
+          interval:
+            $ref: ../../components/schemas/Duration.yml
+          timeout:
+            $ref: ../../components/schemas/Duration.yml
+      - type: "null"
+      - $ref: StackVariable.yml
+
   health_check:
     description: Configuration options for automated container health checks.
     oneOf:
-      - type:
-          - object
-          - "null"
+      - type: object
         required:
           - command
           - retries
@@ -270,38 +289,38 @@ properties:
               - $ref: StackVariable.yml
               - type: "null"
             description: How long to wait after a container start event before running health checks.
+      - type: "null"
       - $ref: StackVariable.yml
+
   telemetry:
     description: Configuration options for how the instance telemetry (CPU usage, etc) is handled.
     oneOf:
-      - type:
-          - object
-          - "null"
+      - type: object
         required:
           - disable
         properties:
           retention:
             anyOf:
               - $ref: ../../components/schemas/Duration.yml
-              - $ref: StackVariable.yml
               - type: "null"
+              - $ref: StackVariable.yml
             description: How long telemetry data should be retained.
           interval:
             anyOf:
               - $ref: ../../components/schemas/Duration.yml
-              - $ref: StackVariable.yml
               - type: "null"
+              - $ref: StackVariable.yml
             description: The duration between samples.
           webhook:
             description: A URL where Cycle will send telemetry data to. The payload will be an instance resource snapshot.
             oneOf:
-              - type:
-                  - string
-                  - "null"
+              - type: string
+              - type: "null"
               - $ref: StackVariable.yml
           disable:
             description: If true, Cycle will not aggregate telemetry for this container's instances.
             oneOf:
               - type: boolean
               - $ref: StackVariable.yml
+      - type: "null"
       - $ref: StackVariable.yml
