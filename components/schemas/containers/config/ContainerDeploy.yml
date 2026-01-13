@@ -8,7 +8,9 @@ properties:
     type: integer
     description: The number of initial desired instances for a given container.
   strategy:
-    $ref: ../../infrastructure/DeploymentStrategyName.yml
+    oneOf:
+      - $ref: ../../infrastructure/DeploymentStrategyName.yml
+      - type: "null"
     description: The deployment strategy to use when scaling the given container.
   function:
     description: Configuration options for containers using the 'function' deployment strategy.
@@ -37,141 +39,185 @@ properties:
             description: The maximum amount of time Cycle will wait for an instance to be available.
       - type: "null"
   stateful:
-    type: object
-    properties:
-      options:
-        oneOf:
-          - type: "object"
-            properties:
-              use_base_hostname:
-                type:
-                  - boolean
-                  - "null"
-          - type: "null"
-  constraints:
-    type: object
-    description: Settings that give more granular control over deployment targets and conditions.
-    properties:
-      node:
-        type: object
-        description: Constraint settings related to which nodes an instance can be deployed to.
-        required:
-          - tags
+    description: Configuration options for stateful deployments.
+    oneOf:
+      - type: object
         properties:
-          tags:
-            type: object
-            description: Lists of server tags that formally declair servers that match the criteria for deployment.
-            properties:
-              any:
-                type: array
-                items:
-                  type: string
-                description: A list of tags where a server matching any tags from the list is qualified as a deployment target.
-              all:
-                type: array
-                items:
-                  type: string
-                description: A list of tags where a server matching all tags from the list is the only scenario where the server is qualified as a deployment target.
-      secrets:
-        type: array
-        items:
-          type: string
+          options:
+            description: Options that modify behavior for stateful deployments.
+            oneOf:
+              - type: "object"
+                properties:
+                  use_base_hostname:
+                    description: When set, the base hostname will be used instead of a generated hostname.
+                    type:
+                      - boolean
+                      - "null"
+              - type: "null"
+      - type: "null"
+
+  constraints:
+    description: Settings that give more granular control over deployment targets and conditions.
+    oneOf:
+      - type: object
+        properties:
+          node:
+            oneOf:
+              - type: object
+                description: Constraint settings related to which nodes an instance can be deployed to.
+                required:
+                  - tags
+                properties:
+                  tags:
+                    type: object
+                    description: Lists of server tags that formally declair servers that match the criteria for deployment.
+                    properties:
+                      any:
+                        type:
+                          - array
+                          - "null"
+                        items:
+                          type: string
+                        description: A list of tags where a server matching any tags from the list is qualified as a deployment target.
+                      all:
+                        type:
+                          - array
+                          - "null"
+                        items:
+                          type: string
+                        description: A list of tags where a server matching all tags from the list is the only scenario where the server is qualified as a deployment target.
+              - type: "null"
+          secrets:
+            description: A list of secret identifiers that will be made available to the container.
+            type:
+              - array
+              - "null"
+            items:
+              type: string
+      - type: "null"
+
   shutdown:
-    type: object
     description: Configuration for what to do during container shutdown.
-    properties:
-      graceful_timeout:
-        anyOf:
-          - $ref: ../../Duration.yml
-          - type: "null"
-        description: How long the platform will wait for a container to stop gracefully.
-      signals:
-        type:
-          - array
-          - "null"
-        items:
-          $ref: ShutdownSignal.yml
-        description: Process signal sent to the container process.
+    oneOf:
+      - type: object
+        properties:
+          graceful_timeout:
+            anyOf:
+              - $ref: ../../Duration.yml
+              - type: "null"
+            description: How long the platform will wait for a container to stop gracefully.
+          signals:
+            type:
+              - array
+              - "null"
+            items:
+              $ref: ShutdownSignal.yml
+            description: Process signal sent to the container process.
+      - type: "null"
+
   startup:
-    type: object
     description: Configurations for container startup.
-    properties:
-      delay:
-        $ref: ../../Duration.yml
-        description: How long the platform will wait before sending the start signal to the given container.
+    oneOf:
+      - type: object
+        properties:
+          delay:
+            $ref: ../../Duration.yml
+            description: How long the platform will wait before sending the start signal to the given container.
+      - type: "null"
   update:
-    type: object
     description: Configurations for container updates.
-    properties:
-      stagger:
-        $ref: ../../Duration.yml
-        description: When set, Cycle will pick a random time from `0 - this duration`, and stagger the instances so they all start at different times (up to the time specified here).
+    oneOf:
+      - type: object
+        properties:
+          stagger:
+            $ref: ../../Duration.yml
+            description: When set, Cycle will pick a random time from `0 - this duration`, and stagger the instances so they all start at different times (up to the time specified here).
+      - type: "null"
+
   restart:
-    type: object
     description: Configurations for container restart events.
-    required:
-      - condition
-      - delay
-      - max_attempts
-    properties:
-      condition:
-        type: string
-        description: Policy for what should happen in the event of a container dying.
-        enum:
-          - always
-          - never
-          - failure
-      delay:
-        $ref: ../../Duration.yml
-        description: How long the platform will wait before trying to restart the container.
-      max_attempts:
-        type: integer
-        description: The amount of times the platform will attempt the restart policies.
+    oneOf:
+      - type: object
+        required:
+          - condition
+          - delay
+          - max_attempts
+        properties:
+          condition:
+            type: string
+            description: Policy for what should happen in the event of a container dying.
+            enum:
+              - always
+              - never
+              - failure
+          delay:
+            $ref: ../../Duration.yml
+            description: How long the platform will wait before trying to restart the container.
+          max_attempts:
+            type: integer
+            description: The amount of times the platform will attempt the restart policies.
+      - type: "null"
+  readiness_check:
+    description: Configuration for determining readiness of a container.
+    oneOf:
+      - type: object
+        required: [command, interval, timeout]
+        properties:
+          command:
+            type: string
+            description: The command that will be run to verify readiness of the container.
+          interval:
+            $ref: ../../Duration.yml
+          timeout:
+            $ref: ../../Duration.yml
+      - type: "null"
   health_check:
-    type: object
     description: Configuration for determining the health of a container.
-    required:
-      - command
-      - retries
-      - delay
-      - interval
-      - timeout
-      - restart
-    properties:
-      command:
-        type: string
-        description: The command that will be run to verify the health of the container.
-      retries:
-        type: integer
-        description: The number of times the platform will retry the command before marking the container unhealthy.
-      delay:
-        anyOf:
-          - $ref: ../../Duration.yml
-          - type: "null"
-        description: How long to wait before performing an initial health check when the instance starts. The `state.health.healthy` field of the instance will be `null`` until the first check is performed.
-      interval:
-        $ref: ../../Duration.yml
-        description: How long to wait between restarts.
-      timeout:
-        $ref: ../../Duration.yml
-        description: How long before a health check attempt times out.
-      restart:
-        type: boolean
-        description: A boolean where `true` represents the desire for a container to restart if unhealthy.
+    oneOf:
+      - type: object
+        required:
+          - command
+          - retries
+          - delay
+          - interval
+          - timeout
+          - restart
+        properties:
+          command:
+            type: string
+            description: The command that will be run to verify the health of the container.
+          retries:
+            type: integer
+            description: The number of times the platform will retry the command before marking the container unhealthy.
+          delay:
+            $ref: ../../Duration.yml
+            description: How long to wait before performing an initial health check when the instance starts. The `state.health.healthy` field of the instance will be `null`` until the first check is performed.
+          interval:
+            $ref: ../../Duration.yml
+            description: How long to wait between restarts.
+          timeout:
+            $ref: ../../Duration.yml
+            description: How long before a health check attempt times out.
+          restart:
+            type: boolean
+            description: A boolean where `true` represents the desire for a container to restart if unhealthy.
+      - type: "null"
   telemetry:
-    type: object
     description: Configuration settings for container telemetery reporting.
-    required:
-      - retention
-      - interval
-      - disable
-    properties:
-      retention:
-        $ref: ../../Duration.yml
-        description: How long telemetry data should be retained.
-      interval:
-        $ref: ../../Duration.yml
-        description: The duration between samples.
-      disable:
-        type: boolean
-        description: A boolean where true disables all telemetry reporting for this container.
+    oneOf:
+      - type: object
+        required:
+          - retention
+          - interval
+          - disable
+        properties:
+          retention:
+            $ref: ../../Duration.yml
+            description: How long telemetry data should be retained.
+          interval:
+            $ref: ../../Duration.yml
+            description: The duration between samples.
+          disable:
+            type: boolean
+            description: A boolean where true disables all telemetry reporting for this container.
+      - type: "null"
