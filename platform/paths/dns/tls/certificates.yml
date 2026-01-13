@@ -27,6 +27,11 @@ get:
             type: string
             description: |
               `filter[state]=value1,value2` state filtering will allow filtering by the current state.
+          user-supplied:
+            type: string
+            description: |
+              `filter[user-supplied]=true` List only those certificates that are user supplied.
+              `filter[user-supplied]=false` List only those certificates that are auto generated.
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
   responses:
