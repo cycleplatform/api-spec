@@ -1,6 +1,6 @@
 title: StackIncludes
-description: All includable resources linkable to the given stack. 
-type: object 
-properties: 
+description: All includable resources linkable to the given stack.
+type: object
+properties:
   creators:
-    "$ref": "../includes/CreatorInclude.yml"
+    $ref: "../includes/CreatorIncludes.yml"

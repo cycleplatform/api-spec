@@ -21,4 +21,4 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../components/schemas/containers/instances/Instance.yml"
+                  $ref: "../../../components/schemas/containers/instances/Instance.yml"

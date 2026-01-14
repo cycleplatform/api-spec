@@ -3,7 +3,7 @@ description: All includable resources linkable to the given pipeline.
 type: object
 properties:
   creators:
-    "$ref": "../includes/CreatorInclude.yml"
+    $ref: "../includes/CreatorIncludes.yml"
   name:
     type: string
     description: A name value.
@@ -12,11 +12,11 @@ properties:
     description: A record of resources that can be associated with the pipeline.
     additionalProperties:
       oneOf:
-        - "$ref": "../containers/Container.yml"
-        - "$ref": "../environments/Environment.yml"
-        - "$ref": "../stacks/Stack.yml"
-        - "$ref": "../stacks/builds/StackBuild.yml"
-        - "$ref": "../images/Image.yml"
-        - "$ref": "../images/sources/ImageSource.yml"
+        - $ref: "../containers/Container.yml"
+        - $ref: "../environments/Environment.yml"
+        - $ref: "../stacks/Stack.yml"
+        - $ref: "../stacks/builds/StackBuild.yml"
+        - $ref: "../images/Image.yml"
+        - $ref: "../images/sources/ImageSource.yml"
   "components:identifiers":
-    $ref: ../includes/IdentifierIncludes.yml
+    $ref: ../includes/IncludedIdentifiers.yml

@@ -6,7 +6,7 @@ required:
   - ip
 properties:
   id:
-    "$ref": "../ID.yml"
+    $ref: "../ID.yml"
   ip:
     type: string
     description: The IP of the request used during login.

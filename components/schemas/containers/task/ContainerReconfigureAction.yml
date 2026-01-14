@@ -10,4 +10,4 @@ properties:
       - reconfigure
     description: The action to take.
   contents:
-    "$ref": "../config/Config.yml"
+    $ref: "../config/Config.yml"

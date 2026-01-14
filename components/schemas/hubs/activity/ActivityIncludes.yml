@@ -4,6 +4,6 @@ type: object
 properties:
   users:
     # TODO - I think this should be User Include in this case.  Just need to check cross deps
-    "$ref": "../../includes/CreatorInclude.yml"
+    $ref: "../../includes/CreatorIncludes.yml"
   components:
-    "$ref": "../../includes/ComponentsIncludes.yml"
+    $ref: "../../includes/ComponentsIncludes.yml"

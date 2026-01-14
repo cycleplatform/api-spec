@@ -13,4 +13,4 @@ allOf:
           - complete
           - cancelled
           - deleted
-  - "$ref": "../../State.yml"
+  - $ref: "../../State.yml"

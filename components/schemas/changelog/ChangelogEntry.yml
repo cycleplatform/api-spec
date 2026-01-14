@@ -74,13 +74,13 @@ properties:
     properties:
       created:
         description: The timestamp of when the changelog entry was created.
-        "$ref": ../../../components/schemas/DateTime.yml
+        $ref: ../../../components/schemas/DateTime.yml
       updated:
         description: The timestamp of when the changelog entry was updated.
-        "$ref": ../../../components/schemas/DateTime.yml
+        $ref: ../../../components/schemas/DateTime.yml
       deleted:
         description: The timestamp of when the changelog entry was deleted.
-        "$ref": ../../../components/schemas/DateTime.yml
+        $ref: ../../../components/schemas/DateTime.yml
   email_events:
     type: array
     items:
@@ -104,7 +104,7 @@ properties:
         sender:
           $ref: ../../../components/schemas/common/UserScope.yml
   creator:
-    "$ref": "../../../components/schemas/creators/CreatorScope.yml"
+    $ref: "../../../components/schemas/creators/CreatorScope.yml"
   changes:
     type: array
     items:

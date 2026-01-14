@@ -22,7 +22,7 @@ properties:
       - tier
       - support
   term:
-    "$ref": "./Term.yml"
+    $ref: "./Term.yml"
   price:
     type: number
     description: 1/10th of a cent (mills).

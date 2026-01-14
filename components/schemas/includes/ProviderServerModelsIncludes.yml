@@ -1,5 +1,0 @@
-title: ProviderServerModelsIncludes
-description: A resource associated with a server models.
-type: object
-additionalProperties:
-  $ref: ../infrastructure/providers/models/ProviderServerModel.yml

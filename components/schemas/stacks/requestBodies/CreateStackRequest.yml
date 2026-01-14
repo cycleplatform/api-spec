@@ -1,14 +1,14 @@
-description: Parameters for creating a new stack. 
-content: 
+description: Parameters for creating a new stack.
+content:
   application/json:
-    schema: 
-      type: object 
-      required: 
-        - name 
-        - source 
-      properties: 
-        name: 
-          type: string 
-          description: A name for the stack. 
-        source: 
-          "$ref": "../StackSource.yml"   
+    schema:
+      type: object
+      required:
+        - name
+        - source
+      properties:
+        name:
+          type: string
+          description: A name for the stack.
+        source:
+          $ref: "../StackSource.yml"

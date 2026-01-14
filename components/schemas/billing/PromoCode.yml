@@ -11,14 +11,14 @@ properties:
     type: string
     description: The promo "code".
   expires:
-    "$ref": "../DateTime.yml"
+    $ref: "../DateTime.yml"
   credit:
     description: The amount of credit the promo code offers.
     oneOf:
       - type: object
         properties:
           amount:
-            "$ref": "./BillingAmount.yml"
+            $ref: "./BillingAmount.yml"
           expires:
             type: object
             required:
@@ -47,4 +47,4 @@ properties:
             enum:
               - live
               - deleted
-      - "$ref": "../State.yml"
+      - $ref: "../State.yml"

@@ -21,7 +21,7 @@ properties:
     description: State of the component
     type: string
   events:
-    "$ref": "../Events.yml"
+    $ref: "../Events.yml"
   context_blobs:
     description: related strings for fuzzy search
     type: array

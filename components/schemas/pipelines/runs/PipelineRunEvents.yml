@@ -8,10 +8,10 @@ required:
 properties:
   started:
     description: The timestamp of when the pipeline run was started.
-    "$ref": "../../DateTime.yml"
+    $ref: "../../DateTime.yml"
   queued:
     description: The timestamp of when the pipeline run was queued.
-    "$ref": "../../DateTime.yml"
+    $ref: "../../DateTime.yml"
   finished:
     description: The timestamp of when the pipeline run was finished.
-    "$ref": "../../DateTime.yml"
+    $ref: "../../DateTime.yml"

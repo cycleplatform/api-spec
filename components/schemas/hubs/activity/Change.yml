@@ -8,6 +8,6 @@ properties:
     type: string
     description: A description of the resource that was changed.
   before:
-    "$ref": "./Detail.yml"
+    $ref: "./Detail.yml"
   after:
-    "$ref": "./Detail.yml"
+    $ref: "./Detail.yml"

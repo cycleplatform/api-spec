@@ -1,20 +1,19 @@
-title: InstanceTelemetryMemorySnapshot 
-type: object 
-description: A snapshot of memory usage statistics. 
-properties: 
-  cache: 
-    type: number 
-    description: The number of bytes of page cache memory being used by this instance. 
-  usage: 
-    description: The memory usage data. 
-    "$ref": "./MemoryData.yml"
-  swap_usage: 
-    description: Memory swap usage data. 
-    "$ref": "./MemoryData.yml"
-  kernel_usage: 
-    description: Kernal memory usage. 
-    "$ref": "./MemoryData.yml"
-  kernel_tcp_usage: 
-    description: Kernel TCP buffer usage. 
-    "$ref": "./MemoryData.yml"
-  
+title: InstanceTelemetryMemorySnapshot
+type: object
+description: A snapshot of memory usage statistics.
+properties:
+  cache:
+    type: number
+    description: The number of bytes of page cache memory being used by this instance.
+  usage:
+    description: The memory usage data.
+    $ref: "./MemoryData.yml"
+  swap_usage:
+    description: Memory swap usage data.
+    $ref: "./MemoryData.yml"
+  kernel_usage:
+    description: Kernal memory usage.
+    $ref: "./MemoryData.yml"
+  kernel_tcp_usage:
+    description: Kernel TCP buffer usage.
+    $ref: "./MemoryData.yml"

@@ -12,7 +12,7 @@ required:
   - events
 properties:
   id:
-    "$ref": "../../ID.yml"
+    $ref: "../../ID.yml"
   container_id:
     type: string
     description: An identifier for the container.
@@ -23,7 +23,7 @@ properties:
     type: string
     description: An identifier for the backup.
   hub_id:
-    "$ref": "../../HubID.yml"
+    $ref: "../../HubID.yml"
   type:
     type: string
     description: The type of the backup log.
@@ -70,10 +70,10 @@ properties:
     properties:
       created:
         description: The timestamp of when the backup log was created.
-        "$ref": "../../DateTime.yml"
+        $ref: "../../DateTime.yml"
       updated:
         description: The timestamp of when the backup log was updated.
-        "$ref": "../../DateTime.yml"
+        $ref: "../../DateTime.yml"
       deleted:
         description: The timestamp of when the backup log was deleted.
-        "$ref": "../../DateTime.yml"
+        $ref: "../../DateTime.yml"

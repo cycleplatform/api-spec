@@ -3,4 +3,4 @@ type: object
 description: A list of meta fields that can be applied to a hub.
 properties:
   membership:
-    "$ref": "./HubMembership.yml"
+    $ref: "./HubMembership.yml"

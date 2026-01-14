@@ -3,4 +3,4 @@ description: All includable resources linkable to the given invoice.
 type: object
 properties:
   hubs:
-    "$ref": "../../includes/HubIncludes.yml"
+    $ref: "../../includes/IncludedHubs.yml"

@@ -6,7 +6,7 @@ required:
   - item_id
 properties:
   id:
-    "$ref": "../ID.yml"
+    $ref: "../ID.yml"
   item_id:
     type: string
     description: The ID of the billing item.

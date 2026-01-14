@@ -7,12 +7,12 @@ required:
   - config
 properties:
   id:
-    "$ref": "../../ID.yml"
+    $ref: "../../ID.yml"
   hash:
     type: string
     description: A unique hash for the given volume.
   config:
-    "$ref": "../config/ContainerVolume.yml"
+    $ref: "../config/ContainerVolume.yml"
   external:
     description: The ID of external volume, if applicable.
     oneOf:

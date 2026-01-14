@@ -1,0 +1,6 @@
+title: IncludedPromoCodes
+type: object
+description: |
+  A map of promo codes, keyed by ID, included on endpoints that support it when passing the matching includes query parameter.
+additionalProperties:
+  $ref: ../billing/PromoCode.yml

@@ -3,10 +3,10 @@ type: object
 description: Resources associated with an IP Pool.
 properties:
   creators:
-    "$ref": "../../includes/CreatorInclude.yml"
+    $ref: "../../includes/CreatorIncludes.yml"
   servers:
-    "$ref": "../../includes/ServersIncludes.yml"
+    $ref: "../../includes/IncludedServers.yml"
   integrations:
-    "$ref": "../../includes/IntegrationsIncludes.yml"
+    $ref: "../../includes/IncludedIntegrations.yml"
   locations:
-    "$ref": "../../includes/LocationsIncludes.yml"
+    $ref: "../../includes/IncludedLocations.yml"

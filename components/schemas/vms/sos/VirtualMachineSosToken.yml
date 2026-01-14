@@ -10,14 +10,14 @@ required:
   - valid
 properties:
   id:
-    "$ref": "../../ID.yml"
+    $ref: "../../ID.yml"
   virtual_machine_id:
     type: string
     description: The ID of the virtual machine being connected to.
   hub_id:
-    "$ref": "../../HubID.yml"
+    $ref: "../../HubID.yml"
   creator:
-    "$ref": "../../creators/CreatorScope.yml"
+    $ref: "../../creators/CreatorScope.yml"
   events:
     title: SSHTokenEvents
     type: object
@@ -29,13 +29,13 @@ properties:
     properties:
       created:
         description: The timestamp of when the serial-over-SSH token was created.
-        "$ref": "../../DateTime.yml"
+        $ref: "../../DateTime.yml"
       used:
         description: The timestamp of when the serial-over-SSH token was used.
-        "$ref": "../../DateTime.yml"
+        $ref: "../../DateTime.yml"
       expires:
         description: The timestamp of when the serial-over-SSH token expires.
-        "$ref": "../../DateTime.yml"
+        $ref: "../../DateTime.yml"
   valid:
     type: boolean
     description: A boolean where true represents the token as being a valid token to be used for connection.

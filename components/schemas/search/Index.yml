@@ -16,43 +16,43 @@ required:
 properties:
   generated:
     description: The timestampof when the index was generated
-    "$ref": "../DateTime.yml"
+    $ref: "../DateTime.yml"
   hub_id:
     description: Id describing the Hub
     type: string
   containers:
     type: object
     additionalProperties:
-      "$ref": "./Component.yml"
+      $ref: "./Component.yml"
   environments:
     type: object
     additionalProperties:
-      "$ref": "./Component.yml"
+      $ref: "./Component.yml"
   image_sources:
     type: object
     additionalProperties:
-      "$ref": "./Component.yml"
+      $ref: "./Component.yml"
   dns_zones:
     type: object
     additionalProperties:
-      "$ref": "./Component.yml"
+      $ref: "./Component.yml"
   stacks:
     type: object
     additionalProperties:
-      "$ref": "./Component.yml"
+      $ref: "./Component.yml"
   servers:
     type: object
     additionalProperties:
-      "$ref": "./Component.yml"
+      $ref: "./Component.yml"
   pipelines:
     type: object
     additionalProperties:
-      "$ref": "./Component.yml"
+      $ref: "./Component.yml"
   virtual_machines:
     type: object
     additionalProperties:
-      "$ref": "./Component.yml"
+      $ref: "./Component.yml"
   instances:
     type: object
     additionalProperties:
-      "$ref": "./Component.yml"
+      $ref: "./Component.yml"

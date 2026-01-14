@@ -173,7 +173,7 @@ post:
             image:
               $ref: ../../../components/schemas/vms/images/VirtualMachineImage.yml
             config:
-              "$ref": ../../../components/schemas/vms/config/VirtualMachineConfig.yml
+              $ref: ../../../components/schemas/vms/config/VirtualMachineConfig.yml
             lock:
               type: boolean
               description: Prevents this virtual machine from being deleted when true.

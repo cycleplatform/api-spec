@@ -13,14 +13,14 @@ required:
   - creator
 properties:
   id:
-    "$ref": "../../ID.yml"
+    $ref: "../../ID.yml"
   identifier:
     $ref: ../../Identifier.yml
     description: A human readable slugged identifier for this image source.
   type:
     $ref: ImageSourceType.yml
   hub_id:
-    "$ref": "../../HubID.yml"
+    $ref: "../../HubID.yml"
   name:
     type: string
     description: A name for the image source resource.
@@ -40,13 +40,13 @@ properties:
             description: The ID or Identifier of the Integration used to do the build.
       - type: "null"
   creator:
-    "$ref": "../../creators/CreatorScope.yml"
+    $ref: "../../creators/CreatorScope.yml"
   acl:
     anyOf:
       - $ref: ../../common/ACL.yml
       - type: "null"
   state:
-    "$ref": "./ImageSourceState.yml"
+    $ref: "./ImageSourceState.yml"
   events:
     title: ImageSourceEvents
     type: object
@@ -58,12 +58,12 @@ properties:
     properties:
       created:
         description: The timestamp of when the image source was created.
-        "$ref": "../../DateTime.yml"
+        $ref: "../../DateTime.yml"
       updated:
         description: The timestamp of when the image source was updated.
-        "$ref": "../../DateTime.yml"
+        $ref: "../../DateTime.yml"
       deleted:
         description: The timestamp of when the image source was deleted.
-        "$ref": "../../DateTime.yml"
+        $ref: "../../DateTime.yml"
   meta:
     $ref: "./ImageSourceMeta.yml"

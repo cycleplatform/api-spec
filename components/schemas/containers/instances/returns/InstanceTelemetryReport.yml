@@ -6,9 +6,9 @@ required:
   - snapshots
 properties:
   request:
-    "$ref": "../snapshots/TelemetryReportRequest.yml"
+    $ref: "../snapshots/TelemetryReportRequest.yml"
   snapshots:
     description: An array of telemetry snapshots.
     type: array
     items:
-      "$ref": "../snapshots/ResourceSnapshot.yml"
+      $ref: "../snapshots/ResourceSnapshot.yml"

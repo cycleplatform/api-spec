@@ -2,4 +2,4 @@ title: BillingOrderIncludes
 type: object
 properties:
   promo_codes:
-    "$ref": ../../../../../components/schemas/includes/PromoCodeInclude.yml
+    $ref: ../../../../../components/schemas//includes/IncludedPromoCodes.yml

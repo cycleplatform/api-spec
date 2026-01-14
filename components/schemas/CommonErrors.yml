@@ -3,22 +3,22 @@
   content:
     application/json:
       schema:
-        "$ref": "./error/ErrorResponse.yml"
+        $ref: "./error/ErrorResponse.yml"
 "401":
   description: OAuth token is invalid.
   content:
     application/json:
       schema:
-        "$ref": "./error/ErrorResponse.yml"
+        $ref: "./error/ErrorResponse.yml"
 "404":
   description: The requested resource doesn't exist.
   content:
     application/json:
       schema:
-        "$ref": "./error/ErrorResponse.yml"
+        $ref: "./error/ErrorResponse.yml"
 "500":
   description: Indicates an issue with Cycle. Rare.
   content:
     application/json:
       schema:
-        "$ref": "./error/ErrorResponse.yml"
+        $ref: "./error/ErrorResponse.yml"

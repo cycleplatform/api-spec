@@ -15,24 +15,24 @@ required:
   - state
 properties:
   id:
-    "$ref": "../ID.yml"
+    $ref: "../ID.yml"
   hub_id:
-    "$ref": "../HubID.yml"
+    $ref: "../HubID.yml"
   creator:
-    "$ref": "../creators/CreatorScope.yml"
+    $ref: "../creators/CreatorScope.yml"
   title:
     type: string
     description: Billing service title.
   order:
-    "$ref": "./orders/Order.yml"
+    $ref: "./orders/Order.yml"
   item:
-    "$ref": "./ServiceItem.yml"
+    $ref: "./ServiceItem.yml"
   discount:
-    "$ref": "./discounts/AssociatedDiscount.yml"
+    $ref: "./discounts/AssociatedDiscount.yml"
   price:
-    "$ref": "./BillingAmount.yml"
+    $ref: "./BillingAmount.yml"
   term:
-    "$ref": "./Term.yml"
+    $ref: "./Term.yml"
   events:
     title: BillingServiceEvents
     type: object
@@ -45,15 +45,15 @@ properties:
     properties:
       created:
         description: The timestamp of when the billing service was created.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
       updated:
         description: The timestamp of when the billing service was updated.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
       deleted:
         description: The timestamp of when the billing service was deleted.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
       last_billed:
         description: The timestamp of when the billing service was last billed.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
   state:
-    "$ref": "./BillingServiceState.yml"
+    $ref: "./BillingServiceState.yml"

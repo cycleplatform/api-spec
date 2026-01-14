@@ -1,0 +1,6 @@
+title: IncludedStackBuilds
+description: |
+  A map of stack builds, keyed by ID, included on endpoints that support it when passing the matching includes query parameter.
+type: object
+additionalProperties:
+  $ref: ../stacks/builds/StackBuild.yml

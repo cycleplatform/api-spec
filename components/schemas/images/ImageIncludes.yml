@@ -3,18 +3,18 @@ description: All includable resources linkable to the given image.
 type: object
 properties:
   creators:
-    "$ref": "../includes/CreatorInclude.yml"
+    $ref: "../includes/CreatorIncludes.yml"
   stack_builds:
-    "$ref": "../includes/StackBuildIncludes.yml"
+    $ref: "../includes/IncludedStackBuilds.yml"
   stacks:
-    "$ref": "../includes/StackIncludes.yml"
+    $ref: "../includes/IncludedStacks.yml"
   "stacks:identifiers":
-    $ref: ../includes/IdentifierIncludes.yml
+    $ref: ../includes/IncludedIdentifiers.yml
   sources:
-    "$ref": "../includes/ImageSourceIncludes.yml"
+    $ref: "../includes/IncludedImageSources.yml"
   "sources:identifiers":
-    $ref: ../includes/IdentifierIncludes.yml
+    $ref: ../includes/IncludedIdentifiers.yml
   integrations:
-    "$ref": "../includes/IntegrationsIncludes.yml"
+    $ref: "../includes/IncludedIntegrations.yml"
   "integrations:identifiers":
-    $ref: ../includes/IdentifierIncludes.yml
+    $ref: ../includes/IncludedIdentifiers.yml

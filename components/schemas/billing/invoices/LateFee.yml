@@ -8,10 +8,10 @@ required:
   - amount
 properties:
   id:
-    "$ref": "../../ID.yml"
+    $ref: "../../ID.yml"
   time:
     description: A timestamp of when the late fee was created.
-    "$ref": "../../DateTime.yml"
+    $ref: "../../DateTime.yml"
   description:
     type: string
     description: A description of the late fee.

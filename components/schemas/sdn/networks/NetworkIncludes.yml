@@ -3,6 +3,6 @@ description: All includable resource linkable to the given network.
 type: object
 properties:
   creators:
-    "$ref": "../../includes/CreatorInclude.yml"
+    $ref: "../../includes/CreatorIncludes.yml"
   environments:
-    "$ref": "../../includes/EnvironmentIncludes.yml"
+    $ref: "../../includes/IncludedEnvironments.yml"

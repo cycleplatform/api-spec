@@ -1,10 +1,10 @@
-title: SourceIncludes 
-description: A resource associate with an image source. 
-type: object 
-properties: 
-  creators: 
-    "$ref": "../../includes/CreatorInclude.yml"
+title: SourceIncludes
+description: A resource associate with an image source.
+type: object
+properties:
+  creators:
+    $ref: "../../includes/CreatorIncludes.yml"
   integrations:
-    "$ref": "../../includes/IntegrationsIncludes.yml"
+    $ref: "../../includes/IncludedIntegrations.yml"
   "integrations:identifiers":
-    $ref: ../../includes/IdentifierIncludes.yml
+    $ref: ../../includes/IncludedIdentifiers.yml

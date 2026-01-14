@@ -3,20 +3,20 @@ description: A resource associated with an instance.
 type: object
 properties:
   creators:
-    "$ref": "../../includes/CreatorInclude.yml"
+    $ref: ../../includes/CreatorIncludes.yml
   servers:
-    "$ref": "../../includes/ServersIncludes.yml"
+    $ref: ../../includes/IncludedServers.yml
   locations:
-    "$ref": "../../includes/LocationsIncludes.yml"
+    $ref: ../../includes/IncludedLocations.yml
   integrations:
-    "$ref": "../../includes/IntegrationsIncludes.yml"
+    $ref: ../../includes/IncludedIntegrations.yml
   "integrations:identifiers":
-    $ref: ../../includes/IdentifierIncludes.yml
+    $ref: ../../includes/IncludedIdentifiers.yml
   containers:
-    "$ref": "../../includes/ContainersIncludes.yml"
+    $ref: ../..//includes/IncludedContainers.yml
   "containers:identifiers":
-    $ref: ../../includes/IdentifierIncludes.yml
+    $ref: ../../includes/IncludedIdentifiers.yml
   environments:
-    "$ref": "../../includes/EnvironmentIncludes.yml"
+    $ref: ../../includes/IncludedEnvironments.yml
   "environments:identifiers":
-    $ref: ../../includes/IdentifierIncludes.yml
+    $ref: ../../includes/IncludedIdentifiers.yml

@@ -8,7 +8,7 @@ required:
   - emails
 properties:
   term:
-    "$ref": "../billing/Term.yml"
+    $ref: "../billing/Term.yml"
   allow_prepaid:
     type: boolean
     description: A boolean where true represents this account being approved to use a prepaid card for billing transactions.

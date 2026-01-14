@@ -1,5 +1,0 @@
-title: PromoCodeIncludes
-type: object
-description: A resource that is associated with a promo code.
-additionalProperties:
-  "$ref": "../billing/PromoCode.yml"

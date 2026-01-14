@@ -5,7 +5,7 @@ required:
   - type
   - id
 properties:
-  type: 
+  type:
     type: string
     description: The type of user that created the resource.
     enum:
@@ -17,4 +17,4 @@ properties:
       - api-key
       - visitor
   id:
-    "$ref": "../ID.yml"
+    $ref: "../ID.yml"

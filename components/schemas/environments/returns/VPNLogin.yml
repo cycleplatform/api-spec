@@ -10,7 +10,7 @@ required:
   - success
 properties:
   id:
-    "$ref": "../../ID.yml"
+    $ref: "../../ID.yml"
   username:
     type: string
     description: The username used when logging in.
@@ -22,7 +22,7 @@ properties:
     description: The IP address of the machine the user has logged in from.
   time:
     description: The timestamp for when the login occured.
-    "$ref": "../../DateTime.yml"
+    $ref: "../../DateTime.yml"
   success:
     type: boolean
     description: A boolean where true means the login attempt was successful.

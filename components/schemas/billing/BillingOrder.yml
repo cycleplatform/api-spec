@@ -14,25 +14,25 @@ required:
   - state
 properties:
   id:
-    "$ref": "../ID.yml"
+    $ref: "../ID.yml"
   hub_id:
-    "$ref": "../HubID.yml"
+    $ref: "../HubID.yml"
   creator:
-    "$ref": "../creators/CreatorScope.yml"
+    $ref: "../creators/CreatorScope.yml"
   promo_code_id:
     type:
       - string
       - "null"
     description: An ID associated with a promo code used with the order.
   term:
-    "$ref": "./Term.yml"
+    $ref: "./Term.yml"
   approved:
     type: boolean
     description: A boolean where true represents the order is approved to be paid by the user.
   items:
     type: array
     items:
-      "$ref": "./orders/OrderItem.yml"
+      $ref: "./orders/OrderItem.yml"
   total_price:
     type: integer
     description: 1/10th of a cent.
@@ -48,16 +48,16 @@ properties:
     properties:
       created:
         description: The timestamp of when the billing order was created.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
       updated:
         description: The timestamp of when the billing order was updated.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
       deleted:
         description: The timestamp of when the billing order was deleted.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
       expires:
         description: The timestamp of when the billing order expires.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
   state:
     allOf:
       - required:
@@ -71,4 +71,4 @@ properties:
               - processed
               - deleting
               - deleted
-      - "$ref": "../State.yml"
+      - $ref: "../State.yml"

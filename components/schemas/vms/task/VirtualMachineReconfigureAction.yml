@@ -10,4 +10,4 @@ properties:
       - reconfigure
     description: The action to take.
   contents:
-    "$ref": "../config/VirtualMachineConfig.yml"
+    $ref: "../config/VirtualMachineConfig.yml"

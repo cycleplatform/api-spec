@@ -16,16 +16,16 @@ properties:
     properties:
       last_checkin:
         description: The last time this server checked in with the platform.
-        "$ref": "../../DateTime.yml"
+        $ref: "../../DateTime.yml"
       drivers:
         description: An array a drivers associated with the given server.
         type: array
         items:
           type: string
       state:
-        "$ref": "./NodeState.yml"
+        $ref: "./NodeState.yml"
       stats:
-        "$ref": "../stats/NodeMetaStats.yml"
+        $ref: "../stats/NodeMetaStats.yml"
       healthy:
         type: boolean
         description: A boolean where true means the platform is reporting the server as healthy.
@@ -33,7 +33,7 @@ properties:
         type: boolean
         description: A boolean where true means the server is online and reachable by the platform.
   instances_count:
-    "$ref": "../../StateCountSummary.yml"
+    $ref: "../../StateCountSummary.yml"
   allocations:
     type: object
     required:

@@ -20,4 +20,4 @@ get:
               data:
                 type: array
                 items:
-                  "$ref": "../../../components/schemas/sdn/networks/Network.yml"
+                  $ref: "../../../components/schemas/sdn/networks/Network.yml"

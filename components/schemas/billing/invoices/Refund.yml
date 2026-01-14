@@ -9,10 +9,10 @@ required:
   - gateway
 properties:
   id:
-    "$ref": "../../ID.yml"
+    $ref: "../../ID.yml"
   time:
     description: A timestamp for the payment.
-    "$ref": "../../DateTime.yml"
+    $ref: "../../DateTime.yml"
   description:
     type: string
     description: Some information about the payment refund.
@@ -20,4 +20,4 @@ properties:
     type: integer
     description: 1/10th of a cent.
   gateway:
-    "$ref": "./PaymentGateway.yml"
+    $ref: "./PaymentGateway.yml"

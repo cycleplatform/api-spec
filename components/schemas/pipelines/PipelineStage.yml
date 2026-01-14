@@ -13,7 +13,7 @@ properties:
     type: array
     description: An array of steps for the stage.
     items:
-      "$ref": "./PipelineSteps.yml"
+      $ref: "./PipelineSteps.yml"
   options:
     type: object
     description: Additonal options for the stage.

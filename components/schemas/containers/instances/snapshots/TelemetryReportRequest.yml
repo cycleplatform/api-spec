@@ -11,7 +11,7 @@ properties:
     description: The ID of the instance this telemetry reporting pertains to.
   start:
     description: A timestamp of when the snapshot began.
-    "$ref": "../../../DateTime.yml"
+    $ref: "../../../DateTime.yml"
   end:
     description: A timestamp of when the snapshot ended.
-    "$ref": "../../../DateTime.yml"
+    $ref: "../../../DateTime.yml"

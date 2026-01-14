@@ -47,6 +47,6 @@ get:
                 type: object
                 properties:
                   creators:
-                    "$ref": "../../../components/schemas/includes/CreatorInclude.yml"
+                    $ref: "../../../components/schemas/includes/CreatorIncludes.yml"
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
