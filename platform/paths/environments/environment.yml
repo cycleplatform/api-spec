@@ -29,6 +29,7 @@ get:
             - containers
             - containers_count
             - instances_count
+            - service_versions
     - name: include
       in: query
       required: false

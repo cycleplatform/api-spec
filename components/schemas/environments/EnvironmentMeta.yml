@@ -28,3 +28,13 @@ properties:
           $ref: "../containers/summaries/ContainerImageSummary.yml"
         environment:
           $ref: "../containers/summaries/ContainerEnvironmentSummary.yml"
+  service_versions:
+    type: object
+    additionalProperties:
+      type: object
+      required: [version, last_updated]
+      properties:
+        version:
+          type: string
+        last_updated:
+          $ref: ../DateTime.yml
