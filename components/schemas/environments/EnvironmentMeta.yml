@@ -29,10 +29,13 @@ properties:
         environment:
           $ref: "../containers/summaries/ContainerEnvironmentSummary.yml"
   service_versions:
+    description: A map where the key is the service and the value describes the version and date of last update.
     type: object
     additionalProperties:
       type: object
-      required: [version, last_updated]
+      required:
+        - version
+        - last_updated
       properties:
         version:
           description: A string depicting the service version.
