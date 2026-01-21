@@ -9,4 +9,4 @@ allOf:
         enum:
           - live
           - deleted
-  - "$ref": "../State.yml"
+  - $ref: "../State.yml"

@@ -11,9 +11,9 @@ required:
   - events
 properties:
   id:
-    "$ref": "../../ID.yml"
+    $ref: "../../ID.yml"
   hub_id:
-    "$ref": "../../HubID.yml"
+    $ref: "../../HubID.yml"
   container_id:
     type: string
     description: The ID of the given container.
@@ -21,9 +21,9 @@ properties:
     type: string
     description: The ID of the instance the backup belongs to.
   target:
-    "$ref": "ContainerBackupTarget.yml"
+    $ref: "ContainerBackupTarget.yml"
   state:
-    "$ref": "ContainerBackupState.yml"
+    $ref: "ContainerBackupState.yml"
   events:
     title: BackupEvents
     type: object
@@ -35,10 +35,10 @@ properties:
     properties:
       created:
         description: The timestamp of when the backup was created.
-        "$ref": "../../DateTime.yml"
+        $ref: "../../DateTime.yml"
       updated:
         description: The timestamp of when the backup was updated.
-        "$ref": "../../DateTime.yml"
+        $ref: "../../DateTime.yml"
       deleted:
         description: The timestamp of when the backup was deleted.
-        "$ref": "../../DateTime.yml"
+        $ref: "../../DateTime.yml"

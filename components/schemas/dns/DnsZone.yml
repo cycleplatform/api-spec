@@ -11,11 +11,11 @@ required:
   - events
 properties:
   id:
-    "$ref": "../ID.yml"
+    $ref: "../ID.yml"
   hub_id:
-    "$ref": "../HubID.yml"
+    $ref: "../HubID.yml"
   creator:
-    "$ref": "../creators/CreatorScope.yml"
+    $ref: "../creators/CreatorScope.yml"
   origin:
     type: string
     description: The origin for the given DNS zone.
@@ -27,7 +27,7 @@ properties:
       - $ref: ../common/ACL.yml
       - type: "null"
   state:
-    "$ref": "./DnsZoneState.yml"
+    $ref: "./DnsZoneState.yml"
   events:
     title: ZoneEvents
     type: object
@@ -41,16 +41,16 @@ properties:
     properties:
       created:
         description: The timestamp of when the DNS zone was created.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
       updated:
         description: The timestamp of when the DNS zone was updated.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
       deleted:
         description: The timestamp of when the DNS zone was deleted.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
       last_verification:
         description: The timestamp of when the DNS zone was last_verification.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
       verified:
         description: The timestamp of when the DNS zone was verified.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"

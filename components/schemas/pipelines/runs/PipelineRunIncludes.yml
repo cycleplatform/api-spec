@@ -3,7 +3,7 @@ description: Resources related to a pipeline run, that can be included on suppor
 type: object
 properties:
   creators:
-    $ref: ../../../../components/schemas/includes/CreatorInclude.yml
+    $ref: ../../../../components/schemas/includes/CreatorIncludes.yml
   pipelines:
     $ref: ../../../../components/schemas/includes/IncludedPipelines.yml
   keys:

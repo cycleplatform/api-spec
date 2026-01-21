@@ -12,7 +12,7 @@ required:
   - state
 properties:
   id:
-    "$ref": "../ID.yml"
+    $ref: "../ID.yml"
   title:
     type: string
     description: A description of the event being announced.
@@ -22,7 +22,7 @@ properties:
   updates:
     type: array
     items:
-      "$ref": "./AnnouncementUpdate.yml"
+      $ref: "./AnnouncementUpdate.yml"
   affected_integrations:
     type: array
     items:
@@ -32,7 +32,7 @@ properties:
     items:
       type: string
   creator:
-    "$ref": "../creators/CreatorScope.yml"
+    $ref: "../creators/CreatorScope.yml"
   state:
     allOf:
       - required:
@@ -45,7 +45,7 @@ properties:
               - live
               - deleting
               - deleted
-      - "$ref": "../State.yml"
+      - $ref: "../State.yml"
   priority:
     type: string
     description: The priority or severity of the announcement.
@@ -67,13 +67,13 @@ properties:
     properties:
       created:
         description: The timestamp of when the announcement was created.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
       updated:
         description: The timestamp of when the announcement was updated.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
       deleted:
         description: The timestamp of when the announcement was deleted.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
       resolved:
         description: The timestamp of when the announcement was resolved.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"

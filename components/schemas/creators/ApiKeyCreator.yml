@@ -54,6 +54,6 @@ properties:
               - live
               - deleting
               - deleted
-      - "$ref": "../State.yml"
+      - $ref: "../State.yml"
   events:
     $ref: "../Events.yml"

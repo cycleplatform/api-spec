@@ -1,0 +1,6 @@
+title: IncludedProviderServerModels
+description: |
+  A map of provider server models, keyed by ID, included on endpoints that support it when passing the matching includes query parameter.
+type: object
+additionalProperties:
+  $ref: ../infrastructure/providers/models/ProviderServerModel.yml

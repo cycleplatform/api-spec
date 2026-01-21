@@ -3,8 +3,8 @@ description: All includable resource linkable to the given auto-scale group.
 type: object
 properties:
   integrations:
-    "$ref": "../../../includes/IntegrationsIncludes.yml"
+    $ref: "../../../includes/IncludedIntegrations.yml"
   models:
-    "$ref": "../../../includes/ProviderServerModelsIncludes.yml"
+    $ref: "../../../includes/IncludedProviderServerModels.yml"
   locations:
-    "$ref": "../../../includes/LocationsIncludes.yml"
+    $ref: "../../../includes/IncludedLocations.yml"

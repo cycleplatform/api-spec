@@ -10,7 +10,7 @@ required:
   - events
 properties:
   id:
-    "$ref": "../ID.yml"
+    $ref: "../ID.yml"
   name:
     type: object
     description: The first and last name associated with the Account.
@@ -40,7 +40,7 @@ properties:
         description: If true, the email has been verified and the Account is active.
       added:
         description: The date the email was added to the Account
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
   two_factor_auth:
     description: Two factor auth verification information.
     oneOf:
@@ -56,7 +56,7 @@ properties:
     description: Indicates whether or not Cycle employees have authorization to log in to this Account in a support capacity.
     type: boolean
   state:
-    "$ref": "./AccountState.yml"
+    $ref: "./AccountState.yml"
   events:
     title: AccountEvents
     type: object
@@ -69,13 +69,13 @@ properties:
     properties:
       created:
         description: The timestamp of when the image was created.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
       updated:
         description: The timestamp of when the image was updated.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
       deleted:
         description: The timestamp of when the image was deleted.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
       last_login:
         description: The timestamp of when the Account was last accessed.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"

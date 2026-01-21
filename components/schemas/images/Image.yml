@@ -13,9 +13,9 @@ required:
   - events
 properties:
   id:
-    "$ref": "../ID.yml"
+    $ref: "../ID.yml"
   hub_id:
-    "$ref": "../HubID.yml"
+    $ref: "../HubID.yml"
   name:
     type: string
     description: A user defined name for the image.
@@ -174,7 +174,7 @@ properties:
       - $ref: sources/StackImageSourceType.yml
       - $ref: sources/BucketImageSourceType.yml
   creator:
-    "$ref": "../creators/CreatorScope.yml"
+    $ref: "../creators/CreatorScope.yml"
   factory:
     oneOf:
       - type: object
@@ -195,7 +195,7 @@ properties:
             description: A date timestamp for when the node acknowledged the image import job.
       - type: "null"
   state:
-    "$ref": "./ImageState.yml"
+    $ref: "./ImageState.yml"
   events:
     title: ImageEvents
     type: object
@@ -207,12 +207,12 @@ properties:
     properties:
       created:
         description: The timestamp of when the image was created.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
       updated:
         description: The timestamp of when the image was updated.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
       deleted:
         description: The timestamp of when the image was deleted.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
   meta:
-    "$ref": "./ImageMeta.yml"
+    $ref: "./ImageMeta.yml"

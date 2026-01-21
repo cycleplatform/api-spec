@@ -3,7 +3,7 @@ description: All includable resources linkable to the given virtual machine SSH 
 type: object
 properties:
   creators:
-    $ref: ../../../../components/schemas/includes/CreatorInclude.yml
+    $ref: ../../../../components/schemas/includes/CreatorIncludes.yml
   environments:
     type: object
     additionalProperties:

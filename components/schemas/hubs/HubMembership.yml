@@ -12,12 +12,12 @@ required:
   - prefereneces
 properties:
   id:
-    "$ref": "../ID.yml"
+    $ref: "../ID.yml"
   account_id:
     type: string
     description: An ID for the account associated with the given membership.
   hub_id:
-    "$ref": "../HubID.yml"
+    $ref: "../HubID.yml"
   events:
     title: MembershipEvents
     type: object
@@ -27,16 +27,16 @@ properties:
     properties:
       created:
         description: The timestamp of when the membership was created.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
       updated:
         description: The timestamp of when the membership was updated.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
       deleted:
         description: The timestamp of when the membership was deleted.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
       joined:
         description: The timestamp of when the membership was accepted.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
   role_id:
     definition: The ID of the Role assigned to this Hub Membership.
     $ref: ../ID.yml

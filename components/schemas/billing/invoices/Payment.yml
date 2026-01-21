@@ -12,10 +12,10 @@ required:
   - gateway
 properties:
   id:
-    "$ref": "../../ID.yml"
+    $ref: "../../ID.yml"
   time:
     description: A timestamp for the payment.
-    "$ref": "../../DateTime.yml"
+    $ref: "../../DateTime.yml"
   description:
     type: string
     description: Some information about the payment.
@@ -28,11 +28,11 @@ properties:
   refunds:
     type: array
     items:
-      "$ref": "./Refund.yml"
+      $ref: "./Refund.yml"
   method_id:
     type: string
     description: The ID associated with the billing method used.
   result:
-    "$ref": "./PaymentResult.yml"
+    $ref: "./PaymentResult.yml"
   gateway:
-    "$ref": "./PaymentGateway.yml"
+    $ref: "./PaymentGateway.yml"

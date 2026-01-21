@@ -10,4 +10,4 @@ allOf:
           - live
           - releasing
           - released
-  - "$ref": "../../State.yml"
+  - $ref: "../../State.yml"

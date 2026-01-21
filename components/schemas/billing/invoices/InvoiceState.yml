@@ -21,4 +21,4 @@ allOf:
           - "voiding"
           - "voided"
           - "uncollectible"
-  - "$ref": "../../State.yml"
+  - $ref: "../../State.yml"

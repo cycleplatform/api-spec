@@ -9,7 +9,7 @@ required:
   - servers
 properties:
   hub_id:
-    "$ref": "../../HubID.yml"
+    $ref: "../../HubID.yml"
   servers:
     type: number
     description: The number of servers on the cluster

@@ -1,29 +1,28 @@
-title: DNSTLSAttempt 
-type: object 
-description: A DNS TLS certificate generation attempt resource. 
-required: 
-  - id 
-  - hub_id 
-  - domains 
-  - time 
-  - success 
-properties: 
-  id: 
-    "$ref": "../../ID.yml" 
-  hub_id: 
-    "$ref": "../../HubID.yml" 
-  domains: 
-    description: A list of domains associated with the attempt. 
-    type: array 
-    items: 
-      type: string 
-  time: 
-    description: A timestamp for when the attempt took place. 
-    "$ref": "../../DateTime.yml" 
-  success: 
-    description: A boolean where true means the attept was successful at creating the TLS certificate. 
-    type: boolean 
-  error: 
-    type: string 
-    description: If success is false this property will be populated with an error. 
-  
+title: DNSTLSAttempt
+type: object
+description: A DNS TLS certificate generation attempt resource.
+required:
+  - id
+  - hub_id
+  - domains
+  - time
+  - success
+properties:
+  id:
+    $ref: "../../ID.yml"
+  hub_id:
+    $ref: "../../HubID.yml"
+  domains:
+    description: A list of domains associated with the attempt.
+    type: array
+    items:
+      type: string
+  time:
+    description: A timestamp for when the attempt took place.
+    $ref: "../../DateTime.yml"
+  success:
+    description: A boolean where true means the attept was successful at creating the TLS certificate.
+    type: boolean
+  error:
+    type: string
+    description: If success is false this property will be populated with an error.

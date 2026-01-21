@@ -3,4 +3,4 @@ type: object
 description: A list of meta fields that can be applied to the image.
 properties:
   containers_count:
-    "$ref": "../StateCountSummary.yml"
+    $ref: "../StateCountSummary.yml"

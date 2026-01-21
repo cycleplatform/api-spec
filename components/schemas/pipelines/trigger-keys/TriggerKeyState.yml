@@ -7,7 +7,7 @@ allOf:
         description: The current state of the trigger key.
         type: string
         enum:
-          - live 
-          - deleting 
+          - live
+          - deleting
           - deleted
-  - "$ref": "../../State.yml"
+  - $ref: "../../State.yml"

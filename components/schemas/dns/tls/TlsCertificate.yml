@@ -46,16 +46,16 @@ properties:
     properties:
       created:
         description: The timestamp of when the TLS certificate was created.
-        "$ref": "../../DateTime.yml"
+        $ref: "../../DateTime.yml"
       updated:
         description: The timestamp of when the TLS certificate was updated.
-        "$ref": "../../DateTime.yml"
+        $ref: "../../DateTime.yml"
       deleted:
         description: The timestamp of when the TLS certificate was deleted.
-        "$ref": ../../DateTime.yml
+        $ref: ../../DateTime.yml
       generated:
         description: The timestamp of when the TLS certificate was generated.
-        "$ref": "../../DateTime.yml"
+        $ref: "../../DateTime.yml"
 required:
   - id
   - user_supplied

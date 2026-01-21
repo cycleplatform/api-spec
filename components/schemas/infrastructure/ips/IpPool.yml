@@ -14,9 +14,9 @@ required:
   - state
 properties:
   id:
-    "$ref": "../../ID.yml"
+    $ref: "../../ID.yml"
   hub_id:
-    "$ref": "../../HubID.yml"
+    $ref: "../../HubID.yml"
   server_id:
     type: string
     description: An ID associated with a server resource.
@@ -30,7 +30,7 @@ properties:
       - ipv4
       - ipv6
   provider:
-    "$ref": "./IpPoolProvider.yml"
+    $ref: "./IpPoolProvider.yml"
   floating:
     type: boolean
     description: A boolean where true represents the pool as a floating IP pool.
@@ -69,4 +69,4 @@ properties:
           - $ref: ../../Cidr.yml
           - type: "null"
   state:
-    "$ref": "./IpPoolState.yml"
+    $ref: "./IpPoolState.yml"

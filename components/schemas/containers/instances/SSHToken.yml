@@ -11,7 +11,7 @@ required:
   - valid
 properties:
   id:
-    "$ref": "../../ID.yml"
+    $ref: "../../ID.yml"
   instance_id:
     type: string
     description: The ID of the instance being connected to.
@@ -19,9 +19,9 @@ properties:
     type: string
     description: The ID of the container from which the instance was created.
   hub_id:
-    "$ref": "../../HubID.yml"
+    $ref: "../../HubID.yml"
   creator:
-    "$ref": "../../creators/CreatorScope.yml"
+    $ref: "../../creators/CreatorScope.yml"
   events:
     title: SSHTokenEvents
     type: object
@@ -33,13 +33,13 @@ properties:
     properties:
       created:
         description: The timestamp of when the SSH token was created.
-        "$ref": "../../DateTime.yml"
+        $ref: "../../DateTime.yml"
       used:
         description: The timestamp of when the SSH token was used.
-        "$ref": "../../DateTime.yml"
+        $ref: "../../DateTime.yml"
       expires:
         description: The timestamp of when the SSH token expires.
-        "$ref": "../../DateTime.yml"
+        $ref: "../../DateTime.yml"
   valid:
     type: boolean
     description: A boolean where true represents the token as being a valid token to be used for connection.

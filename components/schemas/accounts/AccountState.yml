@@ -14,4 +14,4 @@ allOf:
           - purging
           - deleting
           - deleted
-  - "$ref": "../State.yml"
+  - $ref: "../State.yml"

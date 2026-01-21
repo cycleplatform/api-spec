@@ -1,0 +1,6 @@
+title: IncludedIntegrations
+description: |
+  A map of integrations, keyed by ID, included on endpoints that support it when passing the matching includes query parameter.
+type: object
+additionalProperties:
+  $ref: ../hubs/integrations/Integration.yml

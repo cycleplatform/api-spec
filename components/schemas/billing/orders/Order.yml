@@ -15,19 +15,19 @@ properties:
   hub_id:
     type: string
   creator:
-    "$ref": "../../common/UserScope.yml"
+    $ref: "../../common/UserScope.yml"
   promo_code_id:
     type:
       - string
       - "null"
   term:
-    "$ref": "../Term.yml"
+    $ref: "../Term.yml"
   approved:
     type: boolean
   items:
     type: array
     items:
-      "$ref": "./OrderItem.yml"
+      $ref: "./OrderItem.yml"
   total_price:
     type: number
   events:
@@ -39,6 +39,6 @@ properties:
     properties:
       expires:
         description: The timestamp of when the order expires.
-        "$ref": "../../DateTime.yml"
+        $ref: "../../DateTime.yml"
   state:
-    "$ref": "./OrderState.yml"
+    $ref: "./OrderState.yml"

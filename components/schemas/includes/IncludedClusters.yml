@@ -1,0 +1,6 @@
+title: IncludedClusters
+description: |
+  A map of clusters, keyed by ID, included on endpoints that support it when passing the matching includes query parameter.
+type: object
+additionalProperties:
+  $ref: ../infrastructure/clusters/Cluster.yml

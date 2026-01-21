@@ -19,4 +19,4 @@ get:
               - data
             properties:
               data:
-                "$ref": "../../../components/schemas/environments/Environment.yml"
+                $ref: "../../../components/schemas/environments/Environment.yml"

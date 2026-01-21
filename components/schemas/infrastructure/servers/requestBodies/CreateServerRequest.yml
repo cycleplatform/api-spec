@@ -40,7 +40,7 @@ content:
                   description: Advanced server options.
                   properties:
                     features:
-                      "$ref": "../ServerFeatures.yml"
+                      $ref: "../ServerFeatures.yml"
                     provision_options:
                       description: Advanced options to apply to the provisioning of a server.
                       oneOf:

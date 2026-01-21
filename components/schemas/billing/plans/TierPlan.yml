@@ -83,11 +83,11 @@ properties:
       - integer
       - "null"
   ram:
-    "$ref": "../BillingRam.yml"
+    $ref: "../BillingRam.yml"
   image_storage:
-    "$ref": "../BillingImageStorage.yml"
+    $ref: "../BillingImageStorage.yml"
   builds:
-    "$ref": "../BillingBuilds.yml"
+    $ref: "../BillingBuilds.yml"
   hidden:
     type: boolean
   hubs:

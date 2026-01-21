@@ -9,7 +9,7 @@ required:
   - amount
 properties:
   id:
-    "$ref": "../../ID.yml"
+    $ref: "../../ID.yml"
   associated_credit:
     type: object
     description: Credit associated with an invoice.
@@ -18,13 +18,13 @@ properties:
       - amount
     properties:
       id:
-        "$ref": "../../ID.yml"
+        $ref: "../../ID.yml"
       amount:
         type: integer
         description: The amount of the credit.
   time:
     description: A timestamp for when the invoice credit was created.
-    "$ref": "../../DateTime.yml"
+    $ref: "../../DateTime.yml"
   description:
     type: string
     description: A description of the invoice credit.

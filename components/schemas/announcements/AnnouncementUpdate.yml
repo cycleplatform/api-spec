@@ -8,12 +8,12 @@ required:
   - time
 properties:
   id:
-    "$ref": "../ID.yml"
+    $ref: "../ID.yml"
   message:
     type: string
     description: The text describing the update to the announcement.
   creator:
-    "$ref": "../creators/CreatorScope.yml"
+    $ref: "../creators/CreatorScope.yml"
   time:
-    "$ref": "../DateTime.yml"
+    $ref: "../DateTime.yml"
     description: A timestamp of when the update took place.

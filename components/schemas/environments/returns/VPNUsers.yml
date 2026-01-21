@@ -11,17 +11,17 @@ required:
   - events
 properties:
   id:
-    "$ref": "../../ID.yml"
+    $ref: "../../ID.yml"
   username:
     type: string
     description: The username for the login.
   creator:
-    "$ref": "../../creators/CreatorScope.yml"
+    $ref: "../../creators/CreatorScope.yml"
   last_login:
     description: A timestamp of the last time the user logged into the VPN.
-    "$ref": "../../DateTime.yml"
+    $ref: "../../DateTime.yml"
   hub_id:
-    "$ref": "../../HubID.yml"
+    $ref: "../../HubID.yml"
   environment_id:
     type: string
     description: An identifier for the environment the VPN service is associated with.
@@ -36,10 +36,10 @@ properties:
     properties:
       created:
         description: The timestamp of when the VPN user was created.
-        "$ref": "../../DateTime.yml"
+        $ref: "../../DateTime.yml"
       updated:
         description: The timestamp of when the VPN user was updated.
-        "$ref": "../../DateTime.yml"
+        $ref: "../../DateTime.yml"
       deleted:
         description: The timestamp of when the VPN user was deleted.
-        "$ref": "../../DateTime.yml"
+        $ref: "../../DateTime.yml"

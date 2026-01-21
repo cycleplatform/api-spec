@@ -8,10 +8,10 @@ required:
 properties:
   start:
     description: A timestamp describing the start of a billing term.
-    "$ref": "../DateTime.yml"
+    $ref: "../DateTime.yml"
   end:
     description: A timestamp describing the end of a billing term.
-    "$ref": "../DateTime.yml"
+    $ref: "../DateTime.yml"
   renew:
     description: The term renewal period.
     oneOf:

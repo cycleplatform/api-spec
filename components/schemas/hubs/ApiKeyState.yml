@@ -1,16 +1,16 @@
-title: ApiKeyState 
-allOf: 
-  - required: 
-      - current 
-    properties: 
-      current: 
-        description: The current state of the API key. 
-        type: string 
-        enum: 
-          - new 
-          - configuring 
-          - live 
-          - inactive 
-          - deleting 
-          - deleted 
-  - "$ref": "../State.yml" 
+title: ApiKeyState
+allOf:
+  - required:
+      - current
+    properties:
+      current:
+        description: The current state of the API key.
+        type: string
+        enum:
+          - new
+          - configuring
+          - live
+          - inactive
+          - deleting
+          - deleted
+  - $ref: "../State.yml"

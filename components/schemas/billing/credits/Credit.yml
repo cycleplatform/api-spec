@@ -14,9 +14,9 @@ required:
   - state
 properties:
   id:
-    "$ref": "../../ID.yml"
+    $ref: "../../ID.yml"
   hub_id:
-    "$ref": "../../HubID.yml"
+    $ref: "../../HubID.yml"
   description:
     type: string
     description: Some extra information about the billing credit.
@@ -36,7 +36,7 @@ properties:
         properties:
           date:
             description: A timestamp of when the billing credit expires.
-            "$ref": "../../DateTime.yml"
+            $ref: "../../DateTime.yml"
       - type: "null"
   events:
     title: BillingCreditEvents
@@ -49,13 +49,13 @@ properties:
     properties:
       created:
         description: The timestamp of when the billing order was created.
-        "$ref": "../../DateTime.yml"
+        $ref: "../../DateTime.yml"
       updated:
         description: The timestamp of when the billing order was updated.
-        "$ref": "../../DateTime.yml"
+        $ref: "../../DateTime.yml"
       deleted:
         description: The timestamp of when the billing order was deleted.
-        "$ref": "../../DateTime.yml"
+        $ref: "../../DateTime.yml"
   state:
     allOf:
       - required:
@@ -68,4 +68,4 @@ properties:
               - new
               - live
               - expired
-      - "$ref": "../../State.yml"
+      - $ref: "../../State.yml"

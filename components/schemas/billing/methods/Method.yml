@@ -12,7 +12,7 @@ required:
   - events
 properties:
   id:
-    "$ref": "../../ID.yml"
+    $ref: "../../ID.yml"
   name:
     type: string
     description: A name for the billing method.
@@ -40,7 +40,7 @@ properties:
               - pending-verification
               - deleting
               - deleted
-      - "$ref": "../../State.yml"
+      - $ref: "../../State.yml"
   events:
     title: CreditCardEvents
     type: object
@@ -52,10 +52,10 @@ properties:
     properties:
       created:
         description: The timestamp of when the credit card was created.
-        "$ref": "../../DateTime.yml"
+        $ref: "../../DateTime.yml"
       updated:
         description: The timestamp of when the credit card was updated.
-        "$ref": "../../DateTime.yml"
+        $ref: "../../DateTime.yml"
       deleted:
         description: The timestamp of when the credit card was deleted.
-        "$ref": "../../DateTime.yml"
+        $ref: "../../DateTime.yml"

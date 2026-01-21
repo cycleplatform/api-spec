@@ -17,9 +17,9 @@ required:
   - time
 properties:
   id:
-    "$ref": "../../ID.yml"
+    $ref: "../../ID.yml"
   hub_id:
-    "$ref": "../../HubID.yml"
+    $ref: "../../HubID.yml"
   user:
     type: object
     description: Userscope
@@ -85,7 +85,7 @@ properties:
           - type
         properties:
           id:
-            "$ref": "../../ID.yml"
+            $ref: "../../ID.yml"
           type:
             type: string
             description: The type of component.
@@ -393,4 +393,4 @@ properties:
 
   time:
     description: A timestamp for when the activity took place.
-    "$ref": "../../DateTime.yml"
+    $ref: "../../DateTime.yml"

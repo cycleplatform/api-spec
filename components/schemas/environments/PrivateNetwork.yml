@@ -16,7 +16,7 @@ properties:
   ipv6:
     allOf:
       - description: The IPv6 interface.
-      - "$ref": "./IPNet.yml"
+      - $ref: "./IPNet.yml"
   legacy:
     anyOf:
       - $ref: "./LegacyNetwork.yml"

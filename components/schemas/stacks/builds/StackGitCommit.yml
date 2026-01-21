@@ -1,4 +1,4 @@
-title: StackGitCommit 
+title: StackGitCommit
 type: object
 description: Information about the git commit this stack build was created from.
 required:
@@ -15,7 +15,7 @@ properties:
     description: The commit message for the given stack build hash.
   time:
     description: The time the commit was made.
-    "$ref": "../../DateTime.yml"
+    $ref: "../../DateTime.yml"
   author:
     type: object
     description: Inforamtion about the author of the commit.

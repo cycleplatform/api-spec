@@ -2,4 +2,4 @@ title: JobIncludes
 type: object
 properties:
   creators:
-    $ref: ../includes/CreatorInclude.yml
+    $ref: ../includes/CreatorIncludes.yml

@@ -9,12 +9,12 @@ required:
   - success
 properties:
   id:
-    "$ref": "../ID.yml"
+    $ref: "../ID.yml"
   account:
-    "$ref": "./AccountInfo.yml"
+    $ref: "./AccountInfo.yml"
   time:
     description: A timestamp of the time the login occurred.
-    "$ref": "../DateTime.yml"
+    $ref: "../DateTime.yml"
   type:
     type: string
     description: The type of login mechanism used.

@@ -1,0 +1,6 @@
+title: IncludedContainers
+type: object
+description: |
+  A map of containers, keyed by ID, included on endpoints that support it when passing the matching includes query parameter.
+additionalProperties:
+  $ref: ../containers/Container.yml

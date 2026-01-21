@@ -3,17 +3,16 @@ description: All includable resources linkable to the given container.
 type: object
 properties:
   creators:
-    "$ref": "../includes/CreatorInclude.yml"
+    $ref: "../includes/CreatorIncludes.yml"
   images:
-    "$ref": "../includes/ImagesIncludes.yml"
+    $ref: "../includes/IncludedImages.yml"
   stack_builds:
-    "$ref": "../includes/StackBuildIncludes.yml"
+    $ref: "../includes/IncludedStackBuilds.yml"
   stacks:
-    "$ref": "../includes/StackIncludes.yml"
+    $ref: "../includes/IncludedStacks.yml"
   "stacks:identifiers":
-    $ref: ../includes/IdentifierIncludes.yml
+    $ref: ../includes/IncludedIdentifiers.yml
   environments:
-    "$ref": "../includes/EnvironmentIncludes.yml"
+    $ref: "../includes/IncludedEnvironments.yml"
   "environments:identifiers":
-    $ref: ../includes/IdentifierIncludes.yml
-  
+    $ref: ../includes/IncludedIdentifiers.yml

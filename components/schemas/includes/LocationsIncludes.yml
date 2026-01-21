@@ -1,5 +1,0 @@
-title: LocationIncludes
-description: A resource that is associated with a provider location.
-type: object
-additionalProperties:
-  "$ref": "../infrastructure/providers/ProviderLocation.yml"

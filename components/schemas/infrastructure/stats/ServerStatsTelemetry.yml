@@ -10,13 +10,13 @@ required:
 properties:
   time:
     description: The timestamp for when the telemetery data was collected.
-    "$ref": "../../DateTime.yml"
+    $ref: "../../DateTime.yml"
   cpu_usage:
     $ref: ./ServerStatsCpuUsageTelemetry.yml
   load:
-    "$ref": "./ServerStatsLoad.yml"
+    $ref: "./ServerStatsLoad.yml"
   ram:
-    "$ref": "./ServerStatsRamTelemetry.yml"
+    $ref: "./ServerStatsRamTelemetry.yml"
   storage_base:
     type: object
     description: Telemetry data for the base volume of a given server.

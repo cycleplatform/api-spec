@@ -28,4 +28,4 @@ allOf:
               - decommissioned
               - deleted
           - type: "null"
-  - "$ref": "../../State.yml"
+  - $ref: "../../State.yml"

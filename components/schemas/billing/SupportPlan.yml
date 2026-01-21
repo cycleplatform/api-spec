@@ -13,12 +13,12 @@ properties:
     type: string
     description: The name of the support plan.
   price:
-    "$ref": "./BillingAmount.yml"
+    $ref: "./BillingAmount.yml"
   description:
     type: string
     description: Information about the billing support plan that describes the plan.
   features:
-    "$ref": "./SupportPlanFeatures.yml"
+    $ref: "./SupportPlanFeatures.yml"
   contract:
     type: boolean
     description: A boolean where true represents the plan is a long term contract, not just month to month.

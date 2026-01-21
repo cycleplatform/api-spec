@@ -11,11 +11,11 @@ required:
   - events
 properties:
   id:
-    "$ref": "../../ID.yml"
+    $ref: "../../ID.yml"
   creator:
-    "$ref": "../../creators/CreatorScope.yml"
+    $ref: "../../creators/CreatorScope.yml"
   hub_id:
-    "$ref": "../../HubID.yml"
+    $ref: "../../HubID.yml"
   pipeline_id:
     type: string
     description: The ID for the pipeline this run belongs to.
@@ -53,12 +53,12 @@ properties:
           properties:
             started:
               description: The timestamp of when the pipeline stage was started.
-              "$ref": "../../DateTime.yml"
+              $ref: "../../DateTime.yml"
             finished:
-              description: The timestamp of when the pipeline stage was finished.  
-              "$ref": "../../DateTime.yml"
+              description: The timestamp of when the pipeline stage was finished.
+              $ref: "../../DateTime.yml"
   state:
-    "$ref": "./RunState.yml"
+    $ref: "./RunState.yml"
   events:
     $ref: ./PipelineRunEvents.yml
   variables:

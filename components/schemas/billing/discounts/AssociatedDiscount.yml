@@ -7,9 +7,9 @@ required:
   - expires
 properties:
   id:
-    "$ref": "../../ID.yml"
+    $ref: "../../ID.yml"
   amount:
-    "$ref": "../BillingAmount.yml"
+    $ref: "../BillingAmount.yml"
   expires:
     description: A timestamp of when the discount expires.
-    "$ref": "../../DateTime.yml"
+    $ref: "../../DateTime.yml"

@@ -1,5 +1,4 @@
----
-title: CreatorInclude
+title: CreatorIncludes
 description: An identity that created a resource.
 type: object
 properties:

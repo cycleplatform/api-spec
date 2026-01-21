@@ -14,18 +14,18 @@ required:
   - events
 properties:
   id:
-    "$ref": "../ID.yml"
+    $ref: "../ID.yml"
   creator:
-    "$ref": "../creators/CreatorScope.yml"
+    $ref: "../creators/CreatorScope.yml"
   hub_id:
-    "$ref": "../HubID.yml"
+    $ref: "../HubID.yml"
   environment_id:
     type: string
     description: An identifier used to reference the environment this resource is scoped to.
   identifier:
     $ref: ../Identifier.yml
   scope:
-    "$ref": "./ScopedVariableScope.yml"
+    $ref: "./ScopedVariableScope.yml"
   access:
     $ref: ./ScopedVariableAccess.yml
   source:
@@ -46,7 +46,7 @@ properties:
       - $ref: ../containers/Deployment.yml
       - type: "null"
   state:
-    "$ref": "./ScopedVariableState.yml"
+    $ref: "./ScopedVariableState.yml"
   events:
     title: ScopedVariableEvents
     type: object
@@ -58,10 +58,10 @@ properties:
     properties:
       created:
         description: The timestamp of when the scoped variable was created.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
       updated:
         description: The timestamp of when the scoped variable was updated.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
       deleted:
         description: The timestamp of when the scoped variable was deleted.
-        "$ref": "../DateTime.yml"
+        $ref: "../DateTime.yml"
