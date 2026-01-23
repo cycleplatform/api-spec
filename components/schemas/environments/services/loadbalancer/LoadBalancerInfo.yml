@@ -1,0 +1,35 @@
+title: LoadBalancerInfo
+type: object
+description: Information about an environments load balancer configuration, state, and availability settings.
+required:
+  - default_config
+  - service
+  - default_type
+  - current_type
+properties:
+  default_config:
+    $ref: ../../../environments/services/loadbalancer/LoadBalancerConfig.yml
+  default_type:
+    type: string
+    enum:
+      - haproxy
+      - v1
+  current_type:
+    type: string
+    enum:
+      - haproxy
+      - v1
+  base_configs:
+    type: object
+    required:
+      - haproxy
+      - v1
+    properties:
+      haproxy:
+        $ref: ../../../environments/services/loadbalancer/config/types/haproxy/HaProxyConfig.yml
+      v1:
+        $ref: ../../../environments/services/loadbalancer/config/types/v1/V1LbConfig.yml
+  service:
+    anyOf:
+      - $ref: ../../../environments/services/LoadBalancerEnvironmentService.yml
+      - type: "null"
