@@ -1,0 +1,15 @@
+title: VirtualMachineRemoveVolumesAction
+type: object
+required:
+  - action
+  - contents
+properties:
+  action:
+    type: string
+    enum:
+      - volumes.remove
+  contents:
+    type: array
+    description: Array of volume IDs to remove.
+    items:
+      $ref: ../../ID.yml
