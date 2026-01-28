@@ -22,7 +22,7 @@ properties:
             $ref: ../../ID.yml
       - type: "null"
   removed:
-    description: The time stamp of the volume's removal, if applicable.
+    description: The timestamp of the volume's removal, if applicable.
     oneOf:
       - $ref: ../../DateTime.yml
       - type: "null"
