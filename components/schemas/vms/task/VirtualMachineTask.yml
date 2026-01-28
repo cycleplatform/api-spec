@@ -10,6 +10,8 @@ discriminator:
     ip.allocate: VirtualMachineIpAllocateAction.yml
     ip.unallocate: VirtualMachineIpUnallocateAction.yml
     volumes.reconfigure: VirtualMachineReconfigureVolumesAction.yml
+    volumes.add: VirtualMachineAddVolumesAction.yml
+    volumes.remove: VirtualMachineRemoveVolumesAction.yml
 oneOf:
   - $ref: VirtualMachineStartAction.yml
   - $ref: VirtualMachineStopAction.yml
@@ -19,3 +21,5 @@ oneOf:
   - $ref: VirtualMachineIpAllocateAction.yml
   - $ref: VirtualMachineIpUnallocateAction.yml
   - $ref: VirtualMachineReconfigureVolumesAction.yml
+  - $ref: VirtualMachineAddVolumesAction.yml
+  - $ref: VirtualMachineRemoveVolumesAction.yml

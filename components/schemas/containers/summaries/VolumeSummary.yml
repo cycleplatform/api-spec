@@ -21,3 +21,8 @@ properties:
           id:
             $ref: ../../ID.yml
       - type: "null"
+  removed:
+    description: The time stamp of the volume's removal, if applicable.
+    oneOf:
+      - $ref: ../../DateTime.yml
+      - type: "null"
