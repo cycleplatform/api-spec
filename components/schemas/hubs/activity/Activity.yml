@@ -55,7 +55,7 @@ properties:
   session:
     anyOf:
       - $ref: Session.yml
-      - type: null
+      - type: "null"
   changes:
     type: array
     description: An array of changes.
@@ -75,7 +75,7 @@ properties:
           message:
             type: string
             description: The error message.
-      - type: null
+      - type: "null"
   component:
     description: An object holding information about a component.
     oneOf:
@@ -89,7 +89,7 @@ properties:
           type:
             type: string
             description: The type of component.
-      - type: null
+      - type: "null"
   tags:
     type: array
     description: An array of tags that denote things such as a type of security event, or can be user-provided.
