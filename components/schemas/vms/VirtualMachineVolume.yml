@@ -15,3 +15,8 @@ required:
   - id
   - hash
   - config
+removed:
+    description: The timestamp of the volume's removal, if applicable.
+    oneOf:
+      - $ref: ../DateTime.yml
+      - type: "null"
