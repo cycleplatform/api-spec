@@ -17,9 +17,9 @@ required:
   - time
 properties:
   id:
-    "$ref": "../../ID.yml"
+    $ref: ../../ID.yml
   hub_id:
-    "$ref": "../../HubID.yml"
+    $ref: ../../HubID.yml
   user:
     type: object
     description: Userscope
@@ -31,13 +31,13 @@ properties:
         type: string
         description: The type of user.
         enum:
-          - "account"
-          - "environment"
-          - "platform"
-          - "platform-pipeline"
-          - "employee"
-          - "api-key"
-          - "visitor"
+          - account
+          - environment
+          - platform
+          - platform-pipeline
+          - employee
+          - api-key
+          - visitor
       id:
         type: string
         description: The given user's ID.
@@ -85,7 +85,7 @@ properties:
           - type
         properties:
           id:
-            "$ref": "../../ID.yml"
+            $ref: ../../ID.yml
           type:
             type: string
             description: The type of component.
@@ -380,6 +380,10 @@ properties:
       - virtual-machine.rootpw.change
       - virtual-machine.task.volumes.reconfigure
       - virtual-machine.volumes.reconfigure
+      - virtual-machine.volumes.remove
+      - virtual-machine.task.volumes.remove
+      - virtual-machine.volumes.add
+      - virtual-machine.task.volumes.add
 
       - virtual-machine.ssh-key.create
       - virtual-machine.ssh-key.update
@@ -393,4 +397,4 @@ properties:
 
   time:
     description: A timestamp for when the activity took place.
-    "$ref": "../../DateTime.yml"
+    $ref: ../../DateTime.yml
