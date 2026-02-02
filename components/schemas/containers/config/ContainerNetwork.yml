@@ -11,6 +11,7 @@ properties:
     enum:
       - enable
       - egress-only
+      - environment-limited
       - disable
   hostname:
     type: string
@@ -29,7 +30,7 @@ properties:
         properties:
           domains:
             type: array
-            description: | 
+            description: |
               The layer 2 'domains' that this container's instances should bridge to on the host server. 
               If the host has a matching layer 2 NIC configured via a virtual provider ISO, this container's instances 
               will be joined directly to the host's network.

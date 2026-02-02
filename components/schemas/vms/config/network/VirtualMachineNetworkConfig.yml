@@ -13,6 +13,7 @@ properties:
       - enable
       - disable
       - egress-only
+      - environment-limited
     description: Controls the public network mode for the virtual machine.
   hostname:
     type: string

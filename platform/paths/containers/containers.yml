@@ -78,7 +78,7 @@ get:
           public_network:
             type: string
             description: |
-              `filter[public_network]=value` public network filtering will allow you to filter by the containers network settings: `enabled`, `disabled`, `egress-only`.
+              `filter[public_network]=value` public network filtering will allow you to filter by the containers network settings: `enabled`, `disabled`, `egress-only`, `environment-limited`.
           image:
             type: string
             description: |
