@@ -14,6 +14,7 @@ properties:
           - enable
           - disable
           - egress-only
+          - environment-limited
       - $ref: StackVariable.yml
   hostname:
     description: The hostname of the container. This is how it can be referenced by other containers in the same environment.
