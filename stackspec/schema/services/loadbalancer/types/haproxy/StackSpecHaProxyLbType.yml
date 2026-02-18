@@ -5,7 +5,13 @@ required:
   - details
   - ipv4
   - ipv6
+  - performance
 properties:
+  performance:
+    description: Enable / disable performance mode.  If enabled, load balancer can use much more RAM and CPU.
+    oneOf:
+      - type: boolean
+      - $ref: ../../../../StackVariable.yml
   ipv4:
     description: Allow / disallow traffic to be routed via IPv4.
     oneOf:
