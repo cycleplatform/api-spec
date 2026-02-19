@@ -32,15 +32,20 @@ properties:
     description: A map where the key is the service and the value describes the version and date of last update.
     type: object
     additionalProperties:
-      type: object
-      required:
-        - version
-        - last_updated
-      properties:
-        version:
-          description: A string depicting the service version.
-          example: v2025.01.01.01
-          type: string
-        last_updated:
-          description: The time the version was last updated.
-          $ref: ../DateTime.yml
+      type: array
+      items:
+        type: object
+        required:
+          - version
+          - last_updated
+        properties:
+          version:
+            description: A string depicting the service version.
+            example: v2025.01.01.01
+            type: string
+          instance_id:
+            description: The ID of the instance of the service.
+            $ref: ../ID.yml
+          last_updated:
+            description: The time the version was last updated.
+            $ref: ../DateTime.yml
