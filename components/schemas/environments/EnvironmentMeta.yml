@@ -43,6 +43,9 @@ properties:
             description: A string depicting the service version.
             example: v2025.01.01.01
             type: string
+          instance_id:
+            description: The ID of the instance of the service.
+            $ref: ../ID.yml
           last_updated:
             description: The time the version was last updated.
             $ref: ../DateTime.yml
