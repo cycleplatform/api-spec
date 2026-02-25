@@ -37,72 +37,11 @@ post:
                   description: Authentication token for the ISO.
                 ipxe:
                   oneOf:
-                    - type: object
-                      properties:
-                        vlan_id:
-                          type:
-                            - integer
-                            - "null"
-                          description: VLAN ID for the IPXE boot.
-                        network_interface:
-                          type:
-                            - integer
-                            - "null"
-                          description: Network interface for the IPXE boot.
-                        static_ip:
-                          type:
-                            - string
-                            - "null"
-                          description: Static IP assigned to the IPXE boot.
-                        netmask:
-                          type:
-                            - string
-                            - "null"
-                          description: Netmask assigned to the IPXE boot.
-                        gateway_ip:
-                          type:
-                            - string
-                            - "null"
-                          description: Gateway IP assigned to the IPXE boot.
-                        dns_ip:
-                          type:
-                            - string
-                            - "null"
-                          description: DNS IP assigned to the IPXE boot.
+                    - $ref: ../../../../../components/schemas/infrastructure/virtual-providers/VirtualProviderIsoIpxeConfig.yml
                     - type: "null"
                 server:
                   oneOf:
-                    - type: object
-                      properties:
-                        storage:
-                          oneOf:
-                            - type: object
-                              properties:
-                                conditional_format:
-                                  type: boolean
-                            - type: "null"
-                        sdn_neighbor_preference:
-                          oneOf:
-                            - type: string
-                              enum:
-                                - ipv4
-                                - ipv6
-                            - type: "null"
-                        nics:
-                          description: An array of server network interfaces.
-                          type: array
-                          items:
-                            $ref: ../../../../../components/schemas/infrastructure/virtual-providers/VirtualProviderIsoNic.yml
-                        bonds:
-                          description: An array of bonds
-                          type: array
-                          items:
-                            $ref: ../../../../../components/schemas/infrastructure/virtual-providers/VirtualProviderIsoBond.yml
-                        additional_kernel_args:
-                          description: Appends additional kernel arguments when booting CycleOS.
-                          oneOf:
-                            - type: string
-                            - type: "null"
+                    - $ref: ../../../../../components/schemas/infrastructure/virtual-providers/VirtualProviderIsoServerConfig.yml
                     - type: "null"
 
   responses:

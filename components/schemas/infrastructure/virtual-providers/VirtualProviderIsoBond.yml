@@ -7,7 +7,6 @@ required:
 properties:
   interface_name:
     type: string
-
   interfaces:
     type: array
     items:
