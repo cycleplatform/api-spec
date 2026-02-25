@@ -12,7 +12,7 @@ properties:
           raid:
             oneOf:
               - type: string
-                description: Raid preference settings.
+                description: Determines how Cycle will configure RAID on storage drives.
                 enum: [disable, max-storage, max-redundancy, balanced]
               - type: "null"
       - type: "null"
