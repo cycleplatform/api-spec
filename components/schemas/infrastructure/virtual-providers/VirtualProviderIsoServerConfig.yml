@@ -1,0 +1,40 @@
+title: VirtualProviderIsoServerConfig
+type: object
+required:
+  - nics
+properties:
+  storage:
+    oneOf:
+      - type: object
+        properties:
+          conditional_format:
+            type: boolean
+          raid:
+            oneOf:
+              - type: string
+                description: Raid preference settings.
+                enum: [disable, max-storage, max-redundancy, balanced]
+              - type: "null"
+      - type: "null"
+  sdn_neighbor_preference:
+    oneOf:
+      - type: string
+        enum:
+          - ipv4
+          - ipv6
+      - type: "null"
+  nics:
+    description: An array of server network interfaces.
+    type: array
+    items:
+      $ref: VirtualProviderIsoNic.yml
+  bonds:
+    description: An array of bonds
+    type: array
+    items:
+      $ref: VirtualProviderIsoBond.yml
+  additional_kernel_args:
+    description: Appends additional kernel arguments when booting CycleOS.
+    oneOf:
+      - type: string
+      - type: "null"
