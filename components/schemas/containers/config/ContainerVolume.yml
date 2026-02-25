@@ -27,6 +27,15 @@ properties:
           max_size:
             $ref: ../../DataSize.yml
             description: The maximum size this volume can grow to. Container volumes on Cycle are thinly provisioned, meaning this isn't an allocation - the volume will only use the space it needs up to this size.
+          stateless:
+            type: 
+              - boolean
+              - "null"
+            default: false
+            description: > 
+              If set to true, this volume will be treated as ephemeral. Stateless volumes will **NOT** be migrated.
+
+              Stateless volumes on stateful containers will be wiped on container stop.
           storage_pool:
             oneOf:
               - type: boolean
