@@ -21,6 +21,15 @@ properties:
               - type: boolean
               - type: "null"
             description: Indicates if the volume is part of a storage pool.
+          stateless:
+            type: 
+              - boolean
+              - "null"
+            default: false
+            description: > 
+              If set to true, this volume will be treated as ephemeral. Stateless volumes will **NOT** be migrated.
+
+              Base volumes cannot be stateless.
       - type: "null"
     description: Configuration details for a local volume.
   external:
