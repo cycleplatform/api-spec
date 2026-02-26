@@ -14,10 +14,45 @@ properties:
         - name
         - rx_bytes
         - tx_bytes
+        - rx_packets
+        - tx_packets
+        - rx_dropped
+        - tx_dropped
+        - rx_errors
+        - tx_errors
       properties:
         name:
           type: string
+          description: Interface name (for example, i-pri-xxxx or i-pub-xxxx).
         rx_bytes:
           type: integer
+          format: int64
+          description: Total bytes received since interface start.
         tx_bytes:
           type: integer
+          format: int64
+          description: Total bytes transmitted since interface start.
+        rx_packets:
+          type: integer
+          format: int64
+          description: Total packets received since interface start.
+        tx_packets:
+          type: integer
+          format: int64
+          description: Total packets transmitted since interface start.
+        rx_dropped:
+          type: integer
+          format: int64
+          description: Total receive packets dropped since interface start.
+        tx_dropped:
+          type: integer
+          format: int64
+          description: Total transmit packets dropped since interface start.
+        rx_errors:
+          type: integer
+          format: int64
+          description: Total receive errors since interface start.
+        tx_errors:
+          type: integer
+          format: int64
+          description: Total transmit errors since interface start.
