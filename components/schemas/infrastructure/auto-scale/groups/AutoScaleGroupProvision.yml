@@ -1,0 +1,11 @@
+title: AutoScaleGroupProvision
+type: object
+properties:
+  features:
+    oneOf:
+      - $ref: ../../servers/ServerFeatures.yml
+      - type: "null"
+  constraints:
+    oneOf:
+      - $ref: ../../servers/ServerConstraints.yml
+      - type: "null"
