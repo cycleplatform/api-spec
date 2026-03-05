@@ -2,9 +2,15 @@ title: ServerStatsCpu
 type: object
 description: Statistics about the CPU resources on a server.
 properties:
+  physical_cpus:
+    type: integer
+    description: The number of physical CPU's for a given server.
   cores:
     type: integer
-    description: The number of CPU's or vCPU's for a given server.
+    description: The number vCPU's for a given server.
+  threads:
+    type: integer
+    description: The number of CPU threads for a given server.
   processors:
     description: An array of processor information objects.
     type: array
