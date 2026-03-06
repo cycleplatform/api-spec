@@ -61,17 +61,34 @@ properties:
                   - http-header-match
                   - http-body-match
               operator:
-                description: A string that indicates the range of values relative to the value property.
                 type: string
+                description: |
+                  Defines the comparison operator used to evaluate the rule condition
+                  against the provided `value`.
                 enum:
                   - "=="
                   - "!="
+                  - "*="
+                  - "!*="
+                  - "^="
+                  - "!^="
                   - ">"
                   - "<"
                   - ">="
                   - "<="
-              value:
-                description: The value corresponding to the condition type.
-                examples:
-                  - "0.0.0.0/0"
-                type: string
+                x-enum-descriptions:
+                  - "Equal to — the condition value must exactly match."
+                  - "Not equal to — the condition value must differ."
+                  - "Contains — the request value must contain the provided substring."
+                  - "Does not contain — the request value must not contain the substring."
+                  - "Starts with — the request value must begin with the provided prefix."
+                  - "Does not start with — the request value must not begin with the prefix."
+                  - "Greater than — numeric comparison."
+                  - "Less than — numeric comparison."
+                  - "Greater than or equal — numeric comparison."
+                  - "Less than or equal — numeric comparison."
+            value:
+              description: The value corresponding to the condition type.
+              examples:
+                - "0.0.0.0/0"
+              type: string
