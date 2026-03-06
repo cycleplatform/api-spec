@@ -87,8 +87,8 @@ properties:
                   - "Less than — numeric comparison."
                   - "Greater than or equal — numeric comparison."
                   - "Less than or equal — numeric comparison."
-            value:
-              description: The value corresponding to the condition type.
-              examples:
-                - "0.0.0.0/0"
-              type: string
+              value:
+                description: The value corresponding to the condition type.
+                examples:
+                  - "0.0.0.0/0"
+                type: string
