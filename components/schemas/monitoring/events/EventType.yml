@@ -6,6 +6,7 @@ enum:
   - console.ssh.login.failed
   - console.sos.login
   - console.sos.login.failed
+  - container.instance.image.changed
   - container.instance.backup.completed
   - container.instance.backup.failed
   - container.instance.delete.failed
