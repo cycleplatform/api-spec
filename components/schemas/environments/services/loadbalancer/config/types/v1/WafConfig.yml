@@ -22,11 +22,15 @@ properties:
           description: A boolean that indicates if the rule should be active or skipped.
           type: boolean
         type:
-          description: A string that describes if the role should allow or deny traffic based on the conditions.
+          description: |
+            A string that describes if the role should allow, deny, or block traffic based on the conditions.
+            - block = http 403
+            - deny = connection disconnect
           type: string
           enum:
             - allow
             - deny
+            - block
         expires:
           description: The expiration date of the WAF config, if present.
           oneOf:
@@ -40,6 +44,14 @@ properties:
             - all
             # legacy value TODO remove
             - ""
+        sample:
+          description: |
+            Percentage range from 0 to 100
+            Sample = 100 => the rule is applied to 100% of requests
+            Sample = 0 => the rule applies to 0% of requests
+          type:
+            - integer
+            - "null"
         conditions:
           description: An array of the specific conditions for the rule.
           type: array
