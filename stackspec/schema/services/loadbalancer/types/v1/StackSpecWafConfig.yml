@@ -27,12 +27,16 @@ properties:
                     - type: boolean
                     - $ref: ../../../../StackVariable.yml
                 type:
-                  description: A string that describes if the role should allow or deny traffic based on the conditions.
+                  description: |
+                    A string that describes if the role should allow, deny, or block traffic based on the conditions.
+                    - block = http 403
+                    - deny = connection disconnect
                   oneOf:
                     - type: string
                       enum:
                         - allow
                         - deny
+                        - block
                     - $ref: ../../../../StackVariable.yml
                 expires:
                   description: The expiration date of the WAF config, if present.
@@ -50,6 +54,15 @@ properties:
                       enum:
                         - any
                         - all
+                    - $ref: ../../../../StackVariable.yml
+                sample:
+                  description: |
+                    Percentage range from 0 to 100
+                    Sample = 100 => the rule is applied to 100% of requests
+                    Sample = 0 => the rule applies to 0% of requests
+                  oneOf:
+                    - type: integer
+                    - type: "null"
                     - $ref: ../../../../StackVariable.yml
                 conditions:
                   description: An array of the specific conditions for the rule.
