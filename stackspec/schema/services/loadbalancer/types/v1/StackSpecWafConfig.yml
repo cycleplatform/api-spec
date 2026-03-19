@@ -124,6 +124,21 @@ properties:
                                 oneOf:
                                   - type: string
                                   - $ref: ../../../../StackVariable.yml
+                              key:
+                                description: |
+                                  An optional key used to target a specific attribute within the condition type.
+                                  For example, when using `http-header-match`, the key would be the header name (e.g., `X-Forwarded-For`).
+                                oneOf:
+                                  - type: string
+                                  - type: "null"
+                                  - $ref: ../../../../StackVariable.yml
+                              regex:
+                                description: |
+                                  When `true`, the `value` field is interpreted as a regular expression pattern
+                                  rather than a literal string. Allows for advanced pattern matching on condition values.
+                                oneOf:
+                                  - type: boolean
+                                  - $ref: ../../../../StackVariable.yml
                           - $ref: ../../../../StackVariable.yml
                     - $ref: ../../../../StackVariable.yml
             - $ref: ../../../../StackVariable.yml

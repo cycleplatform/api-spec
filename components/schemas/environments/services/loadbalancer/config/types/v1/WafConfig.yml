@@ -62,6 +62,24 @@ properties:
               - operator
               - value
             properties:
+              key:
+                description: |
+                  An optional key used to target a specific attribute within the condition type.
+                  For example, when using `http-header-match`, the key would be the header name (e.g., `X-Forwarded-For`).
+                type:
+                  - string
+                  - "null"
+              value:
+                description: The value corresponding to the condition type.
+                examples:
+                  - "0.0.0.0/0"
+                type: string
+              regex:
+                description: |
+                  When `true`, the `value` field is interpreted as a regular expression pattern
+                  rather than a literal string. Allows for advanced pattern matching on condition values.
+                type: boolean
+                default: false
               type:
                 description: A string that describes the match type for the condition.
                 type: string
@@ -99,8 +117,3 @@ properties:
                   - "Less than — numeric comparison."
                   - "Greater than or equal — numeric comparison."
                   - "Less than or equal — numeric comparison."
-              value:
-                description: The value corresponding to the condition type.
-                examples:
-                  - "0.0.0.0/0"
-                type: string
