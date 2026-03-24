@@ -50,3 +50,8 @@ properties:
             type: string
             enum: [default, ipv4, ipv6]
       - type: "null"
+  domain_suffix:
+    anyOf:
+      - type: string
+      - $ref: ../../StackVariable.yml
+      - type: "null"
