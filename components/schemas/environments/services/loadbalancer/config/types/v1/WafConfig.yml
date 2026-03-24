@@ -52,6 +52,15 @@ properties:
           type:
             - integer
             - "null"
+        response:
+          description: Response configuration for when the rule is triggered.
+          oneOf:
+            - type: object
+              properties:
+                http_code:
+                  description: The HTTP code that will be sent back to the requester on rule match.
+                  type: integer
+            - type: "null"
         conditions:
           description: An array of the specific conditions for the rule.
           type: array
