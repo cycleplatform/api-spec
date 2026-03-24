@@ -53,5 +53,4 @@ properties:
   domain_suffix:
     anyOf:
       - type: string
-      - $ref: ../../StackVariable.yml
       - type: "null"
