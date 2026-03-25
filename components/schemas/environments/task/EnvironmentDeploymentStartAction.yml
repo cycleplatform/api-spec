@@ -1,0 +1,31 @@
+title: EnvironmentDeploymentStartAction
+type: object
+description: |
+  Starts a specific deployment within an environment. Requires a deployment
+  object identifying the tag and version to start.
+required:
+  - action
+  - contents
+properties:
+  action:
+    type: string
+    enum:
+      - deployment.start
+  contents:
+    type: object
+    required:
+      - deployment
+    properties:
+      deployment:
+        description: The selector for which deployment to start.
+        oneOf:
+          - type: object
+            properties:
+              version:
+                description: Targets the deployment with this exact version.
+                $ref: ../../Version.yml
+          - type: object
+            properties:
+              tag:
+                description: Targets the deployment with this exact tag applied to it.
+                type: string

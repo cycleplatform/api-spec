@@ -1,0 +1,32 @@
+title: EnvironmentDeploymentReinstateAction
+type: object
+description: |
+  Reinstates containers in a previously deprecated deployment within an
+  environment, restoring them to active status and allowing them to
+  receive traffic again.
+required:
+  - action
+  - contents
+properties:
+  action:
+    type: string
+    enum:
+      - deployment.reinstate
+  contents:
+    type: object
+    required:
+      - deployment
+    properties:
+      deployment:
+        description: The selector for which deployment to reinstate.
+        oneOf:
+          - type: object
+            properties:
+              version:
+                description: Targets the deployment with this exact version.
+                $ref: ../../Version.yml
+          - type: object
+            properties:
+              tag:
+                description: Targets the deployment with this exact tag applied to it.
+                type: string

@@ -26,6 +26,8 @@ discriminator:
     environment.deployments.tag: steps/EnvironmentDeploymentsTagStep.yml
     environment.deployments.prune: steps/EnvironmentDeploymentsPruneStep.yml
     environment.deployment.healthy.watch: steps/EnvironmentDeploymentHealthyWatchStep.yml
+    environment.deployment.deprecate: steps/EnvironmentDeploymentDeprecateStep.yml
+    environment.deployment.reinstate: steps/EnvironmentDeploymentReinstateStep.yml
 
     stack.build.create: steps/StackBuildCreateStep.yml
     stack.build.generate: steps/StackBuildGenerateStep.yml
@@ -61,7 +63,9 @@ oneOf:
   - $ref: steps/EnvironmentDeploymentStopStep.yml
   - $ref: steps/EnvironmentDeploymentsTagStep.yml
   - $ref: steps/EnvironmentDeploymentsPruneStep.yml
+  - $ref: steps/EnvironmentDeploymentDeprecateStep.yml
   - $ref: steps/EnvironmentDeploymentHealthyWatchStep.yml
+  - $ref: steps/EnvironmentDeploymentReinstateStep.yml
 
   # stack steps
   - $ref: steps/StackBuildCreateStep.yml

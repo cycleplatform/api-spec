@@ -1,0 +1,37 @@
+title: EnvironmentDeploymentDeprecateStep
+type: object
+description: |
+  Deprecates a tagged deployment within an environment. Deprecated deployments
+  will not receive new traffic but existing instances continue running until stopped.
+required:
+  - action
+  - details
+properties:
+  identifier:
+    type: string
+    description: An identifier for the step.
+  options:
+    type: object
+    properties:
+      skip:
+        type: boolean
+  action:
+    type: string
+    description: The action that the step takes.
+    enum:
+      - environment.deployment.deprecate
+  details:
+    type: object
+    required:
+      - environment
+    properties:
+      environment:
+        $ref: ../FluidIdentifier.yml
+      tag:
+        type:
+          - string
+          - "null"
+      version:
+        type:
+          - string
+          - "null"

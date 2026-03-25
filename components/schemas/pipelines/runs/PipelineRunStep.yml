@@ -20,6 +20,8 @@ properties:
       - environment.deployment.start
       - environment.deployment.stop
       - environment.deployment.healthy.watch
+      - environment.deployment.deprecate
+      - environment.deployment.reinstate
       - image.create
       - image.import
       - images.prune

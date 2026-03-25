@@ -148,6 +148,8 @@ properties:
       - environment.deployments.prune
       - environment.deployment.start
       - environment.deployment.stop
+      - environment.deployment.deprecate
+      - environment.deployment.reinstate
 
       - environment.scoped-variable.delete
       - environment.scoped-variable.update
