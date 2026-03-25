@@ -24,10 +24,10 @@
   "author": "Petrichor Holdings, Inc.",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@apidevtools/json-schema-ref-parser": "^11.5.4",
+    "@apidevtools/json-schema-ref-parser": "11.5.4",
     "@redocly/cli": "2.14.3",
-    "@types/node": "^20.12.7",
-    "@types/yamljs": "^0.2.34",
-    "yamljs": "^0.3.0"
+    "@types/node": "20.12.7",
+    "@types/yamljs": "0.2.34",
+    "yamljs": "0.3.0"
   }
 }
