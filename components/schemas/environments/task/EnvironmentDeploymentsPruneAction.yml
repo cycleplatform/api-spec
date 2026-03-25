@@ -1,8 +1,7 @@
 title: EnvironmentDeploymentsPruneAction
 type: object
 description: |
-  Prunes orphaned deployments from an environment. This removes deployment
-  records that are no longer associated with active containers.
+  Remove any containers that are part of a deployment that does NOT have a tag associated with it.
 required:
   - action
 properties:

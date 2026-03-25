@@ -2,7 +2,7 @@ title: EnvironmentDeploymentStopAction
 type: object
 description: |
   Stops a specific deployment within an environment. Requires a deployment
-  object identifying the tag and version to stop.
+  object identifying the tag or version to stop.
 required:
   - action
   - contents

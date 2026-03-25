@@ -64,8 +64,8 @@ oneOf:
   - $ref: steps/EnvironmentDeploymentsTagStep.yml
   - $ref: steps/EnvironmentDeploymentsPruneStep.yml
   - $ref: steps/EnvironmentDeploymentDeprecateStep.yml
-  - $ref: steps/EnvironmentDeploymentHealthyWatchStep.yml
   - $ref: steps/EnvironmentDeploymentReinstateStep.yml
+  - $ref: steps/EnvironmentDeploymentHealthyWatchStep.yml
 
   # stack steps
   - $ref: steps/StackBuildCreateStep.yml
