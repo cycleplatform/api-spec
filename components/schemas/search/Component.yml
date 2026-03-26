@@ -8,6 +8,7 @@ required:
   - events
   - context_blobs
   - associations
+  - annotations
 properties:
   id:
     description: ID of the component
@@ -58,3 +59,8 @@ properties:
       provider-location:
         description: Associated provider location Id
         type: string
+  annotations:
+    description: Key-value pairs for additional component metadata
+    type: object
+    additionalProperties:
+      type: string

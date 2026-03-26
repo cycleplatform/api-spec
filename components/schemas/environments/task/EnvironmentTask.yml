@@ -6,10 +6,20 @@ discriminator:
     stop: EnvironmentStopAction.yml
     initialize: EnvironmentInitializeAction.yml
     deployments.reconfigure: EnvironmentReconfigureDeploymentsAction.yml
+    deployment.start: EnvironmentDeploymentStartAction.yml
+    deployment.stop: EnvironmentDeploymentStopAction.yml
+    deployment.deprecate: EnvironmentDeploymentDeprecateAction.yml
+    deployment.reinstate: EnvironmentDeploymentReinstateAction.yml
+    deployments.prune: EnvironmentDeploymentsPruneAction.yml
     monitoring.reconfigure: EnvironmentReconfigureMonitoringAction.yml
 oneOf:
   - $ref: EnvironmentStartAction.yml
   - $ref: EnvironmentStopAction.yml
   - $ref: EnvironmentInitializeAction.yml
   - $ref: EnvironmentReconfigureDeploymentsAction.yml
+  - $ref: EnvironmentDeploymentStartAction.yml
+  - $ref: EnvironmentDeploymentStopAction.yml
+  - $ref: EnvironmentDeploymentDeprecateAction.yml
+  - $ref: EnvironmentDeploymentReinstateAction.yml
+  - $ref: EnvironmentDeploymentsPruneAction.yml
   - $ref: EnvironmentReconfigureMonitoringAction.yml

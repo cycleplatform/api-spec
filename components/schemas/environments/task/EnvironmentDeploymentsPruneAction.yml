@@ -1,0 +1,11 @@
+title: EnvironmentDeploymentsPruneAction
+type: object
+description: |
+  Remove any containers that are part of a deployment that does NOT have a tag associated with it.
+required:
+  - action
+properties:
+  action:
+    type: string
+    enum:
+      - deployments.prune
