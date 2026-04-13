@@ -650,8 +650,6 @@ paths:
     $ref: "./paths/infrastructure/servers/tasks.yml"
   "/v1/infrastructure/servers/tags":
     $ref: "./paths/infrastructure/servers/tags.yml"
-  "/v1/infrastructure/servers/{serverId}/usage":
-    $ref: "./paths/infrastructure/servers/usage.yml"
   "/v1/infrastructure/servers/{serverId}/console":
     $ref: "./paths/infrastructure/servers/console.yml"
 
