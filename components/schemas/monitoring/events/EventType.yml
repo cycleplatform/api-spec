@@ -23,6 +23,7 @@ enum:
   - container.instance.restart.failed
   - container.instance.start.failed
   - container.instance.start.privileged
+  - container.instance.start.host_network
   - container.instance.stop.failed
   - container.instances.autoscale.down
   - container.instances.autoscale.up
