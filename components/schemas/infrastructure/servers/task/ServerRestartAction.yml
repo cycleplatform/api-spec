@@ -1,6 +1,13 @@
 title: ServerRestartAction
 type: object
-description: A job that restarts the server.
+description: |-
+  A job that restarts the server. There are two types of restart:
+    - soft
+    - hard
+  A 'soft' restart is issued through Cycle to the OS, and restarts it without cutting power.
+  A 'hard' restart is issued to the provider, which can mean different things depending on which provider owns the server.
+
+  Virtual provider servers cannot be hard restarted.
 required:
   - action
 properties:
@@ -9,3 +16,13 @@ properties:
     description: The action to take.
     enum:
       - restart
+  contents:
+    type: object
+    properties:
+      hard_restart:
+        type: boolean
+        description: |-
+          Issues a restart via the provider's API. 
+          In most cases it is a restart via the provider console, but this can imply releasing resources that have a small chance of not being available again when the server is brought back online.
+
+          Cannot be used on virtual provider servers.
