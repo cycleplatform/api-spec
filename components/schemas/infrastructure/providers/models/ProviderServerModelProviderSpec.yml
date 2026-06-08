@@ -1,59 +1,55 @@
-title: ServerProvider
+title: ProviderServerModelProviderSpec
 type: object
-description: A resource regarding the provider a given server is deployed from.
+description: Higher level information about a providers server.
 required:
-  - vendor
-  - integration_id
+  - identifier
   - category
   - model
   - locations
 properties:
   vendor:
     type: string
-    description: The vendor for the provider this server is deployed from.
+    description: The infrastructure vendor for the provider.
+  identifier:
+    type: string
+    description: A provider identifier.
   integration_id:
-    description: The integration this server provider is associated with, if defined.
-    oneOf:
+    anyOf:
       - $ref: "../../../ID.yml"
       - type: "null"
   category:
     type: string
-    description: The category of the server.
+    description: A category for the server.
   class:
     type: string
-    description: The class of the server, if defined.
+    description: A class for the server.
   model:
     type: string
     description: The model of the server.
   locations:
-    description: The locations where the server is deployed.
+    description: A list of location ID's this server is available.
     type: array
     items:
       type: string
   availability_zones:
-    oneOf:
-      - type: object
-        description: The availability zones the server can be deployed to, keyed by location.
-        additionalProperties:
-          type: array
-          items:
-            type: string
-      - type: "null"
+    type: object
+    additionalProperties:
+      type: array
+      items:
+        type: string
   stock:
-    oneOf:
-      - type: object
-        description: Stock information for the server, keyed by location.
-        additionalProperties:
-          type: object
-          required:
-            - quantity
-            - sync
-          properties:
-            quantity:
-              type: integer
-              description: The available quantity of stock at this location.
-            sync:
-              type: string
-              format: date-time
-              description: The time at which stock was last synced.
-      - type: "null"
+    type: object
+    description: Stock information for the server, keyed by location.
+    additionalProperties:
+      type: object
+      required:
+        - quantity
+        - sync
+      properties:
+        quantity:
+          type: integer
+          description: The available quantity of stock at this location.
+        sync:
+          type: string
+          format: date-time
+          description: The time at which stock was last synced.
