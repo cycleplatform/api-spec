@@ -1,10 +1,14 @@
 title: "ServerModelProvider"
 type: object
-description: "Identifies the provider details, including the category, class, model ID, available locations, and availability zones for a server, plan, or model."
+description: "Identifies the provider details, including the category, class, model ID, parent model ID, available locations, availability zones, and stock for a server, plan, or model."
 required:
+  - name
   - category
   - model_id
 properties:
+  name:
+    type: string
+    name: The name of the server model.
   category:
     type: string
     description: "The category of the server model."
@@ -16,6 +20,11 @@ properties:
   model_id:
     type: string
     description: "The primary ID used to reference this server model."
+  parent_model_id:
+    type:
+      - "string"
+      - "null"
+    description: "The ID of the parent server model, if this model is derived from another."
   locations:
     type:
       - "array"
@@ -24,7 +33,29 @@ properties:
       type: string
     description: "A list of locations where this server model is available."
   availability_zones:
-    description: "Details the availability zones where the server model is offered."
-    type:
-      - object
-      - "null"
+    description: "Details the availability zones where the server model is offered, keyed by location."
+    oneOf:
+      - type: object
+        additionalProperties:
+          type: array
+          items:
+            type: string
+      - type: "null"
+  stock:
+    description: "Stock information for the server model, keyed by location."
+    oneOf:
+      - type: object
+        additionalProperties:
+          type: object
+          required:
+            - quantity
+            - sync
+          properties:
+            quantity:
+              type: integer
+              description: "The available quantity of stock at this location."
+            sync:
+              type: string
+              format: date-time
+              description: "The time at which stock was last synced."
+      - type: "null"
