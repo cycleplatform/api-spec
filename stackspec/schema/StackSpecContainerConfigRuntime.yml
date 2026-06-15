@@ -185,6 +185,13 @@ properties:
               - type:
                   - boolean
                   - "null"
+                  - $ref: StackVariable.yml
+          expose_instances_dir:
+            description: If true, Cycle will mount the host's instances directory into the container at `/var/run/cycle/host/instances`.
+            oneOf:
+              - type:
+                  - boolean
+                  - "null"
               - $ref: StackVariable.yml
           power_management:
             description: If true, Cycle will give the container instances access via internal api to power off or reboot the host server.
