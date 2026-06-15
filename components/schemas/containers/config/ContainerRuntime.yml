@@ -131,7 +131,7 @@ properties:
               - boolean
               - "null"
           expose_instances_dir:
-            description: If true, Cycle will mount the host's `/sys/fs/cgroups` directory into the container at `/var/run/cycle/host/cgroups`.
+            description: If true, Cycle will mount the host's instances directory into the container at `/var/run/cycle/host/instances`.
             type:
               - boolean
               - "null"
