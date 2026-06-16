@@ -1,0 +1,48 @@
+# Component file
+get:
+  operationId: "getServerTelemetryStreamAuth"
+  summary: Server Telemetry Stream Authorization
+  description: |
+    Retrieves an access token and URL to open a websocket to for streaming server telemetry live.
+    This connects directly to the server and streams telemetry in real time, with a new snapshot
+    pushed approximately every 5 seconds.
+
+    Open a WebSocket to the returned `address`, passing the token as the `token` query parameter
+    (e.g. `wss://<address>?token=<token>`).
+
+    Requires the `servers-view` capability.
+  tags:
+    - Servers
+  parameters:
+    - name: serverId
+      description: The ID of the requested server.
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: "^[a-f0-9]{24}$"
+  responses:
+    "200":
+      description: Returns credentials for connecting to a server telemetry stream.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: object
+                description: Credentials for connecting to the server telemetry stream.
+                required:
+                  - token
+                  - address
+                properties:
+                  token:
+                    type: string
+                    description: The authentication token, passed to the address as the `token` query parameter.
+                  address:
+                    type: string
+                    description: The URL to open a websocket to for streaming server telemetry data.
+    default:
+      $ref: ../../../../../components/responses/errors/DefaultError.yml

@@ -1,0 +1,21 @@
+type: object
+title: ServerTelemetrySnapshot
+description: A single frame of server telemetry, pushed over the server telemetry websocket.
+required:
+  - generated
+  - cpu
+  - memory
+properties:
+  generated:
+    $ref: "../../../DateTime.yml"
+    description: The timestamp at which this telemetry snapshot was generated.
+  cpu:
+    description: CPU telemetry for this snapshot. Null when CPU telemetry is unavailable.
+    oneOf:
+      - $ref: ./ServerTelemetryCpu.yml
+      - type: "null"
+  memory:
+    description: Memory telemetry for this snapshot. Null when memory telemetry is unavailable.
+    oneOf:
+      - $ref: ./ServerTelemetryMemory.yml
+      - type: "null"

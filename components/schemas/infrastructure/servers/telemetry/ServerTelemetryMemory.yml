@@ -1,0 +1,272 @@
+type: object
+title: ServerTelemetryMemory
+description: >-
+  Memory telemetry for the server, mirroring the kernel's /proc/meminfo. Unless
+  noted otherwise, all values are reported in kibibytes (kB). The huge_pages_*
+  fields are page counts rather than sizes.
+required:
+  - mem_total
+  - mem_free
+  - mem_available
+  - buffers
+  - cached
+  - swap_cached
+  - active
+  - inactive
+  - active_anon
+  - inactive_anon
+  - active_file
+  - inactive_file
+  - unevictable
+  - mlocked
+  - swap_total
+  - swap_free
+  - dirty
+  - write_back
+  - anon_pages
+  - mapped
+  - shmem
+  - slab
+  - s_reclaimable
+  - s_unclaim
+  - kernel_stack
+  - page_tables
+  - nfs_unstable
+  - bounce
+  - writeback_tmp
+  - commit_limit
+  - committed_as
+  - vmalloc_total
+  - vmalloc_used
+  - vmalloc_chunk
+  - hardware_corrupted
+  - anon_huge_pages
+  - huge_pages_total
+  - huge_pages_free
+  - huge_pages_rsvd
+  - huge_pages_surp
+  - hugepagesize
+  - direct_map_4k
+  - direct_map_2M
+  - direct_map_1G
+properties:
+  mem_total:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Total usable RAM (physical memory minus reserved bytes and the kernel binary), in kB.
+  mem_free:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Amount of physical RAM left completely unused, in kB.
+  mem_available:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Estimate of memory available for starting new applications without swapping, in kB.
+  buffers:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Temporary storage for raw disk blocks, in kB.
+  cached:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Page cache for files read from disk, excluding swap cache, in kB.
+  swap_cached:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Memory that was swapped out and has been swapped back in but is still also present in the swap file, in kB.
+  active:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Memory used more recently and usually not reclaimed unless necessary, in kB.
+  inactive:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Memory used less recently and more eligible for reclaim, in kB.
+  active_anon:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Anonymous (non-file-backed) memory on the active list, in kB.
+  inactive_anon:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Anonymous (non-file-backed) memory on the inactive list, in kB.
+  active_file:
+    type: integer
+    format: int64
+    minimum: 0
+    description: File-backed memory on the active list, in kB.
+  inactive_file:
+    type: integer
+    format: int64
+    minimum: 0
+    description: File-backed memory on the inactive list, in kB.
+  unevictable:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Memory that cannot be reclaimed, such as mlocked pages and ramfs, in kB.
+  mlocked:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Memory locked into RAM with mlock() and therefore unswappable, in kB.
+  swap_total:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Total amount of swap space available, in kB.
+  swap_free:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Amount of swap space currently unused, in kB.
+  dirty:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Memory waiting to be written back to disk, in kB.
+  write_back:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Memory actively being written back to disk, in kB.
+  anon_pages:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Non-file-backed pages mapped into user-space page tables, in kB.
+  mapped:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Files that have been mapped into memory, such as libraries, in kB.
+  shmem:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Memory used by shared memory (shmem) and tmpfs, in kB.
+  slab:
+    type: integer
+    format: int64
+    minimum: 0
+    description: In-kernel data structure cache, in kB.
+  s_reclaimable:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Portion of Slab that can be reclaimed under memory pressure, in kB.
+  s_unclaim:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Portion of Slab that cannot be reclaimed under memory pressure, in kB.
+  kernel_stack:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Memory used by the kernel stacks of all tasks, in kB.
+  page_tables:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Memory used by page tables, in kB.
+  nfs_unstable:
+    type: integer
+    format: int64
+    minimum: 0
+    description: NFS pages sent to the server but not yet committed to stable storage, in kB. Reported as 0 on modern kernels.
+  bounce:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Memory used for block-device bounce buffers, in kB.
+  writeback_tmp:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Memory used by FUSE for temporary writeback buffers, in kB.
+  commit_limit:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Total amount of memory currently available to be allocated, based on the overcommit ratio, in kB.
+  committed_as:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Total amount of memory presently allocated across the system, in kB.
+  vmalloc_total:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Total size of the vmalloc memory area, in kB.
+  vmalloc_used:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Amount of the vmalloc area currently in use, in kB.
+  vmalloc_chunk:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Largest contiguous free block of the vmalloc area, in kB.
+  hardware_corrupted:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Amount of memory flagged as corrupted by the hardware, in kB.
+  anon_huge_pages:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Anonymous memory backed by transparent huge pages, in kB.
+  huge_pages_total:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Total number of huge pages in the pool (a count, not a size).
+  huge_pages_free:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Number of huge pages in the pool that are not yet allocated (a count, not a size).
+  huge_pages_rsvd:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Number of huge pages reserved for allocation but not yet allocated (a count, not a size).
+  huge_pages_surp:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Number of surplus huge pages above the configured base pool size (a count, not a size).
+  hugepagesize:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Size of a single huge page, in kB.
+  direct_map_4k:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Amount of memory mapped into the kernel address space using 4 kB pages, in kB.
+  direct_map_2M:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Amount of memory mapped into the kernel address space using 2 MB pages, in kB.
+  direct_map_1G:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Amount of memory mapped into the kernel address space using 1 GB pages, in kB.

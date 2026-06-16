@@ -644,6 +644,8 @@ paths:
     $ref: "./paths/infrastructure/servers/server.yml"
   "/v1/infrastructure/servers/{serverId}/telemetry":
     $ref: "./paths/infrastructure/servers/telemetry.yml"
+  "/v1/infrastructure/servers/{serverId}/telemetry/stream":
+    $ref: "./paths/infrastructure/servers/telemetry/stream.yml"
   "/v1/infrastructure/servers/{serverId}/instances":
     $ref: "./paths/infrastructure/servers/instances.yml"
   "/v1/infrastructure/servers/{serverId}/tasks":
@@ -784,6 +786,10 @@ components:
       in: header
       type: apiKey
       description: Defines the scope of the request to a specific Hub.
+  schemas:
+    # This is a webhook only type for now, but we want it included in the output.
+    ServerTelemetrySnapshot:
+      $ref: ../components/schemas/infrastructure/servers/telemetry/ServerTelemetrySnapshot.yml
 
 webhooks:
   environmentMetricsPush:
