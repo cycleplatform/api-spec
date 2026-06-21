@@ -26,4 +26,4 @@ properties:
     description: A server identifier associated with the pool.
   server_assignment:
     type: string
-    description: An identifier linked to the server assingment of the IP pool.
+    description: An identifier linked to the server assignment of the IP pool.

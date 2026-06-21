@@ -6,7 +6,7 @@ required:
   - hub_id
   - kind
   - ip
-  - assingment
+  - assignment
   - pool_id
   - network_id
   - address
