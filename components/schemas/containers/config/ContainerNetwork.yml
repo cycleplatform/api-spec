@@ -3,16 +3,28 @@ type: object
 description: Network configuration for a container.
 required:
   - public
+  - egress_via_gateway
+  - routes
   - hostname
 properties:
   public:
     type: string
-    description: The public network settings for the given container
+    description: The public network settings for the given container.
     enum:
       - enable
       - egress-only
       - environment-limited
       - disable
+  egress_via_gateway:
+    type: boolean
+    description: When true, the container's egress traffic is routed out through the environment gateway.
+  routes:
+    type:
+      - array
+      - "null"
+    description: Custom network routes applied to the container's instances.
+    items:
+      $ref: ./network/NetworkRoute.yml
   hostname:
     type: string
     description: The hostname for the given container.
