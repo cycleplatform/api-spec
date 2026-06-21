@@ -1,0 +1,53 @@
+type: object
+title: ServerTelemetryDiskIo
+description: Block-device I/O counters for a single disk device, as reported by the kernel (/proc/diskstats). All counters are cumulative since boot.
+required:
+  - read_requests
+  - read_sectors
+  - read_time_ms
+  - write_requests
+  - write_sectors
+  - write_time_ms
+  - io_in_progress
+  - io_time_ms
+properties:
+  read_requests:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Total number of completed read requests.
+  read_sectors:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Total number of sectors read. Multiply by 512 for bytes.
+  read_time_ms:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Total time spent servicing read requests, in milliseconds.
+  write_requests:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Total number of completed write requests.
+  write_sectors:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Total number of sectors written. Multiply by 512 for bytes.
+  write_time_ms:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Total time spent servicing write requests, in milliseconds.
+  io_in_progress:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Number of I/O requests currently in progress.
+  io_time_ms:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Total time spent performing I/O, in milliseconds.

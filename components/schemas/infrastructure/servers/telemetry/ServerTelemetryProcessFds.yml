@@ -1,0 +1,30 @@
+type: object
+title: ServerTelemetryProcessFds
+description: A breakdown of the file descriptors held open by a process.
+required:
+  - total
+  - files
+  - sockets
+  - pipes
+  - other
+properties:
+  total:
+    type: integer
+    format: int64
+    description: Total number of open file descriptors.
+  files:
+    type: integer
+    format: int64
+    description: Number of descriptors referring to regular files.
+  sockets:
+    type: integer
+    format: int64
+    description: Number of descriptors referring to sockets.
+  pipes:
+    type: integer
+    format: int64
+    description: Number of descriptors referring to pipes.
+  other:
+    type: integer
+    format: int64
+    description: Number of descriptors of other types (e.g. epoll, eventfd, anonymous inodes).

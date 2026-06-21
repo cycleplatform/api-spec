@@ -83,8 +83,6 @@ enum:
   - servers-provision
   - servers-manage
   - servers-view
-  - san-manage
-  - san-view
 
   # Monitor
   - monitor-manage
