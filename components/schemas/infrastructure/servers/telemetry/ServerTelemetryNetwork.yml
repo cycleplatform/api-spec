@@ -1,0 +1,13 @@
+type: object
+title: ServerTelemetryNetwork
+description: Network telemetry for the server.
+required:
+  - devices
+properties:
+  devices:
+    type:
+      - object
+      - "null"
+    description: Per-interface network counters, keyed by interface name.
+    additionalProperties:
+      $ref: ./ServerTelemetryDeviceStats.yml

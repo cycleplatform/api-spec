@@ -1,0 +1,27 @@
+type: object
+title: ServerTelemetryProcess
+description: Telemetry for a single running process on the server.
+required:
+  - pid
+  - cmdline
+  - fds
+  - stat
+  - io
+properties:
+  pid:
+    type: integer
+    format: int64
+    minimum: 0
+    description: The process ID.
+  cmdline:
+    type: string
+    description: The full command line the process was started with.
+  fds:
+    $ref: ./ServerTelemetryProcessFds.yml
+    description: A breakdown of the file descriptors the process holds open.
+  stat:
+    $ref: ./ServerTelemetryProcessStats.yml
+    description: Scheduling and memory statistics for the process.
+  io:
+    $ref: ./ServerTelemetryProcessIo.yml
+    description: I/O accounting for the process.

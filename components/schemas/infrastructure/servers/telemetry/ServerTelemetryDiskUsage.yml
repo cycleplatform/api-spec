@@ -1,0 +1,29 @@
+type: object
+title: ServerTelemetryDiskUsage
+description: Filesystem usage for a single disk device. Reported as zero for devices without a mounted filesystem.
+required:
+  - total_bytes
+  - free_bytes
+  - available_bytes
+  - used_percent
+properties:
+  total_bytes:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Total size of the filesystem, in bytes.
+  free_bytes:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Free space on the filesystem, in bytes.
+  available_bytes:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Free space accessible to unprivileged users, in bytes.
+  used_percent:
+    type: number
+    format: double
+    minimum: 0
+    description: Percentage of the filesystem currently in use.

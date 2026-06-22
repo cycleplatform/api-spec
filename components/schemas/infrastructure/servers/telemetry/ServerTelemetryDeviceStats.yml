@@ -1,0 +1,105 @@
+type: object
+title: ServerTelemetryDeviceStats
+description: Network interface counters for a single device, as reported by the kernel (/proc/net/dev). All counters are cumulative since boot.
+required:
+  - name
+  - rx_bytes
+  - rx_packets
+  - rx_errors
+  - rx_drop
+  - rx_fifo
+  - rx_frame
+  - rx_compressed
+  - rx_multicast
+  - tx_bytes
+  - tx_packets
+  - tx_errors
+  - tx_drop
+  - tx_fifo
+  - tx_colls
+  - tx_carrier
+  - tx_compressed
+properties:
+  name:
+    type: string
+    description: The name of the network interface (e.g. "eth0").
+  rx_bytes:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Total bytes received.
+  rx_packets:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Total packets received.
+  rx_errors:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Total receive errors.
+  rx_drop:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Total received packets dropped.
+  rx_fifo:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Total receive FIFO buffer errors.
+  rx_frame:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Total receive framing errors.
+  rx_compressed:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Total compressed packets received.
+  rx_multicast:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Total multicast packets received.
+  tx_bytes:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Total bytes transmitted.
+  tx_packets:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Total packets transmitted.
+  tx_errors:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Total transmit errors.
+  tx_drop:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Total transmitted packets dropped.
+  tx_fifo:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Total transmit FIFO buffer errors.
+  tx_colls:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Total collisions detected on the interface.
+  tx_carrier:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Total transmit carrier losses.
+  tx_compressed:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Total compressed packets transmitted.

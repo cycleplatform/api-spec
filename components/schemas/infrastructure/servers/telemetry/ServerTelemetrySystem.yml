@@ -1,0 +1,21 @@
+type: object
+title: ServerTelemetrySystem
+description: General system telemetry for the server.
+required:
+  - uptime_seconds
+  - idle_seconds
+  - load_average
+properties:
+  uptime_seconds:
+    type: number
+    format: double
+    minimum: 0
+    description: Total time elapsed since the server booted, in seconds.
+  idle_seconds:
+    type: number
+    format: double
+    minimum: 0
+    description: Total time all CPUs have spent idle since boot, in seconds.
+  load_average:
+    $ref: ./ServerTelemetryLoadAvg.yml
+    description: System load averages over the last 1, 5, and 15 minutes.

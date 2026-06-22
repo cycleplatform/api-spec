@@ -1,0 +1,23 @@
+type: object
+title: ServerTelemetryLoadAvg
+description: System load averages over the last 1, 5, and 15 minutes.
+required:
+  - last_1_min
+  - last_5_min
+  - last_15_min
+properties:
+  last_1_min:
+    type: number
+    format: double
+    minimum: 0
+    description: The system load average over the last 1 minute.
+  last_5_min:
+    type: number
+    format: double
+    minimum: 0
+    description: The system load average over the last 5 minutes.
+  last_15_min:
+    type: number
+    format: double
+    minimum: 0
+    description: The system load average over the last 15 minutes.
