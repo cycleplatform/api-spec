@@ -1,0 +1,10 @@
+title: StackSpecContainerConfigHighAvailability
+description: Configuration options for how the platform treats instances of this container when opting into high availability via the internal API.
+required:
+  - stale_primary_deadline
+properties:
+  stale_primary_deadline:
+    description: The amount of time that must pass between high availability checkins before an instance is considered stale. If it is the primary, a new primary will be elected after this deadline. Minimum is 15s.
+    oneOf:
+      - $ref: ../../../components/schemas/Duration.yml
+      - $ref: ../StackVariable.yml

@@ -35,6 +35,12 @@ properties:
       - type: "null"
       - $ref: StackVariable.yml
 
+  ha:
+    oneOf:
+      - $ref: ./deploy/StackSpecContainerConfigHighAvailability.yml
+      - type: "null"
+      - $ref: StackVariable.yml
+
   function:
     description: Configuration options for containers using the 'function' deployment strategy.
     oneOf:
