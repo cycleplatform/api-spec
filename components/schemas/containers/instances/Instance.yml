@@ -102,6 +102,10 @@ properties:
     anyOf:
       - $ref: ../Deployment.yml
       - type: "null"
+  high_availability:
+    oneOf:
+      - $ref: ./InstanceHighAvailability.yml
+      - type: "null"
   events:
     title: InstanceEvents
     description: A collection of timestamps for each event in the instance's lifetime.
