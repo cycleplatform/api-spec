@@ -38,10 +38,60 @@ properties:
                 - $ref: ../../components/schemas/Cidr.yml
                 - type: "null"
                 - $ref: StackVariable.yml
+            source:
+              description: >-
+                The source network, in CIDR notation, that this route applies to.
+                Used for source-based (policy) routing.
+              oneOf:
+                - $ref: ../../components/schemas/Cidr.yml
+                - type: "null"
+                - $ref: StackVariable.yml
+            ensure_source_exists:
+              description: >-
+                When true, the source address is verified to exist on the host
+                before this route is applied.
+              oneOf:
+                - type: boolean
+                - $ref: StackVariable.yml
+            family:
+              description: The IP protocol family this route applies to.
+              oneOf:
+                - type: string
+                  enum:
+                    - ipv4
+                    - ipv6
+                - type: "null"
+                - $ref: StackVariable.yml
             gateway:
               description: The IP address that traffic matching the destination is forwarded to.
               oneOf:
                 - $ref: ../../components/schemas/IpAddress.yml
+                - $ref: StackVariable.yml
+            nexthops:
+              description: Additional next hops for this route, used for multipath routing.
+              oneOf:
+                - type: array
+                  items:
+                    title: NetworkRouteNexthop
+                    type: object
+                    description: A single next hop for a multipath network route.
+                    required:
+                      - gateway
+                    properties:
+                      gateway:
+                        description: The IP address of this next hop's gateway.
+                        oneOf:
+                          - $ref: ../../components/schemas/IpAddress.yml
+                          - $ref: StackVariable.yml
+                      hop_weight:
+                        description: >-
+                          The relative weight of this next hop when distributing
+                          traffic across multiple next hops.
+                        oneOf:
+                          - type: integer
+                            format: int64
+                          - type: "null"
+                          - $ref: StackVariable.yml
                 - $ref: StackVariable.yml
             interface:
               description: The name of the network interface this route is bound to.

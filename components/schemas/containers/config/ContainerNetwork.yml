@@ -24,7 +24,7 @@ properties:
       - "null"
     description: Custom network routes applied to the container's instances.
     items:
-      $ref: ./network/NetworkRoute.yml
+      $ref: ./network/NetworkRouteConfig.yml
   hostname:
     type: string
     description: The hostname for the given container.

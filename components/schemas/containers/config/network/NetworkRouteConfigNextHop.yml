@@ -1,0 +1,17 @@
+title: NetworkRouteConfigNexthop
+type: object
+description: A single next hop for a multipath network route.
+required:
+  - gateway
+properties:
+  gateway:
+    description: The IP address of this next hop's gateway.
+    $ref: ../../../IpAddress.yml
+  hop_weight:
+    description: >-
+      The relative weight of this next hop when distributing traffic across
+      multiple next hops.
+    oneOf:
+      - type: integer
+        format: int64
+      - type: "null"
