@@ -1,5 +1,5 @@
 post:
-  operationId: haCheckin
+  operationId: highAvailabilityCheckin
   summary: High Availability Checkin
   description: |
     Hit this endpoint every 30 seconds to check in and have the platform select and maintain a primary instance.
@@ -22,7 +22,7 @@ post:
             priority:
               type: integer
               format: int32
-              description: The election priority for this instance.
+              description: The election priority for this instance. Higher priority means more likely to be elected primary.
   responses:
     "200":
       description: Returns the result of the high availability check-in.

@@ -14,7 +14,7 @@ properties:
   priority:
     type: integer
     format: int32
-    description: The priority value assigned to this instance for the election.
+    description: The priority value assigned to this instance for the election. Higher priority means more likely to be elected primary.
   elected:
     description: The time at which this instance was elected as the primary.
     $ref: "../../DateTime.yml"
