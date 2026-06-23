@@ -1,0 +1,17 @@
+title: ContainerHighAvailability
+description: |
+  The high availability configuration and status for a container, as determined by the platform.
+type: object
+required:
+  - enable
+  - primary
+properties:
+  enable:
+    type: boolean
+    description: Whether high availability is enabled for this container.
+  primary:
+    description: |
+      Information about the instance currently elected as the primary for this container. Null when no primary has been elected.
+    oneOf:
+      - $ref: "./ContainerHighAvailabilityPrimary.yml"
+      - type: "null"

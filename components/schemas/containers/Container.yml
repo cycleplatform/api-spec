@@ -13,6 +13,9 @@ required:
   - instances
   - stateful
   - state
+  - role
+  - ha
+  - deployment
   - deprecate
   - lock
   - events
@@ -62,6 +65,11 @@ properties:
       - type: string
         enum:
           - orchestrator
+      - type: "null"
+  ha:
+    description: High availability status of the container. Contains information about the primary instance, if any.
+    oneOf:
+      - $ref: ./ha/ContainerHighAvailability.yml
       - type: "null"
   stateful:
     type: boolean

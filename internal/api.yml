@@ -84,6 +84,10 @@ paths:
   /v1/conductor/tasks:
     $ref: paths/conductor/tasks.yml
 
+  # HA
+  /v1/ha/checkin:
+    $ref: paths/ha/checkin.yml
+
   # Monitoring
   /v1/monitoring/metrics:
     $ref: paths/monitoring/metrics.yml
@@ -101,7 +105,7 @@ paths:
     $ref: paths/sdn/instances.yml
   /v1/sdn/networks/environments:
     $ref: paths/sdn/environments.yml
-  
+
   # Virtual Machines
   /v1/virtual-machine:
     $ref: paths/virtual-machine/virtual-machine.yml
@@ -109,7 +113,6 @@ paths:
     $ref: paths/virtual-machine/domains.yml
   /v1/virtual-machine/gateways:
     $ref: paths/virtual-machine/gateways.yml
-
 
   # Object Cache
   /v1/object-cache:

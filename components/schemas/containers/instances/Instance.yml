@@ -102,7 +102,7 @@ properties:
     anyOf:
       - $ref: ../Deployment.yml
       - type: "null"
-  high_availability:
+  ha:
     oneOf:
       - $ref: ./InstanceHighAvailability.yml
       - type: "null"

@@ -4,7 +4,6 @@ get:
   description: |
     Gets the scoped variables that are accessible to this instance via internal API.
   tags:
-    - Environments
     - Scoped Variables
   parameters: []
   responses:
