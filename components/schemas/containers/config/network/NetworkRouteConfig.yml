@@ -6,6 +6,7 @@ required:
   - source
   - ensure_source_exists
   - gateway
+  - interface
 properties:
   destination:
     description: The destination network, in CIDR notation, that this route matches.
