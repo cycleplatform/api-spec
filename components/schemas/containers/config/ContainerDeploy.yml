@@ -12,8 +12,8 @@ properties:
       - $ref: ../../infrastructure/DeploymentStrategyName.yml
       - type: "null"
     description: The deployment strategy to use when scaling the given container.
-  ha:
-    description: Configuration options for how the platform treats instances of this container when opting into high availability via the internal API.
+  ha_elections:
+    description: Configuration options for how the platform treats instances of this container when opting into high availability elections via the internal API.
     oneOf:
       - $ref: ./deploy/ContainerDeployHighAvailabilityConfig.yml
       - type: "null"

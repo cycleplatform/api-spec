@@ -35,7 +35,7 @@ properties:
       - type: "null"
       - $ref: StackVariable.yml
 
-  ha:
+  ha_elections:
     oneOf:
       - $ref: ./deploy/StackSpecContainerConfigHighAvailability.yml
       - type: "null"
