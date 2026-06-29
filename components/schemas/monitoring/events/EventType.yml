@@ -27,6 +27,7 @@ enum:
   - container.instance.stop.failed
   - container.instances.autoscale.down
   - container.instances.autoscale.up
+  - container.instances.ha.elections.primary.elected
   - container.reconfigured.privileged
   - container.volumes.base.create.failed
   - container.volumes.create.failed

@@ -1,5 +1,5 @@
 title: StackSpecContainerConfigHighAvailability
-description: Configuration options for how the platform treats instances of this container when opting into high availability via the internal API.
+description: Configuration options for how the platform treats instances of this container when opting into high availability elections via the internal API.
 required:
   - stale_primary_deadline
 properties:

@@ -38,8 +38,8 @@ properties:
       - type: "null"
   state:
     $ref: "../ContainerState.yml"
-  ha:
-    description: High availability status of the container. Contains information about the primary instance, if any.
+  ha_elections:
+    description: High availability elections status of the container. Contains information about the primary instance, if any.
     oneOf:
       - $ref: ../ha/ContainerHighAvailability.yml
       - type: "null"
