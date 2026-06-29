@@ -11,35 +11,40 @@ required:
   - processes
 properties:
   generated:
-    $ref: "../../../DateTime.yml"
+    $ref: "../../../../DateTime.yml"
     description: The timestamp at which this telemetry snapshot was generated.
   system:
     description: General system telemetry. Null when system telemetry is unavailable.
     oneOf:
-      - $ref: ./ServerTelemetrySystem.yml
+      - $ref: ./system/ServerTelemetrySystem.yml
       - type: "null"
   cpu:
     description: CPU telemetry for this snapshot. Null when CPU telemetry is unavailable.
     oneOf:
-      - $ref: ./ServerTelemetryCpu.yml
+      - $ref: ./cpu/ServerTelemetryCpu.yml
       - type: "null"
   memory:
     description: Memory telemetry for this snapshot. Null when memory telemetry is unavailable.
     oneOf:
-      - $ref: ./ServerTelemetryMemory.yml
+      - $ref: ./memory/ServerTelemetryMemory.yml
       - type: "null"
   network:
     description: Network telemetry for this snapshot. Null when network telemetry is unavailable.
     oneOf:
-      - $ref: ./ServerTelemetryNetwork.yml
+      - $ref: ./network/ServerTelemetryNetwork.yml
       - type: "null"
   disk:
     description: Disk telemetry for this snapshot. Null when disk telemetry is unavailable.
     oneOf:
-      - $ref: ./ServerTelemetryDisk.yml
+      - $ref: ./storage/ServerTelemetryDisk.yml
       - type: "null"
   processes:
     description: Process telemetry for this snapshot. Null when process telemetry is unavailable.
     oneOf:
-      - $ref: ./ServerTelemetryProcesses.yml
+      - $ref: ./processes/ServerTelemetryProcesses.yml
+      - type: "null"
+  cgroups:
+    description: Cgroup telemetry for this snapshot. Null when cgroup telemetry is unavailable.
+    oneOf:
+      - $ref: ./cgroups/ServerTelemetryCgroups.yml
       - type: "null"

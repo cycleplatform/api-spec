@@ -1,0 +1,43 @@
+title: ServerTelemetryCgroupMemoryStats
+type: object
+description: Memory and swap usage statistics for a cgroup.
+required:
+  - usage_bytes
+  - swap_usage_bytes
+  - peak_bytes
+  - swap_peak_bytes
+  - events
+  - stat_metrics
+properties:
+  usage_bytes:
+    type: integer
+    format: int64
+    description: Current total memory usage of the cgroup, in bytes (memory.current).
+  swap_usage_bytes:
+    type: integer
+    format: int64
+    description: Current swap usage of the cgroup, in bytes (memory.swap.current).
+  peak_bytes:
+    type: integer
+    format: int64
+    description: Peak memory usage recorded for the cgroup, in bytes (memory.peak).
+  swap_peak_bytes:
+    type: integer
+    format: int64
+    description: Peak swap usage recorded for the cgroup, in bytes (memory.swap.peak).
+  events:
+    description: Memory controller event counters keyed by event name, sourced from memory.events (for example low, high, max, oom, oom_kill).
+    type:
+      - object
+      - "null"
+    additionalProperties:
+      type: integer
+      format: int64
+  stat_metrics:
+    description: Detailed memory statistics keyed by metric name, sourced from memory.stat.
+    type:
+      - object
+      - "null"
+    additionalProperties:
+      type: integer
+      format: int64

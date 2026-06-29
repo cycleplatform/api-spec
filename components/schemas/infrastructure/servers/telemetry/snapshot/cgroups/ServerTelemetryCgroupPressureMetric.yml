@@ -1,0 +1,13 @@
+title: ServerTelemetryCgroupPressureMetric
+type: object
+description: Pressure stall information for a single resource, split into some and full stall measurements.
+required:
+  - some
+  - full
+properties:
+  some:
+    description: Pressure measured while one or more tasks were stalled waiting on the resource.
+    $ref: ./ServerTelemetryCgroupPressureValues.yml
+  full:
+    description: Pressure measured while all non-idle tasks were simultaneously stalled waiting on the resource.
+    $ref: ./ServerTelemetryCgroupPressureValues.yml

@@ -1,0 +1,17 @@
+title: ServerTelemetryCgroupPressureStats
+type: object
+description: Pressure stall information (PSI) for a cgroup, covering CPU, memory, and IO.
+required:
+  - cpu
+  - memory
+  - io
+properties:
+  cpu:
+    description: CPU pressure stall information.
+    $ref: ./ServerTelemetryCgroupPressureMetric.yml
+  memory:
+    description: Memory pressure stall information.
+    $ref: ./ServerTelemetryCgroupPressureMetric.yml
+  io:
+    description: IO pressure stall information.
+    $ref: ./ServerTelemetryCgroupPressureMetric.yml

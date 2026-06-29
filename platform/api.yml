@@ -789,7 +789,7 @@ components:
   schemas:
     # This is a webhook only type for now, but we want it included in the output.
     ServerTelemetrySnapshot:
-      $ref: ../components/schemas/infrastructure/servers/telemetry/ServerTelemetrySnapshot.yml
+      $ref: ../components/schemas/infrastructure/servers/telemetry/snapshot/ServerTelemetrySnapshot.yml
 
 webhooks:
   environmentMetricsPush:
