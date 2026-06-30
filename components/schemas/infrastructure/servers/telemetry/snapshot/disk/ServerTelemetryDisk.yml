@@ -13,8 +13,8 @@ properties:
       $ref: ./ServerTelemetryDiskDevice.yml
   volumes:
     type:
-      - object
+      - array
       - "null"
     description: Telemetry for all volumes mounted on this host, keyed by device name.
-    additionalProperties:
+    items:
       $ref: ./ServerTelemetryDiskVolume.yml
