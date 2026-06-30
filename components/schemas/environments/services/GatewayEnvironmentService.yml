@@ -5,7 +5,6 @@ required:
   - enable
   - container_id
   - high_availability
-  - config
 properties:
   enable:
     type: boolean
@@ -15,9 +14,13 @@ properties:
     description: The ID of the gateway service container
   high_availability:
     type: boolean
-    description:
+    description: |
       A boolean representing if this service container is set to high availability
       mode or not.
   auto_update:
     type: boolean
     description: A boolean where `true` represents the desire to automatically update the environment gateway service.
+  config:
+    anyOf:
+      - $ref: ./gateway/GatewayConfig.yml
+      - type: "null"
