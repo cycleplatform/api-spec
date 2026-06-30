@@ -11,3 +11,10 @@ properties:
     description: Per-device disk telemetry, keyed by device name.
     additionalProperties:
       $ref: ./ServerTelemetryDiskDevice.yml
+  volumes:
+    type:
+      - object
+      - "null"
+    description: Telemetry for all volumes mounted on this host, keyed by device name.
+    additionalProperties:
+      $ref: ./ServerTelemetryDiskVolume.yml

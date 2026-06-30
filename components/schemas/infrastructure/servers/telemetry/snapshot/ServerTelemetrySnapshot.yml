@@ -36,7 +36,7 @@ properties:
   disk:
     description: Disk telemetry for this snapshot. Null when disk telemetry is unavailable.
     oneOf:
-      - $ref: ./storage/ServerTelemetryDisk.yml
+      - $ref: ./disk/ServerTelemetryDisk.yml
       - type: "null"
   processes:
     description: Process telemetry for this snapshot. Null when process telemetry is unavailable.

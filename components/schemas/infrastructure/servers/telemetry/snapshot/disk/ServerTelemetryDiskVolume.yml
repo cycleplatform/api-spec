@@ -1,0 +1,24 @@
+type: object
+title: ServerTelemetryDiskVolume
+description: Telemetry for a single volume on the server.
+required:
+  - name
+  - type
+  - io
+  - usage
+properties:
+  name:
+    type: string
+    description: The name of the volume.
+  type:
+    type: string
+    description: The type of volume (e.g. 'lvm')
+  mount:
+    type: string
+    description: Mountpoint of the volume
+  io:
+    $ref: ./ServerTelemetryDiskIo.yml
+    description: Block-device I/O counters for the volume.
+  usage:
+    $ref: ./ServerTelemetryDiskUsage.yml
+    description: Filesystem usage for the volume.
