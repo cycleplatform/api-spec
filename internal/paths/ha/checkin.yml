@@ -9,6 +9,7 @@ post:
   tags:
     - High Availability
   x-cycle-scopes:
+    - none
   requestBody:
     required: true
     content:

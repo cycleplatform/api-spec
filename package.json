@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "npm run lint:platform && npm run lint:internal && npm run lint:scheduler && npm run lint:ial",
     "lint:platform": "npx @redocly/cli lint ./platform/api.yml",
-    "lint:internal": "npx @redocly/cli lint ./internal/api.yml",
+    "lint:internal": "npx @redocly/cli lint cycle-internal-api",
     "lint:scheduler": "npx @redocly/cli lint ./scheduler/api.yml",
     "lint:ial": "npx @redocly/cli lint ./ial/api.yml",
     "build": "npm run build:platform && npm run build:internal && npm run build:scheduler && npm run build:internal",

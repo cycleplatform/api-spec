@@ -1,0 +1,34 @@
+# See https://redocly.com/docs/cli/configuration/
+apis:
+  cycle-platform-api:
+    root: ./platform/api.yml
+  cycle-internal-api:
+    root: ./internal/api.yml
+    rules:
+      rule/require-scopes:
+        subject:
+          type: Operation
+          property: x-cycle-scopes
+        assertions:
+          defined: true
+          nonEmpty: true
+          enum:
+            - none
+            - self
+            - environment
+            - networks
+            - server
+            - notifications
+        message: "Internal API operations must declare x-cycle-scopes using one or more of: none, self, environment, networks, server, notifications."
+        severity: error
+  cycle-scheduler-api:
+    root: ./scheduler/api.yml
+  cycle-ial:
+    root: ./ial/api.yml
+
+extends:
+  - recommended
+
+rules:
+  operation-4xx-response: off
+  no-ambiguous-paths: off

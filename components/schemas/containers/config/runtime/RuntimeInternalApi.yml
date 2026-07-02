@@ -9,9 +9,9 @@ properties:
         items:
           type: string
           enum:
-            - "self"
-            - "environment"
-            - "networks"
-            - "server"
-            - "notifications"
+            - self
+            - environment
+            - networks
+            - server
+            - notifications
       - type: "null"

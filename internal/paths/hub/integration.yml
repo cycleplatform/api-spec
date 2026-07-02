@@ -8,6 +8,7 @@ get:
   tags:
     - Hubs
   x-cycle-scopes:
+    - none
   parameters:
     - name: identifier
       in: query

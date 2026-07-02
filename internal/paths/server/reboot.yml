@@ -9,6 +9,7 @@ post:
     - Servers
   parameters: []
   x-cycle-scopes:
+    - none
   responses:
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
