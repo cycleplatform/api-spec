@@ -1,10 +1,15 @@
 get:
   operationId: "getEnvironmentInstances"
   summary: List Environment Instances
-  description: Lists all instances present in this instance's environment.
+  description: |
+    Lists all instances present in this instance's environment.
+
+    Requires the `environment` scope to be set on the container runtime config.
   tags:
     - Environments
     - Instances
+  x-cycle-scopes:
+    - environment
   parameters: []
   responses:
     default:

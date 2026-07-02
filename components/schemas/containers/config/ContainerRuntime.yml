@@ -85,6 +85,8 @@ properties:
         - CAP_LEASE
         - CAP_WAKE_ALARM
     description: A list of linux kernel capabilites for the given container.
+  internal_api:
+    $ref: ./runtime/RuntimeInternalApi.yml
   workdir:
     type: string
     description: Configure the working directory for the given container.

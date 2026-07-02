@@ -4,6 +4,16 @@ apis:
     root: ./platform/api.yml
   cycle-internal-api:
     root: ./internal/api.yml
+    rules:
+      rule/require-scopes:
+        subject:
+          type: Operation
+          property: x-cycle-scopes
+        assertions:
+          defined: true
+          nonEmpty: true
+        message: Internal API operations must declare x-cycle-scopes.
+        severity: error
   cycle-scheduler-api:
     root: ./scheduler/api.yml
   cycle-ial:

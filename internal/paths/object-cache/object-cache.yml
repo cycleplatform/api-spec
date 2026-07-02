@@ -3,8 +3,16 @@ get:
   summary: Get Object Cache
   description: |
     Returns an object saved to the internal object cache.
+
+    Requires the `server` scope to be set on the container runtime config if using the `global` cache.
+    Requires the `environment` scope to be set on the container runtime config if using the `environment` cache.
+    Requires the `self` scope to be set on the container runtime config if using the `container` or `instance` cache.
   tags:
     - Object Cache
+  x-cycle-scopes:
+    - server
+    - environment
+    - self
   parameters:
     - name: scope
       in: query
@@ -43,9 +51,17 @@ post:
   summary: Post Object Cache
   description: |
     Save an item to the internal API object cache.
+
+    Requires the `server` scope to be set on the container runtime config if using the `global` cache.
+    Requires the `environment` scope to be set on the container runtime config if using the `environment` cache.
+    Requires the `self` scope to be set on the container runtime config if using the `container` or `instance` cache.
   tags:
     - Object Cache
   parameters: []
+  x-cycle-scopes:
+    - server
+    - environment
+    - self
   requestBody:
     required: true
     content:

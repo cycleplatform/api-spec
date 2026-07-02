@@ -1,9 +1,14 @@
 get:
   operationId: "getContainerDomains"
   summary: List Container Domains
-  description: Get the domains pointed at a container.
+  description: |
+    Get the domains pointed at a container.
+
+    Requires the `self` scope to be set on the container runtime config.
   tags:
     - Containers
+  x-cycle-scopes:
+    - self
   parameters:
     - name: container-id
       in: query

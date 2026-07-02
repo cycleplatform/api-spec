@@ -252,6 +252,11 @@ properties:
             - CAP_LEASE
             - CAP_WAKE_ALARM
       - $ref: StackVariable.yml
+  internal_api:
+    oneOf:
+      - $ref: ./runtime/StackSpecRuntimeInternalApi.yml
+      - type: "null"
+      - $ref: StackVariable.yml
   rootfs:
     description: Configuration options for the root filesystem.
     oneOf:

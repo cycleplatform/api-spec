@@ -1,10 +1,15 @@
 get:
   operationId: "getNetworks"
   summary: List Networks
-  description: Lists all networks attached to this instance.
+  description: |
+    Lists all networks attached to this instance.
+
+    Requires the `networks` scope to be set on the container runtime config.
   tags:
     - SDN
   parameters: []
+  x-cycle-scopes:
+    - networks
   responses:
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml

@@ -1,11 +1,16 @@
 post:
   operationId: "downloadImage"
   summary: Download Image
-  description: Downloads the specified image to the server.
+  description: |
+    Downloads the specified image to the server.
+
+    Requires the `server` scope to be set on the container runtime config.
   tags:
     - Servers
     - Images
   parameters: []
+  x-cycle-scopes:
+    - server
   requestBody:
     required: true
     content:

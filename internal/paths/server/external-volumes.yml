@@ -1,21 +1,20 @@
 get:
-  operationId: "getServerContainers"
+  operationId: "getServerExternalVolumes"
+  summary: List Server External Volumes
+  description: |
+    Lists all external volumes connected to this server.
+
+    Requires the `server` scope to be set on the container runtime config.
   tags:
     - Servers
-    - Containers
   parameters: []
   x-cycle-scopes:
     - server
-  summary: List Server Containers
-  description: |
-    Lists all containers present on the same server as this instance.
-
-    Requires the `server` scope to be set on the container runtime config.
   responses:
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
     200:
-      description: Returns a list of containers.
+      description: Returns a list of external volumes.
       content:
         application/json:
           schema:
@@ -26,4 +25,4 @@ get:
               data:
                 type: array
                 items:
-                  $ref: ../../../components/schemas/containers/Container.yml
+                  "$ref": "../../../components/schemas/infrastructure/external-volumes/ExternalVolume.yml"

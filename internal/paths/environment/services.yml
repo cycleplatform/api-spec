@@ -1,9 +1,14 @@
 get:
   operationId: "getEnvironmentServices"
   summary: List Environment Services
-  description: Lists the services containers/instances that are in the same environment as this instance.
+  description: |
+    Lists the services containers/instances that are in the same environment as this instance.
+
+    Requires the `environment` scope to be set on the container runtime config.
   tags:
     - Environments
+  x-cycle-scopes:
+    - environment
   parameters: []
   responses:
     default:

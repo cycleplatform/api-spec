@@ -2,9 +2,13 @@ get:
   operationId: "getEnvironmentVirtualMachines"
   summary: Get Environment Virtual Machines
   description: |
-     Returns a list of virtual machines that are in the same environment as this instance.
+    Returns a list of virtual machines that are in the same environment as this instance.
+
+    Requires the `environment` scope to be set on the container runtime config.
   tags:
     - Environments
+  x-cycle-scopes:
+    - environment
   parameters: []
   responses:
     default:

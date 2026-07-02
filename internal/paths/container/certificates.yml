@@ -1,9 +1,14 @@
 get:
   operationId: "getContainerCertificates"
   summary: List Container Certificates
-  description: Get the TLS certificates associated with the domains pointed at this container.
+  description: |
+    Get the TLS certificates associated with the domains pointed at this container.
+
+    Requires the `self` scope to be set on the container runtime config.
   tags:
     - Containers
+  x-cycle-scopes:
+    - self
   parameters:
     - name: container-id
       in: query

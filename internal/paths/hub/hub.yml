@@ -1,10 +1,14 @@
 get:
   operationId: "getHub"
   summary: Get Hub
-  description: Gets the hub that this instance is a member of.
+  description: |
+    Gets the hub that this instance is a member of.
+
+    Does not require a scope
   tags:
     - Hubs
   parameters: []
+  x-cycle-scopes:
   responses:
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml

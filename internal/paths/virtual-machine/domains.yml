@@ -3,8 +3,12 @@ get:
   summary: Get Virtual Machine Domains
   description: |
     Returns the domains associated with the specified virtual machine.
+
+    Requires the `environment` scope to be set on the container runtime config.
   tags:
     - Virtual Machines
+  x-cycle-scopes:
+    - environment
   parameters:
     - name: virtual-machine-id
       in: query

@@ -1,10 +1,15 @@
 get:
   operationId: "getContainerInstances"
   summary: Get Container Instances
-  description: Gets the instances of a container. By default will grab the instances of the same container, but a `container-id`` parameter can be passed to grab any other container instances in the same environment.
+  description: |
+    Gets the instances of a container. By default will grab the instances of the same container, but a `container-id`` parameter can be passed to grab any other container instances in the same environment.
+
+    Requires the `self` scope to be set on the container runtime config.
   tags:
     - Containers
     - Instances
+  x-cycle-scopes:
+    - self
   parameters:
     - name: container-id
       in: query

@@ -57,8 +57,8 @@ paths:
     $ref: paths/server/server.yml
   /v1/server/instances:
     $ref: paths/server/instances.yml
-  /v1/server/instances/telemetry:
-    $ref: paths/server/instance-telemetry.yml
+  /v1/server/external-volumes:
+    $ref: paths/server/external-volumes.yml
   /v1/server/containers:
     $ref: paths/server/containers.yml
   /v1/server/images:
@@ -80,10 +80,6 @@ paths:
   /v1/containers/domains:
     $ref: paths/container/domains.yml
 
-  # Conductor
-  /v1/conductor/tasks:
-    $ref: paths/conductor/tasks.yml
-
   # HA
   /v1/ha/checkin:
     $ref: paths/ha/checkin.yml
@@ -93,10 +89,6 @@ paths:
     $ref: paths/monitoring/metrics.yml
   /v1/monitoring/events:
     $ref: paths/monitoring/events.yml
-
-  # VPN
-  /v1/vpn/login:
-    $ref: paths/vpn/login.yml
 
   # SDN
   /v1/sdn/networks:
@@ -111,8 +103,6 @@ paths:
     $ref: paths/virtual-machine/virtual-machine.yml
   /v1/virtual-machine/domains:
     $ref: paths/virtual-machine/domains.yml
-  /v1/virtual-machine/gateways:
-    $ref: paths/virtual-machine/gateways.yml
 
   # Object Cache
   /v1/object-cache:

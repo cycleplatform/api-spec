@@ -3,8 +3,12 @@ get:
   summary: Get Environment
   description: |
     Gets the Environment that this instance is a part of.
+
+    Requires the `environment` scope to be set on the container runtime config.
   tags:
     - Environments
+  x-cycle-scopes:
+    - environment
   parameters: []
   responses:
     default:

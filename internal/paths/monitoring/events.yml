@@ -3,8 +3,11 @@ post:
   summary: Post Event
   description: |
     Post a custom event to Cycle's monitoring system.
+
+    Does not require a scope.
   tags:
     - Monitoring
+  x-cycle-scopes:
   parameters: []
   requestBody:
     required: true
