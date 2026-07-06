@@ -5,7 +5,7 @@ get:
   description: |
     Retrieves an access token and URL to open a websocket to for streaming server telemetry live.
     This connects directly to the server and streams telemetry in real time, with a new snapshot
-    pushed approximately every 5 seconds.
+    pushed approximately every 10 seconds.
 
     Open a WebSocket to the returned `address`, passing the token as the `token` query parameter
     (e.g. `wss://<address>?token=<token>`).
