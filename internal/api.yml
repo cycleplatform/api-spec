@@ -81,7 +81,7 @@ paths:
     $ref: paths/container/domains.yml
 
   # HA
-  /v1/ha/checkin:
+  /v1/ha/election/checkin:
     $ref: paths/ha/checkin.yml
 
   # Monitoring
