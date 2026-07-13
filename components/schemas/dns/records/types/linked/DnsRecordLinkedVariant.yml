@@ -9,4 +9,6 @@ properties:
     $ref: DnsRecordLinkedVariantDestination.yml
   weight:
     type: integer
-    description: The weight of this variant relative to the other variants, used to distribute traffic across destinations.
+    minimum: 0
+    maximum: 1000
+    description: The weight of this variant relative to the other variants, used to distribute traffic across destinations. Valid range is 0 to 1000.
