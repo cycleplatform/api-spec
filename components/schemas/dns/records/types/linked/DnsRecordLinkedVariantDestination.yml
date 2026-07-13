@@ -1,0 +1,10 @@
+title: DnsRecordLinkedVariantDestination
+description: The destination a variant routes traffic to.
+oneOf:
+  - type: object
+    properties:
+      container_id:
+        type: string
+        description: The ID of the container this record is related to.
+  - $ref: DnsRecordLinkedVirtualMachine.yml
+  - $ref: DnsRecordLinkedDeployment.yml

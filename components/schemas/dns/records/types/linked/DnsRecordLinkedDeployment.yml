@@ -1,0 +1,27 @@
+title: DnsRecordLinkedDeployment
+type: object
+properties:
+  deployment:
+    type: object
+    description: Information about the deployment this record points to.
+    required:
+      - environment_id
+      - match
+    properties:
+      environment_id:
+        $ref: ../../../../ID.yml
+        description: The ID of the environment with the deployment tag mapping we want to reference.
+      match:
+        type: object
+        description: Describes which container and which tagged deployment this record should target.
+        required:
+          - container
+        properties:
+          container:
+            $ref: ../../../../Identifier.yml
+            description: The identifier of the container in the environment this record should point to.
+          tag:
+            description: The deployment tag that this record should point to. The tags are set on the root of an environment and map to a deployment version.
+            anyOf:
+              - $ref: ../../../../Identifier.yml
+              - type: "null"

@@ -1,0 +1,13 @@
+title: DnsRecordLinkedHttpRouting
+type: object
+required:
+  - match_path
+properties:
+  match_path:
+    type:
+      - string
+      - "null"
+    description: >
+      If set, this record will configure the load balancer to only match for paths of this domain matching this string.
+
+      If the string starts with a /, it will be a literal prefix match (/test matches /test*). Otherwise, regex is used.

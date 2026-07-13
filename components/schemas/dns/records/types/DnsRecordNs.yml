@@ -1,0 +1,9 @@
+title: DnsRecordNs
+type: object
+description: A DNS NS record.
+required:
+  - domain
+properties:
+  domain:
+    type: string
+    description: The domain of the nameserver for this record.

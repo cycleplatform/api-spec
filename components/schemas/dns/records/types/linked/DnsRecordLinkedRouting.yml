@@ -1,0 +1,15 @@
+title: DnsRecordLinkedRouting
+type: object
+description: Rules for routing traffic at the load balancer for this linked record.
+properties:
+  http:
+    oneOf:
+      - $ref: DnsRecordLinkedHttpRouting.yml
+      - type: "null"
+  variants:
+    type:
+      - array
+      - "null"
+    description: A set of weighted destinations that traffic to this record is distributed across.
+    items:
+      $ref: DnsRecordLinkedVariant.yml
