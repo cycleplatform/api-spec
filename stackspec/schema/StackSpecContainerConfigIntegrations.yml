@@ -145,9 +145,8 @@ properties:
                   cron_string:
                     description: A cron string describing how often to run the backup command.
                     oneOf:
-                      - type:
-                          - string
-                          - "null"
+                      - $ref: ../../components/schemas/Crontab.yml
+                      - type: "null"
                       - $ref: StackVariable.yml
               - $ref: StackVariable.yml
           restore:

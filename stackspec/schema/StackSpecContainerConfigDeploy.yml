@@ -70,6 +70,12 @@ properties:
               - $ref: ../../components/schemas/Duration.yml
               - type: "null"
               - $ref: StackVariable.yml
+          schedule:
+            description: A recurring schedule on which function instances are automatically triggered. When null, the function runs only on explicit invocation.
+            anyOf:
+              - $ref: ../../components/schemas/Crontab.yml
+              - type: "null"
+              - $ref: StackVariable.yml
       - type: "null"
       - $ref: StackVariable.yml
 

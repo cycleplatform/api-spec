@@ -42,6 +42,11 @@ properties:
               - $ref: ../../Duration.yml
               - type: "null"
             description: The maximum amount of time Cycle will wait for an instance to be available.
+          schedule:
+            anyOf:
+              - $ref: ../../Crontab.yml
+              - type: "null"
+            description: A recurring schedule on which function instances are automatically triggered. When null, the function runs only on explicit invocation.
       - type: "null"
   stateful:
     description: Configuration options for stateful deployments.

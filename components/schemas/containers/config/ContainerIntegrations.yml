@@ -85,7 +85,7 @@ properties:
               - type: "null"
             description: How long the backup will attempt to run before timing out.
           cron_string:
-            type: string
+            $ref: ../../Crontab.yml
             description: A cron string that configures how often the backup will run.
       restore:
         type:
