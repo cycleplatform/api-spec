@@ -1,0 +1,1159 @@
+openapi: 3.1.0
+info:
+  version: 1.0.0
+  title: Cycle Scheduler API
+  contact:
+    email: support@cycle.io
+  license:
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0
+  x-logo:
+    url: https://static.cycle.io/icons/logo/logo-white.svg
+servers:
+  - description: Cycle Scheduler Service
+    url: http://env-scheduler
+security:
+  - accessKey: []
+tags:
+  - name: Functions
+    description: Containers configured to be pre-allocated and started on demand - useful for batch processing and tasks with elastic demand. Managed by a scheduler service (this API) on a per-environment basis.
+paths:
+  /v1/functions/{containerId}/claim:
+    post:
+      operationId: claimInstance
+      summary: Claim Instance
+      description: |
+        Reserves an instance of the target function Container. The scheduler will release the claim back into the pool if the Instance is not claimed
+        within ten seconds.
+      tags:
+        - Functions
+      parameters:
+        - name: containerId
+          description: The ID of the requested Container.
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - token
+              properties:
+                token:
+                  type: string
+                  description: A custom token used for identifying and managing a claim. Can be any valid string, and must be used with spawning and releasing the Instance.
+      responses:
+        '200':
+          description: Returns details about the claimed Instance.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/ClaimedInstance'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /v1/functions/{containerId}/spawn:
+    post:
+      operationId: spawnInstance
+      summary: Spawn Instance
+      description: |
+        Spawns a previously claimed Instance.
+      tags:
+        - Functions
+      parameters:
+        - name: containerId
+          description: The ID of the requested Container.
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - token
+                - instance_id
+              properties:
+                token:
+                  description: The claim token previously used to claim the Instance.
+                  $ref: '#/components/schemas/ClaimToken'
+                instance_id:
+                  $ref: '#/components/schemas/ID'
+                runtime_variables:
+                  description: Optional variables that affect the runtime of the container.
+                  oneOf:
+                    - type: object
+                      properties:
+                        environment_variables:
+                          description: Environment variables to inject into the container.
+                          oneOf:
+                            - type: object
+                              additionalProperties:
+                                type: string
+                            - type: 'null'
+                    - type: 'null'
+      responses:
+        '200':
+          description: Returns details about the spawned Instance.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/SpawnedInstance'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /v1/functions/{containerId}/release:
+    post:
+      operationId: releaseInstance
+      summary: Release Instance
+      description: |
+        Releases a previously spawned Instance.
+      tags:
+        - Functions
+      parameters:
+        - name: containerId
+          description: The ID of the requested Container.
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - token
+                - instance_id
+              properties:
+                token:
+                  description: The claim token previously used to claim the Instance.
+                  $ref: '#/components/schemas/ClaimToken'
+                instance_id:
+                  $ref: '#/components/schemas/ID'
+      responses:
+        '200':
+          description: Returns details about the released Instance.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    $ref: '#/components/schemas/SpawnedInstance'
+        default:
+          $ref: '#/components/responses/DefaultError'
+  /v1/functions/{containerId}/active:
+    get:
+      operationId: getActiveInstances
+      summary: Get Active Instances
+      description: |
+        Retrieves instances of the function container that are currently running.
+      tags:
+        - Functions
+      parameters:
+        - name: containerId
+          description: The ID of the requested container.
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Returns a map of active instances by ID.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - data
+                properties:
+                  data:
+                    type: object
+                    additionalProperties:
+                      $ref: '#/components/schemas/Instance'
+        default:
+          $ref: '#/components/responses/DefaultError'
+components:
+  securitySchemes:
+    accessKey:
+      name: X-CYCLE-ACCESS-KEY
+      in: header
+      type: apiKey
+      description: Access key that has been set in the scheduler config.
+  schemas:
+    Capability:
+      type: string
+      description: A capability that a user or API key that represents what an API key or a user can do.
+      enum:
+        - external-volumes-view
+        - external-volumes-manage
+        - api-keys-manage
+        - apionly-jobs-view
+        - apionly-notifications-listen
+        - autoscale-groups-manage
+        - autoscale-groups-view
+        - billing-credits-view
+        - billing-invoices-pay
+        - billing-invoices-view
+        - billing-methods-manage
+        - billing-services-manage
+        - billing-services-view
+        - containers-backups-manage
+        - containers-backups-view
+        - containers-console
+        - containers-deploy
+        - containers-instances-migrate
+        - containers-lock
+        - containers-ssh
+        - containers-manage
+        - containers-view
+        - containers-functions-trigger
+        - containers-volumes-manage
+        - containers-volumes-view
+        - dns-certs-view
+        - dns-manage
+        - dns-view
+        - environments-deployments-manage
+        - environments-manage
+        - environments-scopedvariables-manage
+        - environments-scopedvariables-view
+        - environments-services-manage
+        - environments-view
+        - environments-vpn
+        - environments-vpn-manage
+        - hubs-delete
+        - hubs-integrations-manage
+        - hubs-integrations-view
+        - hubs-invites-manage
+        - hubs-invites-send
+        - hubs-members-manage
+        - hubs-members-view
+        - hubs-roles-manage
+        - hubs-roles-view
+        - hubs-usage-view
+        - hubs-update
+        - hubs-auditlog-view
+        - images-manage
+        - images-sources-manage
+        - images-sources-view
+        - images-view
+        - ips-manage
+        - servers-console
+        - servers-decommission
+        - servers-login
+        - clusters-manage
+        - clusters-view
+        - servers-provision
+        - servers-manage
+        - servers-view
+        - monitor-manage
+        - monitor-view
+        - pipelines-manage
+        - pipelines-trigger
+        - pipelines-view
+        - sdn-networks-manage
+        - sdn-networks-view
+        - security-manage
+        - security-view
+        - stacks-builds-deploy
+        - stacks-builds-manage
+        - stacks-manage
+        - stacks-view
+        - virtual-machines-view
+        - virtual-machines-manage
+        - virtual-machines-deploy
+        - virtual-machines-console
+        - virtual-machines-lock
+        - virtual-machines-ssh-keys-manage
+        - virtual-machines-root-pw-view
+        - virtual-machines-root-pw-view-temp
+    Error:
+      title: Error
+      description: |-
+        The Cycle API uses standard HTTP response codes to indicate the success or failure of an API request. Codes in the `2xx` range indicate success. Codes in the `4xx` range indicate a request that failed due to input, and codes in the `5xx` range indicate an error on Cycle's part (rare).
+        There are two types of error response objects. Errors with authentication are formatted to follow the OAuth spec, while all other errors follow the same convention. If you're using one of our API Libraries, they will standardize OAuth errors to fit the general convention.
+      type: object
+      required:
+        - status, code, title
+      properties:
+        status:
+          type: integer
+          description: The HTTP response code.
+          enum:
+            - 400
+            - 401
+            - 403
+            - 404
+            - 409
+            - 415
+            - 422
+            - 500
+            - 501
+            - 502
+            - 503
+            - 504
+        code:
+          type: string
+          description: A Cycle standard error code.
+          enum:
+            - 400.invalid-syntax
+            - 401.auth-invalid
+            - 401.auth-expired
+            - 401.no-cookie
+            - 401.unauthorized-application
+            - 403.mismatch
+            - 403.wrong-hub
+            - 403.not-ready
+            - 403.expired
+            - 403.restricted-portal
+            - 403.permissions
+            - 403.invalid-ip
+            - 403.invalid-state
+            - 403.not-approved
+            - 403.not-allowed
+            - 403.platform-disabled
+            - 403.2fa-required
+            - 403.2fa-failed
+            - 403.new-application-capabilities
+            - 403.tier-restricted
+            - 404.hub
+            - 404.hub.invitation
+            - 404.hub.integration
+            - 404.hub.role
+            - 404.sdn.network
+            - 404.environment
+            - 404.environment.scoped-variable
+            - 404.hub.api-key
+            - 404.uri
+            - 404.provider
+            - 404.stack
+            - 404.community.thread
+            - 404.community.thread.reply
+            - 404.survey
+            - 404.survey-response
+            - 404.notification
+            - 404.stack-build
+            - 404.image
+            - 404.image.source
+            - 404.image.build-log
+            - 404.job
+            - 404.billing.order
+            - 404.billing.service
+            - 404.billing.credit
+            - 404.billing.invoice
+            - 404.billing.tier
+            - 404.billing.support
+            - 404.billing.payment-method
+            - 404.billing.promo-code
+            - 404.node
+            - 404.infrastructure.location
+            - 404.infrastructure.ips.pool
+            - 404.infrastructure.provider
+            - 404.infrastructure.server
+            - 404.infrastructure.cluster
+            - 404.infrastructure.autoscale.group
+            - 404.infrastructure.model
+            - 404.infrastructure.external-volume
+            - 404.monitoring.logs.analytics.rule
+            - 404.account
+            - 404.container
+            - 404.container.backup
+            - 404.vpn.account
+            - 404.instance
+            - 404.pipeline
+            - 404.pipeline.run
+            - 404.pipeline.key
+            - 404.dns.zone
+            - 404.dns.record
+            - 404.cluster
+            - 404.platform-build
+            - 404.cycleos-build
+            - 404.email-verification
+            - 404.hub.membership
+            - 404.announcement
+            - 404.ha-service.session
+            - 404.virtual-machine
+            - 404.virtual-machine.ssh-key
+            - 404.sales.lead
+            - 404.stack.build-log
+            - 409.duplicate-found
+            - 415.invalid-content-type
+            - 422.missing-argument
+            - 422.invalid-argument
+            - 422.invalid-input
+            - 422.max-exceeded
+            - 422.not-compatible
+            - 422.already-exists
+            - 429.rate-limiting
+            - 500.database
+            - 500.database-insert
+            - 500.database-update
+            - 500.database-remove
+            - 500.jobd
+            - 500.unknown
+            - 500.dev
+            - 500.email
+            - 503.not-ready
+            - 503.not-enabled
+            - 503.dependency-not-enabled
+            - 504.not-available
+        title:
+          type: string
+          description: The main text describing the error.
+        detail:
+          type: string
+          description: A more detailed description of the error.
+        source:
+          type: string
+          description: A [JSON pointer](https://tools.ietf.org/html/rfc6901/) describing the source of an error.
+        extra:
+          type: object
+          description: Additional entries on the error object to provide extra details.
+          properties:
+            capability:
+              description: If the error occured because of a lack of permission (403), this will list the specific capability that the Role/API Key is missing.
+              $ref: '#/components/schemas/Capability'
+    ErrorEnvelope:
+      title: ErrorEnvelope
+      type: object
+      description: An error response.
+      required:
+        - error
+        - data
+      properties:
+        error:
+          $ref: '#/components/schemas/Error'
+        data:
+          type: 'null'
+    ID:
+      title: ID
+      type: string
+      format: objectid
+      description: A 24 character hex string used to identify a unique resource.
+      examples:
+        - 651586fca6078e98982dbd90
+    IPNet:
+      title: IPNet
+      type: object
+      required:
+        - ip
+        - cidr
+      properties:
+        ip:
+          type: string
+          description: The IP address.
+          examples:
+            - fd00::21:0:0:0
+        cidr:
+          type: string
+          description: The CIDR notation, describing the range of IP addresses.
+          examples:
+            - fd00::21:0:0:0/96
+    EnvironmentNetworkSummary:
+      title: EnvironmentNetworkSummary
+      type: object
+      description: Details about the Environment network this Instance is a member of.
+      required:
+        - id
+        - network_subnet
+        - subnet
+        - ipv6
+        - legacy
+        - mac_addr
+        - vxlan_tag
+      properties:
+        id:
+          $ref: '#/components/schemas/ID'
+        network_subnet:
+          type: string
+        subnet:
+          type: string
+        ipv6:
+          anyOf:
+            - $ref: '#/components/schemas/IPNet'
+            - type: 'null'
+        legacy:
+          oneOf:
+            - type: object
+              required:
+                - host
+                - subnet
+                - ipv4
+              properties:
+                host:
+                  type: integer
+                subnet:
+                  type: integer
+                ipv4:
+                  anyOf:
+                    - $ref: '#/components/schemas/IPNet'
+                    - type: 'null'
+            - type: 'null'
+        mac_addr:
+          type: string
+        vxlan_tag:
+          type: integer
+    ClaimedInstance:
+      title: ClaimedInstance
+      description: Details about a claimed function Instance.
+      type: object
+      required:
+        - instance_id
+        - environment
+        - token
+      properties:
+        instance_id:
+          description: The ID of the claimed Instance.
+          $ref: '#/components/schemas/ID'
+        environment:
+          $ref: '#/components/schemas/EnvironmentNetworkSummary'
+        token:
+          type: string
+    ClaimToken:
+      title: ClaimToken
+      type: string
+      minLength: 5
+      description: A custom token used for identifying and managing a function Instance claim. Can be any valid string, and must be used with spawning and releasing the Instance.
+    SpawnedInstance:
+      title: SpawnedInstance
+      description: Details about a spawned function Instance.
+      type: object
+      required:
+        - instance_id
+        - server_id
+        - environment
+        - token
+      properties:
+        instance_id:
+          description: The ID of the spawned Instance.
+          $ref: '#/components/schemas/ID'
+        server_id:
+          description: The ID of the Server this Instance spawned on.
+          $ref: '#/components/schemas/ID'
+        environment:
+          $ref: '#/components/schemas/EnvironmentNetworkSummary'
+        token:
+          type: string
+    CreatorScope:
+      title: CreatorScope
+      description: The creator scope is embedded in resource objects to describe who created them
+      type: object
+      required:
+        - id
+        - type
+      properties:
+        id:
+          $ref: '#/components/schemas/ID'
+        type:
+          type: string
+          enum:
+            - account
+            - environment
+            - platform
+            - platform-pipeline
+            - employee
+            - api-key
+            - visitor
+    HubID:
+      title: HubID
+      type: string
+      description: The unique ID of the Hub this resource was created in.
+      examples:
+        - 651586fca6078e98982dbd90
+    EnvironmentNetworkSummary-2:
+      title: EnvironmentNetworkSummary
+      type: object
+      description: Details about the environment network this instance is a member of.
+      required:
+        - id
+        - network_subnet
+        - subnet
+        - ipv6
+        - legacy
+        - mac_addr
+        - vxlan_tag
+      properties:
+        id:
+          $ref: '#/components/schemas/ID'
+        network_subnet:
+          type: string
+        subnet:
+          type: string
+        ipv6:
+          anyOf:
+            - $ref: '#/components/schemas/IPNet'
+            - type: 'null'
+        legacy:
+          oneOf:
+            - type: object
+              required:
+                - host
+                - subnet
+                - ipv4
+              properties:
+                host:
+                  type: integer
+                subnet:
+                  type: integer
+                ipv4:
+                  anyOf:
+                    - $ref: '#/components/schemas/IPNet'
+                    - type: 'null'
+            - type: 'null'
+        mac_addr:
+          type: string
+        vxlan_tag:
+          type: integer
+    InstanceProvider:
+      title: InstanceProvider
+      type: object
+      required:
+        - vendor
+        - integration_id
+        - location
+      properties:
+        vendor:
+          type: string
+          description: The vendor of the hub provider integration related to the server this instance runs on.
+        integration_id:
+          $ref: '#/components/schemas/ID'
+          description: An ID of the provider Hub integration that this instance's host node is related to.
+        location:
+          type: string
+          description: The identifier of the location related to the server this instance runs on.
+    DateTime:
+      title: DateTime
+      type: string
+      format: date-time
+      examples:
+        - '2021-01-30T08:30:00Z'
+    ServiceContainerIdentifier:
+      title: ServiceContainerIdentifier
+      type: string
+      description: Identifier of a service Container within an Environment.
+      enum:
+        - discovery
+        - vpn
+        - loadbalancer
+        - scheduler
+        - gateway
+    ContainerExtension:
+      title: ContainerExtension
+      type:
+        - object
+        - 'null'
+      description: Reference to container functionality that is added by the Cycle platform.
+      required:
+        - identifier
+      properties:
+        identifier:
+          type: string
+          enum:
+            - virtual-machine-v1
+        id:
+          $ref: '#/components/schemas/ID'
+    State:
+      title: State
+      description: Information regarding the current state of the resource.
+      type: object
+      required:
+        - changed
+      properties:
+        changed:
+          $ref: '#/components/schemas/DateTime'
+        error:
+          type: object
+          description: An error, if any, that has occurred for this resource.
+          properties:
+            message:
+              type: string
+              description: Details about the error that has occurred.
+            time:
+              description: The timestamp of when the error was encountered.
+              $ref: '#/components/schemas/DateTime'
+    InstanceState:
+      title: InstanceState
+      description: Information about the state of an instance.
+      allOf:
+        - required:
+            - current
+          properties:
+            current:
+              description: The current state of the instance.
+              type: string
+              enum:
+                - new
+                - starting
+                - migrating
+                - running
+                - stopping
+                - stopped
+                - failed
+                - deleting
+                - deleted
+            health:
+              description: information about the health of the instance.
+              oneOf:
+                - type: object
+                  required:
+                    - healthy
+                    - updated
+                  properties:
+                    healthy:
+                      description: |
+                        Describes the healthiness of the instance. Health checks can be configured at the container level. 
+                        - `true`: The instance is considered healthy.
+                        - `false`: The instance is considered unhealthy.
+                        - `null`: The instance has not yet reported its health, or a health check has not yet been performed.
+                      oneOf:
+                        - type: boolean
+                        - type: 'null'
+                    updated:
+                      description: A timestamp of the last time the instance health was updated.
+                      $ref: '#/components/schemas/DateTime'
+                - type: 'null'
+            readiness:
+              description: information about the readiness of the instance.
+              oneOf:
+                - type: object
+                  required:
+                    - ready
+                    - updated
+                  properties:
+                    ready:
+                      description: |
+                        Describes the readiness of the instance.
+                        - `true`: The instance is ready.
+                        - `false`: The instance is not ready.
+                        - `null`: The instance has not yet reported its readiness, or a readiness check has not yet been performed.
+                      oneOf:
+                        - type: boolean
+                        - type: 'null'
+                    updated:
+                      description: A timestamp of the last time the instance readiness was updated.
+                      $ref: '#/components/schemas/DateTime'
+                - type: 'null'
+        - $ref: '#/components/schemas/State'
+    InstanceAutoScale:
+      title: InstanceAutoScale
+      description: Auto-scale details for instances created by auto-scale events.
+      type: object
+      required:
+        - min_ttl
+      properties:
+        min_ttl:
+          $ref: '#/components/schemas/DateTime'
+    InstanceTrafficDrain:
+      title: InstanceTrafficDrain
+      description: Traffic drain details for instance.
+      type: object
+      required:
+        - started
+      properties:
+        started:
+          $ref: '#/components/schemas/DateTime'
+    MigrationInstance:
+      title: MigrationInstance
+      type: object
+      description: Information about a migrated instance.
+      required:
+        - instance_id
+        - server_id
+      properties:
+        instance_id:
+          type: string
+          description: The ID of the instance.
+        server_id:
+          type: string
+          description: The ID of the server.
+    InstanceMigration:
+      title: InstanceMigration
+      type: object
+      description: Information regarding the migration of an instance, such as the server that the instance came from or the server that the instance was moved to.
+      required:
+        - key
+        - copy_volumes
+      properties:
+        to:
+          anyOf:
+            - $ref: '#/components/schemas/MigrationInstance'
+            - type: 'null'
+        from:
+          anyOf:
+            - $ref: '#/components/schemas/MigrationInstance'
+            - type: 'null'
+        started:
+          description: A timestamp of when the migration was started.
+          $ref: '#/components/schemas/DateTime'
+        completed:
+          description: A timestamp of when the migration was completed.
+          $ref: '#/components/schemas/DateTime'
+        key:
+          type: string
+          description: A key used by the platform to verify the migration.
+        copy_volumes:
+          type: boolean
+          description: A boolean where true represents the volumes for the instance should be copied to the new server as well.
+    Version:
+      title: Version
+      type: string
+      description: |
+        Version can be any string, but if it begins with a "v", semantic version will be enforced. A [Semantic Version](https://semver.org/) string. Follows the format vMAJOR.MINOR.PATCH-build.
+      examples:
+        - v1.2.3-dev
+    Deployment:
+      title: Deployment
+      description: |
+        A logical grouping of containers inside of an Environment. Facilitates zero-downtime deployments by separating multiple versions of the same application within an environment.
+
+        If a container is a member of a deployment, it can only resolve containers in that same deployment, or containers NOT in a deployment. If a container is NOT a member of a deployment, it can resolve all containers in the environment.
+      type: object
+      required:
+        - version
+      properties:
+        version:
+          $ref: '#/components/schemas/Version'
+          description: |
+            A version string representing the deployment.
+    InstanceHighAvailability:
+      title: InstanceHighAvailability
+      description: |
+        The high availability status of the instance, as determined by the platform. 
+
+        This data becomes avaialble when utilizing the internal API high availability endpoint. The platform will hold elections for all instances hitting the endpoint and choose a primary. As long as those instances continue to check in, the primary will continue to be the primary until it is dropped off. After which, a secondary will be promoted.
+      type: object
+      required:
+        - last_checkin
+      properties:
+        elected_primary:
+          description: If a time is set, indicates that this instance is the primary, and the time at which it was promoted.
+          oneOf:
+            - $ref: '#/components/schemas/DateTime'
+            - type: 'null'
+        last_checkin:
+          description: The time that the instance last checked into the HA service.
+          $ref: '#/components/schemas/DateTime'
+    NodeState:
+      title: NodeState
+      allOf:
+        - required:
+            - current
+            - changed
+          properties:
+            current:
+              description: The current state of the node.
+              type: string
+              enum:
+                - new
+                - offline
+                - authorizing
+                - online
+                - decommissioned
+                - deleted
+            changed:
+              $ref: '#/components/schemas/DateTime'
+            desired:
+              oneOf:
+                - type: string
+                  enum:
+                    - new
+                    - offline
+                    - authorizing
+                    - online
+                    - decommissioned
+                    - deleted
+                - type: 'null'
+        - $ref: '#/components/schemas/State'
+    IpAddress:
+      title: IpAddress
+      type: string
+      format: ip-address
+      description: |
+        An IP address is a numerical label that uniquely identifies a device on a network and enables it to send and receive data.
+      examples:
+        - 192.168.1.1
+    Cidr:
+      title: Cidr
+      type: string
+      format: cidr
+      description: |
+        A CIDR (Classless Inter-Domain Routing) string is a notation used to represent an IP address and its associated network prefix. 
+        It combines an IP address with a suffix that indicates how many bits are fixed for routing.
+      examples:
+        - 192.168.1.0/24
+    IpOptions:
+      title: IpOptions
+      type: object
+      description: Options for an IP.
+      properties:
+        proxy_arp:
+          description: If enabled, allows pool to respond to ARP requests, on behalf of a container / virtual machine, at the host level.
+          oneOf:
+            - type: boolean
+            - type: 'null'
+    IpState:
+      title: IpState
+      allOf:
+        - required:
+            - current
+          properties:
+            current:
+              description: The current state of the IP.
+              type: string
+              enum:
+                - assigning
+                - assigned
+                - releasing
+                - available
+        - $ref: '#/components/schemas/State'
+    Ip:
+      title: IP
+      type: object
+      description: Details about an IP.
+      required:
+        - id
+        - hub_id
+        - kind
+        - ip
+        - assignment
+        - pool_id
+        - network_id
+        - address
+        - gateway
+        - cidr
+        - state
+      properties:
+        id:
+          $ref: '#/components/schemas/ID'
+        hub_id:
+          $ref: '#/components/schemas/HubID'
+        kind:
+          type: string
+          description: The type of IP protocol this IP is.
+          enum:
+            - ipv4
+            - ipv6
+        ip:
+          description: The IP string this IP represents.
+          $ref: '#/components/schemas/IpAddress'
+        assignment:
+          description: Information about the assignment of this IP.
+          oneOf:
+            - type: object
+              required:
+                - container_id
+                - instance_id
+                - environment_id
+              properties:
+                container_id:
+                  $ref: '#/components/schemas/ID'
+                instance_id:
+                  $ref: '#/components/schemas/ID'
+                environment_id:
+                  $ref: '#/components/schemas/ID'
+                virtual_machine:
+                  type: object
+                  description: Details about the virtual machine this IP is assigned to.
+                  properties:
+                    id:
+                      $ref: '#/components/schemas/ID'
+                  required:
+                    - id
+            - type: 'null'
+        pool_id:
+          $ref: '#/components/schemas/ID'
+          description: A unique identifier that associates the IP with an IP pool.
+        network_id:
+          $ref: '#/components/schemas/ID'
+          description: A unique identifier that associates the IP with a network.
+        address:
+          type: string
+          description: The IP address.
+        gateway:
+          type: string
+          description: The IP gateway.
+        network:
+          oneOf:
+            - $ref: '#/components/schemas/Cidr'
+            - type: 'null'
+        options:
+          oneOf:
+            - $ref: '#/components/schemas/IpOptions'
+            - type: 'null'
+        cidr:
+          type: string
+          description: The CIDR for the IP.
+        state:
+          $ref: '#/components/schemas/IpState'
+    InstanceMeta:
+      title: InstanceMeta
+      type: object
+      description: A list of meta fields that can be applied to an instance.
+      properties:
+        node:
+          type: object
+          properties:
+            healthy:
+              type: boolean
+            online:
+              type: boolean
+            last_checkin:
+              $ref: '#/components/schemas/DateTime'
+            state:
+              $ref: '#/components/schemas/NodeState'
+        sdn_pool_ips:
+          type: array
+          items:
+            $ref: '#/components/schemas/Ip'
+    Instance:
+      title: Instance
+      type: object
+      description: An instance of a Container.
+      required:
+        - id
+        - creator
+        - hub_id
+        - container_id
+        - location_id
+        - environment
+        - provider
+        - server_id
+        - ready_state
+        - hostname
+        - state
+        - events
+      properties:
+        id:
+          $ref: '#/components/schemas/ID'
+        creator:
+          $ref: '#/components/schemas/CreatorScope'
+        hub_id:
+          $ref: '#/components/schemas/HubID'
+        container_id:
+          type: string
+          description: A container identifier for the container that is associated with this instance.
+        location_id:
+          type: string
+          description: A location identifier that's associated with the server this instance is deployed to.
+        environment:
+          $ref: '#/components/schemas/EnvironmentNetworkSummary-2'
+        stateful:
+          description: If the instance is stateful, additional details relating to its stateful properties.
+          oneOf:
+            - type: object
+              required:
+                - id
+                - base_hostname
+              properties:
+                id:
+                  $ref: '#/components/schemas/ID'
+                base_hostname:
+                  type: string
+                  description: The base hostname for the given instance.
+            - type: 'null'
+        function:
+          type: object
+          description: If the instance is a function, additional details relating to its function properties
+          required:
+            - seed
+          properties:
+            seed:
+              type: integer
+              description: The seed used for this function.
+        provider:
+          $ref: '#/components/schemas/InstanceProvider'
+        server_id:
+          $ref: '#/components/schemas/ID'
+          description: An identifier for the server this instance is deployed to.
+        ready_state:
+          type: string
+          description: The state as it relates to the following. * `active` - instance can be started or stopped. * `purge` - instance should be deleted. * `hibernate` - instance is active but not allowed to run. * `configuring` - this instance is not allowed to start yet
+          enum:
+            - active
+            - purge
+            - hibernate
+            - configuring
+        purge_time:
+          description: The timestamp of when the instance was purged.
+          anyOf:
+            - $ref: '#/components/schemas/DateTime'
+            - type: 'null'
+        hostname:
+          type: string
+          description: The hostname of the instance.
+        service:
+          $ref: '#/components/schemas/ServiceContainerIdentifier'
+          description: The type of service this instance is within the environment, if any.
+        extension:
+          anyOf:
+            - $ref: '#/components/schemas/ContainerExtension'
+            - type: 'null'
+        state:
+          $ref: '#/components/schemas/InstanceState'
+        autoscale:
+          anyOf:
+            - $ref: '#/components/schemas/InstanceAutoScale'
+            - type: 'null'
+        traffic_drain:
+          anyOf:
+            - $ref: '#/components/schemas/InstanceTrafficDrain'
+            - type: 'null'
+        migration:
+          anyOf:
+            - $ref: '#/components/schemas/InstanceMigration'
+            - type: 'null'
+        deployment:
+          anyOf:
+            - $ref: '#/components/schemas/Deployment'
+            - type: 'null'
+        ha_elections:
+          oneOf:
+            - $ref: '#/components/schemas/InstanceHighAvailability'
+            - type: 'null'
+        events:
+          title: InstanceEvents
+          description: A collection of timestamps for each event in the instance's lifetime.
+          required:
+            - created
+            - updated
+            - deleted
+          properties:
+            created:
+              description: The timestamp of when the instance was created.
+              $ref: '#/components/schemas/DateTime'
+            updated:
+              description: The timestamp of when the instance was updated.
+              $ref: '#/components/schemas/DateTime'
+            deleted:
+              description: The timestamp of when the instance was deleted.
+              $ref: '#/components/schemas/DateTime'
+        meta:
+          anyOf:
+            - $ref: '#/components/schemas/InstanceMeta'
+            - type: 'null'
+  responses:
+    DefaultError:
+      description: General error response from the platform
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorEnvelope'

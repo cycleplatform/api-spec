@@ -1,0 +1,1081 @@
+openapi: 3.1.0
+info:
+  license:
+    name: Apache-2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0
+  version: 1.0.0
+  title: Cycle Infrastructure Abstraction Layer
+  contact:
+    email: support@cycle.io
+  description: |
+    Cycle's Infrastructure Abstract Layer (IAL) API. Endpoints listed here should be implemented by the customer, and Cycle will call the various endpoints over the lifecycle of provisioning and decommissioning servers.
+    For more information, check out the official [Infrastructure Abstraction Layer Documentation](https://cycle.io/docs/platform/infrastructure-abstraction-layer).
+
+    For a Go implementation of the types, see the repo available here: https://github.com/cycleplatform/integrations
+  x-logo:
+    url: https://static.cycle.io/icons/logo/logo-white.svg
+servers:
+  - description: Cycle Infrastructure Abstraction Layer
+    url: https://api.cycle.io
+security: []
+paths:
+  /v1/auth/verify:
+    post:
+      operationId: verifyAuth
+      summary: Verify Auth
+      description: Cycle will utilize this endpoint to verify that user-specified credentials can properly authorize with the IAL integration.
+      tags:
+        - Auth
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - request
+              properties:
+                auth:
+                  $ref: '#/components/schemas/Auth'
+                request:
+                  type: 'null'
+      responses:
+        '200':
+          description: Returns an object with a `valid` property. Should be true if the authorization is successful.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - valid
+                properties:
+                  valid:
+                    type: boolean
+  /v1/infrastructure/provider/locations:
+    get:
+      operationId: listLocations
+      summary: List Locations
+      description: Cycle will utilize this call to learn which locations it is able to deploy servers to.
+      tags:
+        - Provider
+      responses:
+        '200':
+          description: Returns a list of available server locations for this IAL.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - locations
+                  - extra
+                properties:
+                  locations:
+                    type:
+                      - array
+                      - 'null'
+                    items:
+                      $ref: '#/components/schemas/Location'
+                  extra:
+                    type:
+                      - object
+                      - 'null'
+                    additionalProperties: {}
+  /v1/infrastructure/provider/server-models:
+    get:
+      operationId: listServerModels
+      summary: List Server Models
+      description: Cycle will use this endpoint to learn which server types / models it is able to deploy (and which locations those servers can be deployed to).
+      tags:
+        - Provider
+      responses:
+        '200':
+          description: Returns a list of available server models available via this IAL integration.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - models
+                  - extra
+                properties:
+                  models:
+                    type:
+                      - array
+                      - 'null'
+                    items:
+                      $ref: '#/components/schemas/ServerModel'
+                  extra:
+                    type:
+                      - object
+                      - 'null'
+                    additionalProperties: {}
+  /v1/location/configure:
+    post:
+      operationId: configureLocation
+      summary: Configure Location
+      description: Cycle will call this endpoint before every server provision to enable an IAL integration to make location-specific customizations prior to starting servers. For example, with Cycle's native integration with AWS, we utilize this call to configure subnets and VPCs.
+      tags:
+        - Location
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - request
+              properties:
+                auth:
+                  $ref: '#/components/schemas/Auth'
+                request:
+                  type: object
+                  description: A request to update or configure the settings for a specific location.
+                  required:
+                    - location_id
+                    - version
+                    - configuration_current
+                    - cycle
+                  properties:
+                    location_id:
+                      type: string
+                      description: The unique identifier of the location to be configured.
+                    version:
+                      type: string
+                      description: The current version of the configuration being used at the location.
+                    configuration_current:
+                      type: object
+                      description: Details of the current configuration settings for the location.
+                      additionalProperties: true
+                    cycle:
+                      $ref: '#/components/schemas/CycleLocationMeta'
+      responses:
+        '200':
+          description: Returns the updated location configuration.
+          content:
+            application/json:
+              schema:
+                type: object
+                description: The response provided after a request to configure a location, indicating whether the configuration was successful, and including details of the latest configuration.
+                required:
+                  - configured
+                  - configuration_latest
+                properties:
+                  configured:
+                    type: boolean
+                    description: Indicates whether the location was successfully configured.
+                  version:
+                    type:
+                      - string
+                      - 'null'
+                    description: The version of the configuration that was applied. This field can be null if the version is not applicable or not provided.
+                  configuration_latest:
+                    type: object
+                    description: Details of the latest configuration settings for the location.
+                    additionalProperties: true
+  /v1/infrastructure/server/provision:
+    post:
+      operationId: provisionServer
+      summary: Provision Server
+      description: Cycle will utilize this endpoint to start the provision of a server.
+      tags:
+        - Server
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - request
+              properties:
+                auth:
+                  $ref: '#/components/schemas/Auth'
+                request:
+                  type: object
+                  description: Properties for initiating a server provision.
+                  required:
+                    - hostname
+                    - model_id
+                    - location_id
+                    - model_features
+                    - location_configuration
+                    - cycle
+                  properties:
+                    hostname:
+                      type: string
+                      description: The hostname for the server being provisioned.
+                    model_id:
+                      type: string
+                      description: The ID of the server model to provision.
+                    location_id:
+                      type: string
+                      description: The ID of the location where the server is to be provisioned.
+                    zone_id:
+                      type:
+                        - string
+                        - 'null'
+                      description: The ID of the specific zone within the location for server provisioning.
+                    model_features:
+                      $ref: '#/components/schemas/SpecFeatures'
+                      description: The features associated with the server model being provisioned.
+                    provision_options:
+                      type: object
+                      description: Extra provisioning options specified from the platform.
+                      additionalProperties: true
+                    location_configuration:
+                      type: object
+                      description: Configuration details specific to the server's location.
+                      additionalProperties: true
+                    cycle:
+                      $ref: '#/components/schemas/CycleServerMeta'
+      responses:
+        '200':
+          description: Returns details about the server being provisioned.
+          content:
+            application/json:
+              schema:
+                type: object
+                description: The response received by Cycle after provisioning a server, including the unique server ID at the provider and any additional information.
+                required:
+                  - server_id
+                properties:
+                  server_id:
+                    type: string
+                    description: The unique identifier of the server at the provider.
+                  extra:
+                    type: object
+                    description: A map containing additional, unspecified information related to the server provisioning. This allows for a flexible structure to include any extra data that doesn't fit into the standard response fields.
+                    additionalProperties: true
+  /v1/infrastructure/server/provision-status:
+    get:
+      operationId: getProvisionServerStatus
+      summary: Get Provision Server Status
+      description: Cycle will use this endpoint to track the status of a provision and, when complete, authorize a server to pull CycleOS via IPXE.
+      tags:
+        - Server
+      responses:
+        '200':
+          description: Returns the status of a server provisioning request, including server ID, provisioning status, authentication details, and any additional extra information.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - server_id
+                  - provisioned
+                  - auth
+                properties:
+                  server_id:
+                    type: string
+                    description: The unique identifier of the server at the provider.
+                  provisioned:
+                    type: boolean
+                    description: Indicates whether the server has been successfully provisioned.
+                  auth:
+                    type: object
+                    description: Authentication details for the provisioned server.
+                    properties:
+                      uuid:
+                        type:
+                          - string
+                          - 'null'
+                        description: The UUID associated with the server for authentication purposes. Null if not yet assigned or applicable.
+                      initial_ips:
+                        type:
+                          - array
+                          - 'null'
+                        items:
+                          type: string
+                        description: List of initial IP addresses assigned to the server.
+                      mac_addr:
+                        type:
+                          - string
+                          - 'null'
+                        description: The MAC address of the server's primary network interface. Null if not yet assigned or applicable.
+                  extra:
+                    type: object
+                    description: A map containing additional, unspecified information related to the server provisioning. This allows for flexible inclusion of any extra data outside the standard response fields.
+                    additionalProperties: true
+  /v1/infrastructure/server/decommission:
+    post:
+      operationId: decommissionServer
+      summary: Decommission Server
+      description: Cycle will begin a decommission once a user initiates a 'delete' within the portal / API. This call will only occur after a server no longer has any IPs or instances assigned to it.
+      tags:
+        - Server
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - request
+              properties:
+                auth:
+                  $ref: '#/components/schemas/Auth'
+                request:
+                  type: object
+                  description: Represents a request to decommission a server, including server identification details, location, and any extra information required by the provider or for internal processes.
+                  required:
+                    - server_id
+                    - hostname
+                    - model_id
+                    - location_id
+                    - cycle
+                  properties:
+                    server_id:
+                      type: string
+                      description: The unique identifier of the server at the provider.
+                    hostname:
+                      type: string
+                      description: The hostname of the server.
+                    model_id:
+                      type: string
+                      description: The ID of the server model.
+                    location_id:
+                      type: string
+                      description: The ID of the location where the server is deployedg.
+                    zone_id:
+                      type:
+                        - string
+                        - 'null'
+                      description: The ID of the specific zone within the location, if applicable.
+                    extra:
+                      type: object
+                      description: Additional, unspecified information associated with the server that might be relevant for the decommissioning process. This is an open map to accommodate various types of values.
+                      additionalProperties: true
+                    cycle:
+                      $ref: '#/components/schemas/CycleServerMeta'
+      responses:
+        '200':
+          description: Returns a boolean of the success of the decommission.
+          content:
+            application/json:
+              schema:
+                type: boolean
+                description: Will be true if the decommission is successful.
+  /v1/infrastructure/server/restart:
+    post:
+      operationId: restartServer
+      summary: Restart Server
+      description: Cycle will call this endpoint whenever a request has been made via the platform to restart a server.
+      tags:
+        - Server
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - request
+              properties:
+                auth:
+                  $ref: '#/components/schemas/Auth'
+                request:
+                  type: object
+                  description: Describes a request to restart a server.
+                  required:
+                    - server_id
+                    - hostname
+                    - model_id
+                    - location_id
+                    - cycle
+                  properties:
+                    server_id:
+                      type: string
+                      description: The unique identifier of the server at the provider.
+                    hostname:
+                      type: string
+                      description: The hostname of the server.
+                    model_id:
+                      type: string
+                      description: The model ID of the server.
+                    location_id:
+                      type: string
+                      description: The ID of the location where the server is stationed, pertinent to the restart operation.
+                    zone_id:
+                      type:
+                        - string
+                        - 'null'
+                      description: The zone ID within the location, if applicable. This field is optional and may be necessary for specific restart procedures.
+                    extra:
+                      type: object
+                      description: Additional information associated with the server that might be required for the restart process. This allows for a flexible structure to include any extraneous data not covered by standard fields.
+                      additionalProperties: true
+                    cycle:
+                      $ref: '#/components/schemas/CycleServerMeta'
+      responses:
+        '200':
+          description: Returns a boolean of the success of the restart.
+          content:
+            application/json:
+              schema:
+                type: boolean
+                description: Will be true if the restart is successful.
+  /v1/infrastructure/ip/allocate:
+    post:
+      operationId: allocateIP
+      summary: Allocate IP Address
+      description: Cycle will call this endpoint to allocate an IP address. Generally this is done when a new load balancer is created (during environment create, or scaling up).
+      tags:
+        - IP
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - request
+              properties:
+                auth:
+                  $ref: '#/components/schemas/Auth'
+                request:
+                  type: object
+                  description: Represents a request to allocate an IP address, detailing the kind of IP, relevant server and location identifiers, and configuration details.
+                  required:
+                    - kind
+                    - server_id
+                    - location_id
+                    - location_configuration
+                    - cycle
+                  properties:
+                    kind:
+                      $ref: '#/components/schemas/IPKind'
+                    server_id:
+                      type: string
+                      description: The unique identifier of the server for which the IP is being allocated.
+                    location_id:
+                      type: string
+                      description: The identifier of the location where the server is situated and where the IP allocation is requested.
+                    zone_id:
+                      type:
+                        - string
+                        - 'null'
+                      description: The identifier of the zone within the location, if applicable. This field is optional and can be null.
+                    location_configuration:
+                      type: object
+                      description: Configuration details specific to the location, relevant to the IP allocation process.
+                      additionalProperties: true
+                    cycle:
+                      $ref: '#/components/schemas/CycleIPMeta'
+      responses:
+        '200':
+          description: Returns information about the allocated IP address.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - ip_id
+                  - ip_assignment_id
+                  - cidr
+                  - gateway
+                  - netmask
+                  - network
+                properties:
+                  ip_id:
+                    type: string
+                    description: The unique identifier of the IP at the provider.
+                  ip_assignment_id:
+                    type: string
+                    description: The unique identifier of the IP assignment at the provider.
+                  cidr:
+                    type: string
+                    description: The CIDR notation of the allocated IP address.
+                  gateway:
+                    type: string
+                    description: The gateway address for the allocated IP.
+                  netmask:
+                    type: string
+                    description: The netmask associated with the allocated IP address.
+                  network:
+                    type: string
+                    description: The network segment to which the allocated IP belongs.
+                  nat_private_ip:
+                    type:
+                      - string
+                      - 'null'
+                    description: The private IP address for NAT (Network Address Translation), if applicable.
+  /v1/infrastructure/ip/release:
+    post:
+      operationId: releaseIP
+      summary: Release IP Address
+      description: When an IP is no longer needed, Cycle will release it using this API endpoint.
+      tags:
+        - IP
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              description: Represents a request to release an allocated IP address back to the provider, including detailed information about the IP and its assignment.
+              required:
+                - kind
+                - ip_id
+                - ip_assignment_id
+                - cidr
+                - server_id
+                - location_id
+                - location_configuration
+                - cycle
+              properties:
+                kind:
+                  $ref: '#/components/schemas/IPKind'
+                ip_id:
+                  type: string
+                  description: The unique identifier of the IP at the provider.
+                ip_assignment_id:
+                  type: string
+                  description: The unique identifier of the IP assignment at the provider.
+                cidr:
+                  type: string
+                  description: The CIDR notation of the IP address being released.
+                nat_private_ip:
+                  type:
+                    - string
+                    - 'null'
+                  description: The private IP address used for NAT (Network Address Translation), if applicable.
+                zone_id:
+                  type:
+                    - string
+                    - 'null'
+                  description: The identifier of the zone within the location, if applicable.
+                server_id:
+                  type: string
+                  description: The unique identifier of the server associated with the IP.
+                location_id:
+                  type: string
+                  description: The identifier of the location where the IP was used.
+                location_configuration:
+                  type: object
+                  description: Configuration details specific to the location from which the IP is being released.
+                  additionalProperties: true
+                cycle:
+                  $ref: '#/components/schemas/CycleIPMeta'
+      responses:
+        '200':
+          description: Returns a boolean of the success of the release.
+          content:
+            application/json:
+              schema:
+                type: boolean
+                description: Will be true if the release is successful.
+components:
+  schemas:
+    Auth:
+      title: Auth
+      description: The authorization object configured as part of the IAL integration on Cycle. All of these fields are custom, and can be interpreted by your API in any way desired.
+      type: object
+      properties:
+        client_id:
+          type: string
+        subscription_id:
+          type: string
+        namespace:
+          type: string
+        region:
+          type: string
+        api_key:
+          type: string
+        secret:
+          type: string
+        config:
+          type: string
+          format: base64
+          description: If a provider needs a far more complex config, sent via base64.
+        cycle:
+          type: object
+          description: Meta information sent from Cycle about the hub the IAL integration is configured for.
+          required:
+            - hub_name
+            - hub_id
+          properties:
+            hub_name:
+              type: string
+            hub_id:
+              type: string
+    Geographic:
+      title: Geographic
+      type: object
+      required:
+        - latitude
+        - longitude
+        - city
+        - state
+        - country
+        - region
+      properties:
+        latitude:
+          type: number
+          format: float
+        longitude:
+          type: number
+          format: float
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        region:
+          type: string
+    LocationProvider:
+      title: LocationProvider
+      description: Provider details for a location.
+      type: object
+      required:
+        - location_id
+        - code
+        - availability_zones
+      properties:
+        location_id:
+          type: string
+          description: The primary ID of how Cycle references this location
+        code:
+          type: string
+        availability_zones:
+          type:
+            - array
+            - 'null'
+          items:
+            type: string
+    Features:
+      title: Features
+      description: Features supported by a location.
+      type: object
+      required:
+        - available
+        - supported
+      properties:
+        available:
+          type:
+            - array
+            - 'null'
+          items:
+            type: string
+        supported:
+          type:
+            - array
+            - 'null'
+          items:
+            type: string
+    Location:
+      title: Location
+      description: A location offered by this IAL integration where servers can be deployed.
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+          description: The name of the location.
+        geographic:
+          oneOf:
+            - $ref: '#/components/schemas/Geographic'
+            - type: 'null'
+        provider:
+          $ref: '#/components/schemas/LocationProvider'
+        features:
+          $ref: '#/components/schemas/Features'
+        annotations:
+          oneOf:
+            - type: object
+              additionalProperties:
+                type: string
+            - type: 'null'
+        compatible:
+          type:
+            - boolean
+            - 'null'
+    CPU:
+      title: CPU
+      description: Details about the CPU for a given server model.
+      type: object
+      required:
+        - count
+        - type
+      properties:
+        count:
+          type: integer
+          format: int64
+          description: The total number of CPUs.
+        cores:
+          type:
+            - integer
+            - 'null'
+          format: int64
+          description: The number of cores per CPU.
+        threads:
+          type:
+            - integer
+            - 'null'
+          format: int64
+          description: The number of threads per core.
+        type:
+          type: string
+          description: The type of the CPU.
+        shared:
+          type:
+            - boolean
+            - 'null'
+          description: Indicates if the CPU is shared among multiple tenants.
+        extra:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            type: string
+          description: Extra information about the CPU.
+    GPU:
+      title: GPU
+      type: object
+      description: Describes an available GPU on a server model.
+      required:
+        - count
+        - type
+      properties:
+        count:
+          type: integer
+          format: int64
+          description: The total number of GPUs.
+        cores:
+          type:
+            - integer
+            - 'null'
+          format: int64
+          description: The number of cores per GPU, optional.
+        vram_gb:
+          type:
+            - integer
+            - 'null'
+          format: int64
+          description: The amount of VRAM in GB per GPU, optional.
+        type:
+          type: string
+          description: The type of the GPU.
+        shared:
+          type:
+            - boolean
+            - 'null'
+          description: Indicates if the GPU is shared among multiple tenants, optional.
+        extra:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            type: string
+          description: Extra information about the GPU, optional.
+    Memory:
+      title: Memory
+      type: object
+      required:
+        - size_gb
+        - type
+      properties:
+        size_gb:
+          type: integer
+          format: int64
+          description: The size of the memory in gigabytes.
+        type:
+          type: string
+          description: The type of memory.
+        extra:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            type: string
+          description: Extra information about the memory, optional.
+    Storage:
+      title: Storage
+      type: object
+      description: Represents a storage device or system, detailing its capacity, type, and additional metadata.
+      required:
+        - count
+        - size_gb
+        - type
+      properties:
+        count:
+          type: integer
+          format: int64
+          description: The total number of storage devices.
+        size_gb:
+          type: integer
+          format: int64
+          description: The storage capacity of each device in gigabytes.
+        type:
+          type: string
+          description: The type of storage, such as SSD or HDD.
+        extra:
+          type:
+            - object
+            - 'null'
+          additionalProperties:
+            type: string
+          description: Extra, optional information about the storage, allowing for additional, unspecified properties.
+    NIC:
+      title: NIC
+      type: object
+      description: Describes the properties of a Network Interface Card (NIC), including its scope, type, and throughput capabilities.
+      required:
+        - scope
+        - type
+        - throughput
+      properties:
+        scope:
+          type: string
+          description: Defines the operational scope of the NIC, such as 'local' or 'global'.
+        type:
+          type: string
+        throughput:
+          type: string
+          description: The maximum data transfer rate of the NIC, typically measured in Gbps (Gigabits per second).
+    SpecFeatures:
+      title: SpecFeatures
+      type: object
+      description: Details specific features available for the system, including RAID configuration and provider-specific features.
+      properties:
+        raid:
+          type:
+            - string
+            - 'null'
+          description: Specifies the RAID (Redundant Array of Independent Disks) configuration, if any.
+        hypervisor:
+          description: Indicates if the model supports virtual machines.
+          type:
+            - boolean
+            - 'null'
+        extra:
+          description: Provider specific features, allowing for additional, unspecified properties. This is an open map for any key-value pairs, accommodating various types of values.
+          oneOf:
+            - type: object
+              additionalProperties: true
+            - type: 'null'
+    Specs:
+      title: Specs
+      description: Detailed specs for a server model (CPU, RAM, etc.)
+      type: object
+      required:
+        - cpu
+        - memory
+        - features
+      properties:
+        cpu:
+          $ref: '#/components/schemas/CPU'
+        gpu:
+          oneOf:
+            - $ref: '#/components/schemas/GPU'
+            - type: 'null'
+        memory:
+          $ref: '#/components/schemas/Memory'
+        storage:
+          type:
+            - array
+            - 'null'
+          items:
+            $ref: '#/components/schemas/Storage'
+        network:
+          type:
+            - array
+            - 'null'
+          items:
+            $ref: '#/components/schemas/NIC'
+          description: A list of Network Interface Card (NIC) specifications.
+        features:
+          $ref: '#/components/schemas/SpecFeatures'
+          description: The set of additional features.
+    ServerModelProvider:
+      title: ServerModelProvider
+      type: object
+      description: Identifies the provider details, including the category, class, model ID, parent model ID, available locations, availability zones, and stock for a server, plan, or model.
+      required:
+        - name
+        - category
+        - model_id
+      properties:
+        name:
+          type: string
+          description: The name of the server model.
+        category:
+          type: string
+          description: The category of the server model.
+        class:
+          type:
+            - string
+            - 'null'
+          description: The class of the provider's server model, optional.
+        model_id:
+          type: string
+          description: The primary ID used to reference this server model.
+        parent_model_id:
+          type:
+            - string
+            - 'null'
+          description: The ID of the parent server model, if this model is derived from another.
+        locations:
+          type:
+            - array
+            - 'null'
+          items:
+            type: string
+          description: A list of locations where this server model is available.
+        availability_zones:
+          description: Details the availability zones where the server model is offered, keyed by location.
+          oneOf:
+            - type: object
+              additionalProperties:
+                type: array
+                items:
+                  type: string
+            - type: 'null'
+        stock:
+          description: Stock information for the server model, keyed by location.
+          oneOf:
+            - type: object
+              additionalProperties:
+                type: object
+                required:
+                  - quantity
+                  - sync
+                properties:
+                  quantity:
+                    type: integer
+                    description: The available quantity of stock at this location.
+                  sync:
+                    type: string
+                    format: date-time
+                    description: The time at which stock was last synced.
+            - type: 'null'
+    Pricing:
+      title: Pricing
+      type: object
+      description: Details the pricing structure for a service or product, specifying costs on an hourly and monthly basis. Prices are represented in mils (1/1000th of a dollar), allowing for precise cost specification.
+      required:
+        - hourly
+        - monthly
+      properties:
+        hourly:
+          type: integer
+          description: The cost per hour in mils.
+        monthly:
+          type: integer
+          description: The cost per month in mils.
+    ServerModel:
+      title: ProviderServerModel
+      type: object
+      description: Represents a server model, detailing its name, drivers, description, specifications, provider, pricing, and compatibility.
+      required:
+        - name
+        - description
+        - specs
+        - provider
+        - pricing
+      properties:
+        name:
+          type: string
+          description: The name of the server model.
+        drivers:
+          type:
+            - array
+            - 'null'
+          items:
+            type: string
+          description: A list of drivers supported by the server model. This field can be null to represent cases where drivers are not specified or applicable.
+        description:
+          type: string
+          description: A detailed description of the server model.
+        specs:
+          $ref: '#/components/schemas/Specs'
+          description: The specifications of the server model, including CPU, GPU, memory, and other components.
+        provider:
+          $ref: '#/components/schemas/ServerModelProvider'
+          description: The provider of the server model.
+        pricing:
+          $ref: '#/components/schemas/Pricing'
+          description: Pricing information for the server model.
+        compatible:
+          type:
+            - boolean
+            - 'null'
+          description: Indicates whether the server model is compatible with a specific environment or requirement. This field can be null to represent cases where compatibility has not been determined.
+    CycleLocationMeta:
+      title: CycleServerMeta
+      type: object
+      description: Metadata about a location, provided by Cycle.
+      required:
+        - location_id
+      properties:
+        location_id:
+          type: string
+          format: uuid
+          description: The unique identifier of the location at Cycle.
+    CycleServerMeta:
+      title: CycleServerMeta
+      type: object
+      description: Metadata about a server, provided by Cycle.
+      required:
+        - server_id
+        - model_class
+        - model_category
+        - model_id
+        - location_id
+      properties:
+        server_id:
+          type: string
+          format: uuid
+          description: The unique identifier of the server at Cycle.
+        model_class:
+          type: string
+          description: The class of the server at Cycle,
+        model_category:
+          type: string
+          description: The category of the server at Cycle.
+        model_id:
+          type: string
+          format: uuid
+          description: The unique identifier of the model at Cycle.
+        location_id:
+          type: string
+          format: uuid
+          description: The unique identifier of the location at Cycle.
+    IPKind:
+      title: IPKind
+      type: string
+      description: The kind (IPv4 or IPv6) of an IP.
+      enum:
+        - ipv4
+        - ipv6
+    CycleIPMeta:
+      title: CycleIPMeta
+      type: object
+      description: Metadata associated with an IP within Cycle.
+      required:
+        - server_id
+        - server_model_class
+        - server_model_category
+        - location_id
+      properties:
+        pool_id:
+          type:
+            - string
+            - 'null'
+          format: uuid
+          description: The unique identifier of the IP pool.
+        server_id:
+          type: string
+          format: uuid
+          description: The unique identifier of the server associated with the IP.
+        server_model_class:
+          type: string
+          description: The class of the server, categorizing the server based on its specifications or purpose at Cycle.
+        server_model_category:
+          type: string
+          description: The category of the server, providing a broader classification than the class at Cycle.
+        location_id:
+          type: string
+          format: uuid
+          description: The unique identifier of the location associated with the server.
