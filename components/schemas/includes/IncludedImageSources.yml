@@ -1,5 +1,5 @@
-title: ImageSourceIncludes
+title: IncludedImageSources
 description: A resource associated with an image source.
 type: object
 additionalProperties:
-  "$ref": "../images/sources/ImageSource.yml"
+  $ref: ../images/sources/ImageSource.yml

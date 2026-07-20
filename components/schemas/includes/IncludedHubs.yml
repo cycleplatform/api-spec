@@ -1,5 +1,5 @@
-title: HubIncludes
+title: IncludedHubs
 type: object
 description: A resource that is associated with a hub.
 additionalProperties:
-  "$ref": "../hubs/Hub.yml"
+  $ref: ../hubs/Hub.yml

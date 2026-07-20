@@ -1,4 +1,4 @@
-title: ProviderServerModelsIncludes
+title: IncludedProviderServerModels
 description: A resource associated with a server models.
 type: object
 additionalProperties:

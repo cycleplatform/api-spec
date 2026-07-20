@@ -62,9 +62,9 @@ get:
                 type: object
                 properties:
                   creators:
-                    $ref: ../../../components/schemas/includes/CreatorInclude.yml
+                    $ref: ../../../components/schemas/includes/IncludedCreators.yml
                   clusters:
-                    $ref: ../../../components/schemas/includes/ClusterIncludes.yml
+                    $ref: ../../../components/schemas/includes/IncludedClusters.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
 

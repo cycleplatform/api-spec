@@ -1,12 +1,12 @@
 post:
-  operationId: "lookupComponents"
+  operationId: lookupComponents
   summary: |
     Look up Cycle components (resources such as containers, servers, etc) based on their ID.
     Useful when the IDs are known ahead of time - all relevant items can be fetched in a single request.
   tags:
     - Utility
   requestBody:
-    description: | 
+    description: |
       Accepts an array of component lookup objects. Consists of the type of resource to look up,
       and the ID.
     content:
@@ -39,6 +39,6 @@ post:
               - data
             properties:
               data:
-                $ref: ../../../../components/schemas/includes/ComponentsIncludes.yml
+                $ref: ../../../../components/schemas/includes/IncludedComponents.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
