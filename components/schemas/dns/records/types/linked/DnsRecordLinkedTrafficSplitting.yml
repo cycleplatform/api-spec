@@ -1,0 +1,16 @@
+title: DnsRecordLinkedTrafficSplitting
+type: object
+description: Settings for splitting traffic to this domain between two or more destinations.
+required:
+  - sticky_sessions
+properties:
+  variants:
+    type:
+      - array
+      - "null"
+    description: A set of weighted destinations that traffic to this record is distributed across.
+    items:
+      $ref: DnsRecordLinkedVariant.yml
+  sticky_sessions:
+    type: boolean
+    description: Utilize sticky sessions. When true, after the initial request, all traffic from that host will be routed to the same destination.
