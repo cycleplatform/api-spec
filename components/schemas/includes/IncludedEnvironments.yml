@@ -1,5 +1,5 @@
-title: EnvironmentInclude
+title: IncludedEnvironments
 description: An identity that is associated with an environment.
 type: object
 additionalProperties:
-  "$ref": "../environments/Environment.yml"
+  $ref: ../environments/Environment.yml

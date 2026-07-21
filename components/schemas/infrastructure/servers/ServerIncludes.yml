@@ -3,12 +3,10 @@ type: object
 description: A resource associated with a server.
 properties:
   locations:
-    "$ref": "../../includes/LocationsIncludes.yml"
+    $ref: ../../includes/IncludedLocations.yml
   clusters:
-    type: object
-    additionalProperties:
-      "$ref": ../clusters/Cluster.yml
+    $ref: ../../includes/IncludedClusters.yml
   models:
-    "$ref": "../../includes/ProviderServerModelsIncludes.yml"
+    $ref: ../../includes/IncludedProviderServerModels.yml
   integrations:
-    "$ref": "../../includes/IntegrationsIncludes.yml"
+    $ref: ../../includes/IncludedIntegrations.yml

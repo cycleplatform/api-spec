@@ -1,4 +1,4 @@
-title: IntegrationsIncludes
+title: IncludedIntegrations
 description: A resource that is associated with an integration.
 type: object
 additionalProperties:

@@ -1,4 +1,4 @@
-title: ComponentIncludes
+title: IncludedComponents
 type: object
 description: A resource that is associated with activity.
 additionalProperties:
