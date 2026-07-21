@@ -25,6 +25,19 @@ allOf:
               enable:
                 type: boolean
                 description: A boolean, where true represents this record will be paired with a TLS certificate automatically maintained by the platform.
+              challenge:
+                oneOf:
+                  - type:
+                      - string
+                    description: |
+                      The ACME challenge type used when obtaining and renewing the
+                      TLS certificate for this record. `dns` requires the zone to
+                      be hosted by Cycle; `http` validates over HTTP and does not.
+                      If not set, the platform default is used.
+                    enum:
+                      - dns
+                      - http
+                  - type: "null"
           geodns:
             type: object
             description: Options for the GeoDNS LINKED record feature.
