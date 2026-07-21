@@ -1,0 +1,34 @@
+type: object
+title: ServerTelemetryNetworkNeighbor
+description: A single entry in the server's ARP/NDP neighbor table.
+required:
+  - ip
+  - device
+  - state
+properties:
+  ip:
+    type: string
+    description: The IP address of the neighbor (IPv4 or IPv6).
+  device:
+    type: string
+    description: The network interface the neighbor was discovered on.
+  mac:
+    type: string
+    description: >-
+      The MAC address of the neighbor. Omitted for incomplete or failed
+      entries, matching `ip neigh` behavior.
+  state:
+    type: string
+    description: >-
+      The NUD (Neighbor Unreachability Detection) state of the entry.
+    enum:
+      - INCOMPLETE
+      - REACHABLE
+      - STALE
+      - DELAY
+      - PROBE
+      - FAILED
+      - NOARP
+      - PERMANENT
+      - NONE
+      - UNKNOWN
