@@ -20,6 +20,13 @@ properties:
   description:
     type: string
     description: A description of the server.
+  drivers:
+    description: A list of drivers supported by the server.
+    type:
+      - "array"
+      - "null"
+    items:
+      type: string
   specs:
     $ref: ProviderServerModelSpec.yml
   provider:

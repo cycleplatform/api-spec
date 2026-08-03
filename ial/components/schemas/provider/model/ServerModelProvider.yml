@@ -2,13 +2,9 @@ title: "ServerModelProvider"
 type: object
 description: "Identifies the provider details, including the category, class, model ID, parent model ID, available locations, availability zones, and stock for a server, plan, or model."
 required:
-  - name
   - category
   - model_id
 properties:
-  name:
-    type: string
-    description: The name of the server model.
   category:
     type: string
     description: "The category of the server model."
@@ -24,7 +20,7 @@ properties:
     type:
       - "string"
       - "null"
-    description: "The ID of the parent server model, if this model is derived from another."
+    description: "The ID of the parent server model, if this model is derived from another. Variants share the same server object as their parent and are excluded from the default models list; fetch them by parent when a variant group is expanded. Null for standalone and parent models."
   locations:
     type:
       - "array"

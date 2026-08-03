@@ -2,7 +2,7 @@ title: ProviderServerModelProviderSpec
 type: object
 description: Higher level information about a providers server.
 required:
-  - identifier
+  - vendor
   - category
   - model
   - locations
@@ -10,9 +10,6 @@ properties:
   vendor:
     type: string
     description: The infrastructure vendor for the provider.
-  identifier:
-    type: string
-    description: A provider identifier.
   integration_id:
     anyOf:
       - $ref: "../../../ID.yml"
@@ -23,6 +20,14 @@ properties:
   class:
     type: string
     description: A class for the server.
+  parent_model_id:
+    description: >-
+      Set when this model is a variant of another model. Variants share the
+      same server object as their parent and are excluded from the default
+      models list; fetch them by parent when a variant group is expanded.
+    anyOf:
+      - $ref: "../../../ID.yml"
+      - type: "null"
   model:
     type: string
     description: The model of the server.
