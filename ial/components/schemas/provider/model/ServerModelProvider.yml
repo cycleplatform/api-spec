@@ -17,10 +17,12 @@ properties:
     type: string
     description: "The primary ID used to reference this server model."
   parent_model_id:
+    description: >-
+      The ID of the model that this model is a variant of. Null if the model
+      is not a variant.
     type:
       - "string"
       - "null"
-    description: "The ID of the parent server model, if this model is derived from another. Variants share the same server object as their parent and are excluded from the default models list; fetch them by parent when a variant group is expanded. Null for standalone and parent models."
   locations:
     type:
       - "array"

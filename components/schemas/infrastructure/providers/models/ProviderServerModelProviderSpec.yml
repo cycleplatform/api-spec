@@ -22,9 +22,8 @@ properties:
     description: A class for the server.
   parent_model_id:
     description: >-
-      Set when this model is a variant of another model. Variants share the
-      same server object as their parent and are excluded from the default
-      models list; fetch them by parent when a variant group is expanded.
+      The ID of the model that this model is a variant of. Null if the model
+      is not a variant.
     anyOf:
       - $ref: "../../../ID.yml"
       - type: "null"
