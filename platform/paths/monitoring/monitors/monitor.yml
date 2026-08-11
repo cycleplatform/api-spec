@@ -1,10 +1,17 @@
 get:
-  operationId: "getMonitors"
-  summary: List Monitors
+  operationId: "getMonitor"
+  summary: Get Monitor
   description: Requires the `monitoring-monitors-view` capability.
   tags:
     - Monitoring
   parameters:
+    - name: id
+      in: path
+      required: true
+      description: The ID of the monitor to fetch.
+      schema:
+        type: string
+        pattern: "^[a-f0-9]{24}$"
     - name: meta
       in: query
       required: false
@@ -28,37 +35,9 @@ get:
           type: string
           enum:
             - creators
-    - name: filter
-      in: query
-      style: deepObject
-      required: false
-      description: |
-        ## Filter Field
-        The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
-      schema:
-        type: object
-        properties:
-          identifier:
-            type: string
-            description: |
-              `filter[identifier]=value` List only those monitors matching this identifier. May return multiple results.
-          search:
-            type: string
-            description: |
-              `filter[search]=value` search for a value associated with a field on the given monitor(s).
-          state:
-            type: string
-            description: |
-              `filter[state]=value1,value2` filter by the monitor's current lifecycle state.
-          cluster:
-            type: string
-            description: |
-              `filter[cluster]=identifier` list monitors that either apply globally or are scoped to the specified cluster.
-    - $ref: ../../../../components/parameters/SortParam.yml
-    - $ref: ../../../../components/parameters/PageParam.yml
   responses:
     200:
-      description: Returns a list of Monitors.
+      description: Returns a Monitor.
       content:
         application/json:
           schema:
@@ -67,9 +46,7 @@ get:
               - data
             properties:
               data:
-                type: array
-                items:
-                  $ref: ../../../../components/schemas/monitoring/monitors/Monitor.yml
+                $ref: ../../../../components/schemas/monitoring/monitors/Monitor.yml
               includes:
                 type: object
                 properties:
@@ -77,38 +54,42 @@ get:
                     $ref: ../../../../components/schemas/includes/IncludedCreators.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
-post:
-  operationId: "createMonitor"
-  summary: Create Monitor
-  description: Requires the `monitoring-monitors-manage` capability.
+patch:
+  operationId: "updateMonitor"
+  summary: Update Monitor
+  description: |
+    Requires the `monitoring-monitors-manage` capability.
+
+    Monitors in `deleting` or `deleted` state cannot be updated.
   tags:
     - Monitoring
-  parameters: []
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: The ID of the monitor to update.
+      schema:
+        type: string
+        pattern: "^[a-f0-9]{24}$"
   requestBody:
     content:
       application/json:
         schema:
           type: object
-          required:
-            - name
-            - description
-            - scope
-            - config
           properties:
             name:
               type: string
-              description: A user-defined name for the monitor. Cannot be empty.
-            description:
-              type: string
-              description: A longer description of what this monitor observes and why.
+              description: A user-defined name for the monitor. Cannot be empty when provided.
             identifier:
               oneOf:
                 - $ref: ../../../../components/schemas/Identifier.yml
                 - type: "null"
-              description: A slug for the monitor. Generated from the name when omitted or empty.
+            description:
+              type: string
+              description: A longer description of what this monitor observes and why.
             scope:
               type: object
-              description: What this monitor observes. Either global or scoped to specific clusters.
+              description: What this monitor observes.
               required:
                 - global
                 - clusters
@@ -121,11 +102,9 @@ post:
                   description: Cluster identifiers this monitor is scoped to. Ignored when global is true.
                   items:
                     $ref: ../../../../components/schemas/Identifier.yml
-            config:
-              $ref: ../../../../components/schemas/monitoring/monitors/MonitorConfig.yml
   responses:
-    201:
-      description: Returns a Monitor.
+    200:
+      description: Returns the updated Monitor.
       content:
         application/json:
           schema:
@@ -135,5 +114,36 @@ post:
             properties:
               data:
                 $ref: ../../../../components/schemas/monitoring/monitors/Monitor.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
+delete:
+  operationId: "deleteMonitor"
+  summary: Delete Monitor
+  description: |
+    Requires the `monitoring-monitors-manage` capability.
+
+    Deletion runs asynchronously via a job. The response returns a Task with the queued job details.
+  tags:
+    - Monitoring
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: The ID of the monitor to delete.
+      schema:
+        type: string
+        pattern: "^[a-f0-9]{24}$"
+  responses:
+    202:
+      description: Returns a Task acknowledging the queued deletion job.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/jobs/JobDescriptor.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml

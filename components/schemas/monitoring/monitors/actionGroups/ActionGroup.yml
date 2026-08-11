@@ -1,0 +1,92 @@
+title: ActionGroup
+description: >
+  A named, reusable collection of actions. Monitors can reference an action group
+  so that a single set of alarm responses can be shared across many monitors and
+  updated in one place.
+type: object
+required:
+  - id
+  - hub_id
+  - identifier
+  - creator
+  - name
+  - description
+  - actions
+  - state
+  - events
+properties:
+  id:
+    type: string
+    description: A unique identifier for this action group.
+  hub_id:
+    type: string
+    description: The ID of the hub this action group belongs to.
+  identifier:
+    $ref: "../../../Identifier.yml"
+  creator:
+    $ref: "../../../common/UserScope.yml"
+    description: The user or entity that created this action group.
+  name:
+    type: string
+    description: A human-readable name for this action group.
+  description:
+    type: string
+    description: A longer description of what this action group does and when it is used.
+  actions:
+    type: array
+    description: The actions run when this group is triggered.
+    items:
+      $ref: "../MonitorAction.yml"
+  state:
+    title: ActionGroupStateInfo
+    type: object
+    description: The current runtime state of the action group.
+    required:
+      - current
+      - changed
+    properties:
+      current:
+        type: string
+        enum:
+          - live
+          - deleting
+          - deleted
+        description: The current state of the action group.
+      changed:
+        description: The timestamp of the most recent state transition.
+        $ref: "../../../DateTime.yml"
+      error:
+        type: object
+        description: Details of the last error, if the action group is in an error condition.
+        required:
+          - message
+          - time
+        properties:
+          message:
+            type: string
+            description: A description of the error.
+          time:
+            description: The timestamp at which the error was recorded.
+            $ref: "../../../DateTime.yml"
+  events:
+    title: ActionGroupEvents
+    type: object
+    description: A collection of timestamps for events in the action group's lifetime.
+    required:
+      - created
+      - updated
+      - deleted
+    properties:
+      created:
+        description: The timestamp of when the action group was created.
+        $ref: "../../../DateTime.yml"
+      updated:
+        description: The timestamp of when the action group was updated.
+        $ref: "../../../DateTime.yml"
+      deleted:
+        description: The timestamp of when the action group was deleted.
+        $ref: "../../../DateTime.yml"
+  meta:
+    type: object
+    description: Additional metadata attached to the action group response.
+    additionalProperties: true

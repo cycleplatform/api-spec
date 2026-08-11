@@ -1,0 +1,25 @@
+title: MonitorConfig
+description: >
+  Configuration that defines how a monitor evaluates. The window and cool down
+  govern timing, the rule set defines the conditions that trigger an alarm,
+  and the actions list what happens when one does.
+type: object
+required:
+  - window
+  - cool_down
+  - rule_set
+  - actions
+properties:
+  window:
+    description: The evaluation window over which rules are checked.
+    $ref: "../../Duration.yml"
+  cool_down:
+    description: The minimum time between successive alarms. Suppresses re-triggering while an alarm state persists.
+    $ref: "../../Duration.yml"
+  rule_set:
+    $ref: "./rules/MonitorRuleSet.yml"
+  actions:
+    type: array
+    description: Actions taken when the rule set evaluates to an alarm state.
+    items:
+      $ref: "./MonitorAction.yml"
