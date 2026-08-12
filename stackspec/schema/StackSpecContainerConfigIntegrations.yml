@@ -97,10 +97,24 @@ properties:
             - destination
           properties:
             source:
+              description: 
+                Endpoint serving the file(s) to provision into the container.
+
+                The following query parameters are recognized by Cycle and are
+                stripped before the request is made upstream
+                  - cycle-cache (duration string) — how long Cycle may serve its
+                    cached copy of the file before re-fetching from the origin.
+                    Accepts a duration such as 30m, 10h, or 2d.
+                  - cycle-version (string) — an opaque version identifier for the
+                    file. Changing it invalidates the cached copy, so a redeploy pulls
+                    fresh content even when the URL is otherwise unchanged.
+                Both may be combined with any query parameters the origin expects.
               oneOf:
                 - $ref: StackVariable.yml
                 - type: string
             destination:
+              description:
+                File path for the files to be downloaded to on the container instance(s).
               oneOf:
                 - type: string
                 - $ref: StackVariable.yml
