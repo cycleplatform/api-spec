@@ -5,3 +5,5 @@ properties:
   due:
     type: integer
     description: The amount due for a given invoice.
+  hub:
+    $ref: ../../hubs/Hub.yml

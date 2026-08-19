@@ -1,0 +1,297 @@
+type: object
+title: ServerTelemetryProcessStats
+description: Per-process scheduling and memory statistics, as reported by the kernel (/proc/[pid]/stat). Time fields are expressed in clock ticks unless noted otherwise.
+required:
+  - pid
+  - comm
+  - state
+  - ppid
+  - pgrp
+  - session
+  - tty_nr
+  - tpgid
+  - flags
+  - minflt
+  - cminflt
+  - majflt
+  - cmajflt
+  - utime
+  - stime
+  - cutime
+  - cstime
+  - priority
+  - nice
+  - num_threads
+  - itrealvalue
+  - starttime
+  - vsize
+  - rss
+  - rsslim
+  - startcode
+  - endcode
+  - startstack
+  - kstkesp
+  - kstkeip
+  - signal
+  - blocked
+  - sigignore
+  - sigcatch
+  - wchan
+  - nswap
+  - cnswap
+  - exit_signal
+  - processor
+  - rt_priority
+  - policy
+  - delayacct_blkio_ticks
+  - guest_time
+  - cguest_time
+  - start_data
+  - end_data
+  - start_brk
+  - arg_start
+  - arg_end
+  - env_start
+  - env_end
+  - exit_code
+properties:
+  pid:
+    type: integer
+    format: int64
+    minimum: 0
+    description: The process ID.
+  comm:
+    type: string
+    description: The executable filename, as reported by the kernel.
+  state:
+    type: string
+    description: The process state code (e.g. R running, S sleeping, D uninterruptible sleep, Z zombie, T stopped).
+  ppid:
+    type: integer
+    format: int64
+    description: The parent process ID.
+  pgrp:
+    type: integer
+    format: int64
+    description: The process group ID.
+  session:
+    type: integer
+    format: int64
+    description: The session ID.
+  tty_nr:
+    type: integer
+    format: int64
+    description: The controlling terminal device number.
+  tpgid:
+    type: integer
+    format: int64
+    description: The foreground process group ID of the controlling terminal.
+  flags:
+    type: integer
+    format: int64
+    minimum: 0
+    description: The kernel flags word for the process.
+  minflt:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Minor faults that did not require loading a page from disk.
+  cminflt:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Minor faults of the process's waited-for children.
+  majflt:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Major faults that required loading a page from disk.
+  cmajflt:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Major faults of the process's waited-for children.
+  utime:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Time scheduled in user mode, in clock ticks.
+  stime:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Time scheduled in kernel mode, in clock ticks.
+  cutime:
+    type: integer
+    format: int64
+    description: Children's time scheduled in user mode, in clock ticks.
+  cstime:
+    type: integer
+    format: int64
+    description: Children's time scheduled in kernel mode, in clock ticks.
+  priority:
+    type: integer
+    format: int64
+    description: The scheduling priority.
+  nice:
+    type: integer
+    format: int64
+    description: The nice value, ranging from -20 (high priority) to 19 (low priority).
+  num_threads:
+    type: integer
+    format: int64
+    description: The number of threads in the process.
+  itrealvalue:
+    type: integer
+    format: int64
+    description: Time in jiffies before the next SIGALRM. Obsolete and always 0 on modern kernels.
+  starttime:
+    type: integer
+    format: int64
+    minimum: 0
+    description: The time the process started after boot, in clock ticks.
+  vsize:
+    type: integer
+    format: int64
+    minimum: 0
+    description: The virtual memory size, in bytes.
+  rss:
+    type: integer
+    format: int64
+    description: The resident set size, the number of pages the process has in real memory.
+  rsslim:
+    type: integer
+    format: int64
+    minimum: 0
+    description: The soft limit on the resident set size, in bytes. A very large sentinel value indicates no limit.
+  startcode:
+    type: integer
+    format: int64
+    minimum: 0
+    description: The address above which program text can run.
+  endcode:
+    type: integer
+    format: int64
+    minimum: 0
+    description: The address below which program text can run.
+  startstack:
+    type: integer
+    format: int64
+    minimum: 0
+    description: The address of the start (bottom) of the stack.
+  kstkesp:
+    type: integer
+    format: int64
+    minimum: 0
+    description: The current value of the stack pointer.
+  kstkeip:
+    type: integer
+    format: int64
+    minimum: 0
+    description: The current instruction pointer.
+  signal:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Bitmap of pending signals. Obsolete; per-thread signal fields should be used instead.
+  blocked:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Bitmap of blocked signals.
+  sigignore:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Bitmap of ignored signals.
+  sigcatch:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Bitmap of caught signals.
+  wchan:
+    type: integer
+    format: int64
+    minimum: 0
+    description: The address of the kernel function where the process is sleeping.
+  nswap:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Pages swapped. Not maintained and always 0.
+  cnswap:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Cumulative nswap of children. Not maintained and always 0.
+  exit_signal:
+    type: integer
+    format: int64
+    description: The signal sent to the parent when this process dies.
+  processor:
+    type: integer
+    format: int64
+    description: The CPU number the process last executed on.
+  rt_priority:
+    type: integer
+    format: int64
+    minimum: 0
+    description: The real-time scheduling priority.
+  policy:
+    type: integer
+    format: int64
+    minimum: 0
+    description: The scheduling policy.
+  delayacct_blkio_ticks:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Aggregated block I/O delays, in clock ticks.
+  guest_time:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Time spent running a virtual CPU for a guest, in clock ticks.
+  cguest_time:
+    type: integer
+    format: int64
+    description: Children's guest time, in clock ticks.
+  start_data:
+    type: integer
+    format: int64
+    minimum: 0
+    description: The address above which program initialized and uninitialized (bss) data are placed.
+  end_data:
+    type: integer
+    format: int64
+    minimum: 0
+    description: The address below which program initialized and uninitialized (bss) data are placed.
+  start_brk:
+    type: integer
+    format: int64
+    minimum: 0
+    description: The address above which the program heap can be expanded with brk.
+  arg_start:
+    type: integer
+    format: int64
+    minimum: 0
+    description: The address above which the program command-line arguments are placed.
+  arg_end:
+    type: integer
+    format: int64
+    minimum: 0
+    description: The address below which the program command-line arguments are placed.
+  env_start:
+    type: integer
+    format: int64
+    minimum: 0
+    description: The address above which the program environment is placed.
+  env_end:
+    type: integer
+    format: int64
+    minimum: 0
+    description: The address below which the program environment is placed.
+  exit_code:
+    type: integer
+    format: int64
+    description: The thread's exit status in the form reported by waitpid.

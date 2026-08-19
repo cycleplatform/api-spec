@@ -5,7 +5,11 @@ required:
   - details
   - ipv4
   - ipv6
+  - performance
 properties:
+  performance:
+    type: boolean
+    description: Enable / disable performance mode.  If enabled, load balancer can use much more RAM and CPU.
   ipv4:
     type: boolean
     description: Allow / disallow traffic to be routed via IPv4.

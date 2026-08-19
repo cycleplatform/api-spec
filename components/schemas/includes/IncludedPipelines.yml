@@ -1,0 +1,6 @@
+title: IncludedPipelines
+description: |
+  A map of pipelines, keyed by ID, included on endpoints that support it when passing the matching includes query parameter.
+type: object
+additionalProperties:
+  $ref: ../pipelines/Pipeline.yml

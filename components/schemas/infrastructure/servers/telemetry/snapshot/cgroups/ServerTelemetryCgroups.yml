@@ -1,0 +1,13 @@
+title: ServerTelemetryCgroups
+type: object
+description: A collection of cgroup v2 statistics, keyed by cgroup identifier.
+required:
+  - cgroups
+properties:
+  cgroups:
+    description: Map of cgroup v2 statistics, keyed by cgroup identifier.
+    type:
+      - object
+      - "null"
+    additionalProperties:
+      $ref: ./ServerTelemetryCgroupV2Stats.yml

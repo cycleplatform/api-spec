@@ -3,8 +3,12 @@ post:
   summary: Post Metric
   description: |
     Post data to Cycle's monitoring system.
+
+    Does not require a scope.
   tags:
     - Monitoring
+  x-cycle-scopes:
+    - none
   parameters: []
   requestBody:
     required: true
@@ -18,7 +22,7 @@ post:
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
     200:
-      description: Returns true on success
+      description: Returns true on success.
       content:
         application/json:
           schema:

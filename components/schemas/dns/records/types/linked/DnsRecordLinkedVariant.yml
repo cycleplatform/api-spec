@@ -1,0 +1,14 @@
+title: DnsRecordLinkedVariant
+type: object
+description: A weighted routing variant. Traffic is distributed across variants according to their weights.
+required:
+  - destination
+  - weight
+properties:
+  destination:
+    $ref: DnsRecordLinkedVariantDestination.yml
+  weight:
+    type: integer
+    minimum: 0
+    maximum: 1000
+    description: The weight of this variant relative to the other variants, used to distribute traffic across destinations. Valid range is 0 to 1000.

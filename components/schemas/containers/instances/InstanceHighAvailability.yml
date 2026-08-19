@@ -1,0 +1,17 @@
+title: InstanceHighAvailability
+description: |
+  The high availability status of the instance, as determined by the platform. 
+
+  This data becomes avaialble when utilizing the internal API high availability endpoint. The platform will hold elections for all instances hitting the endpoint and choose a primary. As long as those instances continue to check in, the primary will continue to be the primary until it is dropped off. After which, a secondary will be promoted.
+type: object
+required:
+  - last_checkin
+properties:
+  elected_primary:
+    description: If a time is set, indicates that this instance is the primary, and the time at which it was promoted.
+    oneOf:
+      - $ref: "../../DateTime.yml"
+      - type: "null"
+  last_checkin:
+    description: The time that the instance last checked into the HA service.
+    $ref: "../../DateTime.yml"

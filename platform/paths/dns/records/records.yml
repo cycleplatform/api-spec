@@ -11,21 +11,7 @@ get:
       required: true
       schema:
         type: string
-    - name: include
-      in: query
-      required: false
-      description:
-        A comma separated list of include values. Included resources will show
-        up under the root document's `include` field, with the key being the id of the included
-        resource. In the case of applying an include to a collection of resources, if two
-        resources share the same include, it will only appear once in the return.
-      schema:
-        type: array
-        items:
-          type: string
-          enum:
-            - creators
-            - containers
+    - $ref: includes/RecordIncludeParam.yml
     - name: filter
       in:
         query
@@ -58,9 +44,9 @@ get:
               data:
                 type: array
                 items:
-                  $ref: ../../../../components/schemas/dns/records/Record.yml
+                  $ref: ../../../../components/schemas/dns/records/DnsRecord.yml
               includes:
-                $ref: ../../../../components/schemas/dns/records/RecordIncludes.yml
+                $ref: includes/RecordIncludes.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
 
@@ -77,6 +63,7 @@ post:
       required: true
       schema:
         type: string
+    - $ref: includes/RecordIncludeParam.yml
   requestBody:
     description: Parameters for creating a new DNS Zone Record.
     content:
@@ -88,7 +75,7 @@ post:
             - name
           properties:
             type:
-              $ref: ../../../../components/schemas/dns/records/RecordTypes.yml
+              $ref: ../../../../components/schemas/dns/records/DnsRecordTypes.yml
             name:
               type: string
               description: A name for the given record where `@` represents the desire to use the root of the origin.
@@ -104,6 +91,8 @@ post:
               - data
             properties:
               data:
-                $ref: ../../../../components/schemas/dns/records/Record.yml
+                $ref: ../../../../components/schemas/dns/records/DnsRecord.yml
+              includes:
+                $ref: includes/RecordIncludes.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml

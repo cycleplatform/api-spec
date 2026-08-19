@@ -1,7 +1,65 @@
+post:
+  operationId: createIpPool
+  summary: Create IP Pool
+  description: |
+    Create an infrastructure IP Pool
+
+    Requires the 'ips-manage' capability.
+  tags:
+    - IPs
+  parameters: []
+  requestBody:
+    description: Parameters for creating a new IP pool.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - server_id
+            - block
+          properties:
+            server_id:
+              $ref: ../../../../components/schemas/ID.yml
+            block:
+              type: object
+              required:
+                - cidr
+                - gateway
+              properties:
+                network:
+                  oneOf:
+                    - $ref: ../../../../components/schemas/Cidr.yml
+                    - type: "null"
+                cidr:
+                  $ref: ../../../../components/schemas/Cidr.yml
+                gateway:
+                  oneOf:
+                    - $ref: ../../../../components/schemas/IpAddress.yml
+                    - type: "null"
+            options:
+              oneOf:
+                - $ref: ../../../../components/schemas/infrastructure/ips/IpOptions.yml
+                - type: "null"
+
+  responses:
+    201:
+      description: Returns an IP Pool.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/infrastructure/ips/IpPool.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
+
 get:
-  operationId: "getInfrastructureIPPools"
+  operationId: "getIpPools"
   summary: List IP Pools
-  description: Requires the `infrastructure-ips-manage` capability.
+  description: Requires the `ips-manage` capability.
   tags:
     - IPs
   parameters:
@@ -40,9 +98,16 @@ get:
             type: string
             description: |
               `filter[state]=value1,value2` state filtering will allow you to filter by the IP's current state.
+          server:
+            type: string
+            description: |
+              `filter[server]=ID` server filtering by ID. Submit the ID of the server you wish to filter for and the return will be any IP pool associated with that server.
+          location:
+            type: string
+            description: |
+              `filter[location]=ID` location filtering by ID. Submit the ID of the location you wish to filter by.
     - $ref: ../../../../components/parameters/SortParam.yml
     - $ref: ../../../../components/parameters/PageParam.yml
-
   responses:
     200:
       description: A list of IP Pools.
@@ -56,8 +121,8 @@ get:
               data:
                 type: array
                 items:
-                  $ref: ../../../../components/schemas/infrastructure/ips/Pool.yml
+                  $ref: ../../../../components/schemas/infrastructure/ips/IpPool.yml
               includes:
-                $ref: ../../../../components/schemas/infrastructure/ips/PoolIncludes.yml
+                $ref: ../../../../components/schemas/infrastructure/ips/IpPoolIncludes.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml

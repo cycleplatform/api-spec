@@ -1,0 +1,11 @@
+title: ExternalVolumeAttachment
+type: object
+description: Attachment configuration for an external volume.
+discriminator:
+  propertyName: type
+  mapping:
+    block: ./ExternalVolumeAttachmentBlock.yml
+    filesystem: ./ExternalVolumeAttachmentFileSystem.yml
+oneOf:
+  - $ref: ./ExternalVolumeAttachmentBlock.yml
+  - $ref: ./ExternalVolumeAttachmentFileSystem.yml

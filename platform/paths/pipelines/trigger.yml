@@ -44,8 +44,8 @@ post:
                     - integer
                     - "null"
   responses:
-    201:
-      description: Returns a Pipeline.
+    202:
+      description: Returns a job descriptor.
       content:
         application/json:
           schema:
@@ -54,6 +54,6 @@ post:
               - data
             properties:
               data:
-                $ref: ../../../components/schemas/pipelines/Pipeline.yml
+                $ref: ../../../components/schemas/jobs/JobDescriptor.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml

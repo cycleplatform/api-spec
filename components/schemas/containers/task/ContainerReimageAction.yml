@@ -1,0 +1,26 @@
+title: ContainerReimageAction
+type: object
+required:
+  - action
+  - contents
+properties:
+  action:
+    type: string
+    enum:
+      - reimage
+    description: The action to take.
+  contents:
+    type: object
+    description: Additional information needed to complete the job.
+    required:
+      - image_id
+    properties:
+      image_id:
+        type: string
+        description: The ID of the image to use when reimaging.
+      allow_incompatible:
+        type: boolean
+        description: A boolean where true signifies the image being used to reimage does not have to have compatibility with the image being replaced.
+      overwrite_runtime_config:
+        type: boolean
+        description: A boolean where true signifies the user wishes to overwrite the current runtime configuration for the given container during the reimage process.

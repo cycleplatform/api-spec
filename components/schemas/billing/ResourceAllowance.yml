@@ -1,0 +1,30 @@
+title: ResourceAllowance
+type: object
+description: Generic structure for a resource with an included allotment, optional hard cap, and per-unit overage cost.
+required:
+  - included
+  - hard_cap
+  - additional
+properties:
+  included:
+    type: integer
+    minimum: 0
+    description: The number of units included in the tier price.
+  hard_cap:
+    type: boolean
+    description: Whether there is a hard limit on this resource.
+  additional:
+    type: object
+    description: Cost for units that exceed the included amount.
+    required:
+      - mills
+      - term
+    properties:
+      mills:
+        type: integer
+        minimum: 0
+        description: Cost in mills per additional unit.
+      term:
+        type: string
+        enum: [once, monthly, yearly]
+        description: Billing term that applies to the additional cost.

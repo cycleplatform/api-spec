@@ -1,0 +1,52 @@
+title: MonitorMetricRule
+description: >
+  A metric-based rule. Aggregates the target metric across the monitor's window
+  and compares the result to the threshold using the operator.
+type: object
+required:
+  - type
+  - details
+properties:
+  type:
+    type: string
+    enum:
+      - metric
+  details:
+    type: object
+    required:
+      - target
+      - aggregation
+      - operator
+      - threshold
+    properties:
+      target:
+        $ref: ./MonitorRuleTarget.yml
+        description: The metric target to evaluate.
+      aggregation:
+        type: string
+        enum:
+          - avg
+          - sum
+          - max
+          - min
+        description: >
+          How the metric samples in the window are combined into a single value.
+            - `avg` - arithmetic mean.
+            - `sum` - total of all samples.
+            - `max` - largest sample.
+            - `min` - smallest sample.
+      operator:
+        type: string
+        enum:
+          - "=="
+          - "!="
+          - ">"
+          - "<"
+          - ">="
+          - "<="
+        description: The comparison applied between the aggregated value and the threshold.
+      threshold:
+        type: number
+        format: double
+        minimum: 0.01
+        description: The value the aggregated metric is compared against. Must be at least 0.01.

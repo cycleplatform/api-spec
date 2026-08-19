@@ -19,18 +19,7 @@ post:
     content:
       application/json:
         schema:
-          discriminator:
-            propertyName: action
-            mapping:
-              start: ../../../components/schemas/environments/taskActions/EnvironmentStartAction.yml
-              stop: ../../../components/schemas/environments/taskActions/EnvironmentStopAction.yml
-              initialize: ../../../components/schemas/environments/taskActions/EnvironmentInitializeAction.yml
-              deployments.reconfigure: ../../../components/schemas/environments/taskActions/EnvironmentReconfigureDeploymentsAction.yml
-          oneOf:
-            - $ref: ../../../components/schemas/environments/taskActions/EnvironmentStartAction.yml
-            - $ref: ../../../components/schemas/environments/taskActions/EnvironmentStopAction.yml
-            - $ref: ../../../components/schemas/environments/taskActions/EnvironmentInitializeAction.yml
-            - $ref: ../../../components/schemas/environments/taskActions/EnvironmentReconfigureDeploymentsAction.yml
+          $ref: ../../../components/schemas/environments/task/EnvironmentTask.yml
   responses:
     202:
       description: Returns a Job Descriptor.

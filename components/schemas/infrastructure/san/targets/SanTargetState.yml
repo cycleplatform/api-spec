@@ -1,0 +1,14 @@
+title: SanTargetState
+allOf:
+  - required:
+      - current
+    properties:
+      current:
+        description: The current lifecycle state of the SAN target.
+        type: string
+        enum:
+          - new
+          - live
+          - deleting
+          - deleted
+  - "$ref": "../../../State.yml"

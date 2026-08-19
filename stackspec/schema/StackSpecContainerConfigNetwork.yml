@@ -13,6 +13,91 @@ properties:
           - enable
           - disable
           - egress-only
+          - environment-limited
+      - $ref: StackVariable.yml
+  egress_via_gateway:
+    description: When true, the container's egress traffic is routed out through the environment gateway.
+    oneOf:
+      - type: boolean
+      - $ref: StackVariable.yml
+  routes:
+    description: Custom network routes applied to the container's instances.
+    oneOf:
+      - type: array
+        items:
+          title: NetworkRoute
+          type: object
+          description: A single network route directing traffic for a destination network.
+          required:
+            - destination
+            - gateway
+          properties:
+            destination:
+              description: The destination network, in CIDR notation, that this route matches.
+              oneOf:
+                - $ref: ../../components/schemas/Cidr.yml
+                - type: "null"
+                - $ref: StackVariable.yml
+            source:
+              description: >-
+                The source network, in CIDR notation, that this route applies to.
+                Used for source-based (policy) routing.
+              oneOf:
+                - $ref: ../../components/schemas/Cidr.yml
+                - type: "null"
+                - $ref: StackVariable.yml
+            ensure_source_exists:
+              description: >-
+                When true, the source address is verified to exist on the host
+                before this route is applied.
+              oneOf:
+                - type: boolean
+                - $ref: StackVariable.yml
+            family:
+              description: The IP protocol family this route applies to.
+              oneOf:
+                - type: string
+                  enum:
+                    - ipv4
+                    - ipv6
+                - type: "null"
+                - $ref: StackVariable.yml
+            gateway:
+              description: The IP address that traffic matching the destination is forwarded to.
+              oneOf:
+                - $ref: ../../components/schemas/IpAddress.yml
+                - $ref: StackVariable.yml
+            nexthops:
+              description: Additional next hops for this route, used for multipath routing.
+              oneOf:
+                - type: array
+                  items:
+                    title: NetworkRouteNexthop
+                    type: object
+                    description: A single next hop for a multipath network route.
+                    required:
+                      - gateway
+                    properties:
+                      gateway:
+                        description: The IP address of this next hop's gateway.
+                        oneOf:
+                          - $ref: ../../components/schemas/IpAddress.yml
+                          - $ref: StackVariable.yml
+                      hop_weight:
+                        description: >-
+                          The relative weight of this next hop when distributing
+                          traffic across multiple next hops.
+                        oneOf:
+                          - type: integer
+                            format: int64
+                          - type: "null"
+                          - $ref: StackVariable.yml
+                - $ref: StackVariable.yml
+            interface:
+              description: The name of the network interface this route is bound to.
+              oneOf:
+                - type: string
+                - $ref: StackVariable.yml
       - $ref: StackVariable.yml
   hostname:
     description: The hostname of the container. This is how it can be referenced by other containers in the same environment.
@@ -26,7 +111,23 @@ properties:
         items:
           type: string
         examples:
-          - "80:80"
-          - "443:80"
-          - "3000"
+          - ["80:80", "443:80", "3000"]
+      - $ref: StackVariable.yml
+  l2:
+    description: Layer 2 network configuration options for containers running on virtual provider servers.
+    oneOf:
+      - type: object
+        required:
+          - domains
+        properties:
+          domains:
+            description: |
+              The layer 2 'domains' that this container's instances should bridge to on the host server.
+              If the host has a matching layer 2 NIC configured via a virtual provider ISO, this container's instances
+              will be joined directly to the host's network.
+            oneOf:
+              - type: array
+                items:
+                  $ref: ../../components/schemas/sdn/L2Domain.yml
+              - $ref: StackVariable.yml
       - $ref: StackVariable.yml

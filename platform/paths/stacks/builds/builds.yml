@@ -85,9 +85,13 @@ post:
           type: object
           properties:
             about:
-              $ref: ../../../../components/schemas/stacks/builds/StackBuildAbout.yml
+              oneOf:
+                - $ref: ../../../../components/schemas/stacks/builds/StackBuildAbout.yml
+                - type: "null"
             instructions:
-              $ref: ../../../../components/schemas/stacks/builds/StackBuildInstructions.yml
+              oneOf:
+                - $ref: ../../../../components/schemas/stacks/builds/StackBuildInstructions.yml
+                - type: "null"
   responses:
     201:
       description: Returns a Stack Build.

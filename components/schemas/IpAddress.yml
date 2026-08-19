@@ -1,0 +1,8 @@
+---
+title: IpAddress
+type: string
+format: ip-address
+description: |
+  An IP address is a numerical label that uniquely identifies a device on a network and enables it to send and receive data.
+examples:
+  - 192.168.1.1

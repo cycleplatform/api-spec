@@ -1,0 +1,20 @@
+type: object
+title: ServerTelemetryDisk
+description: Disk telemetry for the server.
+required:
+  - devices
+properties:
+  devices:
+    type:
+      - object
+      - "null"
+    description: Per-device disk telemetry, keyed by device name.
+    additionalProperties:
+      $ref: ./ServerTelemetryDiskDevice.yml
+  volumes:
+    type:
+      - array
+      - "null"
+    description: Telemetry for all volumes mounted on this host, keyed by device name.
+    items:
+      $ref: ./ServerTelemetryDiskVolume.yml

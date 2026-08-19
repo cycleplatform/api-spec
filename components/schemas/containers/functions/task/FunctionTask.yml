@@ -1,0 +1,7 @@
+title: FunctionTask
+discriminator:
+  propertyName: action
+  mapping:
+    trigger: FunctionTriggerAction.yml
+oneOf:
+  - $ref: FunctionTriggerAction.yml

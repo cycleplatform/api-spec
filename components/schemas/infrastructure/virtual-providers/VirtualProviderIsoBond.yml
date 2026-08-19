@@ -1,0 +1,40 @@
+title: VirtualProviderIsoBond
+description: Server ISO bond.
+type: object
+required:
+  - mode
+  - interface_name
+properties:
+  interface_name:
+    type: string
+  interfaces:
+    type: array
+    items:
+      type: object
+      properties:
+        interface_name:
+          description: The name of the interface on the server.
+          type:
+            - string
+            - "null"
+        mac_address:
+          description: The mac address of the server.
+          type:
+            - string
+            - "null"
+  mode:
+    type: string
+    enum:
+      - balance-rr
+      - active-backup
+      - balance-xor
+      - lacp
+      - balance-tlb
+      - balance-alb
+    description: |
+      balance-rr - Rotate packets evenly across all links.
+      active-backup - One link active, failover to backup if needed.
+      balance-xor - Distributes based on a hash (MAC/IP/port).
+      lacp - Standard link aggregations using LACP.
+      balance-tlb - Adaptive transmit-side balancing (no switch config needed)..
+      balance-alb - TLB + receive load balancing (no switch config needed)..

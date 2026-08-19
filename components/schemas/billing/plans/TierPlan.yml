@@ -10,6 +10,8 @@ required:
   - price
   - servers
   - members
+  - dns_zones
+  - dns_linked_records
   - max_nodes
   - max_members
   - advanced_features
@@ -31,11 +33,15 @@ properties:
   usable:
     type: boolean
   price:
-    "$ref": "../BillingAmount.yml"
+    $ref: ../BillingAmount.yml
   servers:
-    "$ref": "../BillingServers.yml"
+    $ref: ../ResourceAllowance.yml
   members:
-    "$ref": "../BillingMembers.yml"
+    $ref: ../ResourceAllowance.yml
+  dns_zones:
+    $ref: ../ResourceAllowance.yml
+  dns_linked_records:
+    $ref: ../ResourceAllowance.yml
   max_nodes:
     type:
       - integer
@@ -53,6 +59,8 @@ properties:
       - deployments
       - geodns
       - provider_multi_account
+      - virtual_provider
+      - san
     properties:
       gpu:
         type: boolean
@@ -65,6 +73,10 @@ properties:
       geodns:
         type: boolean
       provider_multi_account:
+        type: boolean
+      virtual_provider:
+        type: boolean
+      external_volumes:
         type: boolean
   max_daily_api_requests:
     type:

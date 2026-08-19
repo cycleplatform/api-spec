@@ -32,3 +32,19 @@ properties:
     oneOf:
       - type: boolean
       - $ref: ../../StackVariable.yml
+  custom_directives:
+    type:
+      - string
+      - "null"
+    description: >
+      Additional OpenVPN directives that will be appended to the server configuration
+      on service start. Each line should follow standard OpenVPN syntax.
+    examples:
+      - |
+        client-to-client
+        duplicate-cn
+        persist-key
+        persist-tun
+      - |
+        verb 3
+        mute 10

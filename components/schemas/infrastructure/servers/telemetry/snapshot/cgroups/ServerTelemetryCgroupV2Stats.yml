@@ -1,0 +1,21 @@
+title: ServerTelemetryCgroupV2Stats
+type: object
+description: Statistics collected from a single cgroup v2 control group.
+required:
+  - path
+  - cpu
+  - memory
+  - pressure
+properties:
+  path:
+    type: string
+    description: The cgroup v2 filesystem path these statistics were collected from.
+  cpu:
+    description: CPU usage and throttling statistics for the cgroup.
+    $ref: ./ServerTelemetryCgroupCpuStats.yml
+  memory:
+    description: Memory and swap usage statistics for the cgroup.
+    $ref: ./ServerTelemetryCgroupMemoryStats.yml
+  pressure:
+    description: Pressure stall information (PSI) for the cgroup.
+    $ref: ./ServerTelemetryCgroupPressureStats.yml

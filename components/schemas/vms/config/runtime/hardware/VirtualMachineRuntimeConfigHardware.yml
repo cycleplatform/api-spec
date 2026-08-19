@@ -1,0 +1,27 @@
+title: VirtualMachineRuntimeConfigHardware
+type: object
+description: |
+  Hardware parameters applied for VM runtime.
+required:
+  - cpu
+properties:
+  machine_type:
+    description: QEMU machine type to emulate.
+    oneOf:
+      - type: string
+        enum: [pc, q35, microvm]
+      - type: "null"
+  cpu:
+    description: CPU configuration for the VM. Discriminated by `type`.
+    oneOf:
+      - $ref: ./VirtualMachineCpuConfigDefault.yml
+      - $ref: ./VirtualMachineCpuConfigCustom.yml
+    discriminator:
+      propertyName: type
+      mapping:
+        host: ./VirtualMachineCpuConfigDefault.yml
+        qemu32: ./VirtualMachineCpuConfigDefault.yml
+        qemu64: ./VirtualMachineCpuConfigDefault.yml
+        kvm64: ./VirtualMachineCpuConfigDefault.yml
+        custom: ./VirtualMachineCpuConfigCustom.yml
+additionalProperties: false

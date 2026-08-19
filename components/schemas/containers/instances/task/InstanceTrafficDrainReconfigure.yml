@@ -1,0 +1,19 @@
+title: InstanceTrafficDrainReconfigure
+type: object
+required:
+  - action
+  - contents
+properties:
+  action:
+    type: string
+    enum:
+      - traffic-drain.reconfigure
+    description: The name of the action to perform.
+  contents:
+    type: object
+    required:
+      - enable
+    properties:
+      enable:
+        description: Enable or disable traffic drain for the instance.
+        type: boolean

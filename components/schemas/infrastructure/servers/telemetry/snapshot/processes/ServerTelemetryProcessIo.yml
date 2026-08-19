@@ -1,0 +1,47 @@
+type: object
+title: ServerTelemetryProcessIo
+description: I/O accounting for a process, as reported by the kernel (/proc/[pid]/io). All counters are cumulative over the life of the process.
+required:
+  - rchar
+  - wchar
+  - syscr
+  - syscw
+  - read_bytes
+  - write_bytes
+  - cancelled_write_bytes
+properties:
+  rchar:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Bytes read by the process via read-like syscalls, whether or not they hit storage.
+  wchar:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Bytes written by the process via write-like syscalls, whether or not they hit storage.
+  syscr:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Number of read syscalls issued.
+  syscw:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Number of write syscalls issued.
+  read_bytes:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Bytes actually fetched from the storage layer.
+  write_bytes:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Bytes actually sent to the storage layer.
+  cancelled_write_bytes:
+    type: integer
+    format: int64
+    minimum: 0
+    description: Bytes written but later truncated or cancelled before reaching storage.

@@ -1,0 +1,18 @@
+title: StackSpecRuntimeInternalApi
+description: Configuration options for the internal API access within instances of this container.
+type: object
+properties:
+  scope:
+    oneOf:
+      - type: array
+        description: Scopes determine which set of endpoints instances of this container can reach over the internal API.
+        items:
+          type: string
+          enum:
+            - self
+            - environment
+            - networks
+            - server
+            - notifications
+      - type: "null"
+      - $ref: ../StackVariable.yml

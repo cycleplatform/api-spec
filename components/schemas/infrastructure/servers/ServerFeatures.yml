@@ -13,16 +13,16 @@ properties:
       - "null"
     description: The size of the base volume (where Cycle stores container images on this server).
   gateway:
-    type:
-      - object
-      - "null"
     description: Configuration options for running gateway services on this server.
-    properties:
-      type:
-        type: string
-        description: The type of gateway service that can be run on this server.
-        enum:
-          - bgp
-          - static
-    required:
-      - type
+    oneOf:
+      - type: object
+        required:
+          - type
+        properties:
+          type:
+            type: string
+            description: The type of gateway service that can be run on this server.
+            enum:
+              - bgp
+              - static
+      - type: "null"

@@ -9,6 +9,10 @@ properties:
     $ref: deploy/VirtualMachineDeployConfig.yml
   resources:
     $ref: resources/VirtualMachineResourcesConfig.yml
+  runtime:
+    oneOf:
+      - $ref: runtime/VirtualMachineRuntimeConfig.yml
+      - type: "null"
 required:
   - network
   - deploy

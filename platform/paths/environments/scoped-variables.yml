@@ -97,6 +97,10 @@ post:
               oneOf:
                 - $ref: ../../../components/schemas/scoped-variables/RawSource.yml
                 - $ref: ../../../components/schemas/scoped-variables/URLSource.yml
+            deployment:
+              anyOf:
+                - $ref: ../../../components/schemas/containers/Deployment.yml
+                - type: "null"
   responses:
     201:
       description: Returns a Scoped Variable.

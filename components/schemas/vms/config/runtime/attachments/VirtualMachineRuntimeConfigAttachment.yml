@@ -1,0 +1,9 @@
+title: VirtualMachineRuntimeConfigAttachment
+description: |
+  Additional attachment (ISO, etc) added during runtime.
+oneOf:
+  - $ref: ./VirtualMachineAttachmentTypeIso.yml
+discriminator:
+  propertyName: type
+  mapping:
+    iso: ./VirtualMachineAttachmentTypeIso.yml

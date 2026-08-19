@@ -1,0 +1,19 @@
+title: SourceAwsEbsAuth
+type: object
+description: >
+  AWS credentials for accessing EBS. Either an instance role may be used or
+  explicit Access Key credentials may be provided.
+properties:
+  use_instance_role:
+    type: boolean
+    description: >
+      When true, use the instance's IAM role for authentication.
+  access_key_id:
+    type: string
+    description: >
+      AWS Access Key ID to use for authentication (optional if using instance role).
+  secret_access_key:
+    type: string
+    format: password
+    description: >
+      AWS Secret Access Key to use for authentication (optional if using instance role).

@@ -1,0 +1,16 @@
+title: ExternalVolumeState
+allOf:
+  - required:
+      - current
+    properties:
+      current:
+        description: The current lifecycle state of the volume.
+        type: string
+        enum:
+          - new
+          - ready
+          - configuring
+          - live
+          - deleting
+          - deleted
+  - "$ref": "../../State.yml"

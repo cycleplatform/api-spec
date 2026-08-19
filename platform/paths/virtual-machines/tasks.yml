@@ -25,22 +25,7 @@ post:
     content:
       application/json:
         schema:
-          discriminator:
-            propertyName: action
-            mapping:
-              start: ../../../components/schemas/vms/tasks/VirtualMachineStartTask.yml
-              stop: ../../../components/schemas/vms/tasks/VirtualMachineStopTask.yml
-              reconfigure: ../../../components/schemas/vms/tasks/VirtualMachineReconfigureTask.yml
-              rootpw.change: ../../../components/schemas/vms/tasks/VirtualMachineRootPwChangeTask.yml
-              ip.allocate: ../../../components/schemas/vms/tasks/VirtualMachineIpAllocateTask.yml
-              ip.unallocate: ../../../components/schemas/vms/tasks/VirtualMachineIpUnallocateTask.yml
-          oneOf:
-            - $ref: ../../../components/schemas/vms/tasks/VirtualMachineStartTask.yml
-            - $ref: ../../../components/schemas/vms/tasks/VirtualMachineStopTask.yml
-            - $ref: ../../../components/schemas/vms/tasks/VirtualMachineReconfigureTask.yml
-            - $ref: ../../../components/schemas/vms/tasks/VirtualMachineRootPwChangeTask.yml
-            - $ref: ../../../components/schemas/vms/tasks/VirtualMachineIpAllocateTask.yml
-            - $ref: ../../../components/schemas/vms/tasks/VirtualMachineIpUnallocateTask.yml
+          $ref: ../../../components/schemas/vms/task/VirtualMachineTask.yml
   responses:
     202:
       description: Returns a job descriptor.

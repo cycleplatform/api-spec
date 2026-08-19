@@ -24,17 +24,17 @@ properties:
           - $ref: ../CredentialsHTTP.yml
           - $ref: ../CredentialsSSH.yml
   ref:
-    type:
-      - object
-      - "null"
-    description: Repository reference information.
-    required:
-      - type
-      - value
-    properties:
-      type:
-        type: string
-        description: The type of reference being used.
-      value:
-        type: string
-        description: The value for the given reference type.
+    oneOf:
+      - type: object
+        description: Repository reference information.
+        required:
+          - type
+          - value
+        properties:
+          type:
+            type: string
+            description: The type of reference being used.
+          value:
+            type: string
+            description: The value for the given reference type.
+      - type: "null"

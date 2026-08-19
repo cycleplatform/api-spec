@@ -1,0 +1,9 @@
+title: PipelineTask
+discriminator:
+  propertyName: action
+  mapping:
+    trigger: PipelineTriggerAction.yml
+    rerun: PipelineRerunAction.yml
+oneOf:
+  - $ref: PipelineTriggerAction.yml
+  - $ref: PipelineRerunAction.yml

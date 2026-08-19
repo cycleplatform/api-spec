@@ -6,6 +6,7 @@ enum:
   - console.ssh.login.failed
   - console.sos.login
   - console.sos.login.failed
+  - container.instance.image.changed
   - container.instance.backup.completed
   - container.instance.backup.failed
   - container.instance.delete.failed
@@ -16,42 +17,58 @@ enum:
   - container.instance.healthcheck.recovered
   - container.instance.volume.extend.failed
   - container.instance.healthcheck.restarted
-  - container.instance.migration.failed
   - container.instance.migration.completed
   - container.instance.migration.failed
   - container.instance.network.interfaces.create.failed
   - container.instance.restart.failed
   - container.instance.start.failed
   - container.instance.start.privileged
+  - container.instance.start.host_network
   - container.instance.stop.failed
   - container.instances.autoscale.down
   - container.instances.autoscale.up
+  - container.instances.ha.elections.primary.elected
   - container.reconfigured.privileged
   - container.volumes.base.create.failed
   - container.volumes.create.failed
   - environment.service.auto_update
   - environment.service.lb.ips.sync.failed
   - environment.service.vpn.login.failed
+  - environment.service.discovery.client.throttle.hit
+  - environment.service.scheduler.cron.instance.claim
+  - environment.service.scheduler.cron.instance.spawn
+  - environment.service.gateway.ips.sync.failed
   - infrastructure.cluster.resources.ram.full
   - infrastructure.server.compute.volumes.base.reconfigured
   - infrastructure.server.compute.full_restart
   - infrastructure.server.compute.sharedfs.mounts.mount
   - infrastructure.server.compute.sharedfs.mounts.mount.failed
   - infrastructure.server.compute.soft_restart
+  - infrastructure.server.compute.start.failure
+  - infrastructure.server.compute.died
+  - infrastructure.server.compute-spawner.full_restart
   - infrastructure.server.image.download.failed
+  - infrastructure.server.monitoring.throttled
   - infrastructure.server.internal_api.throttled
   - infrastructure.server.manifest.sync.failed
   - infrastructure.server.mesh.connect.failed
   - infrastructure.server.neighbor.reachable
   - infrastructure.server.neighbor.rebuild
+  - infrastructure.server.neighbors.rebuild
   - infrastructure.server.neighbor.unreachable
   - infrastructure.server.neighbor.upgraded
+  - infrastructure.server.power.power_off
   - infrastructure.server.resources.load.high
   - infrastructure.server.resources.ram.full
   - infrastructure.server.resources.storage.volumes.base.full
   - infrastructure.server.resources.storage.cycle_pool.full
+  - infrastructure.server.autoscale.up
   - infrastructure.server.sftp.lockdown
   - infrastructure.server.sftp.login
   - infrastructure.server.sftp.login.failed
   - infrastructure.server.evacuation.failed
   - infrastructure.server.evacuation.completed
+  - infrastructure.server.checkin.missed
+  - infrastructure.server.checkin.resumed
+  - infrastructure.server.power.reboot
+  - infrastructure.server.neighbor.incompatible

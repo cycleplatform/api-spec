@@ -1,0 +1,28 @@
+get:
+  operationId: "getServerExternalVolumes"
+  summary: List Server External Volumes
+  description: |
+    Lists all external volumes connected to this server.
+
+    Requires the `server` scope to be set on the container runtime config.
+  tags:
+    - Servers
+  parameters: []
+  x-cycle-scopes:
+    - server
+  responses:
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns a list of external volumes.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  "$ref": "../../../components/schemas/infrastructure/external-volumes/ExternalVolume.yml"

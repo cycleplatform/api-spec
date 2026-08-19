@@ -3,7 +3,7 @@ get:
   summary: Get Trigger Key
   description: Requires the `pipelines-manage` capability.
   tags:
-    - Trigger Keys
+    - Pipelines
   parameters:
     - name: pipelineId
       in: path
@@ -75,7 +75,7 @@ patch:
               - data
             properties:
               data:
-                $ref: ../../../../components/schemas/jobs/JobDescriptor.yml
+                $ref: ../../../../components/schemas/pipelines/trigger-keys/TriggerKey.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
 

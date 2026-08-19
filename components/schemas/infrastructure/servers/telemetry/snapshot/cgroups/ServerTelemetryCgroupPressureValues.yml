@@ -1,0 +1,25 @@
+title: ServerTelemetryCgroupPressureValues
+type: object
+description: Pressure stall averages over trailing time windows, plus the total accumulated stall time.
+required:
+  - avg10
+  - avg60
+  - avg300
+  - total_usec
+properties:
+  avg10:
+    type: number
+    format: double
+    description: Percentage of time stalled over the trailing 10-second window.
+  avg60:
+    type: number
+    format: double
+    description: Percentage of time stalled over the trailing 60-second window.
+  avg300:
+    type: number
+    format: double
+    description: Percentage of time stalled over the trailing 300-second window.
+  total_usec:
+    type: integer
+    format: int64
+    description: Total stall time accumulated, in microseconds.

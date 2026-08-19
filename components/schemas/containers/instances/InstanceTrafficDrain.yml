@@ -1,0 +1,8 @@
+title: InstanceTrafficDrain
+description: Traffic drain details for instance.
+type: object
+required:
+  - started
+properties:
+  started:
+    $ref: ../../DateTime.yml

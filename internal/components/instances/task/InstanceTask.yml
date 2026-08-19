@@ -1,0 +1,9 @@
+title: InstanceTask
+discriminator:
+  propertyName: action
+  mapping:
+    container.instance.start: StartInstanceAction.yml
+    container.instance.stop: StopInstanceAction.yml
+oneOf:
+  - $ref: StartInstanceAction.yml
+  - $ref: StopInstanceAction.yml

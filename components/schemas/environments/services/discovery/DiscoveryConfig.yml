@@ -7,29 +7,50 @@ properties:
       - $ref: ../../../Duration.yml
       - type: "null"
   hosts:
-    type:
-      - object
-      - "null"
     description: A mapping of hostnames to IP addresses for custom internal resolutions. Acts as a custom /etc/resolv.conf file that works environment wide.
-    additionalProperties:
-      type: object
-      properties:
-        ipv4:
-          description: The IPv4 address the discovery server should return to any container instance requesting this hostname.
-          type:
-            - array
-            - "null"
-          items:
-            type: string
-        ipv6:
-          description: The IPv6 address the discovery server should return to any container instance requesting this hostname.
-          type:
-            - array
-            - "null"
-          items:
-            type: string
+    oneOf:
+      - type: object
+        additionalProperties:
+          type: object
+          properties:
+            ipv4:
+              description: The IPv4 address the discovery server should return to any container instance requesting this hostname.
+              type:
+                - array
+                - "null"
+              items:
+                type: string
+            ipv6:
+              description: The IPv6 address the discovery server should return to any container instance requesting this hostname.
+              type:
+                - array
+                - "null"
+              items:
+                type: string
+      - type: "null"
   custom_resolvers:
     description: "A list of custom DNS resolver strings.  Can specifify domains or ips."
-    type: array
-    items:
-      type: string
+    oneOf:
+      - type: array
+        items:
+          type: string
+      - type: "null"
+  dual_stack_legacy:
+    description: When enabled, discovery will return both IPv6 and IPv4 when in legacy mode.  Otherwise, only IPv4 will be returned.
+    anyOf:
+      - type: boolean
+      - type: "null"
+  external_resolution:
+    anyOf:
+      - type: object
+        required:
+          - preference
+        properties:
+          preference:
+            type: string
+            enum: [default, ipv4, ipv6]
+      - type: "null"
+  domain_suffix:
+    anyOf:
+      - type: string
+      - type: "null"

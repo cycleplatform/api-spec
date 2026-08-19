@@ -1,0 +1,59 @@
+title: ProviderServerModelProviderSpec
+type: object
+description: Higher level information about a providers server.
+required:
+  - vendor
+  - category
+  - model
+  - locations
+properties:
+  vendor:
+    type: string
+    description: The infrastructure vendor for the provider.
+  integration_id:
+    anyOf:
+      - $ref: "../../../ID.yml"
+      - type: "null"
+  category:
+    type: string
+    description: A category for the server.
+  class:
+    type: string
+    description: A class for the server.
+  parent_model_id:
+    description: >-
+      The ID of the model that this model is a variant of. Null if the model
+      is not a variant.
+    anyOf:
+      - $ref: "../../../ID.yml"
+      - type: "null"
+  model:
+    type: string
+    description: The model of the server.
+  locations:
+    description: A list of location ID's this server is available.
+    type: array
+    items:
+      type: string
+  availability_zones:
+    type: object
+    additionalProperties:
+      type: array
+      items:
+        type: string
+  stock:
+    type: object
+    description: Stock information for the server, keyed by location.
+    additionalProperties:
+      type: object
+      required:
+        - quantity
+        - sync
+      properties:
+        quantity:
+          type: integer
+          description: The available quantity of stock at this location.
+        sync:
+          type: string
+          format: date-time
+          description: The time at which stock was last synced.

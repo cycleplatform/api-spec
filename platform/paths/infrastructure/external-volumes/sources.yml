@@ -1,0 +1,37 @@
+get:
+  operationId: "getExternalVolumeSources"
+  summary: List External Volume Sources
+  description: Requires the `external-volumes-view` capability.
+  tags:
+    - External Volumes
+  responses:
+    200:
+      description: Returns supported external volume sources and their capabilities.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: object
+                additionalProperties:
+                  type: object
+                  title: ExternalVolumeSource
+                  required:
+                    - capabilities
+                    - creatable
+                  properties:
+                    capabilities:
+                      type: object
+                      description: Map where keys are attachment types and values are arrays of supported modes.
+                      additionalProperties:
+                        type: array
+                        items:
+                          type: string
+                    creatable:
+                      type: boolean
+                      description: Whether volumes of this source type can be created via the API.
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml

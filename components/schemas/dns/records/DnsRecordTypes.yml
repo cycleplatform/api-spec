@@ -1,0 +1,24 @@
+title: DnsRecordTypes
+type: object
+description: DNS record types the platform supports.
+properties:
+  a:
+    $ref: types/DnsRecordA.yml
+  aaaa:
+    $ref: types/DnsRecordAaaa.yml
+  cname:
+    $ref: types/DnsRecordCname.yml
+  ns:
+    $ref: types/DnsRecordNs.yml
+  mx:
+    $ref: types/DnsRecordMx.yml
+  txt:
+    $ref: types/DnsRecordTxt.yml
+  alias:
+    $ref: types/DnsRecordAlias.yml
+  srv:
+    $ref: types/DnsRecordSrv.yml
+  caa:
+    $ref: types/DnsRecordCaa.yml
+  linked:
+    $ref: types/DnsRecordLinked.yml

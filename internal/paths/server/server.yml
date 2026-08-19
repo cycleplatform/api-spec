@@ -4,7 +4,12 @@ get:
     - Servers
   parameters: []
   summary: Get Server
-  description: Gets the server this instance is running on.
+  description: |
+    Gets the server this instance is running on.
+
+    Requires the `server` scope to be set on the container runtime config.
+  x-cycle-scopes:
+    - server
   responses:
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml

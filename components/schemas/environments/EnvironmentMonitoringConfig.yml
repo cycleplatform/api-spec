@@ -1,0 +1,68 @@
+title: EnvironmentMonitoringConfig
+type: object
+description: The configuration for environment monitoring.
+properties:
+  logs:
+    description: An object describing the log monitoring configuration for the environment.
+    oneOf:
+      - type: object
+        properties:
+          drain:
+            description: An object describing log drain configuration for the environment.
+            oneOf:
+              - type: object
+                required:
+                  - url
+                  - exclude_services
+                properties:
+                  url:
+                    description: The destination URL for the log drain.
+                    type: string
+                  format:
+                    description: The format of the logs that will be sent to the drain URL.
+                    $ref: ../LogFormat.yml
+                  exclude_services:
+                    description: If enabled, service logs will not be included in log drain.
+                    type: boolean
+              - type: "null"
+      - type: "null"
+  metrics:
+    description: An object describing the metrics monitoring configuration for the environment.
+    oneOf:
+      - type: object
+        properties:
+          endpoint:
+            description: >
+              Configuration options for pushing metrics externally.
+
+              For payload see webhook `environmentMetricsPush`
+            oneOf:
+              - type: object
+                required:
+                  - url
+                properties:
+                  url:
+                    description: The destination URL for the metrics.
+                    type: string
+              - type: "null"
+      - type: "null"
+  events:
+    description: An object describing the events monitoring configuration for the environment.
+    oneOf:
+      - type: object
+        properties:
+          endpoint:
+            description: >
+              Configuration options for pushing events externally.
+
+              For payload see webhook `environmentEventsPush`
+            oneOf:
+              - type: object
+                required:
+                  - url
+                properties:
+                  url:
+                    description: The destination URL for events.
+                    type: string
+              - type: "null"
+      - type: "null"  

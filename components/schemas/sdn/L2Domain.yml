@@ -1,0 +1,9 @@
+title: L2Domain
+description: |
+  A standardized name for different layer-2 networks that can be configured on virtual provider hosts.
+   Containers will utilize this name to determine which network to attach to on the host, if set in the config.
+type: string
+enum:
+  - public
+  - shared
+  - private

@@ -30,14 +30,14 @@ properties:
     type: integer
     description: The amount of the credit that remains after being applied to invoices.
   expires:
-    type:
-      - object
-      - "null"
     description: Information on when the billing credit expires.
-    properties:
-      date:
-        description: A timestamp of when the billing credit expires.
-        "$ref": "../../DateTime.yml"
+    oneOf:
+      - type: object
+        properties:
+          date:
+            description: A timestamp of when the billing credit expires.
+            "$ref": "../../DateTime.yml"
+      - type: "null"
   events:
     title: BillingCreditEvents
     type: object

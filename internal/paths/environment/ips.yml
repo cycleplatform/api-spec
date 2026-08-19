@@ -1,9 +1,14 @@
 get:
   operationId: "getEnvironmentIPs"
   summary: List Environment IPs
-  description: Lists the IPs associated with this Instance's Environment.
+  description: |
+    Lists the IPs associated with this Instance's Environment.
+
+    Requires the `environment` scope to be set on the container runtime config.
   tags:
     - Environments
+  x-cycle-scopes:
+    - environment
   parameters: []
   responses:
     default:

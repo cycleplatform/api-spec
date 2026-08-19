@@ -1,0 +1,25 @@
+title: StackSpecGatewayConfig
+description: Gateway specific configuration options.
+type:
+  - object
+  - "null"
+required:
+  - ipv4
+  - ipv6
+  - performance
+properties:
+  performance:
+    description: Enable / disable performance mode.  If enabled, gateway can use much more RAM and CPU.
+    oneOf:
+      - type: boolean
+      - $ref: ../../StackVariable.yml
+  ipv4:
+    description: Allow / disallow traffic to be routed via IPv4.
+    oneOf:
+      - type: boolean
+      - $ref: ../../StackVariable.yml
+  ipv6:
+    description: Allow / disallow traffic to be routed via IPv6.
+    oneOf:
+      - type: boolean
+      - $ref: ../../StackVariable.yml

@@ -22,6 +22,7 @@ get:
             - containers
             - containers_count
             - instances_count
+            - service_versions
     - name: include
       in: query
       required: false
@@ -88,7 +89,7 @@ get:
                 type: object
                 properties:
                   creators:
-                    $ref: ../../../components/schemas/includes/CreatorInclude.yml
+                    $ref: ../../../components/schemas/includes/IncludedCreators.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml
 
@@ -115,7 +116,9 @@ post:
               type: string
               description: A user defined name for the Environment.
             identifier:
-              $ref: ../../../components/schemas/Identifier.yml
+              oneOf:
+                - $ref: ../../../components/schemas/Identifier.yml
+                - type: "null"
             acl:
               anyOf:
                 - $ref: ../../../components/schemas/common/ACL.yml

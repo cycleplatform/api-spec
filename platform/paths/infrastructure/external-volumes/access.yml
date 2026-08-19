@@ -1,0 +1,41 @@
+patch:
+  operationId: "updateExternalVolumeAccess"
+  summary: Update External Volume Access
+  description: |
+    Updates the ACL of the specified external volume.
+
+    Requires the `external-volumes-manage` capability.
+  tags:
+    - External Volumes
+  parameters:
+    - name: externalVolumeId
+      description: The ID of the external volume.
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    description: Parameters for updating the external volume ACL.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            acl:
+              anyOf:
+                - $ref: ../../../../components/schemas/common/ACL.yml
+                - type: "null"
+  responses:
+    200:
+      description: Returns the updated external volume.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/infrastructure/external-volumes/ExternalVolume.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml

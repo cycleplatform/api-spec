@@ -1,0 +1,26 @@
+title: ContainerSummary
+type: object
+description: Lightweight summary of a container for environment pages and lists.
+required:
+  - id
+  - name
+  - state
+  - image
+  - environment
+  - volumes
+properties:
+  id:
+    $ref: "../ID.yml"
+  name:
+    type: string
+    description: A user defined name for the container.
+  state:
+    $ref: "./ContainerState.yml"
+  image:
+    $ref: "./summaries/ImageSummary.yml"
+  environment:
+    $ref: "./summaries/ContainerEnvironmentSummary.yml"
+  volumes:
+    type: array
+    items:
+      $ref: "./summaries/VolumeSummary.yml"

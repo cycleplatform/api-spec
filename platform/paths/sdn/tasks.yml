@@ -16,28 +16,7 @@ post:
     content:
       application/json:
         schema:
-          title: ReconfigureSDNNetwork
-          type: object
-          required:
-            - action
-            - contents
-          properties:
-            action:
-              type: string
-              description: The Job to do.
-              enum:
-                - reconfigure
-            contents:
-              type: object
-              description: Additional information needed for the Job.
-              required:
-                - environment_ids
-              properties:
-                environment_ids:
-                  description: An array of environment identifiers for the Network.
-                  type: array
-                  items:
-                    type: string
+          $ref: ../../../components/schemas/sdn/networks/task/SdnNetworkTask.yml
   responses:
     202:
       description: Returns a Job Descriptor.

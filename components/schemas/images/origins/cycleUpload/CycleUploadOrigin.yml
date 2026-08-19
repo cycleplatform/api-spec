@@ -5,6 +5,9 @@ description: |
 
   In order to utilize this image origin type, a tar file of an OCI compliant image will need to be generated and pushed directly to the factory. The authentication token is generated when this image is created, and expires at the provided time.
   Once you have a token, it can be uploaded as multipart form data under the key `file.tar`, directly to the factory at `https://factory.cycle.io:9414/v1/images/<IMAGE ID>/upload?hub-id=<HUB ID>&token=<TOKEN>`.
+required:
+  - type
+  - details
 properties:
   type:
     type: string

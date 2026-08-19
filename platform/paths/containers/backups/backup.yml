@@ -56,7 +56,7 @@ delete:
   summary: Delete Container Backup
   description: Requires the `containers-backups-manage` capability.
   tags:
-    - Containers
+    - Backups
   parameters:
     - name: containerId
       description: The ID of the container.

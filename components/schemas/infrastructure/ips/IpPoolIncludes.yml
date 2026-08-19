@@ -1,0 +1,12 @@
+title: IpPoolIncludes
+type: object
+description: Resources associated with an IP Pool.
+properties:
+  creators:
+    $ref: ../../includes/IncludedCreators.yml
+  servers:
+    $ref: ../../includes/IncludedServers.yml
+  integrations:
+    $ref: ../../includes/IncludedIntegrations.yml
+  locations:
+    $ref: ../../includes/IncludedLocations.yml

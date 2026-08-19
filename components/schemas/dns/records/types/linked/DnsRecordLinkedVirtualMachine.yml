@@ -1,0 +1,18 @@
+title: DnsRecordLinkedVirtualMachine
+type: object
+required:
+  - virtual_machine
+properties:
+  virtual_machine:
+    type: object
+    required:
+      - id
+      - dmz
+    properties:
+      id:
+        $ref: ../../../../ID.yml
+      dmz:
+        type: boolean
+        description: |
+          If true, traffic to this domain will skip the load balancer and go directly to the virtual machine
+          via the gateway service.

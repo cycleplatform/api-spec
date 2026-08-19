@@ -34,6 +34,10 @@ post:
                     - boolean
                     - "null"
                   description: A boolean where `true` represents the desire to automatically update the environment gateway service.
+                config:
+                  anyOf:
+                    - $ref: ../../../../../components/schemas/environments/services/gateway/GatewayConfig.yml
+                    - type: "null"
 
   responses:
     202:

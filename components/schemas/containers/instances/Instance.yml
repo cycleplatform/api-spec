@@ -30,19 +30,19 @@ properties:
   environment:
     $ref: EnvironmentNetworkSummary.yml
   stateful:
-    type:
-      - object
-      - "null"
     description: If the instance is stateful, additional details relating to its stateful properties.
-    required:
-      - id
-      - base_hostname
-    properties:
-      id:
-        $ref: ../../ID.yml
-      base_hostname:
-        type: string
-        description: The base hostname for the given instance.
+    oneOf:
+      - type: object
+        required:
+          - id
+          - base_hostname
+        properties:
+          id:
+            $ref: ../../ID.yml
+          base_hostname:
+            type: string
+            description: The base hostname for the given instance.
+      - type: "null"
   function:
     type: object
     description: If the instance is a function, additional details relating to its function properties
@@ -90,6 +90,10 @@ properties:
     anyOf:
       - $ref: InstanceAutoScale.yml
       - type: "null"
+  traffic_drain:
+    anyOf:
+      - $ref: InstanceTrafficDrain.yml
+      - type: "null"
   migration:
     anyOf:
       - $ref: InstanceMigration.yml
@@ -97,6 +101,10 @@ properties:
   deployment:
     anyOf:
       - $ref: ../Deployment.yml
+      - type: "null"
+  ha_elections:
+    oneOf:
+      - $ref: ./InstanceHighAvailability.yml
       - type: "null"
   events:
     title: InstanceEvents
@@ -115,3 +123,7 @@ properties:
       deleted:
         description: The timestamp of when the instance was deleted.
         $ref: ../../DateTime.yml
+  meta:
+    anyOf:
+      - $ref: InstanceMeta.yml
+      - type: "null"

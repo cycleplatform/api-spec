@@ -27,3 +27,8 @@ properties:
       overcommit:
         type: boolean
         description: A boolean where true means - allow twice the normal amount of CPU shares to be allocated to containers deployed to this server.
+      overcommit_multiple:
+        type:
+          - integer
+          - "null"
+        description: An integer that describes the capability of a server to overcommit shares.  This will allow more containers to run on a given server based on the servers available CPU. 1 thread (or vCPU) = 10 shares.

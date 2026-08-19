@@ -7,7 +7,6 @@ required:
   - enable
   - container_id
   - high_availablity
-  # - config
 properties:
   enable:
     type: boolean

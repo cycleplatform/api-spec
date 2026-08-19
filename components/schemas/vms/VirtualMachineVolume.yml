@@ -11,6 +11,11 @@ properties:
   config:
     $ref: ./config/volumes/VirtualMachineVolumeConfig.yml
     description: The configuration details for the virtual machine's volume.
+  removed:
+    description: The timestamp of the volume's removal, if applicable.
+    oneOf:
+      - $ref: ../DateTime.yml
+      - type: "null"
 required:
   - id
   - hash

@@ -1,0 +1,32 @@
+title: EnvironmentDeploymentDeprecateAction
+type: object
+description: |
+  Deprecates containers in a specific deployment within an environment.
+  Deprecated deployments will not receive new traffic but existing instances
+  continue running until explicitly stopped.
+required:
+  - action
+  - contents
+properties:
+  action:
+    type: string
+    enum:
+      - deployment.deprecate
+  contents:
+    type: object
+    required:
+      - deployment
+    properties:
+      deployment:
+        description: The selector for which deployment to deprecate.
+        oneOf:
+          - type: object
+            properties:
+              version:
+                description: Targets the deployment with this exact version.
+                $ref: ../../Version.yml
+          - type: object
+            properties:
+              tag:
+                description: Targets the deployment with this exact tag applied to it.
+                type: string

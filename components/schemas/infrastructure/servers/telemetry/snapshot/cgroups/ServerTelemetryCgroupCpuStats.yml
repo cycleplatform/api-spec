@@ -1,0 +1,35 @@
+title: ServerTelemetryCgroupCpuStats
+type: object
+description: CPU usage and throttling statistics for a cgroup, sourced from cpu.stat.
+required:
+  - usage_usec
+  - user_usec
+  - system_usec
+  - nr_periods
+  - nr_throttled
+  - throttled_usec
+properties:
+  usage_usec:
+    type: integer
+    format: int64
+    description: Total CPU time consumed by the cgroup, in microseconds.
+  user_usec:
+    type: integer
+    format: int64
+    description: CPU time consumed in user mode, in microseconds.
+  system_usec:
+    type: integer
+    format: int64
+    description: CPU time consumed in kernel (system) mode, in microseconds.
+  nr_periods:
+    type: integer
+    format: int64
+    description: Number of enforcement periods that have elapsed while CPU bandwidth limiting was active.
+  nr_throttled:
+    type: integer
+    format: int64
+    description: Number of enforcement periods in which the cgroup was throttled.
+  throttled_usec:
+    type: integer
+    format: int64
+    description: Total time the cgroup was throttled, in microseconds.

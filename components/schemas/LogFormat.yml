@@ -1,0 +1,5 @@
+title: LogFormat
+type: string
+enum:
+  - ndjson-headers
+  - ndjson-raw

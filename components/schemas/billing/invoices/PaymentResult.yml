@@ -10,6 +10,7 @@ properties:
     description: The status of a payment.
     enum:
       - success
+      - awaiting-direct-payment
       - processing
       - cancelled
       - error

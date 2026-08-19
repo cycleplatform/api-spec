@@ -1,5 +1,4 @@
 title: Server
-x-ogen-name: InfraServer
 type: object
 description: The server resource, referring to servers that have been deployed to a Cycle hub.
 required:
@@ -37,6 +36,11 @@ properties:
   hostname:
     type: string
     description: The server hostname.
+  nickname:
+    description: A custom name given to the server for identification purposes. Does not affect server hostname.
+    type:
+      - string
+      - "null"
   creator:
     $ref: "../../creators/CreatorScope.yml"
   provider:
@@ -49,28 +53,28 @@ properties:
   constraints:
     $ref: "./ServerConstraints.yml"
   autoscale:
-    type:
-      - object
-      - "null"
-    required:
-      - group_id
-    properties:
-      group_id:
-        $ref: "../../ID.yml"
+    oneOf:
+      - type: object
+        required:
+          - group_id
+        properties:
+          group_id:
+            $ref: "../../ID.yml"
+      - type: "null"
   ephemeral:
     type: boolean
     description: Set to true when a server is created as part of an auto-scale event.
   evacuate:
-    type:
-      - object
-      - "null"
     description: Details about a server's evacuation status. When an evacuation is in progress, no new container instances will be permitted on the server.
-    required:
-      - started
-    properties:
-      started:
-        description: The time when this server began evacuating instances.
-        $ref: ../../DateTime.yml
+    oneOf:
+      - type: object
+        required:
+          - started
+        properties:
+          started:
+            description: The time when this server began evacuating instances.
+            $ref: ../../DateTime.yml
+      - type: "null"
   state:
     $ref: "./ServerState.yml"
   events:

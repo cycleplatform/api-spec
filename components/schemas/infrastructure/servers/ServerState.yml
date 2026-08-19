@@ -10,6 +10,7 @@ allOf:
           - new
           - provisioning
           - configuring
+          - quarantined
           - live
           - deleting
           - deleted

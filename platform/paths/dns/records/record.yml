@@ -1,3 +1,40 @@
+get:
+  operationId: "getDnsRecord"
+  summary: Get DNS Zone Record
+  description: Requires the `dns-manage` capability.
+  tags:
+    - Records
+  parameters:
+    - name: zoneId
+      description: The ID of the Zone.
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: recordId
+      description: The ID of the record.
+      in: path
+      required: true
+      schema:
+        type: string
+    - $ref: includes/RecordIncludeParam.yml
+  responses:
+    200:
+      description: Returns a DNS Zone Record.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/dns/records/DnsRecord.yml
+              includes:
+                $ref: includes/RecordIncludes.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
+
 patch:
   operationId: "updateDNSZoneRecord"
   summary: Update DNS Zone Record
@@ -17,6 +54,7 @@ patch:
       required: true
       schema:
         type: string
+    - $ref: includes/RecordIncludeParam.yml
   requestBody:
     description: Parameters for updating a DNS Zone Record. The name value cannot be updated and is omitted from the properties.
     content:
@@ -27,7 +65,7 @@ patch:
             - type
           properties:
             type:
-              $ref: ../../../../components/schemas/dns/records/RecordTypes.yml
+              $ref: ../../../../components/schemas/dns/records/DnsRecordTypes.yml
   responses:
     200:
       description: Returns a DNS Zone Record.
@@ -39,7 +77,9 @@ patch:
               - data
             properties:
               data:
-                $ref: ../../../../components/schemas/dns/records/Record.yml
+                $ref: ../../../../components/schemas/dns/records/DnsRecord.yml
+              includes:
+                $ref: includes/RecordIncludes.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
 

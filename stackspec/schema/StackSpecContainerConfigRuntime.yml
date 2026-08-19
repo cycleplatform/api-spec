@@ -179,6 +179,27 @@ properties:
                   - boolean
                   - "null"
               - $ref: StackVariable.yml
+          expose_cgroups:
+            description: If true, Cycle will mount the host's `/sys/fs/cgroups` directory into the container at `/var/run/cycle/host/cgroups`.
+            oneOf:
+              - type:
+                  - boolean
+                  - "null"
+              - $ref: StackVariable.yml
+          expose_instances_dir:
+            description: If true, Cycle will mount the host's instances directory into the container at `/var/run/cycle/host/instances`.
+            oneOf:
+              - type:
+                  - boolean
+                  - "null"
+              - $ref: StackVariable.yml
+          power_management:
+            description: If true, Cycle will give the container instances access via internal api to power off or reboot the host server.
+            oneOf:
+              - type:
+                  - boolean
+                  - "null"
+              - $ref: StackVariable.yml
       - $ref: StackVariable.yml
   privileged:
     description: If true, the container process will run in fully-privileged mode. **WARNING** This is considered insecure, and should only be done if you know what you're doing.
@@ -231,6 +252,11 @@ properties:
             - CAP_LEASE
             - CAP_WAKE_ALARM
       - $ref: StackVariable.yml
+  internal_api:
+    oneOf:
+      - $ref: ./runtime/StackSpecRuntimeInternalApi.yml
+      - type: "null"
+      - $ref: StackVariable.yml
   rootfs:
     description: Configuration options for the root filesystem.
     oneOf:
@@ -243,4 +269,36 @@ properties:
             oneOf:
               - type: boolean
               - $ref: StackVariable.yml
+      - $ref: StackVariable.yml
+  devices:
+    oneOf:
+      - type: object
+        properties:
+          shm_size:
+            oneOf:
+              - type: string
+                description: The size of the shared host memory device (/dev/shm).
+                examples:
+                  - "64M"
+                  - "128M"
+                  - "512M"
+              - type: "null"
+              - $ref: StackVariable.yml
+          expose:
+            anyOf:
+              - type: array
+                description: An array of devices to expose to the container.
+                items:
+                  $ref: ./runtime/StackSpecRuntimeExposedDevice.yml
+              - type: "null"
+              - $ref: StackVariable.yml
+          permissions:
+            anyOf:
+              - type: array
+                description: Rules for granting or denying access to a device node.
+                items:
+                  $ref: ./runtime/StackSpecRuntimeDevicePermission.yml
+              - type: "null"
+              - $ref: StackVariable.yml
+      - type: "null"
       - $ref: StackVariable.yml

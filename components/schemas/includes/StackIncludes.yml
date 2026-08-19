@@ -1,5 +1,0 @@
-title: StackIncludes
-description: A resource associated with a stack.
-type: object
-additionalProperties:
-  "$ref": "../stacks/Stack.yml"

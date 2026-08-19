@@ -4,8 +4,13 @@ get:
     - Servers
     - Containers
   parameters: []
+  x-cycle-scopes:
+    - server
   summary: List Server Containers
-  description: Lists all containers present on the same server as this instance.
+  description: |
+    Lists all containers present on the same server as this instance.
+
+    Requires the `server` scope to be set on the container runtime config.
   responses:
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml

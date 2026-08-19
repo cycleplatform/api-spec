@@ -1,0 +1,13 @@
+type: object
+title: ServerTelemetryCpu
+description: CPU telemetry for the server.
+required:
+  - processors
+properties:
+  processors:
+    type:
+      - array
+      - "null"
+    description: Per-processor telemetry for each logical processor on the server. Null if processor information is unavailable.
+    items:
+      $ref: ./ServerTelemetryProcessor.yml

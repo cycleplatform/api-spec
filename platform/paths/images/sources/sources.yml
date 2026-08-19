@@ -103,17 +103,17 @@ post:
               $ref: ../../../../components/schemas/Identifier.yml
             acl:
               anyOf:
-                - $ref: ../../../../components/schemas/common/ACL.yml 
+                - $ref: ../../../../components/schemas/common/ACL.yml
                 - type: "null"
             builder:
-              type:
-                - object
-                - "null"
-              required:
-                - integration_id
-              properties:
-                integration_id:
-                  $ref: ../../../../components/schemas/HybridIdentifier.yml
+              oneOf:
+                - type: object
+                  required:
+                    - integration_id
+                  properties:
+                    integration_id:
+                      $ref: ../../../../components/schemas/HybridIdentifier.yml
+                - type: "null"
             type:
               $ref: ../../../../components/schemas/images/sources/ImageSourceType.yml
             origin:

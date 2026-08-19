@@ -1,0 +1,13 @@
+title: MonitoringTierDetailsLogsCollectionTier
+type: object
+required:
+  - retention_period
+  - storage
+  - bandwidth
+properties:
+  retention_period:
+    $ref: ../../../Duration.yml
+  storage:
+    $ref: ./MonitoringUsage.yml
+  bandwidth:
+    $ref: ./MonitoringUsage.yml

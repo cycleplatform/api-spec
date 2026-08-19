@@ -1,0 +1,17 @@
+title: ExternalVolumeOptions
+type: object
+description: Configuration options controlling the behavior of the volume.
+required:
+  - create
+properties:
+  create:
+    description: >
+      If the volume doesn't exist, attempt to create it on container start if create struct defined.
+    oneOf:
+      - type: object
+        required: [size]
+        properties:
+          size:
+            description: Indicates the size of volume to create.
+            $ref: ../../DataSize.yml
+      - type: "null"

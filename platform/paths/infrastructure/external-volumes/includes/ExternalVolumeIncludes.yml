@@ -1,0 +1,12 @@
+title: ExternalVolumeIncludes
+description: All includable resources linked to the given external volume.
+type: object
+properties:
+  servers:
+    type: object
+    additionalProperties:
+      $ref: ../../../../../components/schemas/infrastructure/servers/Server.yml
+  locations:
+    type: object
+    additionalProperties:
+      $ref: ../../../../../components/schemas/infrastructure/providers/ProviderLocation.yml

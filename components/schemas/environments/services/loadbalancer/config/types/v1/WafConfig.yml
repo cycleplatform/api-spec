@@ -22,17 +22,45 @@ properties:
           description: A boolean that indicates if the rule should be active or skipped.
           type: boolean
         type:
-          description: A string that describes if the role should allow or deny traffic based on the conditions.
+          description: |
+            A string that describes if the role should allow, deny, or block traffic based on the conditions.
+            - block = http 403
+            - deny = connection disconnect
           type: string
           enum:
             - allow
             - deny
+            - block
+        expires:
+          description: The expiration date of the WAF config, if present.
+          oneOf:
+            - $ref: "../../../../../../DateTime.yml"
+            - type: "null"
         match:
           description: A string that describes if both attributes need to be true (match all) or if only one of the conditions needs to be true (match any).
           type: string
           enum:
             - any
             - all
+            # legacy value TODO remove
+            - ""
+        sample:
+          description: |
+            Percentage range from 0 to 100
+            Sample = 100 => the rule is applied to 100% of requests
+            Sample = 0 => the rule applies to 0% of requests
+          type:
+            - integer
+            - "null"
+        response:
+          description: Response configuration for when the rule is triggered.
+          oneOf:
+            - type: object
+              properties:
+                http_code:
+                  description: The HTTP code that will be sent back to the requester on rule match.
+                  type: integer
+            - type: "null"
         conditions:
           description: An array of the specific conditions for the rule.
           type: array
@@ -43,27 +71,58 @@ properties:
               - operator
               - value
             properties:
+              key:
+                description: |
+                  An optional key used to target a specific attribute within the condition type.
+                  For example, when using `http-header-match`, the key would be the header name (e.g., `X-Forwarded-For`).
+                type:
+                  - string
+                  - "null"
+              value:
+                description: The value corresponding to the condition type.
+                examples:
+                  - "0.0.0.0/0"
+                type: string
+              regex:
+                description: |
+                  When `true`, the `value` field is interpreted as a regular expression pattern
+                  rather than a literal string. Allows for advanced pattern matching on condition values.
+                type: boolean
+                default: false
               type:
                 description: A string that describes the match type for the condition.
                 type: string
                 enum:
                   - ip-match
                   - geo-match
-                  - url-match
-                  - method-match
-                  - header-match
+                  - http-url-match
+                  - http-method-match
+                  - http-header-match
+                  - http-body-match
               operator:
-                description: A string that indicates the range of values relative to the value property.
                 type: string
+                description: |
+                  Defines the comparison operator used to evaluate the rule condition
+                  against the provided `value`.
                 enum:
                   - "=="
                   - "!="
+                  - "*="
+                  - "!*="
+                  - "^="
+                  - "!^="
                   - ">"
                   - "<"
                   - ">="
                   - "<="
-              value:
-                description: The value corresponding to the condition type.
-                examples:
-                  - "0.0.0.0/0"
-                type: string
+                x-enum-descriptions:
+                  - "Equal to — the condition value must exactly match."
+                  - "Not equal to — the condition value must differ."
+                  - "Contains — the request value must contain the provided substring."
+                  - "Does not contain — the request value must not contain the substring."
+                  - "Starts with — the request value must begin with the provided prefix."
+                  - "Does not start with — the request value must not begin with the prefix."
+                  - "Greater than — numeric comparison."
+                  - "Less than — numeric comparison."
+                  - "Greater than or equal — numeric comparison."
+                  - "Less than or equal — numeric comparison."

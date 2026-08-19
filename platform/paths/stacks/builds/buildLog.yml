@@ -11,7 +11,7 @@ get:
 
     Requires the `stacks-view` capability.
   tags:
-    - Stacks
+    - Stack Builds
   parameters:
     - name: stackId
       in: path

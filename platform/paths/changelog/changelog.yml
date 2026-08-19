@@ -1,0 +1,27 @@
+get:
+  operationId: "getChangelog"
+  tags:
+    - Changelog
+  security:
+    - bearerAuth: []
+  parameters:
+    - $ref: "../../../components/parameters/SortParam.yml"
+    - $ref: "../../../components/parameters/FilterParam.yml"
+    - $ref: "../../../components/parameters/PageParam.yml"
+  summary: Get Changelog
+  description: Requires the `platform-changelog-view` capability.
+  responses:
+    200:
+      description: Returns an array of changelog entries.
+      content:
+        application/json:
+          schema:
+            title: "ListChangelogReturn"
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: ../../../components/schemas/changelog/ChangelogEntry.yml
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml

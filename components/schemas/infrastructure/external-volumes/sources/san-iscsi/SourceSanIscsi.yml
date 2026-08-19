@@ -1,0 +1,30 @@
+title: SourceSanIscsi
+type: object
+description: >
+  A SAN iSCSI volume source. Defines one or more iSCSI targets and the LUN
+  number to attach.
+required:
+  - type
+  - details
+properties:
+  type:
+    type: string
+    enum:
+      - san-iscsi
+  details:
+    type: object
+    required:
+      - integration_ids
+      - lun
+    properties:
+      integration_ids:
+        description: >
+          One or more iSCSI integration IDs to use for authentication.
+        type: array
+        items:
+          $ref: ../../../../ID.yml
+      lun:
+        type: integer
+        format: int32
+        description: >
+          Logical Unit Number exposed by the target(s) to attach.

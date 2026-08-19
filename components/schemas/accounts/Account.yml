@@ -42,16 +42,16 @@ properties:
         description: The date the email was added to the Account
         "$ref": "../DateTime.yml"
   two_factor_auth:
-    type:
-      - object
-      - "null"
     description: Two factor auth verification information.
-    required:
-      - verified
-    properties:
-      verified:
-        type: boolean
-        description: A boolean representing if the Account has verified with two-factor authentication.
+    oneOf:
+      - type: object
+        required:
+          - verified
+        properties:
+          verified:
+            type: boolean
+            description: A boolean representing if the account has verified with two-factor authentication.
+      - type: "null"
   allow_support_login:
     description: Indicates whether or not Cycle employees have authorization to log in to this Account in a support capacity.
     type: boolean

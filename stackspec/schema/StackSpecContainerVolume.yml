@@ -25,6 +25,18 @@ properties:
               - type: boolean
               - $ref: StackVariable.yml
       - $ref: StackVariable.yml
+  external:
+    anyOf:
+      - type: object
+        properties:
+          id:
+            oneOf:
+              - $ref: ../../components/schemas/HybridIdentifier.yml
+              - $ref: StackVariable.yml
+              - type: "null"
+            description: The ID of the external volume.
+      - $ref: StackVariable.yml
+      - type: "null"
   destination:
     description: The path this volume should be mounted at inside the container.
     oneOf:

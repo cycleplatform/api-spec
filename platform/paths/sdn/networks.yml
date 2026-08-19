@@ -31,6 +31,10 @@ get:
       schema:
         type: object
         properties:
+          environment:
+            type: string
+            description: |
+              `filter[environment]=ID` Filter networks based on linked environment. Submit the ID of the environment you wish to filter for.
           search:
             type: string
             description: |
@@ -101,9 +105,13 @@ post:
             identifier:
               type: string
               description: A network identifier used to construct http calls that specifically use this network over another.
+            l2:
+              anyOf:
+                - $ref: ../../../components/schemas/sdn/networks/NetworkL2.yml
+                - type: "null"
             acl:
               anyOf:
-                - $ref: ../../../components/schemas/common/ACL.yml 
+                - $ref: ../../../components/schemas/common/ACL.yml
                 - type: "null"
             cluster:
               type: string

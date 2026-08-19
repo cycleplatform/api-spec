@@ -1,0 +1,13 @@
+title: IpPoolState
+allOf:
+  - required:
+      - current
+    properties:
+      current:
+        description: The current state of the pool.
+        type: string
+        enum:
+          - live
+          - releasing
+          - released
+  - "$ref": "../../State.yml"

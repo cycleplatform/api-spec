@@ -1,0 +1,9 @@
+title: VirtualMachineStopAction
+type: object
+required:
+  - action
+properties:
+  action:
+    type: string
+    enum:
+      - stop

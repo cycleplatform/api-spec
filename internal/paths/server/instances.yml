@@ -1,11 +1,16 @@
 get:
   operationId: "getServerInstances"
   summary: Get Server Instances
-  description: Gets a list of instances that are on the same server as this instance.
+  description: |
+    Gets a list of instances that are on the same server as this instance.
+
+    Requires the `server` scope to be set on the container runtime config.
   tags:
     - Servers
     - Instances
   parameters: []
+  x-cycle-scopes:
+    - server
   responses:
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml

@@ -1,0 +1,20 @@
+type: object
+title: ServerTelemetryDiskDevice
+description: Telemetry for a single disk device on the server.
+required:
+  - name
+  - io
+  - usage
+properties:
+  name:
+    type: string
+    description: The name of the disk device (e.g. "vda").
+  mount:
+    type: string
+    description: The filesystem mount point for the device.
+  io:
+    $ref: ./ServerTelemetryDiskIo.yml
+    description: Block-device I/O counters for the device.
+  usage:
+    $ref: ./ServerTelemetryDiskUsage.yml
+    description: Filesystem usage for the device.

@@ -20,21 +20,61 @@ post:
         schema:
           type: object
           properties:
-            deployment_tags:
-              type: array
+            include:
+              type: object
               description: |
-                Defines which deployment containers to include in the stack export. By default, no containers tagged in a deployment are exported.
-                This option includes all containers with the specific, comma separated deployment tags in the final output in addition to the
-                containers that are not part of any deployment.
-              items:
-                type: string
-            resolve_origins:
-              type: boolean
-              default: false
+                Controls which top-level resources from the environment are included in the exported stack.
+                Any option left unset defaults to `false`.
+              properties:
+                services:
+                  type: boolean
+                  default: false
+                  description: When true, includes the environment's service containers (e.g. discovery, load balancer, VPN) in the export.
+                scoped_variables:
+                  type: boolean
+                  default: false
+                  description: When true, includes the environment's scoped variables in the export.
+                containers:
+                  type: boolean
+                  default: false
+                  description: When true, includes the environment's containers in the export.
+            render:
+              type: object
               description: |
-                When set to true, Cycle will resolve image origins and inline them into the stack, essentially making this stack portable outside the hub it's currently used in.
-                By default, this is set to false, and the export will just reference existing image sources used by this stack in your hub by ID.
-
+                Controls how included resources are rendered into the stack - i.e. how image origins are resolved
+                and how much detail is inlined for each resource type.
+              properties:
+                scoped_variables:
+                  type: object
+                  description: Render options applied to scoped variables included in the export.
+                  properties:
+                    include_secrets:
+                      type: boolean
+                      default: false
+                      description: |
+                        When true, the secret values of included scoped variables are resolved and inlined into the export.
+                        By default secrets are not included, and only the variable definitions are exported.
+                images:
+                  type: object
+                  description: Render options applied to images referenced by the export.
+                  properties:
+                    resolve_origins:
+                      type: boolean
+                      default: false
+                      description: |
+                        When set to true, Cycle will resolve image origins and inline them into the stack, essentially making this stack portable outside the hub it's currently used in.
+                        By default, this is set to false, and the export will just reference existing image sources used by this stack in your hub by ID.
+                containers:
+                  type: object
+                  description: Render options applied to containers included in the export.
+                  properties:
+                    include_deployments:
+                      type: array
+                      description: |
+                        Defines which deployment containers to include in the stack export. By default, no containers tagged in a deployment are exported.
+                        This option includes all containers with the specified deployment tags in the final output, in addition to the containers that are not part of any deployment.
+                      items:
+                        type: string
   responses:
     200:
       description: Returns a stack spec file.

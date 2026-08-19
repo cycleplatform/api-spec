@@ -1,9 +1,14 @@
 post:
   operationId: "submitLoadBalancerTelemetry"
   summary: Submit Environment Load Balancer Telemetry
-  description: Submit load balancer telemetry data.
+  description: |
+    Submit load balancer telemetry data.
+
+    Requires the `environment` scope to be set on the container runtime config.
   tags:
     - Environments
+  x-cycle-scopes:
+    - environment
   parameters: []
   requestBody:
     required: true

@@ -32,7 +32,7 @@ properties:
   items:
     type: array
     items:
-      "$ref": "./ServiceItem.yml"
+      "$ref": "./orders/OrderItem.yml"
   total_price:
     type: integer
     description: 1/10th of a cent.

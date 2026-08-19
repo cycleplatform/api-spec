@@ -76,30 +76,30 @@ patch:
             identifier:
               type: string
             capabilities:
-              type:
-                - object
-                - "null"
               description: The list of platform level capabilities assigned to this Role.
-              required:
-                - all
-                - specific
-              properties:
-                all:
-                  type: boolean
-                  description: If true, the Role has all capabilities.
-                specific:
-                  type: array
-                  items:
-                    $ref: ../../../../components/schemas/common/Capability.yml
+              oneOf:
+                - type: object
+                  required:
+                    - all
+                    - specific
+                  properties:
+                    all:
+                      type: boolean
+                      description: If true, the Role has all capabilities.
+                    specific:
+                      type: array
+                      items:
+                        $ref: ../../../../components/schemas/common/Capability.yml
+                - type: "null"
             rank:
               type: integer
             extra:
-              type:
-                - object
-                - "null"
               description: Custom user-defined properties for storing extra information on the Role. Not utilized by Cycle.
-              additionalProperties:
-                type: string
+              oneOf:
+                - type: object
+                  additionalProperties:
+                    type: string
+                - type: "null"
   responses:
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml

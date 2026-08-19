@@ -1,0 +1,32 @@
+post:
+  operationId: "createExternalVolumesJob"
+  summary: Create External Volumes Job
+  description: |
+    Create a job for external volumes.
+
+    Requires the `external-volumes-manage` capability.
+  tags:
+    - External Volumes
+  parameters: []
+  requestBody:
+    description: Parameters for creating a new external volumes job.
+    content:
+      application/json:
+        schema:
+          $ref: ../../../../components/schemas/infrastructure/external-volumes/rootTasks/ExternalVolumesTask.yml
+
+  responses:
+    202:
+      description: Returns a job descriptor.
+      content:
+        application/json:
+          schema:
+            title: "TaskResponse"
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/jobs/JobDescriptor.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml

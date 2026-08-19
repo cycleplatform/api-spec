@@ -1,6 +1,0 @@
-title: ZoneIncludes 
-description: All includable resources linkable to the given Zone. 
-type: object 
-properties: 
-  creators: 
-    "$ref": "../includes/CreatorInclude.yml" 

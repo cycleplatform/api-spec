@@ -2,30 +2,49 @@ title: VirtualMachineVolumeConfig
 type: object
 description: |
   Represents the configuration for a volume attached to a virtual machine.
+required:
+  - identifier
+  - read_only
 properties:
   local:
     anyOf:
       - type: object
+        required:
+          - max_size
         properties:
           max_size:
             type: string
             description: The maximum size allowed for the local volume.
-            examples:
-              - 100G
+            examples: [100G]
           storage_pool:
             anyOf:
               - type: boolean
               - type: "null"
             description: Indicates if the volume is part of a storage pool.
-        required:
-          - max_size
+          stateless:
+            type: 
+              - boolean
+              - "null"
+            default: false
+            description: > 
+              If set to true, this volume will be treated as ephemeral. Stateless volumes will **NOT** be migrated.
+
+              Base volumes cannot be stateless.
       - type: "null"
-    description: Configuration details for a local volume, if applicable.
+    description: Configuration details for a local volume.
+  external:
+    anyOf:
+      - type: object
+        properties:
+          id:
+            oneOf:
+              - $ref: ../../../ID.yml
+              - type: "null"
+            description: The id of the external volume.
+      - type: "null"
+    description: Configuration details for a SAN volume.
   identifier:
     $ref: ../../../Identifier.yml
   read_only:
     type: boolean
     description: Specifies if the volume is mounted as read-only.
-required:
-  - identifier
-  - read_only

@@ -1,0 +1,48 @@
+title: ReconfigureSdnNetworkAction
+type: object
+required:
+  - action
+  - contents
+properties:
+  action:
+    type: string
+    description: The job to do.
+    enum:
+      - reconfigure
+  contents:
+    type: object
+    description: Additional information needed for the job.
+    properties:
+      environment_ids:
+        description: An array of environment identifiers for the network.
+        oneOf:
+          - type: array
+            items:
+              type: string
+          - type: "null"
+      l2:
+        oneOf:
+          - type: object
+            properties:
+              location_ids:
+                type: array
+                items:
+                  $ref: ../../../ID.yml
+              host_interface:
+                oneOf:
+                  - type: string
+                  - type: "null"
+              routes:
+                description: An array of defined L2 routes
+                type: array
+                items:
+                  type: object
+                  required:
+                    - network
+                  properties:
+                    usable:
+                      $ref: ../../../Cidr.yml
+                    gateway:
+                      $ref: ../../../IpAddress.yml
+
+          - type: "null"

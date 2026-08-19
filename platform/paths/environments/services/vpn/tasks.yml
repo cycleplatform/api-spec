@@ -16,14 +16,7 @@ post:
     content:
       application/json:
         schema:
-          discriminator:
-            propertyName: action
-            mapping:
-              reset: ../../../../../components/schemas/environments/services/vpn/taskActions/VpnResetTask.yml
-              reconfigure: ../../../../../components/schemas/environments/services/vpn/taskActions/VpnReconfigureTask.yml
-          oneOf:
-            - $ref: ../../../../../components/schemas/environments/services/vpn/taskActions/VpnResetTask.yml
-            - $ref: ../../../../../components/schemas/environments/services/vpn/taskActions/VpnReconfigureTask.yml
+          $ref: ../../../../../components/schemas/environments/services/vpn/task/VpnTask.yml
   responses:
     202:
       description: Returns a Job Descriptor.

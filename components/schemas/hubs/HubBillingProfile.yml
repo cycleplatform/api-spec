@@ -12,6 +12,9 @@ properties:
   allow_prepaid:
     type: boolean
     description: A boolean where true represents this account being approved to use a prepaid card for billing transactions.
+  allow_direct_payments:
+    type: boolean
+    description: When true, this hub is allowed to create 'direct' payment methods.
   pause_invoices:
     type: boolean
     description: A boolean where true represents invoices have been paused on this hub for one reason or another.
@@ -42,3 +45,5 @@ properties:
     items:
       type: string
     description: An array of email addresses to whom the billing invoices will be sent to. If left empty, they will be sent to the owner of this hub.
+  contact:
+    $ref: HubBillingContact.yml

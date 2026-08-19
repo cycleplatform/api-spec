@@ -29,21 +29,21 @@ properties:
   origin:
     $ref: "../origins/ImageOrigin.yml"
   builder:
-    type:
-      - object
-      - "null"
     description: Configuration options regarding the builder used to create/import Images using this Image Source.
-    properties:
-      integration_id:
-        anyOf:
-          - $ref: ../../HybridIdentifier.yml
-          - type: "null"
-        description: The ID or Identifier of the Integration used to do the build.
+    oneOf:
+      - type: object
+        properties:
+          integration_id:
+            anyOf:
+              - $ref: ../../HybridIdentifier.yml
+              - type: "null"
+            description: The ID or Identifier of the Integration used to do the build.
+      - type: "null"
   creator:
     "$ref": "../../creators/CreatorScope.yml"
   acl:
     anyOf:
-      - $ref: ../../common/ACL.yml 
+      - $ref: ../../common/ACL.yml
       - type: "null"
   state:
     "$ref": "./ImageSourceState.yml"

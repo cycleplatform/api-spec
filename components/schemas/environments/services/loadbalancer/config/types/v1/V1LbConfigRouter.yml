@@ -22,7 +22,7 @@ properties:
           - type: "null"
       internal_ports:
         description: The specific ports to match against.
-        oneOf: 
+        oneOf:
           - type: array
             items:
               type: integer
@@ -57,9 +57,11 @@ properties:
       How to route the traffic to the destination.
       `random`: Pick a valid destination at random.
       `round-robin`: Send each request to the 'next' destination on the list, restarting from the beginning when the last destination is used.
+      `source-ip`: Utilizes a hash function to ensure traffic from an IP will always hit the same destination instance.
     enum:
       - random
       - round-robin
+      - source-ip
   config:
     type: object
     required:
@@ -74,7 +76,6 @@ properties:
         type: integer
         description: If a destination is unavailable, retry up to [x] times, instead of immediately failing with a 503/504 error.
       destination_prioritization:
-        default: null
         oneOf:
           - type: string
             description: >
@@ -82,9 +83,11 @@ properties:
 
               **random**: Chooses a random instance.
               **latency**: Prioritizes lower latency instances.
+              **fixed**: The order of the destinations will be the same regardless of instance or load balancer location.  Used primarily with source IP routing.
             enum:
               - latency
               - random
+              - fixed
           - type: "null"
       tls:
         type:

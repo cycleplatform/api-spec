@@ -13,27 +13,28 @@ properties:
   expires:
     "$ref": "../DateTime.yml"
   credit:
-    type:
-      - object
-      - "null"
     description: The amount of credit the promo code offers.
-    properties:
-      amount:
-        "$ref": "./BillingAmount.yml"
-      expires:
-        type: object
-        required:
-          - interval
-          - number
+    oneOf:
+      - type: object
         properties:
-          interval:
-            type: string
-            examples:
-              - "months"
-          number:
-            type: integer
-            examples:
-              - 2
+          amount:
+            "$ref": "./BillingAmount.yml"
+          expires:
+            type: object
+            required:
+              - interval
+              - number
+            properties:
+              interval:
+                type: string
+                examples:
+                  - "months"
+              number:
+                type: integer
+                examples:
+                  - 2
+      - type: "null"
+
   state:
     title: PromoCodeState
     allOf:

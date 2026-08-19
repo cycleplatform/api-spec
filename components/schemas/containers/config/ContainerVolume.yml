@@ -6,6 +6,10 @@ required:
   - block_device
   - destination
 properties:
+  identifier:
+    oneOf:
+      - $ref: ../../../../components/schemas/Identifier.yml
+      - type: "null"
   read_only:
     type: boolean
     description: A boolean where true marks the volume as read only.
@@ -14,19 +18,40 @@ properties:
     description: |
       Indicates that the volume will be used as unformatted block storage.
   local:
-    type: object
-    description: Configuration for settings local to the container filesystem.
-    required:
-      - max_size
-    properties:
-      max_size:
-        type: string
-        description: The maximum size this volume can grow to. Container volumes on Cycle are thinly provisioned, meaning this isn't an allocation - the volume will only use the space it needs up to this size.
-        examples:
-          - "10G"
-      storage_pool:
-        type: boolean
-        description: A boolean where true signifies using the largest drive over 2TB for the target server.
+    oneOf:
+      - type: object
+        description: Configuration for settings local to the container filesystem.
+        required:
+          - max_size
+        properties:
+          max_size:
+            $ref: ../../DataSize.yml
+            description: The maximum size this volume can grow to. Container volumes on Cycle are thinly provisioned, meaning this isn't an allocation - the volume will only use the space it needs up to this size.
+          stateless:
+            type: 
+              - boolean
+              - "null"
+            default: false
+            description: > 
+              If set to true, this volume will be treated as ephemeral. Stateless volumes will **NOT** be migrated.
+
+              Stateless volumes on stateful containers will be wiped on container stop.
+          storage_pool:
+            oneOf:
+              - type: boolean
+                description: A boolean where true signifies using the largest drive over 2TB for the target server.
+              - type: "null"
+      - type: "null"
+  external:
+    anyOf:
+      - type: object
+        properties:
+          id:
+            oneOf:
+              - $ref: ../../ID.yml
+              - type: "null"
+            description: The id of the external volume.
+      - type: "null"
   destination:
     type: string
     description: The mountpoint path for the container.

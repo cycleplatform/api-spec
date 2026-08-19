@@ -4,7 +4,7 @@
 
 ## Code of Conduct
 
-WIP, but don't be a jerk.
+WIP, be nice.
 
 ## How Can I Contribute?
 

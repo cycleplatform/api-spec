@@ -19,6 +19,8 @@ get:
           enum:
             - domains
             - ips
+            - hypervisor_ips
+            - server
     - name: include
       in: query
       required: false
@@ -181,17 +183,12 @@ post:
                   items:
                     $ref: ../../../components/schemas/vms/config/volumes/VirtualMachineVolumeConfig.yml
                 - type: "null"
-            base_disk_size:
-              type: string
-              description: The size of the base disk. Must be between 10G and 100G.
-              examples:
-                - "10G"
             annotations:
-              type:
-                - object
-                - "null"
               description: Custom meta data. Not utilized by Cycle.
-              additionalProperties: {}
+              oneOf:
+                - type: object
+                  additionalProperties: {}
+                - type: "null"
             ssh_keys:
               description: An array of SSH key IDs that should be applied to this virtual machine.
               type: array

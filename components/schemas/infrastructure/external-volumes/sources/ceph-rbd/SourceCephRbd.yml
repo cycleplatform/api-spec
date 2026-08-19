@@ -1,0 +1,25 @@
+title: SourceCephRbd
+type: object
+description: >
+  A Ceph RBD volume source. Defines monitor endpoints, optional cluster FSID,
+  client identity (CephX), and the specific image to attach.
+required:
+  - type
+  - details
+properties:
+  type:
+    type: string
+    enum:
+      - ceph-rbd
+  details:
+    type: object
+    required:
+      - integration_id
+      - image
+    properties:
+      integration_id:
+        description: >
+          The ID of a Ceph cluster integration for authentication.
+        $ref: ../../../../ID.yml
+      image:
+        $ref: "./SourceCephRbdImageRef.yml"

@@ -1,0 +1,7 @@
+title: RuntimeDevicePermissionAccess
+type: string
+description: >
+  The access mode permitted by this rule. Common conventions use a combination
+  of letters (e.g., r, w, m) to indicate read, write, and mknod capabilities.
+pattern: "^[rwm]+$"
+examples: ["r", "rw", "rwm"]

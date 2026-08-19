@@ -2,6 +2,10 @@ title: VirtualMachineNetworkConfig
 type: object
 description: |
   Defines the network settings for a virtual machine, including public access mode, hostname, and ports.
+required:
+  - public
+  - hostname
+  - egress_via_gateway
 properties:
   public:
     type: string
@@ -9,6 +13,7 @@ properties:
       - enable
       - disable
       - egress-only
+      - environment-limited
     description: Controls the public network mode for the virtual machine.
   hostname:
     type: string
@@ -20,6 +25,6 @@ properties:
           type: string
       - type: "null"
     description: Port configurations for the virtual machine.
-required:
-  - public
-  - hostname
+  egress_via_gateway:
+    description: True indicates that traffic should leave via the gateway, not the underlying host.
+    type: boolean

@@ -22,14 +22,7 @@ post:
     content:
       application/json:
         schema:
-          discriminator:
-            propertyName: action
-            mapping:
-              generate: ../../../../components/schemas/stacks/builds/taskActions/GenerateStackBuildAction.yml
-              deploy: ../../../../components/schemas/stacks/builds/taskActions/DeployStackBuildAction.yml
-          oneOf:
-            - $ref: ../../../../components/schemas/stacks/builds/taskActions/GenerateStackBuildAction.yml
-            - $ref: ../../../../components/schemas/stacks/builds/taskActions/DeployStackBuildAction.yml
+          $ref: ../../../../components/schemas/stacks/builds/task/StackBuildTask.yml
   responses:
     202:
       description: Returns a Job Descriptor.

@@ -1,0 +1,9 @@
+title: StackBuildTask
+discriminator:
+  propertyName: action
+  mapping:
+    generate: StackBuildGenerateAction.yml
+    deploy: StackBuildDeployAction.yml
+oneOf:
+  - $ref: StackBuildGenerateAction.yml
+  - $ref: StackBuildDeployAction.yml

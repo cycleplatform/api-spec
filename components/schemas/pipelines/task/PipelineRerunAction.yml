@@ -1,0 +1,16 @@
+title: PipelineTriggerAction
+type: object
+required:
+  - action
+properties:
+  action:
+    type: string
+    description: The requested action to perform.
+    enum:
+      - rerun
+  contents:
+    type: object
+    properties:
+      run_id:
+        description: The ID of the run to retry.
+        $ref: ../../ID.yml

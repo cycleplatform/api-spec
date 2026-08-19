@@ -17,9 +17,9 @@ required:
   - time
 properties:
   id:
-    "$ref": "../../ID.yml"
+    $ref: ../../ID.yml
   hub_id:
-    "$ref": "../../HubID.yml"
+    $ref: ../../HubID.yml
   user:
     type: object
     description: Userscope
@@ -31,13 +31,13 @@ properties:
         type: string
         description: The type of user.
         enum:
-          - "account"
-          - "environment"
-          - "platform"
-          - "platform-pipeline"
-          - "employee"
-          - "api-key"
-          - "visitor"
+          - account
+          - environment
+          - platform
+          - platform-pipeline
+          - employee
+          - api-key
+          - visitor
       id:
         type: string
         description: The given user's ID.
@@ -66,30 +66,30 @@ properties:
     description: A record of additional annotations for the activity.
     additionalProperties: {}
   error:
-    type:
-      - object
-      - "null"
     description: An object describing a given activity error.
-    required:
-      - message
-    properties:
-      message:
-        type: string
-        description: The error message.
+    oneOf:
+      - type: object
+        required:
+          - message
+        properties:
+          message:
+            type: string
+            description: The error message.
+      - type: "null"
   component:
-    type:
-      - object
-      - "null"
     description: An object holding information about a component.
-    required:
-      - id
-      - type
-    properties:
-      id:
-        "$ref": "../../ID.yml"
-      type:
-        type: string
-        description: The type of component.
+    oneOf:
+      - type: object
+        required:
+          - id
+          - type
+        properties:
+          id:
+            $ref: ../../ID.yml
+          type:
+            type: string
+            description: The type of component.
+      - type: "null"
   tags:
     type: array
     description: An array of tags that denote things such as a type of security event, or can be user-provided.
@@ -123,6 +123,7 @@ properties:
       - environment.services.lb.reconfigure
       - environment.services.vpn.reconfigure
       - environment.services.scheduler.reconfigure
+      - environment.services.gateway.reconfigure
       - environment.delete
       - environment.initialize
       - environment.start
@@ -134,6 +135,7 @@ properties:
       - environment.services.lb.task.reconfigure
       - environment.services.vpn.task.reconfigure
       - environment.services.scheduler.task.reconfigure
+      - environment.services.gateway.task.reconfigure
       - environment.services.vpn.user.create
       - environment.services.vpn.login
       - environment.services.vpn.reset
@@ -143,9 +145,13 @@ properties:
       - environment.task.stop
       - environment.task.deployments.reconfigure
       - environment.deployments.reconfigure
+      - environment.task.monitoring.reconfigure
+      - environment.monitoring.reconfigure
       - environment.deployments.prune
       - environment.deployment.start
       - environment.deployment.stop
+      - environment.deployment.deprecate
+      - environment.deployment.reinstate
 
       - environment.scoped-variable.delete
       - environment.scoped-variable.update
@@ -194,6 +200,8 @@ properties:
       - hub.integration.create
       - hub.integration.update
       - hub.integration.delete
+      - hub.integration.task.verify
+      - hub.integration.task.delete
       - hub.inactive
 
       - container.initialize
@@ -201,6 +209,8 @@ properties:
       - container.start
       - container.task.stop
       - container.stop
+      - container.task.restart
+      - container.restart
       - container.task.reconfigure
       - container.reconfigure
       - container.task.volumes.reconfigure
@@ -211,6 +221,7 @@ properties:
       - container.restart
       - container.task.reimage
       - container.reimage
+      - container.deprecate
       - container.update
       - container.task.delete
       - container.delete
@@ -233,6 +244,7 @@ properties:
       - container.instance.delete
       - container.instance.task.migration.revert
       - container.instance.task.migration.start
+      - container.instance.traffic-drain.reconfigure
       # there may be other custom-generated container.instance events
 
       - container.backup.create
@@ -281,12 +293,19 @@ properties:
       - infrastructure.provider.create
       - infrastructure.provider.task.verify
 
+      - infrastructure.virtual-providers.iso.create
+      - infrastructure.virtual-providers.iso.generate
+      - infrastructure.virtual-providers.iso.update
+      - infrastructure.virtual-providers.iso.delete
+      - infrastructure.virtual-providers.iso.task.delete
+
       - infrastructure.server.task.delete
       - infrastructure.server.task.restart
       - infrastructure.server.services.sftp.auth
       - infrastructure.server.live
       - infrastructure.server.delete
       - infrastructure.server.restart
+      - infrastructure.server.unquarantine
 
       - infrastructure.server.compute.restart
       - infrastructure.server.compute.spawner.restart
@@ -305,17 +324,33 @@ properties:
       - infrastructure.server.task.evacuation.start
       - infrastructure.server.evacuation.reset
       - infrastructure.server.task.evacuation.reset
+      - infrastructure.server.power-off
+      - infrastructure.server.auth.reset
 
       - infrastructure.autoscale.group.create
       - infrastructure.autoscale.group.update
       - infrastructure.autoscale.group.task.delete
       - infrastructure.autoscale.group.delete
 
+      - infrastructure.external-volume.create
+      - infrastructure.external-volume.update
+      - infrastructure.external-volume.task.delete
+      - infrastructure.external-volume.delete
+      - infrastructure.external-volume.task.servers.reconfigure
+      - infrastructure.external-volume.task.attachment.reconfigure
+      - infrastructure.external-volume.servers.reconfigure
+      - infrastructure.external-volume.attachment.reconfigure
+
+      - infrastructure.external-volumes.task.scan
+
       - infrastructure.cluster.create
       - infrastructure.cluster.update
+      - infrastructure.cluster.task.delete
       - infrastructure.cluster.delete
+      - infrastructure.cluster.features.monitoring.tier.reconfigure
 
       - infrastructure.ips.pool.task.delete
+      - infrastructure.ips.pool.create
 
       - sdn.network.update
       - sdn.network.task.delete
@@ -341,10 +376,18 @@ properties:
       - virtual-machine.task.stop
       - virtual-machine.stop
       - virtual-machine.reconfigure
+      - virtual-machine.task.reconfigure
       - virtual-machine.update
       - virtual-machine.task.delete
       - virtual-machine.delete
       - virtual-machine.sos.login
+      - virtual-machine.rootpw.change
+      - virtual-machine.task.volumes.reconfigure
+      - virtual-machine.volumes.reconfigure
+      - virtual-machine.volumes.remove
+      - virtual-machine.task.volumes.remove
+      - virtual-machine.volumes.add
+      - virtual-machine.task.volumes.add
 
       - virtual-machine.ssh-key.create
       - virtual-machine.ssh-key.update
@@ -355,7 +398,7 @@ properties:
       - virtual-machine.task.ip.allocate
       - virtual-machine.ip.unallocate
       - virtual-machine.task.ip.unallocate
-      
+
   time:
     description: A timestamp for when the activity took place.
-    "$ref": "../../DateTime.yml"
+    $ref: ../../DateTime.yml

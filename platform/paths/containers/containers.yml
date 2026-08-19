@@ -67,6 +67,10 @@ get:
             type: string
             description: |
               `filter[state]=value1,value2` state filtering will allow you to filter by the container's current state.
+          deprecated:
+            type: string
+            description: |
+              `filter[deprecated]=true` filter for containers that are deprecated.
           service:
             type: string
             description: |
@@ -74,7 +78,7 @@ get:
           public_network:
             type: string
             description: |
-              `filter[public_network]=value` public network filtering will allow you to filter by the containers network settings: `enabled`, `disabled`, `egress-only`.
+              `filter[public_network]=value` public network filtering will allow you to filter by the containers network settings: `enabled`, `disabled`, `egress-only`, `environment-limited`.
           image:
             type: string
             description: |
@@ -177,12 +181,11 @@ post:
               items:
                 $ref: ../../../components/schemas/containers/config/ContainerVolume.yml
             annotations:
-              type:
-                - object
-                - "null"
               description: Custom meta data. Not utilized by Cycle.
-              additionalProperties: {}
-
+              oneOf:
+                - type: object
+                  additionalProperties: {}
+                - type: "null"
   responses:
     201:
       description: Returns a Container.

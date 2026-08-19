@@ -1,0 +1,23 @@
+title: MonitorReconfigureAction
+description: >
+  Replaces the monitor's evaluation configuration. The new config is validated
+  before the job is queued; if validation fails, the request returns 422 without
+  queueing.
+type: object
+required:
+  - action
+  - contents
+properties:
+  action:
+    type: string
+    enum:
+      - reconfigure
+    description: Identifies this as a reconfigure task.
+  contents:
+    type: object
+    required:
+      - config
+    properties:
+      config:
+        $ref: ../MonitorConfig.yml
+        description: The new configuration for the monitor.

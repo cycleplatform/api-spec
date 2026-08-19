@@ -8,7 +8,7 @@ get:
     - Clusters
   parameters:
     - name: clusterId
-      description: The ID of the requested cluster.
+      description: The ID or identifier of the requested cluster.
       in: path
       required: true
       schema:
@@ -27,7 +27,7 @@ get:
                 $ref: ../../../../components/schemas/infrastructure/clusters/Cluster.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
-  
+
 patch:
   operationId: updateCluster
   summary: Update Cluster
@@ -47,7 +47,11 @@ patch:
       application/json:
         schema:
           type: object
-
+          properties:
+            non_essential:
+              type: boolean
+              description: >
+                Set to true to mark the cluster as 'non-essential'. Non-essential cluster resources are excluded by default from certain metrics and summaries unless opted in.
   responses:
     200:
       description: Returns a cluster.
@@ -62,7 +66,7 @@ patch:
                 $ref: ../../../../components/schemas/infrastructure/clusters/Cluster.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml
-              
+
 delete:
   operationId: "deleteCluster"
   summary: Delete Cluster

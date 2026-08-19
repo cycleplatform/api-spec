@@ -1,0 +1,48 @@
+get:
+  operationId: getProviderServerModels
+  summary: List Provider Server Models
+  tags:
+    - Providers
+  parameters:
+    - name: integrationId
+      description: |
+        The infrastructure provider integration ID to query for server models.  
+        Can also use a vendor string. Example `gcp`, `equinix-metal`, `abstraction`, etc.
+      in: path
+      required: true
+      schema:
+        type: string
+    - $ref: ../../../../components/parameters/SortParam.yml
+    - $ref: ../../../../components/parameters/PageParam.yml
+
+    - name: filter
+      in: query
+      # Deep nested arrays are undefined https://github.com/OAI/OpenAPI-Specification/issues/1706
+      style: deepObject
+      required: false
+      description: |
+        ## Filter Field
+        The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
+      schema:
+        type: object
+        properties:
+          location_ids:
+            type: string
+            description: |
+              `filter[location_ids]=value` List only those provider servers matching this location. May return multiple results.
+  responses:
+    200:
+      description: A list of currently provisioned servers associated with a Provider Integration.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: ../../../../components/schemas/infrastructure/providers/models/ProviderServerModel.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml

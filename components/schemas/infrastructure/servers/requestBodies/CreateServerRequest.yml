@@ -42,26 +42,26 @@ content:
                     features:
                       "$ref": "../ServerFeatures.yml"
                     provision_options:
-                      type:
-                        - object
-                        - "null"
                       description: Advanced options to apply to the provisioning of a server.
-                      properties:
-                        attached_storage_size:
-                          type:
-                            - integer
-                            - "null"
-                          description: For providers that support setting this value dynamically; A number representing the GB size of the volume to be attached to the server.
-                        reservation_id:
-                          type:
-                            - string
-                            - "null"
-                          description: A reservation ID to be used to provision a server that has been reserved at the provider.
-                        encrypt_storage:
-                          type:
-                            - boolean
-                            - "null"
-                          description: For providers that support this setting, this option will encrypt storage for server.
+                      oneOf:
+                        - type: object
+                          properties:
+                            attached_storage_size:
+                              type:
+                                - integer
+                                - "null"
+                              description: For providers that support setting this value dynamically; A number representing the GB size of the volume to be attached to the server.
+                            reservation_id:
+                              type:
+                                - string
+                                - "null"
+                              description: A reservation ID to be used to provision a server that has been reserved at the provider.
+                            encrypt_storage:
+                              type:
+                                - boolean
+                                - "null"
+                              description: For providers that support this setting, this option will encrypt storage for server.
+                        - type: "null"
                     zone:
                       type:
                         - string

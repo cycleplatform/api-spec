@@ -1,0 +1,26 @@
+title: VirtualMachineRuntimeConfig
+type: object
+description: |
+  Defines the runtime settings for a virtual machine.
+properties:
+  hardware:
+    description: Hardware parameters applied for VM runtime.
+    oneOf:
+      - $ref: "./hardware/VirtualMachineRuntimeConfigHardware.yml"
+      - type: "null"
+  attach:
+    description: An array of attachments to 'plug in' to the virtual machine.
+    oneOf:
+      - type: array
+        items:
+          $ref: ./attachments/VirtualMachineRuntimeConfigAttachment.yml
+      - type: "null"
+  os_flavor:
+    description: The type of operating system that will be installed to the virtual machine. Allows for preconfigured settings, such as virtio-win drivers for Windows.
+    oneOf:
+      - type: string
+        enum:
+          - linux
+          - unix
+          - windows
+additionalProperties: false

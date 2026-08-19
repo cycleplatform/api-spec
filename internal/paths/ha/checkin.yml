@@ -1,0 +1,55 @@
+post:
+  operationId: highAvailabilityCheckin
+  summary: High Availability Checkin
+  description: |
+    Hit this endpoint every 30 seconds to check in and have the platform select and maintain a primary instance.
+    Every instance you wish to be considered for a primary should hit this endpoint roughly every 30 seconds. The platform will choose one instance as the primary, and it will continue to be the primary until it stops checking in. If a primary stops checking in, a secondary will be selected to be promoted to primary.
+
+    Does not require a scope, but `config.deploy.ha_elections` must be enabled on this container to access this endpoint.
+  tags:
+    - High Availability
+  x-cycle-scopes:
+    - none
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - electable
+            - priority
+          properties:
+            electable:
+              type: boolean
+              description: Whether this instance wishes to be considered for election as the primary.
+            priority:
+              type: integer
+              format: int32
+              description: The election priority for this instance. Higher priority means more likely to be elected primary.
+  responses:
+    "200":
+      description: Returns the result of the high availability check-in.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: object
+                required:
+                  - time
+                  - primary_instance_id
+                properties:
+                  time:
+                    description: The time the platform recorded this check-in.
+                    $ref: "../../../components/schemas/DateTime.yml"
+                  primary_instance_id:
+                    description: The ID of the instance currently elected as the primary. Null when no primary has been elected yet.
+                    oneOf:
+                      - $ref: "../../../components/schemas/ID.yml"
+                      - type: "null"
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml

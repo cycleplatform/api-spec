@@ -39,7 +39,6 @@ get:
 delete:
   operationId: "expireInstanceSSHCredentials"
   tags:
-    - Containers
     - Instances
   parameters:
     - name: containerId

@@ -1,0 +1,15 @@
+title: VirtualMachineAddVolumesAction
+type: object
+required:
+  - action
+  - contents
+properties:
+  action:
+    type: string
+    enum:
+      - volumes.add
+  contents:
+    type: array
+    description: Array of volume configs to add.
+    items:
+      $ref: ../config/volumes/VirtualMachineVolumeConfig.yml

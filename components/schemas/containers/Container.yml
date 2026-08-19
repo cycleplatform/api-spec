@@ -13,6 +13,9 @@ required:
   - instances
   - stateful
   - state
+  - role
+  - ha
+  - deployment
   - deprecate
   - lock
   - events
@@ -51,17 +54,22 @@ properties:
     items:
       $ref: ./summaries/VolumeSummary.yml
   annotations:
-    type:
-      - object
-      - "null"
     description: Custom meta data for a given container
-    additionalProperties: {}
+    oneOf:
+      - type: object
+        additionalProperties: {}
+      - type: "null"
   role:
     description: The role of a given container if it has one.
     oneOf:
       - type: string
         enum:
           - orchestrator
+      - type: "null"
+  ha_elections:
+    description: High availability election status of the container. Contains information about the primary instance, if any.
+    oneOf:
+      - $ref: ./ha/ContainerHighAvailability.yml
       - type: "null"
   stateful:
     type: boolean

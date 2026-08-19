@@ -52,7 +52,7 @@ patch:
 
     Requires the `virtual-machines-ssh-keys-manage` capability.
   tags:
-    - Virtual Machine
+    - Virtual Machines
   parameters:
     - name: sshKeyId
       description: The ID of the SSH key.

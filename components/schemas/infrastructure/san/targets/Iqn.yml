@@ -1,0 +1,5 @@
+title: Iqn
+type: string
+description: iSCSI Qualified Name of a target.
+# Common IQN pattern: iqn.YYYY-MM.<reversed-domain>[:optional-suffix]
+pattern: '^iqn\.\d{4}-\d{2}\.[A-Za-z0-9.-]+(?::[^\s]+)?$'

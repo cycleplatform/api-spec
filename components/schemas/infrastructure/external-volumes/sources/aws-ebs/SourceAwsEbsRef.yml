@@ -1,0 +1,14 @@
+title: SourceAwsEbsRef
+type: object
+description: Reference to the specific EBS volume to attach.
+required:
+  - volume_id
+properties:
+  volume_id:
+    type: string
+    description: >
+      The EBS volume ID (for example, "vol-0abcd1234ef567890").
+  az:
+    type: string
+    description: >
+      Optional AWS Availability Zone where the volume resides (for example, "us-east-1a").

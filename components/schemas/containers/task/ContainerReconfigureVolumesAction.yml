@@ -1,0 +1,17 @@
+title: ContainerReconfigureVolumesAction
+type: object
+required:
+  - action
+  - contents
+properties:
+  action:
+    type: string
+    enum:
+      - volumes.reconfigure
+    description: The action to take.
+  contents:
+    description: |
+      A map of volume objects where the key is the id and the value is the volume's config.
+    type: object
+    additionalProperties:
+      $ref: ../config/ContainerVolume.yml

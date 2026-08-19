@@ -1,0 +1,58 @@
+title: Event
+description: A custom event submitted to the monitoring system.
+type: object
+required:
+  - event
+  - type
+  - priority
+properties:
+  metadata:
+    anyOf:
+      - type: object
+        properties:
+          component:
+            type: object
+            description: The associated component for this event.
+            properties:
+              id:
+                type: string
+              type: 
+                type: string
+      - type: "null"
+  event:
+    type: string
+    description: The event name.
+  type:
+    type: string
+    enum:
+      - info
+      - warning
+      - error
+      - success
+      - alert
+      - notice
+      - audit
+  priority:
+    type: string
+    enum:
+      - critical
+      - high
+      - medium
+      - normal
+      - low
+  text: 
+    description: The text describing the event that has occurred.
+    type:
+      - string
+      - "null"
+  extra:
+    type: object
+    additionalProperties: true
+  labels:
+    type: object
+    additionalProperties:
+      type: string
+  tags:
+    type: array
+    items:
+      type: string

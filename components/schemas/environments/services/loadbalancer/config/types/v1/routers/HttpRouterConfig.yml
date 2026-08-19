@@ -75,7 +75,9 @@ properties:
                       description: Replacement value.
                       type: string
           url:
-            type: string
+            type: 
+              - string
+              - "null"
             description: |
               The URL to forward the request to.
 

@@ -84,6 +84,11 @@ patch:
           required:
             - constraints
           properties:
+            nickname:
+              description: A custom name given to the server for identification purposes. Does not affect server hostname.
+              type:
+                - string
+                - "null"
             constraints:
               type: object
               description: Server constriants.
@@ -114,7 +119,7 @@ patch:
                       type:
                         - integer
                         - "null"
-                      description: An integer that describes the capability of a server to overcommit shares.  This will allow more containers to run on a given server based on the servers available CPU cores. 1 CPU core = 10 shares by default.
+                      description: An integer that describes the capability of a server to overcommit shares.  This will allow more containers to run on a given server based on the servers available CPU. 1 thread (or vCPU) = 10 shares.
   responses:
     200:
       description: Returns a Server.
@@ -154,7 +159,7 @@ delete:
               type: object
               properties:
                 force:
-                  description: If force is set to true, this will force delete the hub, even if there are servers running on it.
+                  description: If force is set to true, this will force delete the server, even if there are instances running on it.
                   type: boolean
   responses:
     200:

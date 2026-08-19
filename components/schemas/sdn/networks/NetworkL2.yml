@@ -1,0 +1,45 @@
+title: NetworkL2
+type: object
+description: Layer 2 network information for a Cycle SDN.
+required:
+  - ips
+  - location_ids
+properties:
+  domain:
+    anyOf:
+      - $ref: ../L2Domain.yml
+      - type: "null"
+  location_ids:
+    type: array
+    items:
+      $ref: ../../ID.yml
+  vid:
+    type: 
+      - integer
+      - "null"
+  host_interface:
+    type:
+      - string
+      - "null"
+  routes:
+    description: An array of L2 routes that are added to this SDN
+    type: array
+    items:
+      type: object
+      required:
+        - network
+      properties:
+        network:
+          $ref: ../../Cidr.yml
+        gateway:
+          $ref: ../../IpAddress.yml
+  ips:
+    discriminator:
+      propertyName: method
+      mapping:
+        dhcp: NetworkL2DhcpDetails.yml
+        static: NetworkL2StaticDetails.yml
+    oneOf:
+      - $ref: NetworkL2DhcpDetails.yml
+      - $ref: NetworkL2StaticDetails.yml
+

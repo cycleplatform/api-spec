@@ -1,11 +1,16 @@
 get:
   operationId: "getNetworkInstances"
   summary: List Network Instances
-  description: Lists all instances present in this instance's SDN networks.
+  description: |
+    Lists all instances present in this instance's SDN networks.
+
+    Requires the `networks` scope to be set on the container runtime config.
   tags:
     - SDN
     - Instances
   parameters: []
+  x-cycle-scopes:
+    - networks
   responses:
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml

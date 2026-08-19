@@ -1,0 +1,18 @@
+title: ServerUnquarantineAction
+type: object
+required:
+  - action
+  - contents
+properties:
+  action:
+    type: string
+    description: The action to take.
+    enum:
+      - unquarantine
+  contents:
+    type: object
+    required:
+      - cluster
+    properties:
+      cluster:
+        type: string

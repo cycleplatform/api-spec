@@ -47,8 +47,8 @@ patch:
               - data
             properties:
               data:
-                $ref: ../../../components/schemas/dns/Zone.yml
+                $ref: ../../../components/schemas/dns/DnsZone.yml
               includes:
-                $ref: ../../../components/schemas/dns/ZoneIncludes.yml
+                $ref: ../../../components/schemas/dns/DnsZoneIncludes.yml
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml

@@ -1,0 +1,51 @@
+type: object
+title: ServerTelemetryProcessor
+description: Telemetry for a single logical processor on the server, as reported by the kernel via /proc/cpuinfo.
+required:
+  - id
+  - vendor_id
+  - model
+  - model_name
+  - flags
+  - cores
+  - mhz
+  - physical_id
+  - core_id
+properties:
+  id:
+    type: integer
+    format: int64
+    description: The logical processor index (the "processor" entry in /proc/cpuinfo).
+  vendor_id:
+    type: string
+    description: The CPU vendor identifier string, e.g. "GenuineIntel" or "AuthenticAMD".
+  model:
+    type: integer
+    format: int64
+    description: The numeric CPU model identifier within the vendor's family.
+  model_name:
+    type: string
+    description: The human-readable CPU model name, e.g. "Intel(R) Xeon(R) CPU E5-2690 v4 @ 2.60GHz".
+  flags:
+    type:
+      - array
+      - "null"
+    description: The CPU feature flags reported for this processor (e.g. fpu, sse, avx). Null if not reported.
+    items:
+      type: string
+  cores:
+    type: integer
+    format: int64
+    description: The number of physical cores in the package this processor belongs to.
+  mhz:
+    type: number
+    format: double
+    description: The current clock speed of this processor, in MHz.
+  physical_id:
+    type: integer
+    format: int64
+    description: The identifier of the physical package (socket) this processor belongs to.
+  core_id:
+    type: integer
+    format: int64
+    description: The identifier of the core within the physical package.

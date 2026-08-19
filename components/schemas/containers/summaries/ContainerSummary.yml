@@ -31,13 +31,18 @@ properties:
   image:
     $ref: "ImageSummary.yml"
   annotations:
-    type:
-      - object
-      - "null"
     description: Custom meta data for a given Container. Not utilized by the platform.
-    additionalProperties: {}
+    oneOf:
+      - type: object
+        additionalProperties: {}
+      - type: "null"
   state:
     $ref: "../ContainerState.yml"
+  ha_elections:
+    description: High availability elections status of the container. Contains information about the primary instance, if any.
+    oneOf:
+      - $ref: ../ha/ContainerHighAvailability.yml
+      - type: "null"
   role:
     type:
       - string

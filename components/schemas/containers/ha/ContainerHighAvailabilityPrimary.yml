@@ -1,0 +1,23 @@
+title: ContainerHighAvailabilityPrimary
+description: |
+  Details about the instance currently elected as the high availability primary for a container.
+type: object
+required:
+  - instance_id
+  - priority
+  - elected
+  - last_checkin
+properties:
+  instance_id:
+    description: The ID of the instance that has been elected as the primary.
+    $ref: "../../ID.yml"
+  priority:
+    type: integer
+    format: int32
+    description: The priority value assigned to this instance for the election. Higher priority means more likely to be elected primary.
+  elected:
+    description: The time at which this instance was elected as the primary.
+    $ref: "../../DateTime.yml"
+  last_checkin:
+    description: The time the primary instance last checked into the high availability service.
+    $ref: "../../DateTime.yml"

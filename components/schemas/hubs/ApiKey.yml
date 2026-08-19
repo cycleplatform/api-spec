@@ -8,6 +8,7 @@ required:
   - creator
   - secret
   - role_id
+  - hint
   - ips
   - state
   - events
@@ -23,7 +24,10 @@ properties:
     $ref: ../creators/CreatorScope.yml
   secret:
     type: string
-    description: The API key secret.
+    description: The API key secret. Will only be populated one time on create.
+  hint:
+    type: string
+    description: The first few characters of the API key, for identification.
   role_id:
     $ref: ../ID.yml
   ips:

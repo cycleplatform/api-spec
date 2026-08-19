@@ -1,11 +1,16 @@
 get:
   operationId: "getNetworkEnvironments"
   summary: List Network Environments
-  description: Lists all environments present in this instance's SDN networks.
+  description: |
+    Lists all environments present in this instance's SDN networks.
+
+    Requires the `networks` scope to be set on the container runtime config.
   tags:
     - SDN
     - Environments
   parameters: []
+  x-cycle-scopes:
+    - networks
   responses:
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml

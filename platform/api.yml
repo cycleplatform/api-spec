@@ -108,7 +108,7 @@ x-tagGroups:
       - Hubs
       - API Keys
       - Integrations
-      - Hub Members
+      - Members
       - Hub Notifications
       - Roles
   - name: Images
@@ -118,10 +118,13 @@ x-tagGroups:
   - name: Infrastructure
     tags:
       - Infrastructure
+      - External Volumes
       - Auto-Scale Groups
       - Clusters
       - Providers
+      - Virtual Providers
       - Servers
+      - SANs
       - IPs
   - name: Jobs
     tags:
@@ -238,8 +241,12 @@ tags:
     description: Endpoints related to managing infrastructure clusters.
   - name: Providers
     description: Endpoints related to providers configured for a hub.
+  - name: Virtual Providers
+    description: Endpoints related to virtual provider configurations.
   - name: Servers
     description: Endpoints related to managing servers on Cycle.
+  - name: SANs
+    description: Endpoints for managing SANs.
   - name: IPs
     description: Endpoints for managing IP allocations.
 
@@ -306,12 +313,17 @@ paths:
     $ref: "./paths/announcements/announcements.yml"
 
   # --Billing
+  "/v1/billing/status":
+    $ref: "./paths/billing/status.yml"
   ## Credits
   "/v1/billing/credits":
     $ref: "./paths/billing/credits/credits.yml"
   "/v1/billing/credits/{creditsId}":
     $ref: "./paths/billing/credits/credit.yml"
 
+    # Changelog
+  "/v1/changelog":
+    $ref: ./paths/changelog/changelog.yml
   ## Invoices
   "/v1/billing/invoices":
     $ref: "./paths/billing/invoices/invoices.yml"
@@ -418,6 +430,8 @@ paths:
   ## TLS
   "/v1/dns/tls/attempts":
     $ref: "./paths/dns/tls/attempts.yml"
+  "/v1/dns/tls/certificates":
+    $ref: "./paths/dns/tls/certificates.yml"
   "/v1/dns/tls/certificates/lookup":
     $ref: "./paths/dns/tls/lookup.yml"
   "/v1/dns/tls/certificates/user-supplied":
@@ -430,8 +444,6 @@ paths:
   # --Environments
   "/v1/environments":
     $ref: "./paths/environments/environments.yml"
-  "/v1/environments/monitoring-tiers":
-    $ref: "./paths/environments/tiers.yml"
   "/v1/environments/{environmentId}":
     $ref: "./paths/environments/environment.yml"
   "/v1/environments/{environmentId}/access":
@@ -553,7 +565,7 @@ paths:
   "/v1/images/{imageId}/build-log":
     $ref: "./paths/images/buildLog.yml"
   "/v1/images/tasks":
-    $ref: paths/images/bulkTasks.yml
+    $ref: paths/images/rootTasks.yml
   "/v1/images/{imageId}/tasks":
     $ref: "./paths/images/tasks.yml"
 
@@ -570,6 +582,22 @@ paths:
     $ref: "./paths/infrastructure/summary.yml"
   "/v1/infrastructure/deployment-strategies":
     $ref: "./paths/infrastructure/deploymentStrategies.yml"
+  "/v1/infrastructure/monitoring-tiers":
+    $ref: "./paths/infrastructure/tiers.yml"
+
+  ## External Volumes
+  "/v1/infrastructure/external-volumes":
+    $ref: "./paths/infrastructure/external-volumes/external-volumes.yml"
+  "/v1/infrastructure/external-volumes/tasks":
+    $ref: "./paths/infrastructure/external-volumes/rootTasks.yml"
+  "/v1/infrastructure/external-volumes/{externalVolumeId}":
+    $ref: "./paths/infrastructure/external-volumes/external-volume.yml"
+  "/v1/infrastructure/external-volumes/sources":
+    $ref: "./paths/infrastructure/external-volumes/sources.yml"
+  "/v1/infrastructure/external-volumes/{externalVolumeId}/access":
+    $ref: "./paths/infrastructure/external-volumes/access.yml"
+  "/v1/infrastructure/external-volumes/{externalVolumeId}/tasks":
+    $ref: "./paths/infrastructure/external-volumes/tasks.yml"
 
   ## Auto-Scale Groups
   "/v1/infrastructure/auto-scale/groups":
@@ -580,10 +608,23 @@ paths:
     $ref: "./paths/infrastructure/auto-scale/groups/access.yml"
 
   ## Providers
-  "/v1/infrastructure/providers/{providerVendor}/servers":
-    $ref: "./paths/infrastructure/providers/servers.yml"
-  "/v1/infrastructure/providers/{providerVendor}/locations":
+  "/v1/infrastructure/providers/{integrationId}/servers":
+    $ref: "./paths/infrastructure/providers/serverModels.yml"
+  "/v1/infrastructure/providers/{integrationId}/locations":
     $ref: "./paths/infrastructure/providers/locations.yml"
+
+  ## Virtual Providers
+  "/v1/infrastructure/virtual-providers/{integrationId}/isos":
+    $ref: "./paths/infrastructure/virtual-providers/isos/isos.yml"
+
+  "/v1/infrastructure/virtual-providers/{integrationId}/isos/{isoId}":
+    $ref: "./paths/infrastructure/virtual-providers/isos/iso.yml"
+
+  "/v1/infrastructure/virtual-providers/{integrationId}/isos/{isoId}/tasks":
+    $ref: "./paths/infrastructure/virtual-providers/isos/tasks.yml"
+
+  "/v1/infrastructure/virtual-providers/{integrationId}/isos/{isoId}/download":
+    $ref: "./paths/infrastructure/virtual-providers/isos/download.yml"
 
   ## Clusters
   "/v1/infrastructure/clusters":
@@ -593,6 +634,9 @@ paths:
   "/v1/infrastructure/clusters/{clusterId}/access":
     $ref: "./paths/infrastructure/clusters/access.yml"
 
+  "/v1/infrastructure/clusters/{clusterId}/tasks":
+    $ref: "./paths/infrastructure/clusters/tasks.yml"
+
   ## Servers
   "/v1/infrastructure/servers":
     $ref: "./paths/infrastructure/servers/servers.yml"
@@ -600,14 +644,14 @@ paths:
     $ref: "./paths/infrastructure/servers/server.yml"
   "/v1/infrastructure/servers/{serverId}/telemetry":
     $ref: "./paths/infrastructure/servers/telemetry.yml"
+  "/v1/infrastructure/servers/{serverId}/telemetry/stream":
+    $ref: "./paths/infrastructure/servers/telemetry/stream.yml"
   "/v1/infrastructure/servers/{serverId}/instances":
     $ref: "./paths/infrastructure/servers/instances.yml"
   "/v1/infrastructure/servers/{serverId}/tasks":
     $ref: "./paths/infrastructure/servers/tasks.yml"
   "/v1/infrastructure/servers/tags":
     $ref: "./paths/infrastructure/servers/tags.yml"
-  "/v1/infrastructure/servers/{serverId}/usage":
-    $ref: "./paths/infrastructure/servers/usage.yml"
   "/v1/infrastructure/servers/{serverId}/console":
     $ref: "./paths/infrastructure/servers/console.yml"
 
@@ -618,6 +662,8 @@ paths:
     $ref: "./paths/infrastructure/ips/pool.yml"
   "/v1/infrastructure/ips/pools/{poolId}/ips":
     $ref: "./paths/infrastructure/ips/ips.yml"
+  "/v1/infrastructure/ips/pools/{poolId}/tasks":
+    $ref: "./paths/infrastructure/ips/tasks.yml"
 
   # --Jobs
   "/v1/jobs":
@@ -638,8 +684,21 @@ paths:
     $ref: paths/monitoring/events/aggregate.yml
   "/v1/monitoring/logs/aggregate":
     $ref: paths/monitoring/logs/aggregate.yml
+  "/v1/monitoring/platform/monitors":
+    $ref: paths/monitoring/platform/platformMonitors.yml
+
+  ## Monitors
   "/v1/monitoring/monitors":
     $ref: paths/monitoring/monitors/monitors.yml
+  "/v1/monitoring/monitors/{id}":
+    $ref: paths/monitoring/monitors/monitor.yml
+  "/v1/monitoring/monitors/{id}/tasks":
+    $ref: paths/monitoring/monitors/tasks.yml
+  ## Action Groups
+  "/v1/monitoring/monitors/action-groups":
+    $ref: paths/monitoring/monitors/action-groups/action-groups.yml
+  "/v1/monitoring/monitors/action-groups/{id}":
+    $ref: paths/monitoring/monitors/action-groups/action-group.yml
 
   # --Pipelines
   "/v1/pipelines":
@@ -648,6 +707,8 @@ paths:
     $ref: "./paths/pipelines/pipeline.yml"
   "/v1/pipelines/{pipelineId}/access":
     $ref: "./paths/pipelines/access.yml"
+  "/v1/pipelines/runs":
+    $ref: "./paths/pipelines/all-runs.yml"
   "/v1/pipelines/{pipelineId}/runs":
     $ref: "./paths/pipelines/runs.yml"
   "/v1/pipelines/{pipelineId}/runs/{runId}":
@@ -690,6 +751,8 @@ paths:
     $ref: "./paths/stacks/tasks.yml"
 
   ## Stack Builds
+  "/v1/stacks/builds":
+    $ref: "./paths/stacks/builds/all-builds.yml"
   "/v1/stacks/builds/{buildId}":
     $ref: "./paths/stacks/builds/lookup.yml"
   "/v1/stacks/{stackId}/builds":
@@ -724,6 +787,7 @@ paths:
     $ref: paths/utils/resource/lookup.yml
   "/v1/utils/components/lookup":
     $ref: paths/utils/components/lookup.yml
+
 components:
   securitySchemes:
     bearerAuth:
@@ -735,3 +799,33 @@ components:
       in: header
       type: apiKey
       description: Defines the scope of the request to a specific Hub.
+  schemas:
+    # This is a webhook only type for now, but we want it included in the output.
+    ServerTelemetrySnapshot:
+      $ref: ../components/schemas/infrastructure/servers/telemetry/snapshot/ServerTelemetrySnapshot.yml
+
+webhooks:
+  environmentMetricsPush:
+    post:
+      operationId: environmentMetricsPush
+      summary: Environment Metrics Push
+      description: Regularly sends metrics from an environment to an endpoint.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: ../components/schemas/monitoring/metrics/Metric.yml
+  environmentEventsPush:
+    post:
+      operationId: environmentEventsPush
+      summary: Environment Events Push
+      description: Regularly sends events from an environment to an endpoint.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: ../components/schemas/monitoring/events/Event.yml

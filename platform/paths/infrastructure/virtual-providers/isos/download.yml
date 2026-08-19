@@ -1,0 +1,38 @@
+get:
+  operationId: getVirtualProviderIsoDownloadUrl
+  tags:
+    - Virtual Providers
+  parameters:
+    - name: integrationId
+      description: The ID of the virtual provider integration.
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: isoId
+      description: The ID for the virtual provider ISO.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Delete ISO
+  description: Requires the `servers-manage` capability.
+  responses:
+    202:
+      description: Returns a download URL.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: object
+                required:
+                  - url
+                properties:
+                  url:
+                    type: string
+    default:
+      $ref: ../../../../../components/responses/errors/DefaultError.yml

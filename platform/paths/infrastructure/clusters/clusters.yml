@@ -6,6 +6,25 @@ get:
     - Clusters
   parameters:
     - $ref: ../../../../components/parameters/PageParam.yml
+    - name: filter
+      in: query
+      style: deepObject
+      required: false
+      description: |
+        ## Filter Field 
+        The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
+      schema:
+        type: object
+        properties:
+          essential:
+            type: string
+            description: |
+              `filter[essential]=true` filter for essential/non-essential clusters.
+          state:
+            type: string
+            description: |
+              `filter[state]=value1,value2` state filtering will allow you to filter by the cluster's current state.
+                     `filter[stack_build]=ID` stack build filtering by ID.  Submit the ID of the stack build you wish to filter for and the return sill be any environments that have the stack build deployed to them.
   responses:
     200:
       description: Returns a list of clusters.

@@ -1,0 +1,32 @@
+get:
+  operationId: "getVirtualMachine"
+  summary: Get Virtual Machine
+  description: |
+    Returns a specified virtual machine.
+
+    Requires the `environment` scope to be set on the container runtime config.
+  tags:
+    - Virtual Machines
+  x-cycle-scopes:
+    - environment
+  parameters:
+    - name: virtual-machine-id
+      in: query
+      required: true
+      description: Specify which virtual machine to fetch.
+      schema:
+        type: string
+  responses:
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Returns a virtual machine.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../components/schemas/vms/VirtualMachine.yml

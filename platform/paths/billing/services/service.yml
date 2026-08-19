@@ -22,6 +22,6 @@ get:
               - data
             properties:
               data:
-                $ref: ../../../../components/schemas/billing/Service.yml
+                $ref: ../../../../components/schemas/billing/BillingService.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml

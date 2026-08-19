@@ -1,0 +1,27 @@
+get:
+  operationId: "getBillingStatus"
+  summary: Get Billing Status
+  description: |
+    Retrieve meta details about the billing status of this Cycle core. It is unlikely that someone would need this endpoint outside 
+    of Cycle's internal teams.
+  tags:
+    - Billing
+  parameters: []
+  responses:
+    200:
+      description: Returns details about the billing status of this Cycle core.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: object
+                properties:
+                  enabled:
+                    type: boolean
+                    description: Whether billing is enabled for this core. Generally, this will only be false for dedicated cores.
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml

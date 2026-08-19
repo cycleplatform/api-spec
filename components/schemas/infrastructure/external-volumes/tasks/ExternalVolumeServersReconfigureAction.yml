@@ -1,0 +1,16 @@
+title: ExternalVolumeServersReconfigureAction
+description: A task to reconfigure mountable destination servers for external volume.
+type: object
+required:
+  - action
+properties:
+  action:
+    type: string
+    enum:
+      - servers.reconfigure
+    description: The name of the action to perform (servers.reconfigure).
+  contents:
+    description: Contents contains an array of server ids to set as mountable destinations for the external volume.
+    type: array
+    items:
+      $ref: ../../../ID.yml

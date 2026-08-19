@@ -1,0 +1,13 @@
+type: object
+title: ServerTelemetryProcesses
+description: Telemetry for the processes running on the server.
+required:
+  - list
+properties:
+  list:
+    type:
+      - array
+      - "null"
+    description: The list of processes observed on the server.
+    items:
+      $ref: ./ServerTelemetryProcess.yml

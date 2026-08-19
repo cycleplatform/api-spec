@@ -100,12 +100,12 @@ patch:
                 - $ref: "../../../../components/schemas/hubs/integrations/IntegrationAuth.yml"
                 - type: "null"
             extra:
-              type:
-                - object
-                - "null"
               description: Updated key-value pairs associated with the integration.
-              additionalProperties:
-                type: string
+              oneOf:
+                - type: object
+                  additionalProperties:
+                    type: string
+                - type: "null"
   responses:
     default:
       $ref: "../../../../components/responses/errors/DefaultError.yml"

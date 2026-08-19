@@ -3,8 +3,12 @@ get:
   summary: Get Hub Integration
   description: |
     Gets an integration based on a provided identifier or vendor query parameter. At least one of these must be provided.
+
+    Only internal Cycle services can access this endpoint at this time.
   tags:
     - Hubs
+  x-cycle-scopes:
+    - none
   parameters:
     - name: identifier
       in: query

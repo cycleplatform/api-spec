@@ -1,0 +1,181 @@
+get:
+  operationId: "getExternalVolume"
+  summary: Get External Volume
+  description: |
+    Retrieves a single external volume by ID.
+
+    Requires the `external-volumes-view` capability.
+  tags:
+    - External Volumes
+  parameters:
+    - name: externalVolumeId
+      description: The ID of the external volume.
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: meta
+      in: query
+      required: false
+      description: |
+        A comma-separated list of meta values. Meta values will show up under a resource's `meta` field.
+        In the case of applying a meta to a collection of resources, each resource will have its own relevant meta data.
+        In some rare cases, meta may not apply to individual resources, and may appear in the root document. These will be clearly labeled.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - containers
+    - name: include
+      in: query
+      required: false
+      description: |
+        A comma-separated list of include values. Included resources will show up under the root document's `include` field.
+        In the case of applying an include to a collection of resources, if multiple resources share the same include, it will only appear once in the return.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - servers
+            - locations
+  responses:
+    200:
+      description: Returns the requested virtual machine.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/infrastructure/external-volumes/ExternalVolume.yml
+              includes:
+                $ref: ./includes/ExternalVolumeIncludes.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
+
+patch:
+  operationId: "updateExternalVolume"
+  summary: Update External Volume
+  description: |
+    Updates the specified external volume.
+
+    Requires the `external-volumes-manage` capability.
+  tags:
+    - External Volumes
+  parameters:
+    - name: externalVolumeId
+      description: The ID of the external volume.
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: meta
+      in: query
+      required: false
+      description:
+        A comma separated list of meta values. Meta values will show up under a resource's
+        `meta` field. In the case of applying a meta to a collection of resources, each
+        resource will have it's own relevant meta data. In some rare cases, meta may not
+        apply to individual resources, and may appear in the root document. These will be
+        clearly labeled.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - containers
+    - name: include
+      in: query
+      required: false
+      description: |
+        A comma-separated list of include values. Included resources will show up under the root document's `include` field.
+        In the case of applying an include to a collection of resources, if multiple resources share the same include, it will only appear once in the return.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - servers
+            - locations
+  requestBody:
+    description: Parameters for updating the external volume.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: The new name of the external volume.
+            identifier:
+              description: The new identifier of the external volume.
+              $ref: "../../../../components/schemas/Identifier.yml"
+            options:
+              $ref: ../../../../components/schemas/infrastructure/external-volumes/ExternalVolumeOptions.yml
+            about:
+              type: object
+              properties:
+                description:
+                  type: string
+                  description: Updated description for the attached volume.
+  responses:
+    200:
+      description: Returns the updated external volume.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/infrastructure/external-volumes/ExternalVolume.yml
+              includes:
+                $ref: ./includes/ExternalVolumeIncludes.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
+
+delete:
+  operationId: "deleteExternalVolume"
+  summary: Delete External Volume
+  description: Requires the `external-volumes-manage` capability.
+  tags:
+    - External Volumes
+  parameters:
+    - name: externalVolumeId
+      description: The ID of the external volume to delete.
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    description: Parameters for deleting a external volume.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            options:
+              type: object
+              properties:
+                source_device:
+                  description: If source device is set to true, this will delete the underlying source device.
+                  type: boolean
+  responses:
+    202:
+      description: Returns a job descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/jobs/JobDescriptor.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml

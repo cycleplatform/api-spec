@@ -41,6 +41,10 @@ properties:
         oneOf:
           - $ref: ./URLSource.yml
           - $ref: ./RawSource.yml
+  deployment:
+    anyOf:
+      - $ref: ../containers/Deployment.yml
+      - type: "null"
   state:
     "$ref": "./ScopedVariableState.yml"
   events:

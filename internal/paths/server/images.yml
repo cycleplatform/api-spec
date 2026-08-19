@@ -1,11 +1,16 @@
 get:
   operationId: "getServerImages"
   summary: List Server Images
-  description: Lists all images downloaded onto the server this instance is on.
+  description: |
+    Lists all images downloaded onto the server this instance is on.
+
+    Requires the `server` scope to be set on the container runtime config.
   tags:
     - Servers
     - Containers
   parameters: []
+  x-cycle-scopes:
+    - server
   responses:
     default:
       $ref: ../../../components/responses/errors/DefaultError.yml

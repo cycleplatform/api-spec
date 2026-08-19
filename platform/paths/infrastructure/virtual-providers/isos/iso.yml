@@ -1,0 +1,143 @@
+delete:
+  operationId: "deleteVirtualProviderIso"
+  tags:
+    - Virtual Providers
+  parameters:
+    - name: integrationId
+      description: The ID of the virtual provider integration.
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: isoId
+      description: The ID for the virtual provider ISO.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Delete ISO
+  description: Requires the `servers-manage` capability.
+  responses:
+    202:
+      description: Returns a Job Descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../../components/schemas/jobs/JobDescriptor.yml
+    default:
+      $ref: ../../../../../components/responses/errors/DefaultError.yml
+
+get:
+  operationId: "getVirtualProviderIso"
+  tags:
+    - Virtual Providers
+  parameters:
+    - name: integrationId
+      description: The ID of the virtual provider integration.
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: isoId
+      description: The ID for the virtual provider ISO.
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: include
+      in: query
+      required: false
+      description:
+        A comma separated list of include values. Included resources will show
+        up under the root document's `include` field, with the key being the id of the included
+        resource. In the case of applying an include to a collection of resources, if two
+        resources share the same include, it will only appear once in the return.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - integrations
+  summary: Get ISO
+  description: Requires the `servers-manage` capability.
+  responses:
+    202:
+      description: Returns a virtual provider ISO.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../../components/schemas/infrastructure/virtual-providers/VirtualProviderIso.yml
+              includes:
+                $ref: ../includes/VirtualProviderIsoIncludes.yml
+
+    default:
+      $ref: ../../../../../components/responses/errors/DefaultError.yml
+
+patch:
+  operationId: "updateVirtualProviderIso"
+  tags:
+    - Virtual Providers
+  parameters:
+    - name: integrationId
+      description: The ID of the virtual provider integration.
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: isoId
+      description: The ID for the virtual provider ISO.
+      in: path
+      required: true
+      schema:
+        type: string
+  summary: Update ISO
+  description: Requires the `servers-manage` capability.
+  requestBody:
+    description: Parameters for updating an ISO.
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              description: The name of the ISO.
+              type: string
+            config:
+              type: object
+              properties:
+                token:
+                  type: string
+                  description: Authentication token for the ISO. Only available when ISO is in new state.
+                ipxe:
+                  description: ISO IPXE configuration. Only available when ISO is in new state.
+                  oneOf:
+                    - $ref: ../../../../../components/schemas/infrastructure/virtual-providers/VirtualProviderIsoIpxeConfig.yml
+                    - type: "null"
+                server:
+                  oneOf:
+                    - $ref: ../../../../../components/schemas/infrastructure/virtual-providers/VirtualProviderIsoServerConfig.yml
+                    - type: "null"
+  responses:
+    202:
+      description: Returns a virtual provider ISO.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../../components/schemas/infrastructure/virtual-providers/VirtualProviderIso.yml
+    default:
+      $ref: ../../../../../components/responses/errors/DefaultError.yml

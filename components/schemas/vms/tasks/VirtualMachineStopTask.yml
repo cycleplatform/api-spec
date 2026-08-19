@@ -1,9 +1,0 @@
-title: VirtualMachineStopTask
-type: object
-required:
-  - action
-properties:
-  action:
-    type: string
-    enum:
-      - stop

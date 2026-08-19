@@ -1,0 +1,6 @@
+title: IncludedTriggerKeys
+description: |
+  A map of trigger keys, keyed by ID, included on endpoints that support it when passing the matching includes query parameter.
+type: object
+additionalProperties:
+  $ref: ../pipelines/trigger-keys/TriggerKey.yml

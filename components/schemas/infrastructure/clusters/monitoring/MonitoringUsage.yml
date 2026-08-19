@@ -1,0 +1,34 @@
+title: MonitoringUsage
+type: object
+required:
+  - included
+  - unit
+  - hard_cap
+properties:
+  included:
+    description: Number that, when used in conjunction with unit, describes the included usage.
+    type: integer
+  unit:
+    description: A string describing the metric unit.
+    examples:
+      - Metrics
+      - Events
+      - Matches
+      - GB
+    type: string
+  hard_cap:
+    description: A boolean indicating if there is hard usage limit on the tier.
+    type: boolean
+  additional:
+    description: An object describing the additonal cost of monitoring exceeding the included usage.
+    oneOf:
+      - type: object
+        required:
+          - size
+          - price
+        properties:
+          size:
+            type: integer
+          price:
+            $ref: ../../../billing/BillingAmount.yml
+      - type: "null"

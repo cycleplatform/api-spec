@@ -1,0 +1,23 @@
+type: object
+title: ServerTelemetryNetwork
+description: Network telemetry for the server.
+required:
+  - devices
+  - neighbors
+properties:
+  devices:
+    type:
+      - object
+      - "null"
+    description: Per-interface network counters, keyed by interface name.
+    additionalProperties:
+      $ref: ./ServerTelemetryDeviceStats.yml
+  neighbors:
+    type:
+      - array
+      - "null"
+    description: >-
+      Live network neighbors (ARP/NDP table entries) discovered via the
+      kernel netlink API, covering both IPv4 (ARP) and IPv6 (NDP).
+    items:
+      $ref: ./ServerTelemetryNetworkNeighbor.yml

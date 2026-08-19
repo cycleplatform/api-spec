@@ -3,15 +3,28 @@ type: object
 description: Network configuration for a container.
 required:
   - public
+  - egress_via_gateway
+  - routes
   - hostname
 properties:
   public:
     type: string
-    description: The public network settings for the given container
+    description: The public network settings for the given container.
     enum:
       - enable
       - egress-only
+      - environment-limited
       - disable
+  egress_via_gateway:
+    type: boolean
+    description: When true, the container's egress traffic is routed out through the environment gateway.
+  routes:
+    type:
+      - array
+      - "null"
+    description: Custom network routes applied to the container's instances.
+    items:
+      $ref: ./network/NetworkRouteConfig.yml
   hostname:
     type: string
     description: The hostname for the given container.
@@ -20,3 +33,18 @@ properties:
     items:
       type: string
     description: An array of port mappings for the container.
+  l2:
+    description: Layer 2 network configuration options for containers running on virtual provider servers.
+    oneOf:
+      - type: object
+        required:
+          - domains
+        properties:
+          domains:
+            type: array
+            description: |
+              The layer 2 'domains' that this container's instances should bridge to on the host server. 
+              If the host has a matching layer 2 NIC configured via a virtual provider ISO, this container's instances 
+              will be joined directly to the host's network.
+            items:
+              $ref: ../../sdn/L2Domain.yml

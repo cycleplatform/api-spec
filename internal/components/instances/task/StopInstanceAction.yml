@@ -1,0 +1,21 @@
+title: StopInstanceAction
+description: Properties for creating a job to stop an instance.
+type: object
+required:
+  - action
+  - contents
+properties:
+  action:
+    type: string
+    enum:
+      - container.instance.stop
+  contents:
+    type: object
+    required:
+      - instance_id
+      - container_id
+    properties:
+      instance_id:
+        $ref: ../../../../components/schemas/ID.yml
+      container_id:
+        $ref: ../../../../components/schemas/ID.yml

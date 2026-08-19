@@ -4,14 +4,16 @@ description: A container instance volume resource.
 required:
   - id
   - config
-  - deployed
-  - sftp
 properties:
   id:
-    "$ref": "../../ID.yml"
+    $ref: ../../ID.yml
   config:
-    "$ref": "../config/ContainerVolume.yml"
+    $ref: ../config/ContainerVolume.yml
   deployed:
-    "$ref": "./DeployedVolume.yml"
+    oneOf:
+      - $ref: ./DeployedVolume.yml
+      - type: "null"
   sftp:
-    "$ref": "./SFTP.yml"
+    oneOf:
+      - $ref: ./SFTP.yml
+      - type: "null"

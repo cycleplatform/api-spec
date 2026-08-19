@@ -1,0 +1,120 @@
+title: MonitoringTierDetails
+type: object
+description: Detailed information about a monitoring tier's features.
+required:
+  - enabled
+  - description
+  - metrics
+  - events
+  - logs
+  - forwarding
+  - features
+  - price
+properties:
+  enabled:
+    type: boolean
+    description: Whether or not this tier is a selectable monitoring tier for an environment. A disabled tier may be either one coming in the future, or a legacy tier that is no longer available, but saved for historical reasons.
+  description:
+    type: string
+    description: A hamanized description of the monitoring tier.
+  metrics:
+    type: object
+    description: Details on how metrics are handled for this tier.
+    required:
+      - service_granularity
+      - container_telemetry_granularity
+      - retention_period
+      - downsample_period
+      - custom
+      - usage
+    properties:
+      service_granularity:
+        $ref: ../../../Duration.yml
+      container_telemetry_granularity:
+        $ref: ../../../Duration.yml
+      retention_period:
+        $ref: ../../../Duration.yml
+      downsample_period:
+        $ref: ../../../Duration.yml
+      custom:
+        type: boolean
+        description: Whether or not custom user-submitted metrics are supported on this tier.
+      usage:
+        $ref: ./MonitoringUsage.yml
+  events:
+    type: object
+    description: Details on how events are handled for this tier.
+    required:
+      - retention_period
+      - custom
+      - usage
+    properties:
+      retention_period:
+        $ref: ../../../Duration.yml
+      custom:
+        type: boolean
+        description: Whether or not custom user-submitted events are supported on this tier.
+      usage:
+        $ref: ./MonitoringUsage.yml
+  logs:
+    type: object
+    description: Details on how logs are handled for this tier.
+    required:
+      - analysis
+      - collection
+    properties:
+      analysis:
+        type: object
+        description: Details on log analysis features for this tier.
+        required:
+          - supported
+          - rules
+          - retention_period
+          - usage
+        properties:
+          supported:
+            description: Indicates if log analysis is supported on this tier.
+            type: boolean
+          rules:
+            type: integer
+          retention_period:
+            $ref: ../../../Duration.yml
+          usage:
+            $ref: ./MonitoringUsage.yml
+      collection:
+        description: Details on log collection features for this tier.
+        required:
+          - supported
+        properties:
+          supported:
+            description: Indicates if log collection is supported on this tier.
+            type: boolean
+          cold:
+            oneOf:
+              - $ref: ./MonitoringTierDetailsLogsCollectionTier.yml
+              - type: "null"
+          hot:
+            oneOf:
+              - $ref: ./MonitoringTierDetailsLogsCollectionTier.yml
+              - type: "null"
+  forwarding:
+    type: object
+    required:
+      - supported
+      - bandwidth
+    properties:
+      supported:
+        description: Indicates if metric forwarding is supported on this tier.
+        type: boolean
+      bandwidth:
+        description: Describes maximum included bandwidth and overage costs, if applicable.
+        $ref: ./MonitoringUsage.yml
+  features:
+    type: object
+    required:
+      - public_ping_monitor
+    properties:
+      public_ping_monitor:
+        type: boolean
+  price:
+    $ref: ../../../billing/BillingAmount.yml

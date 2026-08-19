@@ -26,6 +26,13 @@ get:
           type: string
           enum:
             - due
+            - hub
+    - name: token
+      in: query
+      required: false
+      description: Token can be optionally provided for authentication outside of the hub context.
+      schema:
+        type: string
   responses:
     200:
       description: Returns an invoice resource.

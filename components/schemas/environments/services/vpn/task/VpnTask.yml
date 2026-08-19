@@ -1,0 +1,8 @@
+discriminator:
+  propertyName: action
+  mapping:
+    reset: VpnResetAction.yml
+    reconfigure: VpnReconfigureAction.yml
+oneOf:
+  - $ref: VpnResetAction.yml
+  - $ref: VpnReconfigureAction.yml

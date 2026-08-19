@@ -1,0 +1,7 @@
+title: ClusterTask
+discriminator:
+  propertyName: action
+  mapping:
+    features.monitoring.tier.reconfigure: ClusterReconfigureMonitoringTierAction.yml
+oneOf:
+  - $ref: ClusterReconfigureMonitoringTierAction.yml

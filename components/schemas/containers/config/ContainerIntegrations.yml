@@ -39,26 +39,26 @@ properties:
           type: string
           description: The path in the container for these files to be injected.
   lets_encrypt:
-    type:
-      - object
-      - "null"
     description: Configuration settings to embed a TLS certificate in the container.
-    properties:
-      certificate_path:
-        type: string
-        description: Path where the `certificate.cert` will be saved.
-      chain_path:
-        type: string
-        description: Path where the `certificate.chain` will be saved.
-      key_path:
-        type: string
-        description: Path where the `certificate.key` will be saved.
-      bundle_path:
-        type: string
-        description: Path where the `certificate.bundle` will be saved.
-      additional_certs_path:
-        type: string
-        description: File path where any remaining certificate files will be stored.
+    oneOf:
+      - type: object
+        properties:
+          certificate_path:
+            type: string
+            description: Path where the `certificate.cert` will be saved.
+          chain_path:
+            type: string
+            description: Path where the `certificate.chain` will be saved.
+          key_path:
+            type: string
+            description: Path where the `certificate.key` will be saved.
+          bundle_path:
+            type: string
+            description: Path where the `certificate.bundle` will be saved.
+          additional_certs_path:
+            type: string
+            description: File path where any remaining certificate files will be stored.
+      - type: "null"
   backups:
     type: object
     description: Automated backups configuration for the given container.
@@ -85,7 +85,7 @@ properties:
               - type: "null"
             description: How long the backup will attempt to run before timing out.
           cron_string:
-            type: string
+            $ref: ../../Crontab.yml
             description: A cron string that configures how often the backup will run.
       restore:
         type:
@@ -110,41 +110,16 @@ properties:
         description: How long the platform will keep backups. Default is 1 year.
         default: "365d"
   shared_file_systems:
-    type:
-      - object
-      - "null"
-    additionalProperties:
-      type: object
-      required:
-        - writable
-        - mount_point
-      properties:
-        writable:
-          type: boolean
-        mount_point:
-          type: string
-  logs:
-    description: When enabled, allows more customization to be applied to logging for the container.
     oneOf:
       - type: object
-        properties:
-          drain:
-            description: When enabled, log drain allows logs to be exported to a third party service.
-            oneOf:
-              - type: object
-                required:
-                  - url
-                properties:
-                  url:
-                    description: The URL to the third party logging service where logs will be sent.
-                    type: string
-                  format:
-                    description: The format Cycle will use to send the logs.
-                    oneOf:
-                      - type: string
-                        enum:
-                          - ndjson-headers
-                          - ndjson-raw
-                      - type: "null"
-              - type: "null"
+        additionalProperties:
+          type: object
+          required:
+            - writable
+            - mount_point
+          properties:
+            writable:
+              type: boolean
+            mount_point:
+              type: string
       - type: "null"

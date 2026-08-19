@@ -1,0 +1,110 @@
+post:
+  operationId: "createVirtualProviderIso"
+  summary: Create Virtual Provider Iso
+  description: |
+    Create an ISO for a virtual provider.
+
+    Requires the `servers-manage` capability.
+  tags:
+    - Virtual Providers
+  parameters:
+    - name: integrationId
+      description: The ID of the virtual provider integration to execute the job on.
+      in: path
+      required: true
+      schema:
+        type: string
+  requestBody:
+    description: Parameters for creating a new virtual provider job.
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - name
+            - config
+          properties:
+            name:
+              description: The name of the ISO.
+              type: string
+            config:
+              type: object
+              required:
+                - token
+              properties:
+                token:
+                  type: string
+                  description: Authentication token for the ISO.
+                ipxe:
+                  oneOf:
+                    - $ref: ../../../../../components/schemas/infrastructure/virtual-providers/VirtualProviderIsoIpxeConfig.yml
+                    - type: "null"
+                server:
+                  oneOf:
+                    - $ref: ../../../../../components/schemas/infrastructure/virtual-providers/VirtualProviderIsoServerConfig.yml
+                    - type: "null"
+
+  responses:
+    201:
+      description: Returns an ISO.
+      content:
+        application/json:
+          schema:
+            title: "TaskResponse"
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../../components/schemas/infrastructure/virtual-providers/VirtualProviderIso.yml
+    default:
+      $ref: ../../../../../components/responses/errors/DefaultError.yml
+
+get:
+  operationId: getVirtualProviderIsos
+  summary: Get ISOs for a virtual provider
+  description: |
+    Get ISOs for a virtual provider.
+
+    Requires the `servers-manage` capability.
+  tags:
+    - Virtual Providers
+  parameters:
+    - name: integrationId
+      description: The ID of the integration.
+      in: path
+      required: true
+      schema:
+        type: string
+    - name: include
+      in: query
+      required: false
+      description:
+        A comma separated list of include values. Included resources will show
+        up under the root document's `include` field, with the key being the id of the included
+        resource. In the case of applying an include to a collection of resources, if two
+        resources share the same include, it will only appear once in the return.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - integrations
+    - $ref: ../../../../../components/parameters/PageParam.yml
+    - $ref: ../../../../../components/parameters/SortParam.yml
+  responses:
+    200:
+      description: Returns an a list of ISOs.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: ../../../../../components/schemas/infrastructure/virtual-providers/VirtualProviderIso.yml
+              includes:
+                $ref: ../includes/VirtualProviderIsoIncludes.yml

@@ -1,0 +1,32 @@
+title: RuntimeDevicePermission
+type: object
+description: >
+  A rule that grants or denies access to a device node (e.g., Linux cgroup
+  device rule). Controls which device type and major/minor numbers are
+  allowed, and with what access.
+required:
+  - type
+  - allow
+  - access
+properties:
+  type:
+    $ref: "./RuntimeDevicePermissionType.yml"
+  major:
+    description: >
+      Device major number.
+    type:
+      - integer
+      - "null"
+    format: int64
+  minor:
+    description: >
+      Device minor number.
+    type:
+      - integer
+      - "null"
+    format: int64
+  allow:
+    type: boolean
+    description: Whether this rule allows (true) or denies (false) access.
+  access:
+    $ref: "./RuntimeDevicePermissionAccess.yml"

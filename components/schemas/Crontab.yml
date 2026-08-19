@@ -1,0 +1,26 @@
+title: Crontab
+type: string
+format: crontab
+description: |
+  A crontab string defines a recurring schedule.
+
+  In standard form it consists of five space-separated fields specifying, in
+  order, the minute (0-59), hour (0-23), day of the month (1-31), month
+  (1-12), and day of the week (0-6, where 0 is Sunday). Each field accepts a
+  specific value, a wildcard (`*`), a range (`1-5`), a list (`1,15,30`), or a
+  step (`*/5`).
+
+  An optional leading seconds field (0-59) may be included, producing a
+  six-field form.
+
+  Predefined macros are also accepted in place of the fields: `@yearly`
+  (equivalent to `@annually`), `@monthly`, `@weekly`, `@daily` (equivalent to
+  `@midnight`), and `@hourly`, as well as `@every <duration>` where duration
+  is a duration string such as `5m` or `1h30m`.
+examples:
+  - "*/5 * * * *"
+  - "0 0 * * *"
+  - "30 9 * * 1-5"
+  - "*/30 * * * * *"
+  - "@daily"
+  - "@every 5m"

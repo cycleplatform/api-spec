@@ -1,0 +1,10 @@
+title: ShutdownSignal
+type: string
+description: Process signals that Cycle can be configured to send to the container on a shutdown event.
+enum:
+  - SIGTERM
+  - SIGINT
+  - SIGUSR1
+  - SIGUSR2
+  - SIGHUP
+  - SIGQUIT

@@ -1,0 +1,9 @@
+title: DnsRecordAlias
+type: object
+description: A DNS ALIAS record.
+required:
+  - domain
+properties:
+  domain:
+    type: string
+    description: The domain string returned from the DNS server when this alias record is requested.
