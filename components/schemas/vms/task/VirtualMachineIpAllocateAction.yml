@@ -15,3 +15,6 @@ properties:
       ip_id:
         $ref: ../../ID.yml
         description: The ID of the IP address to allocate to the virtual machine.
+      server_id:
+        $ref: ../../ID.yml
+        description: The ID of the server the IP address is allocated from.
