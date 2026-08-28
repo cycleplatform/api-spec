@@ -1,5 +1,5 @@
 {
-  "name": "Cycle Integration Testing (e2e)",
+  "name": "Cycle API Spec",
 
   "build": {
     "dockerfile": "Dockerfile",
