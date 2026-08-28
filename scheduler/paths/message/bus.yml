@@ -1,3 +1,51 @@
+get:
+  operationId: "getMessages"
+  summary: Get Messages
+  description: |
+    Subscribes to the environment message bus, streaming messages to the client as they are published.
+
+    The response is a [server-sent event](https://html.spec.whatwg.org/multipage/server-sent-events.html) stream that stays
+    open until the client disconnects. Each event carries a single Message, JSON encoded, in its `data` field.
+  tags:
+    - Message Bus
+  parameters:
+    - name: channel
+      in: query
+      required: false
+      description: The channel to consume messages from. If not set, messages are consumed from the default channel.
+      schema:
+        type: string
+    - name: topics
+      in: query
+      required: false
+      style: form
+      explode: false
+      description: A comma separated list of topics to consume. If not set, messages from all topics are consumed.
+      schema:
+        type: array
+        items:
+          $ref: ../../components/messages/Topic.yml
+  responses:
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Opens a stream of messages published to the subscribed topics.
+      headers:
+        Cache-Control:
+          description: The stream is never cached.
+          schema:
+            type: string
+            const: no-cache
+        Connection:
+          description: The connection is held open for the duration of the stream.
+          schema:
+            type: string
+            const: keep-alive
+      content:
+        text/event-stream:
+          itemSchema:
+            $ref: ../../components/messages/MessageEvent.yml
+
 post:
   operationId: "pushMessage"
   summary: Push Message
