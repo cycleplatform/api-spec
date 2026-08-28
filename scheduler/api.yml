@@ -19,6 +19,8 @@ security:
 tags:
   - name: Functions
     description: "Containers configured to be pre-allocated and started on demand - useful for batch processing and tasks with elastic demand. Managed by a scheduler service (this API) on a per-environment basis."
+  - name: Message Bus
+    description: "A publish/subscribe message bus for passing messages between containers in an environment. Managed by a scheduler service (this API) on a per-environment basis."
 
 paths:
   # v1
@@ -31,6 +33,10 @@ paths:
     $ref: paths/functions/release.yml
   /v1/functions/{containerId}/active:
     $ref: paths/functions/active.yml
+
+  ## message bus
+  /v1/message/bus:
+    $ref: paths/message/bus.yml
 
 components:
   securitySchemes:

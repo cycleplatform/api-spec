@@ -1,0 +1,52 @@
+post:
+  operationId: "pushMessage"
+  summary: Push Message
+  description: |
+    Publishes a message onto the environment message bus, where it can be picked up by consumers.
+  tags:
+    - Message Bus
+  parameters: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - message
+          properties:
+            message:
+              $ref: ../../components/messages/NewMessage.yml
+            durability:
+              description: Optional settings that affect how long the message is retained on the bus.
+              anyOf:
+                - $ref: ../../components/messages/Durability.yml
+                - type: "null"
+            distribution:
+              description: Optional settings that affect how the message is distributed to consumers.
+              anyOf:
+                - $ref: ../../components/messages/Distribution.yml
+                - type: "null"
+  responses:
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    201:
+      description: Returns the message that was pushed, and how many consumers it was sent to.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: object
+                required:
+                  - message
+                  - sent
+                properties:
+                  message:
+                    $ref: ../../components/messages/Message.yml
+                  sent:
+                    type: integer
+                    description: The number of consumers the message was sent to.
