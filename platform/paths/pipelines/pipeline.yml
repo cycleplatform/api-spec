@@ -110,7 +110,7 @@ delete:
       schema:
         type: string
   responses:
-    200:
+    202:
       description: Returns a Job Descriptor.
       content:
         application/json:
