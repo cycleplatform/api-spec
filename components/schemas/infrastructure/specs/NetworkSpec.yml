@@ -18,8 +18,8 @@ properties:
       - private
       - shared
   throughput:
-    type: integer
-    description: The network throughput in MB(per second).
+    type: string
+    description: The network throughput description from the provider.
   type:
     type: string
     description: The type of the NIC.
