@@ -1,0 +1,40 @@
+post:
+  operationId: createPipelineRunJob
+  summary: Create Pipeline Run Job
+  description: Creates a task that will be executed against a pipeline run. Currently supports the `cancel` action, which is only valid while the run is in the `queued` or `acquiring` state.
+  tags:
+    - Pipelines
+  security:
+    - bearerAuth: []
+    - hubAuth: []
+  parameters:
+    - name: pipelineId
+      in: path
+      required: true
+      description: The ID of the pipeline.
+      schema:
+        type: string
+    - name: runId
+      in: path
+      required: true
+      description: The ID of the pipeline run.
+      schema:
+        type: string
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: ../../../components/schemas/pipelines/runs/task/PipelineRunTask.yml
+  responses:
+    "202":
+      description: Returns a Job Descriptor.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: ../../../components/schemas/jobs/JobDescriptor.yml
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml

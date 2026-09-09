@@ -713,6 +713,8 @@ paths:
     $ref: "./paths/pipelines/runs.yml"
   "/v1/pipelines/{pipelineId}/runs/{runId}":
     $ref: "./paths/pipelines/run.yml"
+  "/v1/pipelines/{pipelineId}/runs/{runId}/tasks":
+    $ref: "./paths/pipelines/run-tasks.yml"
   "/v1/pipelines/{pipelineId}/tasks":
     $ref: "./paths/pipelines/tasks.yml"
   "/v1/pipelines/clone":

@@ -1,0 +1,10 @@
+title: CancelPipelineRunAction
+type: object
+required:
+  - action
+properties:
+  action:
+    type: string
+    description: The requested action to perform.
+    enum:
+      - cancel
