@@ -1,0 +1,7 @@
+title: PipelineRunTask
+discriminator:
+  propertyName: action
+  mapping:
+    cancel: CancelPipelineRunAction.yml
+oneOf:
+  - $ref: CancelPipelineRunAction.yml

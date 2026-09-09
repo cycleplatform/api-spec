@@ -11,6 +11,7 @@ allOf:
           - acquiring
           - running
           - complete
+          - cancelling
           - cancelled
           - deleted
   - "$ref": "../../State.yml"
