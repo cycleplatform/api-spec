@@ -162,7 +162,7 @@ delete:
                   description: If force is set to true, this will force delete the server, even if there are instances running on it.
                   type: boolean
   responses:
-    200:
+    202:
       description: Returns a Job Descriptor.
       content:
         application/json:

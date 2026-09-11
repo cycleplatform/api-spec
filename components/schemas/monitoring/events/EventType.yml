@@ -36,10 +36,13 @@ enum:
   - environment.service.vpn.login.failed
   - environment.service.discovery.client.throttle.hit
   - environment.service.scheduler.cron.instance.claim
+  - environment.service.scheduler.cron.instance.claim.failed
   - environment.service.scheduler.cron.instance.spawn
+  - environment.service.scheduler.cron.instance.spawn.failed
   - environment.service.gateway.ips.sync.failed
   - infrastructure.cluster.resources.ram.full
   - infrastructure.server.compute.volumes.base.reconfigured
+  - infrastructure.server.compute.volumes.base.reconfigure.failed
   - infrastructure.server.compute.full_restart
   - infrastructure.server.compute.sharedfs.mounts.mount
   - infrastructure.server.compute.sharedfs.mounts.mount.failed
