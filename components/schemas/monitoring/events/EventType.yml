@@ -44,6 +44,7 @@ enum:
   - infrastructure.server.compute.volumes.base.reconfigured
   - infrastructure.server.compute.volumes.base.reconfigure.failed
   - infrastructure.server.compute.full_restart
+  - infrastructure.server.ipsec.keys.rolled
   - infrastructure.server.compute.sharedfs.mounts.mount
   - infrastructure.server.compute.sharedfs.mounts.mount.failed
   - infrastructure.server.compute.soft_restart
