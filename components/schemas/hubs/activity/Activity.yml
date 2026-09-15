@@ -326,6 +326,7 @@ properties:
       - infrastructure.server.task.evacuation.reset
       - infrastructure.server.power-off
       - infrastructure.server.auth.reset
+      - infrastructure.server.ipsec.keys.roll
 
       - infrastructure.autoscale.group.create
       - infrastructure.autoscale.group.update
