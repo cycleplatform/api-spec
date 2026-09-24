@@ -47,6 +47,16 @@ properties:
           - object
           - "null"
         properties:
+          force_protocol:
+            type:
+              - integer
+              - "null"
+            enum:
+              - 1
+              - 2
+              - null
+            description: |
+              Forces a specific HTTP protocol version with the backend client. `1` forces HTTP/1.1, and `2` forces HTTP/2. If null, the protocol is negotiated automatically.
           scheme:
             type:
               - string
@@ -75,7 +85,7 @@ properties:
                       description: Replacement value.
                       type: string
           url:
-            type: 
+            type:
               - string
               - "null"
             description: |
