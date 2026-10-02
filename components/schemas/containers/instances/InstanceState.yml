@@ -3,6 +3,9 @@ description: Information about the state of an instance.
 allOf:
   - required:
       - current
+      - health
+      - readiness
+      - host
     properties:
       current:
         description: The current state of the instance.
@@ -57,6 +60,17 @@ allOf:
                   - type: "null"
               updated:
                 description: A timestamp of the last time the instance readiness was updated.
+                $ref: "../../DateTime.yml"
+          - type: "null"
+      host:
+        description: Information about the host server the instance is deployed to.
+        oneOf:
+          - type: object
+            required:
+              - last_checkin
+            properties:
+              last_checkin:
+                description: The last time the instance checked in with the platform from its host server.
                 $ref: "../../DateTime.yml"
           - type: "null"
   - $ref: "../../State.yml"
