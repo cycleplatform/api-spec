@@ -6,8 +6,8 @@ properties:
     type:
       - array
       - "null"
-    description: A list of IP addresses that are permitted to SSH into servers in this hub.
+    description: A list of CIDRs (IP addresses or ranges) that are permitted to SSH into servers in this hub.
     items:
-      $ref: ../IpAddress.yml
+      $ref: ../Cidr.yml
 required:
   - authorized_ips
