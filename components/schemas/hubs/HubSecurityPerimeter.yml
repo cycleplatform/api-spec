@@ -1,0 +1,13 @@
+title: HubSecurityPerimeter
+type: object
+description: Network perimeter restrictions applied to the servers in this hub.
+properties:
+  authorized_ips:
+    type:
+      - array
+      - "null"
+    description: A list of IP addresses that are permitted to SSH into servers in this hub.
+    items:
+      $ref: ../IpAddress.yml
+required:
+  - authorized_ips
