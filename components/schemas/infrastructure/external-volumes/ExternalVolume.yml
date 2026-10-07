@@ -8,6 +8,7 @@ required:
   - id
   - hub_id
   - name
+  - identifier
   - about
   - cluster
   - location_id
@@ -29,9 +30,7 @@ properties:
   cluster:
     $ref: "../../Identifier.yml"
   identifier:
-    oneOf:
-      - $ref: "../../Identifier.yml"
-      - type: "null"
+    $ref: "../../Identifier.yml"
   location_id:
     $ref: "../../ID.yml"
   server_ids:
@@ -46,11 +45,15 @@ properties:
       - $ref: "./attachment/ExternalVolumeAttachment.yml"
       - type: "null"
   size:
+    type:
+      - integer
+      - "null"
     description: >
-      Size of the external volume; may be null or omitted if the size has not yet
+      Size of the external volume in megabytes; may be null or omitted if the size has not yet
       been determined.
-    oneOf:
-      - $ref: "../../DataSize.yml"
+  acl:
+    anyOf:
+      - $ref: "../../common/ACL.yml"
       - type: "null"
   options:
     $ref: "./ExternalVolumeOptions.yml"
