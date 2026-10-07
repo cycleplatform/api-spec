@@ -26,13 +26,13 @@ properties:
       - total
     properties:
       used:
-        type: integer
+        type: number
         description: The amount of storage currently used in the base volume.
       free:
-        type: integer
+        type: number
         description: The amount of free space on the base volume.
       total:
-        type: integer
+        type: number
         description: The total amount of space on the base volume.
         # TODO find out if this is bytes, KB, or MB
   storage_pool:
