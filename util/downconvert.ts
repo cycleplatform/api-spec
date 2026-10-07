@@ -144,6 +144,7 @@ class Schema {
     this.deduplicateRequired();
     this.handleConstAsEnum();
     this.handleNullType();
+    this.removeNullFromEnum();
     this.collapseNullUnion("anyOf");
     this.collapseNullUnion("oneOf");
     this.flattenIdenticalReferences(schemaMap);
@@ -195,6 +196,23 @@ class Schema {
     if (this.type === "null") {
       this.type = "object";
       this.nullable = true;
+    }
+  }
+
+  // A 3.1 nullable enum lists `null` as a member (`type: [integer, "null"]`,
+  // `enum: [1, 2, null]`). Once the type array has become `nullable: true`,
+  // null is already allowed, and leaving it in `enum` breaks code generators
+  // (e.g. oapi-codegen emits a `= <nil>` constant). Drop it from the enum.
+  removeNullFromEnum() {
+    if (!Array.isArray(this.enum) || !this.enum.includes(null)) {
+      return;
+    }
+
+    this.nullable = true;
+    this.enum = this.enum.filter((value) => value !== null);
+
+    if (this.enum.length === 0) {
+      delete this.enum;
     }
   }
 
