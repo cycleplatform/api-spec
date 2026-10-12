@@ -2,9 +2,6 @@ title: NetworkRouteConfig
 type: object
 description: A single network route directing traffic for a destination network.
 required:
-  - destination
-  - source
-  - ensure_source_exists
   - gateway
   - interface
 properties:

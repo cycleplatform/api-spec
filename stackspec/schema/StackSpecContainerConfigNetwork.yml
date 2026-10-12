@@ -29,8 +29,8 @@ properties:
           type: object
           description: A single network route directing traffic for a destination network.
           required:
-            - destination
             - gateway
+            - interface
           properties:
             destination:
               description: The destination network, in CIDR notation, that this route matches.
