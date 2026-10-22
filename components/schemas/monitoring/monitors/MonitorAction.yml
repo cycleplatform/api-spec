@@ -1,0 +1,15 @@
+title: MonitorAction
+description: >
+  An action taken when a monitor's rule set matches. The type discriminates
+  what runs; details carries the type-specific configuration.
+type: object
+required:
+  - type
+  - details
+properties:
+  type:
+    type: string
+    description: The kind of action to take. Determines the shape of the details object.
+  details:
+    description: Type-specific configuration for the action.
+    additionalProperties: true

@@ -1,15 +1,53 @@
 get:
-  operationId: "getMonitoringMonitors"
-  summary: Get Monitoring Monitors
-  description: | 
-    Returns location information about the monitors used for Cycle's external monitoring service.
-    These monitors are used for determining the latency between the public internet and environment 
-    load balancers.
+  operationId: "getMonitors"
+  summary: List Monitors
+  description: Requires the `monitoring-monitors-view` capability.
   tags:
     - Monitoring
+  parameters:
+    - name: include
+      in: query
+      required: false
+      description:
+        A comma separated list of include values. Included resources will show up under
+        the root document's `include` field, with the key being the id of the included resource.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - creators
+    - name: filter
+      in: query
+      style: deepObject
+      required: false
+      description: |
+        ## Filter Field
+        The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
+      schema:
+        type: object
+        properties:
+          identifier:
+            type: string
+            description: |
+              `filter[identifier]=value` List only those monitors matching this identifier. May return multiple results.
+          search:
+            type: string
+            description: |
+              `filter[search]=value` search for a value associated with a field on the given monitor(s).
+          state:
+            type: string
+            description: |
+              `filter[state]=value1,value2` filter by the monitor's current lifecycle state.
+          cluster:
+            type: string
+            description: |
+              `filter[cluster]=identifier` list monitors that either apply globally or are scoped to the specified cluster.
+    - $ref: ../../../../components/parameters/SortParam.yml
+    - $ref: ../../../../components/parameters/PageParam.yml
   responses:
     200:
-      description: Returns and array of monitor location information.
+      description: Returns a list of Monitors.
       content:
         application/json:
           schema:
@@ -20,6 +58,71 @@ get:
               data:
                 type: array
                 items:
-                  $ref: ../../../../components/schemas/monitoring/Monitor.yml
+                  $ref: ../../../../components/schemas/monitoring/monitors/Monitor.yml
+              includes:
+                type: object
+                properties:
+                  creators:
+                    $ref: ../../../../components/schemas/includes/IncludedCreators.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml
+post:
+  operationId: "createMonitor"
+  summary: Create Monitor
+  description: Requires the `monitoring-monitors-manage` capability.
+  tags:
+    - Monitoring
+  parameters: []
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - name
+            - description
+            - scope
+            - config
+          properties:
+            name:
+              type: string
+              description: A user-defined name for the monitor. Cannot be empty.
+            description:
+              type: string
+              description: A longer description of what this monitor observes and why.
+            identifier:
+              oneOf:
+                - $ref: ../../../../components/schemas/Identifier.yml
+                - type: "null"
+              description: A slug for the monitor. Generated from the name when omitted or empty.
+            scope:
+              type: object
+              description: What this monitor observes. Either global or scoped to specific clusters.
+              required:
+                - global
+                - clusters
+              properties:
+                global:
+                  type: boolean
+                  description: When true, the monitor observes all clusters within the hub.
+                clusters:
+                  type: array
+                  description: Cluster identifiers this monitor is scoped to. Ignored when global is true.
+                  items:
+                    $ref: ../../../../components/schemas/Identifier.yml
+            config:
+              $ref: ../../../../components/schemas/monitoring/monitors/MonitorConfig.yml
+  responses:
+    201:
+      description: Returns a Monitor.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/monitoring/monitors/Monitor.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml

@@ -1,0 +1,100 @@
+get:
+  operationId: "getMessages"
+  summary: Get Messages
+  description: |
+    Subscribes to the environment message bus, streaming messages to the client as they are published.
+
+    The response is a [server-sent event](https://html.spec.whatwg.org/multipage/server-sent-events.html) stream that stays
+    open until the client disconnects. Each event carries a single Message, JSON encoded, in its `data` field.
+  tags:
+    - Message Bus
+  parameters:
+    - name: channel
+      in: query
+      required: false
+      description: The channel to consume messages from. If not set, messages are consumed from the default channel.
+      schema:
+        type: string
+    - name: topics
+      in: query
+      required: false
+      style: form
+      explode: false
+      description: A comma separated list of topics to consume. If not set, messages from all topics are consumed.
+      schema:
+        type: array
+        items:
+          $ref: ../../components/messages/Topic.yml
+  responses:
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    200:
+      description: Opens a stream of messages published to the subscribed topics.
+      headers:
+        Cache-Control:
+          description: The stream is never cached.
+          schema:
+            type: string
+            const: no-cache
+        Connection:
+          description: The connection is held open for the duration of the stream.
+          schema:
+            type: string
+            const: keep-alive
+      content:
+        text/event-stream:
+          itemSchema:
+            $ref: ../../components/messages/MessageEvent.yml
+
+post:
+  operationId: "pushMessage"
+  summary: Push Message
+  description: |
+    Publishes a message onto the environment message bus, where it can be picked up by consumers.
+  tags:
+    - Message Bus
+  parameters: []
+  requestBody:
+    required: true
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - message
+          properties:
+            message:
+              $ref: ../../components/messages/NewMessage.yml
+            durability:
+              description: Optional settings that affect how long the message is retained on the bus.
+              anyOf:
+                - $ref: ../../components/messages/Durability.yml
+                - type: "null"
+            distribution:
+              description: Optional settings that affect how the message is distributed to consumers.
+              anyOf:
+                - $ref: ../../components/messages/Distribution.yml
+                - type: "null"
+  responses:
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml
+    201:
+      description: Returns the message that was pushed, and how many consumers it was sent to.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: object
+                required:
+                  - message
+                  - sent
+                properties:
+                  message:
+                    $ref: ../../components/messages/Message.yml
+                  sent:
+                    type: integer
+                    description: The number of consumers the message was sent to.

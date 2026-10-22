@@ -38,6 +38,11 @@ properties:
     description: A record of environment variables for the given container.
     additionalProperties:
       type: string
+  user:
+    type:
+      - string
+      - "null"
+    description: The user the container process runs as.
   privileged:
     type: boolean
     description: Selecting this option will give this container full permissions on the server. This is not recommended and increases the likelihood of your server being compromised.

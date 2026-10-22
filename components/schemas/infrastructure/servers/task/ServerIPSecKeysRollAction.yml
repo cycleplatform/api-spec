@@ -1,0 +1,12 @@
+title: ServerIPSecKeysRollAction
+type: object
+description: |
+  A job that rolls new IPSec encryption keys for this node.
+required:
+  - action
+properties:
+  action:
+    type: string
+    description: The action to take.
+    enum:
+      - ipsec.keys.roll

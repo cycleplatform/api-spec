@@ -1,0 +1,24 @@
+title: MonitorRuleSet
+description: >
+  A collection of rules and how they combine. Rules evaluate individually; the
+  evaluate mode determines whether all of them must match for the set to trigger,
+  or whether any single match is enough.
+type: object
+required:
+  - evaluate
+  - rules
+properties:
+  evaluate:
+    type: string
+    enum:
+      - any
+      - all
+    description: >
+      How the rules combine.
+        - `any` - the rule set matches when any rule matches.
+        - `all` - the rule set matches only when every rule matches.
+  rules:
+    type: array
+    description: The individual rules evaluated by the rule set.
+    items:
+      $ref: ./MonitorRule.yml

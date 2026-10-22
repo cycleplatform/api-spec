@@ -72,6 +72,6 @@ get:
               data:
                 type: array
                 items:
-                  $ref: ../../../../components/schemas/monitoring/Metric.yml
+                  $ref: ../../../../components/schemas/monitoring/metrics/Metric.yml
     default:
       $ref: ../../../../components/responses/errors/DefaultError.yml

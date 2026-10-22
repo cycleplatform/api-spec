@@ -1,0 +1,37 @@
+title: Message
+description: A message on the scheduler message bus.
+type: object
+required:
+  - time
+  - uuid
+  - topic
+  - payload
+  - annotations
+  - durability
+  - distribution
+properties:
+  time:
+    description: The date and time the message was created.
+    $ref: ../../../components/schemas/DateTime.yml
+  uuid:
+    type: string
+    format: uuid
+    description: A unique identifier for the message, assigned by the scheduler when the message is pushed.
+    examples:
+      - "f81d4fae-7dec-11d0-a765-00a0c91e6bf6"
+  topic:
+    $ref: Topic.yml
+  payload:
+    description: The contents of the message. Can be any valid JSON, and is passed through to consumers untouched.
+  annotations:
+    anyOf:
+      - $ref: Annotations.yml
+      - type: "null"
+  durability:
+    anyOf:
+      - $ref: Durability.yml
+      - type: "null"
+  distribution:
+    anyOf:
+      - $ref: Distribution.yml
+      - type: "null"

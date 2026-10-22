@@ -1,0 +1,131 @@
+title: Monitor
+description: >
+  A user-defined monitor that watches conditions on the platform and raises alarms
+  when configured rules trigger. Monitors have a scope that determines what they
+  observe (globally or against specific clusters) and a configuration that
+  defines their evaluation logic.
+type: object
+required:
+  - id
+  - hub_id
+  - identifier
+  - creator
+  - status
+  - name
+  - description
+  - scope
+  - config
+  - state
+  - events
+properties:
+  id:
+    type: string
+    description: A unique identifier for this monitor.
+  hub_id:
+    type: string
+    description: The ID of the hub this monitor belongs to.
+  identifier:
+    $ref: "../../Identifier.yml"
+  creator:
+    $ref: "../../common/UserScope.yml"
+    description: The user or entity that created this monitor.
+  status:
+    type: string
+    enum:
+      - ok
+      - no-data
+      - alarm
+    description: >
+      The current evaluation status of the monitor.
+        - `ok` - the monitor is evaluating and its rules are not triggered.
+        - `no-data` - the monitor has not received enough data to evaluate.
+        - `alarm` - the monitor's rules have triggered and the monitor is in an alarm state.
+  name:
+    type: string
+    description: A human-readable name for this monitor.
+  description:
+    type: string
+    description: A longer description of what this monitor observes and why.
+  scope:
+    type: object
+    description: What this monitor observes. Either global or scoped to specific clusters.
+    required:
+      - global
+      - clusters
+    properties:
+      global:
+        type: boolean
+        description: When true, the monitor observes all clusters within the hub.
+      clusters:
+        type: array
+        description: Cluster identifiers this monitor is scoped to. Ignored when global is true.
+        items:
+          $ref: "../../Identifier.yml"
+  config:
+    $ref: "./MonitorConfig.yml"
+    description: The evaluation configuration for this monitor.
+  state:
+    title: MonitorStateInfo
+    type: object
+    description: The current runtime state of the monitor.
+    required:
+      - current
+      - changed
+    properties:
+      current:
+        type: string
+        enum:
+          - paused
+          - live
+          - deleting
+          - deleted
+        description: >
+          The current lifecycle state of the monitor.
+            - `paused` - the monitor exists but is not evaluating.
+            - `live` - the monitor is evaluating on its configured window.
+            - `deleting` - the monitor is being torn down.
+            - `deleted` - the monitor has been removed.
+      changed:
+        description: The timestamp of the most recent state transition.
+        $ref: "../../DateTime.yml"
+      error:
+        type: object
+        description: Details of the last error, if the monitor is in an error condition.
+        required:
+          - message
+          - time
+        properties:
+          message:
+            type: string
+            description: A description of the error.
+          time:
+            description: The timestamp at which the error was recorded.
+            $ref: "../../DateTime.yml"
+  events:
+    title: MonitorEvents
+    type: object
+    description: A collection of timestamps for events in the Monitor's lifetime.
+    required:
+      - created
+      - updated
+      - deleted
+    properties:
+      created:
+        description: The timestamp of when the monitor was created.
+        $ref: "../../DateTime.yml"
+      updated:
+        description: The timestamp of when the monitor was updated.
+        $ref: "../../DateTime.yml"
+      deleted:
+        description: The timestamp of when the monitor was deleted.
+        $ref: "../../DateTime.yml"
+      last_alarm:
+        description: The timestamp of the most recent alarm event.
+        $ref: "../../DateTime.yml"
+      last_check:
+        description: The timestamp of the most recent evaluation.
+        $ref: "../../DateTime.yml"
+  meta:
+    type: object
+    description: Additional metadata attached to the monitor response.
+    additionalProperties: true

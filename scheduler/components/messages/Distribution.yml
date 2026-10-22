@@ -1,0 +1,9 @@
+title: Distribution
+description: Describes how a message is distributed to consumers.
+type: object
+properties:
+  channel:
+    description: The channel to distribute the message over. If not set, the message is distributed over the default channel.
+    anyOf:
+      - type: string
+      - type: "null"

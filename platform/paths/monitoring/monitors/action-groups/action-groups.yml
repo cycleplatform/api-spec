@@ -1,0 +1,111 @@
+get:
+  operationId: "getActionGroups"
+  summary: List Action Groups
+  description: Requires the `monitoring-monitors-view` capability.
+  tags:
+    - Monitoring
+  parameters:
+    - name: include
+      in: query
+      required: false
+      description:
+        A comma separated list of include values. Included resources will show up under
+        the root document's `include` field, with the key being the id of the included resource.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - creators
+    - name: filter
+      in: query
+      style: deepObject
+      required: false
+      description: |
+        ## Filter Field
+        The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
+      schema:
+        type: object
+        properties:
+          identifier:
+            type: string
+            description: |
+              `filter[identifier]=value` List only those action groups matching this identifier. May return multiple results.
+          search:
+            type: string
+            description: |
+              `filter[search]=value` search for a value associated with a field on the given action group(s).
+          state:
+            type: string
+            description: |
+              `filter[state]=value1,value2` filter by the action group's current lifecycle state.
+    - $ref: ../../../../../components/parameters/SortParam.yml
+    - $ref: ../../../../../components/parameters/PageParam.yml
+  responses:
+    200:
+      description: Returns a list of Action Groups.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: ../../../../../components/schemas/monitoring/monitors/actionGroups/ActionGroup.yml
+              includes:
+                type: object
+                properties:
+                  creators:
+                    $ref: ../../../../../components/schemas/includes/IncludedCreators.yml
+    default:
+      $ref: ../../../../../components/responses/errors/DefaultError.yml
+post:
+  operationId: "createActionGroup"
+  summary: Create Action Group
+  description: Requires the `monitoring-monitors-manage` capability.
+  tags:
+    - Monitoring
+  parameters: []
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - name
+            - description
+            - actions
+          properties:
+            name:
+              type: string
+              description: A user-defined name for the action group. Cannot be empty.
+            description:
+              type: string
+              description: A longer description of what this action group does and when it is used.
+            identifier:
+              oneOf:
+                - $ref: ../../../../../components/schemas/Identifier.yml
+                - type: "null"
+              description: A slug for the action group. Generated from the name when omitted or empty.
+            actions:
+              type: array
+              description: The actions run when this group is triggered.
+              items:
+                $ref: ../../../../../components/schemas/monitoring/monitors/MonitorAction.yml
+  responses:
+    201:
+      description: Returns an Action Group.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../../components/schemas/monitoring/monitors/actionGroups/ActionGroup.yml
+    default:
+      $ref: ../../../../../components/responses/errors/DefaultError.yml

@@ -1,0 +1,6 @@
+title: MonitorRuleTarget
+description: >
+  The subject of a monitor rule — the event target or metric name to evaluate
+  against. Alphanumeric characters, dots, hyphens, and underscores only.
+type: string
+pattern: "^[a-zA-Z0-9._-]+$"

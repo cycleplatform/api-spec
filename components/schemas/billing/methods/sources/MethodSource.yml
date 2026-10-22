@@ -1,4 +1,5 @@
 title: MethodSource
+type: object
 description: The underlying source (credit card, bank account, etc) used by a payment method.
 discriminator:
   propertyName: type

@@ -8,7 +8,7 @@ required:
 properties:
   time:
     description: When the metric was submitted to the platform.
-    $ref: ../DateTime.yml
+    $ref: ../../DateTime.yml
   labels:
     type: object
     description: Additional key-values that can be used for querying in an aggregation pipeline. Often useful for filtering.
@@ -26,7 +26,7 @@ properties:
       type: array
       items:
         anyOf:
-          - $ref: ../DateTime.yml
+          - $ref: ../../DateTime.yml
           - type: integer
   metadata:
     description: Information about this metric, such as the type of metric, the data it represents, and critical common information such as hub ID and associated cluster.
@@ -111,10 +111,10 @@ properties:
         description: The originator of this metric.
         type: string
       hub_id:
-        $ref: ../ID.yml
+        $ref: ../../ID.yml
       component:
         description: The specific resource ID and type associated with this metric.
-        type: 
+        type:
           - object
           - "null"
         required:
@@ -122,11 +122,11 @@ properties:
           - type
         properties:
           id:
-            $ref: ../ID.yml
+            $ref: ../../ID.yml
           type:
             type: string
       cluster:
         description: "The cluster associated with this metric"
-        type: 
+        type:
           - string
           - "null"

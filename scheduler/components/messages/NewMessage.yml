@@ -1,0 +1,15 @@
+title: NewMessage
+description: A message to publish onto the scheduler message bus.
+type: object
+required:
+  - topic
+  - payload
+properties:
+  topic:
+    $ref: Topic.yml
+  annotations:
+    anyOf:
+      - $ref: Annotations.yml
+      - type: "null"
+  payload:
+    description: The contents of the message. Can be any valid JSON, and is passed through to consumers untouched.

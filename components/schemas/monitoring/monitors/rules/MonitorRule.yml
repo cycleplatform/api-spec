@@ -1,0 +1,13 @@
+title: MonitorRule
+type: object
+description: >
+  A single rule evaluated by the monitor. The type discriminates whether the
+  rule watches events or metrics.
+discriminator:
+  propertyName: type
+  mapping:
+    event: ./MonitorEventRule.yml
+    metric: ./MonitorMetricRule.yml
+oneOf:
+  - $ref: ./MonitorEventRule.yml
+  - $ref: ./MonitorMetricRule.yml
