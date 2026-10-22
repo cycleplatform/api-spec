@@ -5,5 +5,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 26
+      - name: Install Dependencies
+        run: npm ci
       - name: Run OpenAPI Linter
         run: npm run lint
