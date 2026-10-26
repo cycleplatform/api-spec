@@ -48,6 +48,7 @@ enum:
   - environments-manage
   - environments-scopedvariables-manage
   - environments-scopedvariables-view
+  - environments-scopedvariables-secrets-reveal
   - environments-services-manage
   - environments-view
   - environments-vpn
