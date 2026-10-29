@@ -5,11 +5,14 @@ type: object
 properties:
   capabilities:
     type: object
+    description: Conditionally apply this rule based on the capabilities granted to the container.
     properties:
       includes:
         type: string
+        description: A single Linux capability (i.e. `CAP_SYS_NICE`). If set, this rule only applies when the container has this capability.
       excludes:
         type: string
+        description: A single Linux capability (i.e. `CAP_SYS_ADMIN`). If set, this rule only applies when the container does not have this capability.
   syscall:
     type: object
     description: LinuxSyscall is used to match a syscall in Seccomp
@@ -19,14 +22,29 @@ properties:
     properties:
       names:
         type: array
-        items: 
+        description: The names of the syscalls this rule applies to.
+        items:
           type: string
-      action: 
+      action:
         type: string
+        description: The action to take when a matching syscall is made.
+        enum:
+          - SCMP_ACT_KILL
+          - SCMP_ACT_KILL_PROCESS
+          - SCMP_ACT_KILL_THREAD
+          - SCMP_ACT_TRAP
+          - SCMP_ACT_ERRNO
+          - SCMP_ACT_TRACE
+          - SCMP_ACT_ALLOW
+          - SCMP_ACT_LOG
+          - SCMP_ACT_NOTIFY
       errnoRet:
         type: integer
+        minimum: 0
+        description: The errno value returned to the caller when the action is `SCMP_ACT_ERRNO`.
       args:
         type: array
+        description: Optional conditions on the syscall arguments. All conditions must match for the rule to apply.
         items:
           type: object
           required:
@@ -36,9 +54,24 @@ properties:
           properties:
             index:
               type: integer
+              minimum: 0
+              description: The zero-based index of the syscall argument to compare.
             value:
               type: integer
+              minimum: 0
+              description: The value to compare the argument against.
             valueTwo:
               type: integer
-            op: 
+              minimum: 0
+              description: The second value used by `SCMP_CMP_MASKED_EQ`, where `value` is the mask and `valueTwo` is the expected result.
+            op:
               type: string
+              description: The comparison operator.
+              enum:
+                - SCMP_CMP_NE
+                - SCMP_CMP_LT
+                - SCMP_CMP_LE
+                - SCMP_CMP_EQ
+                - SCMP_CMP_GE
+                - SCMP_CMP_GT
+                - SCMP_CMP_MASKED_EQ
