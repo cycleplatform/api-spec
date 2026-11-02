@@ -9,6 +9,7 @@ enum:
   - container.instance.image.changed
   - container.instance.backup.completed
   - container.instance.backup.failed
+  - container.instance.backup.deleted
   - container.instance.delete.failed
   - container.instance.error
   - container.instance.restart.max_restarts
