@@ -9,16 +9,16 @@ properties:
     description: The number of bytes of page cache memory being used by this instance.
   usage:
     description: The memory usage data.
-    "$ref": "./MemoryData.yml"
+    $ref: "./MemoryData.yml"
   swap_usage:
     description: Memory swap usage data.
-    "$ref": "./MemoryData.yml"
+    $ref: "./MemoryData.yml"
   kernel_usage:
     description: Kernel memory usage.
-    "$ref": "./MemoryData.yml"
+    $ref: "./MemoryData.yml"
   kernel_tcp_usage:
     description: Kernel TCP buffer usage.
-    "$ref": "./MemoryData.yml"
+    $ref: "./MemoryData.yml"
   allocation:
     description: A breakdown of memory usage by type.
-    "$ref": "./MemoryAllocation.yml"
+    $ref: ./MemoryAllocation.yml
