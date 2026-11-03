@@ -1,0 +1,16 @@
+title: InstanceTelemetryMemoryAllocation
+type: object
+description: A breakdown of the memory charged to the instance, by type. The sum of these values equals the memory usage of the instance.
+properties:
+  anon:
+    type: number
+    description: The number of bytes of anonymous memory (heap, stack, etc.) used by the instance. This memory cannot be reclaimed without swapping.
+  file:
+    type: number
+    description: The number of bytes of file-backed memory (page cache) used by the instance. The kernel can reclaim most of this memory under pressure.
+  kernel:
+    type: number
+    description: The number of bytes of kernel memory used on behalf of the instance.
+  sock:
+    type: number
+    description: The number of bytes of memory used by network socket buffers for the instance.
