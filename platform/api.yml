@@ -789,6 +789,8 @@ paths:
     $ref: paths/utils/resource/lookup.yml
   "/v1/utils/components/lookup":
     $ref: paths/utils/components/lookup.yml
+  "/v1/utils/version":
+    $ref: paths/utils/version.yml
 
 components:
   securitySchemes:
