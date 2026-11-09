@@ -1,6 +1,6 @@
 title: ContainerScale
 type: object
-description: Network configuration for a container.
+description: Auto-scaling configuration for a container.
 required:
   - autoscale_group
   - instances
@@ -25,7 +25,7 @@ properties:
         description: Maximum additional instances the auto-scaler will run at any time
       max_server:
         type: integer
-        description: Minimum number of instances per server
+        description: Maximum number of instances of this container per server.
       min_ttl:
         $ref: ../../Duration.yml
         description: Minimum amount of time an instance will live
