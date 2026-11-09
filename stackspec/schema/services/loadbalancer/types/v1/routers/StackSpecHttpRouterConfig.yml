@@ -61,6 +61,18 @@ properties:
                   - object
                   - "null"
                 properties:
+                  force_protocol:
+                    description: |
+                      Forces the HTTP protocol version negotiated with the backend client. `1` forces HTTP/1.1, and `2` forces HTTP/2. If null, the protocol is negotiated with the client as normal.
+                    oneOf:
+                      - type:
+                          - integer
+                          - "null"
+                        enum:
+                          - 1
+                          - 2
+                          - null
+                      - $ref: ../../../../../StackVariable.yml
                   scheme:
                     oneOf:
                       - type:

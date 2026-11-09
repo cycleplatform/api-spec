@@ -155,7 +155,7 @@ properties:
                                         type: integer
                                       value:
                                         type: integer
-                                      valuetwo:
+                                      valueTwo:
                                         type: integer
                                       op:
                                         type: string

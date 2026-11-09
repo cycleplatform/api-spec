@@ -5,6 +5,7 @@ description: |
 required:
   - identifier
   - read_only
+  - options
 properties:
   local:
     anyOf:
@@ -48,3 +49,8 @@ properties:
   read_only:
     type: boolean
     description: Specifies if the volume is mounted as read-only.
+  options:
+    description: Additional options applied to the volume.
+    oneOf:
+      - $ref: ./VirtualMachineVolumeOptions.yml
+      - type: "null"

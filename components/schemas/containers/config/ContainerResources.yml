@@ -10,30 +10,38 @@ properties:
     description: Configurations settings related to CPU usage.
     properties:
       shares:
-        type: object
         description: A share represents 1/10th of the available compute time on a single thread.
-        required:
-          - limit
-          - reserve
-        properties:
-          limit:
-            type: integer
-            description: The limit (maximum) amount of shares each instance of a container can use.
-          reserve:
-            type: integer
-            description: The reserve (allocation) number of shares for each instance of a given container.
+        oneOf:
+          - type: object
+            required:
+              - limit
+              - reserve
+            properties:
+              limit:
+                type: integer
+                description: The limit (maximum) amount of shares each instance of a container can use.
+              reserve:
+                type: integer
+                description: The reserve (allocation) number of shares for each instance of a given container.
+          - type: "null"
       cpus:
-        type: string
+        oneOf:
+          - type: string
+          - type: "null"
   ram:
     type: object
     description: Configuration settings for limits and reserves of RAM resources for the given container.
     properties:
       limit:
-        type: string
         description: The limit (maximum) amount of RAM each instance of the given container can use.
-        examples:
-          - "1G"
-          - "1M"
+        oneOf:
+          - type: string
+            examples:
+              - "1G"
+              - "1M"
+          - type: "null"
       reserve:
-        type: string
         description: The reserve (allocation) of RAM given to each instance of the container.
+        oneOf:
+          - type: string
+          - type: "null"
