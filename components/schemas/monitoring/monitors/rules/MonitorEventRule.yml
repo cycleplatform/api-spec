@@ -1,0 +1,40 @@
+title: MonitorEventRule
+description: >
+  An event-based rule. At least one of target, priority, or type must be set;
+  the rule matches when a platform event satisfies every set field. Occurrences
+  controls how many matching events within the monitor's window are required
+  for the rule to trigger.
+type: object
+required:
+  - type
+  - details
+properties:
+  type:
+    type: string
+    enum:
+      - event
+    description: Identifies this as an event rule.
+  details:
+    type: object
+    required:
+      - occurrences
+    properties:
+      target:
+        oneOf:
+          - $ref: ./MonitorRuleTarget.yml
+          - type: "null"
+        description: The event target to match on. Null disables this filter.
+      priority:
+        oneOf:
+          - type: string
+          - type: "null"
+        description: The event priority to match on. Null disables this filter.
+      type:
+        oneOf:
+          - type: string
+          - type: "null"
+        description: The event type to match on. Null disables this filter.
+      occurrences:
+        type: integer
+        minimum: 1
+        description: The minimum number of matching events within the monitor's window required to trigger.

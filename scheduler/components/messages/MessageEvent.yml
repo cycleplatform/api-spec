@@ -1,0 +1,14 @@
+title: MessageEvent
+description: >
+  A single event in the message bus stream, in the server-sent events format. The
+  `data` field holds a JSON encoded Message.
+type: object
+required:
+  - data
+properties:
+  data:
+    type: string
+    description: A JSON encoded Message.
+    contentMediaType: application/json
+    contentSchema:
+      $ref: Message.yml

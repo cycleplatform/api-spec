@@ -1,0 +1,26 @@
+title: VirtualMachineVolumeOptions
+type: object
+description: |
+  Additional options that tune how a volume is presented to the virtual machine.
+required:
+  - caching
+properties:
+  caching:
+    description: |
+      The cache mode used by the hypervisor for this volume. If `null`, Cycle will select a default on your behalf.
+
+      - `none`: Bypasses the host page cache; guest flushes are honored.
+      - `writeback`: Uses the host page cache; guest flushes are honored.
+      - `writethrough`: Uses the host page cache for reads; every write is synced to disk.
+      - `directsync`: Bypasses the host page cache; every write is synced to disk.
+      - `unsafe`: Uses the host page cache and ignores guest flushes. Data loss can occur if the host crashes.
+    oneOf:
+      - type: string
+        enum:
+          - none
+          - writeback
+          - writethrough
+          - directsync
+          - unsafe
+      - type: "null"
+additionalProperties: false

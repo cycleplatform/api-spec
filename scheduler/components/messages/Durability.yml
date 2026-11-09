@@ -1,0 +1,9 @@
+title: Durability
+description: Describes how long the message bus retains a message before discarding it.
+type: object
+required:
+  - ttl
+properties:
+  ttl:
+    type: integer
+    description: The number of seconds the message is retained on the bus for consumers that have not yet received it.

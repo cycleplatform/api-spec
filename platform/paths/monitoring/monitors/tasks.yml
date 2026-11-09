@@ -1,0 +1,41 @@
+post:
+  operationId: "createMonitorJob"
+  summary: Create Monitor Job
+  description: |
+    Create a job for a monitor. Currently supports the `reconfigure` action, which
+    replaces the monitor's evaluation configuration.
+
+    Requires the `monitoring-monitors-manage` capability.
+
+    Monitors in `deleting` or `deleted` state cannot accept jobs.
+  tags:
+    - Monitoring
+  parameters:
+    - name: id
+      description: The ID of the requested monitor.
+      in: path
+      required: true
+      schema:
+        type: string
+        pattern: "^[a-f0-9]{24}$"
+  requestBody:
+    description: Parameters for creating a new monitor job.
+    content:
+      application/json:
+        schema:
+          $ref: ../../../../components/schemas/monitoring/monitors/tasks/MonitorTask.yml
+  responses:
+    202:
+      description: Returns a Job Descriptor.
+      content:
+        application/json:
+          schema:
+            title: "TaskResponse"
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../components/schemas/jobs/JobDescriptor.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml

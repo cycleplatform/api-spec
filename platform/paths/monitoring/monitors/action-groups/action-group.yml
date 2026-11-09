@@ -1,0 +1,128 @@
+get:
+  operationId: "getActionGroup"
+  summary: Get Action Group
+  description: Requires the `monitoring-monitors-view` capability.
+  tags:
+    - Monitoring
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: The ID of the action group to fetch.
+      schema:
+        type: string
+        pattern: "^[a-f0-9]{24}$"
+    - name: include
+      in: query
+      required: false
+      description:
+        A comma separated list of include values. Included resources will show up under
+        the root document's `include` field, with the key being the id of the included resource.
+      schema:
+        type: array
+        items:
+          type: string
+          enum:
+            - creators
+  responses:
+    200:
+      description: Returns an Action Group.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../../components/schemas/monitoring/monitors/actionGroups/ActionGroup.yml
+              includes:
+                type: object
+                properties:
+                  creators:
+                    $ref: ../../../../../components/schemas/includes/IncludedCreators.yml
+    default:
+      $ref: ../../../../../components/responses/errors/DefaultError.yml
+patch:
+  operationId: "updateActionGroup"
+  summary: Update Action Group
+  description: |
+    Requires the `monitoring-monitors-manage` capability.
+
+    Action groups in `deleting` or `deleted` state cannot be updated.
+  tags:
+    - Monitoring
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: The ID of the action group to update.
+      schema:
+        type: string
+        pattern: "^[a-f0-9]{24}$"
+  requestBody:
+    content:
+      application/json:
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: A user-defined name for the action group. Cannot be empty when provided.
+            identifier:
+              oneOf:
+                - $ref: ../../../../../components/schemas/Identifier.yml
+                - type: "null"
+            description:
+              type: string
+              description: A longer description of what this action group does and when it is used.
+            actions:
+              type: array
+              description: The actions run when this group is triggered.
+              items:
+                $ref: ../../../../../components/schemas/monitoring/monitors/MonitorAction.yml
+  responses:
+    200:
+      description: Returns the updated Action Group.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../../components/schemas/monitoring/monitors/actionGroups/ActionGroup.yml
+    default:
+      $ref: ../../../../../components/responses/errors/DefaultError.yml
+delete:
+  operationId: "deleteActionGroup"
+  summary: Delete Action Group
+  description: |
+    Requires the `monitoring-monitors-manage` capability.
+
+    Deletion runs asynchronously via a job. The response returns a Task with the queued job details.
+  tags:
+    - Monitoring
+  parameters:
+    - name: id
+      in: path
+      required: true
+      description: The ID of the action group to delete.
+      schema:
+        type: string
+        pattern: "^[a-f0-9]{24}$"
+  responses:
+    202:
+      description: Returns a Task acknowledging the queued deletion job.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: ../../../../../components/schemas/jobs/JobDescriptor.yml
+    default:
+      $ref: ../../../../../components/responses/errors/DefaultError.yml

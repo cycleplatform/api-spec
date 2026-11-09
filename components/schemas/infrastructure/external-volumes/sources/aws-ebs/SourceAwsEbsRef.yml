@@ -1,13 +1,11 @@
 title: SourceAwsEbsRef
 type: object
 description: Reference to the specific EBS volume to attach.
-required:
-  - volume_id
 properties:
   volume_id:
     type: string
     description: >
-      The EBS volume ID (for example, "vol-0abcd1234ef567890").
+      The EBS volume ID (for example, "vol-0abcd1234ef567890"). If left blank, the option `create` should be set on the external volume so that an ID is automatically assigned.
   az:
     type: string
     description: >

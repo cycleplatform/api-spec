@@ -1,0 +1,25 @@
+get:
+  operationId: "getPlatformMonitors"
+  summary: Get Platform Monitors
+  description: |
+    Returns location information about the monitors used for Cycle's external platform monitoring service.
+    These monitors are used for determining the latency between the public internet and environment 
+    load balancers.
+  tags:
+    - Monitoring
+  responses:
+    200:
+      description: Returns and array of monitor location information.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: ../../../../components/schemas/monitoring/platform/PlatformMonitor.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml

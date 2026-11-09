@@ -14,10 +14,12 @@ properties:
   details:
     type: object
     required:
-      - auth
+      - integration_id
       - volume
     properties:
-      auth:
-        $ref: "./SourceAwsEbsAuth.yml"
+      integration_id:
+        description: >
+          The ID of an AWS EBS integration for authentication.
+        $ref: ../../../../ID.yml
       volume:
         $ref: "./SourceAwsEbsRef.yml"

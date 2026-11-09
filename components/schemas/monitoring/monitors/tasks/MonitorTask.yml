@@ -1,0 +1,8 @@
+title: MonitorTask
+description: A task to be run against a monitor.
+discriminator:
+  propertyName: action
+  mapping:
+    reconfigure: ./MonitorReconfigureAction.yml
+oneOf:
+  - $ref: ./MonitorReconfigureAction.yml

@@ -1,0 +1,8 @@
+title: Topic
+description: >
+  The topic a message is published to. Consumers use the topic to identify which
+  messages they are interested in. Alphanumeric characters, dots, hyphens, and
+  underscores only.
+type: string
+minLength: 1
+pattern: "^[a-zA-Z0-9._-]+$"
