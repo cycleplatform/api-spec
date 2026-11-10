@@ -28,7 +28,7 @@ properties:
               - type: integer
               - $ref: StackVariable.yml
           max_server:
-            description: Minimum number of instances per server.
+            description: Maximum number of instances of this container per server.
             oneOf:
               - type: integer
               - $ref: StackVariable.yml
