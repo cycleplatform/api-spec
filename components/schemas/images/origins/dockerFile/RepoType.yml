@@ -8,8 +8,10 @@ properties:
     type: string
     description: The URL of the repository.
   branch:
-    type: string
     description: An optional branch arguement.  Default value is `master`.
+    oneOf:
+      - type: string
+      - type: "null"
   auth:
     anyOf:
       - type: "null"
