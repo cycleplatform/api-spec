@@ -19,19 +19,6 @@ properties:
       cost:
         type: integer
         description: The total cost of the image storage overage in mills.
-  ram:
-    type: object
-    description: (GEN 1) Overage related to RAM usage.
-    required:
-      - gb_hours
-      - cost
-    properties:
-      gb_hours:
-        type: integer
-        description: The number of RAM GB-hours exceeding the included amount.
-      cost:
-        type: integer
-        description: The total cost of the RAM overage in mills.
   servers:
     type: object
     description: Overage related to server runtime.
@@ -84,3 +71,16 @@ properties:
       cost:
         type: integer
         description: The total cost of the member overage in mills.
+  monitors:
+    type: object
+    description: Overage related to monitor usage beyond the monitoring plan's included monitors.
+    required:
+      - hours
+      - cost
+    properties:
+      hours:
+        type: integer
+        description: The number of monitor hours exceeding the included amount.
+      cost:
+        type: integer
+        description: The total cost of the monitor overage in mills.

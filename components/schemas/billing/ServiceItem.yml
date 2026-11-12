@@ -16,8 +16,7 @@ properties:
         type: string
         description: The support contract name.
       price:
-        type: integer
-        description: The price of the support contract (monthly).
+        "$ref": "./BillingAmount.yml"
   tier:
     type: object
     description: Information about the tier component of the billing item.
@@ -30,6 +29,21 @@ properties:
         "$ref": "../ID.yml"
       name:
         type: string
-        description: The support contract name.
+        description: The tier plan name.
+      price:
+        "$ref": "./BillingAmount.yml"
+  monitoring:
+    type: object
+    description: Information about the monitoring component of the billing item.
+    required:
+      - id
+      - name
+      - price
+    properties:
+      id:
+        "$ref": "../ID.yml"
+      name:
+        type: string
+        description: The monitoring plan name.
       price:
         "$ref": "./BillingAmount.yml"

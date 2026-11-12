@@ -8,7 +8,6 @@ required:
   - hub_id
   - state
   - non_essential
-  - features
   - events
 properties:
   id:
@@ -29,19 +28,6 @@ properties:
     description: Marks a cluster as non-essential. Non-essential cluster resources are excluded by default from certain metrics and summaries unless opted in.
   state:
     $ref: ./ClusterState.yml
-  features:
-    type: object
-    properties:
-      monitoring:
-        description: The level of monitoring to enable for this cluster. There is a cost associated with higher levels of monitoring.
-        oneOf:
-          - type: object
-            required:
-              - tier
-            properties:
-              tier:
-                $ref: ./monitoring/MonitoringTier.yml
-          - type: "null"
   events:
     title: ClusterEvents
     type: object

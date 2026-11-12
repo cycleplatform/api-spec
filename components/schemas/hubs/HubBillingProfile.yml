@@ -23,11 +23,17 @@ properties:
     description: A boolean where true means this billing is disabled on this hub.
   plans:
     type: object
-    description: Information about the plan associated with this hub.
+    description: Information about the plans associated with this hub.
     required:
+      - monitoring_id
       - tier_id
       - support_id
     properties:
+      monitoring_id:
+        type:
+          - string
+          - "null"
+        description: An ID referencing the monitoring plan applied to this hub.
       tier_id:
         type:
           - string
