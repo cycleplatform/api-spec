@@ -349,6 +349,8 @@ paths:
     $ref: "./paths/billing/orders/tasks.yml"
 
   ## Plans
+  "/v1/billing/plans/monitoring":
+    $ref: "./paths/billing/plans/monitoring.yml"
   "/v1/billing/plans/support":
     $ref: "./paths/billing/plans/support.yml"
   "/v1/billing/plans/tiers":
@@ -582,8 +584,6 @@ paths:
     $ref: "./paths/infrastructure/summary.yml"
   "/v1/infrastructure/deployment-strategies":
     $ref: "./paths/infrastructure/deploymentStrategies.yml"
-  "/v1/infrastructure/monitoring-tiers":
-    $ref: "./paths/infrastructure/tiers.yml"
 
   ## External Volumes
   "/v1/infrastructure/external-volumes":
@@ -633,9 +633,6 @@ paths:
     $ref: "./paths/infrastructure/clusters/cluster.yml"
   "/v1/infrastructure/clusters/{clusterId}/access":
     $ref: "./paths/infrastructure/clusters/access.yml"
-
-  "/v1/infrastructure/clusters/{clusterId}/tasks":
-    $ref: "./paths/infrastructure/clusters/tasks.yml"
 
   ## Servers
   "/v1/infrastructure/servers":

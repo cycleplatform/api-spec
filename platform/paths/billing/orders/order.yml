@@ -23,7 +23,7 @@ get:
     - $ref: includes/OrderIncludeParam.yml
   responses:
     200:
-      description: Returns a Billing Order
+      description: Returns a Billing Order.
       content:
         application/json:
           schema:
@@ -69,20 +69,23 @@ patch:
           properties:
             tier_plan_id:
               type: string
-              description: ID associated with the tier plan
+              description: ID associated with the tier plan.
             support_plan_id:
               type: string
-              description: ID associated with the support plan
+              description: ID associated with the support plan.
+            monitoring_plan_id:
+              type: string
+              description: ID associated with the monitoring plan.
             term_length:
               type: string
-              description: String that defines term length
+              description: String that defines term length.
               enum:
                 - once
                 - monthly
                 - yearly
             promo_code:
               type: string
-              description: String that defines a promo code
+              description: String that defines a promo code.
   responses:
     200:
       description: Returns a Billing Order.

@@ -1,0 +1,39 @@
+get:
+  operationId: "getBillingMonitoringPlans"
+  summary: List Monitoring Plans
+  description: |
+    Returns the available monitoring plans. Can be called without authentication. When a hub is specified in X-Hub-ID, also returns plans restricted to that hub.
+  tags:
+    - Plans
+  parameters:
+    - name: filter
+      in: query
+      required: false
+      description: |
+        ## Filter Field
+        The filter field is a key-value object, where the key is what you would like to filter, and the value is the value you're filtering for.
+      schema:
+        type: object
+        properties:
+          search:
+            type: string
+            description: |
+              `filter[search]=value` search for a value associated with a field on the given monitoring plan(s).
+    - $ref: ../../../../components/parameters/SortParam.yml
+    - $ref: ../../../../components/parameters/PageParam.yml
+  responses:
+    200:
+      description: Returns a list of available monitoring plans.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: ../../../../components/schemas/billing/plans/MonitoringPlan.yml
+    default:
+      $ref: ../../../../components/responses/errors/DefaultError.yml

@@ -19,6 +19,7 @@ properties:
     type: string
     description: The plan type.
     enum:
+      - monitoring
       - tier
       - support
   term:

@@ -8,14 +8,10 @@ properties:
     description: Whether or not legacy networking mode is enabled on this environment.
     type: boolean
   monitoring:
-    description: The level of monitoring to enable for this environment. There is a cost associated with higher levels of monitoring.
+    description: The monitoring configuration for this environment.
     oneOf:
       - type: object
-        required:
-          - tier
         properties:
-          tier:
-            $ref: ../infrastructure/clusters/monitoring/MonitoringTier.yml
           config:
             $ref: ./EnvironmentMonitoringConfig.yml
       - type: "null"
