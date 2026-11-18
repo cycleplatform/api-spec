@@ -15,5 +15,5 @@ properties:
     description: A boolean describing if a resource exists or not.
   object:
     type: object
-    description: A map of values describing the state of the resource, such as deployment tags.
+    description: A map of values describing the state of the resource.
     additionalProperties: {}
