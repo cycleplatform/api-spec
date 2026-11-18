@@ -1,6 +1,11 @@
 title: Cluster
 type: object
-description: Clusters are groups of servers that allow physical separation of resources.
+description: >-
+  Clusters are logical groups of servers that act as an isolation and
+  organization boundary within Cycle. A server belongs to exactly one cluster,
+  and resources (environments, networks) are scoped to it. Physical separation
+  depends on how the underlying servers are provisioned and is not guaranteed
+  by the cluster boundary itself.
 required:
   - id
   - identifier
