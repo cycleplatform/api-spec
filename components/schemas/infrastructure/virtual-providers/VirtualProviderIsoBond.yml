@@ -22,6 +22,11 @@ properties:
           type:
             - string
             - "null"
+  mac_address:
+    description: An optional MAC address to force on the bond interface. If not set, the bond uses the lowest MAC address of its member interfaces.
+    type:
+      - string
+      - "null"
   mode:
     type: string
     enum:
