@@ -7,7 +7,6 @@ required:
   - creator
   - hub_id
   - integration_id
-  - identifier
   - config
   - state
   - events
@@ -68,7 +67,7 @@ properties:
           - current
         properties:
           current:
-            description: The current state of the environment.
+            description: The current state of the ISO.
             type: string
             enum:
               - new

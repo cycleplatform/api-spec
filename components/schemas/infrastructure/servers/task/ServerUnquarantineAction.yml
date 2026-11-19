@@ -1,5 +1,8 @@
 title: ServerUnquarantineAction
 type: object
+description: |
+  A job that removes a server from quarantine and adds it to the given cluster.
+  Servers deployed from a virtual provider are quarantined when they first check in.
 required:
   - action
   - contents
@@ -16,3 +19,4 @@ properties:
     properties:
       cluster:
         type: string
+        description: The cluster to add the server to.

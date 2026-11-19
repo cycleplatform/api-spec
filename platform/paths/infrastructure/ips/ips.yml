@@ -1,7 +1,7 @@
 get:
   operationId: "getPoolIPs"
   summary: List Pool IPs
-  description: Requires the `infrastructure-ips-manage` capability.
+  description: Requires the `ips-manage` capability.
   tags:
     - IPs
   parameters:

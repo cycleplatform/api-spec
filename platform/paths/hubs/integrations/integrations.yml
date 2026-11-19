@@ -69,7 +69,10 @@ get:
 post:
   operationId: createIntegration
   summary: Create Integration
-  description: Create an integration resource within a hub. If the integration definition specifies that it requires verification, then you must submit a verify task to enable it.
+  description: |
+    Create an integration resource within a hub. If the integration definition specifies that it requires verification, then you must submit a verify task to enable it.
+
+    Requires the `hubs-integrations-manage` capability.
   tags:
     - Integrations
   security:

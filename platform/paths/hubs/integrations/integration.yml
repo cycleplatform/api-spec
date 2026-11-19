@@ -54,7 +54,10 @@ patch:
   security:
     - bearerAuth: []
   summary: Update Integration
-  description: Updates the specified integration within the current hub. If the integration definition specifies that it requires verification, then you must submit a verify task to enable it.
+  description: |
+    Updates the specified integration within the current hub. If the integration definition specifies that it requires verification, then you must submit a verify task to enable it.
+
+    Requires the `hubs-integrations-manage` capability.
   parameters:
     - name: integrationId
       in: path
@@ -128,7 +131,10 @@ delete:
   security:
     - bearerAuth: []
   summary: Delete an Integration
-  description: Deletes the specified integration from the current hub, marking it as deleted and returning the updated integration.
+  description: |
+    Deletes the specified integration from the current hub, marking it as deleted and returning the updated integration.
+
+    Requires the `hubs-integrations-manage` capability.
   parameters:
     - name: integrationId
       in: path
