@@ -15,10 +15,10 @@ get:
       required: true
       schema:
         type: string
-  summary: Delete ISO
+  summary: Get ISO Download URL
   description: Requires the `servers-manage` capability.
   responses:
-    202:
+    200:
       description: Returns a download URL.
       content:
         application/json:

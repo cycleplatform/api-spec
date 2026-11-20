@@ -41,5 +41,5 @@ properties:
       active-backup - One link active, failover to backup if needed.
       balance-xor - Distributes based on a hash (MAC/IP/port).
       lacp - Standard link aggregations using LACP.
-      balance-tlb - Adaptive transmit-side balancing (no switch config needed)..
-      balance-alb - TLB + receive load balancing (no switch config needed)..
+      balance-tlb - Adaptive transmit-side balancing (no switch config needed).
+      balance-alb - TLB + receive load balancing (no switch config needed).

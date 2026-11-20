@@ -21,7 +21,9 @@ properties:
     type:
       - string
       - "null"
-    description: Netmask assigned to the IPXE boot.
+    description:
+      Netmask assigned to the IPXE boot. For an IPv6 `static_ip`, enter the prefix
+      length here, such as `64`.
   gateway_ip:
     type:
       - string

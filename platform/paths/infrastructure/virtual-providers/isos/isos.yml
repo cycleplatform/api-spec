@@ -15,7 +15,7 @@ post:
       schema:
         type: string
   requestBody:
-    description: Parameters for creating a new virtual provider job.
+    description: Parameters for creating a new virtual provider ISO.
     content:
       application/json:
         schema:

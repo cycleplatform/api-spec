@@ -40,7 +40,7 @@ properties:
                   required:
                     - network
                   properties:
-                    usable:
+                    network:
                       $ref: ../../../Cidr.yml
                     gateway:
                       $ref: ../../../IpAddress.yml

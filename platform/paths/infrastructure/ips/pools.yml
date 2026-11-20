@@ -4,7 +4,7 @@ post:
   description: |
     Create an infrastructure IP Pool
 
-    Requires the 'ips-manage' capability.
+    Requires the `ips-manage` capability.
   tags:
     - IPs
   parameters: []
