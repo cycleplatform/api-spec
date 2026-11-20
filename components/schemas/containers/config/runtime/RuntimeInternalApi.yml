@@ -2,6 +2,9 @@ title: RuntimeInternalApi
 description: Configuration options for the internal API access within instances of this container.
 type: object
 properties:
+  disable:
+    type: boolean
+    description: If true, the internal API will be disabled for instances of this container.
   scope:
     oneOf:
       - type: array

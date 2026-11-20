@@ -1,0 +1,87 @@
+title: MonitoringPlan
+type: object
+description: A MonitoringPlan object describes the attributes of a monitoring subscription plan.
+required:
+  - id
+  - name
+  - generation
+  - usable
+  - price
+  - monitors
+  - metrics
+  - events
+  - features
+  - hidden
+  - hubs
+  - description
+properties:
+  id:
+    $ref: ../../ID.yml
+  name:
+    type: string
+    description: The name of the monitoring plan.
+  generation:
+    type: integer
+    description: The generation of the monitoring plan.
+  usable:
+    type: boolean
+    description: Whether the monitoring plan can currently be selected.
+  price:
+    $ref: ../BillingAmount.yml
+  monitors:
+    $ref: ../ResourceAllowance.yml
+  metrics:
+    type: object
+    description: Limits and retention for metrics collected under this plan.
+    required:
+      - telemetry_granularity
+      - custom
+      - retention_period
+      - downsample_period
+    properties:
+      telemetry_granularity:
+        $ref: ../../Duration.yml
+      custom:
+        type: boolean
+        description: Whether custom metrics are supported.
+      retention_period:
+        $ref: ../../Duration.yml
+      downsample_period:
+        $ref: ../../Duration.yml
+  events:
+    type: object
+    description: Limits and retention for events collected under this plan.
+    required:
+      - custom
+      - retention_period
+    properties:
+      custom:
+        type: boolean
+        description: Whether custom events are supported.
+      retention_period:
+        $ref: ../../Duration.yml
+  features:
+    type: object
+    description: Features included with this plan.
+    required:
+      - endpoint_monitoring
+    properties:
+      endpoint_monitoring:
+        type: boolean
+        description: Whether endpoint monitoring is included.
+  hidden:
+    type: boolean
+    description: Whether the plan is hidden from public plan listings.
+  hubs:
+    description: An array of hub IDs with access to the plan. When empty or null, the plan is available to all hubs.
+    oneOf:
+      - type: array
+        items:
+          $ref: ../../ID.yml
+      - type: "null"
+  description:
+    type: string
+    description: A description of the monitoring plan.
+  default:
+    type: boolean
+    description: Whether this is the default monitoring plan.

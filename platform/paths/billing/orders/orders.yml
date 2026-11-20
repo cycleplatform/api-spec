@@ -55,7 +55,7 @@ post:
             - due
     - $ref: includes/OrderIncludeParam.yml
   requestBody:
-    description: Parameters for creating a new order
+    description: Parameters for creating a new order.
     content:
       application/json:
         schema:
@@ -63,20 +63,23 @@ post:
           properties:
             tier_plan_id:
               type: string
-              description: ID associated with the tier plan
+              description: ID associated with the tier plan.
             support_plan_id:
               type: string
-              description: ID associated with the support plan
+              description: ID associated with the support plan.
+            monitoring_plan_id:
+              type: string
+              description: ID associated with the monitoring plan.
             term_length:
               type: string
-              description: String that defines term length
+              description: String that defines term length.
               enum:
                 - once
                 - monthly
                 - yearly
             promo_code:
               type: string
-              description: String that defines a promo code
+              description: String that defines a promo code.
   responses:
     201:
       description: Returns a Billing Order.

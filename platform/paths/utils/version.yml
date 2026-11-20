@@ -1,0 +1,32 @@
+get:
+  operationId: getVersion
+  summary: Get Version
+  description: Returns the current versions of the Cycle platform and CycleOS.
+  tags:
+    - Utility
+  parameters: []
+  security: []
+  responses:
+    200:
+      description: Returns the platform and OS versions.
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                type: object
+                required:
+                  - platform
+                  - os
+                properties:
+                  platform:
+                    type: string
+                    description: The current version of the Cycle platform.
+                  os:
+                    type: string
+                    description: The current version of CycleOS.
+    default:
+      $ref: ../../../components/responses/errors/DefaultError.yml

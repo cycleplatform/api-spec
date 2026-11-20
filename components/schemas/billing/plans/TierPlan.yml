@@ -1,6 +1,6 @@
 title: TierPlan
 type: object
-description: A TierPlan object describes the attributes of a subscription tier
+description: A TierPlan object describes the attributes of a subscription tier.
 required:
   - id
   - name
@@ -12,11 +12,7 @@ required:
   - members
   - dns_zones
   - dns_linked_records
-  - max_nodes
-  - max_members
   - advanced_features
-  - max_daily_api_requests
-  - ram
   - image_storage
   - builds
   - hidden
@@ -42,18 +38,9 @@ properties:
     $ref: ../ResourceAllowance.yml
   dns_linked_records:
     $ref: ../ResourceAllowance.yml
-  max_nodes:
-    type:
-      - integer
-      - "null"
-  max_members:
-    type:
-      - integer
-      - "null"
   advanced_features:
     type: object
     required:
-      - gpu
       - ial
       - autoscale
       - deployments
@@ -62,8 +49,6 @@ properties:
       - virtual_provider
       - san
     properties:
-      gpu:
-        type: boolean
       ial:
         type: boolean
       deployments:
@@ -78,12 +63,6 @@ properties:
         type: boolean
       external_volumes:
         type: boolean
-  max_daily_api_requests:
-    type:
-      - integer
-      - "null"
-  ram:
-    "$ref": "../BillingRam.yml"
   image_storage:
     "$ref": "../BillingImageStorage.yml"
   builds:
@@ -95,7 +74,7 @@ properties:
     oneOf:
       - type: array
         items:
-          $ref: ../../Identifier.yml
+          $ref: ../../ID.yml
       - type: "null"
   description:
     type: string

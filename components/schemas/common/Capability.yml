@@ -48,6 +48,7 @@ enum:
   - environments-manage
   - environments-scopedvariables-manage
   - environments-scopedvariables-view
+  - environments-scopedvariables-secrets-reveal
   - environments-services-manage
   - environments-view
   - environments-vpn
@@ -84,9 +85,12 @@ enum:
   - servers-manage
   - servers-view
 
-  # Monitor
-  - monitor-manage
-  - monitor-view
+  # Monitoring
+  - monitoring-events-view
+  - monitoring-logs-view
+  - monitoring-metrics-view
+  - monitoring-monitors-manage
+  - monitoring-monitors-view
 
   # Pipelines
   - pipelines-manage

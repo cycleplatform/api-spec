@@ -2,6 +2,11 @@ title: StackSpecRuntimeInternalApi
 description: Configuration options for the internal API access within instances of this container.
 type: object
 properties:
+  disable:
+    oneOf:
+      - type: boolean
+        description: If true, the internal API will be disabled for instances of this container.
+      - $ref: ../StackVariable.yml
   scope:
     oneOf:
       - type: array
