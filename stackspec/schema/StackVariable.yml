@@ -1,5 +1,20 @@
 title: StackVariable
-description: A variable specified in a stack spec.
+description:
+  A variable specified in a stack spec. At deploy time the placeholder is replaced with the value supplied for that variable.
+
+  Two substitution forms are available
+
+  - "{{stack-variable}}" — **string substitution.** The value is inserted as a
+    JSON string. Passing 1 yields "1".
+  - "{{$stack-variable}}" — **literal substitution.** The value is inserted
+    verbatim, including the surrounding quotes, so it keeps its own JSON type.
+    Given instances "{{$stack-variable}}" and a passed value of 1, the
+    resulting JSON is instances 1 — a number, not a string. Use this form for
+    numbers, booleans, arrays, and objects.
+
+  In both forms the placeholder must be wrapped in quotes wherever it appears in
+  the JSON. An unquoted placeholder is not valid JSON/YAML and will break the
+  surrounding document before substitution can run.
 pattern: '"?\{\{(\$)?([a-z0-9-]+)\}\}"?'
 type: string
 examples:
