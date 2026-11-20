@@ -6,7 +6,7 @@ post:
     Allows aggregate narrowing through filtering, searching, and scope parameters.
     If 'local' is set to true, only cached logs will be queried, and logs in object storage will be ignored.  This leads to much faster performance.
 
-    Requires the `monitor-view` capability.
+    Requires the `monitoring-logs-view` capability.
   tags:
     - Monitoring
   parameters: []
