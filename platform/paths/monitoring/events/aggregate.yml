@@ -7,7 +7,7 @@ post:
 
     You should always provide a time range filter to this call, either through the filter parameter or in the critera body. The aggregate is limited to 25,000 input documents, so a time frame will give the best results. 
 
-    Requires the `monitor-view` capability.
+    Requires the `monitoring-events-view` capability.
   tags:
     - Monitoring
   parameters:

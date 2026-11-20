@@ -4,7 +4,7 @@ get:
   description: |
     A basic query for retrieving events. For a more complex and granular report, see the `/v1/monitoring/events/aggregate` endpoint.
 
-    Requires the `monitor-view` capability.
+    Requires the `monitoring-events-view` capability.
   tags:
     - Monitoring
   parameters:
