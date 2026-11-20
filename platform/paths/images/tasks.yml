@@ -4,7 +4,7 @@ post:
   description: |
     Used to perform different actions on a given Image. 
 
-    Requires the `images-import` capability.
+    Requires the `images-manage` capability.
   tags:
     - Images
   parameters:
