@@ -2,7 +2,7 @@ title: VirtualProviderIsoNicStaticFlavor
 description: The static subconfiguration for ipv4 or ipv6.
 type: object
 required:
-  - static_ip
+  - ip
   - network
 properties:
   ip:
